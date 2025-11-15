@@ -1,0 +1,11 @@
+@layer mosuk-ui {
+    @layer containers {
+        @layer layer-1 {
+            .section {
+                display: flex;
+                flex-direction: column;
+                gap: calc(var(--spacing, .25rem) * 4);
+            }
+        }
+    }
+}

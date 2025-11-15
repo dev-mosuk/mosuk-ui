@@ -1,0 +1,624 @@
+{
+  "name": "mosuk-ui",
+  "version": "1.0",
+  "author": "mosuk",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "dependencies": {
+    "@base-ui-components/react": "^1.0.0-beta.0",
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "@dnd-kit/modifiers": "^9.0.0",
+    "classnames": "^2.5.1",
+    "date-fns": "^4.1.0",
+    "lucide-react": "^0.503.0",
+    "mosuk-utilities": "^1.0.0",
+    "mosuk-icons": "^1.0.5",
+    "react-hook-form": "^7.56.4",
+    "react-imask": "^7.6.1",
+    "swiper": "^11.2.6",
+    "swr": "^2.3.3"
+  },
+  "peerDependencies": {
+    "next": "^15.3.4 || ^16.0.0-beta.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@yandex/ymaps3-types": "^1.0.17595433"
+  },
+  "exports": {
+    "./index.css": {
+      "import": {
+        "default": "./index.css"
+      }
+    },
+    "./components/actions/button/(delete)/component": {
+      "import": {
+        "default": "./components/actions/button/(delete)/component/index.ts"
+      }
+    },
+    "./components/actions/button/(status)/component": {
+      "import": {
+        "default": "./components/actions/button/(status)/component/index.ts"
+      }
+    },
+    "./components/actions/button/(submit)/component": {
+      "import": {
+        "default": "./components/actions/button/(submit)/component/index.ts"
+      }
+    },
+    "./components/actions/button/component": {
+      "import": {
+        "default": "./components/actions/button/component/index.ts"
+      }
+    },
+    "./components/actions/button/skeleton": {
+      "import": {
+        "default": "./components/actions/button/skeleton/index.ts"
+      }
+    },
+    "./components/actions/icon/(delete)/component": {
+      "import": {
+        "default": "./components/actions/icon/(delete)/component/index.ts"
+      }
+    },
+    "./components/actions/icon/component": {
+      "import": {
+        "default": "./components/actions/icon/component/index.ts"
+      }
+    },
+    "./components/actions/icon/skeleton": {
+      "import": {
+        "default": "./components/actions/icon/skeleton/index.ts"
+      }
+    },
+    "./components/actions/input/(files)/component": {
+      "import": {
+        "default": "./components/actions/input/(files)/component/index.ts"
+      }
+    },
+    "./components/actions/input/(files)/skeleton": {
+      "import": {
+        "default": "./components/actions/input/(files)/skeleton/index.ts"
+      }
+    },
+    "./components/actions/input/(mask)/(date)/component": {
+      "import": {
+        "default": "./components/actions/input/(mask)/(date)/component/index.ts"
+      }
+    },
+    "./components/actions/input/(mask)/(date)/skeleton": {
+      "import": {
+        "default": "./components/actions/input/(mask)/(date)/skeleton/index.ts"
+      }
+    },
+    "./components/actions/input/(mask)/(phone)/component": {
+      "import": {
+        "default": "./components/actions/input/(mask)/(phone)/component/index.ts"
+      }
+    },
+    "./components/actions/input/(mask)/(phone)/skeleton": {
+      "import": {
+        "default": "./components/actions/input/(mask)/(phone)/skeleton/index.ts"
+      }
+    },
+    "./components/actions/input/(mask)/component": {
+      "import": {
+        "default": "./components/actions/input/(mask)/component/index.ts"
+      }
+    },
+    "./components/actions/input/(mask)/skeleton": {
+      "import": {
+        "default": "./components/actions/input/(mask)/skeleton/index.ts"
+      }
+    },
+    "./components/actions/input/(search)/component": {
+      "import": {
+        "default": "./components/actions/input/(search)/component/index.ts"
+      }
+    },
+    "./components/actions/input/(search)/skeleton": {
+      "import": {
+        "default": "./components/actions/input/(search)/skeleton/index.ts"
+      }
+    },
+    "./components/actions/input/(select)/component": {
+      "import": {
+        "default": "./components/actions/input/(select)/component/index.ts"
+      }
+    },
+    "./components/actions/input/(select)/skeleton": {
+      "import": {
+        "default": "./components/actions/input/(select)/skeleton/index.ts"
+      }
+    },
+    "./components/actions/input/component": {
+      "import": {
+        "default": "./components/actions/input/component/index.ts"
+      }
+    },
+    "./components/actions/input/skeleton": {
+      "import": {
+        "default": "./components/actions/input/skeleton/index.ts"
+      }
+    },
+    "./components/actions/textarea/component": {
+      "import": {
+        "default": "./components/actions/textarea/component/index.ts"
+      }
+    },
+    "./components/actions/textarea/skeleton": {
+      "import": {
+        "default": "./components/actions/textarea/skeleton/index.ts"
+      }
+    },
+    "./components/collections/accordion/component": {
+      "import": {
+        "default": "./components/collections/accordion/component/index.ts"
+      }
+    },
+    "./components/collections/accordion/skeleton": {
+      "import": {
+        "default": "./components/collections/accordion/skeleton/index.ts"
+      }
+    },
+    "./components/collections/breadcrumbs/component": {
+      "import": {
+        "default": "./components/collections/breadcrumbs/component/index.ts"
+      }
+    },
+    "./components/collections/breadcrumbs/skeleton": {
+      "import": {
+        "default": "./components/collections/breadcrumbs/skeleton/index.ts"
+      }
+    },
+    "./components/collections/table/(pagination)/component": {
+      "import": {
+        "default": "./components/collections/table/(pagination)/component/index.ts"
+      }
+    },
+    "./components/collections/table/(pagination)/skeleton": {
+      "import": {
+        "default": "./components/collections/table/(pagination)/skeleton/index.ts"
+      }
+    },
+    "./components/collections/table/(stacked)/component": {
+      "import": {
+        "default": "./components/collections/table/(stacked)/component/index.ts"
+      }
+    },
+    "./components/collections/tabs/horizontal/component": {
+      "import": {
+        "default": "./components/collections/tabs/horizontal/component/index.ts"
+      }
+    },
+    "./components/collections/tabs/horizontal/skeleton": {
+      "import": {
+        "default": "./components/collections/tabs/horizontal/skeleton/index.ts"
+      }
+    },
+    "./components/collections/tabs/vertical/component": {
+      "import": {
+        "default": "./components/collections/tabs/vertical/component/index.ts"
+      }
+    },
+    "./components/collections/tabs/vertical/skeleton": {
+      "import": {
+        "default": "./components/collections/tabs/vertical/skeleton/index.ts"
+      }
+    },
+    "./components/containers/article/component": {
+      "import": {
+        "default": "./components/containers/article/component/index.ts"
+      }
+    },
+    "./components/containers/buttons/component": {
+      "import": {
+        "default": "./components/containers/buttons/component/index.ts"
+      }
+    },
+    "./components/containers/content/component": {
+      "import": {
+        "default": "./components/containers/content/component/index.ts"
+      }
+    },
+    "./components/containers/grid/component": {
+      "import": {
+        "default": "./components/containers/grid/component/index.ts"
+      }
+    },
+    "./components/containers/hr/component": {
+      "import": {
+        "default": "./components/containers/hr/component/index.ts"
+      }
+    },
+    "./components/containers/section/component": {
+      "import": {
+        "default": "./components/containers/section/component/index.ts"
+      }
+    },
+    "./components/display/card/(flip)/component": {
+      "import": {
+        "default": "./components/display/card/(flip)/component/index.ts"
+      }
+    },
+    "./components/display/card/component": {
+      "import": {
+        "default": "./components/display/card/component/index.ts"
+      }
+    },
+    "./components/display/dl/component": {
+      "import": {
+        "default": "./components/display/dl/component/index.ts"
+      }
+    },
+    "./components/display/dl/skeleton": {
+      "import": {
+        "default": "./components/display/dl/skeleton/index.ts"
+      }
+    },
+    "./components/display/empty/component": {
+      "import": {
+        "default": "./components/display/empty/component/index.ts"
+      }
+    },
+    "./components/display/file/(files)/component": {
+      "import": {
+        "default": "./components/display/file/(files)/component/index.ts"
+      }
+    },
+    "./components/display/file/(files)/skeleton": {
+      "import": {
+        "default": "./components/display/file/(files)/skeleton/index.ts"
+      }
+    },
+    "./components/display/file/component": {
+      "import": {
+        "default": "./components/display/file/component/index.ts"
+      }
+    },
+    "./components/display/file/skeleton": {
+      "import": {
+        "default": "./components/display/file/skeleton/index.ts"
+      }
+    },
+    "./components/display/image/(images)/component": {
+      "import": {
+        "default": "./components/display/image/(images)/component/index.ts"
+      }
+    },
+    "./components/display/image/(images)/skeleton": {
+      "import": {
+        "default": "./components/display/image/(images)/skeleton/index.ts"
+      }
+    },
+    "./components/display/image/component": {
+      "import": {
+        "default": "./components/display/image/component/index.ts"
+      }
+    },
+    "./components/display/image/skeleton": {
+      "import": {
+        "default": "./components/display/image/skeleton/index.ts"
+      }
+    },
+    "./components/display/row/component": {
+      "import": {
+        "default": "./components/display/row/component/index.ts"
+      }
+    },
+    "./components/display/skeleton/component": {
+      "import": {
+        "default": "./components/display/skeleton/component/index.ts"
+      }
+    },
+    "./components/display/video/component": {
+      "import": {
+        "default": "./components/display/video/component/index.ts"
+      }
+    },
+    "./components/display/video/skeleton": {
+      "import": {
+        "default": "./components/display/video/skeleton/index.ts"
+      }
+    },
+    "./components/integrations/tbank/terminal/component": {
+      "import": {
+        "default": "./components/integrations/tbank/terminal/component/index.ts"
+      }
+    },
+    "./components/integrations/tbank/terminal/skeleton": {
+      "import": {
+        "default": "./components/integrations/tbank/terminal/skeleton/index.ts"
+      }
+    },
+    "./components/integrations/yandex/maps/component": {
+      "import": {
+        "default": "./components/integrations/yandex/maps/component/index.ts"
+      }
+    },
+    "./components/integrations/yandex/maps/skeleton": {
+      "import": {
+        "default": "./components/integrations/yandex/maps/skeleton/index.ts"
+      }
+    },
+    "./components/layouts/header/component": {
+      "import": {
+        "default": "./components/layouts/header/component/index.ts"
+      }
+    },
+    "./components/layouts/header/skeleton": {
+      "import": {
+        "default": "./components/layouts/header/skeleton/index.ts"
+      }
+    },
+    "./components/layouts/sidebar/component": {
+      "import": {
+        "default": "./components/layouts/sidebar/component/index.ts"
+      }
+    },
+    "./components/layouts/tabbar/component": {
+      "import": {
+        "default": "./components/layouts/tabbar/component/index.ts"
+      }
+    },
+    "./components/layouts/tabbar/skeleton": {
+      "import": {
+        "default": "./components/layouts/tabbar/skeleton/index.ts"
+      }
+    },
+    "./components/overlays/alert/component": {
+      "import": {
+        "default": "./components/overlays/alert/component/index.ts"
+      }
+    },
+    "./components/overlays/dialogs/dialog/(images)": {
+      "import": {
+        "default": "./components/overlays/dialogs/dialog/(images)/index.ts"
+      }
+    },
+    "./components/overlays/dialogs/dialog/component": {
+      "import": {
+        "default": "./components/overlays/dialogs/dialog/component/index.ts"
+      }
+    },
+    "./components/overlays/dropdown/component": {
+      "import": {
+        "default": "./components/overlays/dropdown/component/index.ts"
+      }
+    },
+    "./components/texts/a/component": {
+      "import": {
+        "default": "./components/texts/a/component/index.ts"
+      }
+    },
+    "./components/texts/a/skeleton": {
+      "import": {
+        "default": "./components/texts/a/skeleton/index.ts"
+      }
+    },
+    "./components/texts/h1/component": {
+      "import": {
+        "default": "./components/texts/h1/component/index.ts"
+      }
+    },
+    "./components/texts/h1/skeleton": {
+      "import": {
+        "default": "./components/texts/h1/skeleton/index.ts"
+      }
+    },
+    "./components/texts/h2/component": {
+      "import": {
+        "default": "./components/texts/h2/component/index.ts"
+      }
+    },
+    "./components/texts/h2/skeleton": {
+      "import": {
+        "default": "./components/texts/h2/skeleton/index.ts"
+      }
+    },
+    "./components/texts/h3/component": {
+      "import": {
+        "default": "./components/texts/h3/component/index.ts"
+      }
+    },
+    "./components/texts/h3/skeleton": {
+      "import": {
+        "default": "./components/texts/h3/skeleton/index.ts"
+      }
+    },
+    "./components/texts/h4/component": {
+      "import": {
+        "default": "./components/texts/h4/component/index.ts"
+      }
+    },
+    "./components/texts/h4/skeleton": {
+      "import": {
+        "default": "./components/texts/h4/skeleton/index.ts"
+      }
+    },
+    "./components/texts/h5/component": {
+      "import": {
+        "default": "./components/texts/h5/component/index.ts"
+      }
+    },
+    "./components/texts/h5/skeleton": {
+      "import": {
+        "default": "./components/texts/h5/skeleton/index.ts"
+      }
+    },
+    "./components/texts/h6/component": {
+      "import": {
+        "default": "./components/texts/h6/component/index.ts"
+      }
+    },
+    "./components/texts/h6/skeleton": {
+      "import": {
+        "default": "./components/texts/h6/skeleton/index.ts"
+      }
+    },
+    "./components/texts/hint/component": {
+      "import": {
+        "default": "./components/texts/hint/component/index.ts"
+      }
+    },
+    "./components/texts/hint/skeleton": {
+      "import": {
+        "default": "./components/texts/hint/skeleton/index.ts"
+      }
+    },
+    "./components/texts/p/component": {
+      "import": {
+        "default": "./components/texts/p/component/index.ts"
+      }
+    },
+    "./components/texts/p/skeleton": {
+      "import": {
+        "default": "./components/texts/p/skeleton/index.ts"
+      }
+    },
+    "./components/texts/text/component": {
+      "import": {
+        "default": "./components/texts/text/component/index.ts"
+      }
+    },
+    "./components/texts/text/skeleton": {
+      "import": {
+        "default": "./components/texts/text/skeleton/index.ts"
+      }
+    },
+    "./hooks/alerts": {
+      "import": {
+        "default": "./hooks/alerts/index.ts"
+      }
+    },
+    "./hooks/auth": {
+      "import": {
+        "default": "./hooks/auth/index.ts"
+      }
+    },
+    "./hooks/cart": {
+      "import": {
+        "default": "./hooks/cart/index.ts"
+      }
+    },
+    "./hooks/gdpr": {
+      "import": {
+        "default": "./hooks/gdpr/index.ts"
+      }
+    },
+    "./providers/alerts": {
+      "import": {
+        "default": "./providers/alerts/index.ts"
+      }
+    },
+    "./providers/auth": {
+      "import": {
+        "default": "./providers/auth/index.ts"
+      }
+    },
+    "./providers/cart": {
+      "import": {
+        "default": "./providers/cart/index.ts"
+      }
+    },
+    "./providers/gdpr": {
+      "import": {
+        "default": "./providers/gdpr/index.ts"
+      }
+    },
+    "./providers/tbank": {
+      "import": {
+        "default": "./providers/tbank/index.ts"
+      }
+    },
+    "./providers/yandex/maps": {
+      "import": {
+        "default": "./providers/yandex/maps/index.ts"
+      }
+    },
+    "./providers/yandex/metrika": {
+      "import": {
+        "default": "./providers/yandex/metrika/index.ts"
+      }
+    },
+    "./services/alerts": {
+      "import": {
+        "default": "./services/alerts/index.ts"
+      }
+    },
+    "./services/api": {
+      "import": {
+        "default": "./services/api/index.ts"
+      }
+    },
+    "./services/auth": {
+      "import": {
+        "default": "./services/auth/index.ts"
+      }
+    },
+    "./services/cart": {
+      "import": {
+        "default": "./services/cart/index.ts"
+      }
+    },
+    "./services/data/data": {
+      "import": {
+        "default": "./services/data/data/index.ts"
+      }
+    },
+    "./services/data/pagination": {
+      "import": {
+        "default": "./services/data/pagination/index.ts"
+      }
+    },
+    "./services/form/errors": {
+      "import": {
+        "default": "./services/form/errors/index.ts"
+      }
+    },
+    "./services/form/form": {
+      "import": {
+        "default": "./services/form/form/index.ts"
+      }
+    },
+    "./services/gdpr": {
+      "import": {
+        "default": "./services/gdpr/index.ts"
+      }
+    },
+    "./services/storage/cookie": {
+      "import": {
+        "default": "./services/storage/cookie/index.ts"
+      }
+    },
+    "./services/storage/local": {
+      "import": {
+        "default": "./services/storage/local/index.ts"
+      }
+    },
+    "./utilities/date": {
+      "import": {
+        "default": "./utilities/date/index.ts"
+      }
+    },
+    "./utilities/email": {
+      "import": {
+        "default": "./utilities/email/index.ts"
+      }
+    },
+    "./utilities/phone": {
+      "import": {
+        "default": "./utilities/phone/index.ts"
+      }
+    },
+    "./utilities/price": {
+      "import": {
+        "default": "./utilities/price/index.ts"
+      }
+    }
+  }
+}

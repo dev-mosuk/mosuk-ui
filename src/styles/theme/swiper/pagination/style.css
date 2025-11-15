@@ -1,0 +1,65 @@
+@layer base {
+    :root {
+        --swiper-pagination-color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+        --swiper-pagination-bullet-opacity: 1;
+
+        --swiper-pagination-bullet-inactive-color: var(--color-gray-400, oklch(0.707 0.022 261.325));
+        --swiper-pagination-bullet-inactive-opacity: 1;
+
+        --swiper-pagination-top: auto;
+        --swiper-pagination-bottom: calc(var(--spacing, .25rem) * 2);
+
+        --swiper-pagination-left: auto;
+        --swiper-pagination-right: auto;
+
+        --swiper-pagination-fraction-color: inherit;
+
+        --swiper-pagination-progressbar-bg-color: red;
+        --swiper-pagination-progressbar-size: calc(var(--spacing, 0.25rem) * 2);
+
+        --swiper-pagination-bullet-size: calc(var(--spacing, 0.25rem) * 1);
+        --swiper-pagination-bullet-width: calc(var(--spacing, 0.25rem) * 1);
+        --swiper-pagination-bullet-height: calc(var(--spacing, 0.25rem) * 1);
+
+        --swiper-pagination-bullet-horizontal-gap: calc(var(--spacing, 0.25rem) * 2);
+        --swiper-pagination-bullet-vertical-gap: calc(var(--spacing, 0.25rem) * 2);
+    }
+
+    .swiper {
+        .swiper-pagination {
+            left: auto;
+            right: auto;
+
+            width: fit-content;
+            height: fit-content;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: calc(var(--spacing, .25rem) * 0.75);
+
+            padding: calc(var(--spacing, 0.25rem) * 1) calc(var(--spacing, 0.25rem) * 2);
+
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(12px);
+
+            border-radius: calc(infinity * 1px);
+
+            .swiper-pagination-bullet {
+                border-radius: calc(infinity * 1px);
+
+                transform: scale(1);
+                transition: all 200ms ease-in-out;
+            }
+
+            .swiper-pagination-bullet-active {
+                width: calc(var(--spacing, 0.25rem) * 3);
+            }
+
+            &:empty,
+            &:has(.swiper-pagination-bullet:only-child) {
+                display: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,92 @@
+@layer mosuk-ui {
+    @layer integrations {
+        @layer layer-1 {
+            .TBankTerminal {
+                padding: calc(var(--spacing, .25rem) * 4);
+            }
+
+            .Section {
+                max-width: calc(var(--spacing, .25rem) * 100);
+                margin: auto;
+            }
+
+            .Article {
+                .H1Skeleton {
+                    .H1TextSkeleton {
+                        width: 50%;
+                        max-width: 50%;
+
+                        background-color: var(--color-gray-200, oklch(0.928 0.006 264.531));
+                    }
+                }
+
+                .IconSkeleton {
+                    background-color: var(--color-gray-200, oklch(0.928 0.006 264.531));
+                }
+            }
+
+            .Amount {
+                padding: calc(var(--spacing, .25rem) * 6);
+
+                pointer-events: none;
+
+                .Text {
+                    width: 50%;
+                    max-width: 50%;
+                }
+            }
+
+            .PaymentMethod {
+                padding: calc(var(--spacing, .25rem) * 6);
+
+                pointer-events: none;
+
+                .H1Skeleton {
+                    .H1TextSkeleton {
+                        width: 65%;
+                        max-width: 65%;
+                    }
+                }
+
+                .Buttons {
+                    display: flex;
+                    flex-direction: column;
+                    gap: calc(var(--spacing, .25rem) * 4);
+
+                    margin-top: calc(var(--spacing, .25rem) * 6);
+
+                    .Button {
+                        width: 100%;
+                        height: calc(var(--spacing, .25rem) * 10);
+                    }
+                }
+            }
+
+            .BankCard {
+                padding: calc(var(--spacing, .25rem) * 6);
+
+                pointer-events: none;
+
+                .H1Skeleton {
+                    .H1TextSkeleton {
+                        width: 65%;
+                        max-width: 65%;
+                    }
+                }
+
+                .Buttons {
+                    display: flex;
+                    flex-direction: column;
+                    gap: calc(var(--spacing, .25rem) * 4);
+
+                    margin-top: calc(var(--spacing, .25rem) * 6);
+
+                    .Button {
+                        width: 100%;
+                        height: calc(var(--spacing, .25rem) * 10);
+                    }
+                }
+            }
+        }
+    }
+}

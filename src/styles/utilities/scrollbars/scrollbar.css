@@ -1,0 +1,32 @@
+/* ! Scrollbar */
+@utility scrollbar-0 {
+    &::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+}
+
+@utility scrollbar-1 {
+    &::-webkit-scrollbar {
+        width: calc(var(--spacing, .25rem) * 1);
+    }
+}
+
+@utility scrollbar-2 {
+    &::-webkit-scrollbar {
+        width: calc(var(--spacing, .25rem) * 2);
+    }
+}
+
+@utility scrollbar-3 {
+    &::-webkit-scrollbar {
+        width: calc(var(--spacing, .25rem) * 3);
+    }
+}
+
+@utility scrollbar-4 {
+    &::-webkit-scrollbar {
+        width: calc(var(--spacing, .25rem) * 4);
+    }
+}

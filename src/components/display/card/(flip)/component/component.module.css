@@ -1,0 +1,40 @@
+@layer mosuk-ui {
+    @layer display {
+        @layer layer-2 {
+            .card {
+                overflow: visible;
+                position: relative;
+
+                backdrop-filter: unset;
+
+                transform-style: preserve-3d;
+                transition: transform 600ms;
+
+                .cardFront,
+                .cardBack {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+
+                    width: 100%;
+                    height: 100%;
+
+                    padding: calc(var(--spacing, .25rem) * 1);
+
+                    backface-visibility: hidden;
+                    -webkit-backface-visibility: hidden;
+                }
+
+                .cardBack {
+                    transform: rotateY(180deg);
+                }
+
+                &.flip {
+                    transform: rotateY(180deg);
+                    transition: transform 600ms;
+
+                }
+            }
+        }
+    }
+}
