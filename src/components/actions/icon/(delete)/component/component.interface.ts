@@ -1,4 +1,4 @@
-import { IconProps } from '../../../../actions/icon/component/component.interface';
+import { IconProps } from '../../component/component.interface';
 
 export interface IconDeleteProps extends IconProps {
   alert?: {

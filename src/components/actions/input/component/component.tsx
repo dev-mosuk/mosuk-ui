@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { createContext } from 'react';
 import { InputContextProps, InputProps } from './component.interface';
 import styles from './component.module.css';
@@ -9,7 +10,7 @@ export function Input({ ...props }: InputProps) {
     <InputContext.Provider value={{}}>
       <fieldset
         {...props}
-        className={'mosuk-input' + ' ' + (styles.fieldset ?? '') + ' ' + (props?.className ?? '')}
+        className={classNames('mosuk-input', styles.fieldset, props?.className)}
       >
         {props?.children}
       </fieldset>

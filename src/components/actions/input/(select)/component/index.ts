@@ -1,16 +1,18 @@
-import { Input } from '../../../../../atoms/inputs/input/component/component';
-import { InputProps } from '../../../../../atoms/inputs/input/component/component.interface';
-import { InputHint } from '../../../../../atoms/inputs/input/component/hint/component';
-import { InputHintType } from '../../../../../atoms/inputs/input/component/hint/component.enums';
-import { InputHintProps } from '../../../../../atoms/inputs/input/component/hint/component.interface';
+import { Input as ParentInput } from '../../component/component';
+import {
+  InputProps,
+  InputProps as ParentInputProps,
+} from '../../component/component.interface';
+import { InputHintType } from '../../component/hint/component.enums';
+import { InputSelectHint } from './hint/component';
 import { InputSelectInput as Component } from './input/component';
 import { InputSelectInputProps } from './input/component.interface';
 
-const InputComponent = (props: InputProps) => Input(props);
+const ChildInput = (props: ParentInputProps) => ParentInput(props);
 
-export const InputSelect = Object.assign(InputComponent, {
+export const InputSelect = Object.assign(ChildInput, {
   Input: Component,
-  Hint: Object.assign(InputHint, {
+  Hint: Object.assign(InputSelectHint, {
     Type: InputHintType,
   }),
 });
@@ -23,6 +25,6 @@ export namespace InputSelect {
   }
 
   export namespace Hint {
-    export type Props = InputHintProps;
+    export type Props = InputHintType;
   }
 }

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { MouseEvent, useEffect, useRef, useState } from 'react';
 import { alertsService } from '../../../../../services/alerts/service';
-import { Icon } from '../../../../actions/icon/component/component';
+import { Icon } from '../../component/component';
 import { IconDeleteProps } from './component.interface';
 import styles from './component.module.css';
 

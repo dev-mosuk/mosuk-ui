@@ -1,18 +1,19 @@
+import classNames from 'classnames';
 import React from 'react';
-import { Skeleton } from '../../../../skeletons/skeleton/component';
+import { Skeleton } from '../../../../display/skeleton/component/component';
 import styles from '../component.module.css';
 import {
-    InputSkeletonInputProps
+  InputInputSkeletonProps
 } from './component.interface';
 
-export function InputSkeletonInput({
+export function InputInputSkeleton({
   icon,
-  ...props
-}: InputSkeletonInputProps) {
+  ...rest
+}: InputInputSkeletonProps) {
   return (
-    <div {...props} className={'mosuk-input-skeleton-input' + ' ' + (styles.input ?? '') + ' ' + (props?.className ?? '')}>
-      {icon && <div className={styles.icon ?? ''} />}
-      <Skeleton className={styles.field ?? ''} />
+    <div {...rest} className={classNames('mosuk-input-skeleton-input', styles.input, rest?.className)}>
+      {icon && <div className={classNames(styles.icon)} />}
+      <Skeleton className={classNames(styles.field)} />
     </div>
   );
 }

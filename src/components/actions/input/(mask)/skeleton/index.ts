@@ -1,18 +1,26 @@
-import { InputSkeleton as InputSkeletonComponent } from '../../skeleton/index';
+import { InputSkeleton as ParentInputSkeleton } from '../../skeleton/component';
+import { InputSkeletonProps as ParentInputSkeletonProps } from '../../skeleton/component.interface';
+import { InputHintSkeleton as ParentInputHintSkeleton } from '../../skeleton/hint/component';
+import { InputHintSkeletonProps as ParentInputHintSkeletonProps } from '../../skeleton/hint/component.interface';
+import { InputInputSkeleton as ParentInputInputSkeleton } from '../../skeleton/input/component';
+import { InputInputSkeletonProps as ParentInputInputSkeletonProps } from '../../skeleton/input/component.interface';
 
-export const InputMaskSkeleton = Object.assign(InputSkeletonComponent, {
-  Input: InputSkeletonComponent.Input,
-  Hint: InputSkeletonComponent.Hint,
+const ChildInputSkeleton = (props: ParentInputSkeletonProps) =>
+  ParentInputSkeleton(props);
+
+export const InputMaskSkeleton = Object.assign(ChildInputSkeleton, {
+  Input: ParentInputInputSkeleton,
+  Hint: ParentInputHintSkeleton,
 });
 
 export namespace InputMaskSkeleton {
-  export type Props = InputSkeletonComponent.Props;
+  export type Props = ParentInputSkeletonProps;
 
   export namespace Input {
-    export type Props = InputSkeletonComponent.Input.Props;
+    export type Props = ParentInputInputSkeletonProps;
   }
 
   export namespace Hint {
-    export type Props = InputSkeletonComponent.Hint.Props;
+    export type Props = ParentInputHintSkeletonProps;
   }
 }

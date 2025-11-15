@@ -10,8 +10,7 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node",
-  },
-  "include": ["src/**/*", "src/components/integrations/tbank", "src/providers/tbank", "src/components/display/cards/card/component"],
+    "moduleResolution": "node"
+  },  
   "exclude": ["node_modules"]
-} 
+}

@@ -1,16 +1,17 @@
+import classNames from 'classnames';
 import React from 'react';
 import {
   InputSkeletonProps
 } from './component.interface';
 import styles from './component.module.css';
 
-export function InputSkeleton({ ...props }: InputSkeletonProps) {
+export function InputSkeleton({ ...rest }: InputSkeletonProps) {
   return (
     <div
-      {...props}
-      className={'mosuk-input-skeleton' + ' ' + (styles.fieldset ?? '') + ' ' + (props?.className ?? '')}
+      {...rest}
+      className={classNames('mosuk-input-skeleton', styles.fieldset, rest?.className)}
     >
-      {props?.children}
+      {rest?.children}
     </div>
   );
 }
