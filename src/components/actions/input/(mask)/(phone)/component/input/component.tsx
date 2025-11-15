@@ -15,7 +15,7 @@ export function InputMaskPhoneInput({ ...props }: InputMaskInputProps) {
         if (value.startsWith('8') && !masked.value) {
           return '+7' + value.substring(1);
         }
-        
+
         return value;
       }}
       placeholder={props?.placeholder ?? '+7 (999) 999-99-99'}

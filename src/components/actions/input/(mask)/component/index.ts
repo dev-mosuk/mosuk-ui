@@ -1,28 +1,28 @@
-import { Input } from '../../component/component';
-import { InputProps } from '../../component/component.interface';
+import { Input as ParentInput } from '../../component/component';
+import { InputProps as ParentInputProps } from '../../component/component.interface';
 import { InputHint } from '../../component/hint/component';
 import { InputHintType } from '../../component/hint/component.enums';
-import { InputHintProps } from '../../component/hint/component.interface';
-import { InputMaskInput as Component } from './input/component';
+import { InputHintProps as ParentInputHintProps } from '../../component/hint/component.interface';
+import { InputMaskInput } from './input/component';
 import { InputMaskInputProps } from './input/component.interface';
 
-const MaskInputComponent = (props: InputProps) => Input(props);
+const ChildInput = (props: ParentInputProps) => ParentInput(props);
 
-export const InputMask = Object.assign(MaskInputComponent, {
-  Input: Component,
+export const InputMask = Object.assign(ChildInput, {
+  Input: InputMaskInput,
   Hint: Object.assign(InputHint, {
     Type: InputHintType,
   }),
 });
 
 export namespace InputMask {
-  export type Props = InputProps;
+  export type Props = ParentInputProps;
 
   export namespace Input {
     export type Props = InputMaskInputProps;
   }
 
   export namespace Hint {
-    export type Props = InputHintProps;
+    export type Props = ParentInputHintProps;
   }
 }

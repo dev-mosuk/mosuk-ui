@@ -29,7 +29,7 @@ export interface CdnFileInterface {
   error: string | null;
 }
 
-export interface InputFilesContextProps {
+export interface UploadFilesContextProps {
   id: string | null;
   setId: (id: string) => void;
 
@@ -42,7 +42,7 @@ export interface InputFilesContextProps {
   setDraggedId: (id: string | null) => void;
 }
 
-export interface InputFilesProps
+export interface UploadFilesProps
   extends Omit<FieldsetHTMLAttributes<HTMLFieldSetElement>, 'onChange'> {
   ref?: RefObject<HTMLFieldSetElement | null>;
 

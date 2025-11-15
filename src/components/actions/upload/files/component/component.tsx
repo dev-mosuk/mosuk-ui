@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, {
   createContext,
   useCallback,
@@ -5,25 +6,25 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { Input } from '../../component/component';
+import { Input } from '../../../input/component/component';
 import {
   FileInterface,
-  InputFilesContextProps,
-  InputFilesProps,
+  UploadFilesContextProps,
+  UploadFilesProps,
 } from './component.interface';
 import styles from './component.module.css';
 import { generateUniqueId } from './input/component.utils';
 
-export const InputFilesContext = createContext<InputFilesContextProps | null>(
+export const UploadFilesContext = createContext<UploadFilesContextProps | null>(
   null
 );
 
-export function InputFiles({
+export function UploadFiles({
   cdn: propCdn,
   value: propValue,
   onChange: propOnChange,
-  ...props
-}: InputFilesProps) {
+  ...rest
+}: UploadFilesProps) {
   const [id, setId] = useState<string | null>(null);
   const [filesState, setFilesState] = useState<FileInterface[]>(
     propValue ?? []
@@ -37,7 +38,7 @@ export function InputFiles({
         id: file.id || generateUniqueId(),
         position: file.position !== undefined ? file.position : index * 10,
       }));
-      
+
       setFilesState(normalizedFiles);
     }
   }, [propValue]);
@@ -70,13 +71,17 @@ export function InputFiles({
   );
 
   return (
-    <InputFilesContext.Provider value={contextValue}>
+    <UploadFilesContext.Provider value={contextValue}>
       <Input
-        {...props}
-        className={'mosuk-input-files' + ' ' + (styles.fieldset ?? '') + ' ' + (props?.className ?? '')}
+        {...rest}
+        className={classNames(
+          'mosuk-upload-files',
+          styles.fieldset,
+          rest?.className
+        )}
       >
-        {props?.children}
+        {rest?.children}
       </Input>
-    </InputFilesContext.Provider>
+    </UploadFilesContext.Provider>
   );
 }

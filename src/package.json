@@ -75,14 +75,14 @@
         "default": "./components/actions/icon/skeleton/index.ts"
       }
     },
-    "./components/actions/input/(files)/component": {
+    "./components/actions/upload/files/component": {
       "import": {
-        "default": "./components/actions/input/(files)/component/index.ts"
+        "default": "./components/actions/upload/files/component/index.ts"
       }
     },
-    "./components/actions/input/(files)/skeleton": {
+    "./components/actions/upload/files/skeleton": {
       "import": {
-        "default": "./components/actions/input/(files)/skeleton/index.ts"
+        "default": "./components/actions/upload/files/skeleton/index.ts"
       }
     },
     "./components/actions/input/(mask)/(date)/component": {

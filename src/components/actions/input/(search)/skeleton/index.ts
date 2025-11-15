@@ -1,5 +1,5 @@
-import { InputSkeleton as ParentInputSkeleton } from '../../../input/skeleton/component';
-import { InputSkeletonProps as ParentInputSkeletonProps } from '../../../input/skeleton/component.interface';
+import { InputSkeleton as ParentInputSkeleton } from '../../skeleton/component';
+import { InputSkeletonProps as ParentInputSkeletonProps } from '../../skeleton/component.interface';
 import { InputHintSkeleton as ParentInputHintSkeleton } from '../../skeleton/hint/component';
 import { InputHintSkeletonProps as ParentInputHintSkeletonProps } from '../../skeleton/hint/component.interface';
 import { InputInputSkeleton as ParentInputInputSkeleton } from '../../skeleton/input/component';

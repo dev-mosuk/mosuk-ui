@@ -15,27 +15,28 @@ import {
   arrayMove,
   verticalListSortingStrategy
 } from '@dnd-kit/sortable';
+import classNames from 'classnames';
 import React, { Children, ReactElement, ReactNode, cloneElement, isValidElement, useCallback, useContext } from 'react';
 import { InputFilesContext } from '../component';
 import styles from '../component.module.css';
-import { InputFilesDndProps } from './component.interface';
-import { InputFilesDndElementProps } from './element/component.interface';
+import { UploadFilesDndProps } from './component.interface';
+import { UploadFilesDndElementProps } from './element/component.interface';
 
 const isInputFilesViewFile = (
   child: ReactNode
-): child is ReactElement<InputFilesDndElementProps> => {
+): child is ReactElement<UploadFilesDndElementProps> => {
   return (
-    isValidElement<InputFilesDndElementProps>(child) &&
+    isValidElement<UploadFilesDndElementProps>(child) &&
     child.props !== undefined &&
     child.props.file !== undefined
   );
 };
 
-export function InputFilesDnd({ ...props }: InputFilesDndProps) {
+export function UploadFilesDnd({ ...rest }: UploadFilesDndProps) {
   const context = useContext(InputFilesContext);
 
   if (!context) {
-    throw new Error('InputFilesView должен использоваться только внутри компонента InputFiles');
+    throw new Error('UploadFilesDnd должен использоваться только внутри компонента UploadFiles');
   }
 
   const { files, setFiles, setDraggedId } = context;
@@ -89,15 +90,15 @@ export function InputFilesDnd({ ...props }: InputFilesDndProps) {
 
   if (!files || !Array.isArray(files) || files.length === 0) {
     return (
-      <div className={`${styles.view} ${props?.className ?? ''}`}>{props?.children}</div>
+      <div {...rest} className={classNames('mosuk-upload-files-dnd', styles.dnd, rest?.className)}>{rest?.children}</div>
     );
   }
 
-  const childrenArray = Children.toArray(props?.children).filter(
+  const childrenArray = Children.toArray(rest?.children).filter(
     isInputFilesViewFile
-  ) as ReactElement<InputFilesDndElementProps>[];
+  ) as ReactElement<UploadFilesDndElementProps>[];
 
-  const otherChildren = Children.toArray(props?.children).filter(
+  const otherChildren = Children.toArray(rest?.children).filter(
     (child) => !isInputFilesViewFile(child)
   );
 
@@ -115,7 +116,7 @@ export function InputFilesDnd({ ...props }: InputFilesDndProps) {
         },
       }}
     >
-      <div {...props} className={`${styles.dnd} ${props?.className ?? ''}`}>
+      <div {...rest} className={classNames('mosuk-upload-files-dnd', styles.dnd, rest?.className)}>
         <SortableContext
           items={sortedFiles.map((file) => file.id)}
           strategy={verticalListSortingStrategy}

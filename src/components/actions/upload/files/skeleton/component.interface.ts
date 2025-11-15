@@ -1,4 +1,4 @@
 import { HTMLAttributes } from 'react';
 
-export interface InputFilesSkeletonProps
+export interface UploadFilesSkeletonProps
   extends HTMLAttributes<HTMLFieldSetElement> {}

@@ -1,28 +1,28 @@
 import React, { ChangeEvent, useContext, useEffect, useId } from 'react';
 import { alertsService } from '../../../../../../services/alerts/service';
-import { InputFilesContext } from '../component';
+import { UploadFilesContext } from '../component';
 import { CdnFileInterface, FileInterface } from '../component.interface';
 import styles from '../component.module.css';
-import { InputFilesInputProps } from './component.interface';
+import { UploadFilesInputProps } from './component.interface';
 import { generateUniqueId } from './component.utils';
 
-export function InputFilesInput({ ...props }: InputFilesInputProps) {
-  const context = useContext(InputFilesContext);
+export function UploadFilesInput({ ...props }: UploadFilesInputProps) {
+  const context = useContext(UploadFilesContext);
 
   if (!context) {
     throw new Error(
-      'InputFiles.Input must be used within an InputFiles component.'
+      'UploadFiles.Input must be used within an UploadFiles component.'
     );
   }
 
   const { setFiles, setId, cdn, files } = context;
 
   if (!cdn) {
-    throw new Error('InputFilesContext CDN is not set');
+    throw new Error('UploadFilesContext CDN is not set');
   }
 
   const generatedId = props.id ?? useId();
-  
+
   useEffect(() => {
     setId(generatedId);
   }, [setId, generatedId]);
@@ -127,7 +127,7 @@ export function InputFilesInput({ ...props }: InputFilesInputProps) {
   };
 
   return (
-    <input      
+    <input
       aria-hidden="true"
       {...props}
       id={generatedId}
