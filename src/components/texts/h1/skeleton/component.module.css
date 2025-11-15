@@ -1,0 +1,56 @@
+@layer mosuk-ui {
+    @layer texts {
+        @layer layer-1 {
+            .h1 {
+                display: block;
+
+                width: 100%;
+
+                font-size: var(--text-xl, 1.25rem);
+                text-align: start;
+                line-height: 0;
+
+                .text {
+                    display: inline-flex;
+
+                    width: 100%;
+                    height: 1.2em;
+                    min-height: 1.2em;
+
+                    line-height: 0;
+
+                    border-radius: calc(infinity * 1px);
+                }
+
+                &:has(.icon) {
+                    .icon {
+                        display: inline-flex;
+
+                        width: calc(var(--spacing, .25rem) * 10);
+                        height: calc(var(--spacing, .25rem) * 10);
+                        min-width: calc(var(--spacing, .25rem) * 10);
+                        min-height: calc(var(--spacing, .25rem) * 10);
+
+                        font-size: var(--text-base, 1rem);
+
+                        padding: calc(var(--spacing, .25rem) * 2.6125);
+                    }
+
+
+                    .text {
+                        display: inline-flex;
+
+                        width: 50%;
+                        max-width: calc(100% - calc(var(--spacing, .25rem) * 10) - calc(var(--spacing, .25rem) * 2.6125));
+
+                        line-height: var(--leading-relaxed, 1.625);
+                        vertical-align: top;
+
+                        margin-top: 0.15em;
+                        margin-left: calc(var(--spacing, .25rem) * 2.6125);
+                    }
+                }
+            }
+        }
+    }
+}

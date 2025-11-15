@@ -1,0 +1,23 @@
+@layer mosuk-ui {
+    @layer integrations {
+        @layer layer-1 {
+            .yandexMaps {
+                overflow: hidden;
+
+                width: 100%;
+                height: calc(var(--spacing, .25rem) * 100);
+            }
+
+            .yandexMapsMap {
+                svg {
+                    width: 100%;
+                    height: 100%;
+
+                    color: var(--color-gray-300, oklch(0.872 0.01 258.338));
+
+                    padding: 25%;
+                }
+            }
+        }
+    }
+}

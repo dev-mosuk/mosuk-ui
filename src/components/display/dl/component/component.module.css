@@ -1,0 +1,60 @@
+@layer mosuk-ui {
+    @layer display {
+        @layer layer-1 {
+
+            /* ! DL */
+            .dl-list {
+                display: flex;
+                flex-direction: column;
+                gap: calc(var(--spacing, 0.25rem) * 2);
+
+                font-size: var(--text-sm, 0.875rem);
+
+                .dl {
+                    position: relative;
+
+                    display: flex;
+                    flex-direction: row;
+                    align-items: flex-start;
+                    justify-content: space-between;
+
+                    .dt {
+                        width: fit-content;
+                        max-width: 41.666667%;
+
+                        background-color: white;
+                        hyphens: auto;
+                        word-break: break-word;
+
+                        padding-right: calc(var(--spacing, 0.25rem) * 2);
+
+                        &:before {
+                            position: absolute;
+                            top: calc(1.1em - 1px);
+                            left: 0;
+                            z-index: -1;
+
+                            display: block;
+                            width: 100%;
+
+                            border-bottom: 1px dotted var(--color-gray-200, oklch(0.928 0.006 264.531));
+                            content: "";
+                        }
+                    }
+
+                    .dd {
+                        width: fit-content;
+                        max-width: 58.333333%;
+
+                        background-color: white;
+                        text-align: end;
+                        hyphens: auto;
+                        word-break: break-word;
+
+                        padding-left: calc(var(--spacing, 0.25rem) * 2);
+                    }
+                }
+            }
+        }
+    }
+}

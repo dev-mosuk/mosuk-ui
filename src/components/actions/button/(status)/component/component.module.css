@@ -1,0 +1,28 @@
+@layer mosuk-ui {
+    @layer actions {
+        @layer layer-2 {
+            .button {
+                cursor: pointer;
+
+                &:disabled {
+                    opacity: 1;
+
+                    cursor: default;
+                    pointer-events: none;
+                }
+            }
+
+            .list {
+                display: flex;
+                flex-direction: column;
+                gap: calc(var(--spacing, .25rem) * 1);
+
+                .listButton {
+                    width: 100%;
+
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

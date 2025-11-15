@@ -1,0 +1,28 @@
+@layer mosuk-ui {
+    @layer display {
+        @layer layer-1 {
+            .row {
+                padding-top: calc(var(--spacing, 0.25rem) * 3);
+                padding-bottom: calc(var(--spacing, 0.25rem) * 3);
+                border-bottom: 1px solid var(--color-gray-100, oklch(.967 .003 264.542));
+
+                transition: all 200ms ease-in-out;
+
+                &:not(:hover) {
+                    transition: all 600ms ease-in-out;
+                }
+
+                &:last-child {
+                    border-bottom: 0;
+                }
+            }
+
+            @media (min-width: 1025px) {
+                .row {
+                    padding-top: calc(var(--spacing, 0.25rem) * 4);
+                    padding-bottom: calc(var(--spacing, 0.25rem) * 4);
+                }
+            }
+        }
+    }
+}

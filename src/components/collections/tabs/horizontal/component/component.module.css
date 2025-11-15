@@ -1,0 +1,108 @@
+@layer mosuk-ui {
+    @layer collections {
+        @layer layer-1 {
+            .tabs {
+                display: flex;
+                flex-direction: column;
+                gap: calc(var(--spacing, .25rem) * 4);
+            }
+
+            .head {
+                overflow-x: auto;
+                position: relative;
+                z-index: 0;
+
+                width: calc(100% + calc(var(--spacing, .25rem) * 8));
+
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                padding-inline: calc(var(--spacing, .25rem) * 4);
+                margin-left: calc(var(--spacing, .25rem) * -4);
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
+
+            .tab {
+                position: relative;
+                z-index: 1;
+
+                width: fit-content;
+                height: calc(var(--spacing, .25rem) * 8);
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: calc(var(--spacing, .25rem) * 2);
+
+                background-color: transparent;
+                color: var(--color-black, #000);
+                font-size: var(--text-xs, .75rem);
+                text-wrap: nowrap;
+
+                padding-inline: calc(var(--spacing, .25rem) * 4);
+                border-radius: calc(infinity * 1px);
+                outline: none;
+
+                cursor: pointer;
+                user-select: none;
+                transition: all 200ms ease-in-out;
+
+                & svg {
+                    width: calc(var(--spacing, .25rem) * 3.5);
+                    height: calc(var(--spacing, .25rem) * 3.5);
+                    min-width: calc(var(--spacing, .25rem) * 3.5);
+                    min-height: calc(var(--spacing, .25rem) * 3.5);
+
+                    color: var(--color-gray-500);
+
+                    transition: all 200ms ease-in-out;
+                }
+
+                &:hover,
+                &[data-selected] {
+                    color: var(--color-primary-500);
+
+                    & svg {
+                        color: var(--color-primary-500);
+                    }
+                }
+
+                &:not(:hover) {
+                    transition: all 600ms ease-in-out;
+
+                    & svg {
+                        transition: all 600ms ease-in-out;
+                    }
+                }
+            }
+
+            .indicator {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                z-index: -1;
+
+                width: var(--active-tab-width);
+                height: calc(var(--spacing, .25rem) * 8);
+
+                background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
+                border-radius: calc(infinity * 1px);
+
+                translate: var(--active-tab-left) 0;
+                transition-property: translate, width;
+                transition-duration: 400ms;
+                transition-timing-function: ease;
+            }
+
+            .content {
+                &[hidden] {
+                    display: none;
+                }
+            }
+        }
+    }
+}

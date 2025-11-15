@@ -1,0 +1,45 @@
+@layer mosuk-ui {
+    @layer texts {
+        @layer layer-1 {
+            .text {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+
+                font-size: var(--text-sm, 0.875rem);
+                line-height: 0;
+
+                .text-line {
+                    width: 100%;
+                    height: 1.2em;
+                    min-height: 1.2em;
+
+                    background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
+                    border-radius: calc(infinity * 1px);
+
+                    line-height: 0;
+
+                    &:nth-child(1n) {
+                        width: 91.666667%;
+                    }
+
+                    &:nth-child(2n) {
+                        width: 75%;
+                    }
+
+                    &:nth-child(3n) {
+                        width: 83.333333%;
+                    }
+
+                    &:nth-child(4n) {
+                        width: 66.666667%;
+                    }
+
+                    &:nth-child(5n) {
+                        width: 50%;
+                    }
+                }
+            }
+        }
+    }
+}

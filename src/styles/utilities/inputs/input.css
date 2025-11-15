@@ -1,0 +1,478 @@
+@reference "tailwindcss";
+
+/* ! Sizes */
+@utility input-xs {    
+    width: 100%;
+    height: 2rem;
+    padding-inline: 0.75rem;
+    border-radius: calc(infinity * 1px);
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+@utility input-sm {    
+    width: 100%;
+    height: 1.75rem;
+    padding-inline: 0.625rem;
+    font-size: 0.875rem;
+    border-radius: calc(infinity * 1px);
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+@utility input-base {
+    width: 100%;
+    height: 2rem;
+    padding-inline: 0.75rem;
+    font-size: 0.875rem;
+    border-radius: calc(infinity * 1px);
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+@utility input-md {
+    width: 100%;
+    height: 2.25rem;
+    padding-inline: 0.75rem;
+    font-size: 0.875rem;
+    border-radius: calc(infinity * 1px);
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+@utility input-lg {
+    width: 100%;
+    height: 2.5rem;
+    padding-inline: 0.75rem;
+    font-size: 0.875rem;
+    border-radius: calc(infinity * 1px);
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+/* ! Styles */
+@utility input-transparent-black {
+    background-color: transparent;
+    color: var(--color-black);    
+}
+
+@utility input-transparent-red-500 {
+    background-color: transparent;
+    color: var(--color-red-500);    
+}
+
+@utility input-transparent-orange-500 {
+    background-color: transparent;
+    color: var(--color-orange-500);    
+}
+
+@utility input-transparent-yellow-500 {
+    background-color: transparent;
+    color: var(--color-yellow-500);    
+}
+
+@utility input-transparent-green-500 {
+    background-color: transparent;
+    color: var(--color-green-500);    
+}
+
+@utility input-transparent-primary-500 {
+    background-color: transparent;
+    color: var(--color-primary-500);    
+}
+
+@utility input-outline-gray-100 {
+    background-color: white;
+    color: var(--color-black);
+    border: 1px solid var(--color-gray-100);    
+}
+
+@utility input-outline-gray-200 {
+    background-color: white;
+    color: var(--color-black);
+    border: 1px solid var(--color-gray-200);    
+}
+
+@utility input-outline-gray-300 {
+    background-color: white;
+    color: var(--color-black);
+    border: 1px solid var(--color-gray-300);    
+}
+
+@utility input-outline-gray-400 {
+    background-color: white;
+    color: var(--color-black);
+    border: 1px solid var(--color-gray-400);    
+}
+
+@utility input-outline-gray-500 {
+    background-color: white;
+    color: var(--color-black);
+    border: 1px solid var(--color-gray-500);    
+}
+
+@utility input-outline-gray-600 {
+    background-color: white;
+    color: var(--color-black);
+    border: 1px solid var(--color-gray-600);    
+}
+
+@utility input-outline-red-100 {
+    background-color: white;
+    color: var(--color-red-500);
+    border: 1px solid var(--color-red-100);    
+}
+
+@utility input-outline-red-200 {
+    background-color: white;
+    color: var(--color-red-500);
+    border: 1px solid var(--color-red-200);    
+}
+
+@utility input-outline-red-300 {
+    background-color: white;
+    color: var(--color-red-500);
+    border: 1px solid var(--color-red-300);    
+}
+
+@utility input-outline-red-400 {
+    background-color: white;
+    color: var(--color-red-500);
+    border: 1px solid var(--color-red-400);    
+}
+
+@utility input-outline-red-500 {
+    background-color: white;
+    color: var(--color-red-500);
+    border: 1px solid var(--color-red-500);    
+}
+
+@utility input-outline-red-600 {
+    background-color: white;
+    color: var(--color-red-600);
+    border: 1px solid var(--color-red-600);    
+}
+
+@utility input-outline-orange-100 {
+    background-color: white;
+    color: var(--color-orange-500);
+    border: 1px solid var(--color-orange-100);    
+}
+
+@utility input-outline-orange-200 {
+    background-color: white;
+    color: var(--color-orange-500);
+    border: 1px solid var(--color-orange-200);    
+}
+
+@utility input-outline-orange-300 {
+    background-color: white;
+    color: var(--color-orange-500);
+    border: 1px solid var(--color-orange-300);    
+}
+
+@utility input-outline-orange-400 {
+    background-color: white;
+    color: var(--color-orange-500);
+    border: 1px solid var(--color-orange-400);    
+}
+
+@utility input-outline-orange-500 {
+    background-color: white;
+    color: var(--color-orange-500);
+    border: 1px solid var(--color-orange-500);    
+}
+
+@utility input-outline-orange-600 {
+    background-color: white;
+    color: var(--color-orange-600);
+    border: 1px solid var(--color-orange-600);    
+}
+
+@utility input-outline-yellow-100 {
+    background-color: white;
+    color: var(--color-yellow-500);
+    border: 1px solid var(--color-yellow-100);    
+}
+
+@utility input-outline-yellow-200 {
+    background-color: white;
+    color: var(--color-yellow-500);
+    border: 1px solid var(--color-yellow-200);    
+}
+
+@utility input-outline-yellow-300 {
+    background-color: white;
+    color: var(--color-yellow-500);
+    border: 1px solid var(--color-yellow-300);    
+}
+
+@utility input-outline-yellow-400 {
+    background-color: white;
+    color: var(--color-yellow-500);
+    border: 1px solid var(--color-yellow-400);    
+}
+
+@utility input-outline-yellow-500 {
+    background-color: white;
+    color: var(--color-yellow-500);
+    border: 1px solid var(--color-yellow-500);    
+}
+
+@utility input-outline-yellow-600 {
+    background-color: white;
+    color: var(--color-yellow-600);
+    border: 1px solid var(--color-yellow-600);    
+}
+
+@utility input-outline-green-100 {
+    background-color: white;
+    color: var(--color-green-500);
+    border: 1px solid var(--color-green-100);    
+}
+
+@utility input-outline-green-200 {
+    background-color: white;
+    color: var(--color-green-500);
+    border: 1px solid var(--color-green-200);    
+}
+
+@utility input-outline-green-300 {
+    background-color: white;
+    color: var(--color-green-500);
+    border: 1px solid var(--color-green-300);    
+}
+
+@utility input-outline-green-400 {
+    background-color: white;
+    color: var(--color-green-500);
+    border: 1px solid var(--color-green-400);    
+}
+
+@utility input-outline-green-500 {
+    background-color: white;
+    color: var(--color-green-500);
+    border: 1px solid var(--color-green-500);    
+}
+
+@utility input-outline-green-600 {
+    background-color: white;
+    color: var(--color-green-600);
+    border: 1px solid var(--color-green-600);    
+}
+
+@utility input-outline-primary-100 {
+    background-color: white;
+    color: var(--color-primary-500);
+    border: 1px solid var(--color-primary-100);    
+}
+
+@utility input-outline-primary-200 {
+    background-color: white;
+    color: var(--color-primary-500);
+    border: 1px solid var(--color-primary-200);    
+}
+
+@utility input-outline-primary-300 {
+    background-color: white;
+    color: var(--color-primary-500);
+    border: 1px solid var(--color-primary-300);    
+}
+
+@utility input-outline-primary-400 {
+    background-color: white;
+    color: var(--color-primary-500);
+    border: 1px solid var(--color-primary-400);    
+}
+
+@utility input-outline-primary-500 {
+    background-color: white;
+    color: var(--color-primary-500);
+    border: 1px solid var(--color-primary-500);    
+}
+
+@utility input-outline-primary-600 {
+    background-color: white;
+    color: var(--color-primary-600);
+    border: 1px solid var(--color-primary-600);    
+}
+
+@utility input-fill-gray-100 {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-700);    
+}
+
+@utility input-fill-gray-200 {
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-900);    
+}
+
+@utility input-fill-gray-300 {
+    background-color: var(--color-gray-300);
+    color: var(--color-black);    
+}
+
+@utility input-fill-gray-400 {
+    background-color: var(--color-gray-400);
+    color: white;    
+}
+
+@utility input-fill-gray-500 {
+    background-color: var(--color-gray-500);
+    color: white;    
+}
+
+@utility input-fill-gray-600 {
+    background-color: var(--color-gray-600);
+    color: white;    
+}
+
+@utility input-fill-red-100 {
+    background-color: var(--color-red-100);
+    color: var(--color-red-500);    
+}
+
+@utility input-fill-red-200 {
+    background-color: var(--color-red-200);
+    color: var(--color-red-700);    
+}
+
+@utility input-fill-red-300 {
+    background-color: var(--color-red-300);
+    color: var(--color-red-900);    
+}
+
+@utility input-fill-red-400 {
+    background-color: var(--color-red-400);
+    color: white;    
+}
+
+@utility input-fill-red-500 {
+    background-color: var(--color-red-500);
+    color: white;    
+}
+
+@utility input-fill-red-600 {
+    background-color: var(--color-red-600);
+    color: white;    
+}
+
+@utility input-fill-orange-100 {
+    background-color: var(--color-orange-100);
+    color: var(--color-orange-500);    
+}
+
+@utility input-fill-orange-200 {
+    background-color: var(--color-orange-200);
+    color: var(--color-orange-700);    
+}
+
+@utility input-fill-orange-300 {
+    background-color: var(--color-orange-300);
+    color: var(--color-orange-900);    
+}
+
+@utility input-fill-orange-400 {
+    background-color: var(--color-orange-400);
+    color: white;    
+}
+
+@utility input-fill-orange-500 {
+    background-color: var(--color-orange-500);
+    color: white;    
+}
+
+@utility input-fill-orange-600 {
+    background-color: var(--color-orange-600);
+    color: white;    
+}
+
+@utility input-fill-yellow-100 {
+    background-color: var(--color-yellow-100);
+    color: var(--color-yellow-500);    
+}
+
+@utility input-fill-yellow-200 {
+    background-color: var(--color-yellow-200);
+    color: var(--color-yellow-700);    
+}
+
+@utility input-fill-yellow-300 {
+    background-color: var(--color-yellow-300);
+    color: var(--color-yellow-900);    
+}
+
+@utility input-fill-yellow-400 {
+    background-color: var(--color-yellow-400);
+    color: white;    
+}
+
+@utility input-fill-yellow-500 {
+    background-color: var(--color-yellow-500);
+    color: white;    
+}
+
+@utility input-fill-yellow-600 {
+    background-color: var(--color-yellow-600);
+    color: white;    
+}
+
+@utility input-fill-green-100 {
+    background-color: var(--color-green-100);
+    color: var(--color-green-500);    
+}
+
+@utility input-fill-green-200 {
+    background-color: var(--color-green-200);
+    color: var(--color-green-700);    
+}
+
+@utility input-fill-green-300 {
+    background-color: var(--color-green-300);
+    color: var(--color-green-900);    
+}
+
+@utility input-fill-green-400 {
+    background-color: var(--color-green-400);
+    color: white;    
+}
+
+@utility input-fill-green-500 {
+    background-color: var(--color-green-500);
+    color: white;    
+}
+
+@utility input-fill-green-600 {
+    background-color: var(--color-green-600);
+    color: white;    
+}
+
+@utility input-fill-primary-100 {
+    background-color: var(--color-primary-100);
+    color: var(--color-primary-500);    
+}
+
+@utility input-fill-primary-200 {
+    background-color: var(--color-primary-200);
+    color: var(--color-primary-700);    
+}
+
+@utility input-fill-primary-300 {
+    background-color: var(--color-primary-300);
+    color: var(--color-primary-900);    
+}
+
+@utility input-fill-primary-400 {
+    background-color: var(--color-primary-400);
+    color: white;    
+}
+
+@utility input-fill-primary-500 {
+    background-color: var(--color-primary-500);
+    color: white;    
+}
+
+@utility input-fill-primary-600 {
+    background-color: var(--color-primary-600);
+    color: white;    
+}

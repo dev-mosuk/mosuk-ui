@@ -1,0 +1,15 @@
+@layer mosuk-ui {
+    @layer containers {
+        @layer layer-1 {
+            .buttons {      
+                width: 100%;
+                   
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-end;
+                gap: calc(var(--spacing, .25rem) * 2);
+            }
+        }
+    }
+}

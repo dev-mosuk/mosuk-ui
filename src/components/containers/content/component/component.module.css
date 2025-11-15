@@ -1,0 +1,22 @@
+@layer mosuk-ui {
+    @layer containers {
+        @layer layer-1 {
+            @media (max-width: 1023px) {
+                .content {
+                    display: flex;
+                    flex-direction: column;
+                    gap: calc(var(--spacing, .25rem) * 16);
+                }
+            }
+
+            /* ? Desktop */
+            @media (min-width: 1024px) {
+                .content {
+                    display: flex;
+                    flex-direction: column;
+                    gap: calc(var(--spacing, .25rem) * 24);
+                }
+            }
+        }
+    }
+}
