@@ -1,35 +1,35 @@
-import { InputSkeletonProps } from '../../skeleton/component.interface';
-import { InputHintSkeleton } from '../../skeleton/hint/component';
-import { InputHintSkeletonProps } from '../../skeleton/hint/component.interface';
-import { InputFilesSkeleton as Component } from './component';
-import { InputFilesSkeletonDnd } from './dnd/component';
-import { InputFilesSkeletonDndProps } from './dnd/component.interface';
-import { InputFilesSkeletonDndElement } from './dnd/file/component';
-import { InputFilesSkeletonDndElementProps } from './dnd/file/component.interface';
-import { InputFilesSkeletonLabel } from './label/component';
-import { InputFilesSkeletonLabelProps } from './label/component.interface';
+import { InputHintSkeleton } from '../../../input/skeleton/hint/component';
+import { InputHintSkeletonProps } from '../../../input/skeleton/hint/component.interface';
+import { UploadFilesSkeleton as Component } from './component';
+import { UploadFilesSkeletonProps } from './component.interface';
+import { UploadFilesSkeletonDnd } from './dnd/component';
+import { UploadFilesSkeletonDndProps } from './dnd/component.interface';
+import { UploadFilesSkeletonDndElement } from './dnd/file/component';
+import { UploadFilesSkeletonDndElementProps } from './dnd/file/component.interface';
+import { UploadFilesSkeletonLabel } from './label/component';
+import { UploadFilesSkeletonLabelProps } from './label/component.interface';
 
-export const InputFilesSkeleton = Object.assign(Component, {
-  Dnd: Object.assign(InputFilesSkeletonDnd, {
-    Element: InputFilesSkeletonDndElement,
+export const UploadFilesSkeleton = Object.assign(Component, {
+  Dnd: Object.assign(UploadFilesSkeletonDnd, {
+    Element: UploadFilesSkeletonDndElement,
   }),
-  Label: InputFilesSkeletonLabel,
+  Label: UploadFilesSkeletonLabel,
   Hint: InputHintSkeleton,
 });
 
-export namespace InputFiles {
-  export type Props = InputSkeletonProps;
+export namespace UploadFiles {
+  export type Props = UploadFilesSkeletonProps;
 
   export namespace Dnd {
-    export type Props = InputFilesSkeletonDndProps;
+    export type Props = UploadFilesSkeletonDndProps;
 
     export namespace Element {
-      export type Props = InputFilesSkeletonDndElementProps;
+      export type Props = UploadFilesSkeletonDndElementProps;
     }
   }
 
   export namespace Label {
-    export type Props = InputFilesSkeletonLabelProps;
+    export type Props = UploadFilesSkeletonLabelProps;
   }
 
   export namespace Hint {

@@ -2,8 +2,6 @@ import classNames from 'classnames';
 import React, { Children, isValidElement } from 'react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import '../../../../../../../../styles/base/swiper/style.css';
-import '../../../../../../../../styles/theme/swiper/style.css';
 import styles from '../../component.module.css';
 import { ImagesProps } from './component.interface';
 import { Image } from './image/component';

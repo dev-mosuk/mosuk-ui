@@ -1,58 +1,57 @@
 @layer mosuk-ui {
-    @layer actions {
-        @layer layer-1 {
-            .button {
-                overflow: hidden;
+    @layer index-10 {
+        .button {
+            overflow: hidden;
 
-                width: fit-content;
-                height: calc(var(--spacing, .25rem) * 8);
+            width: fit-content;
+            height: calc(var(--spacing, .25rem) * 8);
 
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: calc(var(--spacing, .25rem) * 2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: calc(var(--spacing, .25rem) * 2);
 
-                background-color: var(--color-gray-100, oklch(.967 .003 264.542));
-                color: var(--color-black, #000);
-                font-size: var(--text-xs, .75rem);
-                text-wrap: nowrap;
+            background-color: var(--color-gray-100, oklch(.967 .003 264.542));
+            color: var(--color-black, #000);
+            font-size: var(--text-xs, .75rem);
+            text-wrap: nowrap;
 
-                padding-left: calc(var(--spacing, .25rem) * 4);
-                padding-right: calc(var(--spacing, .25rem) * 4);
-                border-radius: calc(infinity * 1px);
-                outline: none;
+            padding-left: calc(var(--spacing, .25rem) * 4);
+            padding-right: calc(var(--spacing, .25rem) * 4);
+            border-radius: calc(infinity * 1px);
+            outline: none;
 
-                user-select: none;
+            user-select: none;
+            transition: all 200ms ease-in-out;
+
+            svg {
+                width: calc(var(--spacing, .25rem) * 3.5);
+                height: calc(var(--spacing, .25rem) * 3.5);
+                min-width: calc(var(--spacing, .25rem) * 3.5);
+                min-height: calc(var(--spacing, .25rem) * 3.5);
+
+                color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+
                 transition: all 200ms ease-in-out;
+            }
+
+            &:hover {
+                background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
+                color: var(--color-primary-500, #0074e7);
 
                 svg {
-                    width: calc(var(--spacing, .25rem) * 3.5);
-                    height: calc(var(--spacing, .25rem) * 3.5);
-                    min-width: calc(var(--spacing, .25rem) * 3.5);
-                    min-height: calc(var(--spacing, .25rem) * 3.5);
-
-                    color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-
-                    transition: all 200ms ease-in-out;
-                }
-
-                &:hover {
-                    background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
                     color: var(--color-primary-500, #0074e7);
-
-                    svg {
-                        color: var(--color-primary-500, #0074e7);
-                    }
-                }
-
-                &:not(:hover) {
-                    transition: all 600ms ease-in-out;
-
-                    svg {
-                        transition: all 600ms ease-in-out;
-                    }
                 }
             }
+
+            &:not(:hover) {
+                transition: all 600ms ease-in-out;
+
+                svg {
+                    transition: all 600ms ease-in-out;
+                }
+            }
+
         }
     }
 }

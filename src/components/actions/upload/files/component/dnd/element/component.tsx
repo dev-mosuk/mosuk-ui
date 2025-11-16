@@ -1,12 +1,12 @@
 import { useSortable } from '@dnd-kit/sortable';
 import classNames from 'classnames';
 import React, { CSSProperties, useContext } from 'react';
-import { InputFilesContext } from '../../component';
+import { UploadFilesContext } from '../../component';
 import styles from '../../component.module.css';
 import { UploadFilesDndElementProps } from './component.interface';
 
 export function UploadFilesDndElement({ file, ...rest }: UploadFilesDndElementProps) {
-  const context = useContext(InputFilesContext);
+  const context = useContext(UploadFilesContext);
 
   if (!context) {
     throw new Error(

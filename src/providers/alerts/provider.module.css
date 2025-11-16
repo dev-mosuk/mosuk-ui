@@ -1,5 +1,5 @@
 @layer mosuk-ui {
-    @layer components {
+    @layer base {
         .alerts {
             position: fixed;
             top: auto;

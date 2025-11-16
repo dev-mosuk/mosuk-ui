@@ -390,6 +390,11 @@
         "default": "./components/overlays/dropdown/component/index.ts"
       }
     },
+    "./components/overlays/dropdown/(pagination)/component": {
+      "import": {
+        "default": "./components/overlays/dropdown/(pagination)/component/index.ts"
+      }
+    },
     "./components/texts/a/component": {
       "import": {
         "default": "./components/texts/a/component/index.ts"

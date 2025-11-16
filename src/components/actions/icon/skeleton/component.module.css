@@ -1,65 +1,63 @@
 @layer mosuk-ui {
-    @layer actions {
-        @layer layer-1 {
-            .icon {
-                width: calc(var(--spacing, .25rem) * 8);
-                height: calc(var(--spacing, .25rem) * 8);
-                min-width: calc(var(--spacing, .25rem) * 8);
-                min-height: calc(var(--spacing, .25rem) * 8);
+    @layer index-10 {
+        .icon {
+            width: calc(var(--spacing, .25rem) * 8);
+            height: calc(var(--spacing, .25rem) * 8);
+            min-width: calc(var(--spacing, .25rem) * 8);
+            min-height: calc(var(--spacing, .25rem) * 8);
 
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-                background-color: transparent;
+            background-color: transparent;
+            color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+
+            padding: calc(var(--spacing, .25rem) * 2.25);
+            border-radius: calc(infinity * 1px);
+            outline: none;
+
+            font-size: var(--text-base, 1rem);
+            text-wrap: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+
+            transition: all 0.2s ease-in-out;
+
+            cursor: pointer;
+
+            svg {
+                width: 100%;
+                height: 100%;
+
                 color: var(--color-gray-500, oklch(0.551 0.027 264.364));
 
-                padding: calc(var(--spacing, .25rem) * 2.25);
-                border-radius: calc(infinity * 1px);
                 outline: none;
 
-                font-size: var(--text-base, 1rem);
-                text-wrap: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-
                 transition: all 0.2s ease-in-out;
+            }
 
-                cursor: pointer;
+            &:hover {
+                background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
+                color: var(--color-primary-500, #0074e7);
 
                 svg {
-                    width: 100%;
-                    height: 100%;
-
-                    color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-
-                    outline: none;
-
-                    transition: all 0.2s ease-in-out;
-                }
-
-                &:hover {
-                    background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
                     color: var(--color-primary-500, #0074e7);
-
-                    svg {
-                        color: var(--color-primary-500, #0074e7);
-                    }
                 }
+            }
 
-                &:not(:hover) {
+            &:not(:hover) {
+                transition: all 600ms ease-in-out;
+
+                svg {
                     transition: all 600ms ease-in-out;
-
-                    svg {
-                        transition: all 600ms ease-in-out;
-                    }
                 }
+            }
 
-                &:disabled {
-                    opacity: 0.5;
-                    cursor: not-allowed;
-                    pointer-events: none;
-                }
+            &:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+                pointer-events: none;
             }
         }
     }

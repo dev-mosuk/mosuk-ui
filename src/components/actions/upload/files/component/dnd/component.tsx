@@ -17,7 +17,7 @@ import {
 } from '@dnd-kit/sortable';
 import classNames from 'classnames';
 import React, { Children, ReactElement, ReactNode, cloneElement, isValidElement, useCallback, useContext } from 'react';
-import { InputFilesContext } from '../component';
+import { UploadFilesContext } from '../component';
 import styles from '../component.module.css';
 import { UploadFilesDndProps } from './component.interface';
 import { UploadFilesDndElementProps } from './element/component.interface';
@@ -33,7 +33,7 @@ const isInputFilesViewFile = (
 };
 
 export function UploadFilesDnd({ ...rest }: UploadFilesDndProps) {
-  const context = useContext(InputFilesContext);
+  const context = useContext(UploadFilesContext);
 
   if (!context) {
     throw new Error('UploadFilesDnd должен использоваться только внутри компонента UploadFiles');

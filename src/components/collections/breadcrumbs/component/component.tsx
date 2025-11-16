@@ -1,7 +1,5 @@
 import React, { Children, isValidElement } from 'react';
 import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
-import '../../../../../../styles/base/swiper/style.css';
-import '../../../../../../styles/theme/swiper/style.css';
 import { BreadcrumbsButtonSkeleton } from '../skeleton/button/component';
 import { BreadcrumbsIconSkeleton } from '../skeleton/icon/component';
 import { BreadcrumbsButton } from './button/component';
