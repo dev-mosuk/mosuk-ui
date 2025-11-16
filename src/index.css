@@ -1,16 +1,5 @@
 @layer theme, base, mosuk-ui, components, utilities;
 
-/* === Indexes === 
- * texts - 10
- * actions - 11
- * display - 12
- * containers - 13
- * collections - 14 
- * integrations - 15
- * layouts - 16
- * overlay - 17
-*/
-
 @layer mosuk-ui {
     @layer index-0, index-1, index-2, index-3, index-4, index-5, index-6, index-7, index-8, index-9;
     @layer index-10, index-11, index-12, index-13, index-14, index-15, index-16, index-17, index-18, index-19;

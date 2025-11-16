@@ -1,57 +1,55 @@
 @layer mosuk-ui {
-    @layer collections {
-        @layer layer-1 {
-            .breadcrumbs {
-                overflow: visible;
+    @layer index-14 {
+        .breadcrumbs {
+            overflow: visible;
 
-                height: calc(var(--spacing, .25rem) * 6);
+            height: calc(var(--spacing, .25rem) * 6);
 
-                display: flex;
-                align-items: center;
-                justify-content: start;
-                gap: calc(var(--spacing, .25rem) * 4);
-            }
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            gap: calc(var(--spacing, .25rem) * 4);
+        }
 
-            .slide {
-                width: fit-content;
-                height: calc(var(--spacing, .25rem) * 6);
+        .slide {
+            width: fit-content;
+            height: calc(var(--spacing, .25rem) * 6);
 
-                display: flex;
-                align-items: center;
-                justify-content: start;
-            }
+            display: flex;
+            align-items: center;
+            justify-content: start;
+        }
 
-            .icon {
-                width: calc(var(--spacing, .25rem) * 3);
-                height: calc(var(--spacing, .25rem) * 3);
-                min-width: calc(var(--spacing, .25rem) * 3);
-                min-height: calc(var(--spacing, .25rem) * 3);
+        .icon {
+            width: calc(var(--spacing, .25rem) * 3);
+            height: calc(var(--spacing, .25rem) * 3);
+            min-width: calc(var(--spacing, .25rem) * 3);
+            min-height: calc(var(--spacing, .25rem) * 3);
 
-                padding: calc(var(--spacing, .25rem) * 1.75);
+            padding: calc(var(--spacing, .25rem) * 1.75);
 
-                font-size: var(--text-sm, 0.875rem);
-            }
+            font-size: var(--text-sm, 0.875rem);
+        }
 
-            .button {
-                width: calc(var(--spacing, 0.25rem) * 18);
-                height: calc(var(--spacing, 0.25rem) * 3);
+        .button {
+            width: calc(var(--spacing, 0.25rem) * 18);
+            height: calc(var(--spacing, 0.25rem) * 3);
 
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: calc(var(--spacing, 0.25rem) * 1.75);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: calc(var(--spacing, 0.25rem) * 1.75);
 
-                font-size: var(--text-xs, 0.75rem);
+            font-size: var(--text-xs, 0.75rem);
 
-                padding-left: calc(var(--spacing, 0.25rem) * 2.75);
-                padding-right: calc(var(--spacing, 0.25rem) * 2.75);
+            padding-left: calc(var(--spacing, 0.25rem) * 2.75);
+            padding-right: calc(var(--spacing, 0.25rem) * 2.75);
 
-                & svg {
-                    width: calc(var(--spacing, 0.25rem) * 2.5);
-                    height: calc(var(--spacing, 0.25rem) * 2.5);
-                    min-width: calc(var(--spacing, 0.25rem) * 2.5);
-                    min-height: calc(var(--spacing, 0.25rem) * 2.5);
-                }
+            & svg {
+                width: calc(var(--spacing, 0.25rem) * 2.5);
+                height: calc(var(--spacing, 0.25rem) * 2.5);
+                min-width: calc(var(--spacing, 0.25rem) * 2.5);
+                min-height: calc(var(--spacing, 0.25rem) * 2.5);
             }
         }
     }

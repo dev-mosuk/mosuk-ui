@@ -1,54 +1,52 @@
 @layer mosuk-ui {
-    @layer layouts {
-        @layer layer-1 {
-            .sidebar {
-                display: flex;
-                flex-direction: column;
-                gap: calc(var(--spacing, .25rem) * 4);
+    @layer index-16 {
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing, .25rem) * 4);
+        }
+
+        .card {
+            padding: 0;
+
+            cursor: default;
+
+            &:hover {
+                border-color: var(--color-gray-100, oklch(.967 .003 264.542));
+                box-shadow: 0 25px 50px -12px rgba(249, 250, 251, var(--tw-shadow-alpha, 0.5));
+            }
+        }
+
+        .button {
+            width: 100%;
+            height: calc(var(--spacing, .25rem) * 12);
+
+            justify-content: flex-start;
+
+            border: 0;
+            border-bottom: 1px solid var(--color-gray-100, oklch(.967 .003 264.542));
+            border-radius: 0;
+
+            .right {
+                width: calc(var(--spacing, .25rem) * 3);
+                height: calc(var(--spacing, .25rem) * 3);
+                min-width: calc(var(--spacing, .25rem) * 3);
+                min-height: calc(var(--spacing, .25rem) * 3);
+
+                margin-left: auto;
             }
 
-            .card {
-                padding: 0;
-
-                cursor: default;
-
-                &:hover {
-                    border-color: var(--color-gray-100, oklch(.967 .003 264.542));
-                    box-shadow: 0 25px 50px -12px rgba(249, 250, 251, var(--tw-shadow-alpha, 0.5));
-                }
+            &:last-child {
+                border-bottom: 0;
             }
 
-            .button {
-                width: 100%;
-                height: calc(var(--spacing, .25rem) * 12);
+            &:hover,
+            &.active {
+                background-color: var(--color-gray-100, oklch(.967 .003 264.542));
+                color: var(--color-primary-500, #0074e7);
 
-                justify-content: flex-start;
-
-                border: 0;
-                border-bottom: 1px solid var(--color-gray-100, oklch(.967 .003 264.542));
-                border-radius: 0;
-
-                .right {
-                    width: calc(var(--spacing, .25rem) * 3);
-                    height: calc(var(--spacing, .25rem) * 3);
-                    min-width: calc(var(--spacing, .25rem) * 3);
-                    min-height: calc(var(--spacing, .25rem) * 3);
-
-                    margin-left: auto;
-                }
-
-                &:last-child {
-                    border-bottom: 0;
-                }
-
-                &:hover,
-                &.active {
-                    background-color: var(--color-gray-100, oklch(.967 .003 264.542));
+                svg {
                     color: var(--color-primary-500, #0074e7);
-
-                    svg {
-                        color: var(--color-primary-500, #0074e7);
-                    }
                 }
             }
         }

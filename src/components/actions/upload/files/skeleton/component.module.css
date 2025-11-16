@@ -1,96 +1,94 @@
 @layer mosuk-ui {
-    @layer actions {
-        @layer layer-2 {
-            .fieldset {
-                .dnd {
-                    display: grid;
-                    grid-template-columns: repeat(3, minmax(0, 1fr));
-                    gap: calc(var(--spacing, .25rem) * 4);
+    @layer index-21 {
+        .fieldset {
+            .dnd {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: calc(var(--spacing, .25rem) * 4);
 
-                    touch-action: none;
+                touch-action: none;
+            }
+
+            .label {
+                aspect-ratio: 1 / 1;
+                width: 100%;
+                height: fit-content;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                background-color: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(12px);
+
+                border: 1px solid var(--color-gray-200, oklch(0.928 0.006 264.531));
+                border-radius: var(--radius-xl, .75rem);
+                outline: none;
+
+                svg {
+                    width: calc(var(--spacing, .25rem) * 8);
+                    height: calc(var(--spacing, .25rem) * 8);
+                    min-width: calc(var(--spacing, .25rem) * 8);
+                    min-height: calc(var(--spacing, .25rem) * 8);
+
+                    background-color: var(--color-gray-100, oklch(0.964 0.004 264.531));
+                    color: var(--color-gray-500, oklch(0.412 0.012 264.531));
+
+                    padding: calc(var(--spacing, .25rem) * 2.5);
+                    border-radius: 100%;
+
+                    animation: opacity 2400ms ease-in-out infinite;
                 }
+            }
 
-                .label {
-                    aspect-ratio: 1 / 1;
+            .file {
+                aspect-ratio: 1 / 1;
+                width: 100%;
+                height: fit-content;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                background-color: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(12px);
+
+                border: 1px solid var(--color-gray-200, oklch(0.928 0.006 264.531));
+                border-radius: var(--radius-xl, .75rem);
+                outline: none;
+
+                .preview {
                     width: 100%;
-                    height: fit-content;
+                    height: 100%;
 
                     display: flex;
                     align-items: center;
                     justify-content: center;
 
-                    background-color: rgba(255, 255, 255, 0.95);
-                    backdrop-filter: blur(12px);
-
-                    border: 1px solid var(--color-gray-200, oklch(0.928 0.006 264.531));
-                    border-radius: var(--radius-xl, .75rem);
-                    outline: none;
-
                     svg {
-                        width: calc(var(--spacing, .25rem) * 8);
-                        height: calc(var(--spacing, .25rem) * 8);
-                        min-width: calc(var(--spacing, .25rem) * 8);
-                        min-height: calc(var(--spacing, .25rem) * 8);
+                        width: 50%;
+                        height: 50%;
 
-                        background-color: var(--color-gray-100, oklch(0.964 0.004 264.531));
-                        color: var(--color-gray-500, oklch(0.412 0.012 264.531));
-
-                        padding: calc(var(--spacing, .25rem) * 2.5);
-                        border-radius: 100%;
+                        color: var(--color-gray-300, oklch(0.872 0.01 258.338));
 
                         animation: opacity 2400ms ease-in-out infinite;
                     }
                 }
-
-                .file {
-                    aspect-ratio: 1 / 1;
-                    width: 100%;
-                    height: fit-content;
-
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    background-color: rgba(255, 255, 255, 0.95);
-                    backdrop-filter: blur(12px);
-
-                    border: 1px solid var(--color-gray-200, oklch(0.928 0.006 264.531));
-                    border-radius: var(--radius-xl, .75rem);
-                    outline: none;
-
-                    .preview {
-                        width: 100%;
-                        height: 100%;
-
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-
-                        svg {
-                            width: 50%;
-                            height: 50%;
-
-                            color: var(--color-gray-300, oklch(0.872 0.01 258.338));
-
-                            animation: opacity 2400ms ease-in-out infinite;
-                        }
-                    }
-                }
             }
         }
+    }
 
-        @keyframes opacity {
-            0% {
-                opacity: 1;
-            }
+    @keyframes opacity {
+        0% {
+            opacity: 1;
+        }
 
-            50% {
-                opacity: 0.5;
-            }
+        50% {
+            opacity: 0.5;
+        }
 
-            100% {
-                opacity: 1;
-            }
+        100% {
+            opacity: 1;
         }
     }
 }

@@ -23,20 +23,6 @@
                 }
 
                 &:has(.icon) {
-                    .icon {
-                        display: inline-flex;
-
-                        width: calc(var(--spacing, .25rem) * 10);
-                        height: calc(var(--spacing, .25rem) * 10);
-                        min-width: calc(var(--spacing, .25rem) * 10);
-                        min-height: calc(var(--spacing, .25rem) * 10);
-
-                        font-size: var(--text-base, 1rem);
-
-                        padding: calc(var(--spacing, .25rem) * 2.6125);
-                    }
-
-
                     .text {
                         display: inline-flex;
 
@@ -49,6 +35,24 @@
                         margin-top: 0.15em;
                         margin-left: calc(var(--spacing, .25rem) * 2.6125);
                     }
+                }
+            }
+        }
+    }
+
+    @layer index-20 {
+        .h1 {
+            &:has(.icon) {
+                .icon {
+                    display: inline-flex;
+
+                    width: calc(var(--spacing, .25rem) * 10);
+                    height: calc(var(--spacing, .25rem) * 10);
+                    min-width: calc(var(--spacing, .25rem) * 10);
+                    min-height: calc(var(--spacing, .25rem) * 10);
+                    font-size: var(--text-base, 1rem);
+
+                    padding: calc(var(--spacing, .25rem) * 2.6125);
                 }
             }
         }

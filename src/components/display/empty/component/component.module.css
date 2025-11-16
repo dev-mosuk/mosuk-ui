@@ -1,5 +1,5 @@
 @layer mosuk-ui {
-    @layer index-10 {
+    @layer index-12 {
         .empty {
             width: 100%;
             height: calc(var(--spacing, .25rem) * 100);
@@ -42,7 +42,7 @@
         }
     }
 
-    @layer index-11 {
+    @layer index-22 {
         .buttons {
             width: calc(var(--spacing, .25rem) * 64);
         }

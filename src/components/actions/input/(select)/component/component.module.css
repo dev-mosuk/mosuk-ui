@@ -1,5 +1,5 @@
 @layer mosuk-ui {
-    @layer index-20 {
+    @layer index-21 {
         .select {
             &:has(~ .arrow) {
                 padding-right: calc(var(--spacing, .25rem) * 10);

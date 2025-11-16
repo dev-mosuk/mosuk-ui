@@ -1,23 +1,21 @@
 @layer mosuk-ui {
-  @layer collections {
-    @layer layer-1 {
-      .table {
-        display: flex;
-        flex-direction: column;
+  @layer index-14 {
+    .table {
+      display: flex;
+      flex-direction: column;
 
-        padding-bottom: calc((var(--rows) - 1) * 1rem);
+      padding-bottom: calc((var(--rows) - 1) * 1rem);
 
-        .row {
-          position: sticky;
-          bottom: calc(var(--spacing, 0.25rem) * 8);
-          z-index: calc(1 + (var(--rows) - var(--index)));
+      .row {
+        position: sticky;
+        bottom: calc(var(--spacing, 0.25rem) * 8);
+        z-index: calc(1 + (var(--rows) - var(--index)));
 
-          scale: calc(100% - (var(--index) * 1%) + ((var(--index) * 1%) * var(--table-progress)));
-          transform: translateY(calc((var(--index) - 1) * 1rem));
+        scale: calc(100% - (var(--index) * 1%) + ((var(--index) * 1%) * var(--table-progress)));
+        transform: translateY(calc((var(--index) - 1) * 1rem));
 
-          &:nth-child(1) {
-            scale: 1;
-          }
+        &:nth-child(1) {
+          scale: 1;
         }
       }
     }
