@@ -1,7 +1,5 @@
 @layer mosuk-ui {
     @layer index-10 {
-
-        /* ! =============================== Hint =============================== */
         .hint {
             display: flex;
             align-items: flex-start;
@@ -30,33 +28,25 @@
                 margin-top: 0.25em;
             }
 
-            &.info {
-                color: var(--color-black, #000000);
-
+            &.info {            
                 svg {
                     color: var(--color-primary-500, #0074e7);
                 }
             }
 
             &.success {
-                color: var(--color-green-500, oklch(0.723 0.219 149.579));
-
                 svg {
                     color: var(--color-green-500, oklch(0.723 0.219 149.579));
                 }
             }
 
             &.warning {
-                color: var(--color-orange-500, oklch(0.705 0.213 47.604));
-
                 svg {
                     color: var(--color-orange-500, oklch(0.705 0.213 47.604));
                 }
             }
 
-            &.error {
-                color: var(--color-red-500, oklch(0.637 0.237 25.331));
-
+            &.error {             
                 svg {
                     color: var(--color-red-500, oklch(0.637 0.237 25.331));
                 }

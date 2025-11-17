@@ -14,7 +14,7 @@
                 opacity: 0;
                 pointer-events: none;
             }
-
+ 
             .dnd {
                 display: grid;
                 grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -82,7 +82,7 @@
                 }
             }
 
-            .file {
+            .element {
                 overflow: hidden;
 
                 position: relative;
@@ -156,7 +156,7 @@
                         object-position: center;
                     }
 
-                    .file {
+                    .element {
                         width: 40%;
                         height: 40%;
 

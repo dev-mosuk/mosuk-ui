@@ -1,67 +1,66 @@
 import classNames from 'classnames';
 import React, { MouseEvent, useEffect, useRef, useState } from 'react';
-import { alertsService } from '../../../../../services/alerts/service';
 import { Icon } from '../../component/component';
 import { IconDeleteProps } from './component.interface';
 import styles from './component.module.css';
 
 export function IconDelete({
-  alert,
+  danger,
+  onDanger,
   onDelete,
-
-  ...props
+  ...rest
 }: IconDeleteProps) {
-  const [isConfirming, setIsConfirming] = useState(false);
   const timerRef = useRef<number | undefined>(undefined);
+  const [isConfirming, setIsConfirming] = useState(false);
 
   useEffect(() => {
-    if (isConfirming) {
-      timerRef.current = window.setTimeout(() => {
-        alertsService.info(alert?.message ?? 'Для удаления нажмите дважды на иконку удаления');
-        setIsConfirming(false);
-      }, alert?.timeout ?? 3 * 1000);
-    }
-
     return () => {
       if (timerRef.current) {
         clearTimeout(timerRef.current);
       }
     };
-  }, [isConfirming, alert, onDelete]);
+  }, []);
 
-  const handleClick = async (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+  const handleClick = (e: MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
     if (!isConfirming) {
       e.preventDefault();
       e.stopPropagation();
       setIsConfirming(true);
+
+      timerRef.current = window.setTimeout(() => {
+        onDanger?.();
+        setIsConfirming(false);
+        timerRef.current = undefined;
+      }, danger?.timer ?? 3000);
+
       return;
     }
 
     if (timerRef.current) {
       clearTimeout(timerRef.current);
+      timerRef.current = undefined;
     }
 
-    if (onDelete) {
-      setIsConfirming(false);
-      onDelete();
-    }
+    setIsConfirming(false);
+    onDelete?.();
   };
 
   return (
     <Icon
-      {...props}
-      title={props?.title ?? (isConfirming ? 'Подтвердить удаление' : 'Удалить')}
+      {...rest}
+      title={isConfirming ? (danger?.title ?? 'Подтвердить удаление') : (rest?.title ?? 'Удалить')}
       onClick={handleClick}
       className={classNames(
         'mosuk-icon-delete',
         styles.icon,
         {
           [styles.danger]: isConfirming,
+          [danger?.className ?? '']: isConfirming,
         },
-        props?.className
+        rest?.className
       )}
     >
-      {props?.children}
+      {rest?.children}
     </Icon>
   );
 }

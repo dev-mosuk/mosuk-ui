@@ -1,12 +1,12 @@
-import { DropdownProps } from '../../component/component.interface';
+import { DropdownProps } from '../../../component/component.interface';
 
-export interface PaginationSortContextProps {
+export interface DropdownPaginationSortContextProps {
   currentSort: string | undefined;
   currentOrder: 'asc' | 'desc' | undefined;
   handleSort: (sort: string) => void;
 }
 
-export interface PaginationSortProps extends DropdownProps {
+export interface DropdownPaginationSortProps extends DropdownProps {
   params: Record<string, any>;
   updateParams: (params: Record<string, any>) => Promise<any>;
 }

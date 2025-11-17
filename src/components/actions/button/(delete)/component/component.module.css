@@ -1,10 +1,8 @@
 @layer mosuk-ui {
     @layer index-21 {
         .button {
-
-            /* ? Наведение */
             &:hover {
-                background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
+                background-color: var(--color-red-100, oklch(0.936 0.032 17.717));
                 color: var(--color-red-500, oklch(0.637 0.237 25.331));
 
                 & svg {
@@ -12,7 +10,6 @@
                 }
             }
 
-            /* ? Подтверждение удаления */
             &.danger {
                 background-color: var(--color-red-100, oklch(0.936 0.032 17.717));
                 color: var(--color-red-500, oklch(0.637 0.237 25.331));
@@ -22,10 +19,10 @@
                 }
 
                 &:hover {
-                    background-color: var(--color-red-200, oklch(0.936 0.032 17.717));
+                    background-color: var(--color-red-200, oklch(0.962 0.044 156.743));
                     color: var(--color-red-700, oklch(0.527 0.154 150.069));
 
-                    & svg {
+                    svg {
                         color: var(--color-red-700, oklch(0.527 0.154 150.069));
                     }
                 }

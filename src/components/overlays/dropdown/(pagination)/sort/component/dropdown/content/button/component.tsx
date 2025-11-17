@@ -1,22 +1,22 @@
 import classNames from 'classnames';
 import { ArrowUp } from 'lucide-react';
 import React, { useContext } from 'react';
-import { Button } from '../../../../../../../actions/button/component';
-import { PaginationSortContext } from '../../../component';
+import { Button } from '../../../../../../../../actions/button/component';
+import { DropdownPaginationSortContext } from '../../../component';
 import styles from '../../../component.module.css';
-import { PaginationSortDropdownContentButtonProps } from './component.interface';
+import { DropdownPaginationSortDropdownContentButtonProps } from './component.interface';
 
-export function PaginationSortDropdownContentButton({
+export function DropdownPaginationSortDropdownContentButton({
   sort,
   ...rest
-}: PaginationSortDropdownContentButtonProps) {
+}: DropdownPaginationSortDropdownContentButtonProps) {
   const { currentSort, currentOrder, handleSort } = useContext(
-    PaginationSortContext
+    DropdownPaginationSortContext
   );
 
-  if (!PaginationSortContext) {
+  if (!DropdownPaginationSortContext) {
     throw new Error(
-      'PaginationSort.Dropdown.Content.Button must be used within an PaginationSort component.'
+      'DropdownPaginationSort.Dropdown.Content.Button must be used within an DropdownPaginationSort component.'
     );
   }
 

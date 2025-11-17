@@ -1,14 +1,14 @@
 import React, { createContext } from 'react';
-import { Dropdown } from '../../component';
-import { PaginationSortContextProps, PaginationSortProps } from './component.interface';
+import { Dropdown } from '../../../component';
+import { DropdownPaginationSortContextProps, DropdownPaginationSortProps } from './component.interface';
 
-export const PaginationSortContext = createContext<PaginationSortContextProps>({
+export const DropdownPaginationSortContext = createContext<DropdownPaginationSortContextProps>({
   currentSort: undefined,
   currentOrder: undefined,
-  handleSort: () => {},
+  handleSort: () => { },
 });
 
-export function PaginationSort({ params, updateParams, ...props }: PaginationSortProps) {
+export function DropdownPaginationSort({ params, updateParams, ...props }: DropdownPaginationSortProps) {
   const currentSort = params?.sort || 'id';
   const currentOrder = params?.order || 'asc';
 
@@ -35,8 +35,8 @@ export function PaginationSort({ params, updateParams, ...props }: PaginationSor
   };
 
   return (
-    <PaginationSortContext.Provider value={{ currentSort, currentOrder, handleSort }}>
+    <DropdownPaginationSortContext.Provider value={{ currentSort, currentOrder, handleSort }}>
       <Dropdown {...props}>{props?.children}</Dropdown>
-    </PaginationSortContext.Provider>
+    </DropdownPaginationSortContext.Provider>
   );
 }

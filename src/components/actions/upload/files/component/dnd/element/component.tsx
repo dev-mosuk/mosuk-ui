@@ -48,7 +48,7 @@ export function UploadFilesDndElement({ file, ...rest }: UploadFilesDndElementPr
       {...listeners}
       {...rest}
       className={classNames('mosuk-upload-files-dnd-element', styles.element, {
-        [styles.dragging]: draggedId === file.id
+        [styles.dragging]: file?.id === draggedId
       }, rest.className)}
       style={style}
     >
