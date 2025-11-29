@@ -1,3 +1,3 @@
-import { ImageProps as ImageComponentProps } from '../../../../../../../display/file/(files)/component/file/component.interface';
+import { ImageImageProps } from '../../../../../../../display/image/component/image/component.interface';
 
-export interface ImageProps extends ImageComponentProps {}
+export interface DialogImagesDialogImagesImageProps extends ImageImageProps {}

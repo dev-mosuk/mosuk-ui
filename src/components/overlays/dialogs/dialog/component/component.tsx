@@ -10,7 +10,7 @@ import React, {
   useState,
 } from 'react';
 import { DialogProps } from './component.interface';
-import { Context } from './context/component';
+import { DialogContext } from './context/component';
 
 export function Dialog({ keepMounted, container, ...rest }: DialogProps) {
   const popupRef = useRef<HTMLDivElement>(null);
@@ -124,14 +124,14 @@ export function Dialog({ keepMounted, container, ...rest }: DialogProps) {
   // * Styles
   const styleVars = useMemo(
     () =>
-      ({
-        '--progress': progress,
-      } as CSSProperties),
+    ({
+      '--progress': progress,
+    } as CSSProperties),
     [progress]
   );
 
   return (
-    <Context.Provider
+    <DialogContext.Provider
       value={{
         styleVars,
         popupRef,
@@ -151,6 +151,6 @@ export function Dialog({ keepMounted, container, ...rest }: DialogProps) {
           {rest?.children}
         </BaseUiDialog.Portal>
       </BaseUiDialog.Root>
-    </Context.Provider>
+    </DialogContext.Provider>
   );
 }

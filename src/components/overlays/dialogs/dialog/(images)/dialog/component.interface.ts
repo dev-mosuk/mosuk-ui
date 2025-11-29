@@ -1,3 +1,3 @@
-import { DialogProps as BaseDialogProps } from '../../component/component.interface';
+import { DialogDialogProps as ParentDialogProps } from '../../component/dialog/component.interface';
 
-export interface DialogProps extends BaseDialogProps {}
+export interface DialogImagesDialogProps extends ParentDialogProps {}

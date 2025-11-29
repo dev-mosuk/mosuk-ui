@@ -3,10 +3,10 @@ import React, { Children, isValidElement } from 'react';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from '../../component.module.css';
-import { ImagesProps } from './component.interface';
-import { Image } from './image/component';
+import { DialogImagesDialogImagesProps } from './component.interface';
+import { DialogImagesDialogImagesImage } from './image/component';
 
-export function Images({ ...rest }: ImagesProps) {
+export function DialogImagesDialogImages({ ...rest }: DialogImagesDialogImagesProps) {
   return (
     <Swiper
       {...rest}
@@ -19,7 +19,7 @@ export function Images({ ...rest }: ImagesProps) {
       className={classNames('dialog-images-dialog-images', styles.images, rest?.className)}
     >
       {Children.map(rest?.children, (child, index) => {
-        if (isValidElement(child) && child.type === Image) {
+        if (isValidElement(child) && child.type === DialogImagesDialogImagesImage) {
           return (
             <SwiperSlide key={index} className={classNames('dialog-images-dialog-images-slide', rest?.className)}>
               {child}

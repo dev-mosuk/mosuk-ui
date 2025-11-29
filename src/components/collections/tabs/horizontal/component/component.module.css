@@ -1,5 +1,5 @@
 @layer mosuk-ui {
-    @layer index-14 {
+    @layer index-24 {
         .tabs {
             display: flex;
             flex-direction: column;
@@ -56,17 +56,17 @@
                 min-width: calc(var(--spacing, .25rem) * 3.5);
                 min-height: calc(var(--spacing, .25rem) * 3.5);
 
-                color: var(--color-gray-500);
+                color: var(--color-gray-500, oklch(0.551 0.027 264.364));
 
                 transition: all 200ms ease-in-out;
             }
 
             &:hover,
-            &[data-selected] {
-                color: var(--color-primary-500);
+            &[data-active] {
+                color: var(--color-primary-500, #0074e7);
 
                 & svg {
-                    color: var(--color-primary-500);
+                    color: var(--color-primary-500, #0074e7);
                 }
             }
 

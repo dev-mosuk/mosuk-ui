@@ -1,11 +1,13 @@
+import classNames from 'classnames';
 import React from 'react';
-import { Dialog as BaseDialog } from '../../component/component';
-import { DialogProps } from './component.interface';
+import { DialogDialog } from '../../component/dialog/component';
+import style from '../component.module.css';
+import { DialogImagesDialogProps } from './component.interface';
 
-export function Dialog({ ...rest }: DialogProps) {
+export function DialogImagesDialog({ ...rest }: DialogImagesDialogProps) {
   return (
-    <BaseDialog {...rest}>
+    <DialogDialog {...rest} className={classNames(style.dialog, rest?.className)}>
       {rest?.children}
-    </BaseDialog>
+    </DialogDialog>
   );
 }

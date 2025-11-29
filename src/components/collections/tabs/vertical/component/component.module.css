@@ -63,7 +63,7 @@
             }
 
             &:hover,
-            &[data-selected] {
+            &[data-active] {
                 color: var(--color-primary-500);
 
                 & svg {

@@ -2,9 +2,10 @@ import classNames from 'classnames';
 import React, { Children, isValidElement, useImperativeHandle, useRef } from 'react';
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Image } from '../../component/component';
 import { ImagesProps } from './component.interface';
 import styles from './component.module.css';
-import { Image as ImageComponent, Image as ImageContainer } from './image/component';
+import { ImagesImage } from './image/component';
 
 export function Images({ ref, ...rest }: ImagesProps) {
   const swiperRef = useRef<any>(null);
@@ -18,11 +19,11 @@ export function Images({ ref, ...rest }: ImagesProps) {
   };
 
   const totalSlides = Children.toArray(rest?.children).filter(
-    (child) => isValidElement(child) && child.type === ImageComponent
+    (child) => isValidElement(child) && child.type === ImagesImage
   );
 
   return (
-    <ImageContainer
+    <Image
       as={Swiper}
       {...rest}
       ref={swiperRef}
@@ -38,7 +39,7 @@ export function Images({ ref, ...rest }: ImagesProps) {
       className={classNames('images', styles.images, rest?.className)}
     >
       {Children.map(rest?.children, (child, index) => {
-        if (isValidElement(child) && child.type === ImageComponent) {
+        if (isValidElement(child) && child.type === ImagesImage) {
           return (
             <SwiperSlide key={index} className={classNames('images-slide')}>
               {child}
@@ -60,6 +61,6 @@ export function Images({ ref, ...rest }: ImagesProps) {
           ))}
         </div>
       )}
-    </ImageContainer>
+    </Image>
   );
 }

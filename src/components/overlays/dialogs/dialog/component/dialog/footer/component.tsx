@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 import styles from '../../component.module.css';
-import { FooterProps } from './component.interface';
+import { DialogDialogFooterProps } from './component.interface';
 
-export function Footer<C extends ElementType = 'div'>({
+export function DialogDialogFooter<C extends ElementType = 'div'>({
   ...rest
-}: FooterProps<C>) {
+}: DialogDialogFooterProps<C>) {
   const Component = (rest?.as || 'div') as ElementType;
 
   return (

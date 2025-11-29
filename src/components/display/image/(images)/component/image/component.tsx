@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import React from 'react';
 import { ImageImage } from '../../../component/image/component';
-import { ImageProps } from './component.interface';
+import { ImagesImageProps } from './component.interface';
 
-export function Image({ ...rest }: ImageProps) {
+export function ImagesImage({ ...rest }: ImagesImageProps) {
   return (
     <ImageImage
       {...rest}

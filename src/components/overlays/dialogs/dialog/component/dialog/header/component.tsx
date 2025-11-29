@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 import styles from '../../component.module.css';
-import { HeaderProps } from './component.interface';
+import { DialogDialogHeaderProps } from './component.interface';
 
-export function Header<C extends ElementType = 'div'>({
+export function DialogDialogHeader<C extends ElementType = 'div'>({
   ...rest
-}: HeaderProps<C>) {
+}: DialogDialogHeaderProps<C>) {
   const Component = (rest?.as || 'div') as ElementType;
 
   return (

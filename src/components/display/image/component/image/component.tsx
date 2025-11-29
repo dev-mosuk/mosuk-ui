@@ -1,9 +1,8 @@
 import classNames from 'classnames';
-import { ImageMinus } from 'lucide-react';
+import { ImageMinusIcon } from 'lucide-react';
 import React, { ElementType, SyntheticEvent, useState } from 'react';
 import styles from '../component.module.css';
 import { ImageImageProps } from './component.interface';
-
 
 export function ImageImage<C extends ElementType = 'img'>({
   as,
@@ -29,8 +28,7 @@ export function ImageImage<C extends ElementType = 'img'>({
 
   if (!src || imageValid === false) {
     return (
-      <ImageMinus
-        {...rest}
+      <ImageMinusIcon     
         className={classNames(styles.svg, rest?.className)}
       />
     );
