@@ -1,5 +1,5 @@
 import React from 'react';
-import { Skeleton } from '../../../../../../components/display/skeleton/component/component';
+import { Skeleton } from '../../../display/skeleton/component/component';
 import { TextSkeletonProps } from './component.interface';
 import styles from './component.module.css';
 

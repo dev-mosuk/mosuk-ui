@@ -1,12 +1,12 @@
 {
   "name": "mosuk-ui",
-  "version": "1.0",
+  "version": "1.0.1",
   "author": "mosuk",
   "license": "MIT",
   "private": false,
   "type": "module",
   "dependencies": {
-    "@base-ui-components/react": "^1.0.0-beta.0",
+    "@base-ui-components/react": "^1.0.0-beta.7",
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
@@ -73,16 +73,6 @@
     "./components/actions/icon/skeleton": {
       "import": {
         "default": "./components/actions/icon/skeleton/index.ts"
-      }
-    },
-    "./components/actions/upload/files/component": {
-      "import": {
-        "default": "./components/actions/upload/files/component/index.ts"
-      }
-    },
-    "./components/actions/upload/files/skeleton": {
-      "import": {
-        "default": "./components/actions/upload/files/skeleton/index.ts"
       }
     },
     "./components/actions/input/(mask)/(date)/component": {
@@ -153,6 +143,16 @@
     "./components/actions/textarea/skeleton": {
       "import": {
         "default": "./components/actions/textarea/skeleton/index.ts"
+      }
+    },
+    "./components/actions/upload/files/component": {
+      "import": {
+        "default": "./components/actions/upload/files/component/index.ts"
+      }
+    },
+    "./components/actions/upload/files/skeleton": {
+      "import": {
+        "default": "./components/actions/upload/files/skeleton/index.ts"
       }
     },
     "./components/collections/accordion/component": {
@@ -385,14 +385,14 @@
         "default": "./components/overlays/dialogs/dialog/component/index.ts"
       }
     },
-    "./components/overlays/dropdown/component": {
-      "import": {
-        "default": "./components/overlays/dropdown/component/index.ts"
-      }
-    },
     "./components/overlays/dropdown/(pagination)/sort/component": {
       "import": {
         "default": "./components/overlays/dropdown/(pagination)/sort/component/index.ts"
+      }
+    },
+    "./components/overlays/dropdown/component": {
+      "import": {
+        "default": "./components/overlays/dropdown/component/index.ts"
       }
     },
     "./components/texts/a/component": {

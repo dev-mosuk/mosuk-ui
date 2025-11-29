@@ -1,6 +1,7 @@
 import React from 'react';
-import { IconSkeleton } from '../../../../atoms/icons/icon/skeleton/index';
-import { H3Skeleton } from '../../../../atoms/texts/h3/skeleton/index';
+import { IconSkeleton } from '../../../actions/icon/skeleton/component';
+import { H3Skeleton } from '../../../texts/h3/skeleton/component';
+import { H3TextSkeleton } from '../../../texts/h3/skeleton/text/component';
 import {
   AccordionSkeletonHeaderContentProps,
   AccordionSkeletonHeaderIconProps,
@@ -40,7 +41,7 @@ export function AccordionSkeletonHeader({ ...props }: AccordionSkeletonHeaderPro
 export function AccordionSkeletonHeaderContent({ ...props }: AccordionSkeletonHeaderContentProps) {
   return (
     <H3Skeleton {...props}>
-      <H3Skeleton.Text />
+      <H3TextSkeleton />
     </H3Skeleton>
   );
 }

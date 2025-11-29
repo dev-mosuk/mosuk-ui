@@ -18,7 +18,7 @@ class DataPaginationService {
     return DataPaginationService.instance;
   }
 
-  private readonly fetcher = async <T>(url: string): Promise<T> => {
+  readonly fetcher = async <T>(url: string): Promise<T> => {
     const token = authService.read()?.token;
     const headers: HeadersInit = {
       Accept: 'application/json',
@@ -35,7 +35,7 @@ class DataPaginationService {
     return response.json();
   };
 
-  private createIntersectionObserver(
+  createIntersectionObserver(
     setSize: (size: number | ((prev: number) => number)) => Promise<any>,
     isLoading: boolean,
     loadingRef: React.MutableRefObject<boolean>
@@ -196,3 +196,4 @@ class DataPaginationService {
 }
 
 export const dataPaginationService = DataPaginationService.getInstance();
+ 
