@@ -1,58 +1,56 @@
 @layer mosuk-ui {
-    @layer display {
-        @layer layer-1 {
+    @layer index-12 {
 
-            /* ! DL */
-            .dl-list {
+        /* ! DL */
+        .dl-list {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing, 0.25rem) * 2);
+
+            font-size: var(--text-sm, 0.875rem);
+
+            .dl {
+                position: relative;
+
                 display: flex;
-                flex-direction: column;
-                gap: calc(var(--spacing, 0.25rem) * 2);
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: space-between;
 
-                font-size: var(--text-sm, 0.875rem);
+                .dt {
+                    width: fit-content;
+                    max-width: 41.666667%;
 
-                .dl {
-                    position: relative;
+                    background-color: white;
+                    hyphens: auto;
+                    word-break: break-word;
 
-                    display: flex;
-                    flex-direction: row;
-                    align-items: flex-start;
-                    justify-content: space-between;
+                    padding-right: calc(var(--spacing, 0.25rem) * 2);
 
-                    .dt {
-                        width: fit-content;
-                        max-width: 41.666667%;
+                    &:before {
+                        position: absolute;
+                        top: calc(1.1em - 1px);
+                        left: 0;
+                        z-index: -1;
 
-                        background-color: white;
-                        hyphens: auto;
-                        word-break: break-word;
+                        display: block;
+                        width: 100%;
 
-                        padding-right: calc(var(--spacing, 0.25rem) * 2);
-
-                        &:before {
-                            position: absolute;
-                            top: calc(1.1em - 1px);
-                            left: 0;
-                            z-index: -1;
-
-                            display: block;
-                            width: 100%;
-
-                            border-bottom: 1px dotted var(--color-gray-200, oklch(0.928 0.006 264.531));
-                            content: "";
-                        }
+                        border-bottom: 1px dotted var(--color-gray-200, oklch(0.928 0.006 264.531));
+                        content: "";
                     }
+                }
 
-                    .dd {
-                        width: fit-content;
-                        max-width: 58.333333%;
+                .dd {
+                    width: fit-content;
+                    max-width: 58.333333%;
 
-                        background-color: white;
-                        text-align: end;
-                        hyphens: auto;
-                        word-break: break-word;
+                    background-color: white;
+                    text-align: end;
+                    hyphens: auto;
+                    word-break: break-word;
 
-                        padding-left: calc(var(--spacing, 0.25rem) * 2);
-                    }
+                    padding-left: calc(var(--spacing, 0.25rem) * 2);
                 }
             }
         }

@@ -1,45 +1,43 @@
 @layer mosuk-ui {
-    @layer texts {
-        @layer layer-1 {
+    @layer index-10 {
 
-            /* ! =============================== Hint =============================== */
-            .hint {
-                width: 100%;
+        /* ! =============================== Hint =============================== */
+        .hint {
+            width: 100%;
 
-                display: flex;
-                align-items: flex-start;
-                gap: calc(var(--spacing, .25rem) * 1.5);
+            display: flex;
+            align-items: flex-start;
+            gap: calc(var(--spacing, .25rem) * 1.5);
 
-                font-size: var(--text-xs, .75rem);
-                font-weight: 400;
-                line-height: var(--leading-relaxed, 1.625em);
+            font-size: var(--text-xs, .75rem);
+            font-weight: 400;
+            line-height: var(--leading-relaxed, 1.625em);
 
-                color: var(--color-black, #000000);
+            color: var(--color-black, #000000);
 
-                transition: all 200ms ease-in-out;
+            transition: all 200ms ease-in-out;
 
-                &:not(:hover) {
-                    transition: all 0.6s ease-in-out;
-                }
+            &:not(:hover) {
+                transition: all 0.6s ease-in-out;
+            }
 
-                .icon {
-                    width: var(--leading-5, 1.25em);
-                    height: var(--leading-5, 1.25em);
-                    min-width: var(--leading-5, 1.25em);
-                    min-height: var(--leading-5, 1.25em);
+            .icon {
+                width: var(--leading-5, 1.25em);
+                height: var(--leading-5, 1.25em);
+                min-width: var(--leading-5, 1.25em);
+                min-height: var(--leading-5, 1.25em);
 
-                    color: var(--color-primary-500, #0074e7);
+                color: var(--color-primary-500, #0074e7);
 
-                    margin-top: 0.025em;
-                }
+                margin-top: 0.025em;
+            }
 
-                .text {
-                    width: 50%;
-                    height: var(--leading-4, 1em);
-                    min-height: var(--leading-4, 1em);
+            .text {
+                width: 50%;
+                height: var(--leading-4, 1em);
+                min-height: var(--leading-4, 1em);
 
-                    margin-top: calc(var(--spacing, .25rem) * 0.375);
-                }
+                margin-top: calc(var(--spacing, .25rem) * 0.375);
             }
         }
     }

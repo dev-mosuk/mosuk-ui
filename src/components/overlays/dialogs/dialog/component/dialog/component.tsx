@@ -1,14 +1,14 @@
 import { Dialog as BaseUiDialog } from '@base-ui-components/react/dialog';
 import React, { useContext, useEffect } from 'react';
 import styles from '../component.module.css';
-import { Context } from '../context/component';
-import { DialogProps } from './component.interface';
+import { DialogContext } from '../context/component';
+import { DialogDialogProps } from './component.interface';
 
-export function Dialog({ ...props }: DialogProps) {
-  const context = useContext(Context);
+export function DialogDialog({ ...props }: DialogDialogProps) {
+  const context = useContext(DialogContext);
 
   if (!context) {
-    throw new Error('Dialog.Dialog must be used within a Dialog');
+    throw new Error('Dialog.Dialog must be used within a Dialog.Context');
   }
 
   const {
@@ -79,9 +79,8 @@ export function Dialog({ ...props }: DialogProps) {
     <BaseUiDialog.Popup
       {...rest}
       ref={popupRef}
-      className={`mosuk-dialog-dialog ${styles.dialog} ${isDragging ? ` ${styles.dragging}` : ''}${
-        className ? ` ${className}` : ''
-      }`}
+      className={`mosuk-dialog-dialog ${styles.dialog} ${isDragging ? ` ${styles.dragging}` : ''}${className ? ` ${className}` : ''
+        }`}
       style={styleVars}
       onKeyDown={(e) => {
         if (e.key === 'Escape') onOpenChange?.(false);

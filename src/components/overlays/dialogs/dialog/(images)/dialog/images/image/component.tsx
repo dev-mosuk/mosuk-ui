@@ -1,7 +1,7 @@
 import React from 'react';
-import { Image as ImageComponent } from '../../../../../../../display/image/component/component';
-import { ImageProps } from './component.interface';
+import { ImageImage } from '../../../../../../../display/image/component/image/component';
+import { DialogImagesDialogImagesImageProps } from './component.interface';
 
-export function Image({ ...rest }: ImageProps) {
-  return <ImageComponent {...rest}>{rest?.children}</ImageComponent>;
+export function DialogImagesDialogImagesImage({ ...rest }: DialogImagesDialogImagesImageProps) {
+  return <ImageImage {...rest}>{rest?.children}</ImageImage>;
 }

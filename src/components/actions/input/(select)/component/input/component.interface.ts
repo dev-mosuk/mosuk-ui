@@ -7,7 +7,7 @@ import {
   RefAttributes,
   SVGProps,
 } from 'react';
-import { InputInputProps } from '../../../../../../atoms/inputs/input/component/input/component.interface';
+import { InputInputProps } from '../../../component/input/component.interface';
 
 export interface InputSelectInputOptionProps
   extends HTMLAttributes<HTMLButtonElement> {

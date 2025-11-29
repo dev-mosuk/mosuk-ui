@@ -1,69 +1,63 @@
-import { Backdrop } from '../../../backdrop/component';
-import { BackdropProps } from '../../../backdrop/component.interface';
-import { Body } from '../../../body/component';
-import { BodyProps } from '../../../body/component.interface';
-import { Context } from '../../../context/component';
-import { ContextProps } from '../../../context/component.interface';
-import { Dialog } from '../../../dialog/component';
-import { DialogProps } from '../../../dialog/component.interface';
-import { Footer } from '../../../footer/component';
-import { FooterProps } from '../../../footer/component.interface';
-import { Header } from '../../../header/component';
-import { HeaderProps } from '../../../header/component.interface';
-import { Dialog as DialogComponent } from './dialog/component';
-import { DialogProps as DialogComponentProps } from './dialog/component.interface';
-import { Images } from './dialog/images/component';
-import { ImagesProps } from './dialog/images/component.interface';
-import { Image } from './dialog/images/image/component';
-import { ImageProps } from './dialog/images/image/component.interface';
+import { DialogBackdrop as ParentDialogBackdrop } from '../component/backdrop/component';
+import { DialogBackdropProps as ParentDialogBackdropProps } from '../component/backdrop/component.interface';
+import { Dialog as ParentDialog } from '../component/component';
+import { DialogProps as ParentDialogProps } from '../component/component.interface';
+import { DialogContext as ParentDialogContext } from '../component/context/component';
+import { DialogContextProps as ParentDialogContextProps } from '../component/context/component.interface';
+import { DialogDialogBodyProps as ParentDialogBodyProps } from '../component/dialog/body/component.interface';
+import { DialogDialogFooterProps as ParentDialogFooterProps } from '../component/dialog/footer/component.interface';
+import { DialogDialogHeaderProps as ParentDialogHeaderProps } from '../component/dialog/header/component.interface';
+import { DialogImagesDialog } from './dialog/component';
+import { DialogImagesDialogProps } from './dialog/component.interface';
+import { DialogImagesDialogImages } from './dialog/images/component';
+import { DialogImagesDialogImagesProps } from './dialog/images/component.interface';
+import { DialogImagesDialogImagesImage } from './dialog/images/image/component';
+import { DialogImagesDialogImagesImageProps } from './dialog/images/image/component.interface';
 
-const ParentDialog = (props: DialogProps) => Dialog(props);
- 
-export const DialogImages = Object.assign(ParentDialog, {
-  Context: Context,
-  Backdrop: Backdrop,
-  Dialog: Object.assign(DialogComponent, {
-    Header: Header,
-    Body: Body,
-    Footer: Footer,
+const ChildDialog = (props: ParentDialogProps) => ParentDialog(props);
 
-    Images: Object.assign(Images, {
-      Image: Image
-    }), 
-  }), 
+export const DialogImages = Object.assign(ChildDialog, {
+  Context: ParentDialogContext,
+  Backdrop: ParentDialogBackdrop,
+  Dialog: Object.assign(DialogImagesDialog, {
+    Images: Object.assign(DialogImagesDialogImages, {
+      Image: DialogImagesDialogImagesImage,
+    }),
+    
+  }),
 });
 
 export namespace Dialog {
-  export type Props = DialogProps;
+  export type Props = ParentDialogProps;
 
   export namespace Context {
-    export type Props = ContextProps;
+    export type Props = ParentDialogContextProps;
   }
 
   export namespace Backdrop {
-    export type Props = BackdropProps;
+    export type Props = ParentDialogBackdropProps;
   }
 
   export namespace Dialog {
-    export type Props = DialogComponentProps;
+    export type Props = DialogImagesDialogProps;
 
     export namespace Header {
-      export type Props = HeaderProps;
+      export type Props = ParentDialogHeaderProps;
     }
 
     export namespace Body {
-      export type Props = BodyProps;
+      export type Props = ParentDialogBodyProps;
     }
 
     export namespace Footer {
-      export type Props = FooterProps;
+      export type Props = ParentDialogFooterProps;
     }
-    
+
     export namespace Images {
-      export type Props = ImagesProps;
+      export type Props = DialogImagesDialogImagesProps;
 
       export namespace Image {
-        export type Props = ImageProps;
+        export type Props = DialogImagesDialogImagesImageProps;
       }
     }
   }

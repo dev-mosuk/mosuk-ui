@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
-import { Card } from '../../../card/component/component';
+import { Card } from '../../component/component';
 import { CardFlipProps } from './component.interface';
 import styles from './component.module.css';
 

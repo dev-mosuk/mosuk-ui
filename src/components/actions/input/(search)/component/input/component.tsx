@@ -1,8 +1,8 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { InputInput as ParentInputInput } from '../../../../../../atoms/inputs/input/component/input/component';
-import { InputProps } from './component.interface';
+import { InputInput } from '../../../component/input/component';
+import { InputSearchInputProps } from './component.interface';
 
-export function Input({ ...rest }: InputProps) {
+export function InputSearchInput({ ...rest }: InputSearchInputProps) {
   const timeoutRef = useRef<number | undefined>(undefined);
   const [searchValue, setSearchValue] = useState(rest?.value);
 
@@ -42,7 +42,7 @@ export function Input({ ...rest }: InputProps) {
   };
 
   return (
-    <ParentInputInput
+    <InputInput
       {...rest}
       placeholder={rest?.placeholder ?? 'Поиск...'}
       value={searchValue}

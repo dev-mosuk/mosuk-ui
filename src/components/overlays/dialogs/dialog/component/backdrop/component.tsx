@@ -2,17 +2,18 @@ import { Dialog as BaseUiDialog } from '@base-ui-components/react/dialog';
 import classNames from 'classnames';
 import React, { useContext } from 'react';
 import styles from '../component.module.css';
-import { Context } from '../context/component';
-import { BackdropProps } from './component.interface';
- 
-export function Backdrop({ ...rest }: BackdropProps) {
-  const context = useContext(Context);
+import { DialogContext } from '../context/component';
+import { DialogContextProps } from '../context/component.interface';
+import { DialogBackdropProps } from './component.interface';
+
+export function DialogBackdrop({ ...rest }: DialogBackdropProps) {
+  const context = useContext(DialogContext);
 
   if (!context) {
-    throw new Error('Dialog.Backdrop must be used within a Dialog');
+    throw new Error('Dialog.Backdrop must be used within a Dialog.Context');
   }
 
-  const { styleVars, isDragging } = context;
+  const { styleVars, isDragging } = context as DialogContextProps;
 
   return (
     <BaseUiDialog.Backdrop

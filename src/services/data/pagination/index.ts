@@ -5,4 +5,4 @@ export const dataPaginationService = BaseDataPaginationService;
 
 export namespace dataPaginationService {
   export type Interface<T = unknown> = DataPaginationServiceInterface<T>;
-} 
+}  

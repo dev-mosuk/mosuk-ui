@@ -1,7 +1,7 @@
 import { Check, ChevronDown, SearchX } from 'lucide-react';
 import React, { useEffect, useId, useRef, useState } from 'react';
-import { InputInput } from '../../../../../../atoms/inputs/input/component/input/component';
-import { Dropdown, DropdownDropdown, DropdownDropdownContent } from '../../../../../dropdowns/dropdown/component/component';
+import { Dropdown, DropdownDropdown, DropdownDropdownContent } from '../../../../../overlays/dropdown/component/component';
+import { InputInput } from '../../../component/input/component';
 import styles from '../component.module.css';
 import { InputSelectInputOptionProps, InputSelectInputProps } from './component.interface';
 
@@ -176,9 +176,8 @@ export function InputSelectInput({
                     <>
                       {option.icon && (
                         <option.icon
-                          className={`${styles.icon} ${
-                            option.value === value ? styles.selected : ''
-                          }`}
+                          className={`${styles.icon} ${option.value === value ? styles.selected : ''
+                            }`}
                         />
                       )}
 

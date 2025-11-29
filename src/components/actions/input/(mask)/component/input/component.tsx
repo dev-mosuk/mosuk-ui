@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { useContext, useId } from 'react';
 import { IMaskInput } from 'react-imask';
 import styles from '../../../../input/component/component.module.css';
@@ -22,24 +23,24 @@ export function InputMaskInput({
   }
 
   return (
-    <div className={`mosuk-input-mask-input ${styles.input}`}>
+    <div className={classNames('mosuk-input-mask-input', styles.input, props.className)}>
       <IMaskInput
         {...props}
         ref={ref}
         id={props.id}
         name={props.name ?? props.id}
         placeholder={props.placeholder ?? label}
-        className={props.className ?? ''}
+        className={classNames(props.className)}
       />
 
       {label && (
-        <label htmlFor={props?.id} className={styles.label}>
+        <label htmlFor={props?.id} className={classNames(styles.label)}>
           {label}
         </label>
       )}
 
       {Icon && (
-        <label htmlFor={props?.id} className={styles.icon} aria-hidden="true">
+        <label htmlFor={props?.id} className={classNames(styles.icon)} aria-hidden="true">
           <Icon />
         </label>
       )}

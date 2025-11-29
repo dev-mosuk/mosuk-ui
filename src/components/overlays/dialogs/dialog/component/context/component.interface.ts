@@ -1,6 +1,6 @@
 import { CSSProperties, MouseEvent, RefObject, TouchEvent } from 'react';
 
-export interface ContextProps {
+export interface DialogContextProps {
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
 

@@ -1,15 +1,16 @@
+import classNames from 'classnames';
 import React from 'react';
-import { Skeleton } from '../../../../skeletons/skeleton/component';
+import { Skeleton } from '../../../../display/skeleton/component/component';
 import styles from '../component.module.css';
 import {
-    InputHintSkeletonProps
+  InputHintSkeletonProps
 } from './component.interface';
 
-export function InputHintSkeleton({ ...props }: InputHintSkeletonProps) {
+export function InputHintSkeleton({ ...rest }: InputHintSkeletonProps) {
   return (
-    <div {...props} className={'mosuk-input-skeleton-hint' + ' ' + (styles.hint ?? '') + ' ' + (props?.className ?? '')}>
-      <Skeleton className={styles.icon ?? ''} />
-      <Skeleton className={styles.text ?? ''} />
+    <div {...rest} className={classNames('mosuk-input-skeleton-hint', styles.hint, rest?.className)}>
+      <Skeleton className={classNames(styles.icon)} />
+      <Skeleton className={classNames(styles.text)} />
     </div>
   );
 }

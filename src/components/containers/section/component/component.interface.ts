@@ -1,3 +1,6 @@
-import { HTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
 
-export interface SectionProps extends HTMLAttributes<HTMLDivElement> {}
+export type SectionProps<C extends ElementType = 'section'> = {
+  as?: C;
+  ref?: Ref<any>;
+} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;

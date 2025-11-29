@@ -1,65 +1,63 @@
 @layer mosuk-ui {
-    @layer collections {
-        @layer layer-1 {
-            .tabs {
-                display: flex;
-                flex-direction: row;
-                align-items: start;
-                gap: calc(var(--spacing, .25rem) * 4)
+    @layer index-14 {
+        .tabs {
+            display: flex;
+            flex-direction: row;
+            align-items: start;
+            gap: calc(var(--spacing, .25rem) * 4)
+        }
+
+        .head {
+            overflow-y: auto;
+            position: relative;
+            z-index: 0;
+
+            width: calc(var(--spacing, .25rem) * 64);
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: calc(var(--spacing, .25rem) * 1);
+
+            &::-webkit-scrollbar {
+                display: none;
             }
+        }
 
-            .head {
-                overflow-y: auto;
-                position: relative;
-                z-index: 0;
+        .tab {
+            position: relative;
+            z-index: 1;
 
-                width: calc(var(--spacing, .25rem) * 64);
-                height: 100%;
+            width: fit-content;
+            height: calc(var(--spacing, .25rem) * 8);
 
-                display: flex;
-                flex-direction: column;
-                align-items: start;
-                gap: calc(var(--spacing, .25rem) * 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: calc(var(--spacing, .25rem) * 2);
 
-                &::-webkit-scrollbar {
-                    display: none;
-                }
-            }
+            background-color: transparent;
+            color: var(--color-black, #000);
+            font-size: var(--text-xs, .75rem);
+            text-wrap: nowrap;
 
-            .tab {
-                position: relative;
-                z-index: 1;
+            padding-inline: calc(var(--spacing, .25rem) * 4);
+            border-radius: calc(infinity * 1px);
+            outline: none;
 
-                width: fit-content;
-                height: calc(var(--spacing, .25rem) * 8);
+            cursor: default;
+            user-select: none;
 
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: calc(var(--spacing, .25rem) * 2);
+            & svg {
+                width: calc(var(--spacing, .25rem) * 3.5);
+                height: calc(var(--spacing, .25rem) * 3.5);
+                min-width: calc(var(--spacing, .25rem) * 3.5);
+                min-height: calc(var(--spacing, .25rem) * 3.5);
 
-                background-color: transparent;
-                color: var(--color-black, #000);
-                font-size: var(--text-xs, .75rem);
-                text-wrap: nowrap;
+                color: var(--color-gray-500);
 
-                padding-inline: calc(var(--spacing, .25rem) * 4);
-                border-radius: calc(infinity * 1px);
-                outline: none;
-
-                cursor: default;
-                user-select: none;
-
-                & svg {
-                    width: calc(var(--spacing, .25rem) * 3.5);
-                    height: calc(var(--spacing, .25rem) * 3.5);
-                    min-width: calc(var(--spacing, .25rem) * 3.5);
-                    min-height: calc(var(--spacing, .25rem) * 3.5);
-
-                    color: var(--color-gray-500);
-
-                    transition: all 200ms ease-in-out;
-                }
+                transition: all 200ms ease-in-out;
             }
         }
     }

@@ -1,4 +1,4 @@
 import { createContext } from 'react';
-import { ContextProps } from './component.interface';
+import { DialogContextProps } from './component.interface';
 
-export const Context = createContext<ContextProps | undefined>(undefined);
+export const DialogContext = createContext<DialogContextProps | null>(null);

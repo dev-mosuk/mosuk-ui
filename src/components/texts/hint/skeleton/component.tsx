@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
-import { Skeleton } from '../../../../../../components/display/skeleton/component';
+import { Skeleton } from '../../../display/skeleton/component/component';
 import { HintSkeletonProps } from './component.interface';
 import styles from './component.module.css';
 

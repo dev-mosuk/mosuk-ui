@@ -1,25 +1,25 @@
-import { Backdrop } from './backdrop/component';
-import { BackdropProps } from './backdrop/component.interface';
+import { DialogBackdrop } from './backdrop/component';
+import { DialogBackdropProps } from './backdrop/component.interface';
 import { Dialog as BaseDialog } from './component';
 import { DialogProps } from './component.interface';
-import { Context } from './context/component';
-import { ContextProps } from './context/component.interface';
-import { Body } from './dialog/body/component';
-import { BodyProps } from './dialog/body/component.interface';
-import { Dialog as DialogComponent } from './dialog/component';
-import { DialogProps as DialogComponentProps } from './dialog/component.interface';
-import { Footer } from './dialog/footer/component';
-import { FooterProps } from './dialog/footer/component.interface';
-import { Header } from './dialog/header/component';
-import { HeaderProps } from './dialog/header/component.interface';
+import { DialogContext } from './context/component';
+import { DialogContextProps } from './context/component.interface';
+import { DialogDialogBody } from './dialog/body/component';
+import { DialogDialogBodyProps } from './dialog/body/component.interface';
+import { DialogDialog } from './dialog/component';
+import { DialogDialogProps } from './dialog/component.interface';
+import { DialogDialogFooter } from './dialog/footer/component';
+import { DialogDialogFooterProps } from './dialog/footer/component.interface';
+import { DialogDialogHeader } from './dialog/header/component';
+import { DialogDialogHeaderProps } from './dialog/header/component.interface';
 
 export const Dialog = Object.assign(BaseDialog, {
-  Context: Context,
-  Backdrop: Backdrop,
-  Dialog: Object.assign(DialogComponent, {
-    Header: Header,
-    Body: Body,
-    Footer: Footer,
+  Context: DialogContext,
+  Backdrop: DialogBackdrop,
+  Dialog: Object.assign(DialogDialog, {
+    Header: DialogDialogHeader,
+    Body: DialogDialogBody,
+    Footer: DialogDialogFooter,
   }),
 });
 
@@ -27,26 +27,26 @@ export namespace Dialog {
   export type Props = DialogProps;
 
   export namespace Context {
-    export type Props = ContextProps;
+    export type Props = DialogContextProps;
   }
 
   export namespace Backdrop {
-    export type Props = BackdropProps;
+    export type Props = DialogBackdropProps;
   }
 
   export namespace Dialog {
-    export type Props = DialogComponentProps;
+    export type Props = DialogDialogProps;
 
     export namespace Header {
-      export type Props = HeaderProps;
+      export type Props = DialogDialogHeaderProps;
     }
 
     export namespace Body {
-      export type Props = BodyProps;
+      export type Props = DialogDialogBodyProps;
     }
 
     export namespace Footer {
-      export type Props = FooterProps;
+      export type Props = DialogDialogFooterProps;
     }
   }
 }

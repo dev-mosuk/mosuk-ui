@@ -1,11 +1,13 @@
+import classNames from 'classnames';
 import { Info } from 'lucide-react';
 import React, { useContext } from 'react';
 import { InputContext } from '../component';
 import styles from '../component.module.css';
 import { InputHintTypeIcon } from './component.constants';
+import { InputHintType } from './component.enums';
 import { InputHintProps } from './component.interface';
 
-export function InputHint({ type, ...props }: InputHintProps) {
+export function InputHint({ type, ...rest }: InputHintProps) {
   const context = useContext(InputContext);
 
   if (!context) {
@@ -15,14 +17,16 @@ export function InputHint({ type, ...props }: InputHintProps) {
   const Icon = type ? InputHintTypeIcon[type] : Info;
 
   return (
-    props?.children && (
+    rest?.children && (
       <p
-        {...props}
-        className={'mosuk-input-hint' + ' ' + (styles.hint ?? '') + ' ' + (styles[type ?? ''] ?? '') + ' ' + (props?.className ?? '')}
+        {...rest}
+        className={classNames(classNames('mosuk-input-hint', styles.hint, {
+          [styles[type ?? InputHintType.INFO]]: type,
+        }), rest?.className)}
       >
         <Icon />
-        {props?.children}
-      </p>
+        {rest?.children}
+      </p >
     )
   );
 }

@@ -1,90 +1,88 @@
 @layer mosuk-ui {
-    @layer integrations {
-        @layer layer-1 {
-            .TBankTerminal {
-                padding: calc(var(--spacing, .25rem) * 4);
-            }
+    @layer index-15 {
+        .TBankTerminal {
+            padding: calc(var(--spacing, .25rem) * 4);
+        }
 
-            .Section {
-                max-width: calc(var(--spacing, .25rem) * 100);
-                margin: auto;
-            }
+        .Section {
+            max-width: calc(var(--spacing, .25rem) * 100);
+            margin: auto;
+        }
 
-            .Article {
-                .H1Skeleton {
-                    .H1TextSkeleton {
-                        width: 50%;
-                        max-width: 50%;
+        .Article {
+            .H1Skeleton {
+                .H1TextSkeleton {
+                    width: 50%;
+                    max-width: 50%;
 
-                        background-color: var(--color-gray-200, oklch(0.928 0.006 264.531));
-                    }
-                }
-
-                .IconSkeleton {
                     background-color: var(--color-gray-200, oklch(0.928 0.006 264.531));
                 }
             }
 
-            .Amount {
-                padding: calc(var(--spacing, .25rem) * 6);
+            .IconSkeleton {
+                background-color: var(--color-gray-200, oklch(0.928 0.006 264.531));
+            }
+        }
 
-                pointer-events: none;
+        .Amount {
+            padding: calc(var(--spacing, .25rem) * 6);
 
-                .Text {
-                    width: 50%;
-                    max-width: 50%;
+            pointer-events: none;
+
+            .Text {
+                width: 50%;
+                max-width: 50%;
+            }
+        }
+
+        .PaymentMethod {
+            padding: calc(var(--spacing, .25rem) * 6);
+
+            pointer-events: none;
+
+            .H1Skeleton {
+                .H1TextSkeleton {
+                    width: 65%;
+                    max-width: 65%;
                 }
             }
 
-            .PaymentMethod {
-                padding: calc(var(--spacing, .25rem) * 6);
+            .Buttons {
+                display: flex;
+                flex-direction: column;
+                gap: calc(var(--spacing, .25rem) * 4);
 
-                pointer-events: none;
+                margin-top: calc(var(--spacing, .25rem) * 6);
 
-                .H1Skeleton {
-                    .H1TextSkeleton {
-                        width: 65%;
-                        max-width: 65%;
-                    }
+                .Button {
+                    width: 100%;
+                    height: calc(var(--spacing, .25rem) * 10);
                 }
+            }
+        }
 
-                .Buttons {
-                    display: flex;
-                    flex-direction: column;
-                    gap: calc(var(--spacing, .25rem) * 4);
+        .BankCard {
+            padding: calc(var(--spacing, .25rem) * 6);
 
-                    margin-top: calc(var(--spacing, .25rem) * 6);
+            pointer-events: none;
 
-                    .Button {
-                        width: 100%;
-                        height: calc(var(--spacing, .25rem) * 10);
-                    }
+            .H1Skeleton {
+                .H1TextSkeleton {
+                    width: 65%;
+                    max-width: 65%;
                 }
             }
 
-            .BankCard {
-                padding: calc(var(--spacing, .25rem) * 6);
+            .Buttons {
+                display: flex;
+                flex-direction: column;
+                gap: calc(var(--spacing, .25rem) * 4);
 
-                pointer-events: none;
+                margin-top: calc(var(--spacing, .25rem) * 6);
 
-                .H1Skeleton {
-                    .H1TextSkeleton {
-                        width: 65%;
-                        max-width: 65%;
-                    }
-                }
-
-                .Buttons {
-                    display: flex;
-                    flex-direction: column;
-                    gap: calc(var(--spacing, .25rem) * 4);
-
-                    margin-top: calc(var(--spacing, .25rem) * 6);
-
-                    .Button {
-                        width: 100%;
-                        height: calc(var(--spacing, .25rem) * 10);
-                    }
+                .Button {
+                    width: 100%;
+                    height: calc(var(--spacing, .25rem) * 10);
                 }
             }
         }

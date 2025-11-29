@@ -1,12 +1,10 @@
 @layer mosuk-ui {
-    @layer containers {
-        @layer layer-1 {
-            .article {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                gap: calc(var(--spacing, .25rem) * 4);
-            }
+    @layer index-13 {
+        .article {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: calc(var(--spacing, .25rem) * 4);
         }
     }
 }

@@ -1,25 +1,23 @@
 @layer mosuk-ui {
-    @layer layouts {
-        @layer layer-1 {
-            .header {
-                position: fixed;
-                top: calc(var(--spacing, .25rem) * 2);
-                right: calc(var(--spacing, .25rem) * 2);
-                bottom: auto;
-                left: calc(var(--spacing, .25rem) * 2);
-                z-index: 100;
+    @layer index-16 {
+        .header {
+            position: fixed;
+            top: calc(var(--spacing, .25rem) * 2);
+            right: calc(var(--spacing, .25rem) * 2);
+            bottom: auto;
+            left: calc(var(--spacing, .25rem) * 2);
+            z-index: 100;
 
-                width: calc(100% - calc(var(--spacing, .25rem) * 4));
-                height: calc(var(--spacing, .25rem) * 16);
+            width: calc(100% - calc(var(--spacing, .25rem) * 4));
+            height: calc(var(--spacing, .25rem) * 16);
 
-                background-color: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
 
-                padding: calc(var(--spacing, .25rem) * 1);
-                border-radius: calc(infinity * 1px);
-                border: 1px solid var(--color-gray-100, oklch(0.967 0.003 264.542));
-                box-shadow: 0 -25px 50px -12px rgba(243, 244, 246, var(--tw-shadow-alpha, 0.5));
-            }
+            padding: calc(var(--spacing, .25rem) * 1);
+            border-radius: calc(infinity * 1px);
+            border: 1px solid var(--color-gray-100, oklch(0.967 0.003 264.542));
+            box-shadow: 0 -25px 50px -12px rgba(243, 244, 246, var(--tw-shadow-alpha, 0.5));
         }
     }
 }

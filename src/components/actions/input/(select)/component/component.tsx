@@ -1,14 +1,15 @@
+import classNames from 'classnames';
 import React from 'react';
-import { Input } from '../../../../../atoms/inputs/input/component/component';
-import { InputProps } from '../../../../../atoms/inputs/input/component/component.interface';
+import { Input } from '../../component/component';
+import { InputProps } from '../../component/component.interface';
 import styles from './component.module.css';
 
-export function Select({ ref, children, ...props }: InputProps) {
+export function Select({ ref, children, ...rest }: InputProps) {
   return (
     <Input
-      {...props}
+      {...rest}
       ref={ref}
-      className={(styles.fieldset ?? '') + ' ' + (props?.className ?? '')}
+      className={classNames(styles.fieldset, rest?.className)}
     >
       {children}
     </Input>

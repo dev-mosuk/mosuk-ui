@@ -78,6 +78,7 @@ async function main() {
   }
   await copyCssModules(srcDir, distDir);
   await copy(path.join(srcDir, 'package.json'), path.join(distDir, 'package.json'));
+  await copy(path.join(srcDir, 'LICENSE'), path.join(distDir, 'LICENSE'));
   
   // Обновляем exports после копирования package.json
   await updateExports();

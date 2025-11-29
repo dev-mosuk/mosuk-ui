@@ -1,3 +1,3 @@
 import { Dialog } from '@base-ui-components/react/dialog';
 
-export interface BackdropProps extends Dialog.Backdrop.Props {}
+export interface DialogBackdropProps extends Dialog.Backdrop.Props {}
