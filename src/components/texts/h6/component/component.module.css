@@ -8,6 +8,8 @@
             text-align: start;
             line-height: var(--leading-relaxed, 1.625);
 
+            cursor: text;
+
             transition: all 200ms ease-in-out;
 
             &:not(:hover) {
@@ -46,6 +48,8 @@
                     font-size: var(--text-xs, 0.75rem);
 
                     padding: calc(var(--spacing, .25rem) * 1.5);
+
+                    cursor: default;
                 }
             }
         }

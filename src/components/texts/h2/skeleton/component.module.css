@@ -9,6 +9,8 @@
             text-align: start;
             line-height: 0;
 
+            cursor: text;
+
             .text {
                 display: inline-flex;
 
@@ -51,6 +53,8 @@
                     font-size: var(--text-base, 1rem);
 
                     padding: calc(var(--spacing, .25rem) * 2.5);
+
+                    cursor: default;
                 }
             }
         }
