@@ -1,0 +1,13 @@
+@layer mosuk-ui {
+    @layer index-10 {
+        @property --value {
+            syntax: "<number>";
+            initial-value: 0;
+            inherits: false;
+        }
+
+        .counter {
+            transition: --value 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+    }
+}
