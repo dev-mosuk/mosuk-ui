@@ -1,19 +1,23 @@
 import classNames from 'classnames';
-import React, { createContext } from 'react';
-import { InputContextProps, InputProps } from './component.interface';
+import React, { ElementType } from 'react';
+import { InputProps } from './component.interface';
 import styles from './component.module.css';
+import { InputContext } from './context/context';
 
-export const InputContext = createContext<InputContextProps | null>(null);
+export function Input<C extends ElementType = 'fieldset'>({
+  as,
+  ...rest
+}: InputProps<C>) {
+  const Component = (as || 'fieldset') as ElementType;
 
-export function Input({ ...props }: InputProps) {
   return (
     <InputContext.Provider value={{}}>
-      <fieldset
-        {...props}
-        className={classNames('mosuk-input', styles.fieldset, props?.className)}
+      <Component
+        {...rest}
+        className={classNames('mosuk-input', styles.fieldset, rest?.className)}
       >
-        {props?.children}
-      </fieldset>
+        {rest?.children}
+      </Component>
     </InputContext.Provider>
   );
 }

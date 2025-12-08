@@ -4,7 +4,7 @@ import {
   DropdownDropdownContentProps,
   DropdownDropdownProps,
   DropdownProps,
-  DropdownTriggerProps
+  DropdownTriggerProps,
 } from './component.interface';
 import styles from './component.module.css';
 
@@ -23,7 +23,10 @@ export function DropdownTrigger({ className, ...props }: DropdownTriggerProps) {
   );
 }
 
-export function DropdownDropdown({ container, ...props }: DropdownDropdownProps) {
+export function DropdownDropdown({
+  container,
+  ...props
+}: DropdownDropdownProps) {
   return (
     <Popover.Portal container={container ?? undefined}>
       <Popover.Positioner
@@ -46,7 +49,13 @@ export function DropdownDropdownContent({
 }: DropdownDropdownContentProps) {
   return (
     <Popover.Popup
-      className={'mosuk-dropdown-content' + ' ' + (styles.content ?? '') + ' ' + (className ?? '')}
+      className={
+        'mosuk-dropdown-content' +
+        ' ' +
+        (styles.content ?? '') +
+        ' ' +
+        (className ?? '')
+      }
       {...props}
     >
       {props?.children}

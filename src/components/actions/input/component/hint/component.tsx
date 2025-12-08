@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { Info } from 'lucide-react';
 import React, { useContext } from 'react';
-import { InputContext } from '../component';
 import styles from '../component.module.css';
+import { InputContext } from '../context/context';
 import { InputHintTypeIcon } from './component.constants';
 import { InputHintType } from './component.enums';
 import { InputHintProps } from './component.interface';

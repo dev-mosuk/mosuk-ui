@@ -465,7 +465,7 @@
     }
 }
 
-@utility icon-outline-red-100 {
+@utility icon-outline-red-200 {
     background-color: white;
     color: var(--color-red-500, oklch(0.637 0.237 25.331));
     border: 1px solid var(--color-red-200, oklch(0.962 0.044 156.743));

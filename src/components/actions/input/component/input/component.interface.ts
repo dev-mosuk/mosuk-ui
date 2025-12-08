@@ -2,7 +2,6 @@ import {
   ComponentType,
   ForwardRefExoticComponent,
   InputHTMLAttributes,
-  ReactNode,
   RefAttributes,
   RefObject,
   SVGProps,
@@ -14,5 +13,4 @@ export type InputInputProps = InputHTMLAttributes<HTMLInputElement> & {
     | ComponentType<SVGProps<SVGSVGElement>>
     | ForwardRefExoticComponent<RefAttributes<SVGSVGElement>>;
   label?: string;
-  children?: ReactNode;
 };

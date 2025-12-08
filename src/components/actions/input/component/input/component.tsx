@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import React, { useContext, useId } from 'react';
-import { InputContext } from '../component';
 import styles from '../component.module.css';
+import { InputContext } from '../context/context';
 import { InputInputProps } from './component.interface';
 
-export function InputInput({ ref, icon: Icon, label, children, ...rest }: InputInputProps) {
+export function InputInput({ ref, icon: Icon, label, ...rest }: InputInputProps) {
   const context = useContext(InputContext);
 
   if (!context) {
@@ -25,7 +25,7 @@ export function InputInput({ ref, icon: Icon, label, children, ...rest }: InputI
         placeholder={rest.placeholder ?? label}
         className={rest.className ?? ''}
       />
-
+ 
       {label && (
         <label htmlFor={rest?.id} className={classNames(styles.label, rest?.className)}>
           {label}
@@ -38,7 +38,7 @@ export function InputInput({ ref, icon: Icon, label, children, ...rest }: InputI
         </label>
       )}
 
-      {children}
+      {rest?.children}
     </div>
   );
 }

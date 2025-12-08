@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import React, { useContext, useId } from 'react';
 import { IMaskInput } from 'react-imask';
-import styles from '../../../../input/component/component.module.css';
-import { InputContext } from '../../../component/component';
+import styles from '../../../component/component.module.css';
+import { InputContext } from '../../../component/context/context';
 import { InputMaskInputProps } from './component.interface';
 
 export function InputMaskInput({

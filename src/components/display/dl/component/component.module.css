@@ -1,6 +1,5 @@
 @layer mosuk-ui {
     @layer index-12 {
-
         /* ! DL */
         .dl-list {
             display: flex;

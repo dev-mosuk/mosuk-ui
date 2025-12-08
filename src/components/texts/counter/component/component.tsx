@@ -7,58 +7,63 @@ export const Counter = forwardRef<HTMLSpanElement, CounterProps>((props, externa
   const { children, as, className, style, ...rest } = props;
 
   const Component = (as || 'span') as ElementType;
-  const internalRef = useRef<HTMLSpanElement>(null);
+  const ref = useRef<HTMLSpanElement>(null);
 
-  // Объединяем внутренний и внешний ref "на месте"
-  const ref = (element: HTMLSpanElement | null) => {
-    internalRef.current = element;
-    if (externalRef) {
-      if (typeof externalRef === 'function') {
-        externalRef(element);
-      } else {
-        (externalRef as React.MutableRefObject<HTMLSpanElement | null>).current = element;
-      }
-    }
+  // Преобразуем children в число
+  const targetValue = typeof children === 'number' 
+    ? children 
+    : parseFloat(String(children).replace(/[^\d.,-]/g, '').replace(/,/g, '.')) || 0;
+
+  // Определяем количество десятичных знаков в исходном числе
+  const getDecimalPlaces = (num: number): number => {
+    const match = String(num).match(/(?:\.(\d+))?$/);
+    return match && match[1] ? match[1].length : 0;
   };
 
-  const childStr = String(children);
-
-  const extractNumber = (str: string): number => {
-    return parseFloat(str.replace(/[^\d.,-]/g, '').replace(/,/g, '.')) || 0;
-  };
-
-  const targetValue = extractNumber(childStr);
+  const maxDigits = getDecimalPlaces(targetValue);
 
   useEffect(() => {
-    if (internalRef.current) {
-      internalRef.current.style.setProperty('--value', String(targetValue));
-    }
-  }, [targetValue]);
+    const element = ref.current;
+    if (!element) return;
 
-  useEffect(() => {
-    if (!internalRef.current) return;
+    // Устанавливаем целевое значение
+    element.style.setProperty('--value', String(targetValue));
 
     let rafId: number;
+    let isActive = true;
 
-    const updateText = () => {
-      const computed = getComputedStyle(internalRef.current!);
-      const currentValue = parseFloat(computed.getPropertyValue('--value')) || 0;
-
-      const formattedNumber = new Intl.NumberFormat('ru-RU', {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      }).format(Math.round(currentValue));
-
-      internalRef.current!.textContent = formattedNumber;
-      rafId = requestAnimationFrame(updateText);
+    const animate = () => {
+      if (!isActive || !element) return;
+      
+      try {
+        const currentValue = parseFloat(getComputedStyle(element).getPropertyValue('--value')) || 0;
+        element.textContent = new Intl.NumberFormat('ru-RU', {
+          minimumFractionDigits: 0,
+          maximumFractionDigits: maxDigits,
+        }).format(currentValue);
+      } catch {}
+      
+      if (isActive) rafId = requestAnimationFrame(animate);
     };
 
-    rafId = requestAnimationFrame(updateText);
+    rafId = requestAnimationFrame(animate);
 
     return () => {
-      if (rafId) cancelAnimationFrame(rafId);
+      isActive = false;
+      cancelAnimationFrame(rafId);
     };
-  }, []);
+  }, [targetValue, maxDigits]);
+
+  // Объединяем refs
+  useEffect(() => {
+    if (externalRef) {
+      if (typeof externalRef === 'function') {
+        externalRef(ref.current);
+      } else {
+        (externalRef as React.MutableRefObject<HTMLSpanElement | null>).current = ref.current;
+      }
+    }
+  }, [externalRef]);
 
   return (
     <Component
@@ -67,7 +72,7 @@ export const Counter = forwardRef<HTMLSpanElement, CounterProps>((props, externa
       className={classNames(styles.counter, className)}
       style={{ '--value': targetValue, ...style } as React.CSSProperties}
     >
-      {childStr}
+      {targetValue}
     </Component>
   );
 });
