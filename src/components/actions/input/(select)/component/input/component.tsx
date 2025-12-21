@@ -103,7 +103,6 @@ export function InputSelectInput({
         ref={inputRef}
         value={open ? searchQuery : selectedOption?.label ?? ''}
         autoComplete={props?.autoComplete ?? 'off'}
-        onChange={(e) => handleInputChange(e.target.value)}
         onFocus={handleFocus}
         onBlur={handleBlur}
         onClick={(e) => {
@@ -111,10 +110,12 @@ export function InputSelectInput({
           props?.onClick?.(e);
         }}
         onKeyDown={(e) => {
-          setOpen(false);
           props?.onKeyDown?.(e);
         }}
         className={'mosuk-input-select ' + (styles.select ?? '') + ' ' + (props?.className ?? '')}
+        onChange={(e) => {
+          handleInputChange(e.target.value)
+        }}
       >
         <label htmlFor={props?.id} className={styles.arrow} aria-hidden="true">
           <ChevronDown />
@@ -159,9 +160,11 @@ export function InputSelectInput({
                   type="button"
                   onMouseDown={(e) => {
                     e.preventDefault();
+                  }}
+                  onClick={() => {
+                    handleOptionSelect(option)
                     setOpen(false);
                   }}
-                  onClick={() => handleOptionSelect(option)}
                   className={
                     (styles.button ?? '') +
                     ' ' +

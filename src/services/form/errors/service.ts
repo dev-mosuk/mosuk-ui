@@ -14,6 +14,11 @@ export class FormErrorsService {
         setError(path as FieldPath<T>, {
           message: messages[0],
         });
+      } else if(messages && !Array.isArray(messages)) {
+        const path = parentPath ? `${parentPath}.${field}` : field;
+        setError(path as FieldPath<T>, {
+          message: messages,
+        });
       }
     });
   }

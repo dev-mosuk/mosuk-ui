@@ -4,7 +4,7 @@ import styles from '../component.module.css';
 import { InputContext } from '../context/context';
 import { InputInputProps } from './component.interface';
 
-export function InputInput({ ref, icon: Icon, label, ...rest }: InputInputProps) {
+export function InputInput({ ref, icon: Icon, label, children, ...rest }: InputInputProps) {
   const context = useContext(InputContext);
 
   if (!context) {
@@ -38,7 +38,7 @@ export function InputInput({ ref, icon: Icon, label, ...rest }: InputInputProps)
         </label>
       )}
 
-      {rest?.children}
+      {children}
     </div>
   );
 }
