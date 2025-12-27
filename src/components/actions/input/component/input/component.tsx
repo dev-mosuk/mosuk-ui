@@ -4,7 +4,13 @@ import styles from '../component.module.css';
 import { InputContext } from '../context/context';
 import { InputInputProps } from './component.interface';
 
-export function InputInput({ ref, icon: Icon, label, children, ...rest }: InputInputProps) {
+export function InputInput({
+  ref,
+  icon: Icon,
+  label,
+  children,
+  ...rest
+}: InputInputProps) {
   const context = useContext(InputContext);
 
   if (!context) {
@@ -16,24 +22,29 @@ export function InputInput({ ref, icon: Icon, label, children, ...rest }: InputI
   }
 
   return (
-    <div className={classNames('mosuk-input-input', styles.input)}>
+    <div
+      className={classNames('mosuk-input-input', styles.input, rest?.className)}
+    >
       <input
         {...rest}
         ref={ref}
         id={rest.id}
         name={rest.name ?? rest.id}
         placeholder={rest.placeholder ?? label}
-        className={rest.className ?? ''}
       />
- 
+
       {label && (
-        <label htmlFor={rest?.id} className={classNames(styles.label, rest?.className)}>
+        <label htmlFor={rest?.id} className={classNames(styles.label)}>
           {label}
         </label>
       )}
 
       {Icon && (
-        <label htmlFor={rest?.id} className={classNames(styles.icon, rest?.className)} aria-hidden="true">
+        <label
+          htmlFor={rest?.id}
+          className={classNames(styles.icon)}
+          aria-hidden="true"
+        >
           <Icon />
         </label>
       )}
