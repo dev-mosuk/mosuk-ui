@@ -16,7 +16,7 @@ export function InputInput({ ref, icon: Icon, label, children, ...rest }: InputI
   }
 
   return (
-    <div className={classNames('mosuk-input-input', styles.input, rest?.className)}>
+    <div className={classNames('mosuk-input-input', styles.input)}>
       <input
         {...rest}
         ref={ref}

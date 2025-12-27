@@ -25,8 +25,16 @@
 
                 transition: all 0.2s ease-in-out;
 
+                /* ? Placeholder */
                 &::placeholder {
-                    color: transparent;
+                    color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+                }                
+                
+                /* ? Если есть label */
+                &:has(~ .label) {
+                    &::placeholder {
+                        color: transparent;
+                    }
                 }
 
                 /* ? Если есть иконка слева */
@@ -215,6 +223,8 @@
 
         /* ! =============================== Fieldset =============================== */
         .fieldset {
+            position: relative;
+            
             &:has(.hint.success) {
                 .input {
                     input {

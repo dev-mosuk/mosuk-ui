@@ -35,11 +35,19 @@
 
                 transition: all 0.2s ease-in-out;
 
+                /* ? Placeholder */
                 &::placeholder {
-                    color: transparent;
+                    color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+                }                
+                
+                /* ? Если есть label */
+                &:has(~ .label) {
+                    &::placeholder {
+                        color: transparent;
+                    }
                 }
 
-                /* ? Если есть иконка слева */
+                /* ? Е сли есть иконка слева */
                 &:has(~ .icon) {
                     padding-left: calc(var(--spacing, .25rem) * 11);
                 }

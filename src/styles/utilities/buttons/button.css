@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.3125rem;
+    gap: calc(var(--spacing, 0.25rem) * 1.25);
    
     font-size: var(--text-3xs, 0.5rem);    
     text-wrap: nowrap;
