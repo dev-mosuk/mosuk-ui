@@ -7,7 +7,7 @@ export function Card<C extends ElementType = 'div'>({
   as,
   ...rest
 }: CardProps<C>) {
-  const Component = (as || 'article') as ElementType;
+  const Component = (as || 'div') as ElementType;
 
   return (
     <Component

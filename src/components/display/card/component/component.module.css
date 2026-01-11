@@ -17,8 +17,6 @@
             outline: none;
             box-shadow: 0 25px 50px -12px rgba(249, 250, 251, var(--tw-shadow-alpha, 0.5));
 
-            cursor: pointer;
-
             transition: all 200ms ease-in-out;
 
             &:not(:hover) {

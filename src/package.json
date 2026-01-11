@@ -145,6 +145,16 @@
         "default": "./components/actions/textarea/skeleton/index.ts"
       }
     },
+    "./components/actions/switch/component": {
+      "import": {
+        "default": "./components/actions/switch/component/index.ts"
+      }
+    },
+    "./components/actions/switch/skeleton": {
+      "import": {
+        "default": "./components/actions/switch/skeleton/index.ts"
+      }
+    },
     "./components/actions/upload/files/component": {
       "import": {
         "default": "./components/actions/upload/files/component/index.ts"
