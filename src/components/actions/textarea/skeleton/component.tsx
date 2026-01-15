@@ -1,18 +1,18 @@
-import React from 'react';
-import {
-  TextareaSkeletonProps
-} from './component.interface';
-import styles from './component.module.css';
+import classNames from 'classnames';
+import React, { CSSProperties } from 'react';
+import { Skeleton } from '../../../../display/skeleton/component/component';
+import styles from '../component.module.css';
+import { TextareaSkeletonTextareaProps } from './component.interface';
 
-export function TextareaSkeleton({
-  ...props
-}: TextareaSkeletonProps) {
+export function TextareaTextareaSkeleton({ icon, rows, ...props }: TextareaSkeletonTextareaProps) {
   return (
     <div
       {...props}
-      className={'mosuk-input-skeleton' + ' ' + (styles.fieldset ?? '') + ' ' + (props?.className ?? '')}
+      className={classNames('mosuk-textarea-skeleton-textarea', styles.textarea, props?.className)}
+      style={{ '--rows': rows ?? 4 } as CSSProperties}
     >
-      {props?.children}
+      {icon && <div className={styles.icon ?? ''} />}
+      <Skeleton className={styles.field ?? ''} />
     </div>
   );
 }

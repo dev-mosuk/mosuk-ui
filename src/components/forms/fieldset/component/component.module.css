@@ -1,0 +1,130 @@
+@layer mosuk-ui {
+    @layer index-11 {
+        .fieldset {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing, .25rem) * 2);
+
+            /* ? Field */
+
+            .field {
+                position: relative;
+
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: calc(var(--spacing, .25rem) * 2);
+
+                /* ? Label */
+
+                .label {
+                    position: absolute;
+                    top: calc(var(--spacing, .25rem) * 1);
+                    left: calc(var(--spacing, .25rem) * 3);
+                    z-index: 1;
+
+                    width: fit-content;
+                    max-width: calc(100% - calc(var(--spacing, .25rem) * 8));
+
+                    background-color: white;
+                    color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+
+                    padding-left: calc(var(--spacing, .25rem) * 1);
+                    padding-right: calc(var(--spacing, .25rem) * 1);
+
+                    cursor: text;
+                    transition: all 0.2s ease-in-out;
+                }
+
+                &:has(.input[placeholder]:not(:placeholder-shown)) {
+                    .label {
+                        top: -9px;
+                        width: fit-content;
+                        font-size: var(--text-xs, .75rem);
+                    }
+                }
+
+                &:hover:has(.input[placeholder]:not(:placeholder-shown)) {
+                    .label {
+                        color: var(--color-primary-500, #0074e7);
+                    }
+                }
+
+                &:not(:has(.input:focus)):has(.input[placeholder]:placeholder-shown) {
+                    .input {
+                        color: transparent;
+
+                        &::placeholder {
+                            color: transparent;
+                        }
+                    }
+                }
+
+                &:has(.input:focus) {
+                    .label {
+                        top: -9px;
+
+                        width: fit-content;
+
+                        color: var(--color-primary-500, #0074e7);
+                        font-size: var(--text-xs, .75rem);
+                    }
+                }
+            }
+
+            /* ? Hint */
+
+            .hint {
+                padding-left: calc(var(--spacing, .25rem) * 2);
+                padding-right: calc(var(--spacing, .25rem) * 2);
+            }
+
+            &:has(.hint.success) {
+                .field {
+                    .input {
+                        border-color: var(--color-green-300, oklch(0.871 0.15 154.449));
+                    }
+                }
+            }
+
+            &:has(.hint.warning) {
+                .field {
+                    .input {
+                        border-color: var(--color-orange-200, oklch(0.901 0.076 70.697));
+                    }
+                }
+            }
+
+
+            &:has(.hint.error) {
+                .field {
+                    .input {
+                        border-color: var(--color-red-200, oklch(0.885 0.062 18.334));
+                    }
+                }
+            }
+
+            &:has(.hint.success),
+            &:has(.hint.warning),
+            &:has(.hint.error) {
+                .field {
+                    .label {
+                        color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+                    }
+
+                    &:hover:has(.input[placeholder]:not(:placeholder-shown)) {
+                        .label {
+                            color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+                        }
+                    }
+
+                    &:not(:has(.input:focus)):has(.input[placeholder]:placeholder-shown) {
+                        .label {
+                            color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

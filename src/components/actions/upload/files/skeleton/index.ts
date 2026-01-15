@@ -1,5 +1,5 @@
-import { InputHintSkeleton } from '../../../input/skeleton/hint/component';
-import { InputHintSkeletonProps } from '../../../input/skeleton/hint/component.interface';
+import { InputHintSkeleton } from '../../../../input/skeleton/hint/component';
+import { InputHintSkeletonProps } from '../../../../input/skeleton/hint/component.interface';
 import { UploadFilesSkeleton as Component } from './component';
 import { UploadFilesSkeletonProps } from './component.interface';
 import { UploadFilesSkeletonDnd } from './dnd/component';

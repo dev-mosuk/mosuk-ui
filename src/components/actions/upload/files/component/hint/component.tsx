@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { useContext } from 'react';
-import { InputHint } from '../../../../input/component/hint/component';
-import { InputHintProps } from '../../../../input/component/hint/component.interface';
+import { InputHint } from '../../../../../input/component/hint/component';
+import { InputHintProps } from '../../../../../input/component/hint/component.interface';
 import { UploadFilesContext } from '../component';
 import styles from '../component.module.css';
 

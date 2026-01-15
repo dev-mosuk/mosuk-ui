@@ -1,7 +1,8 @@
-import { HTMLAttributes } from 'react';
-import { HintAsEnum, HintTypeEnum } from './component.enums';
+import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import { HintTypeEnum } from './component.enums';
 
-export interface HintProps extends HTMLAttributes<HTMLParagraphElement> {
-  as?: HintAsEnum;
+export type HintProps<C extends ElementType = 'p'> = {
+  as?: C;
+  ref?: Ref<any>;
   type?: HintTypeEnum;
-}
+} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;

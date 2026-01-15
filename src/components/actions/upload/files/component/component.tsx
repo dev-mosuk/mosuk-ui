@@ -6,7 +6,7 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { Input } from '../../../input/component/component';
+import { Input } from '../../../../input/component/component';
 import {
   FileInterface,
   UploadFilesContextProps,

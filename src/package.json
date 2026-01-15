@@ -185,6 +185,11 @@
         "default": "./components/collections/breadcrumbs/skeleton/index.ts"
       }
     },
+    "./components/forms/fieldset/component": {
+      "import": {
+        "default": "./components/forms/fieldset/component/index.ts"
+      }
+    },
     "./components/collections/table/(pagination)/component": {
       "import": {
         "default": "./components/collections/table/(pagination)/component/index.ts"

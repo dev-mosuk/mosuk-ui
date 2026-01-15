@@ -1,3 +1,6 @@
 import { HTMLAttributes } from 'react';
 
-export interface TextareaSkeletonProps extends HTMLAttributes<HTMLDivElement> {}
+export interface TextareaSkeletonTextareaProps extends HTMLAttributes<HTMLDivElement> {
+  icon?: boolean;
+  rows?: number;
+}

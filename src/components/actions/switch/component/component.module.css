@@ -6,7 +6,7 @@
 
             --switch-thumb: #fff;
             --switch-track-off: var(--color-gray-300, oklch(0.872 0.01 258.338));
-            --switch-track-on: var(--color-green-500, oklch(0.723 0.219 149.579));
+            --switch-track-on: var(--color-primary-500, #0074e7);
         }
  
         .switch {
@@ -18,7 +18,7 @@
             background-color: var(--switch-track-off);
 
             margin: 0;
-
+ 
             border-radius: calc(infinity * 1px);
 
             outline: none;

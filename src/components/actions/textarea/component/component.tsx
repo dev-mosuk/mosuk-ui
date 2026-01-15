@@ -1,21 +1,24 @@
-import React, { createContext } from 'react';
-import { TextareaContextProps, TextareaProps } from './component.interface';
+import classNames from 'classnames';
+import React, { ElementType } from 'react';
+import { TextareaProps } from './component.interface';
 import styles from './component.module.css';
 
-export const TextareaContext = createContext<TextareaContextProps | null>(null);
+export function Textarea<C extends ElementType = 'textarea'>({
+  as,
+  ...rest
+}: TextareaProps<C>) {
+  const Component = (as || 'textarea') as ElementType;
 
-export function Textarea({ ...props }: TextareaProps) {
   return (
-    <TextareaContext.Provider value={{}}>
-      <fieldset
-        {...props}
-        className={`mosuk-textarea ${styles.fieldset ?? ''} ${
-          props?.className ?? ''
-        }`}
-      >
-        {props?.children}
-      </fieldset>
-    </TextareaContext.Provider>
+    <Component
+      {...rest}
+      ref={rest?.ref}
+      id={rest.id}
+      name={rest.name ?? rest.id}
+      rows={rest?.rows ?? 3}
+      className={classNames('mosuk-textarea', styles.textarea, rest?.className)}
+    >
+      {rest?.children}
+    </Component>
   );
 }
- 

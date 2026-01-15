@@ -1,5 +1,5 @@
-import { InputHintType } from '../../../input/component/hint/component.enums';
-import { InputHintProps } from '../../../input/component/hint/component.interface';
+import { InputHintType } from '../../../../input/component/hint/component.enums';
+import { InputHintProps } from '../../../../input/component/hint/component.interface';
 import { UploadFiles as UploadFilesComponent } from './component';
 import type { UploadFilesProps } from './component.interface';
 import { UploadFilesDnd } from './dnd/component';

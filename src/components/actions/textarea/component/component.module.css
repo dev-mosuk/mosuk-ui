@@ -1,292 +1,53 @@
 @layer mosuk-ui {
     @layer index-11 {
-
-        /* ! =============================== Textarea =============================== */
         .textarea {
-            position: relative;
-            z-index: 0;
-
             width: 100%;
+            height: fit-content;
 
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: calc(var(--spacing, 0.25rem) * 2);
 
-            textarea {
-                overflow: hidden;
-                resize: none;
+            background-color: white;
+            color: var(--color-black, #000);
 
-                position: relative;
-                z-index: 1;
+            font-size: var(--text-base, 1rem);
+            text-wrap: nowrap;
 
-                width: 100%;
-                height: auto;
+            padding-top: calc(var(--spacing, .25rem) * 1);
+            padding-left: calc(var(--spacing, 0.25rem) * 3.5);
+            padding-right: calc(var(--spacing, 0.25rem) * 3.5);
+            padding-top: calc(var(--spacing, .25rem) * 1);
 
-                display: block;
+            border-radius: var(--radius-2xl, 1rem);
+            border: 1px solid var(--color-gray-200, oklch(0.928 0.006 264.531));
 
-                background-color: white;
-                color: black;
+            outline: none;
 
-                padding-top: calc(var(--spacing, .25rem) * 1);
-                padding-bottom: calc(var(--spacing, .25rem) * 1);
-                padding-left: calc(var(--spacing, .25rem) * 3);
-                padding-right: calc(var(--spacing, .25rem) * 3);
-                border: 1px solid var(--color-gray-200, oklch(0.928 0.006 264.531));
-                border-radius: var(--radius-2xl, 1rem);
-                outline: none;
+            transition: all 200ms ease-in-out;
 
-                transition: all 0.2s ease-in-out;
-
-                /* ? Placeholder */
-                &::placeholder {
-                    color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-                }                
-                
-                /* ? Если есть label */
-                &:has(~ .label) {
-                    &::placeholder {
-                        color: transparent;
-                    }
-                }
-
-                /* ? Е сли есть иконка слева */
-                &:has(~ .icon) {
-                    padding-left: calc(var(--spacing, .25rem) * 11);
-                }
-
-                /* ? Если есть значение */
-                &:not(:placeholder-shown) {
-                    &~.label {
-                        top: -9px;
-                        width: fit-content;
-                        font-size: var(--text-xs, .75rem);
-                    }
-                }
-
-                /* ? При наведении */
-                &:not(:hover) {
-                    transition: all 0.6s ease-in-out;
-
-                    &~.icon {
-                        transition: all 0.6s ease-in-out;
-                    }
-                }
-
-                /* ? При наведении */
-                &:hover {
-                    border-color: var(--color-primary-200, #b3deff);
-
-                    &~.label {
-                        color: var(--color-primary-500, #0074e7);
-                    }
-
-                    &~.icon {
-                        color: var(--color-primary-500, #0074e7);
-                        border-color: var(--color-primary-200, #b3deff);
-                    }
-                }
-
-                /* ? При фокусе или активном состоянии */
-                &:focus {
-                    border-color: var(--color-primary-500, #0074e7);
-
-                    &::placeholder {
-                        color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-                    }
-
-                    &~.label {
-                        top: -9px;
-
-                        width: fit-content;
-
-                        color: var(--color-primary-500, #0074e7);
-                        font-size: var(--text-xs, .75rem);
-                    }
-
-                    &~.icon {
-                        color: var(--color-primary-500, #0074e7);
-                        border-color: var(--color-primary-500, #0074e7);
-                    }
-                }
-
-                /* ? При read-only */
-                &:read-only {
-                    background-color: var(--color-gray-50, oklch(0.985 0.002 247.839));
-                    pointer-events: none;
-                }
-            }
-
-            /* ? Лейбл */
-            .label {
-                position: absolute;
-                top: calc(var(--spacing, .25rem) * 1);
-                left: calc(var(--spacing, .25rem) * 3);
-                z-index: 1;
-
-                width: fit-content;
-                max-width: calc(100% - calc(var(--spacing, .25rem) * 8));
-
-                background-color: white;
-                color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-
-                padding-left: calc(var(--spacing, .25rem) * 1);
-                padding-right: calc(var(--spacing, .25rem) * 1);
-
-                cursor: text;
-                transition: all 0.2s ease-in-out;
-
-                &:has(~ .icon) {
-                    left: calc(var(--spacing, .25rem) * 10);
-                }
-            }
-
-            /* ? Иконка слева */
-            .icon {
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 1;
-
-                width: 2rem;
-                height: 2rem;
-
-                color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-
-                padding: calc(var(--spacing, .25rem) * 2.5);
-                border-right: 1px solid var(--color-gray-200, oklch(0.928 0.006 264.531));
-                border-bottom: 1px solid var(--color-gray-200, oklch(0.928 0.006 264.531));
-                border-bottom-right-radius: var(--radius-2xl, 1rem);
-
-                cursor: text;
-                transition: all 0.2s ease-in-out;
-
-                & svg {
-                    width: 100%;
-                    height: 100%;
-                    transition: transform 0.2s ease-in-out;
-                }
-            }
-        }
-
-
-        /* ! =============================== Hint =============================== */
-        .hint {
-            font-size: var(--text-xs, .75rem);
-            font-weight: 400;
-            line-height: var(--leading-relaxed, 1.625);
-
-            margin-top: calc(var(--spacing, .25rem) * 1);
-
-            & svg {
-                width: calc(var(--spacing, .25rem) * 3);
-                height: calc(var(--spacing, .25rem) * 3);
-                min-width: calc(var(--spacing, .25rem) * 3);
-                min-height: calc(var(--spacing, .25rem) * 3);
-
-                margin-top: calc(var(--spacing, .25rem) * 0.875);
-            }
-
-            &:has(svg) {
-                display: flex;
-                align-items: flex-start;
-                gap: calc(var(--spacing, .25rem) * 1.5);
-            }
-        }
-
-        .info {
-            color: var(--color-black, #000000);
-
-            svg {
+            &::placeholder {
                 color: var(--color-gray-500, oklch(0.551 0.027 264.364));
             }
-        }
 
-        .success {
-            color: var(--color-green-500, oklch(0.723 0.219 149.579));
-        }
-
-        .warning {
-            color: var(--color-orange-500, oklch(0.705 0.213 47.604));
-        }
-
-        .error {
-            color: var(--color-red-500, oklch(0.637 0.237 25.331));
-        }
-
-        /* ! =============================== Fieldset =============================== */
-        .fieldset {
-            &:has(.hint.success) {
-                .textarea {
-                    textarea {
-                        border-color: var(--color-green-300, oklch(0.871 0.15 154.449));
-
-                        &~.label {
-                            color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-                            border-color: var(--color-green-300, oklch(0.871 0.15 154.449));
-                        }
-
-                        &~.icon {
-                            color: var(--color-green-500, oklch(0.723 0.219 149.579));
-                            border-color: var(--color-green-300, oklch(0.871 0.15 154.449));
-                        }
-
-                        &:hover,
-                        &:focus {
-                            &~.label {
-                                color: var(--color-green-500, oklch(0.723 0.219 149.579));
-                            }
-                        }
-                    }
-                }
+            &:hover {
+                border: 1px solid var(--color-primary-200, oklch(0.928 0.006 264.531));
             }
 
-            &:has(.hint.warning) {
-                .textarea {
-                    textarea {
-                        border-color: var(--color-orange-200, oklch(0.901 0.076 70.697));
-
-                        &~.label {
-                            color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-                            border-color: var(--color-orange-200, oklch(0.901 0.076 70.697));
-                        }
-
-                        &~.icon {
-                            color: var(--color-orange-500, oklch(0.705 0.213 47.604));
-                            border-color: var(--color-orange-200, oklch(0.901 0.076 70.697));
-                        }
-
-                        &:hover,
-                        &:focus {
-                            &~.label {
-                                color: var(--color-orange-500, oklch(0.705 0.213 47.604));
-                            }
-                        }
-                    }
-                }
+            &:not(:hover) {
+                transition: all 600ms ease-in-out;
             }
 
-            &:has(.hint.error) {
-                .textarea {
-                    textarea {
-                        border-color: var(--color-red-200, oklch(0.885 0.062 18.334));
-
-                        &~.label {
-                            color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-                            border-color: var(--color-red-200, oklch(0.885 0.062 18.334));
-                        }
-
-                        &~.icon {
-                            color: var(--color-red-500, oklch(0.637 0.237 25.331));
-                            border-color: var(--color-red-200, oklch(0.885 0.062 18.334));
-                        }
-
-                        &:hover,
-                        &:focus {
-                            &~.label {
-                                color: var(--color-red-500, oklch(0.637 0.237 25.331));
-                            }
-                        }
-                    }
-                }
+            &:read-only {
+                opacity: 50%;
+                pointer-events: none;                
             }
+
+            &:focus {
+                border: 1px solid var(--color-primary-500, oklch(0.551 0.027 264.364));
+            }
+
         }
     }
 }
