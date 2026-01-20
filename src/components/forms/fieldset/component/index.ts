@@ -1,14 +1,14 @@
 import { Fieldset as Component } from './component';
 import type { FieldsetProps } from './component.interface';
-import { FieldsetField } from './field/component';
-import { FieldsetFieldProps } from './field/component.interface';
-import { FieldsetFieldInput } from './field/input/component';
-import { FieldsetFieldInputProps } from './field/input/component.interface';
-import { FieldsetFieldLabel } from './field/label/component';
-import { FieldsetFieldLabelProps } from './field/label/component.interface';
-import { FieldsetHint } from './hint/component';
-import { FieldsetHintType } from './hint/component.enums';
-import { FieldsetHintProps } from './hint/component.interface';
+import { FieldsetField } from './components/field/component';
+import { FieldsetFieldProps } from './components/field/component.interface';
+import { FieldsetFieldInput } from './components/field/input/component';
+import { FieldsetFieldInputProps } from './components/field/input/component.interface';
+import { FieldsetFieldLabel } from './components/field/label/component';
+import { FieldsetFieldLabelProps } from './components/field/label/component.interface';
+import { FieldsetHint } from './components/hint/component';
+import { FieldsetHintType } from './components/hint/component.enums';
+import { FieldsetHintProps } from './components/hint/component.interface';
 
 export const Fieldset = Object.assign(Component, {
   Field: Object.assign(FieldsetField, {

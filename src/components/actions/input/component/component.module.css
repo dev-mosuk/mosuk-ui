@@ -4,10 +4,7 @@
             width: 100%;
             height: calc(var(--spacing, 0.25rem) * 8);
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: calc(var(--spacing, 0.25rem) * 2);
+            display: block;
 
             background-color: white;
             color: var(--color-black, #000);

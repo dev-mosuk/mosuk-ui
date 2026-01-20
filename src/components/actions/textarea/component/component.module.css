@@ -1,19 +1,17 @@
 @layer mosuk-ui {
     @layer index-11 {
         .textarea {
+            resize: none;
+            
             width: 100%;
             height: fit-content;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: calc(var(--spacing, 0.25rem) * 2);
+            display: block;
 
             background-color: white;
             color: var(--color-black, #000);
 
             font-size: var(--text-base, 1rem);
-            text-wrap: nowrap;
 
             padding-top: calc(var(--spacing, .25rem) * 1);
             padding-left: calc(var(--spacing, 0.25rem) * 3.5);
@@ -22,7 +20,6 @@
 
             border-radius: var(--radius-2xl, 1rem);
             border: 1px solid var(--color-gray-200, oklch(0.928 0.006 264.531));
-
             outline: none;
 
             transition: all 200ms ease-in-out;

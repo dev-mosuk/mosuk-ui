@@ -2,7 +2,7 @@ import React from 'react';
 import { InputMask } from '../../component/component';
 import { InputMaskProps } from '../../component/component.interface';
 
-export function InputMaskPhoneInput({ ...props }: InputMaskProps) {
+export function InputMaskPhone({ ...props }: InputMaskProps) {
   return (
     <InputMask
       {...props}

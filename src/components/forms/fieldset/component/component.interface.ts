@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
-import { FieldsetContextProps } from './context/context.interface';
+import { FieldsetContextProps } from './providers/context/context.interface';
 
 export type FieldsetProps<C extends ElementType = 'fieldset'> = {
   as?: C;

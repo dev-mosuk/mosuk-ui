@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { ImageMinusIcon } from 'lucide-react';
-import React, { ElementType, SyntheticEvent, useState } from 'react';
+import React, { ElementType, SyntheticEvent, useEffect, useState } from 'react';
 import styles from '../component.module.css';
 import { ImageImageProps } from './component.interface';
 
@@ -15,6 +15,14 @@ export function ImageImage<C extends ElementType = 'img'>({
   const [imageValid, setImageValid] = useState<boolean | null>(
     src ? null : false
   );
+
+  useEffect(() => {
+    if (src) {
+      setImageValid(null); 
+    } else {
+      setImageValid(false);
+    }
+  }, [src]);
 
   const handleLoad = (event: SyntheticEvent<HTMLImageElement>) => {
     const img = event.currentTarget;

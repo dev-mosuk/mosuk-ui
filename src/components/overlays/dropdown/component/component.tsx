@@ -35,7 +35,6 @@ export function DropdownDropdown({
         alignOffset={props?.alignOffset ?? 0}
         side={props?.side ?? 'bottom'}
         sideOffset={props?.sideOffset ?? 8}
-        positionMethod={props?.positionMethod ?? 'fixed'}
       >
         {props?.children}
       </Popover.Positioner>

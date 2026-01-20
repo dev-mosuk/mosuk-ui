@@ -1,7 +1,6 @@
 import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
 
-export type TextareaProps<C extends ElementType = 'textarea'> = {
-  as?: C;  
+export type UploadLabelProps<C extends ElementType = 'label'> = {
+  as?: C;
   ref?: Ref<any>;
-  autosize?: boolean;
 } & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;
