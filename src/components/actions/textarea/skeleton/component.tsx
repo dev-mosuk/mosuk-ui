@@ -4,14 +4,12 @@ import { Skeleton } from '../../../../components/display/skeleton/component/comp
 import { TextareaSkeletonProps } from './component.interface';
 import styles from './component.module.css';
 
-export function TextareaSkeleton({ rows, ...props }: TextareaSkeletonProps) {
+export function TextareaSkeleton({ rows, ...rest }: TextareaSkeletonProps) {
   return (
-    <div
-      {...props}
-      className={classNames('mosuk-textarea-skeleton-textarea', styles.textarea, props?.className)}
-      style={{ '--rows': rows ?? 4 } as CSSProperties}
-    >      
-      <Skeleton className={styles.field ?? ''} />
-    </div>
+    <Skeleton
+      {...rest}
+      style={{ '--rows': rows ?? 3 } as CSSProperties}
+      className={classNames('mosuk-textarea-skeleton', styles.textarea, rest?.className)}
+    />
   );
 }

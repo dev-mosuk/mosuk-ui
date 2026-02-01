@@ -26,6 +26,7 @@ export function FieldsetFieldInput<C extends ElementType = 'input'>({
       {...rest}
       id={uniqueId}
       name={uniqueName}
+      placeholder={rest?.placeholder ?? ''}
       className={classNames(
         'mosuk-fieldset-field-input',
         styles.input,

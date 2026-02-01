@@ -10,8 +10,8 @@ export const Counter = forwardRef<HTMLSpanElement, CounterProps>((props, externa
   const ref = useRef<HTMLSpanElement>(null);
 
   // Преобразуем children в число
-  const targetValue = typeof children === 'number' 
-    ? children 
+  const targetValue = typeof children === 'number'
+    ? children
     : parseFloat(String(children).replace(/[^\d.,-]/g, '').replace(/,/g, '.')) || 0;
 
   // Определяем количество десятичных знаков в исходном числе
@@ -26,23 +26,28 @@ export const Counter = forwardRef<HTMLSpanElement, CounterProps>((props, externa
     const element = ref.current;
     if (!element) return;
 
-    // Устанавливаем целевое значение
-    element.style.setProperty('--value', String(targetValue));
-
     let rafId: number;
     let isActive = true;
 
+    // Небольшая задержка для запуска transition
+    requestAnimationFrame(() => {
+      if (!element || !isActive) return;
+
+      // Устанавливаем целевое значение для запуска CSS transition
+      element.style.setProperty('--value', String(targetValue));
+    });
+
     const animate = () => {
       if (!isActive || !element) return;
-      
+
       try {
         const currentValue = parseFloat(getComputedStyle(element).getPropertyValue('--value')) || 0;
         element.textContent = new Intl.NumberFormat('ru-RU', {
           minimumFractionDigits: 0,
           maximumFractionDigits: maxDigits,
         }).format(currentValue);
-      } catch {}
-      
+      } catch { }
+
       if (isActive) rafId = requestAnimationFrame(animate);
     };
 
@@ -70,9 +75,9 @@ export const Counter = forwardRef<HTMLSpanElement, CounterProps>((props, externa
       {...rest}
       ref={ref}
       className={classNames(styles.counter, className)}
-      style={{ '--value': targetValue, ...style } as React.CSSProperties}
+      style={{ '--value': 0, ...style } as React.CSSProperties}
     >
-      {targetValue}
+      0
     </Component>
   );
 });

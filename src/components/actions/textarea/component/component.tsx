@@ -17,8 +17,15 @@ export function Textarea<C extends ElementType = 'textarea'>({
   const { onChange, style, ref: propRef, ...restProps } = rest as any;
 
   const resizeNativeTextarea = (el: HTMLTextAreaElement) => {
-    el.style.height = '0px';
-    el.style.height = `${el.scrollHeight}px`;
+    const computedStyle = getComputedStyle(el);
+    const lineHeight = parseFloat(computedStyle.lineHeight) || 20;
+    const rows = el.getAttribute('rows') ? parseInt(el.getAttribute('rows')!) : 0;
+    const paddingAndBorder = el.offsetHeight - el.clientHeight;
+    const minHeight = rows > 0 ? rows * lineHeight + paddingAndBorder : 0;
+
+    el.style.height = 'auto';
+    const scrollHeight = el.scrollHeight;
+    el.style.height = minHeight > 0 ? `${Math.max(minHeight, scrollHeight)}px` : `${scrollHeight}px`;
   };
 
   const setRefs = useCallback(
@@ -30,7 +37,7 @@ export function Textarea<C extends ElementType = 'textarea'>({
         } else {
           try {
             (propRef as React.MutableRefObject<any>).current = node;
-          } catch {}
+          } catch { }
         }
       }
     },
