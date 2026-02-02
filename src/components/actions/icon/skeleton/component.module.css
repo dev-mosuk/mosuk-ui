@@ -13,14 +13,14 @@
             background-color: transparent;
             color: var(--color-gray-500, oklch(0.551 0.027 264.364));
 
-            padding: calc(var(--spacing, .25rem) * 2.25);
-            border-radius: calc(infinity * 1px);
-            outline: none;
-
             font-size: var(--text-base, 1rem);
             text-wrap: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
+
+            padding: calc(var(--spacing, .25rem) * 2.25);
+            border-radius: calc(infinity * 1px);
+            outline: none;
 
             transition: all 0.2s ease-in-out;
 

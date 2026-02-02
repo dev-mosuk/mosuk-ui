@@ -115,16 +115,6 @@
         "default": "./components/actions/input/(search)/skeleton/index.ts"
       }
     },
-    "./components/actions/input/(select)/component": {
-      "import": {
-        "default": "./components/actions/input/(select)/component/index.ts"
-      }
-    },
-    "./components/actions/input/(select)/skeleton": {
-      "import": {
-        "default": "./components/actions/input/(select)/skeleton/index.ts"
-      }
-    },
     "./components/actions/input/component": {
       "import": {
         "default": "./components/actions/input/component/index.ts"
@@ -135,14 +125,14 @@
         "default": "./components/actions/input/skeleton/index.ts"
       }
     },
-    "./components/actions/textarea/component": {
+    "./components/actions/select/component": {
       "import": {
-        "default": "./components/actions/textarea/component/index.ts"
+        "default": "./components/actions/select/component/index.ts"
       }
     },
-    "./components/actions/textarea/skeleton": {
+    "./components/actions/select/skeleton": {
       "import": {
-        "default": "./components/actions/textarea/skeleton/index.ts"
+        "default": "./components/actions/select/skeleton/index.ts"
       }
     },
     "./components/actions/switch/component": {
@@ -155,19 +145,19 @@
         "default": "./components/actions/switch/skeleton/index.ts"
       }
     },
+    "./components/actions/textarea/component": {
+      "import": {
+        "default": "./components/actions/textarea/component/index.ts"
+      }
+    },
+    "./components/actions/textarea/skeleton": {
+      "import": {
+        "default": "./components/actions/textarea/skeleton/index.ts"
+      }
+    },
     "./components/actions/upload/component": {
       "import": {
         "default": "./components/actions/upload/component/index.ts"
-      }
-    },
-    "./components/actions/upload/(files)/component": {
-      "import": {
-        "default": "./components/actions/upload/(files)/component/index.ts"
-      }
-    },
-    "./components/actions/upload/(files)/skeleton": {
-      "import": {
-        "default": "./components/actions/upload/(files)/skeleton/index.ts"
       }
     },
     "./components/collections/accordion/component": {
@@ -188,11 +178,6 @@
     "./components/collections/breadcrumbs/skeleton": {
       "import": {
         "default": "./components/collections/breadcrumbs/skeleton/index.ts"
-      }
-    },
-    "./components/forms/fieldset/component": {
-      "import": {
-        "default": "./components/forms/fieldset/component/index.ts"
       }
     },
     "./components/collections/table/(pagination)/component": {
@@ -343,6 +328,11 @@
     "./components/display/video/skeleton": {
       "import": {
         "default": "./components/display/video/skeleton/index.ts"
+      }
+    },
+    "./components/forms/fieldset/component": {
+      "import": {
+        "default": "./components/forms/fieldset/component/index.ts"
       }
     },
     "./components/integrations/tbank/terminal/component": {
@@ -530,14 +520,14 @@
         "default": "./hooks/auth/index.ts"
       }
     },
-    "./hooks/cart": {
+    "./hooks/storage/cookie": {
       "import": {
-        "default": "./hooks/cart/index.ts"
+        "default": "./hooks/storage/cookie/index.ts"
       }
     },
-    "./hooks/gdpr": {
+    "./hooks/storage/local": {
       "import": {
-        "default": "./hooks/gdpr/index.ts"
+        "default": "./hooks/storage/local/index.ts"
       }
     },
     "./providers/alerts": {
@@ -548,16 +538,6 @@
     "./providers/auth": {
       "import": {
         "default": "./providers/auth/index.ts"
-      }
-    },
-    "./providers/cart": {
-      "import": {
-        "default": "./providers/cart/index.ts"
-      }
-    },
-    "./providers/gdpr": {
-      "import": {
-        "default": "./providers/gdpr/index.ts"
       }
     },
     "./providers/tbank": {
@@ -580,49 +560,9 @@
         "default": "./services/alerts/index.ts"
       }
     },
-    "./services/fetch": {
-      "import": {
-        "default": "./services/fetch/index.ts"
-      }
-    },
     "./services/auth": {
       "import": {
         "default": "./services/auth/index.ts"
-      }
-    },
-    "./services/cart": {
-      "import": {
-        "default": "./services/cart/index.ts"
-      }
-    },
-    "./services/fetch/(swr)": {
-      "import": {
-        "default": "./services/fetch/(swr)/index.ts"
-      }
-    },
-    "./services/fetch/(swr)/(pagination)": {
-      "import": {
-        "default": "./services/fetch/(swr)/(pagination)/index.ts"
-      }
-    },
-    "./services/data/pagination": {
-      "import": {
-        "default": "./services/data/pagination/index.ts"
-      }
-    },
-    "./services/form/errors": {
-      "import": {
-        "default": "./services/form/errors/index.ts"
-      }
-    },
-    "./services/form/form": {
-      "import": {
-        "default": "./services/form/form/index.ts"
-      }
-    },
-    "./services/gdpr": {
-      "import": {
-        "default": "./services/gdpr/index.ts"
       }
     },
     "./services/storage/cookie": {
