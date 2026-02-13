@@ -1,5 +1,5 @@
 /* ! Sizes */
-@utility icon-4xs {        
+@utility icon-4xs {
     width: calc(var(--spacing, .25rem) * 3);
     height: calc(var(--spacing, .25rem) * 3);
     min-width: calc(var(--spacing, .25rem) * 3);
@@ -15,11 +15,11 @@
     font-size: var(--text-3xs, 0.5rem);
     text-wrap: nowrap;
     text-overflow: ellipsis;
-    
+
     cursor: pointer;
 
     transition: all 200ms ease-in-out;
- 
+
     & svg {
         width: 100%;
         height: 100%;
@@ -38,7 +38,7 @@
     }
 }
 
-@utility icon-3xs {        
+@utility icon-3xs {
     width: calc(var(--spacing, .25rem) * 4);
     height: calc(var(--spacing, .25rem) * 4);
     min-width: calc(var(--spacing, .25rem) * 4);
@@ -54,11 +54,11 @@
     font-size: var(--text-2xs, 0.625rem);
     text-wrap: nowrap;
     text-overflow: ellipsis;
-    
+
     cursor: pointer;
 
     transition: all 200ms ease-in-out;
- 
+
     & svg {
         width: 100%;
         height: 100%;
@@ -77,7 +77,7 @@
     }
 }
 
-@utility icon-2xs {        
+@utility icon-2xs {
     width: calc(var(--spacing, .25rem) * 5);
     height: calc(var(--spacing, .25rem) * 5);
     min-width: calc(var(--spacing, .25rem) * 5);
@@ -93,7 +93,7 @@
     font-size: var(--text-xs, 0.75rem);
     text-wrap: nowrap;
     text-overflow: ellipsis;
-    
+
     cursor: pointer;
 
     & svg {
@@ -114,7 +114,7 @@
     }
 }
 
-@utility icon-xs {        
+@utility icon-xs {
     width: calc(var(--spacing, .25rem) * 6);
     height: calc(var(--spacing, .25rem) * 6);
     min-width: calc(var(--spacing, .25rem) * 6);
@@ -130,7 +130,7 @@
     font-size: var(--text-sm, 0.875rem);
     text-wrap: nowrap;
     text-overflow: ellipsis;
-    
+
     cursor: pointer;
 
     transition: all 200ms ease-in-out;
@@ -153,7 +153,7 @@
     }
 }
 
-@utility icon-sm {        
+@utility icon-sm {
     width: calc(var(--spacing, .25rem) * 7);
     height: calc(var(--spacing, .25rem) * 7);
     min-width: calc(var(--spacing, .25rem) * 7);
@@ -169,7 +169,7 @@
     font-size: var(--text-sm, 0.875rem);
     text-wrap: nowrap;
     text-overflow: ellipsis;
-    
+
     cursor: pointer;
 
     transition: all 200ms ease-in-out;
@@ -192,7 +192,7 @@
     }
 }
 
-@utility icon-base {        
+@utility icon-base {
     width: calc(var(--spacing, .25rem) * 8);
     height: calc(var(--spacing, .25rem) * 8);
     min-width: calc(var(--spacing, .25rem) * 8);
@@ -208,7 +208,7 @@
     font-size: var(--text-base, 1rem);
     text-wrap: nowrap;
     text-overflow: ellipsis;
-    
+
     cursor: pointer;
 
     transition: all 200ms ease-in-out;
@@ -231,7 +231,7 @@
     }
 }
 
-@utility icon-md {        
+@utility icon-md {
     width: calc(var(--spacing, .25rem) * 9);
     height: calc(var(--spacing, .25rem) * 9);
     min-width: calc(var(--spacing, .25rem) * 9);
@@ -247,7 +247,7 @@
     font-size: var(--text-base, 1rem);
     text-wrap: nowrap;
     text-overflow: ellipsis;
-    
+
     cursor: pointer;
 
     transition: all 200ms ease-in-out;
@@ -262,7 +262,7 @@
     }
 }
 
-@utility icon-lg {        
+@utility icon-lg {
     width: calc(var(--spacing, .25rem) * 10);
     height: calc(var(--spacing, .25rem) * 10);
     min-width: calc(var(--spacing, .25rem) * 10);
@@ -272,13 +272,13 @@
     align-items: center;
     justify-content: center;
 
-    padding: calc(var(--spacing, .25rem) * 2.6125);
+    padding: calc(var(--spacing, .25rem) * 3);
     border-radius: calc(infinity * 1px);
 
     font-size: var(--text-lg, 1.125rem);
     text-wrap: nowrap;
     text-overflow: ellipsis;
-    
+
     cursor: pointer;
 
     transition: all 200ms ease-in-out;
@@ -301,7 +301,7 @@
     }
 }
 
-@utility icon-xl {        
+@utility icon-xl {
     width: calc(var(--spacing, .25rem) * 12);
     height: calc(var(--spacing, .25rem) * 12);
     min-width: calc(var(--spacing, .25rem) * 12);
@@ -311,13 +311,52 @@
     align-items: center;
     justify-content: center;
 
-    padding: calc(var(--spacing, .25rem) * 2.75);
+    padding: calc(var(--spacing, .25rem) * 3.5);
     border-radius: calc(infinity * 1px);
 
     font-size: var(--text-lg, 1.125rem);
     text-wrap: nowrap;
     text-overflow: ellipsis;
-    
+
+    cursor: pointer;
+
+    transition: all 200ms ease-in-out;
+
+    & svg {
+        width: 100%;
+        height: 100%;
+
+        outline: none;
+
+        transition: all 200ms ease-in-out;
+    }
+
+    &:not(:hover) {
+        transition: all 600ms ease-in-out;
+
+        & svg {
+            transition: all 600ms ease-in-out;
+        }
+    }
+}
+
+@utility icon-2xl {
+    width: calc(var(--spacing, .25rem) * 14);
+    height: calc(var(--spacing, .25rem) * 14);
+    min-width: calc(var(--spacing, .25rem) * 14);
+    min-height: calc(var(--spacing, .25rem) * 14);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: calc(var(--spacing, .25rem) * 4);
+    border-radius: calc(infinity * 1px);
+
+    font-size: var(--text-xl, 1.25rem);
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+
     cursor: pointer;
 
     transition: all 200ms ease-in-out;
@@ -576,7 +615,7 @@
 }
 
 @utility icon-outline-yellow-100 {
-    background-color: white; 
+    background-color: white;
     color: var(--color-yellow-500, oklch(0.795 0.184 86.047));
     border: 1px solid var(--color-yellow-100, oklch(0.973 0.071 103.193));
 

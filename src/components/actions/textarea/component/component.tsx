@@ -9,55 +9,87 @@ export function Textarea<C extends ElementType = 'textarea'>({
   ...rest
 }: TextareaProps<C>) {
   const Component = (as || 'textarea') as ElementType;
+
   const isNativeTextarea = !as || as === 'textarea';
-  const shouldAutosize = Boolean(autosize && isNativeTextarea);
+  const shouldAutosize = autosize && isNativeTextarea;
 
-  const localTextareaRef = useRef<HTMLTextAreaElement | null>(null);
-
+  const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const { onChange, style, ref: propRef, ...restProps } = rest as any;
 
-  const resizeNativeTextarea = (el: HTMLTextAreaElement) => {
-    const computedStyle = getComputedStyle(el);
-    const lineHeight = parseFloat(computedStyle.lineHeight) || 20;
-    const rows = el.getAttribute('rows') ? parseInt(el.getAttribute('rows')!) : 0;
-    const paddingAndBorder = el.offsetHeight - el.clientHeight;
-    const minHeight = rows > 0 ? rows * lineHeight + paddingAndBorder : 0;
+  const resize = useCallback((el: HTMLTextAreaElement | null) => {
+    if (!el) return;
 
-    el.style.height = 'auto';
-    const scrollHeight = el.scrollHeight;
-    el.style.height = minHeight > 0 ? `${Math.max(minHeight, scrollHeight)}px` : `${scrollHeight}px`;
-  };
+    // Проверяем, виден ли элемент
+    const isVisible = el.offsetParent !== null;
+    if (!isVisible) return;
+
+    // Отключаем transition для мгновенного изменения высоты
+    const originalTransition = el.style.transition;
+    el.style.transition = 'none';
+
+    // Используем 1px вместо auto - не вызывает скролл страницы
+    el.style.height = '1px';
+    el.style.height = `${el.scrollHeight}px`;
+
+    // Восстанавливаем transition в следующем фрейме
+    requestAnimationFrame(() => {
+      el.style.transition = originalTransition;
+    });
+  }, []);
 
   const setRefs = useCallback(
     (node: any) => {
-      localTextareaRef.current = node instanceof HTMLTextAreaElement ? node : null;
+      textareaRef.current = node instanceof HTMLTextAreaElement ? node : null;
+
       if (propRef) {
         if (typeof propRef === 'function') {
           propRef(node);
         } else {
-          try {
-            (propRef as React.MutableRefObject<any>).current = node;
-          } catch { }
+          (propRef as React.MutableRefObject<any>).current = node;
         }
       }
     },
     [propRef],
   );
 
+  // Перерасчет при изменении value или defaultValue
   useEffect(() => {
-    if (shouldAutosize && localTextareaRef.current) {
-      resizeNativeTextarea(localTextareaRef.current);
+    if (shouldAutosize && textareaRef.current) {
+      resize(textareaRef.current);
     }
-  }, [shouldAutosize, (restProps as any)?.value, (restProps as any)?.defaultValue, restProps?.rows]);
+  }, [shouldAutosize, resize, restProps?.value, restProps?.defaultValue]);
+
+  // Отслеживаем появление элемента в DOM (для tabs с keepMounted)
+  useEffect(() => {
+    if (!shouldAutosize || !textareaRef.current) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && textareaRef.current) {
+            // Элемент стал видимым - пересчитываем высоту
+            resize(textareaRef.current);
+          }
+        });
+      },
+      { threshold: 0.01 },
+    );
+
+    observer.observe(textareaRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [shouldAutosize, resize]);
 
   const handleChange = useCallback(
     (e: any) => {
       if (shouldAutosize && e?.currentTarget instanceof HTMLTextAreaElement) {
-        resizeNativeTextarea(e.currentTarget);
+        resize(e.currentTarget);
       }
       onChange?.(e);
     },
-    [onChange, shouldAutosize],
+    [onChange, shouldAutosize, resize],
   );
 
   return (
@@ -69,7 +101,11 @@ export function Textarea<C extends ElementType = 'textarea'>({
       rows={restProps?.rows ?? 3}
       onChange={handleChange}
       style={shouldAutosize ? { ...style, overflowY: 'hidden' } : style}
-      className={classNames('mosuk-textarea', styles.textarea, restProps?.className)}
+      className={classNames(
+        'mosuk-textarea',
+        styles.textarea,
+        restProps?.className,
+      )}
     >
       {restProps?.children}
     </Component>

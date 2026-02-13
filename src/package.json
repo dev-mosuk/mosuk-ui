@@ -13,7 +13,7 @@
     "@dnd-kit/modifiers": "^9.0.0",
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
-    "lucide-react": "^0.503.0",
+    "lucide-react": "latest",
     "mosuk-utilities": "^1.0.0",
     "mosuk-icons": "^1.0.5",
     "react-hook-form": "^7.56.4",
@@ -223,6 +223,11 @@
     "./components/containers/buttons/component": {
       "import": {
         "default": "./components/containers/buttons/component/index.ts"
+      }
+    },
+    "./components/containers/div/component": {
+      "import": {
+        "default": "./components/containers/div/component/index.ts"
       }
     },
     "./components/containers/content/component": {
