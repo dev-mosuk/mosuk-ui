@@ -8,17 +8,17 @@
             --switch-track-off: var(--color-gray-300, oklch(0.872 0.01 258.338));
             --switch-track-on: var(--color-primary-500, #0074e7);
         }
- 
+
         .switch {
             appearance: none;
 
             width: var(--switch-width);
-            height: var(--switch-height);            
+            height: var(--switch-height);
 
             background-color: var(--switch-track-off);
 
             margin: 0;
- 
+
             border-radius: calc(infinity * 1px);
 
             outline: none;

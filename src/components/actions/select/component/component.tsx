@@ -3,7 +3,7 @@ import React, { ElementType, useId } from 'react';
 import styles from './component.module.css';
 import { SelectProps } from './component.props';
 
-export function Select<C extends ElementType = 'select'>({
+export function Select<C extends ElementType = 'input'>({
   as,
   ...rest
 }: SelectProps<C>) {

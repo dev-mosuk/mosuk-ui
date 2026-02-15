@@ -1,28 +1,22 @@
 import classNames from 'classnames';
-import React, { ElementType, useCallback, useContext } from 'react';
+import React, { ElementType, useCallback } from 'react';
 import { Button } from '../../../button/component/component';
 import styles from '../component.module.css';
-import { ToggleContext } from '../provider/context/context';
+import { useToggle } from '../hooks/hook';
 import { ToggleButtonProps } from './component.props';
 
 export function ToggleButton<C extends ElementType = 'button'>({
   as,
   value,
-  onClick,
   ...rest
 }: ToggleButtonProps<C>) {
   const Component = (as || 'button') as ElementType;
-
-  const context = useContext(ToggleContext);
-
-  if (!context) {
-    throw new Error('ToggleButton must be used within ToggleProvider');
-  }
+  const { value: activeValue, onChange, registerOption } = useToggle();
 
   const setRef = useCallback(
     (el: HTMLElement | null) => {
       const ref = rest?.ref;
-      context?.registerOption(value, el);
+      registerOption(value, el);
 
       if (typeof ref === 'function') {
         ref(el as any);
@@ -30,17 +24,18 @@ export function ToggleButton<C extends ElementType = 'button'>({
         (ref as { current: any }).current = el;
       }
     },
-    [context, value],
+    [registerOption, value],
   );
 
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
-      context?.onChange(value);
-      onClick?.(e);
+      onChange(value);
+      rest?.onClick?.(e);
     },
-
-    [context, value, onClick],
+    [onChange, value, rest?.onClick],
   );
+
+  const active = value === activeValue;
 
   return (
     <Button
@@ -48,11 +43,13 @@ export function ToggleButton<C extends ElementType = 'button'>({
       as={Component}
       ref={setRef}
       type={rest?.type || 'button'}
-      data-active={value === context?.value}
       onClick={handleClick}
       className={classNames(
         'mosuk-toggle-button',
         styles.button,
+        {
+          [styles.active]: active,
+        },
         rest?.className,
       )}
     >

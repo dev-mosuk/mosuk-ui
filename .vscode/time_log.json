@@ -1,0 +1,22 @@
+{
+  ".mosuk-ui": {
+    "package.json": [
+      {
+        "date": "2026-02-15T17:15:43.213Z",
+        "user": {
+          "name": "vostretsovr",
+          "email": "vostretsovr@gmail.com"
+        },
+        "timeSpent": 22
+      },
+      {
+        "date": "2026-02-15T18:09:23.926Z",
+        "user": {
+          "name": "vostretsovr",
+          "email": "vostretsovr@gmail.com"
+        },
+        "timeSpent": 3221
+      }
+    ]
+  }
+}

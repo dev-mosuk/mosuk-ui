@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { ToggleContext } from './context/context';
 import { ToggleProviderProps } from './provider.interface';
 
@@ -34,10 +34,13 @@ export function ToggleProvider({
     }
   }, []);
 
+  const contextValue = useMemo(
+    () => ({ value, onChange, optionRefs, registerOption }),
+    [value, onChange],
+  );
+
   return (
-    <ToggleContext.Provider
-      value={{ value, onChange, optionRefs, registerOption }}
-    >
+    <ToggleContext.Provider value={contextValue}>
       {children}
     </ToggleContext.Provider>
   );

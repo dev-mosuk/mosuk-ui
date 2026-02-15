@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import React, { ElementType, useContext, useEffect, useState } from 'react';
+import React, { ElementType, useEffect, useState } from 'react';
 import styles from '../component.module.css';
-import { ToggleContext } from '../provider/context/context';
+import { useToggle } from '../hooks/hook';
 import { ToggleIndicatorProps } from './component.props';
 
 export function ToggleIndicator<C extends ElementType = 'div'>({
@@ -9,23 +9,20 @@ export function ToggleIndicator<C extends ElementType = 'div'>({
   ...rest
 }: ToggleIndicatorProps<C>) {
   const Component = (as || 'div') as ElementType;
+
+  const { value, optionRefs } = useToggle();
   const [style, setStyle] = useState<{ left: number; width: number } | null>(
     null,
   );
 
-  const context = useContext(ToggleContext);
-
-  if (!context) {
-    throw new Error('ToggleIndicator must be used within ToggleProvider');
-  }
-
   useEffect(() => {
-    if (!context?.value || !context.optionRefs) {
+    if (!value) {
       return;
     }
 
     const updatePosition = () => {
-      const el = context.optionRefs.current.get(context.value);
+      const el = optionRefs.current.get(value);
+
       if (el) {
         setStyle({
           left: el.offsetLeft,
@@ -37,21 +34,24 @@ export function ToggleIndicator<C extends ElementType = 'div'>({
     };
 
     updatePosition();
-    requestAnimationFrame(updatePosition);
 
-    const el = context.optionRefs.current.get(context.value);
-    if (!el) return;
+    const el = optionRefs.current.get(value);
+
+    if (!el) {
+      return;
+    }
 
     const observer = new ResizeObserver(updatePosition);
     observer.observe(el);
 
     const parent = el.offsetParent;
+
     if (parent) {
       observer.observe(parent);
     }
 
     return () => observer.disconnect();
-  }, [context?.value, context?.optionRefs]);
+  }, [value, optionRefs]);
 
   return (
     <Component
@@ -66,6 +66,9 @@ export function ToggleIndicator<C extends ElementType = 'div'>({
       className={classNames(
         'mosuk-toggle-indicator',
         styles.indicator,
+        {
+          [styles.hidden]: !value,
+        },
         rest?.className,
       )}
     />
