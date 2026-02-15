@@ -23,8 +23,6 @@ export function Textarea<C extends ElementType = 'textarea'>({
     const isVisible = el.offsetParent !== null;
     if (!isVisible) return;
 
-    // Отключаем transition для мгновенного изменения высоты
-    const originalTransition = el.style.transition;
     el.style.transition = 'none';
 
     // Используем 1px вместо auto - не вызывает скролл страницы
@@ -33,7 +31,9 @@ export function Textarea<C extends ElementType = 'textarea'>({
 
     // Восстанавливаем transition в следующем фрейме
     requestAnimationFrame(() => {
-      el.style.transition = originalTransition;
+      if (el.style.transition) {
+        el.style.transition = '';
+      }
     });
   }, []);
 

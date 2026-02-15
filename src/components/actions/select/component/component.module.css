@@ -1,211 +1,173 @@
 @layer mosuk-ui {
-    @layer index-21 {
+    @layer index-11 {
         .select {
-            &:has(~ .arrow) {
-                padding-right: calc(var(--spacing, .25rem) * 10);
-            }
+            appearance: base-select;
+            -webkit-appearance: none;
 
-            &:not(:hover) {
-                &~.arrow {
-                    transition: all 0.6s ease-in-out;
+            width: 100%;
+            height: calc(var(--spacing, 0.25rem) * 8);
 
-                    & svg {
-                        transition: all 0.6s ease-in-out;
-                    }
-                }
+            display: flex;
+            align-items: center;
+
+            background-color: white;
+            color: var(--color-black, #000);
+
+            font-size: var(--text-base, 1rem);
+            text-wrap: nowrap;
+
+            padding-left: calc(var(--spacing, 0.25rem) * 3.5);
+            padding-right: calc(var(--spacing, 0.25rem) * 2.5);
+
+            border-radius: calc(infinity * 1px);
+            border: 1px solid var(--color-gray-200, oklch(0.928 0.006 264.531));
+
+            outline: none;
+
+            transition: all 200ms ease-in-out;
+
+            &::placeholder {
+                color: var(--color-gray-500, oklch(0.551 0.027 264.364));
             }
 
             &:hover {
-                &~.arrow {
-                    color: var(--color-primary-500, #0074e7);
-                    border-color: var(--color-primary-200, #b3deff);
-                }
+                border: 1px solid var(--color-primary-200, oklch(0.928 0.006 264.531));
             }
 
-            &:focus {
-                &~.arrow {
-                    color: var(--color-primary-500, #0074e7);
-                    border-color: var(--color-primary-500, #0074e7);
+            &:not(:hover) {
+                transition: all 600ms ease-in-out;
+            }
 
-                    & svg {
-                        transform: rotate(-180deg);
-                    }
-                }
+            &:disabled {
+                opacity: 50%;
+                pointer-events: none;
             }
         }
 
-        .arrow {
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: 1;
+        .select {
+            &::picker(select) {
+                appearance: base-select;
 
-            width: 2rem;
-            height: 2rem;
+                overflow-x: hidden;
+                top: calc(anchor(bottom));
 
-            color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-            padding: 0.625rem;
+                width: anchor-size(width, 100%);
 
-            border-left: 1px solid var(--color-gray-200, oklch(0.928 0.006 264.531));
+                padding: calc(var(--spacing, 0.25rem) * 1);
 
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
+                background-color: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(12px);
 
-            & svg {
-                width: 100%;
-                height: 100%;
-                transition: transform 0.2s ease-in-out;
-            }
-        }
-
-        .dropdown {
-            overflow-y: auto;
-
-            width: var(--anchor-width);
-            max-height: var(--available-height, 12rem);
-
-            padding: calc(var(--spacing, 0.25rem) * 1);
-
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
-
-            border: 1px solid var(--color-gray-200, oklch(0.928 0.006 264.531));
-            border-radius: var(--radius-lg, 0.5rem);
-            box-shadow: 0 10px 15px -3px var(--color-gray-100, oklch(0.967 0.003 264.542)), 0 4px 6px -4px var(--color-gray-100, oklch(0.967 0.003 264.542));
-
-            transform-origin: var(--transform-origin);
-            transition: transform 200ms, opacity 200ms;
-
-            &[data-starting-style],
-            &[data-ending-style] {
-                opacity: 0;
+                border: 1px solid var(--color-gray-100, oklch(0.967 0.003 264.542));
+                border-radius: calc(var(--spacing, 0.25rem) * 5);
+                box-shadow: 0 25px 50px -12px rgba(243, 244, 246, var(--tw-shadow-alpha, 0.5));
             }
 
-            &::-webkit-scrollbar {
-                width: calc(var(--spacing, .25rem) * 1);
-            }
+            &::picker-icon {
+                position: absolute;
+                right: calc(var(--spacing, 0.25rem) * 3.5);
 
-            .content {
-                display: flex;
-                flex-direction: column;
-                gap: calc(var(--spacing, 0.25rem) * 1);
+                mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
 
-                .button {
-                    width: 100%;
-                    height: calc(var(--spacing, .25rem) * 8);
+                width: calc(var(--spacing, 0.25rem) * 3.5);
+                height: calc(var(--spacing, 0.25rem) * 3.5);
+                min-width: calc(var(--spacing, 0.25rem) * 3.5);
+                min-height: calc(var(--spacing, 0.25rem) * 3.5);
 
-                    display: flex;
-                    align-items: center;
-                    justify-content: start;
-                    gap: calc(var(--spacing, .25rem) * 2);
-
-                    background-color: transparent;
-                    color: var(--color-black, oklch(0.001 0.001 261.692));
-
-                    font-size: var(--text-xs, .75rem);
-                    text-wrap: nowrap;
-
-                    padding-left: calc(var(--spacing, .25rem) * 2);
-                    padding-right: calc(var(--spacing, .25rem) * 2);
-
-                    border-radius: var(--radius-lg, 0.5rem);
-                    outline: none;
-
-                    cursor: pointer;
-                    transition: all 0.2s ease-in-out;
-
-                    .check {
-                        width: calc(var(--spacing, .25rem) * 3);
-                        height: calc(var(--spacing, .25rem) * 3);
-                        min-width: calc(var(--spacing, .25rem) * 3);
-                        min-height: calc(var(--spacing, .25rem) * 3);
-
-                        margin-left: auto;
-                    }
-
-                    svg {
-                        width: calc(var(--spacing, .25rem) * 3.5);
-                        height: calc(var(--spacing, .25rem) * 3.5);
-                        min-width: calc(var(--spacing, .25rem) * 3.5);
-                        min-height: calc(var(--spacing, .25rem) * 3.5);
-
-                        color: var(--color-gray-700, oklch(0.373 0.034 259.733));
-                        transition: all 0.2s ease-in-out;
-                    }
-
-                    &:hover,
-                    &.selected {
-                        background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
-                        color: var(--color-primary-500, #0074e7);
-
-                        svg {
-                            color: var(--color-primary-500, #0074e7);
-                        }
-                    }
-
-                    &:not(:hover) {
-                        transition: all 0.6s ease-in-out;
-
-                        svg {
-                            transition: all 0.6s ease-in-out;
-                        }
-                    }
-                }
-            }
-
-            .empty {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: calc(var(--spacing, 0.25rem) * 2);
-
-                width: 100%;
-                height: calc(var(--spacing, 0.25rem) * 8);
-
-                font-size: var(--text-sm, .875rem);
+                background-color: currentColor;
                 color: var(--color-gray-500, oklch(0.551 0.027 264.364));
 
+                transition: all 200ms ease-in-out;
+            }
+
+            &:open {
+                border: 1px solid var(--color-primary-500, oklch(0.551 0.027 264.364));
+
+                &::picker-icon {
+                    rotate: 180deg;
+                }
+            }
+
+            .option {
+                overflow: hidden;
+
+                width: 100%;
+                height: calc(var(--spacing, .25rem) * 8);
+
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                gap: calc(var(--spacing, .25rem) * 2);
+
+                background-color: transparent;
+                color: var(--color-black, #000);
+
+                font-size: var(--text-sm, 0.875rem);
+                text-wrap: nowrap;
+                text-overflow: ellipsis;
+
+                padding-left: calc(var(--spacing, .25rem) * 3);
+                padding-right: calc(var(--spacing, .25rem) * 3);
+                margin-top: calc(var(--spacing, .25rem) * 1);
+                margin-bottom: calc(var(--spacing, .25rem) * 1);
+
+                border-radius: calc(infinity * 1px);
+                border: 1px solid transparent;
+                outline: none;
+
+                user-select: none;
+                transition: all 200ms ease-in-out;
+
+                cursor: pointer;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                &::checkmark {
+                    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+
+                    position: absolute;
+                    right: calc(var(--spacing, .25rem) * 3.5);
+
+                    width: calc(var(--spacing, 0.25rem) * 3.5);
+                    height: calc(var(--spacing, 0.25rem) * 3.5);
+                    min-width: calc(var(--spacing, 0.25rem) * 3.5);
+                    min-height: calc(var(--spacing, 0.25rem) * 3.5);
+
+                    background-color: currentColor;
+                }
+
                 svg {
-                    width: calc(var(--spacing, 0.25rem) * 4);
-                    height: calc(var(--spacing, 0.25rem) * 4);
-                }
-            }
-        }
+                    width: calc(var(--spacing, .25rem) * 3.5);
+                    height: calc(var(--spacing, .25rem) * 3.5);
+                    min-width: calc(var(--spacing, .25rem) * 3.5);
+                    min-height: calc(var(--spacing, .25rem) * 3.5);
 
-        .fieldset {
-            &:has(.hint.info) {
-                .select {
-                    &~.arrow {
-                        color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-                        border-color: var(--color-gray-200, oklch(0.928 0.006 264.531));
-                    }
-                }
-            }
+                    color: var(--color-gray-500, oklch(0.551 0.027 264.364));
 
-            &:has(.hint.success) {
-                .select {
-                    &~.arrow {
-                        color: var(--color-green-500, oklch(0.723 0.219 149.579));
-                        border-color: var(--color-green-300, oklch(0.871 0.15 154.449));
-                    }
+                    transition: all 200ms ease-in-out;
                 }
-            }
 
-            &:has(.hint.warning) {
-                .select {
-                    &~.arrow {
-                        color: var(--color-orange-500, oklch(0.705 0.213 47.604));
-                        border-color: var(--color-orange-200, oklch(0.901 0.076 70.697));
+                &:hover,
+                &:checked {
+                    background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
+                    color: var(--color-primary-500, #0074e7);
+
+                    svg {
+                        color: var(--color-primary-500, #0074e7);
                     }
                 }
 
-            }
+                &:not(:hover) {
+                    transition: all 600ms ease-in-out;
 
-            &:has(.hint.error) {
-                .select {
-                    &~.arrow {
-                        color: var(--color-red-500, oklch(0.637 0.237 25.331));
-                        border-color: var(--color-red-200, oklch(0.885 0.062 18.334));
+                    svg {
+                        transition: all 600ms ease-in-out;
                     }
                 }
             }

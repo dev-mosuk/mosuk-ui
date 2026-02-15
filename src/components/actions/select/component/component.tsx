@@ -1,17 +1,26 @@
 import classNames from 'classnames';
-import React from 'react';
-import { Input } from '../../component/component';
-import { InputProps } from '../../component/component.interface';
+import React, { ElementType, useId } from 'react';
 import styles from './component.module.css';
+import { SelectProps } from './component.props';
 
-export function Select({ ref, children, ...rest }: InputProps) {
+export function Select<C extends ElementType = 'select'>({
+  as,
+  ...rest
+}: SelectProps<C>) {
+  const Component = (as || 'select') as ElementType;
+
+  const id = rest?.id ?? useId();
+  const name = rest?.name ?? id;
+
   return (
-    <Input
+    <Component
       {...rest}
-      ref={ref}
-      className={classNames(styles.fieldset, rest?.className)}
+      ref={rest?.ref}
+      id={id}
+      name={name}
+      className={classNames('mosuk-select', styles.select, rest?.className)}
     >
-      {children}
-    </Input>
+      {rest?.children}
+    </Component>
   );
 }

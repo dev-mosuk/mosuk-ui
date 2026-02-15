@@ -1,6 +1,8 @@
 @layer mosuk-ui {
     @layer index-11 {
         .input {
+            appearance: none;
+
             width: 100%;
             height: calc(var(--spacing, 0.25rem) * 8);
 
@@ -36,7 +38,7 @@
 
             &:read-only {
                 opacity: 50%;
-                pointer-events: none;                
+                pointer-events: none;
             }
 
             &:focus {

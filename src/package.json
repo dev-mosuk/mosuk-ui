@@ -135,6 +135,11 @@
         "default": "./components/actions/select/skeleton/index.ts"
       }
     },
+    "./components/actions/toggle/component": {
+      "import": {
+        "default": "./components/actions/toggle/component/index.ts"
+      }
+    },
     "./components/actions/switch/component": {
       "import": {
         "default": "./components/actions/switch/component/index.ts"

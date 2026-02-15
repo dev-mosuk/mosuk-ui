@@ -1,0 +1,68 @@
+@layer mosuk-ui {
+    @layer index-11 {
+        :root {
+            --toggle-padding: 2px;
+            --toggle-indicator-width: 0;
+        }
+
+        .toggle {
+            overflow-x: auto;
+
+            position: relative;
+
+            width: 100%;
+            height: calc(var(--spacing, .25rem) * 8);
+            max-width: 100%;
+
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            background-color: color-mix(in oklab, var(--color-white) 50%, transparent);
+            backdrop-filter: blur(18px);
+
+            padding: var(--toggle-padding);
+
+            border-radius: calc(infinity * 1px);
+            border: 1px solid color-mix(in oklab, var(--color-gray-200, oklch(0.928 0.006 264.531)) 50%, transparent);
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        .button {
+
+            &:hover,
+            &[data-active="true"] {
+                color: var(--color-primary-500, #0074e7);
+                background-color: transparent;
+
+                & svg {
+                    color: var(--color-primary-500, #0074e7);
+                }
+            }
+        }
+
+        .indicator {
+            position: absolute;
+            top: var(--toggle-padding);
+            left: 0;
+            bottom: var(--toggle-padding);
+            z-index: -1;
+
+            width: var(--toggle-indicator-width, 0);
+            height: calc(100% - var(--toggle-padding) * 2);
+
+            background-color: color-mix(in oklab, var(--color-gray-200, oklch(0.928 0.006 264.531)) 50%, transparent);
+            backdrop-filter: blur(8px);
+
+            border-radius: calc(infinity * 1px);
+
+            transform: translateX(var(--toggle-indicator-translate-x, 0));
+            transition-property: transform, width;
+            transition-duration: 400ms;
+            transition-timing-function: ease;
+        }
+    }
+}

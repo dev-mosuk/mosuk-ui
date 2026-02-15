@@ -1,30 +1,16 @@
-import { Input as ParentInput } from '../../component/component';
-import {
-  InputProps,
-  InputProps as ParentInputProps,
-} from '../../component/component.interface';
-import { InputHintType } from '../../component/hint/component.enums';
-import { InputSelectHint } from './hint/component';
-import { InputSelectInput as Component } from './input/component';
-import { InputSelectInputProps } from './input/component.interface';
+import { Select as SelectComponent } from './component';
+import { SelectProps } from './component.props';
+import { SelectOption } from './option/component';
+import { SelectOptionProps } from './option/component.props';
 
-const ChildInput = (props: ParentInputProps) => ParentInput(props);
-
-export const InputSelect = Object.assign(ChildInput, {
-  Input: Component,
-  Hint: Object.assign(InputSelectHint, {
-    Type: InputHintType,
-  }),
+export const Select = Object.assign(SelectComponent, {
+  Option: SelectOption,
 });
 
-export namespace InputSelect {
-  export type Props = InputProps;
+export namespace Select {
+  export type Props = SelectProps;
 
-  export namespace Input {
-    export type Props = InputSelectInputProps;
-  }
-
-  export namespace Hint {
-    export type Props = InputHintType;
+  export namespace Option {
+    export type Props = SelectOptionProps;
   }
 }

@@ -70,6 +70,12 @@
                         font-size: var(--text-xs, .75rem);
                     }
                 }
+
+                &:has(input.input:read-only),
+                &:has(textarea.input:read-only),
+                &:has(select.input:disabled) {
+                    pointer-events: none;
+                }
             }
 
             /* ? Hint */
