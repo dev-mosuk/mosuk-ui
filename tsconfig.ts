@@ -2,8 +2,12 @@ import { promises as fs } from 'fs';
 import * as path from 'path';
 
 async function exists(filePath: string): Promise<boolean> {
-  try { await fs.access(filePath); return true; }
-  catch { return false; }
+  try {
+    await fs.access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 async function updateExports() {
@@ -15,7 +19,7 @@ async function updateExports() {
   const pkg = JSON.parse(pkgText);
 
   const exportMap: Record<string, { import: { default: string } }> = {
-    './index.css': { import: { default: './index.css' } }
+    './index.css': { import: { default: './index.css' } },
   };
 
   async function walkDirs(dir: string) {
@@ -42,7 +46,7 @@ async function updateExports() {
   console.log('Updated exports based on index.ts files');
 }
 
-updateExports().catch(err => {
+updateExports().catch((err) => {
   console.error(err);
   process.exit(1);
-}); 
+});

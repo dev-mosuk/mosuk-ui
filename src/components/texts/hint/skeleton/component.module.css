@@ -29,6 +29,8 @@
 
                 color: var(--color-primary-500, #0074e7);
 
+                border-radius: calc(infinity * 1px);
+
                 margin-top: 0.025em;
             }
 
@@ -36,6 +38,8 @@
                 width: 50%;
                 height: var(--leading-4, 1em);
                 min-height: var(--leading-4, 1em);
+
+                border-radius: calc(infinity * 1px);
 
                 margin-top: calc(var(--spacing, .25rem) * 0.375);
             }

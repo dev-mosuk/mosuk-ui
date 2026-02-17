@@ -1,6 +1,6 @@
 {
   "name": "mosuk-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "mosuk",
   "license": "MIT",
   "private": false,
@@ -13,13 +13,13 @@
     "@dnd-kit/modifiers": "^9.0.0",
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
-    "lucide-react": "^0.503.0",
+    "lucide-react": "latest",
     "mosuk-utilities": "^1.0.0",
     "mosuk-icons": "^1.0.5",
     "react-hook-form": "^7.56.4",
     "react-imask": "^7.6.1",
     "swiper": "^11.2.6",
-    "swr": "^2.3.3"
+    "swr": "^2.3.8"
   },
   "peerDependencies": {
     "next": "^15.3.4 || ^16.0.0-beta.0",
@@ -115,16 +115,6 @@
         "default": "./components/actions/input/(search)/skeleton/index.ts"
       }
     },
-    "./components/actions/input/(select)/component": {
-      "import": {
-        "default": "./components/actions/input/(select)/component/index.ts"
-      }
-    },
-    "./components/actions/input/(select)/skeleton": {
-      "import": {
-        "default": "./components/actions/input/(select)/skeleton/index.ts"
-      }
-    },
     "./components/actions/input/component": {
       "import": {
         "default": "./components/actions/input/component/index.ts"
@@ -133,6 +123,31 @@
     "./components/actions/input/skeleton": {
       "import": {
         "default": "./components/actions/input/skeleton/index.ts"
+      }
+    },
+    "./components/actions/select/component": {
+      "import": {
+        "default": "./components/actions/select/component/index.ts"
+      }
+    },
+    "./components/actions/select/skeleton": {
+      "import": {
+        "default": "./components/actions/select/skeleton/index.ts"
+      }
+    },
+    "./components/actions/toggle/component": {
+      "import": {
+        "default": "./components/actions/toggle/component/index.ts"
+      }
+    },
+    "./components/actions/switch/component": {
+      "import": {
+        "default": "./components/actions/switch/component/index.ts"
+      }
+    },
+    "./components/actions/switch/skeleton": {
+      "import": {
+        "default": "./components/actions/switch/skeleton/index.ts"
       }
     },
     "./components/actions/textarea/component": {
@@ -145,14 +160,9 @@
         "default": "./components/actions/textarea/skeleton/index.ts"
       }
     },
-    "./components/actions/upload/files/component": {
+    "./components/actions/upload/component": {
       "import": {
-        "default": "./components/actions/upload/files/component/index.ts"
-      }
-    },
-    "./components/actions/upload/files/skeleton": {
-      "import": {
-        "default": "./components/actions/upload/files/skeleton/index.ts"
+        "default": "./components/actions/upload/component/index.ts"
       }
     },
     "./components/collections/accordion/component": {
@@ -218,6 +228,11 @@
     "./components/containers/buttons/component": {
       "import": {
         "default": "./components/containers/buttons/component/index.ts"
+      }
+    },
+    "./components/containers/div/component": {
+      "import": {
+        "default": "./components/containers/div/component/index.ts"
       }
     },
     "./components/containers/content/component": {
@@ -325,6 +340,11 @@
         "default": "./components/display/video/skeleton/index.ts"
       }
     },
+    "./components/forms/fieldset/component": {
+      "import": {
+        "default": "./components/forms/fieldset/component/index.ts"
+      }
+    },
     "./components/integrations/tbank/terminal/component": {
       "import": {
         "default": "./components/integrations/tbank/terminal/component/index.ts"
@@ -403,6 +423,11 @@
     "./components/texts/a/skeleton": {
       "import": {
         "default": "./components/texts/a/skeleton/index.ts"
+      }
+    },
+    "./components/texts/counter/component": {
+      "import": {
+        "default": "./components/texts/counter/component/index.ts"
       }
     },
     "./components/texts/h1/component": {
@@ -505,14 +530,14 @@
         "default": "./hooks/auth/index.ts"
       }
     },
-    "./hooks/cart": {
+    "./hooks/storage/cookie": {
       "import": {
-        "default": "./hooks/cart/index.ts"
+        "default": "./hooks/storage/cookie/index.ts"
       }
     },
-    "./hooks/gdpr": {
+    "./hooks/storage/local": {
       "import": {
-        "default": "./hooks/gdpr/index.ts"
+        "default": "./hooks/storage/local/index.ts"
       }
     },
     "./providers/alerts": {
@@ -523,16 +548,6 @@
     "./providers/auth": {
       "import": {
         "default": "./providers/auth/index.ts"
-      }
-    },
-    "./providers/cart": {
-      "import": {
-        "default": "./providers/cart/index.ts"
-      }
-    },
-    "./providers/gdpr": {
-      "import": {
-        "default": "./providers/gdpr/index.ts"
       }
     },
     "./providers/tbank": {
@@ -555,44 +570,9 @@
         "default": "./services/alerts/index.ts"
       }
     },
-    "./services/api": {
-      "import": {
-        "default": "./services/api/index.ts"
-      }
-    },
     "./services/auth": {
       "import": {
         "default": "./services/auth/index.ts"
-      }
-    },
-    "./services/cart": {
-      "import": {
-        "default": "./services/cart/index.ts"
-      }
-    },
-    "./services/data/data": {
-      "import": {
-        "default": "./services/data/data/index.ts"
-      }
-    },
-    "./services/data/pagination": {
-      "import": {
-        "default": "./services/data/pagination/index.ts"
-      }
-    },
-    "./services/form/errors": {
-      "import": {
-        "default": "./services/form/errors/index.ts"
-      }
-    },
-    "./services/form/form": {
-      "import": {
-        "default": "./services/form/form/index.ts"
-      }
-    },
-    "./services/gdpr": {
-      "import": {
-        "default": "./services/gdpr/index.ts"
       }
     },
     "./services/storage/cookie": {

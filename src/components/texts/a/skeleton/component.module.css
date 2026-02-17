@@ -3,6 +3,8 @@
         .a {
             line-height: 0;
 
+            cursor: default;
+
             .text {
                 width: 100%;
                 height: 1.2em;
@@ -14,6 +16,10 @@
             }
 
             &:has(.icon) {
+                .icon {
+                    cursor: default;
+                }
+                
                 .text {
                     width: 50%;
 

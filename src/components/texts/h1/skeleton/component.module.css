@@ -22,7 +22,7 @@
                     border-radius: calc(infinity * 1px);
                 }
 
-                &:has(.icon) {
+                &:has(.icon) {                  
                     .text {
                         display: inline-flex;
 
@@ -53,6 +53,8 @@
                     font-size: var(--text-base, 1rem);
 
                     padding: calc(var(--spacing, .25rem) * 2.6125);
+
+                    cursor: default;
                 }
             }
         }

@@ -1,3 +1,6 @@
-import { HTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
 
-export interface ContentProps extends HTMLAttributes<HTMLDivElement> {}
+export type ContentProps<C extends ElementType = 'div'> = {
+  as?: C;
+  ref?: Ref<any>;
+} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;

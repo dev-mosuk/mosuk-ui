@@ -1,6 +1,6 @@
 {
   "name": "mosuk-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "scripts": {
     "watch": "node --loader ts-node/esm --watch=src tsconfig.ts",
@@ -14,13 +14,13 @@
     "@dnd-kit/modifiers": "^9.0.0",
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
-    "lucide-react": "^0.503.0",
+    "lucide-react": "latest",
     "mosuk-utilities": "^1.0.0",
     "mosuk-icons": "^1.0.5",
     "react-hook-form": "^7.56.4",
     "react-imask": "^7.6.1",
     "swiper": "^11.2.6",
-    "swr": "^2.3.3"
+    "swr": "^2.3.8"
   },
   "peerDependencies": {
     "next": "^15.3.4 || ^16.0.0-beta.0",

@@ -46,6 +46,8 @@
                     font-size: var(--text-xs, 0.75rem);
 
                     padding: calc(var(--spacing, .25rem) * 1.5);
+
+                    cursor: default;
                 }
             }
         }

@@ -1,3 +1,7 @@
-import { HTMLAttributes } from 'react';
+import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
 
-export interface InputSkeletonProps extends HTMLAttributes<HTMLDivElement> {}
+export type InputSkeletonProps<C extends ElementType = 'div'> = {
+  as?: C;
+  ref?: Ref<any>;
+} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;
+  
