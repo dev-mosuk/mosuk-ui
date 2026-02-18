@@ -1,4 +1,4 @@
-import { Popover } from '@base-ui-components/react/popover';
+import { Popover } from '@base-ui/react/popover';
 
 export interface DropdownProps extends Popover.Root.Props {}
 export interface DropdownTriggerProps extends Popover.Trigger.Props {}

@@ -1,8 +1,8 @@
-import { Accordion as BaseAccordion } from '@base-ui-components/react/accordion';
+import { Accordion as BaseAccordion } from '@base-ui/react/accordion';
 import classNames from 'classnames';
 import React from 'react';
 import {
-  AccordionProps
+    AccordionProps
 } from './component.interface';
 import styles from './component.module.css';
 

@@ -1,8 +1,8 @@
-import { Tabs as TabsComponent } from '@base-ui-components/react/tabs';
+import { Tabs as TabsComponent } from '@base-ui/react/tabs';
 import classNames from 'classnames';
 import React from 'react';
 import {
-  TabsHorizontalProps
+    TabsHorizontalProps
 } from './component.interface';
 import styles from './component.module.css';
 

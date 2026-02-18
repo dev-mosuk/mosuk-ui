@@ -1,4 +1,4 @@
-import { Popover } from '@base-ui-components/react';
+import { Popover } from '@base-ui/react';
 import { ComponentType, ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react';
 import { ButtonProps } from '../../component/component.interface';
 

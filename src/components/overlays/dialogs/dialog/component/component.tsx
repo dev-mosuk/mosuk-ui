@@ -1,13 +1,13 @@
-import { Dialog as BaseUiDialog } from '@base-ui-components/react/dialog';
+import { Dialog as BaseUiDialog } from '@base-ui/react/dialog';
 import React, {
-  CSSProperties,
-  MouseEvent,
-  TouchEvent,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
+    CSSProperties,
+    MouseEvent,
+    TouchEvent,
+    useCallback,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
 } from 'react';
 import { DialogProps } from './component.interface';
 import { DialogContext } from './context/component';

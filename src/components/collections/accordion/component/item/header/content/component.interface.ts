@@ -1,3 +1,3 @@
-import { Accordion } from '@base-ui-components/react/accordion';
+import { Accordion } from '@base-ui/react/accordion';
 
 export interface AccordionHeaderContentProps extends Accordion.Trigger.Props {}
