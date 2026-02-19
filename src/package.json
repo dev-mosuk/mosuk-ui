@@ -395,6 +395,11 @@
         "default": "./components/overlays/alert/component/index.ts"
       }
     },
+    "./components/overlays/observer/component": {
+      "import": {
+        "default": "./components/overlays/observer/component/index.ts"
+      }
+    },
     "./components/overlays/dialogs/dialog/(images)": {
       "import": {
         "default": "./components/overlays/dialogs/dialog/(images)/index.ts"

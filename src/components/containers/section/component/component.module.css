@@ -1,6 +1,8 @@
 @layer mosuk-ui {
     @layer index-13 {
         .section {
+            position: relative;
+
             display: flex;
             flex-direction: column;
             gap: calc(var(--spacing, .25rem) * 4);
