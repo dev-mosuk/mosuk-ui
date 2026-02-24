@@ -21,7 +21,7 @@
                 border-radius: calc(infinity * 1px);
             }
 
-            &:has(.icon) {                
+            &:has(.icon) {
                 .text {
                     display: inline-flex;
 

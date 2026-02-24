@@ -1,11 +1,13 @@
-import { InputMask as ParentComponent } from '../../component';
-import { InputMaskProps as ParentComponentProps } from '../../component/component.interface';
+import { InputMaskPhone as ParentComponent } from './component';
+import {
+  InputMaskPhoneProps,
+  InputMaskPhoneProps as ParentComponentProps,
+} from './component.interface';
 
-const Component = (props: ParentComponentProps) =>
-  ParentComponent(props);
+const Component = (props: ParentComponentProps) => ParentComponent(props);
 
 export const InputMaskPhone = Object.assign(Component, {});
 
 export namespace InputMaskPhone {
-  export type Props = ParentComponentProps;
+  export type Props = InputMaskPhoneProps;
 }

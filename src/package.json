@@ -140,6 +140,11 @@
         "default": "./components/actions/toggle/component/index.ts"
       }
     },
+    "./components/actions/toggle/skeleton": {
+      "import": {
+        "default": "./components/actions/toggle/skeleton/index.ts"
+      }
+    },
     "./components/actions/switch/component": {
       "import": {
         "default": "./components/actions/switch/component/index.ts"
@@ -433,6 +438,16 @@
     "./components/texts/counter/component": {
       "import": {
         "default": "./components/texts/counter/component/index.ts"
+      }
+    },
+    "./components/texts/data/component": {
+      "import": {
+        "default": "./components/texts/data/component/index.ts"
+      }
+    },
+    "./components/texts/data/skeleton": {
+      "import": {
+        "default": "./components/texts/data/skeleton/index.ts"
       }
     },
     "./components/texts/h1/component": {

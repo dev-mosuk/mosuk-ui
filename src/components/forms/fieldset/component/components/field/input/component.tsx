@@ -30,7 +30,7 @@ export function FieldsetFieldInput<C extends ElementType = 'input'>({
       className={classNames(
         'mosuk-fieldset-field-input',
         styles.input,
-        rest?.className
+        rest?.className,
       )}
     />
   );

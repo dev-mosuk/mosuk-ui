@@ -7,10 +7,12 @@ import { ToggleProviderProps } from './provider.interface';
 export function ToggleProvider({
   value: controlledValue,
   onChange: controlledOnChange,
+  containerRef,
   children,
 }: ToggleProviderProps) {
   const [uncontrolledValue, setUncontrolledValue] = useState<any | null>(null);
   const optionRefs = useRef<Map<any, HTMLElement>>(new Map());
+  const fallbackContainerRef = useRef<HTMLElement | null>(null);
 
   const value =
     controlledValue !== undefined ? controlledValue : uncontrolledValue;
@@ -35,8 +37,14 @@ export function ToggleProvider({
   }, []);
 
   const contextValue = useMemo(
-    () => ({ value, onChange, optionRefs, registerOption }),
-    [value, onChange],
+    () => ({
+      value,
+      onChange,
+      containerRef: containerRef ?? fallbackContainerRef,
+      optionRefs,
+      registerOption,
+    }),
+    [value, onChange, containerRef],
   );
 
   return (

@@ -1,18 +1,18 @@
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { SkeletonProps } from './component.interface';
 import styles from './component.module.css';
+import { ToggleSkeletonProps } from './component.props';
 
-export function Skeleton<C extends ElementType = 'div'>({
+export function ToggleSkeleton<C extends ElementType = 'div'>({
   as,
   ...rest
-}: SkeletonProps<C>) {
+}: ToggleSkeletonProps<C>) {
   const Component = (as || 'div') as ElementType;
 
   return (
     <Component
       {...rest}
-      className={classNames('mosuk-skeleton', styles.skeleton, rest?.className)}
+      className={classNames('mosuk-toggle', styles.toggle, rest?.className)}
     >
       {rest?.children}
     </Component>

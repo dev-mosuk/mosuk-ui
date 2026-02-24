@@ -10,7 +10,7 @@ export function ToggleIndicator<C extends ElementType = 'div'>({
 }: ToggleIndicatorProps<C>) {
   const Component = (as || 'div') as ElementType;
 
-  const { value, optionRefs } = useToggle();
+  const { value, containerRef, optionRefs } = useToggle();
   const [style, setStyle] = useState<{ left: number; width: number } | null>(
     null,
   );
@@ -41,17 +41,30 @@ export function ToggleIndicator<C extends ElementType = 'div'>({
       return;
     }
 
-    const observer = new ResizeObserver(updatePosition);
-    observer.observe(el);
+    const resizeObserver = new ResizeObserver(updatePosition);
+    resizeObserver.observe(el);
 
     const parent = el.offsetParent;
-
     if (parent) {
-      observer.observe(parent);
+      resizeObserver.observe(parent);
     }
 
-    return () => observer.disconnect();
-  }, [value, optionRefs]);
+    const container = containerRef.current;
+    const mutationObserver = container
+      ? new MutationObserver(updatePosition)
+      : null;
+    if (container && mutationObserver) {
+      mutationObserver.observe(container, {
+        childList: true,
+        subtree: false,
+      });
+    }
+
+    return () => {
+      resizeObserver.disconnect();
+      mutationObserver?.disconnect();
+    };
+  }, [value, containerRef, optionRefs]);
 
   return (
     <Component
