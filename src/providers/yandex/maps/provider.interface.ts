@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 
-export interface YandexMapsProviderProps {
+export interface YandexMapProviderProps {
   apiKey: string;
   children: ReactNode;
 }

@@ -1,14 +1,9 @@
 @layer mosuk-ui {
-    @layer index-10 {
+    @layer index-12 {
         .a {
-            display: block;
-
             font-size: var(--text-sm, 0.875rem);
             font-weight: 400;
-            text-align: start;
             line-height: var(--leading-relaxed, 1.625);
-
-            cursor: pointer;
 
             transition: all 200ms ease-in-out;
 
@@ -18,75 +13,6 @@
 
             &:hover {
                 color: var(--color-primary-500, #0074e7);
-            }
-
-            &:has(.icon) {
-                line-height: 0;
-
-
-                .text {
-                    display: inline-flex;
-
-                    width: auto;
-                    max-width: calc(100% - calc(var(--spacing, .25rem) * 7) - calc(var(--spacing, .25rem) * 2));
-
-                    line-height: var(--leading-relaxed, 1.625);
-                    vertical-align: top;
-
-                    margin-top: 0.20em;
-                    margin-left: calc(var(--spacing, .25rem) * 2);
-                }
-
-                &:not(:hover) {
-                    .icon {
-                        transition: all 600ms ease-in-out;
-
-                        svg {
-                            transition: all 600ms ease-in-out;
-                        }
-                    }
-
-                    .text {
-                        transition: all 600ms ease-in-out;
-                    }
-                }
-
-                &:hover {
-                    .icon {
-                        background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
-                        color: var(--color-primary-500, #0074e7);
-
-                        svg {
-                            color: var(--color-primary-500, #0074e7);
-                            transition: all 200ms ease-in-out;
-                        }
-
-                        transition: all 200ms ease-in-out;
-                    }
-
-                    .text {
-                        color: var(--color-primary-500, #0074e7);
-                        transition: all 200ms ease-in-out;
-                    }
-                }
-            }
-        }
-    }
-
-    @layer index-20 {
-        .a {
-            &:has(.icon) {
-                .icon {
-                    display: inline-flex;
-
-                    width: calc(var(--spacing, .25rem) * 7);
-                    height: calc(var(--spacing, .25rem) * 7);
-                    min-width: calc(var(--spacing, .25rem) * 7);
-                    min-height: calc(var(--spacing, .25rem) * 7);
-                    font-size: var(--text-base, 1rem);
-
-                    padding: calc(var(--spacing, .25rem) * 2);
-                }
             }
         }
     }

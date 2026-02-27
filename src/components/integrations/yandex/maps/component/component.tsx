@@ -1,32 +1,27 @@
-import classNames from 'classnames';
-import React, { useContext, useRef } from 'react';
-import { YandexMapsContext } from '../../../../../providers/yandex/maps/context/context';
-import { YandexMapsSkeleton } from '../skeleton/component';
-import { YandexMapsMapSkeleton } from '../skeleton/map/component';
-import type { YandexMapsProps } from './component.interface';
-import styles from './component.module.css';
+import React, { useContext } from 'react';
+import { YandexMapContext } from '../../../../../providers/yandex/maps/context/context';
+import { YandexMapSkeleton } from '../skeleton/component';
+import { YandexMapDefaultSchemeLayerSkeleton } from '../skeleton/default/scheme/layer/component';
+import type { YandexMapProps } from './component.interface';
 
-export function YandexMaps({ ...rest }: YandexMapsProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const context = useContext(YandexMapsContext);
+export function YandexMap({ ...rest }: YandexMapProps) {
+  const context = useContext(YandexMapContext);
 
   if (!context) {
-    throw new Error('YandexMaps должен использоваться внутри YandexMapsProvider');
+    throw new Error('YandexMap должен использоваться внутри YandexMap');
   }
 
   const { api, isLoading, error } = context;
 
   if (!api || isLoading || error) {
     return (
-      <YandexMapsSkeleton {...rest}>
-        <YandexMapsMapSkeleton />
-      </YandexMapsSkeleton>
+      <YandexMapSkeleton {...rest}>
+        <YandexMapDefaultSchemeLayerSkeleton />
+      </YandexMapSkeleton>
     );
   }
- 
-  return (
-    <div ref={containerRef} className={classNames(styles.yandexMaps, rest?.className)}>
-      {rest?.children}
-    </div>
-  );
+
+  const { YMap } = api;
+
+  return <YMap {...rest}>{rest?.children}</YMap>;
 }

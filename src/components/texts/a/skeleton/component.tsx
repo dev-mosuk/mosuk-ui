@@ -1,18 +1,22 @@
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import component from '../component/component.module.css';
+import { Skeleton } from '../../../display/skeleton/component/component';
 import { ASkeletonProps } from './component.interface';
-import skeleton from './component.module.css';
+import styles from './component.module.css';
 
-export function ASkeleton<C extends ElementType = 'div'>({ as, ...rest }: ASkeletonProps<C>) {
-  const Component = (as || 'div') as ElementType;
+export function ASkeleton<C extends ElementType = 'a'>({
+  as,
+  ...rest
+}: ASkeletonProps<C>) {
+  const Component = (as || 'a') as ElementType;
 
   return (
-    <Component
+    <Skeleton
       {...rest}
-      className={classNames('mosuk-a-skeleton', component.a, skeleton.a, rest?.className)}
+      as={Component}
+      className={classNames('mosuk-a-skeleton', styles.a, rest?.className)}
     >
       {rest?.children}
-    </Component>
+    </Skeleton>
   );
 }

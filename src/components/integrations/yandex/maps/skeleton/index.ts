@@ -1,16 +1,24 @@
-import { YandexMapsSkeleton as BaseYandexMapsSkeleton } from './component';
-import type { YandexMapsSkeletonProps } from './component.interface';
-import { YandexMapsMapSkeleton } from './map/component';
-import type { YandexMapsMapSkeletonProps } from './map/component.interface';
+import { YandexMapSkeleton as Component } from './component';
+import type { YandexMapSkeletonProps } from './component.interface';
+import { YandexMapDefaultSchemeLayerSkeleton } from './default/scheme/layer/component';
+import { YandexMapDefaultSchemeLayerSkeletonProps } from './default/scheme/layer/component.interface';
 
-export const YandexMapsSkeleton = Object.assign(BaseYandexMapsSkeleton, {
-  Map: YandexMapsMapSkeleton,
+export const YandexMapSkeleton = Object.assign(Component, {
+  Default: {
+    Scheme: {
+      Layer: YandexMapDefaultSchemeLayerSkeleton,
+    },
+  },
 });
 
-export namespace YandexMapsSkeleton {
-  export type Props = YandexMapsSkeletonProps;
+export namespace YandexMapSkeleton {
+  export type Props = YandexMapSkeletonProps;
 
-  export namespace Map {
-    export type Props = YandexMapsMapSkeletonProps;
+  export namespace Default {
+    export namespace Scheme {
+      export namespace Layer {
+        export type Props = YandexMapDefaultSchemeLayerSkeletonProps;
+      }
+    }
   }
 }

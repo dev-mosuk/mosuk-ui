@@ -1,7 +1,6 @@
 import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
 
-export type H2SkeletonProps<C extends ElementType = 'div'> = {
-    as?: C;
-    ref?: Ref<any>;
-  } & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;
-  
+export type H2SkeletonProps<C extends ElementType = 'h2'> = {
+  as?: C;
+  ref?: Ref<any>;
+} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;

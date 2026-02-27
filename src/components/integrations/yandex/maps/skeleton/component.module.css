@@ -1,20 +1,21 @@
 @layer mosuk-ui {
     @layer index-15 {
-        .yandexMaps {
+        .yandex_map {
             overflow: hidden;
 
             width: 100%;
             height: calc(var(--spacing, .25rem) * 100);
-        }
 
-        .yandexMapsMap {
-            svg {
+            .yandex_map_default_scheme_layer {
                 width: 100%;
                 height: 100%;
 
-                color: var(--color-gray-300, oklch(0.872 0.01 258.338));
+                color: var(--color-gray-200, oklch(0.928 0.006 264.531));
 
-                padding: 25%;
+                svg {
+                    width: 100%;
+                    height: 100%;
+                }
             }
         }
     }

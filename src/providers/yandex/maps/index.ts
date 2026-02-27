@@ -1,11 +1,11 @@
 import { createElement } from 'react';
-import { YandexMapsProvider as BaseYandexMapsProvider } from './provider';
-import { YandexMapsProviderProps } from './provider.interface';
+import { YandexMapProvider as BaseYandexMapProvider } from './provider';
+import { YandexMapProviderProps } from './provider.interface';
 
-export const YandexMapsProvider = (props: YandexMapsProviderProps) => {
-  return createElement(BaseYandexMapsProvider, props);
+export const YandexMapProvider = (props: YandexMapProviderProps) => {
+  return createElement(BaseYandexMapProvider, props);
 };
 
-export namespace YandexMapsProvider {
-  export type Props = YandexMapsProviderProps;
+export namespace YandexMapProvider {
+  export type Props = YandexMapProviderProps;
 }

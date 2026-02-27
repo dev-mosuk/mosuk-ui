@@ -15,4 +15,3 @@ export function A<C extends ElementType = 'a'>({ as, ...rest }: AProps<C>) {
     </Component>
   );
 }
- 

@@ -1,3 +1,6 @@
-import type { HTMLAttributes } from 'react';
+import type { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
 
-export interface YandexMapsSkeletonProps extends HTMLAttributes<HTMLDivElement> {}
+export type YandexMapSkeletonProps<C extends ElementType = 'div'> = {
+  as?: C;
+  ref?: Ref<any>;
+} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;

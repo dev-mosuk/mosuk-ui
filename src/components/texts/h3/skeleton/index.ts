@@ -1,23 +1,8 @@
 import { H3Skeleton as BaseH3Skeleton } from './component';
-import { H3SkeletonProps } from './component.interface';
-import { H3IconSKeleton } from './icon/component';
-import { H3IconSkeletonProps } from './icon/component.interface';
-import { H3TextSkeleton } from './text/component';
-import { H3TextSkeletonProps } from './text/component.interface';
+import type { H3SkeletonProps } from './component.interface';
 
-export const H3Skeleton = Object.assign(BaseH3Skeleton, {
-  Icon: H3IconSKeleton,
-  Text: H3TextSkeleton,
-});
+export const H3Skeleton = BaseH3Skeleton;
 
-export namespace H3 {
+export namespace H3Skeleton {
   export type Props = H3SkeletonProps;
-
-  export namespace Icon {
-    export type Props = H3IconSkeletonProps;
-  }
-
-  export namespace Text {
-    export type Props = H3TextSkeletonProps;
-  }
 }

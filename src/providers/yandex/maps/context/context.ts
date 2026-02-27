@@ -1,4 +1,6 @@
 import { createContext } from 'react';
-import { YandexMapsContextProps } from './context.interface';
+import { YandexMapContextProps } from './context.interface';
 
-export const YandexMapsContext = createContext<YandexMapsContextProps | null>(null);
+export const YandexMapContext = createContext<YandexMapContextProps | null>(
+  null,
+);

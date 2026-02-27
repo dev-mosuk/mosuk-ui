@@ -1,8 +1,8 @@
 import { ReactifiedModule } from '@yandex/ymaps3-types/reactify';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { YandexMapsContext } from './context/context';
-import { YandexMapsProviderProps } from './provider.interface';
+import { YandexMapContext } from './context/context';
+import { YandexMapProviderProps } from './provider.interface';
 
 declare global {
   interface Window {
@@ -12,16 +12,21 @@ declare global {
 
 const isBot = (): boolean => {
   if (typeof window === 'undefined') return true;
-  
+
   const userAgent = navigator.userAgent.toLowerCase();
   const botPatterns = ['googlebot', 'yandexbot'];
   return botPatterns.some((pattern) => userAgent.includes(pattern));
 };
 
-export const YandexMapsProvider = ({ apiKey, children }: YandexMapsProviderProps) => {
+export const YandexMapProvider = ({
+  apiKey,
+  children,
+}: YandexMapProviderProps) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [reactifiedApi, setReactifiedApi] = useState<ReactifiedModule<typeof ymaps3> | null>(null);
+  const [reactifiedApi, setReactifiedApi] = useState<ReactifiedModule<
+    typeof ymaps3
+  > | null>(null);
   const scriptInjectedRef = useRef<boolean>(false);
   const retryCountRef = useRef<number>(0);
   const maxRetries = 3;
@@ -39,7 +44,9 @@ export const YandexMapsProvider = ({ apiKey, children }: YandexMapsProviderProps
       await window.ymaps3.ready;
 
       // Импортируем и инициализируем reactify
-      const ymaps3Reactify = await window.ymaps3.import('@yandex/ymaps3-reactify');
+      const ymaps3Reactify = await window.ymaps3.import(
+        '@yandex/ymaps3-reactify',
+      );
       const reactify = ymaps3Reactify.reactify.bindTo(React, ReactDOM);
       const api = reactify.module(window.ymaps3);
 
@@ -53,8 +60,10 @@ export const YandexMapsProvider = ({ apiKey, children }: YandexMapsProviderProps
         setTimeout(() => {
           initializeApi();
         }, 2000);
-        
-        setError(`Попытка ${retryCountRef.current}/${maxRetries}. Повтор через 2с...`);
+
+        setError(
+          `Попытка ${retryCountRef.current}/${maxRetries}. Повтор через 2с...`,
+        );
       } else {
         setError('Не удалось загрузить карты после 3 попыток');
         setIsLoading(false);
@@ -69,11 +78,11 @@ export const YandexMapsProvider = ({ apiKey, children }: YandexMapsProviderProps
     script.src = `https://api-maps.yandex.ru/v3/?apikey=${apiKey}&lang=ru_RU`;
     script.async = true;
     script.defer = true;
-    
+
     script.onload = () => {
       initializeApi();
     };
-    
+
     script.onerror = () => {
       setError('Не удалось загрузить скрипт Yandex Maps');
       setIsLoading(false);
@@ -85,7 +94,11 @@ export const YandexMapsProvider = ({ apiKey, children }: YandexMapsProviderProps
 
   useEffect(() => {
     // Если API уже загружен
-    if (typeof window !== 'undefined' && window.ymaps3 && !scriptInjectedRef.current) {
+    if (
+      typeof window !== 'undefined' &&
+      window.ymaps3 &&
+      !scriptInjectedRef.current
+    ) {
       scriptInjectedRef.current = true;
       initializeApi();
       return;
@@ -105,8 +118,8 @@ export const YandexMapsProvider = ({ apiKey, children }: YandexMapsProviderProps
   };
 
   return (
-    <YandexMapsContext.Provider value={contextValue}>
+    <YandexMapContext.Provider value={contextValue}>
       {children}
-    </YandexMapsContext.Provider>
+    </YandexMapContext.Provider>
   );
 };
