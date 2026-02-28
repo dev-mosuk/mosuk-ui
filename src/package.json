@@ -405,14 +405,19 @@
         "default": "./components/overlays/observer/component/index.ts"
       }
     },
-    "./components/overlays/drawer/component": {
+    "./components/overlays/drawer/bottom/component": {
       "import": {
-        "default": "./components/overlays/drawer/component/index.ts"
+        "default": "./components/overlays/drawer/bottom/component/index.ts"
       }
     },
-    "./components/overlays/sidebar/component": {
+    "./components/overlays/drawer/right/component": {
       "import": {
-        "default": "./components/overlays/sidebar/component/index.ts"
+        "default": "./components/overlays/drawer/right/component/index.ts"
+      }
+    },
+    "./components/overlays/drawer/left/component": {
+      "import": {
+        "default": "./components/overlays/drawer/left/component/index.ts"
       }
     },
     "./components/overlays/dialogs/dialog/(images)": {
