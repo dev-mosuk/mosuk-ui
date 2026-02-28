@@ -405,6 +405,16 @@
         "default": "./components/overlays/observer/component/index.ts"
       }
     },
+    "./components/overlays/drawer/component": {
+      "import": {
+        "default": "./components/overlays/drawer/component/index.ts"
+      }
+    },
+    "./components/overlays/sidebar/component": {
+      "import": {
+        "default": "./components/overlays/sidebar/component/index.ts"
+      }
+    },
     "./components/overlays/dialogs/dialog/(images)": {
       "import": {
         "default": "./components/overlays/dialogs/dialog/(images)/index.ts"

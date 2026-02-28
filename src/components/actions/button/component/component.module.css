@@ -22,7 +22,7 @@
             padding-right: calc(var(--spacing, .25rem) * 4);
 
             border-radius: calc(infinity * 1px);
-            border: 1px solid transparent;
+            border: none;
             outline: none;
 
             user-select: none;

@@ -23,7 +23,6 @@ export const DialogImages = Object.assign(ChildDialog, {
     Images: Object.assign(DialogImagesDialogImages, {
       Image: DialogImagesDialogImagesImage,
     }),
-    
   }),
 });
 

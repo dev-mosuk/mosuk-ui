@@ -71,7 +71,7 @@
                 border-radius: calc(infinity * 1px);
 
                 transform: translateX(var(--toggle-indicator-translate-x));
-                transition: all 400ms ease-in-out;
+                transition: all 200ms ease-in-out;
 
                 &.loading {
                     transition: all 0ms ease-in-out;
