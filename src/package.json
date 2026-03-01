@@ -24,7 +24,8 @@
   "peerDependencies": {
     "next": "^15.3.4 || ^16.0.0-beta.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "framer-motion": "^12.34.3"
   },
   "devDependencies": {
     "@yandex/ymaps3-types": "^1.0.17595433"
@@ -405,29 +406,19 @@
         "default": "./components/overlays/observer/component/index.ts"
       }
     },
-    "./components/overlays/drawer/bottom/component": {
+    "./components/overlays/drawer/component": {
       "import": {
-        "default": "./components/overlays/drawer/bottom/component/index.ts"
+        "default": "./components/overlays/drawer/component/index.ts"
       }
     },
-    "./components/overlays/drawer/right/component": {
+    "./components/overlays/dialog/dialog/(images)": {
       "import": {
-        "default": "./components/overlays/drawer/right/component/index.ts"
+        "default": "./components/overlays/dialog/dialog/(images)/index.ts"
       }
     },
-    "./components/overlays/drawer/left/component": {
+    "./components/overlays/dialog/component": {
       "import": {
-        "default": "./components/overlays/drawer/left/component/index.ts"
-      }
-    },
-    "./components/overlays/dialogs/dialog/(images)": {
-      "import": {
-        "default": "./components/overlays/dialogs/dialog/(images)/index.ts"
-      }
-    },
-    "./components/overlays/dialogs/dialog/component": {
-      "import": {
-        "default": "./components/overlays/dialogs/dialog/component/index.ts"
+        "default": "./components/overlays/dialog/component/index.ts"
       }
     },
     "./components/overlays/dropdown/(pagination)/sort/component": {
