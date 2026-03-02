@@ -1,25 +1,25 @@
 @utility button-glass-transparent {
     background-color: color-mix(in oklab, var(--color-white) 0%, transparent);
     backdrop-filter: blur(8px);
-    color: var(--color-black, #000);
+    color: var(--color-black);
 
     border: none;
     box-shadow: var(--inset-shadow-sm, inset 0 1px 4px color-mix(in oklab, var(--color-gray-500) 20%, transparent));
 
     svg {
-        color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+        color: var(--color-gray-500);
     }
 }
 
 @utility button-glass-primary-100 {
-    background-color: color-mix(in oklab, var(--color-primary-100, #e0f2ff) 50%, transparent);
+    background-color: color-mix(in oklab, var(--color-primary-100) 50%, transparent);
     backdrop-filter: blur(8px);
-    color: var(--color-primary-500, #0074e7);
+    color: var(--color-primary-500);
 
     border: none;
     box-shadow: var(--inset-shadow-sm, inset 0 2px 4px color-mix(in oklab, var(--color-primary-300) 50%, transparent));
 
     svg {
-        color: var(--color-primary-500, #0074e7);
+        color: var(--color-primary-500);
     }
 }

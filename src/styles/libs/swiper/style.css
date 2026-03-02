@@ -1,0 +1,14 @@
+@layer theme {
+    @import 'swiper/css';
+    @import 'swiper/css/navigation';
+    @import 'swiper/css/pagination';
+
+    :root {
+        --swiper-theme-color: var(--color-primary-500, #0074e7);
+    }
+}
+
+@layer base {
+    @import './navigation/style.css';
+    @import './pagination/style.css';
+}

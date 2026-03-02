@@ -14,8 +14,6 @@ import { DialogPortalViewportPopup } from './portal/viewport/popup/component';
 import { DialogPortalViewportPopupProps } from './portal/viewport/popup/component.interface';
 import { DialogPortalViewportPopupContent } from './portal/viewport/popup/content/component';
 import { DialogPortalViewportPopupContentProps } from './portal/viewport/popup/content/component.interface';
-import { DialogPortalViewportPopupHandle } from './portal/viewport/popup/handle/component';
-import { DialogPortalViewportPopupHandleProps } from './portal/viewport/popup/handle/component.interface';
 
 export const Dialog = Object.assign(Component, {
   Open: DialogOpen,
@@ -24,7 +22,6 @@ export const Dialog = Object.assign(Component, {
     Viewport: Object.assign(DialogPortalViewport, {
       Backdrop: DialogPortalViewportBackdrop,
       Popup: Object.assign(DialogPortalViewportPopup, {
-        Handle: DialogPortalViewportPopupHandle,
         Content: DialogPortalViewportPopupContent,
       }),
     }),
@@ -54,10 +51,6 @@ export namespace Dialog {
 
       export namespace Popup {
         export type Props = DialogPortalViewportPopupProps;
-
-        export namespace Handle {
-          export type Props = DialogPortalViewportPopupHandleProps;
-        }
 
         export namespace Content {
           export type Props = DialogPortalViewportPopupContentProps;

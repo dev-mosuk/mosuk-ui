@@ -32,7 +32,7 @@ export function Images({ ref, ...rest }: ImagesProps) {
       as={Swiper}
       {...rest}
       ref={swiperRef}
-      modules={[Pagination, ...(rest?.modules || [])]}
+      modules={rest?.modules ? rest?.modules : [Pagination]}
       speed={rest?.speed ?? 400}
       spaceBetween={rest?.spaceBetween ?? 0}
       slidesPerView={rest?.slidesPerView ?? 1}
