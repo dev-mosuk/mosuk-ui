@@ -13,12 +13,12 @@ export function ImageImage<C extends ElementType = 'img'>({
   const Component = (as || 'img') as ElementType;
 
   const [imageValid, setImageValid] = useState<boolean | null>(
-    src ? null : false
+    src ? null : false,
   );
 
   useEffect(() => {
     if (src) {
-      setImageValid(null); 
+      setImageValid(null);
     } else {
       setImageValid(false);
     }
@@ -36,7 +36,8 @@ export function ImageImage<C extends ElementType = 'img'>({
 
   if (!src || imageValid === false) {
     return (
-      <ImageMinusIcon     
+      <ImageMinusIcon
+        {...rest}
         className={classNames(styles.svg, rest?.className)}
       />
     );

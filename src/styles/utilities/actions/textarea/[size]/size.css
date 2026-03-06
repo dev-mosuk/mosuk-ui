@@ -10,7 +10,7 @@
 
     padding-left: calc(var(--spacing, 0.25rem) * 2.5);
     padding-right: calc(var(--spacing, 0.25rem) * 2.5);
-    border-radius: calc(infinity * 1px);
+    border-radius: var(--radius-3xl, 1.5rem);
     outline: none;
 }
 
@@ -26,7 +26,7 @@
 
     padding-left: calc(var(--spacing, 0.25rem) * 2.75);
     padding-right: calc(var(--spacing, 0.25rem) * 2.75);
-    border-radius: calc(infinity * 1px);
+    border-radius: var(--radius-3xl, 1.5rem);
     outline: none;
 }
 
@@ -43,7 +43,7 @@
 
     padding-left: calc(var(--spacing, 0.25rem) * 3);
     padding-right: calc(var(--spacing, 0.25rem) * 3);
-    border-radius: calc(infinity * 1px);
+    border-radius: var(--radius-3xl, 1.5rem);
     outline: none;
 }
 
@@ -59,7 +59,7 @@
 
     padding-left: calc(var(--spacing, 0.25rem) * 3.5);
     padding-right: calc(var(--spacing, 0.25rem) * 3.5);
-    border-radius: calc(infinity * 1px);
+    border-radius: var(--radius-3xl, 1.5rem);
     outline: none;
 }
 
@@ -75,7 +75,7 @@
 
     padding-left: calc(var(--spacing, 0.25rem) * 4);
     padding-right: calc(var(--spacing, 0.25rem) * 4);
-    border-radius: calc(infinity * 1px);
+    border-radius: var(--radius-3xl, 1.5rem);
     outline: none;
 }
 
@@ -87,10 +87,10 @@
 
     display: block;
 
-    font-size: var(--text-sm, 0.875rem);
+    font-size: var(--text-base, 1rem);
 
     padding-left: calc(var(--spacing, 0.25rem) * 4);
     padding-right: calc(var(--spacing, 0.25rem) * 4);
-    border-radius: calc(infinity * 1px);
+    border-radius: var(--radius-3xl, 1.5rem);
     outline: none;
 }
