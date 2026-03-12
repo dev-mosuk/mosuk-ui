@@ -6,7 +6,7 @@
   "private": false,
   "type": "module",
   "dependencies": {
-    "@base-ui/react": "^1.2.0",
+    "@base-ui/react": "^1.3.0",
     "@dnd-kit/core": "^6.3.1",
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
@@ -136,16 +136,6 @@
         "default": "./components/actions/select/skeleton/index.ts"
       }
     },
-    "./components/actions/toggle/component": {
-      "import": {
-        "default": "./components/actions/toggle/component/index.ts"
-      }
-    },
-    "./components/actions/toggle/skeleton": {
-      "import": {
-        "default": "./components/actions/toggle/skeleton/index.ts"
-      }
-    },
     "./components/actions/switch/component": {
       "import": {
         "default": "./components/actions/switch/component/index.ts"
@@ -164,6 +154,16 @@
     "./components/actions/textarea/skeleton": {
       "import": {
         "default": "./components/actions/textarea/skeleton/index.ts"
+      }
+    },
+    "./components/actions/toggle/component": {
+      "import": {
+        "default": "./components/actions/toggle/component/index.ts"
+      }
+    },
+    "./components/actions/toggle/skeleton": {
+      "import": {
+        "default": "./components/actions/toggle/skeleton/index.ts"
       }
     },
     "./components/actions/upload/component": {
@@ -236,14 +236,14 @@
         "default": "./components/containers/buttons/component/index.ts"
       }
     },
-    "./components/containers/div/component": {
-      "import": {
-        "default": "./components/containers/div/component/index.ts"
-      }
-    },
     "./components/containers/content/component": {
       "import": {
         "default": "./components/containers/content/component/index.ts"
+      }
+    },
+    "./components/containers/div/component": {
+      "import": {
+        "default": "./components/containers/div/component/index.ts"
       }
     },
     "./components/containers/grid/component": {
@@ -401,24 +401,14 @@
         "default": "./components/overlays/alert/component/index.ts"
       }
     },
-    "./components/overlays/observer/component": {
+    "./components/overlays/dialog/component": {
       "import": {
-        "default": "./components/overlays/observer/component/index.ts"
+        "default": "./components/overlays/dialog/component/index.ts"
       }
     },
     "./components/overlays/drawer/component": {
       "import": {
         "default": "./components/overlays/drawer/component/index.ts"
-      }
-    },
-    "./components/overlays/dialog/dialog/(images)": {
-      "import": {
-        "default": "./components/overlays/dialog/dialog/(images)/index.ts"
-      }
-    },
-    "./components/overlays/dialog/component": {
-      "import": {
-        "default": "./components/overlays/dialog/component/index.ts"
       }
     },
     "./components/overlays/dropdown/(pagination)/sort/component": {
@@ -429,6 +419,11 @@
     "./components/overlays/dropdown/component": {
       "import": {
         "default": "./components/overlays/dropdown/component/index.ts"
+      }
+    },
+    "./components/overlays/observer/component": {
+      "import": {
+        "default": "./components/overlays/observer/component/index.ts"
       }
     },
     "./components/texts/a/component": {

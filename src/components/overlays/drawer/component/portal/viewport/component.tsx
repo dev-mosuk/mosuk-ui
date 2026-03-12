@@ -1,4 +1,4 @@
-import { DrawerPreview as BaseUiDrawer } from '@base-ui/react';
+import { Drawer as BaseUiDrawer } from '@base-ui/react';
 import classNames from 'classnames';
 import React from 'react';
 import styles from '../../component.module.css';
