@@ -11,8 +11,60 @@
     }
 }
 
+@utility icon-glass-gray-100 {
+    background-color: color-mix(in oklab, var(--color-gray-100) 50%, transparent);
+    backdrop-filter: blur(8px);
+    color: var(--color-gray-700);
+
+    border: none;
+    box-shadow: var(--inset-shadow-sm, inset 0 2px 4px color-mix(in oklab, var(--color-gray-300) 50%, transparent));
+
+    svg {
+        color: var(--color-gray-700);
+    }
+}
+
+@utility icon-glass-gray-200 {
+    background-color: color-mix(in oklab, var(--color-gray-200) 50%, transparent);
+    backdrop-filter: blur(8px);
+    color: var(--color-gray-900);
+
+    border: none;
+    box-shadow: var(--inset-shadow-sm, inset 0 2px 4px color-mix(in oklab, var(--color-gray-300) 50%, transparent));
+
+    svg {
+        color: var(--color-gray-900);
+    }
+}
+
+@utility icon-glass-gray-300 {
+    background-color: color-mix(in oklab, var(--color-gray-300) 50%, transparent);
+    backdrop-filter: blur(8px);
+    color: var(--color-black);
+
+    border: none;
+    box-shadow: var(--inset-shadow-sm, inset 0 2px 4px color-mix(in oklab, var(--color-gray-400) 50%, transparent));
+
+    svg {
+        color: var(--color-black);
+    }
+}
+
 @utility icon-glass-primary-100 {
     background-color: color-mix(in oklab, var(--color-primary-100) 50%, transparent);
+    backdrop-filter: blur(8px);
+    color: var(--color-primary-500);
+
+    border: none;
+    box-shadow: var(--inset-shadow-sm, inset 0 2px 4px color-mix(in oklab, var(--color-primary-300) 50%, transparent));
+
+    svg {
+        color: var(--color-primary-500);
+    }
+}
+
+@utility icon-glass-primary-200 {
+    background-color: color-mix(in oklab, var(--color-primary-200) 50%, transparent);
     backdrop-filter: blur(8px);
     color: var(--color-primary-500);
 
