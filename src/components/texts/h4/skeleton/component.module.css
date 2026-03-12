@@ -1,60 +1,16 @@
 @layer mosuk-ui {
-    @layer index-10 {
+    @layer index-11 {
         .h4 {
-            display: block;
+            display: inline-block;
 
             width: 100%;
+            height: 1.2em;
+            min-height: 1.2em;
 
             font-size: var(--text-sm, 0.875rem);
-            text-align: start;
-            line-height: 0;
+            line-height: var(--leading-none, 1);
 
-            .text {
-                display: inline-flex;
-
-                width: 100%;
-                height: 1.2em;
-                min-height: 1.2em;
-
-                line-height: 0;
-
-                border-radius: calc(infinity * 1px);
-            }
-
-            &:has(.icon) {
-                .text {
-                    display: inline-flex;
-
-                    width: 50%;
-                    max-width: calc(100% - calc(var(--spacing, .25rem) * 7) - calc(var(--spacing, .25rem) * 2));
-
-                    line-height: var(--leading-relaxed, 1.625);
-                    vertical-align: top;
-
-                    margin-top: 0.4em;
-                    margin-left: calc(var(--spacing, .25rem) * 2);
-                }
-            }
-        }
-    }
-
-    @layer index-20 {
-        .h4 {
-            &:has(.icon) {
-                .icon {
-                    display: inline-flex;
-
-                    width: calc(var(--spacing, .25rem) * 7);
-                    height: calc(var(--spacing, .25rem) * 7);
-                    min-width: calc(var(--spacing, .25rem) * 7);
-                    min-height: calc(var(--spacing, .25rem) * 7);
-                    font-size: var(--text-base, 1rem);
-
-                    padding: calc(var(--spacing, .25rem) * 2);
-
-                    cursor: default;
-                }
-            }
+            border-radius: calc(infinity * 1px);
         }
     }
 }

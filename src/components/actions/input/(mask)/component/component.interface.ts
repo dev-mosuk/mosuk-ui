@@ -1,8 +1,8 @@
-import { RefObject } from 'react';
+import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
 import { IMaskInputProps } from 'react-imask';
 
-export type InputMaskProps = IMaskInputProps<HTMLInputElement> & {
-  ref?: RefObject<HTMLInputElement | null>;
-
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
+export type InputMaskProps<C extends ElementType = 'input'> =
+  IMaskInputProps<HTMLInputElement> & {
+    as?: C;
+    ref?: Ref<any>;
+  } & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;

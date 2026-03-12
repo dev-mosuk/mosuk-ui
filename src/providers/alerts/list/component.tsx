@@ -1,4 +1,4 @@
-import { Toast } from '@base-ui-components/react/toast';
+import { Toast } from '@base-ui/react/toast';
 import classNames from 'classnames';
 import React, { cloneElement } from 'react';
 import { Alert } from '../../../components/overlays/alert/component/component';

@@ -5,5 +5,5 @@ import { time } from './time/util';
 export const date = {
   time: time,
   date: dateUtil,
-  full: full
+  full: full,
 };

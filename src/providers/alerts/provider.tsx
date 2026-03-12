@@ -1,4 +1,4 @@
-import { Toast } from '@base-ui-components/react/toast';
+import { Toast } from '@base-ui/react/toast';
 import React, { ReactNode, useEffect } from 'react';
 import { alertsService } from '../../services/alerts';
 import { AlertsContext } from './context/context';

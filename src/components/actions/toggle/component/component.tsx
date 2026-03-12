@@ -99,7 +99,7 @@ export function Toggle<C extends ElementType = 'div'>({
   }, [className]);
 
   return (
-    <ToggleProvider value={value} onChange={onChange}>
+    <ToggleProvider value={value} onChange={onChange} containerRef={containerRef}>
       <Component
         {...rest}
         ref={setRef}

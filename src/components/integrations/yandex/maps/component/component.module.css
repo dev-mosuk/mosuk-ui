@@ -1,10 +1,28 @@
 @layer mosuk-ui {
     @layer index-15 {
-        .yandexMaps {
+        .yandex_map {
             overflow: hidden;
 
             width: 100%;
             height: calc(var(--spacing, .25rem) * 100);
+        }
+
+        /* Кнопки Zoom: плавное приближение/удаление при клике.
+           Анимация зума карты задаётся через duration/easing в location при onZoomIn/onZoomOut. */
+        .yandexMapsZoomPlus,
+        .yandexMapsZoomMinus {
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .yandexMapsZoomPlus:active,
+        .yandexMapsZoomMinus:active {
+            opacity: 0.7;
+        }
+
+        .yandexMapsZoomPlus:disabled,
+        .yandexMapsZoomMinus:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
     }
 }

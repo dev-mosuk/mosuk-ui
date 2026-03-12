@@ -1,5 +1,10 @@
 import classNames from 'classnames';
-import React, { Children, isValidElement, useImperativeHandle, useRef } from 'react';
+import React, {
+  Children,
+  isValidElement,
+  useImperativeHandle,
+  useRef,
+} from 'react';
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Image } from '../../component/component';
@@ -19,7 +24,7 @@ export function Images({ ref, ...rest }: ImagesProps) {
   };
 
   const totalSlides = Children.toArray(rest?.children).filter(
-    (child) => isValidElement(child) && child.type === ImagesImage
+    (child) => isValidElement(child) && child.type === ImagesImage,
   );
 
   return (
@@ -27,7 +32,7 @@ export function Images({ ref, ...rest }: ImagesProps) {
       as={Swiper}
       {...rest}
       ref={swiperRef}
-      modules={[Pagination, ...(rest?.modules || [])]}
+      modules={rest?.modules ? rest?.modules : [Pagination]}
       speed={rest?.speed ?? 400}
       spaceBetween={rest?.spaceBetween ?? 0}
       slidesPerView={rest?.slidesPerView ?? 1}

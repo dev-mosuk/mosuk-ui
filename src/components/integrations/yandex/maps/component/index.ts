@@ -1,45 +1,72 @@
-import { YandexMaps as BaseYandexMaps } from './component';
-import type { YandexMapsProps } from './component.interface';
-import { YandexMapsMap } from './map/component';
-import type { YandexMapsMapProps } from './map/component.interface';
-import { YandexMapsMapDefaultFeaturesLayer } from './map/default_features_layer/component';
-import type { YandexMapsMapDefaultFeaturesLayerProps } from './map/default_features_layer/component.interface';
-import { YandexMapsMapDefaultSchemeLayer } from './map/default_scheme_layer/component';
-import type { YandexMapsMapDefaultSchemeLayerProps } from './map/default_scheme_layer/component.interface';
-import { YandexMapsMapFeature } from './map/feature/component';
-import { YandexMapsMapFeatureProps } from './map/feature/component.interface';
-import { YandexMapsMapMarker } from './map/marker/component';
-import type { YandexMapsMapMarkerProps } from './map/marker/component.interface';
+import { YandexMap as Component } from './component';
+import { YandexMapProps } from './component.interface';
+import { YandexMapControlsZoomProps } from './controls/zoom/component.interface';
+import { YandexMapControlsZoomMinus } from './controls/zoom/minus/component';
+import { YandexMapControlsZoomMinusProps } from './controls/zoom/minus/component.interface';
+import { YandexMapControlsZoomPlus } from './controls/zoom/plus/component';
+import { YandexMapControlsZoomPlusProps } from './controls/zoom/plus/component.interface';
+import { YandexMapDefaultFeaturesLayer } from './default/features/layer/component';
+import { YandexMapDefaultFeaturesLayerProps } from './default/features/layer/component.interface';
+import { YandexMapDefaultSchemeLayer } from './default/scheme/layer/component';
+import { YandexMapDefaultSchemeLayerProps } from './default/scheme/layer/component.interface';
+import { YandexMapFeature } from './feature/component';
+import { YandexMapFeatureProps } from './feature/component.interface';
+import { YandexMapMarker } from './marker/component';
+import { YandexMapMarkerProps } from './marker/component.interface';
 
-export const YandexMaps = Object.assign(BaseYandexMaps, {
-  Map: Object.assign(YandexMapsMap, {
-    DefaultSchemeLayer: YandexMapsMapDefaultSchemeLayer,
-    DefaultFeaturesLayer: YandexMapsMapDefaultFeaturesLayer,
-    Marker: YandexMapsMapMarker,
-    Feature: YandexMapsMapFeature,
-  }),
+export const YandexMap = Object.assign(Component, {
+  Default: {
+    Scheme: {
+      Layer: YandexMapDefaultSchemeLayer,
+    },
+    Features: {
+      Layer: YandexMapDefaultFeaturesLayer,
+    },
+  },
+  Controls: {
+    Zoom: {
+      Plus: YandexMapControlsZoomPlus,
+      Minus: YandexMapControlsZoomMinus,
+    },
+  },
+  Marker: YandexMapMarker,
+  Feature: YandexMapFeature,
 });
 
-export namespace YandexMaps {
-  export type Props = YandexMapsProps;
+export namespace YandexMap {
+  export type Props = YandexMapProps;
 
-  export namespace Map {
-    export type Props = YandexMapsMapProps;
-
-    export namespace DefaultSchemeLayer {
-      export type Props = YandexMapsMapDefaultSchemeLayerProps;
+  export namespace Default {
+    export namespace Scheme {
+      export namespace Layer {
+        export type Props = YandexMapDefaultSchemeLayerProps;
+      }
     }
 
-    export namespace DefaultFeaturesLayer {
-      export type Props = YandexMapsMapDefaultFeaturesLayerProps;
+    export namespace Features {
+      export namespace Layer {
+        export type Props = YandexMapDefaultFeaturesLayerProps;
+      }
     }
+  }
 
-    export namespace Marker {
-      export type Props = YandexMapsMapMarkerProps;
+  export namespace Controls {
+    export namespace Zoom {
+      export type Props = YandexMapControlsZoomProps;
+      export namespace Plus {
+        export type Props = YandexMapControlsZoomPlusProps;
+      }
+      export namespace Minus {
+        export type Props = YandexMapControlsZoomMinusProps;
+      }
     }
+  }
 
-    export namespace Feature {
-      export type Props = YandexMapsMapFeatureProps;
-    }
+  export namespace Marker {
+    export type Props = YandexMapMarkerProps;
+  }
+
+  export namespace Feature {
+    export type Props = YandexMapFeatureProps;
   }
 }

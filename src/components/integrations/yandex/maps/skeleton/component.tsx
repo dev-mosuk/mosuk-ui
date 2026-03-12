@@ -1,12 +1,26 @@
 import classNames from 'classnames';
-import React from 'react';
-import type { YandexMapsSkeletonProps } from './component.interface';
+import React, { ElementType } from 'react';
+import { Skeleton } from '../../../../display/skeleton/component/component';
+import type { YandexMapSkeletonProps } from './component.interface';
 import styles from './component.module.css';
 
-export function YandexMapsSkeleton({ ...rest }: YandexMapsSkeletonProps) {
+export function YandexMapSkeleton<C extends ElementType = 'div'>({
+  as,
+  ...rest
+}: YandexMapSkeletonProps<C>) {
+  const Component = (as || 'div') as ElementType;
+
   return (
-    <div {...rest} className={classNames(styles.yandexMaps, rest?.className)}>
+    <Skeleton
+      {...rest}
+      as={Component}
+      className={classNames(
+        'mosuk-yandex-map',
+        styles.yandex_map,
+        rest?.className,
+      )}
+    >
       {rest?.children}
-    </div>
+    </Skeleton>
   );
 }

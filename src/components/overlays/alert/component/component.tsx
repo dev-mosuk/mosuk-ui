@@ -1,4 +1,4 @@
-import { Toast } from '@base-ui-components/react/toast';
+import { Toast } from '@base-ui/react/toast';
 import React from 'react';
 import { AlertProps } from './component.interface';
 

@@ -1,20 +1,20 @@
-import React from 'react';
+import classNames from 'classnames';
+import React, { ElementType } from 'react';
 import { GridProps } from './component.interface';
 import styles from './component.module.css';
 
-export function Grid({ ...props }: GridProps) {
+export function Grid<C extends ElementType = 'div'>({
+  as,
+  ...rest
+}: GridProps<C>) {
+  const Component = (as || 'div') as ElementType;
+
   return (
-    <div
-      {...props}
-      className={
-        'mosuk-grid' +
-        ' ' +
-        (styles.grid ?? '') +
-        ' ' +
-        (props?.className ?? '')
-      }
+    <Component
+      {...rest}
+      className={classNames('mosuk-grid', styles.grid, rest?.className)}
     >
-      {props?.children}
-    </div>
+      {rest?.children}
+    </Component>
   );
 }

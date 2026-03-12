@@ -1,3 +1,3 @@
-import { Tabs } from '@base-ui-components/react';
+import { Tabs } from '@base-ui/react';
 
 export interface TabsVerticalContentProps extends Tabs.Panel.Props {}

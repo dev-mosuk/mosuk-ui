@@ -1,10 +1,10 @@
-import { Popover } from '@base-ui-components/react/popover';
+import { Popover } from '@base-ui/react/popover';
 import React from 'react';
 import {
-  DropdownDropdownContentProps,
-  DropdownDropdownProps,
-  DropdownProps,
-  DropdownTriggerProps,
+    DropdownDropdownContentProps,
+    DropdownDropdownProps,
+    DropdownProps,
+    DropdownTriggerProps,
 } from './component.interface';
 import styles from './component.module.css';
 

@@ -1,4 +1,4 @@
-import { Toast } from '@base-ui-components/react/toast';
+import { Toast } from '@base-ui/react/toast';
 import { ReactNode } from 'react';
 
 export interface AlertsContextProps {  

@@ -18,4 +18,3 @@ export function Button<C extends ElementType = 'button'>({
     </Component>
   );
 }
- 

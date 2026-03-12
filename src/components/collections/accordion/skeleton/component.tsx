@@ -1,7 +1,6 @@
 import React from 'react';
 import { IconSkeleton } from '../../../actions/icon/skeleton/component';
 import { H3Skeleton } from '../../../texts/h3/skeleton/component';
-import { H3TextSkeleton } from '../../../texts/h3/skeleton/text/component';
 import {
   AccordionSkeletonHeaderContentProps,
   AccordionSkeletonHeaderIconProps,
@@ -22,7 +21,9 @@ export function AccordionSkeleton({ ...props }: AccordionSkeletonProps) {
   );
 }
 
-export function AccordionSkeletonItem({ ...props }: AccordionSkeletonItemProps) {
+export function AccordionSkeletonItem({
+  ...props
+}: AccordionSkeletonItemProps) {
   return (
     <div {...props} className={`${styles.item} ${props.className ?? ''}`}>
       {props?.children}
@@ -30,7 +31,9 @@ export function AccordionSkeletonItem({ ...props }: AccordionSkeletonItemProps) 
   );
 }
 
-export function AccordionSkeletonHeader({ ...props }: AccordionSkeletonHeaderProps) {
+export function AccordionSkeletonHeader({
+  ...props
+}: AccordionSkeletonHeaderProps) {
   return (
     <div {...props} className={`${styles.header} ${props.className ?? ''}`}>
       {props?.children}
@@ -38,14 +41,14 @@ export function AccordionSkeletonHeader({ ...props }: AccordionSkeletonHeaderPro
   );
 }
 
-export function AccordionSkeletonHeaderContent({ ...props }: AccordionSkeletonHeaderContentProps) {
-  return (
-    <H3Skeleton {...props}>
-      <H3TextSkeleton />
-    </H3Skeleton>
-  );
+export function AccordionSkeletonHeaderContent({
+  ...props
+}: AccordionSkeletonHeaderContentProps) {
+  return <H3Skeleton {...props} />;
 }
 
-export function AccordionSkeletonHeaderIcon({ ...props }: AccordionSkeletonHeaderIconProps) {
+export function AccordionSkeletonHeaderIcon({
+  ...props
+}: AccordionSkeletonHeaderIconProps) {
   return <IconSkeleton {...props} />;
 }
