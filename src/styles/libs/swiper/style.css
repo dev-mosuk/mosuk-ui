@@ -8,7 +8,5 @@
     }
 }
 
-@layer base {
-    @import './navigation/style.css';
-    @import './pagination/style.css';
-}
+@import './navigation/style.css';
+@import './pagination/style.css';
