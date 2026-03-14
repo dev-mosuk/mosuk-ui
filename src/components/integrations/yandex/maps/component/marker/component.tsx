@@ -5,7 +5,7 @@ import type { YandexMapMarkerProps } from './component.interface';
 export function YandexMapMarker({
   coordinates,
   children,
-  ...props
+  ...rest
 }: YandexMapMarkerProps) {
   const context = useContext(YandexMapContext);
 
@@ -14,7 +14,7 @@ export function YandexMapMarker({
   const { YMapMarker } = context.api;
 
   return (
-    <YMapMarker coordinates={coordinates} {...props}>
+    <YMapMarker coordinates={coordinates} {...rest}>
       {children}
     </YMapMarker>
   );
