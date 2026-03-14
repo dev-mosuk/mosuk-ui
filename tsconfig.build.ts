@@ -2,8 +2,12 @@ import { promises as fs } from 'fs';
 import * as path from 'path';
 
 async function exists(filePath: string): Promise<boolean> {
-  try { await fs.access(filePath); return true; }
-  catch { return false; }
+  try {
+    await fs.access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 async function copy(src: string, dest: string) {
@@ -27,7 +31,7 @@ async function updateExports() {
   const pkg = JSON.parse(pkgText);
 
   const exportMap: Record<string, { import: { default: string } }> = {
-    './index.css': { import: { default: './index.css' } }
+    './index.css': { import: { default: './index.css' } },
   };
 
   async function walkDirs(dir: string) {
@@ -77,14 +81,17 @@ async function main() {
     }
   }
   await copyCssModules(srcDir, distDir);
-  await copy(path.join(srcDir, 'package.json'), path.join(distDir, 'package.json'));
+  await copy(
+    path.join(srcDir, 'package.json'),
+    path.join(distDir, 'package.json'),
+  );
   await copy(path.join(srcDir, 'LICENSE'), path.join(distDir, 'LICENSE'));
-  
+
   // Обновляем exports после копирования package.json
   await updateExports();
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error(err);
   process.exit(1);
-}); 
+});
