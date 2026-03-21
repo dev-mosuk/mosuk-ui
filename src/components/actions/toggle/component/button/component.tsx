@@ -44,6 +44,7 @@ export function ToggleButton<C extends ElementType = 'button'>({
       ref={setRef}
       type={rest?.type || 'button'}
       onClick={handleClick}
+      data-value={value}
       className={classNames(
         'mosuk-toggle-button',
         styles.button,

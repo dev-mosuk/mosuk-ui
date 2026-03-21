@@ -9,7 +9,7 @@
     justify-content: center;
 
     padding: calc(var(--spacing, .25rem) * 0.85);
-    border-radius: calc(infinity * 1px)%;
+    border-radius: calc(infinity * 1px);
 
     font-size: var(--text-3xs, 0.5rem);
     text-wrap: nowrap;
