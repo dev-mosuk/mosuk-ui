@@ -13,10 +13,6 @@
 
             transition: all 200ms ease-in-out;
 
-            &:not(:hover) {
-                transition: all 0.6s ease-in-out;
-            }
-
             & svg {
                 width: var(--leading-4, 1em);
                 height: var(--leading-4, 1em);
@@ -28,25 +24,31 @@
                 margin-top: 0.25em;
             }
 
-            &.info {            
+            &.info {
                 svg {
                     color: var(--color-primary-500, #0074e7);
                 }
             }
 
             &.success {
+                color: var(--color-green-500, oklch(0.723 0.219 149.579));
+
                 svg {
                     color: var(--color-green-500, oklch(0.723 0.219 149.579));
                 }
             }
 
             &.warning {
+                color: var(--color-orange-500, oklch(0.705 0.213 47.604));
+
                 svg {
                     color: var(--color-orange-500, oklch(0.705 0.213 47.604));
                 }
             }
 
-            &.error {             
+            &.error {
+                color: var(--color-red-500, oklch(0.637 0.237 25.331));
+
                 svg {
                     color: var(--color-red-500, oklch(0.637 0.237 25.331));
                 }

@@ -1,65 +1,9 @@
-@utility icon-transparent-black {
+@utility icon-transparent-* {
     background-color: transparent;
-    color: var(--color-black, #000);
 
-    border: none;
+    color: --value(--color-*, [color]);
 
     svg {
-        color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-    }
-}
-
-@utility icon-transparent-red-500 {
-    background-color: transparent;
-    color: var(--color-red-500, oklch(0.637 0.237 25.331));
-
-    border: none;
-
-    svg {
-        color: var(--color-red-500, oklch(0.637 0.237 25.331));
-    }
-}
-
-@utility icon-transparent-orange-500 {
-    background-color: transparent;
-    color: var(--color-orange-500, oklch(0.705 0.213 47.604));
-
-    border: none;
-
-    svg {
-        color: var(--color-orange-500, oklch(0.705 0.213 47.604));
-    }
-}
-
-@utility icon-transparent-yellow-500 {
-    background-color: transparent;
-    color: var(--color-yellow-500, oklch(0.795 0.184 86.047));
-
-    border: none;
-
-    svg {
-        color: var(--color-yellow-500, oklch(0.795 0.184 86.047));
-    }
-}
-
-@utility icon-transparent-green-500 {
-    background-color: transparent;
-    color: var(--color-green-500, oklch(0.723 0.219 149.579));
-
-    border: none;
-
-    svg {
-        color: var(--color-green-500, oklch(0.723 0.219 149.579));
-    }
-}
-
-@utility icon-transparent-primary-500 {
-    background-color: transparent;
-    color: var(--color-primary-500, #0074e7);
-
-    border: none;
-
-    svg {
-        color: var(--color-primary-500, #0074e7);
+        color: --value(--color-*, [color]);
     }
 }

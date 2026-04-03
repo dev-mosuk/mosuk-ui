@@ -15,14 +15,15 @@ export function Hint<C extends ElementType = 'p'>({
   const hintType = type ?? HintTypeEnum.INFO;
   const ComponentIcon = HintTypeConstant[hintType as HintTypeEnum]?.icon;
 
-  if (!rest?.children) {
-    return null;
-  }
-
   return (
     <Component
       {...rest}
-      className={classNames('mosuk-hint', styles.hint, styles[hintType], rest.className)}
+      className={classNames(
+        'mosuk-hint',
+        styles.hint,
+        styles[hintType],
+        rest.className,
+      )}
     >
       <ComponentIcon />
       {rest?.children}

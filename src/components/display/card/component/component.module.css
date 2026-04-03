@@ -11,30 +11,12 @@
             background-color: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
 
-            padding: calc(var(--spacing, 0.25rem) * 3);
+            padding: calc(var(--spacing, 0.25rem) * 4);
             border: 1px solid var(--color-gray-100, oklch(.967 .003 264.542));
             border-radius: var(--radius-2xl, 1rem);
             outline: none;
-            box-shadow: 0 25px 50px -12px rgba(249, 250, 251, var(--tw-shadow-alpha, 0.5));
 
             transition: all 200ms ease-in-out;
-
-            &:not(:hover) {
-                transition: all 600ms ease-in-out;
-            }
-
-            &:hover {
-                border-color: var(--color-primary-100, #e0f2ff);
-                box-shadow: 0 25px 50px -12px rgba(243, 244, 246, var(--tw-shadow-alpha, 0.5));
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .card {
-                padding: calc(var(--spacing, 0.25rem) * 4);
-                border-radius: calc(var(--spacing, 0.25rem) * 5);
-            }
         }
     }
-
 }

@@ -1,7 +1,7 @@
 @layer mosuk-ui {
     @layer index-21 {
         :where(.toggle) {
-            --toggle-padding: 2px;
+            --toggle-padding: 0px;
         }
 
         .toggle {
@@ -18,13 +18,11 @@
             align-items: center;
             gap: calc(var(--spacing, .25rem) * 1);
 
-            background-color: color-mix(in oklab, var(--color-white) 50%, transparent);
-            backdrop-filter: blur(18px);
-
             padding: var(--toggle-padding);
 
             border-radius: calc(infinity * 1px);
-            border: 1px solid color-mix(in oklab, var(--color-gray-200, oklch(0.928 0.006 264.531)) 50%, transparent);
+            border: 1px solid transparent;
+            outline: none;
 
             &::-webkit-scrollbar {
                 display: none;

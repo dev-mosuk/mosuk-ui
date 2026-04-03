@@ -1,63 +1,7 @@
-@utility textarea-transparent-black {
+@utility textarea-transparent-* {
     background-color: transparent;
-    color: var(--color-black, #000);
 
-    border: 1px solid transparent;
-
-    &::placeholder {
-        color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-    }
-}
-
-@utility textarea-transparent-red-500 {
-    background-color: transparent;
-    color: var(--color-red-500, oklch(0.637 0.237 25.331));
-
-    border: 1px solid transparent;
-
-    &::placeholder {
-        color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-    }
-}
-
-@utility textarea-transparent-orange-500 {
-    background-color: transparent;
-    color: var(--color-orange-500, oklch(0.705 0.213 47.604));
-
-    border: 1px solid transparent;
-
-    &::placeholder {
-        color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-    }
-}
-
-@utility textarea-transparent-yellow-500 {
-    background-color: transparent;
-    color: var(--color-yellow-500, oklch(0.795 0.184 86.047));
-
-    border: 1px solid transparent;
-
-    &::placeholder {
-        color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-    }
-}
-
-@utility textarea-transparent-green-500 {
-    background-color: transparent;
-    color: var(--color-green-500, oklch(0.723 0.219 149.579));
-
-    border: 1px solid transparent;
-
-    &::placeholder {
-        color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-    }
-}
-
-@utility textarea-transparent-primary-500 {
-    background-color: transparent;
-    color: var(--color-primary-500, #0074e7);
-
-    border: 1px solid transparent;
+    color: --value(--color-*, [color]);
 
     &::placeholder {
         color: var(--color-gray-500, oklch(0.551 0.027 264.364));

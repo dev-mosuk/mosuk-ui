@@ -151,6 +151,16 @@
         "default": "./components/actions/textarea/component/index.ts"
       }
     },
+    "./components/actions/textarea/(autosize)/component": {
+      "import": {
+        "default": "./components/actions/textarea/(autosize)/component/index.ts"
+      }
+    },
+    "./components/actions/textarea/(autosize)/skeleton": {
+      "import": {
+        "default": "./components/actions/textarea/(autosize)/skeleton/index.ts"
+      }
+    },
     "./components/actions/textarea/skeleton": {
       "import": {
         "default": "./components/actions/textarea/skeleton/index.ts"

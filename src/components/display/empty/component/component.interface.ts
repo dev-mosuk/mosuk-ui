@@ -1,8 +1,6 @@
-import { HTMLAttributes } from 'react';
-import { ButtonsProps } from '../../../containers/buttons/component/component.interface';
+import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
 
-export interface EmptyProps extends HTMLAttributes<HTMLElement> {}
-export interface EmptyIconProps extends HTMLAttributes<HTMLDivElement> {}
-export interface EmptyTitleProps extends HTMLAttributes<HTMLHeadingElement> {}
-export interface EmptyButtonsProps extends ButtonsProps {}
-
+export type EmptyProps<C extends ElementType = 'section'> = {
+  as?: C;
+  ref?: Ref<any>;
+} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;

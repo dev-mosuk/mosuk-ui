@@ -1,0 +1,11 @@
+@layer mosuk-ui {
+    @layer index-21 {
+        .textarea {
+            transition: all 0ms ease-in-out;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    }
+}

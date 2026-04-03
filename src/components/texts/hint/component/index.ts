@@ -3,13 +3,11 @@ import { HintTypeConstant } from './component.constants';
 import { HintTypeEnum } from './component.enums';
 import { HintProps } from './component.interface';
 
-export const Hint = Object.assign(BaseHint, {  
-  ENUMS: {
-    Type: HintTypeEnum
+export const Hint = Object.assign(BaseHint, {
+  Type: {
+    ENUM: HintTypeEnum,
+    CONSTANT: HintTypeConstant,
   },
-  CONSTANTS: {
-    Type: HintTypeConstant
-  }
 });
 
 export namespace Hint {

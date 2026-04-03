@@ -7,6 +7,6 @@ export interface DropdownPaginationSortContextProps {
 }
 
 export interface DropdownPaginationSortProps extends DropdownProps {
-  params: Record<string, any>;
-  updateParams: (params: Record<string, any>) => Promise<any>;
+  params?: Record<string, any>;
+  updateParams?: (params: Record<string, any>) => void | Promise<void>;
 }

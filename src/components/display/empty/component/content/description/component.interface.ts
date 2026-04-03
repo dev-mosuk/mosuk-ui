@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
 
-export type TextareaProps<C extends ElementType = 'textarea'> = {
+export type EmptyContentDescriptionProps<C extends ElementType = 'p'> = {
   as?: C;
   ref?: Ref<any>;
 } & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;
