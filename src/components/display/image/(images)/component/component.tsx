@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Image } from '../../component/component';
+import { Image } from '../../component/components/component';
 import { ImagesProps } from './component.interface';
 import styles from './component.module.css';
 import { ImagesImage } from './image/component';

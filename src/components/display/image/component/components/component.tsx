@@ -1,52 +1,42 @@
 import classNames from 'classnames';
-import { ImageMinusIcon } from 'lucide-react';
 import React, { ElementType, SyntheticEvent, useEffect, useState } from 'react';
-import styles from '../component.module.css';
-import { ImageImageProps } from './component.interface';
+import { ImagePlaceholderConstants } from '../constants/placeholder/constants';
+import styles from '../styles/styles.module.css';
+import { ImageProps } from './component.interface';
 
-export function ImageImage<C extends ElementType = 'img'>({
+export function Image<C extends ElementType = 'img'>({
   as,
   src,
   alt,
   ...rest
-}: ImageImageProps<C>) {
+}: ImageProps<C>) {
   const Component = (as || 'img') as ElementType;
 
-  const [imageValid, setImageValid] = useState<boolean | null>(
-    src ? null : false,
+  const [activeSrc, setActiveSrc] = useState<string | undefined>(
+    src as string | undefined,
   );
 
   useEffect(() => {
-    if (src) {
-      setImageValid(null);
-    } else {
-      setImageValid(false);
-    }
+    setActiveSrc(src);
   }, [src]);
 
   const handleLoad = (event: SyntheticEvent<HTMLImageElement>) => {
     const img = event.currentTarget;
     const isValid = img.naturalWidth > 5 && img.naturalHeight > 5;
-    setImageValid(isValid);
+
+    if (!isValid) {
+      setActiveSrc(ImagePlaceholderConstants.default);
+    }
   };
 
   const handleError = () => {
-    setImageValid(false);
+    setActiveSrc(ImagePlaceholderConstants.default);
   };
-
-  if (!src || imageValid === false) {
-    return (
-      <ImageMinusIcon
-        {...rest}
-        className={classNames(styles.svg, rest?.className)}
-      />
-    );
-  }
 
   return (
     <Component
       {...rest}
-      src={src}
+      src={activeSrc ?? ImagePlaceholderConstants.default}
       alt={alt || 'Изображение'}
       onLoad={handleLoad}
       onError={handleError}

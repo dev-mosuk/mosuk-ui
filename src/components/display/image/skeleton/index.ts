@@ -1,16 +1,8 @@
 import { ImagesSkeletonProps } from '../(images)/skeleton/component.interface';
-import { ImageSkeleton as BaseImageSkeleton } from './component';
-import { ImageImageSkeleton as BaseImageImageSkeleton } from './image/component';
-import { ImageImageSkeletonProps } from './image/component.interface';
+import { ImageSkeleton as ImageSkeletonComponent } from './components/component';
 
-export const ImageSkeleton = Object.assign(BaseImageSkeleton, {
-  Image: BaseImageImageSkeleton
-});
+export const ImageSkeleton = Object.assign(ImageSkeletonComponent, {});
 
 export namespace ImageSkeleton {
   export type Props = ImagesSkeletonProps;
-
-  export namespace Image {
-    export type Props = ImageImageSkeletonProps;
-  }
 }

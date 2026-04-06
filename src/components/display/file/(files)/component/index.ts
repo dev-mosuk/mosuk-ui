@@ -1,4 +1,4 @@
-import { Image } from '../../../image/component/component';
+import { Image } from '../../../image/component/components/component';
 import { Images as BaseImages } from './component';
 import type { ImagesProps } from './component.interface';
 import { ImageProps } from './file/component.interface';
