@@ -1,0 +1,5 @@
+@utility action-transparent-* {
+    background-color: transparent;
+
+    color: --value(--color-*, [color]);
+}

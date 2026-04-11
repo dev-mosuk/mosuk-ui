@@ -1,9 +1,0 @@
-@utility input-transparent-* {
-    background-color: transparent;
-
-    color: --value(--color-*, [color]);
-
-    &::placeholder {
-        color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-    }
-}

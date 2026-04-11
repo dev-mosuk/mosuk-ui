@@ -1,0 +1,6 @@
+@utility action-fill-* {
+    background-color: color-mix(in oklab, --value(--color-*, [color]) 100%, transparent);
+    color: white;
+
+    border: none;
+}

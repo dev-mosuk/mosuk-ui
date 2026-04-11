@@ -1,9 +1,0 @@
-@utility icon-transparent-* {
-    background-color: transparent;
-
-    color: --value(--color-*, [color]);
-
-    svg {
-        color: --value(--color-*, [color]);
-    }
-}

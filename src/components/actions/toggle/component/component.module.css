@@ -48,11 +48,6 @@
                 &:hover,
                 &.active {
                     color: var(--color-primary-500, #0074e7);
-                    background-color: transparent;
-
-                    & svg {
-                        color: var(--color-primary-500, #0074e7);
-                    }
                 }
             }
 

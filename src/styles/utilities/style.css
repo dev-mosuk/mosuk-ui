@@ -1,6 +1,1 @@
-@import './actions/button/style.css';
-@import './actions/icon/style.css';
-@import './actions/input/style.css';
-@import './actions/textarea/style.css';
-
-@import './overlays/scrollbar/style.css';
+@import './action/style.css';

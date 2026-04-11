@@ -14,6 +14,8 @@
             color: var(--color-gray-500, oklch(0.551 0.027 264.364));
 
             padding: calc(var(--spacing, .25rem) * 2.25);
+
+            border: none;
             border-radius: calc(infinity * 1px);
             outline: none;
 
@@ -29,29 +31,9 @@
             svg {
                 width: 100%;
                 height: 100%;
-
-                color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-
                 outline: none;
 
                 transition: all 0.2s ease-in-out;
-            }
-
-            &:hover {
-                background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
-                color: var(--color-primary-500, #0074e7);
-
-                svg {
-                    color: var(--color-primary-500, #0074e7);
-                }
-            }
-
-            &:not(:hover) {
-                transition: all 600ms ease-in-out;
-
-                svg {
-                    transition: all 600ms ease-in-out;
-                }
             }
 
             &:disabled {
