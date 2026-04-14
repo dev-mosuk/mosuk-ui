@@ -44,7 +44,7 @@ export function InputSearch({ ...rest }: InputSearchProps) {
   return (
     <Input
       {...rest}
-      placeholder={rest?.placeholder ?? 'Поиск...'}
+      placeholder={rest?.placeholder ?? 'Поиск'}
       value={searchValue}
       onChange={handleInputChange}
     />

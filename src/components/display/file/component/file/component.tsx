@@ -1,7 +1,7 @@
 import { File as FileIcon, FileMinus } from 'lucide-react';
 import { AdobePdf } from 'mosuk-icons/shared/components/adobe/pdf';
 import React from 'react';
-import { ImageImage } from '../../../image/component/image/component';
+import { Image } from '../../../image/component/components/component';
 import styles from '../component.module.css';
 import { imageExtensions } from './component.constant';
 import { FileFileProps } from './component.interface';
@@ -17,7 +17,7 @@ export function FileFile({ src, alt, ...props }: FileFileProps) {
 
   if (imageExtensions.some((ext) => src.includes(ext))) {
     return (
-      <ImageImage
+      <Image
         {...props}
         src={src}
         alt={alt || 'Изображение'}

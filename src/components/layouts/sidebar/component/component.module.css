@@ -8,13 +8,6 @@
 
         .card {
             padding: 0;
-
-            cursor: default;
-
-            &:hover {
-                border-color: var(--color-gray-100, oklch(.967 .003 264.542));
-                box-shadow: 0 25px 50px -12px rgba(249, 250, 251, var(--tw-shadow-alpha, 0.5));
-            }
         }
 
         .button {

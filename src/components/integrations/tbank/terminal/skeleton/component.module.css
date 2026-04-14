@@ -10,6 +10,11 @@
         }
 
         .Article {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: calc(var(--spacing, .25rem) * 4);
+
             .H1Skeleton {
                 .H1TextSkeleton {
                     width: 50%;

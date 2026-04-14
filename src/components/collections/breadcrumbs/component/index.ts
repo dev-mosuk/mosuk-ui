@@ -1,9 +1,9 @@
-import { BreadcrumbsButton } from './button/component';
-import { BreadcrumbsButtonProps } from './button/component.interface';
-import { Breadcrumbs as BaseBreadcrumbs } from './component';
-import type { BreadcrumbsProps } from './component.interface';
-import { BreadcrumbsIcon } from './icon/component';
-import { BreadcrumbsIconProps } from './icon/component.interface';
+import { BreadcrumbsButton } from './.partials/components/button/component';
+import { BreadcrumbsButtonProps } from './.partials/components/button/component.interface';
+import { Breadcrumbs as BaseBreadcrumbs } from './.partials/components/component';
+import type { BreadcrumbsProps } from './.partials/components/component.interface';
+import { BreadcrumbsIcon } from './.partials/components/icon/component';
+import { BreadcrumbsIconProps } from './.partials/components/icon/component.interface';
 
 export const Breadcrumbs = Object.assign(BaseBreadcrumbs, {
   Icon: BreadcrumbsIcon,

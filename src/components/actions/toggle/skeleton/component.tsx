@@ -12,7 +12,11 @@ export function ToggleSkeleton<C extends ElementType = 'div'>({
   return (
     <Component
       {...rest}
-      className={classNames('mosuk-toggle', styles.toggle, rest?.className)}
+      className={classNames(
+        'mosuk-toggle-skeleton',
+        styles.toggle,
+        rest?.className,
+      )}
     >
       {rest?.children}
     </Component>

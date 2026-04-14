@@ -2,8 +2,6 @@ import classNames from 'classnames';
 import React, { ElementType } from 'react';
 import { ButtonSkeleton } from '../../../../actions/button/skeleton/component';
 import { IconSkeleton } from '../../../../actions/icon/skeleton/component';
-import { Article } from '../../../../containers/article/component';
-import { Buttons } from '../../../../containers/buttons/component';
 import { Section } from '../../../../containers/section/component';
 import { Card } from '../../../../display/card/component/component';
 import { H1Skeleton } from '../../../../texts/h1/skeleton/component';
@@ -28,11 +26,11 @@ export function TBankTerminalSkeleton<C extends ElementType = 'div'>({
       )}
     >
       <Section className={classNames(skeleton.Section)}>
-        <Article className={classNames(skeleton.Article)}>
+        <article className={classNames(skeleton.Article)}>
           <H1Skeleton className={classNames(skeleton.H1Skeleton)} />
 
           <IconSkeleton className={classNames(skeleton.IconSkeleton)} />
-        </Article>
+        </article>
 
         <Card className={classNames(skeleton.Amount)}>
           <H1Skeleton className={classNames(skeleton.H1Skeleton)} />
@@ -43,20 +41,20 @@ export function TBankTerminalSkeleton<C extends ElementType = 'div'>({
             <H1Skeleton className={classNames(skeleton.H1Skeleton)} />
           </H1Skeleton>
 
-          <Buttons className={classNames(skeleton.Buttons)}>
+          <div className={classNames(skeleton.Buttons)}>
             <ButtonSkeleton className={classNames(skeleton.Button)} />
             <ButtonSkeleton className={classNames(skeleton.Button)} />
             <ButtonSkeleton className={classNames(skeleton.Button)} />
-          </Buttons>
+          </div>
         </Card>
 
         <Card className={classNames(skeleton.BankCard)}>
           <H1Skeleton className={classNames(skeleton.H1Skeleton)} />
 
-          <Buttons className={classNames(skeleton.Buttons)}>
+          <div className={classNames(skeleton.Buttons)}>
             <ButtonSkeleton className={classNames(skeleton.Button)} />
             <ButtonSkeleton className={classNames(skeleton.Button)} />
-          </Buttons>
+          </div>
         </Card>
       </Section>
 

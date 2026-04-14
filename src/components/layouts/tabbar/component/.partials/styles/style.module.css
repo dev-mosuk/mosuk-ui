@@ -1,0 +1,23 @@
+@layer mosuk-ui {
+    @layer index-16 {
+        .tabbar {
+            position: fixed;
+            top: auto;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+
+            width: 100%;
+            height: calc(var(--spacing, .25rem) * 16);
+
+            margin: auto;
+        }
+
+        @media (min-width: 1024px) {
+            .tabbar {
+                display: none;
+            }
+        }
+    }
+}

@@ -2,7 +2,10 @@ import classNames from 'classnames';
 import React, { Children, isValidElement, useRef } from 'react';
 import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Image as ImageComponent, Image as ImageContainer } from '../../../image/component/component';
+import {
+  Image as ImageComponent,
+  Image as ImageContainer,
+} from '../../../image/component/components/component';
 import { ImagesProps } from './component.interface';
 import styles from './component.module.css';
 
@@ -16,9 +19,9 @@ export function Images({ ...rest }: ImagesProps) {
   };
 
   const totalSlides = Children.toArray(rest?.children).filter(
-    (child) => isValidElement(child) && child.type === ImageComponent
+    (child) => isValidElement(child) && child.type === ImageComponent,
   );
- 
+
   return (
     <ImageContainer
       as={Swiper}

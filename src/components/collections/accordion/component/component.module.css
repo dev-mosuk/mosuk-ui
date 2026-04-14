@@ -5,34 +5,21 @@
         .header {
           width: 100%;
 
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: calc(var(--spacing, .25rem) * 4);
-
-          .headerContent {
+          .trigger {
             width: 100%;
-
-            text-align: left;
-
-            cursor: pointer;
           }
         }
-      }
 
-      .content {
-        overflow: hidden;
-        height: var(--accordion-panel-height);
+        .content {
+          overflow: hidden;
+          height: var(--accordion-panel-height);
 
-        font-size: var(--text-sm, 0.875rem);
+          transition: height 150ms ease-out;
 
-        padding-top: calc(var(--spacing, .25rem) * 4);
-
-        transition: height 150ms ease-out;
-
-        &[data-starting-style],
-        &[data-ending-style] {
-          height: 0;
+          &[data-starting-style],
+          &[data-ending-style] {
+            height: 0;
+          }
         }
       }
     }

@@ -21,8 +21,8 @@
             padding-left: calc(var(--spacing, .25rem) * 4);
             padding-right: calc(var(--spacing, .25rem) * 4);
 
-            border-radius: calc(infinity * 1px);
             border: none;
+            border-radius: calc(infinity * 1px);
             outline: none;
 
             user-select: none;
@@ -36,26 +36,7 @@
                 min-width: calc(var(--spacing, .25rem) * 3.5);
                 min-height: calc(var(--spacing, .25rem) * 3.5);
 
-                color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-
                 transition: all 200ms ease-in-out;
-            }
-
-            &:hover {
-                background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
-                color: var(--color-primary-500, #0074e7);
-
-                svg {
-                    color: var(--color-primary-500, #0074e7);
-                }
-            }
-
-            &:not(:hover) {
-                transition: all 600ms ease-in-out;
-
-                svg {
-                    transition: all 600ms ease-in-out;
-                }
             }
 
             &:disabled {
