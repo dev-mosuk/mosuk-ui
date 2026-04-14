@@ -1,6 +1,10 @@
 @utility action-fill-* {
     background-color: color-mix(in oklab, --value(--color-*, [color]) 100%, transparent);
+    backdrop-filter: blur(18px);
     color: white;
 
     border: none;
+    box-shadow:
+        inset 3px 3px 7px -1px color-mix(in oklab, --value(--color-*, [color]) 90%, white),
+        inset -6px -6px 14px -4px color-mix(in oklab, --value(--color-*, [color]) 90%, white);
 }

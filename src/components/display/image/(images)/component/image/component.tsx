@@ -1,15 +1,15 @@
 import classNames from 'classnames';
 import React from 'react';
-import { ImageImage } from '../../../component/image/component';
+import { Image } from '../../../component/components/component';
 import { ImagesImageProps } from './component.interface';
 
 export function ImagesImage({ ...rest }: ImagesImageProps) {
   return (
-    <ImageImage
+    <Image
       {...rest}
       className={classNames('images-image', rest?.className)}
     >
       {rest?.children}
-    </ImageImage>
+    </Image>
   );
 }

@@ -7,7 +7,7 @@ export function Textarea<C extends ElementType = 'textarea'>({
   as,
   ...rest
 }: TextareaProps<C>) {
-  const Component = (as || 'input') as ElementType;
+  const Component = (as || 'textarea') as ElementType;
 
   const id = rest?.id ?? useId();
   const name = rest?.name ?? id;

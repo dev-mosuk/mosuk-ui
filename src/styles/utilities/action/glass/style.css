@@ -4,5 +4,9 @@
     color: --value(--color-*, [color]);
 
     border: none;
-    box-shadow: inset 0 2px 4px color-mix(in oklab, --value(--color-*, [color]) 25%, transparent);
+    /* Два inset: акцент у верхнего левого и нижнего правого угла; по центру и по другой диагонали слабее за счёт размытия и отсутствия перекрытия */
+    /* Два inset: акцент у верхнего левого и нижнего правого угла; по центру и по другой диагонали слабее за счёт размытия и отсутствия перекрытия */
+    box-shadow:
+        inset 6px 6px 14px -4px color-mix(in oklab, --value(--color-*, [color]) 28%, transparent),
+        inset -6px -6px 14px -4px color-mix(in oklab, --value(--color-*, [color]) 28%, transparent);
 }

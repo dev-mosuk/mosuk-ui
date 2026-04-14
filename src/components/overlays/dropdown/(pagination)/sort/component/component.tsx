@@ -17,16 +17,16 @@ export function DropdownPaginationSort({ params, updateParams, ...props }: Dropd
       const newOrder = currentOrder === 'asc' ? 'desc' : 'asc';
 
       if (newOrder !== currentOrder) {
-        const { page, ...restParams } = params;
-        updateParams({
+        const { page, ...restParams } = params as Record<string, any>;
+        updateParams?.({
           ...restParams,
           order: newOrder,
         });
       }
     } else {
-      const { page, ...restParams } = params;
+      const { ...restParams } = params;
 
-      updateParams({
+      updateParams?.({
         ...restParams,
         sort: sort,
         order: 'asc',

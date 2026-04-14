@@ -1,0 +1,17 @@
+@layer mosuk-ui {
+    @layer index-16 {
+        .header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: auto;
+            left: 0;
+            z-index: 100;
+
+            width: fit-content;
+            height: fit-content;
+
+            margin: auto;
+        }
+    }
+}
