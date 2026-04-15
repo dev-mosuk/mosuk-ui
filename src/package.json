@@ -1,6 +1,6 @@
 {
   "name": "mosuk-ui",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "author": "mosuk",
   "license": "MIT",
   "private": false,
@@ -37,21 +37,6 @@
         "default": "./index.css"
       }
     },
-    "./components/actions/button/(delete)/component": {
-      "import": {
-        "default": "./components/actions/button/(delete)/component/index.ts"
-      }
-    },
-    "./components/actions/button/(status)/component": {
-      "import": {
-        "default": "./components/actions/button/(status)/component/index.ts"
-      }
-    },
-    "./components/actions/button/(submit)/component": {
-      "import": {
-        "default": "./components/actions/button/(submit)/component/index.ts"
-      }
-    },
     "./components/actions/button/component": {
       "import": {
         "default": "./components/actions/button/component/index.ts"
@@ -60,11 +45,6 @@
     "./components/actions/button/skeleton": {
       "import": {
         "default": "./components/actions/button/skeleton/index.ts"
-      }
-    },
-    "./components/actions/icon/(delete)/component": {
-      "import": {
-        "default": "./components/actions/icon/(delete)/component/index.ts"
       }
     },
     "./components/actions/icon/component": {
@@ -147,19 +127,14 @@
         "default": "./components/actions/switch/skeleton/index.ts"
       }
     },
-    "./components/actions/textarea/component": {
-      "import": {
-        "default": "./components/actions/textarea/component/index.ts"
-      }
-    },
     "./components/actions/textarea/(autosize)/component": {
       "import": {
         "default": "./components/actions/textarea/(autosize)/component/index.ts"
       }
     },
-    "./components/actions/textarea/(autosize)/skeleton": {
+    "./components/actions/textarea/component": {
       "import": {
-        "default": "./components/actions/textarea/(autosize)/skeleton/index.ts"
+        "default": "./components/actions/textarea/component/index.ts"
       }
     },
     "./components/actions/textarea/skeleton": {
@@ -202,21 +177,6 @@
         "default": "./components/collections/breadcrumbs/skeleton/index.ts"
       }
     },
-    "./components/collections/table/(pagination)/component": {
-      "import": {
-        "default": "./components/collections/table/(pagination)/component/index.ts"
-      }
-    },
-    "./components/collections/table/(pagination)/skeleton": {
-      "import": {
-        "default": "./components/collections/table/(pagination)/skeleton/index.ts"
-      }
-    },
-    "./components/collections/table/(stacked)/component": {
-      "import": {
-        "default": "./components/collections/table/(stacked)/component/index.ts"
-      }
-    },
     "./components/collections/tabs/horizontal/component": {
       "import": {
         "default": "./components/collections/tabs/horizontal/component/index.ts"
@@ -237,21 +197,6 @@
         "default": "./components/collections/tabs/vertical/skeleton/index.ts"
       }
     },
-    "./components/containers/article/component": {
-      "import": {
-        "default": "./components/containers/article/component/index.ts"
-      }
-    },
-    "./components/containers/buttons/component": {
-      "import": {
-        "default": "./components/containers/buttons/component/index.ts"
-      }
-    },
-    "./components/containers/content/component": {
-      "import": {
-        "default": "./components/containers/content/component/index.ts"
-      }
-    },
     "./components/containers/div/component": {
       "import": {
         "default": "./components/containers/div/component/index.ts"
@@ -260,11 +205,6 @@
     "./components/containers/grid/component": {
       "import": {
         "default": "./components/containers/grid/component/index.ts"
-      }
-    },
-    "./components/containers/hr/component": {
-      "import": {
-        "default": "./components/containers/hr/component/index.ts"
       }
     },
     "./components/containers/section/component": {
@@ -337,11 +277,6 @@
         "default": "./components/display/image/skeleton/index.ts"
       }
     },
-    "./components/display/row/component": {
-      "import": {
-        "default": "./components/display/row/component/index.ts"
-      }
-    },
     "./components/display/skeleton/component": {
       "import": {
         "default": "./components/display/skeleton/component/index.ts"
@@ -387,11 +322,6 @@
         "default": "./components/layouts/header/component/index.ts"
       }
     },
-    "./components/layouts/header/skeleton": {
-      "import": {
-        "default": "./components/layouts/header/skeleton/index.ts"
-      }
-    },
     "./components/layouts/sidebar/component": {
       "import": {
         "default": "./components/layouts/sidebar/component/index.ts"
@@ -400,11 +330,6 @@
     "./components/layouts/tabbar/component": {
       "import": {
         "default": "./components/layouts/tabbar/component/index.ts"
-      }
-    },
-    "./components/layouts/tabbar/skeleton": {
-      "import": {
-        "default": "./components/layouts/tabbar/skeleton/index.ts"
       }
     },
     "./components/overlays/alert/component": {
@@ -420,11 +345,6 @@
     "./components/overlays/drawer/component": {
       "import": {
         "default": "./components/overlays/drawer/component/index.ts"
-      }
-    },
-    "./components/overlays/dropdown/(pagination)/sort/component": {
-      "import": {
-        "default": "./components/overlays/dropdown/(pagination)/sort/component/index.ts"
       }
     },
     "./components/overlays/dropdown/component": {
@@ -557,11 +477,6 @@
         "default": "./hooks/alerts/index.ts"
       }
     },
-    "./hooks/auth": {
-      "import": {
-        "default": "./hooks/auth/index.ts"
-      }
-    },
     "./hooks/storage/cookie": {
       "import": {
         "default": "./hooks/storage/cookie/index.ts"
@@ -575,11 +490,6 @@
     "./providers/alerts": {
       "import": {
         "default": "./providers/alerts/index.ts"
-      }
-    },
-    "./providers/auth": {
-      "import": {
-        "default": "./providers/auth/index.ts"
       }
     },
     "./providers/tbank": {
@@ -600,11 +510,6 @@
     "./services/alerts": {
       "import": {
         "default": "./services/alerts/index.ts"
-      }
-    },
-    "./services/auth": {
-      "import": {
-        "default": "./services/auth/index.ts"
       }
     },
     "./services/storage/cookie": {
