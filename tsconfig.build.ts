@@ -71,7 +71,13 @@ async function main() {
       const srcPath = path.join(srcRoot, item.name);
       const destPath = path.join(destRoot, item.name);
       if (item.isDirectory()) {
-        if (item.name === 'styles') continue;
+        // Skip only top-level src/styles (copied above). Nested …/styles/ dirs hold CSS modules.
+        if (
+          item.name === 'styles' &&
+          path.resolve(srcPath) === path.resolve(path.join(srcDir, 'styles'))
+        ) {
+          continue;
+        }
         await copyCssModules(srcPath, destPath);
       } else if (item.isFile() && item.name.endsWith('.css')) {
         if (item.name === 'index.css') continue;
