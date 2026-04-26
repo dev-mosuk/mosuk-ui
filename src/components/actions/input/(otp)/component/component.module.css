@@ -1,0 +1,49 @@
+@layer mosuk-ui {
+    @layer index-11 {
+        .root {
+            display: flex;
+            width: 100%;
+            gap: var(--spacing-2, calc(var(--spacing, 0.25rem) * 2));
+        }
+
+        .input {
+            box-sizing: border-box;
+            margin: 0;
+            height: var(--spacing-11, calc(var(--spacing, 0.25rem) * 11));
+            width: var(--spacing-10, calc(var(--spacing, 0.25rem) * 10));
+            border-radius: var(--radius-lg, calc(var(--spacing, 0.25rem) * 2));
+            border: 1px solid var(--color-gray-300, rgb(209 213 219));
+            background-color: transparent;
+            text-align: center;
+            font-family: inherit;
+            font-size: var(--text-xl, calc(var(--spacing, 0.25rem) * 4.5));
+            font-weight: var(--font-medium, 500);
+            color: var(--color-black, #000);
+            outline: none;
+            transition: all 200ms ease-in-out;
+
+            &::placeholder {
+                color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+            }
+
+            &:focus {
+                outline: none;
+                border-color: var(--color-blue-500, oklch(0.623 0.214 259.815));
+            }
+
+            &:read-only {
+                opacity: 50%;
+                pointer-events: none;
+            }
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+            font-size: var(--text-xl, calc(var(--spacing, 0.25rem) * 4.5));
+            font-weight: var(--font-medium, 500);
+        }
+    }
+}
