@@ -18,9 +18,12 @@ async function updateExports() {
   const pkgText = await fs.readFile(pkgSrcPath, 'utf-8');
   const pkg = JSON.parse(pkgText);
 
-  const exportMap: Record<string, { import: { default: string } }> = {
-    './index.css': { import: { default: './index.css' } },
-  };
+  const exportMap: Record<string, { import: { default: string } }> = {};
+
+  const indexCssPath = path.join(srcDir, 'index.css');
+  if (await exists(indexCssPath)) {
+    exportMap['./index.css'] = { import: { default: './index.css' } };
+  }
 
   async function walkDirs(dir: string) {
     const entries = await fs.readdir(dir, { withFileTypes: true });

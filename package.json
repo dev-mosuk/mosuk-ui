@@ -1,5 +1,6 @@
 {
   "name": "mosuk-ui",
+  "version": "1.11.0",
   "type": "module",
   "scripts": {
     "watch": "node --loader ts-node/esm --watch=src tsconfig.ts",
