@@ -3,4 +3,5 @@
     color: --value(--color-*, [color]);
 
     border: 1px solid --value(--color-*, [color]);
+    box-shadow: transparent;
 }
