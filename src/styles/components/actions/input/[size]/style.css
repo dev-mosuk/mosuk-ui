@@ -1,86 +1,28 @@
-@utility input-2xs {
-    width: 100%;
-    height: calc(var(--spacing, 0.25rem) * 5);
+@utility input-* {
+    height: calc(var(--spacing, 0.25rem) * --value(integer));
 
-    display: block;
-
-    font-size: var(--text-3xs, 0.5rem);
-
-    padding-left: calc(var(--spacing, 0.25rem) * 2.5);
-    padding-right: calc(var(--spacing, 0.25rem) * 2.5);
-    border-radius: calc(infinity * 1px);
-    outline: none;
-}
-
-@utility input-xs {
-    width: 100%;
-    height: calc(var(--spacing, 0.25rem) * 6);
-
-    display: block;
-
-    font-size: var(--text-3xs, 0.5rem);
-
-    padding-left: calc(var(--spacing, 0.25rem) * 2.75);
-    padding-right: calc(var(--spacing, 0.25rem) * 2.75);
-    border-radius: calc(infinity * 1px);
-    outline: none;
-}
-
-
-@utility input-sm {
-    width: 100%;
-    height: calc(var(--spacing, 0.25rem) * 7);
-
-    display: block;
-
-    font-size: var(--text-2xs, 0.625rem);
-
-    padding-left: calc(var(--spacing, 0.25rem) * 3);
-    padding-right: calc(var(--spacing, 0.25rem) * 3);
-    border-radius: calc(infinity * 1px);
-    outline: none;
-}
-
-@utility input-base {
-    width: 100%;
-    height: calc(var(--spacing, 0.25rem) * 8);
-
-    display: block;
-
-    font-size: var(--text-base, 1rem);
-
-    padding-left: calc(var(--spacing, 0.25rem) * 3.5);
-    padding-right: calc(var(--spacing, 0.25rem) * 3.5);
-    border-radius: calc(infinity * 1px);
-    outline: none;
-}
-
-@utility input-md {
-    width: 100%;
-    height: calc(var(--spacing, 0.25rem) * 9);
-
-    display: block;
-
-    font-size: var(--text-base, 1rem);
-
-    padding-left: calc(var(--spacing, 0.25rem) * 4);
-    padding-right: calc(var(--spacing, 0.25rem) * 4);
-    border-radius: calc(infinity * 1px);
-    outline: none;
-}
-
-@utility input-lg {
-    width: 100%;
-    height: calc(var(--spacing, 0.25rem) * 10);
-
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--spacing, 0.25rem) * 0.25 * --value(integer));
 
     font-size: var(--text-base, 1rem);
     font-weight: 500;
     text-wrap: nowrap;
 
-    padding-left: calc(var(--spacing, 0.25rem) * 4);
-    padding-right: calc(var(--spacing, 0.25rem) * 4);
+    padding-left: calc(var(--spacing, 0.25rem) * 0.5 * --value(integer));
+    padding-right: calc(var(--spacing, 0.25rem) * 0.5 * --value(integer));
     border-radius: calc(infinity * 1px);
     outline: none;
+
+    transition: all 200ms ease-in-out;
+
+    & :where(svg) {
+        width: calc(var(--spacing, 0.25rem) * 0.5 * --value(integer));
+        height: calc(var(--spacing, 0.25rem) * 0.5 * --value(integer));
+        min-width: calc(var(--spacing, 0.25rem) * 0.5 * --value(integer));
+        min-height: calc(var(--spacing, 0.25rem) * 0.5 * --value(integer));
+
+        transition: all 200ms ease-in-out;
+    }
 }
