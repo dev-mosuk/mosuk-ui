@@ -1,13 +1,15 @@
 import classNames from 'classnames';
 import React, { ElementType, useCallback, useEffect, useRef } from 'react';
-import styles from './component.module.css';
+import { ToggleProvider } from '../providers/provider';
+import styles from '../styles/component.module.css';
+import { scrollToggleOptionIntoView } from '../utilities/scroll-toggle-option-into-view';
 import { ToggleProps } from './component.props';
-import { ToggleProvider } from './providers/provider';
 
 export function Toggle<C extends ElementType = 'div'>({
   as,
   value,
   onChange,
+  orientation = 'horizontal',
   className,
   onClickCapture,
   ref,
@@ -34,7 +36,16 @@ export function Toggle<C extends ElementType = 'div'>({
 
       const containerEl = containerRef.current;
 
-      if (containerEl.scrollWidth <= containerEl.clientWidth) {
+      const overflowsHorizontally =
+        containerEl.scrollWidth > containerEl.clientWidth;
+      const overflowsVertically =
+        containerEl.scrollHeight > containerEl.clientHeight;
+      const overflows =
+        orientation === 'vertical'
+          ? overflowsVertically
+          : overflowsHorizontally;
+
+      if (!overflows) {
         return;
       }
 
@@ -47,17 +58,15 @@ export function Toggle<C extends ElementType = 'div'>({
       }
 
       requestAnimationFrame(() => {
-        const prefersReducedMotion = window.matchMedia?.(
-          '(prefers-reduced-motion: reduce)',
-        )?.matches;
-        optionEl.scrollIntoView({
-          behavior: prefersReducedMotion ? 'auto' : 'smooth',
-          block: 'nearest',
-          inline: 'nearest',
-        });
+        scrollToggleOptionIntoView(
+          containerEl,
+          optionEl,
+          orientation,
+          'smooth',
+        );
       });
     },
-    [onClickCapture],
+    [onClickCapture, orientation],
   );
 
   const setRef = useCallback(
@@ -99,10 +108,16 @@ export function Toggle<C extends ElementType = 'div'>({
   }, [className]);
 
   return (
-    <ToggleProvider value={value} onChange={onChange} containerRef={containerRef}>
+    <ToggleProvider
+      value={value}
+      onChange={onChange}
+      containerRef={containerRef}
+      orientation={orientation}
+    >
       <Component
         {...rest}
         ref={setRef}
+        data-orientation={orientation}
         onClickCapture={handleClickCapture}
         className={classNames('mosuk-toggle', styles.toggle, className)}
       >

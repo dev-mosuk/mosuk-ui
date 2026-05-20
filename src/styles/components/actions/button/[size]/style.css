@@ -18,10 +18,10 @@
     transition: all 200ms ease-in-out;
 
     & :where(svg) {
-        width: calc(var(--spacing, 0.25rem) * 0.5 * --value(integer));
-        height: calc(var(--spacing, 0.25rem) * 0.5 * --value(integer));
-        min-width: calc(var(--spacing, 0.25rem) * 0.5 * --value(integer));
-        min-height: calc(var(--spacing, 0.25rem) * 0.5 * --value(integer));
+        width: calc(var(--spacing, 0.25rem) * 0.425 * --value(integer));
+        height: calc(var(--spacing, 0.25rem) * 0.425 * --value(integer));
+        min-width: calc(var(--spacing, 0.25rem) * 0.425 * --value(integer));
+        min-height: calc(var(--spacing, 0.25rem) * 0.425 * --value(integer));
 
         transition: all 200ms ease-in-out;
     }

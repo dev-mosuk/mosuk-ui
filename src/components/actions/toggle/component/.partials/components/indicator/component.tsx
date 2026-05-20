@@ -1,8 +1,20 @@
 import classNames from 'classnames';
 import React, { ElementType, useEffect, useState } from 'react';
-import styles from '../component.module.css';
-import { useToggle } from '../hooks/hook';
+import { useToggle } from '../../hooks/hook';
+import styles from '../../styles/component.module.css';
 import { ToggleIndicatorProps } from './component.props';
+
+type IndicatorLayout =
+  | {
+      orientation: 'horizontal';
+      left: number;
+      width: number;
+    }
+  | {
+      orientation: 'vertical';
+      top: number;
+      height: number;
+    };
 
 export function ToggleIndicator<C extends ElementType = 'div'>({
   as,
@@ -10,26 +22,35 @@ export function ToggleIndicator<C extends ElementType = 'div'>({
 }: ToggleIndicatorProps<C>) {
   const Component = (as || 'div') as ElementType;
 
-  const { value, containerRef, optionRefs } = useToggle();
-  const [style, setStyle] = useState<{ left: number; width: number } | null>(
-    null,
-  );
+  const { value, containerRef, optionRefs, orientation } = useToggle();
+  const [layout, setLayout] = useState<IndicatorLayout | null>(null);
 
   useEffect(() => {
-    if (!value) {
+    if (value === null || value === undefined) {
+      setLayout(null);
       return;
     }
 
     const updatePosition = () => {
       const el = optionRefs.current.get(value);
 
-      if (el) {
-        setStyle({
+      if (!el) {
+        setLayout(null);
+        return;
+      }
+
+      if (orientation === 'vertical') {
+        setLayout({
+          orientation: 'vertical',
+          top: el.offsetTop,
+          height: el.offsetHeight,
+        });
+      } else {
+        setLayout({
+          orientation: 'horizontal',
           left: el.offsetLeft,
           width: el.offsetWidth,
         });
-      } else {
-        setStyle(null);
       }
     };
 
@@ -64,23 +85,33 @@ export function ToggleIndicator<C extends ElementType = 'div'>({
       resizeObserver.disconnect();
       mutationObserver?.disconnect();
     };
-  }, [value, containerRef, optionRefs]);
+  }, [value, containerRef, optionRefs, orientation]);
+
+  const inlineStyle =
+    layout?.orientation === 'vertical'
+      ? {
+          '--toggle-indicator-height': `${layout.height}px`,
+          '--toggle-indicator-translate-y': `${layout.top}px`,
+        }
+      : layout?.orientation === 'horizontal'
+        ? {
+            '--toggle-indicator-width': `${layout.width}px`,
+            '--toggle-indicator-translate-x': `${layout.left}px`,
+          }
+        : undefined;
 
   return (
     <Component
       {...rest}
       style={{
         ...rest?.style,
-        ...(style && {
-          '--toggle-indicator-width': `${style.width}px`,
-          '--toggle-indicator-translate-x': `${style.left}px`,
-        }),
+        ...(inlineStyle as React.CSSProperties),
       }}
       className={classNames(
         'mosuk-toggle-indicator',
         styles.indicator,
         {
-          [styles.hidden]: !value,
+          [styles.hidden]: value === null || value === undefined,
         },
         rest?.className,
       )}

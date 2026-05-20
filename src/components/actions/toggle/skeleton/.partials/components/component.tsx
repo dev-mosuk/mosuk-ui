@@ -1,10 +1,11 @@
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from './component.module.css';
+import styles from '../styles/component.module.css';
 import { ToggleSkeletonProps } from './component.props';
 
 export function ToggleSkeleton<C extends ElementType = 'div'>({
   as,
+  orientation = 'horizontal',
   ...rest
 }: ToggleSkeletonProps<C>) {
   const Component = (as || 'div') as ElementType;
@@ -12,6 +13,7 @@ export function ToggleSkeleton<C extends ElementType = 'div'>({
   return (
     <Component
       {...rest}
+      data-orientation={orientation}
       className={classNames(
         'mosuk-toggle-skeleton',
         styles.toggle,

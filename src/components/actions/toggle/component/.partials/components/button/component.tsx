@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import React, { ElementType, useCallback } from 'react';
-import { Button } from '../../../button/component/component';
-import styles from '../component.module.css';
-import { useToggle } from '../hooks/hook';
+import { Button } from '../../../../../button/component/component';
+import { useToggle } from '../../hooks/hook';
+import styles from '../../styles/component.module.css';
 import { ToggleButtonProps } from './component.props';
 
 export function ToggleButton<C extends ElementType = 'button'>({

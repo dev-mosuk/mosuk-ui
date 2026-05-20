@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { ButtonSkeleton } from '../../../button/skeleton/component';
-import styles from '../component.module.css';
+import { ButtonSkeleton } from '../../../../../button/skeleton/component';
+import styles from '../../styles/component.module.css';
 import { ToggleButtonSkeletonProps } from './component.props';
 
 export function ToggleButtonSkeleton<C extends ElementType = 'div'>({

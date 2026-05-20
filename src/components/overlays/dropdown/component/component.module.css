@@ -13,7 +13,7 @@
             backdrop-filter: blur(12px);
 
             border: 1px solid var(--color-gray-100, oklch(0.967 0.003 264.542));
-            border-radius: calc(var(--spacing, 0.25rem) * 5);
+            border-radius: var(--radius-2xl, 1rem);
             box-shadow: 0 25px 50px -12px rgba(243, 244, 246, var(--tw-shadow-alpha, 0.5));
 
             transform-origin: var(--transform-origin);
