@@ -1,6 +1,6 @@
 {
   "name": "mosuk-ui",
-  "version": "1.11.0",
+  "version": "1.0.12",
   "author": "mosuk",
   "license": "MIT",
   "private": false,
@@ -85,6 +85,16 @@
     "./components/actions/input/(mask)/skeleton": {
       "import": {
         "default": "./components/actions/input/(mask)/skeleton/index.ts"
+      }
+    },
+    "./components/actions/input/(otp)/component": {
+      "import": {
+        "default": "./components/actions/input/(otp)/component/index.ts"
+      }
+    },
+    "./components/actions/input/(otp)/skeleton": {
+      "import": {
+        "default": "./components/actions/input/(otp)/skeleton/index.ts"
       }
     },
     "./components/actions/input/(search)/component": {

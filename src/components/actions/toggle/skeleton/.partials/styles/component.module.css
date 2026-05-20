@@ -5,17 +5,12 @@
         }
 
         .toggle {
-            overflow-x: auto;
-
             position: relative;
 
             width: 100%;
-            height: calc(var(--spacing, .25rem) * 8);
             max-width: 100%;
 
             display: flex;
-            flex-direction: row;
-            align-items: center;
             gap: calc(var(--spacing, .25rem) * 1);
 
             padding: var(--toggle-padding);
@@ -33,7 +28,28 @@
                 pointer-events: none;
             }
 
-            .button {
+            &[data-orientation='horizontal'] {
+                overflow-x: auto;
+                overflow-y: hidden;
+
+                flex-direction: row;
+                align-items: center;
+
+                height: calc(var(--spacing, .25rem) * 8);
+            }
+
+            &[data-orientation='vertical'] {
+                overflow-x: hidden;
+                overflow-y: auto;
+
+                flex-direction: column;
+                align-items: stretch;
+
+                height: auto;
+                min-height: calc(var(--spacing, .25rem) * 8);
+            }
+
+            &[data-orientation='horizontal'] .button {
                 width: fit-content;
                 min-width: fit-content;
                 height: 100%;
@@ -44,6 +60,15 @@
                 scroll-margin-inline: calc(var(--spacing, .25rem) * 48);
             }
 
+            &[data-orientation='vertical'] .button {
+                width: 100%;
+                min-height: fit-content;
+                height: fit-content;
+
+                background-color: transparent;
+
+                scroll-margin-block: calc(var(--spacing, .25rem) * 48);
+            }
         }
     }
 }

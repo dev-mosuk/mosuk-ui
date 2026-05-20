@@ -1,10 +1,10 @@
 import { Popover } from '@base-ui/react/popover';
 import React from 'react';
 import {
-    DropdownDropdownContentProps,
-    DropdownDropdownProps,
-    DropdownProps,
-    DropdownTriggerProps,
+  DropdownDropdownContentProps,
+  DropdownDropdownProps,
+  DropdownProps,
+  DropdownTriggerProps,
 } from './component.interface';
 import styles from './component.module.css';
 
@@ -29,15 +29,7 @@ export function DropdownDropdown({
 }: DropdownDropdownProps) {
   return (
     <Popover.Portal container={container ?? undefined}>
-      <Popover.Positioner
-        {...props}
-        align={props?.align ?? 'start'}
-        alignOffset={props?.alignOffset ?? 0}
-        side={props?.side ?? 'bottom'}
-        sideOffset={props?.sideOffset ?? 8}
-      >
-        {props?.children}
-      </Popover.Positioner>
+      <Popover.Positioner {...props}>{props?.children}</Popover.Positioner>
     </Popover.Portal>
   );
 }
