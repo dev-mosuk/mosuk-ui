@@ -1,0 +1,51 @@
+@layer mosuk-ui {
+    @layer index-11 {
+        .root {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: calc(var(--spacing, .25rem) * 2);
+        }
+
+        .root {
+            .input {
+                appearance: none;
+
+                display: block;
+
+                width: calc(var(--spacing, .25rem) * 10);
+                height: calc(var(--spacing, .25rem) * 10);
+
+                color: var(--color-black, #000);
+                font-size: var(--text-base, 1rem);
+                text-align: center;
+
+                border: 1px solid;
+                border-color: var(--color-gray-200);
+                outline: none;
+
+                transition: all 200ms ease-in-out;
+
+                &::placeholder {
+                    color: var(--color-gray-500);
+                }
+
+                &:read-only {
+                    opacity: 50%;
+                    pointer-events: none;
+                }
+
+                &:focus {
+                    border-color: var(--color-primary-200);
+                }
+            }
+        }
+
+        .separator {
+            width: calc(var(--spacing, .25rem) * 10);
+            height: 1px;
+            background-color: var(--color-gray-500);
+        }
+    }
+}
