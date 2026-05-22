@@ -1,6 +1,6 @@
 {
   "name": "mosuk-ui",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "author": "mosuk",
   "license": "MIT",
   "private": false,
@@ -47,6 +47,16 @@
         "default": "./components/actions/button/skeleton/index.ts"
       }
     },
+    "./components/actions/checkbox/component": {
+      "import": {
+        "default": "./components/actions/checkbox/component/index.ts"
+      }
+    },
+    "./components/actions/checkbox/skeleton": {
+      "import": {
+        "default": "./components/actions/checkbox/skeleton/index.ts"
+      }
+    },
     "./components/actions/icon/component": {
       "import": {
         "default": "./components/actions/icon/component/index.ts"
@@ -87,16 +97,6 @@
         "default": "./components/actions/input/(mask)/skeleton/index.ts"
       }
     },
-    "./components/actions/input/(otp)/component": {
-      "import": {
-        "default": "./components/actions/input/(otp)/component/index.ts"
-      }
-    },
-    "./components/actions/input/(otp)/skeleton": {
-      "import": {
-        "default": "./components/actions/input/(otp)/skeleton/index.ts"
-      }
-    },
     "./components/actions/input/(search)/component": {
       "import": {
         "default": "./components/actions/input/(search)/component/index.ts"
@@ -115,6 +115,16 @@
     "./components/actions/input/skeleton": {
       "import": {
         "default": "./components/actions/input/skeleton/index.ts"
+      }
+    },
+    "./components/actions/otp/component": {
+      "import": {
+        "default": "./components/actions/otp/component/index.ts"
+      }
+    },
+    "./components/actions/otp/skeleton": {
+      "import": {
+        "default": "./components/actions/otp/skeleton/index.ts"
       }
     },
     "./components/actions/select/component": {
