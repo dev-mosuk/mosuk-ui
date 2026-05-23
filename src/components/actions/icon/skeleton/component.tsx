@@ -1,8 +1,8 @@
+import styles from '@/components/actions/icon/component/component.module.css';
+import { IconSkeletonProps } from '@/components/actions/icon/skeleton/component.interface';
+import { Skeleton } from '@/components/display/skeleton/component/component';
 import classNames from 'classnames';
 import React from 'react';
-import { Skeleton } from '../../../display/skeleton/component/component';
-import styles from './../component/component.module.css';
-import { IconSkeletonProps } from './component.interface';
 
 export function IconSkeleton({ ...rest }: IconSkeletonProps) {
   return (

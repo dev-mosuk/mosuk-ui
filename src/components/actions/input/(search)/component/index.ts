@@ -1,5 +1,5 @@
-import { InputSearch as Component } from './component';
-import { InputSearchProps as ComponentProps } from './component.interface';
+import { InputSearch as Component } from '@/components/actions/input/(search)/component/component';
+import { InputSearchProps as ComponentProps } from '@/components/actions/input/(search)/component/component.interface';
 
 export const InputSearch = Object.assign(Component, {});
 

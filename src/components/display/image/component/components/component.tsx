@@ -1,8 +1,8 @@
+import { ImageProps } from '@/components/display/image/component/components/component.interface';
+import { ImagePlaceholderConstants } from '@/components/display/image/component/constants/placeholder/constants';
+import styles from '@/components/display/image/component/styles/styles.module.css';
 import classNames from 'classnames';
 import React, { ElementType, SyntheticEvent, useEffect, useState } from 'react';
-import { ImagePlaceholderConstants } from '../constants/placeholder/constants';
-import styles from '../styles/styles.module.css';
-import { ImageProps } from './component.interface';
 
 export function Image<C extends ElementType = 'img'>({
   as,

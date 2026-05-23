@@ -1,14 +1,18 @@
-import type { ToggleOrientation } from '../providers/context/context.interface';
+import type { ToggleOrientation } from '@/components/actions/toggle/component/.partials/providers/context/context.interface';
 
 export type ScrollToggleIntoViewBehavior = 'auto' | 'smooth';
 
-function resolveBehavior(behavior: ScrollToggleIntoViewBehavior): ScrollBehavior {
+function resolveBehavior(
+  behavior: ScrollToggleIntoViewBehavior,
+): ScrollBehavior {
   if (behavior === 'smooth') {
     const prefersReducedMotion = window.matchMedia?.(
       '(prefers-reduced-motion: reduce)',
     )?.matches;
+
     return prefersReducedMotion ? 'auto' : 'smooth';
   }
+
   return 'auto';
 }
 
@@ -30,6 +34,7 @@ export function scrollToggleOptionIntoView(
   if (horizontal && !overflowX) {
     return;
   }
+
   if (!horizontal && !overflowY) {
     return;
   }
@@ -57,6 +62,7 @@ export function scrollToggleOptionIntoView(
       left: container.scrollLeft + delta,
       behavior: resolved,
     });
+
     return;
   }
 

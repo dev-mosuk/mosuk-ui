@@ -1,15 +1,15 @@
-import { EmptyButtons } from './buttons/component';
-import { EmptyButtonsProps } from './buttons/component.interface';
-import { Empty as BaseEmpty } from './component';
-import type { EmptyProps } from './component.interface';
-import { EmptyContent as BaseEmptyContent } from './content/component';
-import { EmptyContentProps } from './content/component.interface';
-import { EmptyContentDescription } from './content/description/component';
-import { EmptyContentDescriptionProps } from './content/description/component.interface';
-import { EmptyContentTitle } from './content/title/component';
-import { EmptyContentTitleProps } from './content/title/component.interface';
-import { EmptyIcon } from './icon/component';
-import { EmptyIconProps } from './icon/component.interface';
+import { EmptyButtons } from '@/components/display/empty/component/buttons/component';
+import { EmptyButtonsProps } from '@/components/display/empty/component/buttons/component.interface';
+import { Empty as BaseEmpty } from '@/components/display/empty/component/component';
+import type { EmptyProps } from '@/components/display/empty/component/component.interface';
+import { EmptyContent as BaseEmptyContent } from '@/components/display/empty/component/content/component';
+import { EmptyContentProps } from '@/components/display/empty/component/content/component.interface';
+import { EmptyContentDescription } from '@/components/display/empty/component/content/description/component';
+import { EmptyContentDescriptionProps } from '@/components/display/empty/component/content/description/component.interface';
+import { EmptyContentTitle } from '@/components/display/empty/component/content/title/component';
+import { EmptyContentTitleProps } from '@/components/display/empty/component/content/title/component.interface';
+import { EmptyIcon } from '@/components/display/empty/component/icon/component';
+import { EmptyIconProps } from '@/components/display/empty/component/icon/component.interface';
 
 export const Empty = Object.assign(BaseEmpty, {
   Icon: EmptyIcon,

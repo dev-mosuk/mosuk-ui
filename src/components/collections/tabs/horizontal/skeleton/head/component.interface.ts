@@ -1,8 +1,4 @@
-import {
-    ComponentPropsWithoutRef,
-    ElementType,
-    Ref
-} from 'react';
+import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
 
 export type TabsHorizontalHeadSkeletonProps<C extends ElementType = 'nav'> = {
   as?: C;

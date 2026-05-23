@@ -1,5 +1,5 @@
-import { TextareaSkeleton as Component } from './component';
-import { TextareaSkeletonProps } from './component.interface';
+import { TextareaSkeleton as Component } from '@/components/actions/textarea/skeleton/component';
+import { TextareaSkeletonProps } from '@/components/actions/textarea/skeleton/component.interface';
 
 export const TextareaSkeleton = Object.assign(Component, {});
 

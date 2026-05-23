@@ -1,11 +1,14 @@
 import {
   ImagesSkeleton as BaseImagesSkeleton,
   ImagesSkeletonImage as BaseImagesSkeletonImage,
-} from './component';
-import type { ImagesSkeletonImageProps, ImagesSkeletonProps } from './component.interface';
+} from '@/components/display/file/(files)/skeleton/component';
+import type {
+  ImagesSkeletonImageProps,
+  ImagesSkeletonProps,
+} from '@/components/display/file/(files)/skeleton/component.interface';
 
 export function ImagesSkeleton(props: ImagesSkeletonProps) {
-  return BaseImagesSkeleton(props);  
+  return BaseImagesSkeleton(props);
 }
 
 ImagesSkeleton.Image = BaseImagesSkeletonImage;

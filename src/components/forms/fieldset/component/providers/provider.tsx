@@ -1,8 +1,8 @@
 'use client';
 
+import { FieldsetContext } from '@/components/forms/fieldset/component/providers/context/context';
+import { FieldsetProviderProps } from '@/components/forms/fieldset/component/providers/provider.interface';
 import React, { useState } from 'react';
-import { FieldsetContext } from './context/context';
-import { FieldsetProviderProps } from './provider.interface';
 
 export const FieldsetProvider = ({ ...rest }: FieldsetProviderProps) => {
   const [ctxId, setCtxId] = useState<string>('');

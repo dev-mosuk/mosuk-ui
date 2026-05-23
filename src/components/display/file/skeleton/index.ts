@@ -1,8 +1,11 @@
-import { FileSkeleton as Component, FileSkeletonFile } from './component';
+import {
+  FileSkeleton as Component,
+  FileSkeletonFile,
+} from '@/components/display/file/skeleton/component';
 import {
   FileSkeletonFileProps,
   FileSkeletonProps,
-} from './component.interface';
+} from '@/components/display/file/skeleton/component.interface';
 
 export const FileSkeleton = Object.assign(Component, {
   File: FileSkeletonFile,

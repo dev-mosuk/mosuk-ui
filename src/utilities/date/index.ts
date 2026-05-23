@@ -1,6 +1,6 @@
-import { date as dateUtil } from './date/util';
-import { full } from './full/util';
-import { time } from './time/util';
+import { date as dateUtil } from '@/utilities/date/date/util';
+import { full } from '@/utilities/date/full/util';
+import { time } from '@/utilities/date/time/util';
 
 export const date = {
   time: time,

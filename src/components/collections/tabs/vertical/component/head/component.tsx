@@ -1,8 +1,8 @@
+import styles from '@/components/collections/tabs/vertical/component/component.module.css';
+import { TabsVerticalHeadProps } from '@/components/collections/tabs/vertical/component/head/component.interface';
 import { Tabs as TabsComponent } from '@base-ui/react/tabs';
 import classNames from 'classnames';
 import React from 'react';
-import styles from '../component.module.css';
-import { TabsVerticalHeadProps } from './component.interface';
 
 const SCROLL_PADDING = 16;
 const SCROLL_DELAY = 200;
@@ -13,7 +13,7 @@ const ADJACENT_TABS_COUNT = 2;
 
 const sumAdjacentTabsHeight = (
   tabEl: HTMLElement,
-  dir: 'prev' | 'next'
+  dir: 'prev' | 'next',
 ): number => {
   let sum = 0;
   let count = 0;
@@ -25,7 +25,8 @@ const sumAdjacentTabsHeight = (
       sum += (node as HTMLElement).offsetHeight;
       count++;
     }
-    node = dir === 'next' ? node.nextElementSibling : node.previousElementSibling;
+    node =
+      dir === 'next' ? node.nextElementSibling : node.previousElementSibling;
   }
 
   return sum;
@@ -46,6 +47,7 @@ export const TabsVerticalHead = React.forwardRef<
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
+
     if (rafRef.current) {
       cancelAnimationFrame(rafRef.current);
       rafRef.current = null;
@@ -57,11 +59,12 @@ export const TabsVerticalHead = React.forwardRef<
   const animateScrollTop = React.useCallback(
     (el: HTMLElement, toTop: number) => {
       const prefersReducedMotion = window.matchMedia?.(
-        '(prefers-reduced-motion: reduce)'
+        '(prefers-reduced-motion: reduce)',
       )?.matches;
 
       if (prefersReducedMotion || Math.abs(el.scrollTop - toTop) < 1) {
         el.scrollTop = toTop;
+
         return;
       }
 
@@ -72,12 +75,14 @@ export const TabsVerticalHead = React.forwardRef<
         const t = Math.min(1, (now - start) / ANIMATION_DURATION);
         const eased = t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2;
         el.scrollTop = fromTop + (toTop - fromTop) * eased;
-        if (t < 1) rafRef.current = requestAnimationFrame(tick);
+        if (t < 1) {
+          rafRef.current = requestAnimationFrame(tick);
+        }
       };
 
       rafRef.current = requestAnimationFrame(tick);
     },
-    []
+    [],
   );
 
   const handleClickCapture = React.useCallback<
@@ -85,15 +90,21 @@ export const TabsVerticalHead = React.forwardRef<
   >(
     (e) => {
       onClickCapture?.(e);
-      if (e.defaultPrevented || !listRef.current) return;
+      if (e.defaultPrevented || !listRef.current) {
+        return;
+      }
 
       const listEl = listRef.current;
-      if (listEl.scrollHeight <= listEl.clientHeight) return;
+      if (listEl.scrollHeight <= listEl.clientHeight) {
+        return;
+      }
 
       const tabEl = (e.target as HTMLElement)?.closest?.(
-        '[role="tab"]'
+        '[role="tab"]',
       ) as HTMLElement | null;
-      if (!tabEl || !listEl.contains(tabEl)) return;
+      if (!tabEl || !listEl.contains(tabEl)) {
+        return;
+      }
 
       stopAnimations();
 
@@ -110,21 +121,30 @@ export const TabsVerticalHead = React.forwardRef<
 
         let nextTop = viewTop;
 
-        if (tabBottom + lookahead + SCROLL_PADDING > viewBottom - SCROLL_PADDING) {
-          nextTop = tabBottom + lookahead + SCROLL_PADDING - listEl.clientHeight + SCROLL_PADDING;
+        if (
+          tabBottom + lookahead + SCROLL_PADDING >
+          viewBottom - SCROLL_PADDING
+        ) {
+          nextTop =
+            tabBottom +
+            lookahead +
+            SCROLL_PADDING -
+            listEl.clientHeight +
+            SCROLL_PADDING;
         }
+
         if (tabTop - lookbehind - SCROLL_PADDING < viewTop + SCROLL_PADDING) {
           nextTop = tabTop - lookbehind - SCROLL_PADDING;
         }
 
         nextTop = Math.max(
           0,
-          Math.min(nextTop, listEl.scrollHeight - listEl.clientHeight)
+          Math.min(nextTop, listEl.scrollHeight - listEl.clientHeight),
         );
         animateScrollTop(listEl, nextTop);
       }, SCROLL_DELAY);
     },
-    [animateScrollTop, onClickCapture, stopAnimations]
+    [animateScrollTop, onClickCapture, stopAnimations],
   );
 
   return (

@@ -1,6 +1,8 @@
 export function format(phone: string | number): string | null {
   try {
-    if (!phone) return null;
+    if (!phone) {
+      return null;
+    }
 
     const cleaned = String(phone).replace(/\D/g, '');
 
@@ -17,7 +19,7 @@ export function format(phone: string | number): string | null {
     }
 
     const match = normalizedNumber.match(
-      /^(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})$/
+      /^(\d{1})(\d{3})(\d{3})(\d{2})(\d{2})$/,
     );
 
     if (match) {

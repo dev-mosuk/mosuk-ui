@@ -1,6 +1,6 @@
+import { useFieldsetProps } from '@/components/forms/fieldset/component/hooks/hook.interface';
+import { FieldsetContext } from '@/components/forms/fieldset/component/providers/context/context';
 import { useContext } from 'react';
-import { FieldsetContext } from '../providers/context/context';
-import { useFieldsetProps } from './hook.interface';
 
 export function useFieldset(): useFieldsetProps {
   const context = useContext(FieldsetContext);
@@ -10,6 +10,6 @@ export function useFieldset(): useFieldsetProps {
   }
 
   return {
-    ...context
+    ...context,
   };
 }

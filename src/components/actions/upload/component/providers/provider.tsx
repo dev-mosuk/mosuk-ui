@@ -1,12 +1,10 @@
 'use client';
 
+import { UploadContext } from '@/components/actions/upload/component/providers/context/context';
+import { UploadProviderProps } from '@/components/actions/upload/component/providers/provider.interface';
 import React, { useState } from 'react';
-import { UploadContext } from './context/context';
-import { UploadProviderProps } from './provider.interface';
 
-export const UploadProvider = ({
-  ...rest
-}: UploadProviderProps) => {
+export const UploadProvider = ({ ...rest }: UploadProviderProps) => {
   const [ctxId, setCtxId] = useState<string>('');
   const [ctxName, setCtxName] = useState<string>('');
 

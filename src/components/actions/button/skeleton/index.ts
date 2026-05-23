@@ -1,5 +1,5 @@
-import { ButtonSkeleton as BaseButtonSkeleton } from './component';
-import type { ButtonSkeletonProps } from './component.interface';
+import { ButtonSkeleton as BaseButtonSkeleton } from '@/components/actions/button/skeleton/component';
+import type { ButtonSkeletonProps } from '@/components/actions/button/skeleton/component.interface';
 
 export const ButtonSkeleton = BaseButtonSkeleton;
 

@@ -1,7 +1,7 @@
+import { CardFlipBackProps } from '@/components/display/card/(flip)/component/back/component.interface';
+import styles from '@/components/display/card/(flip)/component/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from '../component.module.css';
-import { CardFlipBackProps } from './component.interface';
 
 export function CardFlipBack<C extends ElementType = 'div'>({
   as,
@@ -12,11 +12,7 @@ export function CardFlipBack<C extends ElementType = 'div'>({
   return (
     <Component
       {...rest}
-      className={classNames(
-        'card-flip-back',
-        styles.cardBack,
-        rest?.className
-      )}
+      className={classNames('card-flip-back', styles.cardBack, rest?.className)}
     >
       {rest?.children}
     </Component>

@@ -1,5 +1,5 @@
-import { Image as BaseImage } from './components/component';
-import type { ImageProps } from './components/component.interface';
+import { Image as BaseImage } from '@/components/display/image/component/components/component';
+import type { ImageProps } from '@/components/display/image/component/components/component.interface';
 
 export const Image = Object.assign(BaseImage, {});
 

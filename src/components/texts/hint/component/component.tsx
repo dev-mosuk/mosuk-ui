@@ -1,9 +1,9 @@
+import { HintTypeConstant } from '@/components/texts/hint/component/component.constants';
+import { HintTypeEnum } from '@/components/texts/hint/component/component.enums';
+import { HintProps } from '@/components/texts/hint/component/component.interface';
+import styles from '@/components/texts/hint/component/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { HintTypeConstant } from './component.constants';
-import { HintTypeEnum } from './component.enums';
-import { HintProps } from './component.interface';
-import styles from './component.module.css';
 
 export function Hint<C extends ElementType = 'p'>({
   as,

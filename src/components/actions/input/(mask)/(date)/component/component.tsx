@@ -1,9 +1,9 @@
+import { InputMaskDateProps } from '@/components/actions/input/(mask)/(date)/component/component.interface';
+import { InputMask } from '@/components/actions/input/(mask)/component/component';
 import { format, parse } from 'date-fns';
 import { createMask } from 'imask';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { IMask } from 'react-imask';
-import { InputMask } from '../../component/component';
-import { InputMaskDateProps } from './component.interface';
 
 export function InputMaskDate({
   value,
@@ -11,7 +11,9 @@ export function InputMaskDate({
   ...props
 }: InputMaskDateProps) {
   const normalizeDate = (dateValue: any): Date | undefined => {
-    if (!dateValue) return undefined;
+    if (!dateValue) {
+      return undefined;
+    }
 
     if (dateValue instanceof Date && !isNaN(dateValue.getTime())) {
       return dateValue;
@@ -19,12 +21,13 @@ export function InputMaskDate({
 
     try {
       const date = new Date(dateValue);
+
       return !isNaN(date.getTime()) ? date : undefined;
     } catch (e) {
       return undefined;
     }
   };
- 
+
   const normalizedValue = normalizeDate(value);
   const formatted = normalizedValue
     ? format(normalizedValue, 'dd.MM.yyyy')
@@ -61,7 +64,7 @@ export function InputMaskDate({
         console.error('Error parsing date:', error);
       }
     },
-    [value, onChange]
+    [value, onChange],
   );
 
   const currentYear = new Date().getFullYear();
@@ -82,7 +85,7 @@ export function InputMaskDate({
           },
         },
       }),
-    [currentYear]
+    [currentYear],
   );
 
   return (

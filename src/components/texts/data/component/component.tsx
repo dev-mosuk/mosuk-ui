@@ -1,7 +1,7 @@
+import { DataProps } from '@/components/texts/data/component/component.interface';
+import styles from '@/components/texts/data/component/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { DataProps } from './component.interface';
-import styles from './component.module.css';
 
 export function Data<C extends ElementType = 'data'>({
   as,

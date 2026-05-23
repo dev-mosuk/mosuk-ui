@@ -1,6 +1,6 @@
+import { AlertsProvider as BaseAlertsProvider } from '@/providers/alerts/provider';
+import type { AlertsProviderProps } from '@/providers/alerts/provider.interface';
 import { createElement } from 'react';
-import { AlertsProvider as BaseAlertsProvider } from './provider';
-import type { AlertsProviderProps } from './provider.interface';
 
 export const AlertsProvider = (props: AlertsProviderProps) => {
   return createElement(BaseAlertsProvider, props);

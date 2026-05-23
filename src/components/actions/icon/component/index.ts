@@ -1,10 +1,5 @@
-import {
-  Icon as BaseIcon
-} from './component';
-import type {
-  IconProps
-} from './component.interface';
-
+import { Icon as BaseIcon } from '@/components/actions/icon/component/component';
+import type { IconProps } from '@/components/actions/icon/component/component.interface';
 
 export const Icon = BaseIcon;
 

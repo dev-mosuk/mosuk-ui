@@ -1,8 +1,8 @@
 import {
   VideoSkeleton as BaseVideoSkeleton,
   VideoSkeletonVideo as BaseVideoSkeletonVideo,
-} from './component';
-import type { VideoSkeletonProps } from './component.interface';
+} from '@/components/display/video/skeleton/component';
+import type { VideoSkeletonProps } from '@/components/display/video/skeleton/component.interface';
 
 export function VideoSkeleton(props: VideoSkeletonProps) {
   return BaseVideoSkeleton(props);

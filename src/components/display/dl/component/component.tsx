@@ -1,6 +1,11 @@
+import {
+  DlDlProps,
+  DlProps,
+  DtDdProps,
+  DtDtProps,
+} from '@/components/display/dl/component/component.interface';
+import styles from '@/components/display/dl/component/component.module.css';
 import React from 'react';
-import { DlDlProps, DlProps, DtDdProps, DtDtProps } from './component.interface';
-import styles from './component.module.css';
 
 export function Dl({ ...props }: DlProps) {
   return (

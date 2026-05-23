@@ -1,14 +1,11 @@
+import styles from '@/components/collections/tabs/horizontal/skeleton/component.module.css';
+import { TabsHorizontalContentSkeletonProps } from '@/components/collections/tabs/horizontal/skeleton/content/component.interface';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from '../component.module.css';
-import {
-  TabsHorizontalContentSkeletonProps
-} from './component.interface';
 
-export function TabsHorizontalContentSkeleton<C extends ElementType = 'section'>({
-  as,
-  ...rest
-}: TabsHorizontalContentSkeletonProps<C>) {
+export function TabsHorizontalContentSkeleton<
+  C extends ElementType = 'section',
+>({ as, ...rest }: TabsHorizontalContentSkeletonProps<C>) {
   const Component = (as || 'section') as ElementType;
 
   return (
@@ -17,7 +14,7 @@ export function TabsHorizontalContentSkeleton<C extends ElementType = 'section'>
       className={classNames(
         'mosuk-tabs-horizontal-content-skeleton',
         styles.content,
-        rest?.className
+        rest?.className,
       )}
     >
       {rest?.children}

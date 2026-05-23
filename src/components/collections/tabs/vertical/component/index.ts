@@ -1,13 +1,13 @@
-import { TabsVertical as TabsVerticalComponent } from './component';
-import { TabsVerticalProps } from './component.interface';
-import { TabsVerticalContent } from './content/component';
-import { TabsVerticalContentProps } from './content/component.interface';
-import { TabsVerticalHead } from './head/component';
-import { TabsVerticalHeadProps } from './head/component.interface';
-import { TabsVerticalHeadIndicator } from './head/indicator/component';
-import { TabsVerticalHeadIndicatorProps } from './head/indicator/component.interface';
-import { TabsVerticalHeadTab } from './head/tab/component';
-import { TabsVerticalHeadTabProps } from './head/tab/component.interface';
+import { TabsVertical as TabsVerticalComponent } from '@/components/collections/tabs/vertical/component/component';
+import { TabsVerticalProps } from '@/components/collections/tabs/vertical/component/component.interface';
+import { TabsVerticalContent } from '@/components/collections/tabs/vertical/component/content/component';
+import { TabsVerticalContentProps } from '@/components/collections/tabs/vertical/component/content/component.interface';
+import { TabsVerticalHead } from '@/components/collections/tabs/vertical/component/head/component';
+import { TabsVerticalHeadProps } from '@/components/collections/tabs/vertical/component/head/component.interface';
+import { TabsVerticalHeadIndicator } from '@/components/collections/tabs/vertical/component/head/indicator/component';
+import { TabsVerticalHeadIndicatorProps } from '@/components/collections/tabs/vertical/component/head/indicator/component.interface';
+import { TabsVerticalHeadTab } from '@/components/collections/tabs/vertical/component/head/tab/component';
+import { TabsVerticalHeadTabProps } from '@/components/collections/tabs/vertical/component/head/tab/component.interface';
 
 export const TabsVertical = Object.assign(TabsVerticalComponent, {
   Head: Object.assign(TabsVerticalHead, {

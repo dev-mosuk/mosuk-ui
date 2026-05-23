@@ -1,9 +1,9 @@
-import { BreadcrumbsButtonSkeleton } from './.partials/components/button/component';
-import { BreadcrumbsButtonSkeletonProps } from './.partials/components/button/component.interface';
-import { BreadcrumbsSkeleton as BaseBreadcrumbsSkeleton } from './.partials/components/component';
-import type { BreadcrumbsSkeletonProps } from './.partials/components/component.interface';
-import { BreadcrumbsIconSkeleton } from './.partials/components/icon/component';
-import { BreadcrumbsIconSkeletonProps } from './.partials/components/icon/component.interface';
+import { BreadcrumbsButtonSkeleton } from '@/components/collections/breadcrumbs/skeleton/.partials/components/button/component';
+import { BreadcrumbsButtonSkeletonProps } from '@/components/collections/breadcrumbs/skeleton/.partials/components/button/component.interface';
+import { BreadcrumbsSkeleton as BaseBreadcrumbsSkeleton } from '@/components/collections/breadcrumbs/skeleton/.partials/components/component';
+import type { BreadcrumbsSkeletonProps } from '@/components/collections/breadcrumbs/skeleton/.partials/components/component.interface';
+import { BreadcrumbsIconSkeleton } from '@/components/collections/breadcrumbs/skeleton/.partials/components/icon/component';
+import { BreadcrumbsIconSkeletonProps } from '@/components/collections/breadcrumbs/skeleton/.partials/components/icon/component.interface';
 
 export const BreadcrumbsSkeleton = Object.assign(BaseBreadcrumbsSkeleton, {
   Icon: BreadcrumbsIconSkeleton,

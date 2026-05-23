@@ -1,7 +1,7 @@
+import styles from '@/components/overlays/drawer/component/component.module.css';
+import { DrawerPortalViewportPopupContentProps } from '@/components/overlays/drawer/component/portal/viewport/popup/content/component.interface';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from '../../../../component.module.css';
-import { DrawerPortalViewportPopupContentProps } from './component.interface';
 
 export function DrawerPortalViewportPopupContent<
   C extends ElementType = 'div',

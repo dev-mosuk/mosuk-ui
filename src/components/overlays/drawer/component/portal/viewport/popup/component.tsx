@@ -1,8 +1,8 @@
+import styles from '@/components/overlays/drawer/component/component.module.css';
+import { DrawerPortalViewportPopupProps } from '@/components/overlays/drawer/component/portal/viewport/popup/component.interface';
 import { Drawer as BaseUiDrawer } from '@base-ui/react';
 import classNames from 'classnames';
 import React from 'react';
-import styles from '../../../component.module.css';
-import { DrawerPortalViewportPopupProps } from './component.interface';
 
 export function DrawerPortalViewportPopup({
   ...rest

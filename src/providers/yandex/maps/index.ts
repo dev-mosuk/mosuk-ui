@@ -1,6 +1,6 @@
+import { YandexMapProvider as BaseYandexMapProvider } from '@/providers/yandex/maps/provider';
+import { YandexMapProviderProps } from '@/providers/yandex/maps/provider.interface';
 import { createElement } from 'react';
-import { YandexMapProvider as BaseYandexMapProvider } from './provider';
-import { YandexMapProviderProps } from './provider.interface';
 
 export const YandexMapProvider = (props: YandexMapProviderProps) => {
   return createElement(BaseYandexMapProvider, props);

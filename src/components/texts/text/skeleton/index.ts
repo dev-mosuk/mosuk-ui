@@ -1,5 +1,5 @@
-import { TextSkeleton as Component } from './component';
-import type { TextSkeletonProps } from './component.interface';
+import { TextSkeleton as Component } from '@/components/texts/text/skeleton/component';
+import type { TextSkeletonProps } from '@/components/texts/text/skeleton/component.interface';
 
 export function TextSkeleton(props: TextSkeletonProps) {
   return Component(props);

@@ -1,9 +1,9 @@
+import { Button } from '@/components/actions/button/component/component';
+import { SidebarCardButtonProps } from '@/components/layouts/sidebar/component/card/button/component.interface';
+import styles from '@/components/layouts/sidebar/component/component.module.css';
 import classNames from 'classnames';
 import { ChevronRight } from 'lucide-react';
 import React, { ElementType } from 'react';
-import { Button } from '../../../../../actions/button/component/component';
-import styles from '../../component.module.css';
-import { SidebarCardButtonProps } from './component.interface';
 
 export function SidebarCardButton<C extends ElementType = 'button'>({
   active,
@@ -18,7 +18,7 @@ export function SidebarCardButton<C extends ElementType = 'button'>({
         rest?.className,
         {
           [styles.active]: active,
-        }
+        },
       )}
     >
       {rest?.children}

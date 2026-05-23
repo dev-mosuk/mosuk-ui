@@ -1,1 +1,1 @@
-export { HintTypeEnum as FieldsetHintType } from '../../../../../texts/hint/component/component.enums';
+export { HintTypeEnum as FieldsetHintType } from '@/components/texts/hint/component/component.enums';

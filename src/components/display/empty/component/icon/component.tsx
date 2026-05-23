@@ -1,7 +1,7 @@
+import styles from '@/components/display/empty/component/component.module.css';
+import { EmptyIconProps } from '@/components/display/empty/component/icon/component.interface';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from './../component.module.css';
-import { EmptyIconProps } from './component.interface';
 
 export function EmptyIcon<C extends ElementType = 'div'>({
   as,

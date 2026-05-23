@@ -1,5 +1,5 @@
-import { H3 as BaseH3 } from './component';
-import type { H3Props } from './component.interface';
+import { H3 as BaseH3 } from '@/components/texts/h3/component/component';
+import type { H3Props } from '@/components/texts/h3/component/component.interface';
 
 export const H3 = BaseH3;
 

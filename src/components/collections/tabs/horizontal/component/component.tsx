@@ -1,10 +1,8 @@
+import { TabsHorizontalProps } from '@/components/collections/tabs/horizontal/component/component.interface';
+import styles from '@/components/collections/tabs/horizontal/component/component.module.css';
 import { Tabs as TabsComponent } from '@base-ui/react/tabs';
 import classNames from 'classnames';
 import React from 'react';
-import {
-    TabsHorizontalProps
-} from './component.interface';
-import styles from './component.module.css';
 
 export function TabsHorizontal({ ...rest }: TabsHorizontalProps) {
   return (
@@ -13,7 +11,7 @@ export function TabsHorizontal({ ...rest }: TabsHorizontalProps) {
       className={classNames(
         'mosuk-tabs-horizontal',
         styles.tabs,
-        rest?.className
+        rest?.className,
       )}
     >
       {rest?.children}

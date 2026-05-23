@@ -1,7 +1,7 @@
+import styles from '@/components/actions/select/component/component.module.css';
+import { SelectOptionProps } from '@/components/actions/select/component/option/component.props';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from './../component.module.css';
-import { SelectOptionProps } from './component.props';
 
 export function SelectOption<C extends ElementType = 'option'>({
   as,

@@ -1,8 +1,8 @@
+import styles from '@/components/collections/tabs/horizontal/component/component.module.css';
+import { TabsHorizontalHeadIndicatorProps } from '@/components/collections/tabs/horizontal/component/head/indicator/component.interface';
 import { Tabs as TabsComponent } from '@base-ui/react/tabs';
 import classNames from 'classnames';
 import React from 'react';
-import styles from '../../component.module.css';
-import { TabsHorizontalHeadIndicatorProps } from './component.interface';
 
 export function TabsHorizontalHeadIndicator({
   ...rest
@@ -12,7 +12,7 @@ export function TabsHorizontalHeadIndicator({
       className={classNames(
         'mosuk-tabs-horizontal-head-indicator',
         styles.indicator,
-        rest?.className
+        rest?.className,
       )}
     />
   );

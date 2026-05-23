@@ -1,3 +1,3 @@
-import { InputProps } from '../../component/component.interface';
+import { InputProps } from '@/components/actions/input/component/component.interface';
 
 export interface InputSearchProps extends InputProps {}

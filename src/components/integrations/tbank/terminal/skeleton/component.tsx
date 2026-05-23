@@ -1,13 +1,13 @@
+import { ButtonSkeleton } from '@/components/actions/button/skeleton/component';
+import { IconSkeleton } from '@/components/actions/icon/skeleton/component';
+import { Section } from '@/components/containers/section/component/index';
+import { Card } from '@/components/display/card/component/component';
+import component from '@/components/integrations/tbank/terminal/component/component.module.css';
+import { TBankTerminalSkeletonProps } from '@/components/integrations/tbank/terminal/skeleton/component.interface';
+import skeleton from '@/components/integrations/tbank/terminal/skeleton/component.module.css';
+import { H1Skeleton } from '@/components/texts/h1/skeleton/component';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { ButtonSkeleton } from '../../../../actions/button/skeleton/component';
-import { IconSkeleton } from '../../../../actions/icon/skeleton/component';
-import { Section } from '../../../../containers/section/component';
-import { Card } from '../../../../display/card/component/component';
-import { H1Skeleton } from '../../../../texts/h1/skeleton/component';
-import component from '../component/component.module.css';
-import { TBankTerminalSkeletonProps } from './component.interface';
-import skeleton from './component.module.css';
 
 export function TBankTerminalSkeleton<C extends ElementType = 'div'>({
   as,

@@ -1,7 +1,7 @@
+import { TabbarProps } from '@/components/layouts/tabbar/component/.partials/components/component.interface';
+import styles from '@/components/layouts/tabbar/component/.partials/styles/style.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from '../styles/style.module.css';
-import { TabbarProps } from './component.interface';
 
 export function Tabbar<C extends ElementType = 'aside'>({
   tabbar,

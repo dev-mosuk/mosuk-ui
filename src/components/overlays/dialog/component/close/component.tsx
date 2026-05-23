@@ -1,7 +1,7 @@
+import { DialogCloseProps } from '@/components/overlays/dialog/component/close/component.interface';
 import { Dialog as BaseUIDialog } from '@base-ui/react';
 import classNames from 'classnames';
 import React from 'react';
-import { DialogCloseProps } from './component.interface';
 
 export function DialogClose({ ...rest }: DialogCloseProps) {
   return (

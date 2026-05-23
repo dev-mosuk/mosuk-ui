@@ -1,8 +1,8 @@
+import styles from '@/components/actions/button/component/component.module.css';
+import { ButtonSkeletonProps } from '@/components/actions/button/skeleton/component.interface';
+import { Skeleton } from '@/components/display/skeleton/component/component';
 import classNames from 'classnames';
 import React from 'react';
-import { Skeleton } from '../../../display/skeleton/component/component';
-import styles from './../component/component.module.css';
-import { ButtonSkeletonProps } from './component.interface';
 
 export function ButtonSkeleton({ ...rest }: ButtonSkeletonProps) {
   return (

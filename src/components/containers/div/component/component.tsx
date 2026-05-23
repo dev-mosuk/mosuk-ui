@@ -1,6 +1,6 @@
+import { DivProps } from '@/components/containers/div/component/component.interface';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { DivProps } from './component.interface';
 
 export function Div<C extends ElementType = 'div'>({
   as,

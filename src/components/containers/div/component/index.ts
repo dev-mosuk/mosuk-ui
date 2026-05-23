@@ -1,5 +1,5 @@
-import { Div as BaseDiv } from './component';
-import type { DivProps } from './component.interface';
+import { Div as BaseDiv } from '@/components/containers/div/component/component';
+import type { DivProps } from '@/components/containers/div/component/component.interface';
 
 export const Div = BaseDiv;
 

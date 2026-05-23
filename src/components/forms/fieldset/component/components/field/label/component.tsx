@@ -1,8 +1,8 @@
+import styles from '@/components/forms/fieldset/component/component.module.css';
+import { FieldsetFieldLabelProps } from '@/components/forms/fieldset/component/components/field/label/component.interface';
+import { useFieldset } from '@/components/forms/fieldset/component/hooks/hook';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from '../../../component.module.css';
-import { useFieldset } from '../../../hooks/hook';
-import { FieldsetFieldLabelProps } from './component.interface';
 
 export function FieldsetFieldLabel<C extends ElementType = 'label'>({
   as,
@@ -21,7 +21,7 @@ export function FieldsetFieldLabel<C extends ElementType = 'label'>({
       className={classNames(
         'mosuk-fieldset-field-label',
         styles.label,
-        rest?.className
+        rest?.className,
       )}
     >
       {rest?.children}

@@ -1,9 +1,9 @@
+import styles from '@/components/forms/fieldset/component/component.module.css';
+import { FieldsetHintType } from '@/components/forms/fieldset/component/components/hint/component.enums';
+import { FieldsetHintProps } from '@/components/forms/fieldset/component/components/hint/component.interface';
+import { Hint } from '@/components/texts/hint/component/component';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { Hint } from '../../../../../texts/hint/component/component';
-import styles from '../../component.module.css';
-import { FieldsetHintType } from './component.enums';
-import { FieldsetHintProps } from './component.interface';
 
 export function FieldsetHint<C extends ElementType = 'p'>({
   as,

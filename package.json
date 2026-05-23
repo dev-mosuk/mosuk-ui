@@ -4,7 +4,11 @@
   "type": "module",
   "scripts": {
     "watch": "node --loader ts-node/esm --watch=src tsconfig.ts",
-    "build": "tsc -p tsconfig.build.json && node --loader ts-node/esm tsconfig.build.ts"
+    "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json && node --loader ts-node/esm tsconfig.build.ts",
+    "build:watch": "npm run build && tsc -w -p tsconfig.build.json & tsc-alias -w -p tsconfig.build.json",
+    "link:dist": "npm run build && cd dist && npm link",
+    "lint": "eslint src",
+    "migrate:imports": "node scripts/migrate-to-alias-imports.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
@@ -33,8 +37,16 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@typescript-eslint/eslint-plugin": "^8.59.4",
+    "@typescript-eslint/parser": "^8.59.4",
     "@yandex/ymaps3-types": "^1.0.17595433",
+    "eslint": "^10.4.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "prettier": "^3.8.3",
+    "prettier-plugin-organize-imports": "^4.3.0",
     "ts-node": "^10",
+    "tsc-alias": "^1.8.17",
     "typescript": "^5"
   }
 }

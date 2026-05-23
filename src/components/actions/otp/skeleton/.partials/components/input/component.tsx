@@ -1,8 +1,8 @@
+import styles from '@/components/actions/otp/component/.partials/styles/component.module.css';
+import { OTPInputSkeletonProps } from '@/components/actions/otp/skeleton/.partials/components/input/component.interface';
+import { Skeleton } from '@/components/display/skeleton/component/component';
 import classNames from 'classnames';
 import React from 'react';
-import { Skeleton } from '../../../../../../display/skeleton/component/component';
-import styles from '../../../../component/.partials/styles/component.module.css';
-import { OTPInputSkeletonProps } from './component.interface';
 
 export function OTPInputSkeleton({ ...rest }: OTPInputSkeletonProps) {
   return (

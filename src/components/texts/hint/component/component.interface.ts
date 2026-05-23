@@ -1,5 +1,5 @@
+import { HintTypeEnum } from '@/components/texts/hint/component/component.enums';
 import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
-import { HintTypeEnum } from './component.enums';
 
 export type HintProps<C extends ElementType = 'p'> = {
   as?: C;

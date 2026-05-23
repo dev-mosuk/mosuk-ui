@@ -1,5 +1,5 @@
-import { Section as BaseSection } from './component';
-import type { SectionProps } from './component.interface';
+import { Section as BaseSection } from '@/components/containers/section/component/component';
+import type { SectionProps } from '@/components/containers/section/component/component.interface';
 
 export function Section(props: SectionProps) {
   return BaseSection(props);

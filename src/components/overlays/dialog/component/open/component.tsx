@@ -1,7 +1,7 @@
+import { DialogOpenProps } from '@/components/overlays/dialog/component/open/component.interface';
 import { Dialog as BaseUIDialog } from '@base-ui/react';
 import classNames from 'classnames';
 import React from 'react';
-import { DialogOpenProps } from './component.interface';
 
 export function DialogOpen({ ...rest }: DialogOpenProps) {
   return (

@@ -1,8 +1,8 @@
+import { ButtonSkeleton } from '@/components/actions/button/skeleton/component';
+import { BreadcrumbsButtonSkeletonProps } from '@/components/collections/breadcrumbs/skeleton/.partials/components/button/component.interface';
+import styles from '@/components/collections/breadcrumbs/skeleton/.partials/styles/style.module.css';
 import classNames from 'classnames';
 import React from 'react';
-import { ButtonSkeleton } from '../../../../../../actions/button/skeleton/component';
-import styles from '../../styles/style.module.css';
-import { BreadcrumbsButtonSkeletonProps } from './component.interface';
 
 export function BreadcrumbsButtonSkeleton({
   ...rest

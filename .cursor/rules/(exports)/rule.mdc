@@ -95,6 +95,13 @@ export namespace AlertsService {
 - `./index.css` — если есть в dist
 - **Новый feature** — добавить `index.ts`, build подхватит автоматически
 
+### Потребление в Next.js (CRM, npm link)
+
+- **Публиковать и линковать `dist/`**, не `src/`: `npm run link:dist` → в CRM `npm link mosuk-ui`
+- `src/` с `@/` импортами — только для разработки библиотеки; Next.js потребителя резолвит `@/` в **свой** `src/`
+- Watch при link: `npm run build:watch` в `.mosuk-ui/`
+- `src/package.json` exports → `index.ts` (генерирует `tsconfig.ts`); `dist/package.json` exports → `index.js` (после `tsc-alias`)
+
 ## Правила
 
 1. **Не** re-export внутренних `.partials/` paths наружу

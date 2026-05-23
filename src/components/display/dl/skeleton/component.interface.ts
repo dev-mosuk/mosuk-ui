@@ -1,5 +1,5 @@
+import { SkeletonProps } from '@/components/display/skeleton/component/component.interface';
 import { HTMLAttributes } from 'react';
-import { SkeletonProps } from '../../skeleton/component/component.interface';
 
 export interface DlSkeletonProps extends HTMLAttributes<HTMLDivElement> {}
 export interface DlSkeletonDlProps extends HTMLAttributes<HTMLDListElement> {}

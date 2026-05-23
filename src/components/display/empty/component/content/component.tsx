@@ -1,7 +1,7 @@
+import styles from '@/components/display/empty/component/component.module.css';
+import { EmptyContentProps } from '@/components/display/empty/component/content/component.interface';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from './../component.module.css';
-import { EmptyContentProps } from './component.interface';
 
 export function EmptyContent<C extends ElementType = 'article'>({
   as,

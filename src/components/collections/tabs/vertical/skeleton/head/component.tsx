@@ -1,7 +1,7 @@
+import styles from '@/components/collections/tabs/vertical/skeleton/component.module.css';
+import { TabsVerticalHeadSkeletonProps } from '@/components/collections/tabs/vertical/skeleton/head/component.interface';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from '../component.module.css';
-import { TabsVerticalHeadSkeletonProps } from './component.interface';
 
 export function TabsVerticalHeadSkeleton<C extends ElementType = 'nav'>({
   as,
@@ -15,7 +15,7 @@ export function TabsVerticalHeadSkeleton<C extends ElementType = 'nav'>({
       className={classNames(
         'mosuk-tabs-vertical-head-skeleton',
         styles.head,
-        rest?.className
+        rest?.className,
       )}
     >
       {rest?.children}

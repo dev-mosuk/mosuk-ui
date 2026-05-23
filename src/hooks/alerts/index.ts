@@ -1,5 +1,5 @@
-import { useAlerts as BaseUseAlerts } from './hook';
-import { UseAlertsProps } from './hook.interface';
+import { useAlerts as BaseUseAlerts } from '@/hooks/alerts/hook';
+import { UseAlertsProps } from '@/hooks/alerts/hook.interface';
 
 export const useAlerts = BaseUseAlerts;
 

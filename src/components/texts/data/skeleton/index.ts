@@ -1,5 +1,5 @@
-import { DataSkeleton as BaseDataSkeleton } from './component';
-import type { DataSkeletonProps } from './component.interface';
+import { DataSkeleton as BaseDataSkeleton } from '@/components/texts/data/skeleton/component';
+import type { DataSkeletonProps } from '@/components/texts/data/skeleton/component.interface';
 
 export const DataSkeleton = BaseDataSkeleton;
 

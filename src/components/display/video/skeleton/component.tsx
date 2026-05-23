@@ -1,11 +1,17 @@
+import {
+  VideoSkeletonProps,
+  VideoSkeletonVideoProps,
+} from '@/components/display/video/skeleton/component.interface';
+import styles from '@/components/display/video/skeleton/component.module.css';
 import { Video } from 'lucide-react';
 import React from 'react';
-import { VideoSkeletonProps, VideoSkeletonVideoProps } from './component.interface';
-import styles from './component.module.css';
 
 export function VideoSkeleton({ ...props }: VideoSkeletonProps) {
   return (
-    <div {...props} className={`mosuk-video ${styles.video} ${props?.className ?? ''}`}>
+    <div
+      {...props}
+      className={`mosuk-video ${styles.video} ${props?.className ?? ''}`}
+    >
       {props?.children}
     </div>
   );

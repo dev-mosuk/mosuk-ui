@@ -1,8 +1,8 @@
+import { InputMaskProps } from '@/components/actions/input/(mask)/component/component.interface';
+import { Input } from '@/components/actions/input/component/component';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 import { IMaskInput } from 'react-imask';
-import { Input } from '../../component/component';
-import { InputMaskProps } from './component.interface';
 
 export function InputMask<C extends ElementType = 'input'>({
   as,

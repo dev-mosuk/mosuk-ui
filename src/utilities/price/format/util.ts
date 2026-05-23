@@ -1,6 +1,6 @@
 export function format(
   price: number | null | undefined,
-  separator?: string
+  separator?: string,
 ): string {
   if (price === null || price === undefined) {
     return 'Цена не указана';

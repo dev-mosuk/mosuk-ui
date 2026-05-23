@@ -1,5 +1,5 @@
-import { H6 as BaseH6 } from './component';
-import type { H6Props } from './component.interface';
+import { H6 as BaseH6 } from '@/components/texts/h6/component/component';
+import type { H6Props } from '@/components/texts/h6/component/component.interface';
 
 export const H6 = BaseH6;
 

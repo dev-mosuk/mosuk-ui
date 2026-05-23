@@ -1,5 +1,5 @@
-import { Input as Component } from './component';
-import type { InputProps } from './component.interface';
+import { Input as Component } from '@/components/actions/input/component/component';
+import type { InputProps } from '@/components/actions/input/component/component.interface';
 
 export const Input = Object.assign(Component, {});
 

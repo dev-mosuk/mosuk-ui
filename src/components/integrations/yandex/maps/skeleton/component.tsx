@@ -1,8 +1,8 @@
+import { Skeleton } from '@/components/display/skeleton/component/component';
+import type { YandexMapSkeletonProps } from '@/components/integrations/yandex/maps/skeleton/component.interface';
+import styles from '@/components/integrations/yandex/maps/skeleton/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { Skeleton } from '../../../../display/skeleton/component/component';
-import type { YandexMapSkeletonProps } from './component.interface';
-import styles from './component.module.css';
 
 export function YandexMapSkeleton<C extends ElementType = 'div'>({
   as,

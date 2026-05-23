@@ -1,8 +1,8 @@
+import type { YandexMapProps } from '@/components/integrations/yandex/maps/component/component.interface';
+import { YandexMapSkeleton } from '@/components/integrations/yandex/maps/skeleton/component';
+import { YandexMapDefaultSchemeLayerSkeleton } from '@/components/integrations/yandex/maps/skeleton/default/scheme/layer/component';
+import { YandexMapContext } from '@/providers/yandex/maps/context/context';
 import React, { useContext } from 'react';
-import { YandexMapContext } from '../../../../../providers/yandex/maps/context/context';
-import { YandexMapSkeleton } from '../skeleton/component';
-import { YandexMapDefaultSchemeLayerSkeleton } from '../skeleton/default/scheme/layer/component';
-import type { YandexMapProps } from './component.interface';
 
 export function YandexMap({ ...rest }: YandexMapProps) {
   const context = useContext(YandexMapContext);

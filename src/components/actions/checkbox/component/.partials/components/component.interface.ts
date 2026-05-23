@@ -1,3 +1,3 @@
 import { Checkbox } from '@base-ui/react';
 
-export interface CheckboxProps extends Checkbox.Root.Props {}
+export type CheckboxProps = Checkbox.Root.Props;

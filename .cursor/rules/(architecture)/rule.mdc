@@ -115,10 +115,23 @@ Utilities → `.cursor/rules/utilities/rule.mdc`
 
 ## Импорты
 
-- **Внутри feature** — относительные пути до файла
-- **Между features** — через `index.ts` feature или shared layer (`hooks/`, `services/`)
+- **Везде в `src/`** — alias `@/…` → `src/…`; относительные `./…` и `../…` **запрещены** (ESLint `@typescript-eslint/no-restricted-imports`)
+- В т.ч. внутри feature и `.partials/` — `@/components/actions/otp/component/.partials/hooks/hook`, не `../hooks/hook`
 - **Named export** везде
 - **Не** barrel re-export всего `src/` — только точечные `index.ts` на feature
+- Массовая миграция legacy: `npm run migrate:imports -- --dry-run` / `--apply`
+
+### Alias `@/`
+
+| Контекст | Пример |
+| -------- | ------ |
+| tsconfig | `"paths": { "@/*": ["src/*"] }` |
+| cross-feature | `import { AlertsContext } from '@/providers/alerts/context/context'` |
+| same feature | `import { UseAlertsProps } from '@/hooks/alerts/hook.interface'` |
+
+`tsc` **не** переписывает `@/` в emit — build добавляет `tsc-alias`, чтобы в `dist/` остались относительные пути для npm consumers.
+
+**npm link в CRM:** линковать `dist/` (`npm run link:dist`), не `src/`. Подробнее — README §6, `(exports)/rule.mdc`.
 
 ## Legacy vs canonical
 

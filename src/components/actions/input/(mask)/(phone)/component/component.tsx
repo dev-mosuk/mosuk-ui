@@ -1,12 +1,12 @@
+import { InputMask } from '@/components/actions/input/(mask)/component/component';
+import { InputMaskProps } from '@/components/actions/input/(mask)/component/component.interface';
 import React from 'react';
-import { InputMask } from '../../component/component';
-import { InputMaskProps } from '../../component/component.interface';
 
 export function InputMaskPhone({ ...props }: InputMaskProps) {
   return (
     <InputMask
       {...props}
-      type="tel"
+      type='tel'
       mask={'+7 (900) 000-00-00' as any} // TODO: fix any type
       definitions={{
         '0': /[0-9]/,

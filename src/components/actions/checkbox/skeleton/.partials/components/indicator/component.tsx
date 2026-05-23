@@ -1,7 +1,7 @@
+import styles from '@/components/actions/checkbox/component/.partials/styles/component.module.css';
+import { CheckboxIndicatorSkeletonProps } from '@/components/actions/checkbox/skeleton/.partials/components/indicator/component.interface';
 import classNames from 'classnames';
 import React from 'react';
-import styles from '../../../../component/.partials/styles/component.module.css';
-import { CheckboxIndicatorSkeletonProps } from './component.interface';
 
 export function CheckboxIndicatorSkeleton({
   ...rest

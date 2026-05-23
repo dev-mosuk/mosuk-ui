@@ -1,8 +1,8 @@
+import { ToggleIndicatorProps } from '@/components/actions/toggle/component/.partials/components/indicator/component.props';
+import { useToggle } from '@/components/actions/toggle/component/.partials/hooks/hook';
+import styles from '@/components/actions/toggle/component/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType, useEffect, useState } from 'react';
-import { useToggle } from '../../hooks/hook';
-import styles from '../../styles/component.module.css';
-import { ToggleIndicatorProps } from './component.props';
 
 type IndicatorLayout =
   | {
@@ -28,6 +28,7 @@ export function ToggleIndicator<C extends ElementType = 'div'>({
   useEffect(() => {
     if (value === null || value === undefined) {
       setLayout(null);
+
       return;
     }
 
@@ -36,6 +37,7 @@ export function ToggleIndicator<C extends ElementType = 'div'>({
 
       if (!el) {
         setLayout(null);
+
         return;
       }
 

@@ -1,6 +1,6 @@
+import { UseStorageLocalProps } from '@/hooks/storage/local/hook.interface';
+import { storageLocalService } from '@/services/storage/local/index';
 import { useCallback, useEffect, useState } from 'react';
-import { storageLocalService } from '../../../services/storage/local';
-import { UseStorageLocalProps } from './hook.interface';
 
 export function useStorageLocal<T = any>(key: string): UseStorageLocalProps<T> {
   const [value, setValue] = useState<T | null>(() => {
@@ -15,6 +15,7 @@ export function useStorageLocal<T = any>(key: string): UseStorageLocalProps<T> {
     };
 
     window.addEventListener('storage', handleStorageChange);
+
     return () => window.removeEventListener('storage', handleStorageChange);
   }, [key]);
 
@@ -23,12 +24,13 @@ export function useStorageLocal<T = any>(key: string): UseStorageLocalProps<T> {
       storageLocalService.create(key, newValue);
       setValue(newValue);
     },
-    [key]
+    [key],
   );
 
   const read = useCallback(() => {
     const currentValue = storageLocalService.read<T>(key);
     setValue(currentValue);
+
     return currentValue;
   }, [key]);
 
@@ -37,7 +39,7 @@ export function useStorageLocal<T = any>(key: string): UseStorageLocalProps<T> {
       storageLocalService.update(key, newValue);
       setValue(storageLocalService.read<T>(key));
     },
-    [key]
+    [key],
   );
 
   const deleteValue = useCallback(() => {

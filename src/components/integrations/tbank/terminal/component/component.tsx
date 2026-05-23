@@ -1,9 +1,15 @@
+import { TBankTerminalProps } from '@/components/integrations/tbank/terminal/component/component.interface';
+import component from '@/components/integrations/tbank/terminal/component/component.module.css';
+import { TBankTerminalSkeleton } from '@/components/integrations/tbank/terminal/skeleton/component';
+import { TBankContext } from '@/providers/tbank/context/context';
 import classNames from 'classnames';
-import React, { ElementType, useContext, useEffect, useRef, useState } from 'react';
-import { TBankContext } from '../../../../../providers/tbank/context/context';
-import { TBankTerminalSkeleton } from '../skeleton/component';
-import { TBankTerminalProps } from './component.interface';
-import component from './component.module.css';
+import React, {
+  ElementType,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
 export function TBankTerminal<C extends ElementType = 'div'>({
   as,
@@ -78,7 +84,11 @@ export function TBankTerminal<C extends ElementType = 'div'>({
     <Component
       {...rest}
       ref={containerRef}
-      className={classNames('mosuk-tbank-terminal', component.TBankTerminal, rest?.className)}
+      className={classNames(
+        'mosuk-tbank-terminal',
+        component.TBankTerminal,
+        rest?.className,
+      )}
     >
       {rest?.children}
     </Component>

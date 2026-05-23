@@ -1,5 +1,5 @@
-import { TBankTerminalSkeleton as BaseTBankTerminalSkeleton } from './component';
-import { TBankTerminalSkeletonProps } from './component.interface';
+import { TBankTerminalSkeleton as BaseTBankTerminalSkeleton } from '@/components/integrations/tbank/terminal/skeleton/component';
+import { TBankTerminalSkeletonProps } from '@/components/integrations/tbank/terminal/skeleton/component.interface';
 
 export const TBankTerminalSkeleton = BaseTBankTerminalSkeleton;
 

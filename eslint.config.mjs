@@ -9,6 +9,31 @@ import eslintPluginPrettier from 'eslint-plugin-prettier';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const tsconfigPath = path.join(__dirname, 'tsconfig.json');
 
+/** Relative import depths seen in src/ (toggle skeleton → button). */
+const RELATIVE_IMPORT_PATTERNS = [
+  './*',
+  '../*',
+  '../../*',
+  '../../../*',
+  '../../../../*',
+  '../../../../../*',
+  '../../../../../../*',
+  '../../../../../../../*',
+];
+
+const RELATIVE_IMPORT_RULE = [
+  'error',
+  {
+    patterns: [
+      {
+        group: RELATIVE_IMPORT_PATTERNS,
+        message:
+          "Use '@/…' alias instead of relative imports (run `npm run migrate:imports -- --apply`).",
+      },
+    ],
+  },
+];
+
 export default [
   {
     ignores: [
@@ -56,18 +81,6 @@ export default [
 
       'prettier/prettier': ['error', { singleQuote: true }],
 
-      'no-restricted-imports': [
-        'error',
-        {
-          patterns: [
-            {
-              group: ['./*', '../*'],
-              message: "Use absolute imports with '@/' alias instead of relative paths.",
-            },
-          ],
-        },
-      ],
-
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-require-imports': 'off',
       '@typescript-eslint/no-unused-vars': [
@@ -100,6 +113,19 @@ export default [
           format: ['PascalCase'],
         },
       ],
+    },
+  },
+  {
+    files: ['**/index.ts'],
+    rules: {
+      // Public API: export namespace Feature { export type Props = … }
+      '@typescript-eslint/no-namespace': 'off',
+    },
+  },
+  {
+    files: ['src/**/*.{ts,tsx}'],
+    rules: {
+      '@typescript-eslint/no-restricted-imports': RELATIVE_IMPORT_RULE,
     },
   },
 ];

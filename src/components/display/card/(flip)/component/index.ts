@@ -1,9 +1,9 @@
-import { CardFlipBack } from './back/component';
-import type { CardFlipBackProps } from './back/component.interface';
-import { CardFlip as BaseCardFlip } from './component';
-import type { CardFlipProps } from './component.interface';
-import { CardFlipFront } from './front/component';
-import type { CardFlipFrontProps } from './front/component.interface';
+import { CardFlipBack } from '@/components/display/card/(flip)/component/back/component';
+import type { CardFlipBackProps } from '@/components/display/card/(flip)/component/back/component.interface';
+import { CardFlip as BaseCardFlip } from '@/components/display/card/(flip)/component/component';
+import type { CardFlipProps } from '@/components/display/card/(flip)/component/component.interface';
+import { CardFlipFront } from '@/components/display/card/(flip)/component/front/component';
+import type { CardFlipFrontProps } from '@/components/display/card/(flip)/component/front/component.interface';
 
 export const CardFlip = Object.assign(BaseCardFlip, {
   Front: CardFlipFront,

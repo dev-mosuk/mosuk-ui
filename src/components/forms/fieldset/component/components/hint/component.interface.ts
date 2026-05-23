@@ -1,5 +1,5 @@
+import { FieldsetHintType } from '@/components/forms/fieldset/component/components/hint/component.enums';
 import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
-import { FieldsetHintType } from './component.enums';
 
 export type FieldsetHintProps<C extends ElementType = 'p'> = {
   as?: C;

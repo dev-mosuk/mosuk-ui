@@ -1,5 +1,5 @@
-import { H6Skeleton as BaseH6Skeleton } from './component';
-import type { H6SkeletonProps } from './component.interface';
+import { H6Skeleton as BaseH6Skeleton } from '@/components/texts/h6/skeleton/component';
+import type { H6SkeletonProps } from '@/components/texts/h6/skeleton/component.interface';
 
 export const H6Skeleton = BaseH6Skeleton;
 

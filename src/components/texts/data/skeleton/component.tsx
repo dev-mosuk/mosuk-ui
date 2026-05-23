@@ -1,8 +1,8 @@
+import { Skeleton } from '@/components/display/skeleton/component/component';
+import { DataSkeletonProps } from '@/components/texts/data/skeleton/component.interface';
+import styles from '@/components/texts/data/skeleton/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { Skeleton } from '../../../display/skeleton/component/component';
-import { DataSkeletonProps } from './component.interface';
-import styles from './component.module.css';
 
 export function DataSkeleton<C extends ElementType = 'div'>({
   as,

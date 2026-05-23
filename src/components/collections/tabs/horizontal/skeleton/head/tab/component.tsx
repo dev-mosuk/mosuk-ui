@@ -1,7 +1,7 @@
+import styles from '@/components/collections/tabs/horizontal/skeleton/component.module.css';
+import { TabsHorizontalHeadTabSkeletonProps } from '@/components/collections/tabs/horizontal/skeleton/head/tab/component.interface';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from '../../component.module.css';
-import { TabsHorizontalHeadTabSkeletonProps } from './component.interface';
 
 export function TabsHorizontalHeadTabSkeleton<C extends ElementType = 'span'>({
   as,
@@ -15,7 +15,7 @@ export function TabsHorizontalHeadTabSkeleton<C extends ElementType = 'span'>({
       className={classNames(
         'mosuk-tabs-horizontal-head-tab-skeleton',
         styles.tab,
-        rest?.className
+        rest?.className,
       )}
     >
       {rest?.children}

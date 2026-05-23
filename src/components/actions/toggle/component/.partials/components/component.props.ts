@@ -1,5 +1,5 @@
+import type { ToggleOrientation } from '@/components/actions/toggle/component/.partials/providers/context/context.interface';
 import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
-import type { ToggleOrientation } from '../providers/context/context.interface';
 
 export type ToggleProps<C extends ElementType = 'div'> = {
   as?: C;

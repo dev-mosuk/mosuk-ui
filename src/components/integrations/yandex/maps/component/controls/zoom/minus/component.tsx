@@ -1,23 +1,25 @@
+import type { YandexMapControlsZoomMinusProps } from '@/components/integrations/yandex/maps/component/controls/zoom/minus/component.interface';
+import { YMapZoomContext } from '@/components/integrations/yandex/maps/component/zoom/context';
 import React, { useContext } from 'react';
-import { YMapZoomContext } from '../../../zoom/context';
-import type { YandexMapControlsZoomMinusProps } from './component.interface';
 
 export function YandexMapControlsZoomMinus(
   props: YandexMapControlsZoomMinusProps = {},
 ) {
   const context = useContext(YMapZoomContext);
-  if (!context?.onZoomOut) return null;
+  if (!context?.onZoomOut) {
+    return null;
+  }
 
   const { onZoomOut, zoom, min } = context;
   const isDisabled = zoom !== undefined && min !== undefined && zoom <= min;
 
   return (
     <button
-      type="button"
+      type='button'
       onClick={onZoomOut}
       disabled={isDisabled}
       className={props.className}
-      aria-label="Уменьшить масштаб"
+      aria-label='Уменьшить масштаб'
     />
   );
 }

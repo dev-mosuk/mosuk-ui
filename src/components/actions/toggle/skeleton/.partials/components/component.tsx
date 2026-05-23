@@ -1,7 +1,7 @@
+import { ToggleSkeletonProps } from '@/components/actions/toggle/skeleton/.partials/components/component.props';
+import styles from '@/components/actions/toggle/skeleton/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from '../styles/component.module.css';
-import { ToggleSkeletonProps } from './component.props';
 
 export function ToggleSkeleton<C extends ElementType = 'div'>({
   as,

@@ -1,7 +1,7 @@
-import { Hint as BaseHint } from './component';
-import { HintTypeConstant } from './component.constants';
-import { HintTypeEnum } from './component.enums';
-import { HintProps } from './component.interface';
+import { Hint as BaseHint } from '@/components/texts/hint/component/component';
+import { HintTypeConstant } from '@/components/texts/hint/component/component.constants';
+import { HintTypeEnum } from '@/components/texts/hint/component/component.enums';
+import { HintProps } from '@/components/texts/hint/component/component.interface';
 
 export const Hint = Object.assign(BaseHint, {
   Type: {

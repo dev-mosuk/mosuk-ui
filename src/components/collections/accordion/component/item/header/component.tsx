@@ -1,8 +1,8 @@
+import styles from '@/components/collections/accordion/component/component.module.css';
+import { AccordionHeaderProps } from '@/components/collections/accordion/component/item/header/component.interface';
 import { Accordion as BaseAccordion } from '@base-ui/react/accordion';
 import classNames from 'classnames';
 import React from 'react';
-import styles from '../../component.module.css';
-import { AccordionHeaderProps } from './component.interface';
 
 export function AccordionHeader({ ...rest }: AccordionHeaderProps) {
   return (

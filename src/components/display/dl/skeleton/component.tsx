@@ -1,12 +1,12 @@
-import React, { ReactNode } from 'react';
-import { Skeleton } from '../../skeleton/component/component';
 import {
   DlSkeletonDdProps,
   DlSkeletonDlProps,
   DlSkeletonDtProps,
   DlSkeletonProps,
-} from './component.interface';
-import styles from './component.module.css';
+} from '@/components/display/dl/skeleton/component.interface';
+import styles from '@/components/display/dl/skeleton/component.module.css';
+import { Skeleton } from '@/components/display/skeleton/component/component';
+import React, { ReactNode } from 'react';
 
 interface DlProps {
   children: ReactNode;
@@ -31,7 +31,10 @@ export function DlSkeletonDd({ ...props }: DlSkeletonDdProps) {
 
 export function DlSkeleton({ ...props }: DlSkeletonProps) {
   return (
-    <div {...props} className={`mosuk-list-dl ${styles.list} ${props?.className ?? ''}`}>
+    <div
+      {...props}
+      className={`mosuk-list-dl ${styles.list} ${props?.className ?? ''}`}
+    >
       {props?.children}
     </div>
   );

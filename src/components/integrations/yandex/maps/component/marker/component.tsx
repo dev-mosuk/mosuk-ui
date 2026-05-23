@@ -1,6 +1,6 @@
+import type { YandexMapMarkerProps } from '@/components/integrations/yandex/maps/component/marker/component.interface';
+import { YandexMapContext } from '@/providers/yandex/maps/context/context';
 import React, { useContext } from 'react';
-import { YandexMapContext } from '../../../../../../providers/yandex/maps/context/context';
-import type { YandexMapMarkerProps } from './component.interface';
 
 export function YandexMapMarker({
   coordinates,
@@ -9,7 +9,9 @@ export function YandexMapMarker({
 }: YandexMapMarkerProps) {
   const context = useContext(YandexMapContext);
 
-  if (!context || !context.api) return null;
+  if (!context || !context.api) {
+    return null;
+  }
 
   const { YMapMarker } = context.api;
 

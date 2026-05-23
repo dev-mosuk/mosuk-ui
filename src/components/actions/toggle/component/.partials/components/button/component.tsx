@@ -1,9 +1,9 @@
+import { Button } from '@/components/actions/button/component/component';
+import { ToggleButtonProps } from '@/components/actions/toggle/component/.partials/components/button/component.props';
+import { useToggle } from '@/components/actions/toggle/component/.partials/hooks/hook';
+import styles from '@/components/actions/toggle/component/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType, useCallback } from 'react';
-import { Button } from '../../../../../button/component/component';
-import { useToggle } from '../../hooks/hook';
-import styles from '../../styles/component.module.css';
-import { ToggleButtonProps } from './component.props';
 
 export function ToggleButton<C extends ElementType = 'button'>({
   as,

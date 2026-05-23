@@ -1,7 +1,10 @@
+import {
+  FileContextProps,
+  FileProps,
+} from '@/components/display/file/component/component.interface';
+import styles from '@/components/display/file/component/component.module.css';
 import classNames from 'classnames';
 import React, { createContext, useMemo } from 'react';
-import { FileContextProps, FileProps } from './component.interface';
-import styles from './component.module.css';
 
 export const FileContext = createContext<FileContextProps>({});
 

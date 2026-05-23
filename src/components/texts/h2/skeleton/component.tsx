@@ -1,8 +1,8 @@
+import { Skeleton } from '@/components/display/skeleton/component/component';
+import { H2SkeletonProps } from '@/components/texts/h2/skeleton/component.interface';
+import styles from '@/components/texts/h2/skeleton/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { Skeleton } from '../../../display/skeleton/component/component';
-import { H2SkeletonProps } from './component.interface';
-import styles from './component.module.css';
 
 export function H2Skeleton<C extends ElementType = 'h2'>({
   as,

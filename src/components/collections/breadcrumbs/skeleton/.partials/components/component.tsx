@@ -1,9 +1,9 @@
+import { BreadcrumbsButtonSkeleton } from '@/components/collections/breadcrumbs/skeleton/.partials/components/button/component';
+import { BreadcrumbsSkeletonProps } from '@/components/collections/breadcrumbs/skeleton/.partials/components/component.interface';
+import { BreadcrumbsIconSkeleton } from '@/components/collections/breadcrumbs/skeleton/.partials/components/icon/component';
+import styles from '@/components/collections/breadcrumbs/skeleton/.partials/styles/style.module.css';
 import classNames from 'classnames';
 import React, { Children, ElementType, isValidElement } from 'react';
-import styles from '../styles/style.module.css';
-import { BreadcrumbsButtonSkeleton } from './button/component';
-import { BreadcrumbsSkeletonProps } from './component.interface';
-import { BreadcrumbsIconSkeleton } from './icon/component';
 
 export function BreadcrumbsSkeleton<C extends ElementType = 'div'>({
   as,

@@ -1,4 +1,4 @@
+import type { YMapZoomContextProps } from '@/components/integrations/yandex/maps/component/zoom/context.interface';
 import { createContext } from 'react';
-import type { YMapZoomContextProps } from './context.interface';
 
 export const YMapZoomContext = createContext<YMapZoomContextProps | null>(null);

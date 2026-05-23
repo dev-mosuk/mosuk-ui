@@ -1,14 +1,14 @@
-import React from 'react';
-import { IconSkeleton } from '../../../actions/icon/skeleton/component';
-import { H3Skeleton } from '../../../texts/h3/skeleton/component';
+import { IconSkeleton } from '@/components/actions/icon/skeleton/component';
 import {
   AccordionSkeletonHeaderContentProps,
   AccordionSkeletonHeaderIconProps,
   AccordionSkeletonHeaderProps,
   AccordionSkeletonItemProps,
   AccordionSkeletonProps,
-} from './component.interface';
-import styles from './component.module.css';
+} from '@/components/collections/accordion/skeleton/component.interface';
+import styles from '@/components/collections/accordion/skeleton/component.module.css';
+import { H3Skeleton } from '@/components/texts/h3/skeleton/component';
+import React from 'react';
 
 export function AccordionSkeleton({ ...props }: AccordionSkeletonProps) {
   return (

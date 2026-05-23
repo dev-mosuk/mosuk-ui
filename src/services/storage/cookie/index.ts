@@ -1,8 +1,8 @@
-import { StorageCookieService } from './service';
+import { StorageCookieService } from '@/services/storage/cookie/service';
 import type {
   StorageCookieServiceConfig,
   StorageCookieServiceInterface,
-} from './service.interface';
+} from '@/services/storage/cookie/service.interface';
 
 export const storageCookieService = StorageCookieService.getInstance();
 

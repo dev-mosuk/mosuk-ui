@@ -1,4 +1,5 @@
+import { YandexMetrikaContextProps } from '@/providers/yandex/metrika/context/context.interface';
 import { createContext } from 'react';
-import { YandexMetrikaContextProps } from './context.interface';
 
-export const YandexMetrikaContext = createContext<YandexMetrikaContextProps | null>(null);
+export const YandexMetrikaContext =
+  createContext<YandexMetrikaContextProps | null>(null);

@@ -1,12 +1,10 @@
-import { Close } from './close/component';
-import { CloseProps } from './close/component.interface';
-import {
-  Alert as BaseAlert
-} from './component';
-import type { AlertProps } from './component.interface';
+import { Close } from '@/components/overlays/alert/component/close/component';
+import { CloseProps } from '@/components/overlays/alert/component/close/component.interface';
+import { Alert as BaseAlert } from '@/components/overlays/alert/component/component';
+import type { AlertProps } from '@/components/overlays/alert/component/component.interface';
 
 export const Alert = Object.assign(BaseAlert, {
-  Close: Close
+  Close: Close,
 });
 
 export namespace Alert {

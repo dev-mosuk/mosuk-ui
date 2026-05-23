@@ -1,9 +1,9 @@
+import { ToggleProps } from '@/components/actions/toggle/component/.partials/components/component.props';
+import { ToggleProvider } from '@/components/actions/toggle/component/.partials/providers/provider';
+import styles from '@/components/actions/toggle/component/.partials/styles/component.module.css';
+import { scrollToggleOptionIntoView } from '@/components/actions/toggle/component/.partials/utilities/scroll-toggle-option-into-view';
 import classNames from 'classnames';
 import React, { ElementType, useCallback, useEffect, useRef } from 'react';
-import { ToggleProvider } from '../providers/provider';
-import styles from '../styles/component.module.css';
-import { scrollToggleOptionIntoView } from '../utilities/scroll-toggle-option-into-view';
-import { ToggleProps } from './component.props';
 
 export function Toggle<C extends ElementType = 'div'>({
   as,
@@ -77,10 +77,12 @@ export function Toggle<C extends ElementType = 'div'>({
       } else if (ref) {
         (ref as React.MutableRefObject<HTMLElement | null>).current = node;
       }
+
       if (resizeObserverRef.current) {
         resizeObserverRef.current.disconnect();
         resizeObserverRef.current = null;
       }
+
       if (node) {
         node.style.setProperty(
           '--toggle-padding',

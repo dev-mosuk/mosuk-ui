@@ -1,7 +1,7 @@
+import { HeaderProps } from '@/components/layouts/header/component/.partials/components/component.interface';
+import styles from '@/components/layouts/header/component/.partials/styles/style.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from '../styles/style.module.css';
-import { HeaderProps } from './component.interface';
 
 export function Header<C extends ElementType = 'header'>({
   ...rest

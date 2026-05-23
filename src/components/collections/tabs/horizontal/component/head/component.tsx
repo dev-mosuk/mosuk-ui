@@ -1,8 +1,8 @@
+import styles from '@/components/collections/tabs/horizontal/component/component.module.css';
+import { TabsHorizontalHeadProps } from '@/components/collections/tabs/horizontal/component/head/component.interface';
 import { Tabs as TabsComponent } from '@base-ui/react/tabs';
 import classNames from 'classnames';
 import React from 'react';
-import styles from '../component.module.css';
-import { TabsHorizontalHeadProps } from './component.interface';
 
 const SCROLL_PADDING = 16;
 const SCROLL_DELAY = 200;
@@ -13,7 +13,7 @@ const ADJACENT_TABS_COUNT = 2;
 
 const sumAdjacentTabsWidth = (
   tabEl: HTMLElement,
-  dir: 'prev' | 'next'
+  dir: 'prev' | 'next',
 ): number => {
   let sum = 0;
   let count = 0;
@@ -25,7 +25,8 @@ const sumAdjacentTabsWidth = (
       sum += (node as HTMLElement).offsetWidth;
       count++;
     }
-    node = dir === 'next' ? node.nextElementSibling : node.previousElementSibling;
+    node =
+      dir === 'next' ? node.nextElementSibling : node.previousElementSibling;
   }
 
   return sum;
@@ -46,6 +47,7 @@ export const TabsHorizontalHead = React.forwardRef<
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
+
     if (rafRef.current) {
       cancelAnimationFrame(rafRef.current);
       rafRef.current = null;
@@ -57,11 +59,12 @@ export const TabsHorizontalHead = React.forwardRef<
   const animateScrollLeft = React.useCallback(
     (el: HTMLElement, toLeft: number) => {
       const prefersReducedMotion = window.matchMedia?.(
-        '(prefers-reduced-motion: reduce)'
+        '(prefers-reduced-motion: reduce)',
       )?.matches;
 
       if (prefersReducedMotion || Math.abs(el.scrollLeft - toLeft) < 1) {
         el.scrollLeft = toLeft;
+
         return;
       }
 
@@ -72,12 +75,14 @@ export const TabsHorizontalHead = React.forwardRef<
         const t = Math.min(1, (now - start) / ANIMATION_DURATION);
         const eased = t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2;
         el.scrollLeft = fromLeft + (toLeft - fromLeft) * eased;
-        if (t < 1) rafRef.current = requestAnimationFrame(tick);
+        if (t < 1) {
+          rafRef.current = requestAnimationFrame(tick);
+        }
       };
 
       rafRef.current = requestAnimationFrame(tick);
     },
-    []
+    [],
   );
 
   const handleClickCapture = React.useCallback<
@@ -85,15 +90,21 @@ export const TabsHorizontalHead = React.forwardRef<
   >(
     (e) => {
       onClickCapture?.(e);
-      if (e.defaultPrevented || !listRef.current) return;
+      if (e.defaultPrevented || !listRef.current) {
+        return;
+      }
 
       const listEl = listRef.current;
-      if (listEl.scrollWidth <= listEl.clientWidth) return;
+      if (listEl.scrollWidth <= listEl.clientWidth) {
+        return;
+      }
 
       const tabEl = (e.target as HTMLElement)?.closest?.(
-        '[role="tab"]'
+        '[role="tab"]',
       ) as HTMLElement | null;
-      if (!tabEl || !listEl.contains(tabEl)) return;
+      if (!tabEl || !listEl.contains(tabEl)) {
+        return;
+      }
 
       stopAnimations();
 
@@ -110,21 +121,30 @@ export const TabsHorizontalHead = React.forwardRef<
 
         let nextLeft = viewLeft;
 
-        if (tabRight + lookahead + SCROLL_PADDING > viewRight - SCROLL_PADDING) {
-          nextLeft = tabRight + lookahead + SCROLL_PADDING - listEl.clientWidth + SCROLL_PADDING;
+        if (
+          tabRight + lookahead + SCROLL_PADDING >
+          viewRight - SCROLL_PADDING
+        ) {
+          nextLeft =
+            tabRight +
+            lookahead +
+            SCROLL_PADDING -
+            listEl.clientWidth +
+            SCROLL_PADDING;
         }
+
         if (tabLeft - lookbehind - SCROLL_PADDING < viewLeft + SCROLL_PADDING) {
           nextLeft = tabLeft - lookbehind - SCROLL_PADDING;
         }
 
         nextLeft = Math.max(
           0,
-          Math.min(nextLeft, listEl.scrollWidth - listEl.clientWidth)
+          Math.min(nextLeft, listEl.scrollWidth - listEl.clientWidth),
         );
         animateScrollLeft(listEl, nextLeft);
       }, SCROLL_DELAY);
     },
-    [animateScrollLeft, onClickCapture, stopAnimations]
+    [animateScrollLeft, onClickCapture, stopAnimations],
   );
 
   return (
@@ -139,7 +159,11 @@ export const TabsHorizontalHead = React.forwardRef<
         }
       }}
       onClickCapture={handleClickCapture}
-      className={classNames('mosuk-tabs-horizontal-head', styles.head, className)}
+      className={classNames(
+        'mosuk-tabs-horizontal-head',
+        styles.head,
+        className,
+      )}
     >
       {children}
     </TabsComponent.List>
