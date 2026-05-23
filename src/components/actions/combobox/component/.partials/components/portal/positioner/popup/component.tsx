@@ -16,7 +16,7 @@ export function ComboboxPortalPositionerPopup({
       ref={ref}
       className={classNames(
         'mosuk-combobox-portal-positioner-popup',
-        styles.popup,
+        styles.ComboboxPortalPositionerPopup,
         rest?.className,
       )}
     >

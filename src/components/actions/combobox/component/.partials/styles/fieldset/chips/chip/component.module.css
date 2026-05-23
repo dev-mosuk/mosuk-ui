@@ -1,0 +1,24 @@
+@import './chip-remove/component.module.css';
+
+@layer mosuk-ui {
+    @layer index-11 {
+        .ComboboxFieldsetChipsChip {
+            display: inline-flex;
+            align-items: center;
+            gap: calc(var(--spacing, 0.25rem) * 1);
+
+            max-width: 100%;
+            height: calc(var(--spacing, 0.25rem) * 6);
+
+            padding-left: calc(var(--spacing, 0.25rem) * 2);
+            padding-right: calc(var(--spacing, 0.25rem) * 1);
+
+            background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
+            color: var(--color-black, #000);
+            font-size: var(--text-sm, 0.875rem);
+
+            border-radius: calc(infinity * 1px);
+            border: 1px solid var(--color-gray-200, oklch(0.928 0.006 264.531));
+        }
+    }
+}

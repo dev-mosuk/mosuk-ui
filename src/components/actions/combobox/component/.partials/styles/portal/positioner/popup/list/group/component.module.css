@@ -1,0 +1,10 @@
+@import './label/component.module.css';
+
+@layer mosuk-ui {
+    @layer index-11 {
+        .ComboboxPortalPositionerPopupListGroup {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}

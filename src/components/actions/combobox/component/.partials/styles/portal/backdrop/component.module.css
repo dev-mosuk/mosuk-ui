@@ -1,0 +1,10 @@
+@layer mosuk-ui {
+    @layer index-11 {
+        .ComboboxPortalBackdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 99;
+            background-color: transparent;
+        }
+    }
+}

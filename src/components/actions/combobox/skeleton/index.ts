@@ -1,51 +1,62 @@
 import { ComboboxSkeleton as Component } from '@/components/actions/combobox/skeleton/.partials/components/component';
 import { ComboboxSkeletonProps as ComponentProps } from '@/components/actions/combobox/skeleton/.partials/components/component.interface';
-import { ComboboxInputGroupSkeleton } from '@/components/actions/combobox/skeleton/.partials/components/input-group/component';
-import { ComboboxInputGroupSkeletonProps } from '@/components/actions/combobox/skeleton/.partials/components/input-group/component.interface';
-import { ComboboxInputSkeleton } from '@/components/actions/combobox/skeleton/.partials/components/input/component';
-import { ComboboxInputSkeletonProps } from '@/components/actions/combobox/skeleton/.partials/components/input/component.interface';
-import { ComboboxItemSkeleton } from '@/components/actions/combobox/skeleton/.partials/components/item/component';
-import { ComboboxItemSkeletonProps } from '@/components/actions/combobox/skeleton/.partials/components/item/component.interface';
-import { ComboboxListSkeleton } from '@/components/actions/combobox/skeleton/.partials/components/list/component';
-import { ComboboxListSkeletonProps } from '@/components/actions/combobox/skeleton/.partials/components/list/component.interface';
-import { ComboboxPopupSkeleton } from '@/components/actions/combobox/skeleton/.partials/components/popup/component';
-import { ComboboxPopupSkeletonProps } from '@/components/actions/combobox/skeleton/.partials/components/popup/component.interface';
-import { ComboboxTriggerSkeleton } from '@/components/actions/combobox/skeleton/.partials/components/trigger/component';
-import { ComboboxTriggerSkeletonProps } from '@/components/actions/combobox/skeleton/.partials/components/trigger/component.interface';
+import { ComboboxFieldsetSkeleton } from '@/components/actions/combobox/skeleton/.partials/components/fieldset/component';
+import { ComboboxFieldsetSkeletonProps } from '@/components/actions/combobox/skeleton/.partials/components/fieldset/component.interface';
+import { ComboboxFieldsetInputSkeleton } from '@/components/actions/combobox/skeleton/.partials/components/fieldset/input/component';
+import { ComboboxFieldsetInputSkeletonProps } from '@/components/actions/combobox/skeleton/.partials/components/fieldset/input/component.interface';
+import { ComboboxFieldsetTriggerSkeleton } from '@/components/actions/combobox/skeleton/.partials/components/fieldset/trigger/component';
+import { ComboboxFieldsetTriggerSkeletonProps } from '@/components/actions/combobox/skeleton/.partials/components/fieldset/trigger/component.interface';
+import { ComboboxPortalPositionerPopupSkeleton } from '@/components/actions/combobox/skeleton/.partials/components/portal/positioner/popup/component';
+import { ComboboxPortalPositionerPopupSkeletonProps } from '@/components/actions/combobox/skeleton/.partials/components/portal/positioner/popup/component.interface';
+import { ComboboxPortalPositionerPopupListItemSkeleton } from '@/components/actions/combobox/skeleton/.partials/components/portal/positioner/popup/list/item/component';
+import { ComboboxPortalPositionerPopupListItemSkeletonProps } from '@/components/actions/combobox/skeleton/.partials/components/portal/positioner/popup/list/item/component.interface';
+import { ComboboxPortalPositionerPopupListSkeleton } from '@/components/actions/combobox/skeleton/.partials/components/portal/positioner/popup/list/component';
+import { ComboboxPortalPositionerPopupListSkeletonProps } from '@/components/actions/combobox/skeleton/.partials/components/portal/positioner/popup/list/component.interface';
 
 export const ComboboxSkeleton = Object.assign(Component, {
-  InputGroup: ComboboxInputGroupSkeleton,
-  Input: ComboboxInputSkeleton,
-  Trigger: ComboboxTriggerSkeleton,
-  Popup: ComboboxPopupSkeleton,
-  List: ComboboxListSkeleton,
-  Item: ComboboxItemSkeleton,
+  Fieldset: Object.assign(ComboboxFieldsetSkeleton, {
+    Input: ComboboxFieldsetInputSkeleton,
+    Trigger: ComboboxFieldsetTriggerSkeleton,
+  }),
+  Portal: {
+    Positioner: {
+      Popup: Object.assign(ComboboxPortalPositionerPopupSkeleton, {
+        List: Object.assign(ComboboxPortalPositionerPopupListSkeleton, {
+          Item: ComboboxPortalPositionerPopupListItemSkeleton,
+        }),
+      }),
+    },
+  },
 });
 
 export namespace ComboboxSkeleton {
   export type Props = ComponentProps;
 
-  export namespace InputGroup {
-    export type Props = ComboboxInputGroupSkeletonProps;
+  export namespace Fieldset {
+    export type Props = ComboboxFieldsetSkeletonProps;
+
+    export namespace Input {
+      export type Props = ComboboxFieldsetInputSkeletonProps;
+    }
+
+    export namespace Trigger {
+      export type Props = ComboboxFieldsetTriggerSkeletonProps;
+    }
   }
 
-  export namespace Input {
-    export type Props = ComboboxInputSkeletonProps;
-  }
+  export namespace Portal {
+    export namespace Positioner {
+      export namespace Popup {
+        export type Props = ComboboxPortalPositionerPopupSkeletonProps;
 
-  export namespace Trigger {
-    export type Props = ComboboxTriggerSkeletonProps;
-  }
+        export namespace List {
+          export type Props = ComboboxPortalPositionerPopupListSkeletonProps;
 
-  export namespace Popup {
-    export type Props = ComboboxPopupSkeletonProps;
-  }
-
-  export namespace List {
-    export type Props = ComboboxListSkeletonProps;
-  }
-
-  export namespace Item {
-    export type Props = ComboboxItemSkeletonProps;
+          export namespace Item {
+            export type Props = ComboboxPortalPositionerPopupListItemSkeletonProps;
+          }
+        }
+      }
+    }
   }
 }

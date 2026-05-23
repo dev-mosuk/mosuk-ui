@@ -5,10 +5,11 @@
   "scripts": {
     "watch": "node --loader ts-node/esm --watch=src tsconfig.ts",
     "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json && node --loader ts-node/esm tsconfig.build.ts",
-    "build:watch": "npm run build && tsc -w -p tsconfig.build.json & tsc-alias -w -p tsconfig.build.json",
+    "build:watch": "npm run build && tsc -w -p tsconfig.build.json & tsc-alias -w -p tsconfig.build.json & node --loader ts-node/esm helpers/watch-dist-assets.ts",
+    "watch:assets": "node --loader ts-node/esm helpers/watch-dist-assets.ts",
     "link:dist": "npm run build && cd dist && npm link",
     "lint": "eslint src",
-    "migrate:imports": "node scripts/migrate-to-alias-imports.mjs"
+    "migrate:imports": "node helpers/migrate-to-alias-imports.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",

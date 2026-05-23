@@ -1,0 +1,21 @@
+@layer mosuk-ui {
+    @layer index-11 {
+        .ComboboxPortalPositionerPopupListItemIndicator {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+
+            width: calc(var(--spacing, 0.25rem) * 3.5);
+            height: calc(var(--spacing, 0.25rem) * 3.5);
+            min-width: calc(var(--spacing, 0.25rem) * 3.5);
+            min-height: calc(var(--spacing, 0.25rem) * 3.5);
+
+            color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+
+            &[data-selected] {
+                color: var(--color-primary-500, #0074e7);
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
-import { Combobox as ComboboxPrimitive } from '@base-ui/react/combobox';
+import { Combobox } from '@base-ui/react/combobox';
 
 export type ComboboxProps<
   Value,
   Multiple extends boolean | undefined = false,
-> = ComboboxPrimitive.Root.Props<Value, Multiple>;
+> = Combobox.Root.Props<Value, Multiple>;

@@ -1,53 +1,53 @@
-import { ComboboxArrow } from '@/components/actions/combobox/component/.partials/components/arrow/component';
-import { ComboboxArrowProps } from '@/components/actions/combobox/component/.partials/components/arrow/component.interface';
-import { ComboboxBackdrop } from '@/components/actions/combobox/component/.partials/components/backdrop/component';
-import { ComboboxBackdropProps } from '@/components/actions/combobox/component/.partials/components/backdrop/component.interface';
-import { ComboboxChipRemove } from '@/components/actions/combobox/component/.partials/components/chip-remove/component';
-import { ComboboxChipRemoveProps } from '@/components/actions/combobox/component/.partials/components/chip-remove/component.interface';
-import { ComboboxChip } from '@/components/actions/combobox/component/.partials/components/chip/component';
-import { ComboboxChipProps } from '@/components/actions/combobox/component/.partials/components/chip/component.interface';
-import { ComboboxChips } from '@/components/actions/combobox/component/.partials/components/chips/component';
-import { ComboboxChipsProps } from '@/components/actions/combobox/component/.partials/components/chips/component.interface';
-import { ComboboxClear } from '@/components/actions/combobox/component/.partials/components/clear/component';
-import { ComboboxClearProps } from '@/components/actions/combobox/component/.partials/components/clear/component.interface';
-import { ComboboxCollection } from '@/components/actions/combobox/component/.partials/components/collection/component';
-import { ComboboxCollectionProps } from '@/components/actions/combobox/component/.partials/components/collection/component.interface';
 import { Combobox as Component } from '@/components/actions/combobox/component/.partials/components/component';
 import { ComboboxProps } from '@/components/actions/combobox/component/.partials/components/component.interface';
-import { ComboboxGroupLabel } from '@/components/actions/combobox/component/.partials/components/group-label/component';
-import { ComboboxGroupLabelProps } from '@/components/actions/combobox/component/.partials/components/group-label/component.interface';
-import { ComboboxGroup } from '@/components/actions/combobox/component/.partials/components/group/component';
-import { ComboboxGroupProps } from '@/components/actions/combobox/component/.partials/components/group/component.interface';
-import { ComboboxIcon } from '@/components/actions/combobox/component/.partials/components/icon/component';
-import { ComboboxIconProps } from '@/components/actions/combobox/component/.partials/components/icon/component.interface';
-import { ComboboxInputGroup } from '@/components/actions/combobox/component/.partials/components/input-group/component';
-import { ComboboxInputGroupProps } from '@/components/actions/combobox/component/.partials/components/input-group/component.interface';
-import { ComboboxInput } from '@/components/actions/combobox/component/.partials/components/input/component';
-import { ComboboxInputProps } from '@/components/actions/combobox/component/.partials/components/input/component.interface';
-import { ComboboxItem } from '@/components/actions/combobox/component/.partials/components/item/component';
-import { ComboboxItemProps } from '@/components/actions/combobox/component/.partials/components/item/component.interface';
-import { ComboboxItemIndicator } from '@/components/actions/combobox/component/.partials/components/item/indicator/component';
-import { ComboboxItemIndicatorProps } from '@/components/actions/combobox/component/.partials/components/item/indicator/component.interface';
-import { ComboboxList } from '@/components/actions/combobox/component/.partials/components/list/component';
-import { ComboboxListProps } from '@/components/actions/combobox/component/.partials/components/list/component.interface';
+import { ComboboxFieldsetChipsChipChipRemove } from '@/components/actions/combobox/component/.partials/components/fieldset/chips/chip/chip-remove/component';
+import { ComboboxFieldsetChipsChipChipRemoveProps } from '@/components/actions/combobox/component/.partials/components/fieldset/chips/chip/chip-remove/component.interface';
+import { ComboboxFieldsetChipsChip } from '@/components/actions/combobox/component/.partials/components/fieldset/chips/chip/component';
+import { ComboboxFieldsetChipsChipProps } from '@/components/actions/combobox/component/.partials/components/fieldset/chips/chip/component.interface';
+import { ComboboxFieldsetChips } from '@/components/actions/combobox/component/.partials/components/fieldset/chips/component';
+import { ComboboxFieldsetChipsProps } from '@/components/actions/combobox/component/.partials/components/fieldset/chips/component.interface';
+import { ComboboxFieldsetClear } from '@/components/actions/combobox/component/.partials/components/fieldset/clear/component';
+import { ComboboxFieldsetClearProps } from '@/components/actions/combobox/component/.partials/components/fieldset/clear/component.interface';
+import { ComboboxFieldset } from '@/components/actions/combobox/component/.partials/components/fieldset/component';
+import { ComboboxFieldsetProps } from '@/components/actions/combobox/component/.partials/components/fieldset/component.interface';
+import { ComboboxFieldsetIcon } from '@/components/actions/combobox/component/.partials/components/fieldset/icon/component';
+import { ComboboxFieldsetIconProps } from '@/components/actions/combobox/component/.partials/components/fieldset/icon/component.interface';
+import { ComboboxFieldsetInput } from '@/components/actions/combobox/component/.partials/components/fieldset/input/component';
+import { ComboboxFieldsetInputProps } from '@/components/actions/combobox/component/.partials/components/fieldset/input/component.interface';
+import { ComboboxFieldsetTrigger } from '@/components/actions/combobox/component/.partials/components/fieldset/trigger/component';
+import { ComboboxFieldsetTriggerProps } from '@/components/actions/combobox/component/.partials/components/fieldset/trigger/component.interface';
+import { ComboboxFieldsetValue } from '@/components/actions/combobox/component/.partials/components/fieldset/value/component';
+import { ComboboxFieldsetValueProps } from '@/components/actions/combobox/component/.partials/components/fieldset/value/component.interface';
+import { ComboboxPortalBackdrop } from '@/components/actions/combobox/component/.partials/components/portal/backdrop/component';
+import { ComboboxPortalBackdropProps } from '@/components/actions/combobox/component/.partials/components/portal/backdrop/component.interface';
 import { ComboboxPortal } from '@/components/actions/combobox/component/.partials/components/portal/component';
 import { ComboboxPortalProps } from '@/components/actions/combobox/component/.partials/components/portal/component.interface';
 import { ComboboxPortalPositioner } from '@/components/actions/combobox/component/.partials/components/portal/positioner/component';
 import { ComboboxPortalPositionerProps } from '@/components/actions/combobox/component/.partials/components/portal/positioner/component.interface';
+import { ComboboxPortalPositionerPopupArrow } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/arrow/component';
+import { ComboboxPortalPositionerPopupArrowProps } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/arrow/component.interface';
 import { ComboboxPortalPositionerPopup } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/component';
 import { ComboboxPortalPositionerPopupProps } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/component.interface';
 import { ComboboxPortalPositionerPopupEmpty } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/empty/component';
 import { ComboboxPortalPositionerPopupEmptyProps } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/empty/component.interface';
+import { ComboboxPortalPositionerPopupListCollection } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/list/collection/component';
+import { ComboboxPortalPositionerPopupListCollectionProps } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/list/collection/component.interface';
+import { ComboboxPortalPositionerPopupList } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/list/component';
+import { ComboboxPortalPositionerPopupListProps } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/list/component.interface';
+import { ComboboxPortalPositionerPopupListGroup } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/list/group/component';
+import { ComboboxPortalPositionerPopupListGroupProps } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/list/group/component.interface';
+import { ComboboxPortalPositionerPopupListGroupLabel } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/list/group/label/component';
+import { ComboboxPortalPositionerPopupListGroupLabelProps } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/list/group/label/component.interface';
+import { ComboboxPortalPositionerPopupListItem } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/list/item/component';
+import { ComboboxPortalPositionerPopupListItemProps } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/list/item/component.interface';
+import { ComboboxPortalPositionerPopupListItemIndicator } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/list/item/indicator/component';
+import { ComboboxPortalPositionerPopupListItemIndicatorProps } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/list/item/indicator/component.interface';
+import { ComboboxPortalPositionerPopupListRow } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/list/row/component';
+import { ComboboxPortalPositionerPopupListRowProps } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/list/row/component.interface';
+import { ComboboxPortalPositionerPopupListSeparator } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/list/separator/component';
+import { ComboboxPortalPositionerPopupListSeparatorProps } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/list/separator/component.interface';
 import { ComboboxPortalPositionerPopupStatus } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/status/component';
 import { ComboboxPortalPositionerPopupStatusProps } from '@/components/actions/combobox/component/.partials/components/portal/positioner/popup/status/component.interface';
-import { ComboboxRow } from '@/components/actions/combobox/component/.partials/components/row/component';
-import { ComboboxRowProps } from '@/components/actions/combobox/component/.partials/components/row/component.interface';
-import { ComboboxSeparator } from '@/components/actions/combobox/component/.partials/components/separator/component';
-import { ComboboxSeparatorProps } from '@/components/actions/combobox/component/.partials/components/separator/component.interface';
-import { ComboboxTrigger } from '@/components/actions/combobox/component/.partials/components/trigger/component';
-import { ComboboxTriggerProps } from '@/components/actions/combobox/component/.partials/components/trigger/component.interface';
-import { ComboboxValue } from '@/components/actions/combobox/component/.partials/components/value/component';
-import { ComboboxValueProps } from '@/components/actions/combobox/component/.partials/components/value/component.interface';
 import type {
   ComboboxFilter,
   ComboboxFilterOptions,
@@ -55,34 +55,39 @@ import type {
 import { Combobox as ComboboxPrimitive } from '@base-ui/react/combobox';
 
 export const Combobox = Object.assign(Component, {
-  Value: ComboboxValue,
-  Input: ComboboxInput,
-  InputGroup: ComboboxInputGroup,
-  Trigger: ComboboxTrigger,
-  Clear: ComboboxClear,
-  Icon: ComboboxIcon,
-  Chips: ComboboxChips,
-  Chip: ComboboxChip,
-  ChipRemove: ComboboxChipRemove,
-  Portal: Object.assign(ComboboxPortal, {
-    Positioner: Object.assign(ComboboxPortalPositioner, {
-      Popup: Object.assign(ComboboxPortalPositionerPopup, {
-        Status: ComboboxPortalPositionerPopupStatus,
-        Empty: ComboboxPortalPositionerPopupEmpty,
+  Fieldset: Object.assign(ComboboxFieldset, {
+    Input: ComboboxFieldsetInput,
+    Trigger: ComboboxFieldsetTrigger,
+    Icon: ComboboxFieldsetIcon,
+    Clear: ComboboxFieldsetClear,
+    Value: ComboboxFieldsetValue,
+    Chips: Object.assign(ComboboxFieldsetChips, {
+      Chip: Object.assign(ComboboxFieldsetChipsChip, {
+        ChipRemove: ComboboxFieldsetChipsChipChipRemove,
       }),
     }),
   }),
-  Backdrop: ComboboxBackdrop,
-  Arrow: ComboboxArrow,
-  List: ComboboxList,
-  Row: ComboboxRow,
-  Item: Object.assign(ComboboxItem, {
-    Indicator: ComboboxItemIndicator,
+  Portal: Object.assign(ComboboxPortal, {
+    Backdrop: ComboboxPortalBackdrop,
+    Positioner: Object.assign(ComboboxPortalPositioner, {
+      Popup: Object.assign(ComboboxPortalPositionerPopup, {
+        Arrow: ComboboxPortalPositionerPopupArrow,
+        Status: ComboboxPortalPositionerPopupStatus,
+        Empty: ComboboxPortalPositionerPopupEmpty,
+        List: Object.assign(ComboboxPortalPositionerPopupList, {
+          Row: ComboboxPortalPositionerPopupListRow,
+          Item: Object.assign(ComboboxPortalPositionerPopupListItem, {
+            Indicator: ComboboxPortalPositionerPopupListItemIndicator,
+          }),
+          Separator: ComboboxPortalPositionerPopupListSeparator,
+          Group: Object.assign(ComboboxPortalPositionerPopupListGroup, {
+            Label: ComboboxPortalPositionerPopupListGroupLabel,
+          }),
+          Collection: ComboboxPortalPositionerPopupListCollection,
+        }),
+      }),
+    }),
   }),
-  Group: ComboboxGroup,
-  GroupLabel: ComboboxGroupLabel,
-  Collection: ComboboxCollection,
-  Separator: ComboboxSeparator,
   useFilter: ComboboxPrimitive.useFilter,
   useFilteredItems: ComboboxPrimitive.useFilteredItems,
 });
@@ -93,50 +98,58 @@ export namespace Combobox {
     Multiple extends boolean | undefined = false,
   > = ComboboxProps<Value, Multiple>;
 
-  export namespace Value {
-    export type Props = ComboboxValueProps;
-  }
+  export namespace Fieldset {
+    export type Props = ComboboxFieldsetProps;
 
-  export namespace Input {
-    export type Props = ComboboxInputProps;
-  }
+    export namespace Input {
+      export type Props = ComboboxFieldsetInputProps;
+    }
 
-  export namespace InputGroup {
-    export type Props = ComboboxInputGroupProps;
-  }
+    export namespace Trigger {
+      export type Props = ComboboxFieldsetTriggerProps;
+    }
 
-  export namespace Trigger {
-    export type Props = ComboboxTriggerProps;
-  }
+    export namespace Icon {
+      export type Props = ComboboxFieldsetIconProps;
+    }
 
-  export namespace Clear {
-    export type Props = ComboboxClearProps;
-  }
+    export namespace Clear {
+      export type Props = ComboboxFieldsetClearProps;
+    }
 
-  export namespace Icon {
-    export type Props = ComboboxIconProps;
-  }
+    export namespace Value {
+      export type Props = ComboboxFieldsetValueProps;
+    }
 
-  export namespace Chips {
-    export type Props = ComboboxChipsProps;
-  }
+    export namespace Chips {
+      export type Props = ComboboxFieldsetChipsProps;
 
-  export namespace Chip {
-    export type Props = ComboboxChipProps;
-  }
+      export namespace Chip {
+        export type Props = ComboboxFieldsetChipsChipProps;
 
-  export namespace ChipRemove {
-    export type Props = ComboboxChipRemoveProps;
+        export namespace ChipRemove {
+          export type Props = ComboboxFieldsetChipsChipChipRemoveProps;
+        }
+      }
+    }
   }
 
   export namespace Portal {
     export type Props = ComboboxPortalProps;
+
+    export namespace Backdrop {
+      export type Props = ComboboxPortalBackdropProps;
+    }
 
     export namespace Positioner {
       export type Props = ComboboxPortalPositionerProps;
 
       export namespace Popup {
         export type Props = ComboboxPortalPositionerPopupProps;
+
+        export namespace Arrow {
+          export type Props = ComboboxPortalPositionerPopupArrowProps;
+        }
 
         export namespace Status {
           export type Props = ComboboxPortalPositionerPopupStatusProps;
@@ -145,48 +158,43 @@ export namespace Combobox {
         export namespace Empty {
           export type Props = ComboboxPortalPositionerPopupEmptyProps;
         }
+
+        export namespace List {
+          export type Props = ComboboxPortalPositionerPopupListProps;
+
+          export namespace Row {
+            export type Props = ComboboxPortalPositionerPopupListRowProps;
+          }
+
+          export namespace Item {
+            export type Props = ComboboxPortalPositionerPopupListItemProps;
+
+            export namespace Indicator {
+              export type Props =
+                ComboboxPortalPositionerPopupListItemIndicatorProps;
+            }
+          }
+
+          export namespace Separator {
+            export type Props = ComboboxPortalPositionerPopupListSeparatorProps;
+          }
+
+          export namespace Group {
+            export type Props = ComboboxPortalPositionerPopupListGroupProps;
+
+            export namespace Label {
+              export type Props =
+                ComboboxPortalPositionerPopupListGroupLabelProps;
+            }
+          }
+
+          export namespace Collection {
+            export type Props =
+              ComboboxPortalPositionerPopupListCollectionProps;
+          }
+        }
       }
     }
-  }
-
-  export namespace Backdrop {
-    export type Props = ComboboxBackdropProps;
-  }
-
-  export namespace Arrow {
-    export type Props = ComboboxArrowProps;
-  }
-
-  export namespace List {
-    export type Props = ComboboxListProps;
-  }
-
-  export namespace Row {
-    export type Props = ComboboxRowProps;
-  }
-
-  export namespace Item {
-    export type Props = ComboboxItemProps;
-
-    export namespace Indicator {
-      export type Props = ComboboxItemIndicatorProps;
-    }
-  }
-
-  export namespace Group {
-    export type Props = ComboboxGroupProps;
-  }
-
-  export namespace GroupLabel {
-    export type Props = ComboboxGroupLabelProps;
-  }
-
-  export namespace Collection {
-    export type Props = ComboboxCollectionProps;
-  }
-
-  export namespace Separator {
-    export type Props = ComboboxSeparatorProps;
   }
 
   export type Filter = ComboboxFilter;

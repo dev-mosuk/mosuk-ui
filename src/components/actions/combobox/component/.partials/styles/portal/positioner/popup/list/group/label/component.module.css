@@ -1,0 +1,12 @@
+@layer mosuk-ui {
+    @layer index-11 {
+        .ComboboxPortalPositionerPopupListGroupLabel {
+            padding: calc(var(--spacing, 0.25rem) * 2) calc(var(--spacing, 0.25rem) * 3);
+            color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+            font-size: var(--text-xs, 0.75rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+    }
+}
