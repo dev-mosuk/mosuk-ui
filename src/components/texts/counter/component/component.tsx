@@ -1,7 +1,7 @@
+import { CounterProps } from '@/components/texts/counter/component/component.interface';
+import styles from '@/components/texts/counter/component/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType, forwardRef, useEffect, useRef } from 'react';
-import { CounterProps } from './component.interface';
-import styles from './component.module.css';
 
 export const Counter = forwardRef<HTMLSpanElement, CounterProps>(
   (props, externalRef) => {
@@ -23,6 +23,7 @@ export const Counter = forwardRef<HTMLSpanElement, CounterProps>(
     // Определяем количество десятичных знаков в исходном числе
     const getDecimalPlaces = (num: number): number => {
       const match = String(num).match(/(?:\.(\d+))?$/);
+
       return match && match[1] ? match[1].length : 0;
     };
 
@@ -30,7 +31,9 @@ export const Counter = forwardRef<HTMLSpanElement, CounterProps>(
 
     useEffect(() => {
       const element = ref.current;
-      if (!element) return;
+      if (!element) {
+        return;
+      }
 
       let rafId = 0;
       let isActive = true;
@@ -47,7 +50,9 @@ export const Counter = forwardRef<HTMLSpanElement, CounterProps>(
           : Math.max(1e-6, Math.abs(targetValue) * 1e-9);
 
       const applyFinal = () => {
-        if (!element) return;
+        if (!element) {
+          return;
+        }
         element.textContent = formatter.format(targetValue);
       };
 
@@ -59,16 +64,23 @@ export const Counter = forwardRef<HTMLSpanElement, CounterProps>(
       };
 
       const complete = () => {
-        if (!isActive || finished) return;
+        if (!isActive || finished) {
+          return;
+        }
         finished = true;
         stopRaf();
         applyFinal();
       };
 
       const onTransitionEnd = (event: TransitionEvent) => {
-        if (event.target !== element) return;
+        if (event.target !== element) {
+          return;
+        }
+
         // Registered custom property: Chromium reports "--value"
-        if (event.propertyName !== '--value') return;
+        if (event.propertyName !== '--value') {
+          return;
+        }
         complete();
       };
 
@@ -76,14 +88,18 @@ export const Counter = forwardRef<HTMLSpanElement, CounterProps>(
 
       // Небольшая задержка для запуска transition
       requestAnimationFrame(() => {
-        if (!element || !isActive) return;
+        if (!element || !isActive) {
+          return;
+        }
 
         // Устанавливаем целевое значение для запуска CSS transition
         element.style.setProperty('--value', String(targetValue));
       });
 
       const animate = () => {
-        if (!isActive || !element || finished) return;
+        if (!isActive || !element || finished) {
+          return;
+        }
 
         try {
           const currentValue =
@@ -93,6 +109,7 @@ export const Counter = forwardRef<HTMLSpanElement, CounterProps>(
 
           if (Math.abs(currentValue - targetValue) <= tolerance) {
             complete();
+
             return;
           }
         } catch {}

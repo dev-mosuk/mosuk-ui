@@ -1,5 +1,5 @@
-import { H2Skeleton as BaseH2Skeleton } from './component';
-import type { H2SkeletonProps } from './component.interface';
+import { H2Skeleton as BaseH2Skeleton } from '@/components/texts/h2/skeleton/component';
+import type { H2SkeletonProps } from '@/components/texts/h2/skeleton/component.interface';
 
 export const H2Skeleton = BaseH2Skeleton;
 

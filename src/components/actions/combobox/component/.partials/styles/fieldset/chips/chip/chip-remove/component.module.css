@@ -1,0 +1,23 @@
+@layer mosuk-ui {
+    @layer index-11 {
+        .ComboboxFieldsetChipsChipChipRemove {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            width: calc(var(--spacing, 0.25rem) * 4);
+            height: calc(var(--spacing, 0.25rem) * 4);
+
+            padding: 0;
+            border: none;
+            border-radius: calc(infinity * 1px);
+            background-color: transparent;
+            color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+            cursor: pointer;
+
+            &:hover {
+                color: var(--color-primary-500, #0074e7);
+            }
+        }
+    }
+}

@@ -1,10 +1,10 @@
 'use client';
 
+import { UploadProps } from '@/components/actions/upload/component/component.interface';
+import styles from '@/components/actions/upload/component/component.module.css';
+import { UploadProvider } from '@/components/actions/upload/component/providers/provider';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { UploadProps } from './component.interface';
-import styles from './component.module.css';
-import { UploadProvider } from './providers/provider';
 
 export function Upload<C extends ElementType = 'fieldset'>({
   as,

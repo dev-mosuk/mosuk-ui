@@ -1,7 +1,7 @@
+import { DrawerPortalProps } from '@/components/overlays/drawer/component/portal/component.interface';
 import { Drawer as BaseUiDrawer } from '@base-ui/react';
 import classNames from 'classnames';
 import React from 'react';
-import { DrawerPortalProps } from './component.interface';
 
 export function DrawerPortal({ ...rest }: DrawerPortalProps) {
   return (

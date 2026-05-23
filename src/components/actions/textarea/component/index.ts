@@ -1,5 +1,5 @@
-import { Textarea as Component } from './component';
-import { TextareaProps as ComponentProps } from './component.interface';
+import { Textarea as Component } from '@/components/actions/textarea/component/component';
+import { TextareaProps as ComponentProps } from '@/components/actions/textarea/component/component.interface';
 
 export const Textarea = Object.assign(Component, {});
 

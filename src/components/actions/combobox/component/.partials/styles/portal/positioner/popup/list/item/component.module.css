@@ -1,0 +1,37 @@
+@import './indicator/component.module.css';
+
+@layer mosuk-ui {
+    @layer index-11 {
+        .ComboboxPortalPositionerPopupListItem {
+            position: relative;
+            overflow: hidden;
+
+            width: 100%;
+
+            padding: calc(var(--spacing, 0.25rem) * 1);
+            border-radius: var(--radius-2xl);
+
+            user-select: none;
+            cursor: pointer;
+
+            transition: all 200ms ease-in-out;
+
+            &:hover {
+                background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
+            }
+
+            &[data-highlighted] {
+                background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
+            }
+
+            &[data-selected] {
+                background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
+            }
+
+            &[data-disabled] {
+                opacity: 50%;
+                pointer-events: none;
+            }
+        }
+    }
+}

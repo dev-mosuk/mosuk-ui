@@ -1,5 +1,5 @@
+import { IconSkeletonProps } from '@/components/actions/icon/skeleton/component.interface';
 import { HTMLAttributes } from 'react';
-import { IconSkeletonProps } from '../../../actions/icon/skeleton/component.interface';
 
 export interface AccordionSkeletonProps extends HTMLAttributes<HTMLDivElement> {}
 export interface AccordionSkeletonItemProps extends HTMLAttributes<HTMLDivElement> {}

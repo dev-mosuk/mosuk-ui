@@ -1,19 +1,19 @@
-import { DialogClose } from './close/component';
-import { DialogCloseProps } from './close/component.interface';
-import { Dialog as Component } from './component';
-import { DialogProps as ComponentProps } from './component.interface';
-import { DialogOpen } from './open/component';
-import { DialogOpenProps } from './open/component.interface';
-import { DialogPortal } from './portal/component';
-import { DialogPortalProps } from './portal/component.interface';
-import { DialogPortalViewportBackdrop } from './portal/viewport/backdrop/component';
-import { DialogPortalViewportBackdropProps } from './portal/viewport/backdrop/component.interface';
-import { DialogPortalViewport } from './portal/viewport/component';
-import { DialogPortalViewportProps } from './portal/viewport/component.interface';
-import { DialogPortalViewportPopup } from './portal/viewport/popup/component';
-import { DialogPortalViewportPopupProps } from './portal/viewport/popup/component.interface';
-import { DialogPortalViewportPopupContent } from './portal/viewport/popup/content/component';
-import { DialogPortalViewportPopupContentProps } from './portal/viewport/popup/content/component.interface';
+import { DialogClose } from '@/components/overlays/dialog/component/close/component';
+import { DialogCloseProps } from '@/components/overlays/dialog/component/close/component.interface';
+import { Dialog as Component } from '@/components/overlays/dialog/component/component';
+import { DialogProps as ComponentProps } from '@/components/overlays/dialog/component/component.interface';
+import { DialogOpen } from '@/components/overlays/dialog/component/open/component';
+import { DialogOpenProps } from '@/components/overlays/dialog/component/open/component.interface';
+import { DialogPortal } from '@/components/overlays/dialog/component/portal/component';
+import { DialogPortalProps } from '@/components/overlays/dialog/component/portal/component.interface';
+import { DialogPortalViewportBackdrop } from '@/components/overlays/dialog/component/portal/viewport/backdrop/component';
+import { DialogPortalViewportBackdropProps } from '@/components/overlays/dialog/component/portal/viewport/backdrop/component.interface';
+import { DialogPortalViewport } from '@/components/overlays/dialog/component/portal/viewport/component';
+import { DialogPortalViewportProps } from '@/components/overlays/dialog/component/portal/viewport/component.interface';
+import { DialogPortalViewportPopup } from '@/components/overlays/dialog/component/portal/viewport/popup/component';
+import { DialogPortalViewportPopupProps } from '@/components/overlays/dialog/component/portal/viewport/popup/component.interface';
+import { DialogPortalViewportPopupContent } from '@/components/overlays/dialog/component/portal/viewport/popup/content/component';
+import { DialogPortalViewportPopupContentProps } from '@/components/overlays/dialog/component/portal/viewport/popup/content/component.interface';
 
 export const Dialog = Object.assign(Component, {
   Open: DialogOpen,

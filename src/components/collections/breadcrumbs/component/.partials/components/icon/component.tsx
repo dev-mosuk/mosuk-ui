@@ -1,8 +1,8 @@
+import { Icon } from '@/components/actions/icon/component/component';
+import { BreadcrumbsIconProps } from '@/components/collections/breadcrumbs/component/.partials/components/icon/component.interface';
+import styles from '@/components/collections/breadcrumbs/component/.partials/styles/style.module.css';
 import classNames from 'classnames';
 import React from 'react';
-import { Icon } from '../../../../../../actions/icon/component/component';
-import styles from '../../styles/style.module.css';
-import { BreadcrumbsIconProps } from './component.interface';
 
 export function BreadcrumbsIcon({ ...rest }: BreadcrumbsIconProps) {
   return (

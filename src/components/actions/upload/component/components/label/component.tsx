@@ -1,10 +1,10 @@
 'use client';
 
+import styles from '@/components/actions/upload/component/component.module.css';
+import { UploadLabelProps } from '@/components/actions/upload/component/components/label/component.interface';
+import { UploadContext } from '@/components/actions/upload/component/providers/context/context';
 import classNames from 'classnames';
 import React, { ElementType, useContext } from 'react';
-import styles from '../../component.module.css';
-import { UploadContext } from '../../providers/context/context';
-import { UploadLabelProps } from './component.interface';
 
 export function UploadLabel<C extends ElementType = 'label'>({
   as,
@@ -28,7 +28,7 @@ export function UploadLabel<C extends ElementType = 'label'>({
       className={classNames(
         'mosuk-upload-label',
         styles.label,
-        rest?.className
+        rest?.className,
       )}
     >
       {rest?.children}

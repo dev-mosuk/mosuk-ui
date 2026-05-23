@@ -1,14 +1,14 @@
+import { FileContext } from '@/components/display/file/component/component';
+import styles from '@/components/display/file/component/component.module.css';
+import { FileInputProps } from '@/components/display/file/component/input/component.interface';
 import React, { useContext, useId } from 'react';
-import { FileContext } from '../component';
-import styles from '../component.module.css';
-import { FileInputProps } from './component.interface';
 
 export function FileInput({ ...props }: FileInputProps) {
   const context = useContext(FileContext);
 
   if (!context) {
     throw new Error(
-      'FileInput должен использоваться только внутри компонента File'
+      'FileInput должен использоваться только внутри компонента File',
     );
   }
 

@@ -1,5 +1,5 @@
-import { InputSkeleton as ParentSelectSkeleton } from '../../input/skeleton/component';
-import type { InputSkeletonProps as ParentSelectProps } from '../../input/skeleton/component.interface';
+import { InputSkeleton as ParentSelectSkeleton } from '@/components/actions/input/skeleton/component';
+import type { InputSkeletonProps as ParentSelectProps } from '@/components/actions/input/skeleton/component.interface';
 
 export const InputSkeleton = Object.assign(ParentSelectSkeleton, {});
 

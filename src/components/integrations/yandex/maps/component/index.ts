@@ -1,18 +1,18 @@
-import { YandexMap as Component } from './component';
-import { YandexMapProps } from './component.interface';
-import { YandexMapControlsZoomProps } from './controls/zoom/component.interface';
-import { YandexMapControlsZoomMinus } from './controls/zoom/minus/component';
-import { YandexMapControlsZoomMinusProps } from './controls/zoom/minus/component.interface';
-import { YandexMapControlsZoomPlus } from './controls/zoom/plus/component';
-import { YandexMapControlsZoomPlusProps } from './controls/zoom/plus/component.interface';
-import { YandexMapDefaultFeaturesLayer } from './default/features/layer/component';
-import { YandexMapDefaultFeaturesLayerProps } from './default/features/layer/component.interface';
-import { YandexMapDefaultSchemeLayer } from './default/scheme/layer/component';
-import { YandexMapDefaultSchemeLayerProps } from './default/scheme/layer/component.interface';
-import { YandexMapFeature } from './feature/component';
-import { YandexMapFeatureProps } from './feature/component.interface';
-import { YandexMapMarker } from './marker/component';
-import { YandexMapMarkerProps } from './marker/component.interface';
+import { YandexMap as Component } from '@/components/integrations/yandex/maps/component/component';
+import { YandexMapProps } from '@/components/integrations/yandex/maps/component/component.interface';
+import { YandexMapControlsZoomProps } from '@/components/integrations/yandex/maps/component/controls/zoom/component.interface';
+import { YandexMapControlsZoomMinus } from '@/components/integrations/yandex/maps/component/controls/zoom/minus/component';
+import { YandexMapControlsZoomMinusProps } from '@/components/integrations/yandex/maps/component/controls/zoom/minus/component.interface';
+import { YandexMapControlsZoomPlus } from '@/components/integrations/yandex/maps/component/controls/zoom/plus/component';
+import { YandexMapControlsZoomPlusProps } from '@/components/integrations/yandex/maps/component/controls/zoom/plus/component.interface';
+import { YandexMapDefaultFeaturesLayer } from '@/components/integrations/yandex/maps/component/default/features/layer/component';
+import { YandexMapDefaultFeaturesLayerProps } from '@/components/integrations/yandex/maps/component/default/features/layer/component.interface';
+import { YandexMapDefaultSchemeLayer } from '@/components/integrations/yandex/maps/component/default/scheme/layer/component';
+import { YandexMapDefaultSchemeLayerProps } from '@/components/integrations/yandex/maps/component/default/scheme/layer/component.interface';
+import { YandexMapFeature } from '@/components/integrations/yandex/maps/component/feature/component';
+import { YandexMapFeatureProps } from '@/components/integrations/yandex/maps/component/feature/component.interface';
+import { YandexMapMarker } from '@/components/integrations/yandex/maps/component/marker/component';
+import { YandexMapMarkerProps } from '@/components/integrations/yandex/maps/component/marker/component.interface';
 
 export const YandexMap = Object.assign(Component, {
   Default: {

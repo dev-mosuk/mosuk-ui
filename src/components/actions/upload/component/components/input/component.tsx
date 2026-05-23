@@ -1,10 +1,10 @@
 'use client';
 
+import styles from '@/components/actions/upload/component/component.module.css';
+import { UploadInputProps } from '@/components/actions/upload/component/components/input/component.interface';
+import { useUpload } from '@/components/actions/upload/component/hooks/hook';
 import classNames from 'classnames';
 import React, { ChangeEvent, useEffect, useId } from 'react';
-import styles from '../../component.module.css';
-import { useUpload } from '../../hooks/hook';
-import { UploadInputProps } from './component.interface';
 
 export function UploadInput({ ...rest }: UploadInputProps) {
   const { setId, setName } = useUpload();
@@ -18,7 +18,9 @@ export function UploadInput({ ...rest }: UploadInputProps) {
   }, [setId, setName, uniqueId, uniqueName]);
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files || e.target.files.length === 0) return;
+    if (!e.target.files || e.target.files.length === 0) {
+      return;
+    }
 
     const files = Array.from(e.target.files);
     rest?.onChange?.(files);
@@ -29,12 +31,12 @@ export function UploadInput({ ...rest }: UploadInputProps) {
       {...rest}
       id={uniqueId}
       name={uniqueName}
-      type="file"
+      type='file'
       onChange={handleFileChange}
       className={classNames(
         'mosuk-upload-input',
         styles.input,
-        rest?.className
+        rest?.className,
       )}
     />
   );

@@ -1,8 +1,8 @@
+import styles from '@/components/collections/tabs/vertical/component/component.module.css';
+import { TabsVerticalHeadTabProps } from '@/components/collections/tabs/vertical/component/head/tab/component.interface';
 import { Tabs as TabsComponent } from '@base-ui/react/tabs';
 import classNames from 'classnames';
 import React from 'react';
-import styles from '../../component.module.css';
-import { TabsVerticalHeadTabProps } from './component.interface';
 
 export function TabsVerticalHeadTab({ ...rest }: TabsVerticalHeadTabProps) {
   return (
@@ -11,7 +11,7 @@ export function TabsVerticalHeadTab({ ...rest }: TabsVerticalHeadTabProps) {
       className={classNames(
         'mosuk-tabs-vertical-head-tab',
         styles.tab,
-        rest?.className
+        rest?.className,
       )}
     >
       {rest?.children}

@@ -3,13 +3,13 @@ import {
   DropdownDropdown as BaseDropdownDropdown,
   DropdownDropdownContent as BaseDropdownDropdownContent,
   DropdownTrigger as BaseDropdownTrigger,
-} from './component';
+} from '@/components/overlays/dropdown/component/component';
 import type {
   DropdownDropdownContentProps,
   DropdownDropdownProps,
   DropdownProps,
-  DropdownTriggerProps
-} from './component.interface';
+  DropdownTriggerProps,
+} from '@/components/overlays/dropdown/component/component.interface';
 
 export const Dropdown = Object.assign(BaseDropdown, {
   Trigger: BaseDropdownTrigger,

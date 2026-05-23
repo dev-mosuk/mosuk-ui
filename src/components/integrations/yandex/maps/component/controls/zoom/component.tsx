@@ -1,9 +1,9 @@
+import styles from '@/components/integrations/yandex/maps/component/component.module.css';
+import type { YandexMapControlsZoomProps } from '@/components/integrations/yandex/maps/component/controls/zoom/component.interface';
+import { YandexMapControlsZoomMinus } from '@/components/integrations/yandex/maps/component/controls/zoom/minus/component';
+import { YandexMapControlsZoomPlus } from '@/components/integrations/yandex/maps/component/controls/zoom/plus/component';
+import { YandexMapContext } from '@/providers/yandex/maps/context/context';
 import React, { useContext } from 'react';
-import { YandexMapContext } from '../../../../../../../providers/yandex/maps/context/context';
-import styles from '../../../component.module.css';
-import type { YandexMapControlsZoomProps } from './component.interface';
-import { YandexMapControlsZoomMinus } from './minus/component';
-import { YandexMapControlsZoomPlus } from './plus/component';
 
 export function YandexMapControlsZoom(props: YandexMapControlsZoomProps = {}) {
   const context = useContext(YandexMapContext);
@@ -14,7 +14,9 @@ export function YandexMapControlsZoom(props: YandexMapControlsZoomProps = {}) {
   const { YMapControls, YMapControl } = context?.api;
   const position = props.position ?? 'right';
 
-  if (!YMapControls || !YMapControl) return null;
+  if (!YMapControls || !YMapControl) {
+    return null;
+  }
 
   return (
     <div className='GGGGGG absolute top-0 right-0 z-100'>

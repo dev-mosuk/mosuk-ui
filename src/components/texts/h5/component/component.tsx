@@ -1,7 +1,7 @@
+import { H5Props } from '@/components/texts/h5/component/component.interface';
+import styles from '@/components/texts/h5/component/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { H5Props } from './component.interface';
-import styles from './component.module.css';
 
 export function H5<C extends ElementType = 'h5'>({ as, ...rest }: H5Props<C>) {
   const Component = (as || 'h5') as ElementType;

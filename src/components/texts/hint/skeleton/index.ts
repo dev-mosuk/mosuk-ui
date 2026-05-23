@@ -1,5 +1,5 @@
-import { HintSkeleton as BaseHintSkeleton } from './component';
-import { HintSkeletonProps } from './component.interface';
+import { HintSkeleton as BaseHintSkeleton } from '@/components/texts/hint/skeleton/component';
+import { HintSkeletonProps } from '@/components/texts/hint/skeleton/component.interface';
 
 export const HintSkeleton = BaseHintSkeleton;
 

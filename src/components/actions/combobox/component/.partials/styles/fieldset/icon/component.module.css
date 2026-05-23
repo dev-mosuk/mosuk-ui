@@ -1,0 +1,11 @@
+@layer mosuk-ui {
+    @layer index-11 {
+        .ComboboxFieldsetIcon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+        }
+    }
+}

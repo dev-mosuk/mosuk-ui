@@ -1,5 +1,5 @@
-import { InputMask as Component } from './component';
-import { InputMaskProps as ComponentProps } from './component.interface';
+import { InputMask as Component } from '@/components/actions/input/(mask)/component/component';
+import { InputMaskProps as ComponentProps } from '@/components/actions/input/(mask)/component/component.interface';
 
 export const InputMask = Object.assign(Component, {});
 

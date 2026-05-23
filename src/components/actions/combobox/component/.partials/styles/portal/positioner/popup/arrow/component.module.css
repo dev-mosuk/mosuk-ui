@@ -1,0 +1,8 @@
+@layer mosuk-ui {
+    @layer index-11 {
+        .ComboboxPortalPositionerPopupArrow {
+            display: flex;
+            color: var(--color-gray-100, oklch(0.967 0.003 264.542));
+        }
+    }
+}

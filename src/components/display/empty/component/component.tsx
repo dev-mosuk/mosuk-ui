@@ -1,7 +1,7 @@
+import { EmptyProps } from '@/components/display/empty/component/component.interface';
+import styles from '@/components/display/empty/component/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { EmptyProps } from './component.interface';
-import styles from './component.module.css';
 
 export function Empty<C extends ElementType = 'section'>({
   as,

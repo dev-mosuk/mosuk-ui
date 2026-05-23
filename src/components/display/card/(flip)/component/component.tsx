@@ -1,8 +1,8 @@
+import { CardFlipProps } from '@/components/display/card/(flip)/component/component.interface';
+import styles from '@/components/display/card/(flip)/component/component.module.css';
+import { Card } from '@/components/display/card/component/component';
 import classNames from 'classnames';
 import React from 'react';
-import { Card } from '../../component/component';
-import { CardFlipProps } from './component.interface';
-import styles from './component.module.css';
 
 export function CardFlip({ as, ref, flip, onFlip, ...rest }: CardFlipProps) {
   const handleFlip = (e: React.MouseEvent<HTMLElement>) => {

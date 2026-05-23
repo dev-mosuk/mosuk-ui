@@ -1,6 +1,6 @@
+import { YandexMetrikaContext } from '@/providers/yandex/metrika/context/context';
+import { YandexMetrikaProviderProps } from '@/providers/yandex/metrika/provider.interface';
 import React, { useEffect, useRef, useState } from 'react';
-import { YandexMetrikaContext } from './context/context';
-import { YandexMetrikaProviderProps } from './provider.interface';
 
 declare global {
   interface Window {
@@ -13,9 +13,12 @@ declare global {
 }
 
 const isBot = (): boolean => {
-  if (typeof window === 'undefined') return true;
+  if (typeof window === 'undefined') {
+    return true;
+  }
   const userAgent = navigator.userAgent.toLowerCase();
   const botPatterns = ['googlebot', 'yandexbot'];
+
   return botPatterns.some((pattern) => userAgent.includes(pattern));
 };
 
@@ -28,7 +31,9 @@ export const YandexMetrikaProvider = ({
   const scriptInjectedRef = useRef<boolean>(false);
 
   useEffect(() => {
-    if (!id || isBot() || scriptInjectedRef.current) return;
+    if (!id || isBot() || scriptInjectedRef.current) {
+      return;
+    }
 
     // Ensure ecommerce data container exists per Yandex Metrika docs
     try {
@@ -39,6 +44,7 @@ export const YandexMetrikaProvider = ({
       } else if (typeof ecommerceOpt === 'string' && ecommerceOpt.trim()) {
         containerName = ecommerceOpt.trim();
       }
+
       if (containerName && typeof window !== 'undefined') {
         (window as any)[containerName] = (window as any)[containerName] || [];
       }
@@ -93,7 +99,8 @@ export const YandexMetrikaProvider = ({
   };
 
   return (
-    <YandexMetrikaContext.Provider value={contextValue}>{children}</YandexMetrikaContext.Provider>
+    <YandexMetrikaContext.Provider value={contextValue}>
+      {children}
+    </YandexMetrikaContext.Provider>
   );
 };
-

@@ -1,7 +1,7 @@
+import { ButtonProps } from '@/components/actions/button/component/component.interface';
+import styles from '@/components/actions/button/component/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { ButtonProps } from './component.interface';
-import styles from './component.module.css';
 
 export function Button<C extends ElementType = 'button'>({
   as,

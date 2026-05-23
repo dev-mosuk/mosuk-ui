@@ -1,8 +1,7 @@
-import { InputMaskDate as Component } from './component';
-import { InputMaskDateProps as ComponentProps } from './component.interface';
+import { InputMaskDate as Component } from '@/components/actions/input/(mask)/(date)/component/component';
+import { InputMaskDateProps as ComponentProps } from '@/components/actions/input/(mask)/(date)/component/component.interface';
 
-const ChildComponent = (props: ComponentProps) =>
-  Component(props);
+const ChildComponent = (props: ComponentProps) => Component(props);
 
 export const InputMaskDate = Object.assign(ChildComponent, {});
 

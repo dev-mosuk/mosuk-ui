@@ -1,9 +1,7 @@
+import styles from '@/components/collections/tabs/vertical/skeleton/component.module.css';
+import { TabsVerticalContentSkeletonProps } from '@/components/collections/tabs/vertical/skeleton/content/component.interface';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from '../component.module.css';
-import {
-  TabsVerticalContentSkeletonProps
-} from './component.interface';
 
 export function TabsVerticalContentSkeleton<C extends ElementType = 'section'>({
   as,
@@ -17,7 +15,7 @@ export function TabsVerticalContentSkeleton<C extends ElementType = 'section'>({
       className={classNames(
         'mosuk-tabs-vertical-content-skeleton',
         styles.content,
-        rest?.className
+        rest?.className,
       )}
     >
       {rest?.children}

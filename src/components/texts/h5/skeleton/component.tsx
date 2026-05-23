@@ -1,8 +1,8 @@
+import { Skeleton } from '@/components/display/skeleton/component/component';
+import { H5SkeletonProps } from '@/components/texts/h5/skeleton/component.interface';
+import styles from '@/components/texts/h5/skeleton/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { Skeleton } from '../../../display/skeleton/component/component';
-import { H5SkeletonProps } from './component.interface';
-import styles from './component.module.css';
 
 export function H5Skeleton<C extends ElementType = 'h5'>({
   as,

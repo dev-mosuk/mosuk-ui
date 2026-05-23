@@ -1,4 +1,7 @@
-import { StorageCookieServiceConfig, StorageCookieServiceInterface } from './service.interface';
+import {
+  StorageCookieServiceConfig,
+  StorageCookieServiceInterface,
+} from '@/services/storage/cookie/service.interface';
 
 const DEFAULT_CONFIG: StorageCookieServiceConfig = {
   expires: 180,
@@ -7,7 +10,8 @@ const DEFAULT_CONFIG: StorageCookieServiceConfig = {
   sameSite: 'Lax',
 } as const;
 
-const isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
+const isBrowser =
+  typeof window !== 'undefined' && typeof document !== 'undefined';
 
 export class StorageCookieService implements StorageCookieServiceInterface {
   private static instance: StorageCookieService;
@@ -16,23 +20,32 @@ export class StorageCookieService implements StorageCookieServiceInterface {
     if (!StorageCookieService.instance) {
       StorageCookieService.instance = new StorageCookieService();
     }
-    
+
     return StorageCookieService.instance;
   }
 
-  private createConfig(config?: Partial<StorageCookieServiceConfig>): Partial<StorageCookieServiceConfig> {
+  private createConfig(
+    config?: Partial<StorageCookieServiceConfig>,
+  ): Partial<StorageCookieServiceConfig> {
     return {
       ...DEFAULT_CONFIG,
       ...config,
     };
   }
 
-  create<T = any>(key: string, value: T, config?: Partial<StorageCookieServiceConfig>): void {
-    if (!isBrowser) return;
+  create<T = any>(
+    key: string,
+    value: T,
+    config?: Partial<StorageCookieServiceConfig>,
+  ): void {
+    if (!isBrowser) {
+      return;
+    }
 
     const cfg = this.createConfig(config);
     const encodedKey = encodeURIComponent(key);
-    const stringValue = typeof value === 'string' ? value : JSON.stringify(value);
+    const stringValue =
+      typeof value === 'string' ? value : JSON.stringify(value);
     const encodedValue = encodeURIComponent(stringValue);
     let cookieString = `${encodedKey}=${encodedValue}`;
 
@@ -41,15 +54,19 @@ export class StorageCookieService implements StorageCookieServiceInterface {
       date.setTime(date.getTime() + cfg.expires * 24 * 60 * 60 * 1000);
       cookieString += `; Expires=${date.toUTCString()}`;
     }
+
     if (cfg.path) {
       cookieString += `; Path=${cfg.path}`;
     }
+
     if (cfg.domain) {
       cookieString += `; Domain=${cfg.domain}`;
     }
+
     if (cfg.secure) {
       cookieString += `; Secure`;
     }
+
     if (cfg.sameSite) {
       cookieString += `; SameSite=${cfg.sameSite}`;
     }
@@ -57,7 +74,9 @@ export class StorageCookieService implements StorageCookieServiceInterface {
   }
 
   read<T = any>(key: string): T | null {
-    if (!isBrowser) return null;
+    if (!isBrowser) {
+      return null;
+    }
 
     const encodedKey = encodeURIComponent(key);
     const nameEQ = `${encodedKey}=`;
@@ -66,7 +85,9 @@ export class StorageCookieService implements StorageCookieServiceInterface {
     for (const c of cookies) {
       if (c.indexOf(nameEQ) === 0) {
         const raw = decodeURIComponent(c.substring(nameEQ.length));
-        if (!raw) return null;
+        if (!raw) {
+          return null;
+        }
 
         // Сначала пытаемся JSON (для объектов/массивов)
         try {
@@ -91,8 +112,14 @@ export class StorageCookieService implements StorageCookieServiceInterface {
     return null;
   }
 
-  update<T = any>(key: string, value: Partial<T>, config?: Partial<StorageCookieServiceConfig>): void {
-    if (!isBrowser) return;
+  update<T = any>(
+    key: string,
+    value: Partial<T>,
+    config?: Partial<StorageCookieServiceConfig>,
+  ): void {
+    if (!isBrowser) {
+      return;
+    }
 
     const data = this.read<T>(key);
     if (data && typeof data === 'object' && typeof value === 'object') {
@@ -103,7 +130,9 @@ export class StorageCookieService implements StorageCookieServiceInterface {
   }
 
   delete(key: string, config?: Partial<StorageCookieServiceConfig>): void {
-    if (!isBrowser) return;
+    if (!isBrowser) {
+      return;
+    }
 
     const cfg = this.createConfig(config);
     const encodedKey = encodeURIComponent(key);
@@ -111,12 +140,15 @@ export class StorageCookieService implements StorageCookieServiceInterface {
     if (cfg.path) {
       cookieString += `; Path=${cfg.path}`;
     }
+
     if (cfg.domain) {
       cookieString += `; Domain=${cfg.domain}`;
     }
+
     if (cfg.sameSite) {
       cookieString += `; SameSite=${cfg.sameSite}`;
     }
+
     if (cfg.secure) {
       cookieString += `; Secure`;
     }

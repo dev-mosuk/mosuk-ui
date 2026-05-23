@@ -1,16 +1,17 @@
+import { AlertsContext } from '@/providers/alerts/context/context';
+import { ToastList } from '@/providers/alerts/list/component';
+import { AlertsProviderProps } from '@/providers/alerts/provider.interface';
+import styles from '@/providers/alerts/provider.module.css';
+import { alertsService } from '@/services/alerts/index';
 import { Toast } from '@base-ui/react/toast';
 import React, { ReactNode, useEffect } from 'react';
-import { alertsService } from '../../services/alerts';
-import { AlertsContext } from './context/context';
-import { ToastList } from './list/component';
-import { AlertsProviderProps } from './provider.interface';
-import styles from './provider.module.css';
 
 export function AlertsProvider({ children }: AlertsProviderProps) {
   const manager = Toast.createToastManager();
 
   useEffect(() => {
     alertsService.manager(manager);
+
     return () => {
       alertsService.manager(null);
     };

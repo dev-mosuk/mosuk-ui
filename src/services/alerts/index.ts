@@ -1,6 +1,9 @@
-import { alertsService } from './service';
-import { AlertType } from './service.enums';
-import type { Alert, AlertsServiceProps } from './service.interface';
+import { alertsService } from '@/services/alerts/service';
+import { AlertType } from '@/services/alerts/service.enums';
+import type {
+  Alert,
+  AlertsServiceProps,
+} from '@/services/alerts/service.interface';
 
 export { alertsService, type Alert, type AlertsServiceProps };
 

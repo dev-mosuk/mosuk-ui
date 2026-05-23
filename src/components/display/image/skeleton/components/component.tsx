@@ -1,8 +1,8 @@
+import { ImagePlaceholderConstants } from '@/components/display/image/component/constants/placeholder/constants';
+import styles from '@/components/display/image/component/styles/styles.module.css';
+import { ImageSkeletonProps } from '@/components/display/image/skeleton/components/component.interface';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { ImagePlaceholderConstants } from '../../component/constants/placeholder/constants';
-import styles from '../../component/styles/styles.module.css';
-import { ImageSkeletonProps } from './component.interface';
 
 export function ImageSkeleton<C extends ElementType = 'img'>({
   as,

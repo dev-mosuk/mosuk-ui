@@ -1,8 +1,8 @@
+import styles from '@/components/collections/accordion/component/component.module.css';
+import { AccordionHeaderTriggerProps } from '@/components/collections/accordion/component/item/header/trigger/component.interface';
 import { Accordion as BaseAccordion } from '@base-ui/react/accordion';
 import classNames from 'classnames';
 import React from 'react';
-import styles from '../../../component.module.css';
-import { AccordionHeaderTriggerProps } from './component.interface';
 
 export function AccordionHeaderTrigger({
   ...rest

@@ -1,5 +1,5 @@
-import { Skeleton as BaseSkeleton } from './component';
-import type { SkeletonProps } from './component.interface';
+import { Skeleton as BaseSkeleton } from '@/components/display/skeleton/component/component';
+import type { SkeletonProps } from '@/components/display/skeleton/component/component.interface';
 
 export const Skeleton = BaseSkeleton;
 

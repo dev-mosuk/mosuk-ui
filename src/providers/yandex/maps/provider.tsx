@@ -1,8 +1,8 @@
+import { YandexMapContext } from '@/providers/yandex/maps/context/context';
+import { YandexMapProviderProps } from '@/providers/yandex/maps/provider.interface';
 import { ReactifiedModule } from '@yandex/ymaps3-types/reactify';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { YandexMapContext } from './context/context';
-import { YandexMapProviderProps } from './provider.interface';
 
 declare global {
   interface Window {
@@ -11,10 +11,13 @@ declare global {
 }
 
 const isBot = (): boolean => {
-  if (typeof window === 'undefined') return true;
+  if (typeof window === 'undefined') {
+    return true;
+  }
 
   const userAgent = navigator.userAgent.toLowerCase();
   const botPatterns = ['googlebot', 'yandexbot'];
+
   return botPatterns.some((pattern) => userAgent.includes(pattern));
 };
 
@@ -72,7 +75,9 @@ export const YandexMapProvider = ({
   }, []);
 
   const loadMapsScript = useCallback(() => {
-    if (scriptInjectedRef.current || !apiKey || isBot()) return;
+    if (scriptInjectedRef.current || !apiKey || isBot()) {
+      return;
+    }
 
     const script = document.createElement('script');
     script.src = `https://api-maps.yandex.ru/v3/?apikey=${apiKey}&lang=ru_RU`;
@@ -101,6 +106,7 @@ export const YandexMapProvider = ({
     ) {
       scriptInjectedRef.current = true;
       initializeApi();
+
       return;
     }
 

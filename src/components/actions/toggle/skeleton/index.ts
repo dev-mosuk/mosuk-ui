@@ -1,7 +1,7 @@
-import { ToggleButtonSkeleton } from './.partials/components/button/component';
-import { ToggleButtonSkeletonProps } from './.partials/components/button/component.props';
-import { ToggleSkeleton as Component } from './.partials/components/component';
-import type { ToggleSkeletonProps } from './.partials/components/component.props';
+import { ToggleButtonSkeleton } from '@/components/actions/toggle/skeleton/.partials/components/button/component';
+import { ToggleButtonSkeletonProps } from '@/components/actions/toggle/skeleton/.partials/components/button/component.props';
+import { ToggleSkeleton as Component } from '@/components/actions/toggle/skeleton/.partials/components/component';
+import type { ToggleSkeletonProps } from '@/components/actions/toggle/skeleton/.partials/components/component.props';
 
 export const ToggleSkeleton = Object.assign(Component, {
   Button: ToggleButtonSkeleton,

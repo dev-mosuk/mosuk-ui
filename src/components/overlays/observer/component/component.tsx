@@ -1,7 +1,7 @@
+import styles from '@/components/overlays/observer/component/component.module.css';
+import { ObserverProps } from '@/components/overlays/observer/component/component.props';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from './component.module.css';
-import { ObserverProps } from './component.props';
 
 export function Observer<C extends ElementType = 'aside'>({
   as,

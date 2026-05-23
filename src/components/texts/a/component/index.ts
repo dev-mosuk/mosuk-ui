@@ -1,5 +1,5 @@
-import { A as BaseA } from './component';
-import type { AProps } from './component.interface';
+import { A as BaseA } from '@/components/texts/a/component/component';
+import type { AProps } from '@/components/texts/a/component/component.interface';
 
 export const A = BaseA;
 

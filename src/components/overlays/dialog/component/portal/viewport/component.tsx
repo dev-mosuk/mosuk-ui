@@ -1,8 +1,8 @@
+import styles from '@/components/overlays/dialog/component/component.module.css';
+import { DialogPortalViewportProps } from '@/components/overlays/dialog/component/portal/viewport/component.interface';
 import { Dialog as BaseUIDialog } from '@base-ui/react';
 import classNames from 'classnames';
 import React from 'react';
-import styles from '../../component.module.css';
-import { DialogPortalViewportProps } from './component.interface';
 
 export function DialogPortalViewport({ ...rest }: DialogPortalViewportProps) {
   return (

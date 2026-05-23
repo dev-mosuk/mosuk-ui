@@ -1,6 +1,6 @@
+import { InputSearchProps } from '@/components/actions/input/(search)/component/component.interface';
+import { Input } from '@/components/actions/input/component/component';
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { Input } from '../../component/component';
-import { InputSearchProps } from './component.interface';
 
 export function InputSearch({ ...rest }: InputSearchProps) {
   const timeoutRef = useRef<number | undefined>(undefined);

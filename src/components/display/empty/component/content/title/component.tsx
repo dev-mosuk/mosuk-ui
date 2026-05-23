@@ -1,7 +1,7 @@
+import styles from '@/components/display/empty/component/component.module.css';
+import { EmptyContentTitleProps } from '@/components/display/empty/component/content/title/component.interface';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from './../../component.module.css';
-import { EmptyContentTitleProps } from './component.interface';
 
 export function EmptyContentTitle<C extends ElementType = 'h3'>({
   as,

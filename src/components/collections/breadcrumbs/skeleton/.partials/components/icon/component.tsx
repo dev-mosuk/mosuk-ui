@@ -1,8 +1,8 @@
+import { IconSkeleton } from '@/components/actions/icon/skeleton/component';
+import { BreadcrumbsIconSkeletonProps } from '@/components/collections/breadcrumbs/skeleton/.partials/components/icon/component.interface';
+import styles from '@/components/collections/breadcrumbs/skeleton/.partials/styles/style.module.css';
 import classNames from 'classnames';
 import React from 'react';
-import { IconSkeleton } from '../../../../../../actions/icon/skeleton/component';
-import styles from '../../styles/style.module.css';
-import { BreadcrumbsIconSkeletonProps } from './component.interface';
 
 export function BreadcrumbsIconSkeleton({
   ...rest

@@ -1,8 +1,8 @@
+import { OTPProps } from '@/components/actions/otp/component/.partials/components/component.interface';
+import styles from '@/components/actions/otp/component/.partials/styles/component.module.css';
 import { OTPFieldPreview as OTPField } from '@base-ui/react/otp-field';
 import classNames from 'classnames';
 import React, { useId } from 'react';
-import styles from '../styles/component.module.css';
-import { OTPProps } from './component.interface';
 
 export function OTP({ ...rest }: OTPProps) {
   const id = rest?.id ?? useId();

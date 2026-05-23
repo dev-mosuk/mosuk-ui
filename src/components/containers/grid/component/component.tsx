@@ -1,7 +1,7 @@
+import { GridProps } from '@/components/containers/grid/component/component.interface';
+import styles from '@/components/containers/grid/component/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { GridProps } from './component.interface';
-import styles from './component.module.css';
 
 export function Grid<C extends ElementType = 'div'>({
   as,

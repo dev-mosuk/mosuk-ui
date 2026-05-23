@@ -1,8 +1,8 @@
+import { InputSkeletonProps } from '@/components/actions/select/skeleton/component.interface';
+import styles from '@/components/actions/select/skeleton/component.module.css';
+import { Skeleton } from '@/components/display/skeleton/component/component';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { Skeleton } from '../../../display/skeleton/component/component';
-import { InputSkeletonProps } from './component.interface';
-import styles from './component.module.css';
 
 export function InputSkeleton<C extends ElementType = 'div'>({
   as,
@@ -13,10 +13,13 @@ export function InputSkeleton<C extends ElementType = 'div'>({
   return (
     <Component
       {...rest}
-      className={classNames('mosuk-input-skeleton', styles.input, rest?.className)}
+      className={classNames(
+        'mosuk-input-skeleton',
+        styles.input,
+        rest?.className,
+      )}
     >
       {rest?.children}
     </Component>
   );
 }
- 

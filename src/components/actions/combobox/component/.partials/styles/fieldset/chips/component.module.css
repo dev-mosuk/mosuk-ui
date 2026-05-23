@@ -1,0 +1,14 @@
+@import './chip/component.module.css';
+
+@layer mosuk-ui {
+    @layer index-11 {
+        .ComboboxFieldsetChips {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: calc(var(--spacing, 0.25rem) * 1);
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+    }
+}

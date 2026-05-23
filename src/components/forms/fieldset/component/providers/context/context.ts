@@ -1,4 +1,4 @@
+import { FieldsetContextProps } from '@/components/forms/fieldset/component/providers/context/context.interface';
 import { createContext } from 'react';
-import { FieldsetContextProps } from './context.interface';
 
 export const FieldsetContext = createContext<FieldsetContextProps | null>(null);

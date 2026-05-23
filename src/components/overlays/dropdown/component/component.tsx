@@ -1,12 +1,12 @@
-import { Popover } from '@base-ui/react/popover';
-import React from 'react';
 import {
   DropdownDropdownContentProps,
   DropdownDropdownProps,
   DropdownProps,
   DropdownTriggerProps,
-} from './component.interface';
-import styles from './component.module.css';
+} from '@/components/overlays/dropdown/component/component.interface';
+import styles from '@/components/overlays/dropdown/component/component.module.css';
+import { Popover } from '@base-ui/react/popover';
+import React from 'react';
 
 export function Dropdown({ ...props }: DropdownProps) {
   return <Popover.Root {...props}>{props?.children}</Popover.Root>;

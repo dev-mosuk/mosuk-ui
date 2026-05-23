@@ -1,7 +1,7 @@
+import styles from '@/components/actions/otp/component/.partials/styles/component.module.css';
+import { OTPSkeletonProps } from '@/components/actions/otp/skeleton/.partials/components/component.interface';
 import classNames from 'classnames';
 import React from 'react';
-import styles from '../../../component/.partials/styles/component.module.css';
-import { OTPSkeletonProps } from './component.interface';
 
 export function OTPSkeleton({ ...rest }: OTPSkeletonProps) {
   return (

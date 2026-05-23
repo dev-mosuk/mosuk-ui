@@ -1,5 +1,5 @@
-import { Header as HeaderBase } from './.partials/components/component';
-import type { HeaderProps } from './.partials/components/component.interface';
+import { Header as HeaderBase } from '@/components/layouts/header/component/.partials/components/component';
+import type { HeaderProps } from '@/components/layouts/header/component/.partials/components/component.interface';
 
 export const Header = HeaderBase;
 

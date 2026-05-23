@@ -1,9 +1,9 @@
-import { SidebarCardButton } from './card/button/component';
-import { SidebarCardButtonProps } from './card/button/component.interface';
-import { SidebarCard } from './card/component';
-import { SidebarCardProps } from './card/component.interface';
-import { Sidebar as BaseSidebar } from './component';
-import type { SidebarProps } from './component.interface';
+import { SidebarCardButton } from '@/components/layouts/sidebar/component/card/button/component';
+import { SidebarCardButtonProps } from '@/components/layouts/sidebar/component/card/button/component.interface';
+import { SidebarCard } from '@/components/layouts/sidebar/component/card/component';
+import { SidebarCardProps } from '@/components/layouts/sidebar/component/card/component.interface';
+import { Sidebar as BaseSidebar } from '@/components/layouts/sidebar/component/component';
+import type { SidebarProps } from '@/components/layouts/sidebar/component/component.interface';
 
 export const Sidebar = Object.assign(BaseSidebar, {
   Card: Object.assign(SidebarCard, {

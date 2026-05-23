@@ -1,0 +1,17 @@
+@layer mosuk-ui {
+    @layer index-11 {
+        .ComboboxFieldsetValue {
+            flex: 1 1 auto;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: var(--text-base, 1rem);
+            color: var(--color-black, #000);
+
+            &[data-placeholder] {
+                color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+            }
+        }
+    }
+}

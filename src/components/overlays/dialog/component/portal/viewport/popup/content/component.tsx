@@ -1,7 +1,7 @@
+import styles from '@/components/overlays/dialog/component/component.module.css';
+import { DialogPortalViewportPopupContentProps } from '@/components/overlays/dialog/component/portal/viewport/popup/content/component.interface';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from '../../../../component.module.css';
-import { DialogPortalViewportPopupContentProps } from './component.interface';
 
 export function DialogPortalViewportPopupContent<
   C extends ElementType = 'div',

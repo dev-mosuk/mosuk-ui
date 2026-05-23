@@ -1,11 +1,13 @@
+import { UseStorageCookieProps } from '@/hooks/storage/cookie/hook.interface';
+import { StorageCookieService } from '@/services/storage/cookie/service';
+import { StorageCookieServiceConfig } from '@/services/storage/cookie/service.interface';
 import { useCallback, useEffect, useState } from 'react';
-import { StorageCookieService } from '../../../services/storage/cookie/service';
-import { StorageCookieServiceConfig } from '../../../services/storage/cookie/service.interface';
-import { UseStorageCookieProps } from './hook.interface';
 
 const storageCookieService = StorageCookieService.getInstance();
 
-export function useStorageCookie<T = any>(key: string): UseStorageCookieProps<T> {
+export function useStorageCookie<T = any>(
+  key: string,
+): UseStorageCookieProps<T> {
   const [value, setValue] = useState<T | null>(() => {
     return storageCookieService.read<T>(key);
   });
@@ -24,12 +26,13 @@ export function useStorageCookie<T = any>(key: string): UseStorageCookieProps<T>
       storageCookieService.create(key, newValue, config);
       setValue(newValue);
     },
-    [key]
+    [key],
   );
 
   const read = useCallback(() => {
     const currentValue = storageCookieService.read<T>(key);
     setValue(currentValue);
+
     return currentValue;
   }, [key]);
 
@@ -38,7 +41,7 @@ export function useStorageCookie<T = any>(key: string): UseStorageCookieProps<T>
       storageCookieService.update(key, newValue, config);
       setValue(storageCookieService.read<T>(key));
     },
-    [key]
+    [key],
   );
 
   const deleteValue = useCallback(
@@ -46,7 +49,7 @@ export function useStorageCookie<T = any>(key: string): UseStorageCookieProps<T>
       storageCookieService.delete(key, config);
       setValue(null);
     },
-    [key]
+    [key],
   );
 
   return {

@@ -1,9 +1,9 @@
+import { Input } from '@/components/actions/input/component/component';
+import styles from '@/components/forms/fieldset/component/component.module.css';
+import { FieldsetFieldInputProps } from '@/components/forms/fieldset/component/components/field/input/component.interface';
+import { useFieldset } from '@/components/forms/fieldset/component/hooks/hook';
 import classNames from 'classnames';
 import React, { ElementType, useEffect, useId } from 'react';
-import { Input } from '../../../../../../actions/input/component/component';
-import styles from '../../../component.module.css';
-import { useFieldset } from '../../../hooks/hook';
-import { FieldsetFieldInputProps } from './component.interface';
 
 export function FieldsetFieldInput<C extends ElementType = 'input'>({
   as,

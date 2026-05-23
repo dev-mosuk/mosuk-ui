@@ -1,7 +1,7 @@
-import { CheckboxSkeleton as Component } from './.partials/components/component';
-import type { CheckboxSkeletonProps } from './.partials/components/component.interface';
-import { CheckboxIndicatorSkeleton } from './.partials/components/indicator/component';
-import { CheckboxIndicatorSkeletonProps } from './.partials/components/indicator/component.interface';
+import { CheckboxSkeleton as Component } from '@/components/actions/checkbox/skeleton/.partials/components/component';
+import type { CheckboxSkeletonProps } from '@/components/actions/checkbox/skeleton/.partials/components/component.interface';
+import { CheckboxIndicatorSkeleton } from '@/components/actions/checkbox/skeleton/.partials/components/indicator/component';
+import { CheckboxIndicatorSkeletonProps } from '@/components/actions/checkbox/skeleton/.partials/components/indicator/component.interface';
 
 export const CheckboxSkeleton = Object.assign(Component, {
   Indicator: CheckboxIndicatorSkeleton,

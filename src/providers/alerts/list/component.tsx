@@ -1,10 +1,10 @@
+import { Alert } from '@/components/overlays/alert/component/component';
+import { Hint } from '@/components/texts/hint/component/component';
+import { HintTypeEnum } from '@/components/texts/hint/component/component.enums';
+import styles from '@/providers/alerts/provider.module.css';
 import { Toast } from '@base-ui/react/toast';
 import classNames from 'classnames';
 import React, { cloneElement } from 'react';
-import { Alert } from '../../../components/overlays/alert/component/component';
-import { Hint } from '../../../components/texts/hint/component/component';
-import { HintTypeEnum } from '../../../components/texts/hint/component/component.enums';
-import styles from '../provider.module.css';
 
 export function ToastList() {
   const { toasts } = Toast.useToastManager();
@@ -14,7 +14,10 @@ export function ToastList() {
       return cloneElement(toast.data.customContent, {
         key: toast.id,
         toast: toast,
-        className: classNames(toast.data.customContent.props?.className, styles.alert),
+        className: classNames(
+          toast.data.customContent.props?.className,
+          styles.alert,
+        ),
       });
     }
 
@@ -25,12 +28,12 @@ export function ToastList() {
             toast.type === 'info'
               ? HintTypeEnum.INFO
               : toast.type === 'success'
-              ? HintTypeEnum.SUCCESS
-              : toast.type === 'warning'
-              ? HintTypeEnum.WARNING
-              : toast.type === 'error'
-              ? HintTypeEnum.ERROR
-              : HintTypeEnum.INFO
+                ? HintTypeEnum.SUCCESS
+                : toast.type === 'warning'
+                  ? HintTypeEnum.WARNING
+                  : toast.type === 'error'
+                    ? HintTypeEnum.ERROR
+                    : HintTypeEnum.INFO
           }
           className={classNames(styles.hint)}
         >

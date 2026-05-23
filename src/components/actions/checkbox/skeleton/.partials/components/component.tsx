@@ -1,8 +1,8 @@
+import styles from '@/components/actions/checkbox/component/.partials/styles/component.module.css';
+import { CheckboxSkeletonProps } from '@/components/actions/checkbox/skeleton/.partials/components/component.interface';
+import { Skeleton } from '@/components/display/skeleton/component/component';
 import classNames from 'classnames';
 import React from 'react';
-import { Skeleton } from '../../../../../display/skeleton/component/component';
-import styles from '../../../component/.partials/styles/style.module.css';
-import { CheckboxSkeletonProps } from './component.interface';
 
 export function CheckboxSkeleton({ ...rest }: CheckboxSkeletonProps) {
   return (

@@ -4,14 +4,14 @@ import {
   AccordionSkeletonHeaderContent as BaseAccordionSkeletonHeaderContent,
   AccordionSkeletonHeaderIcon as BaseAccordionSkeletonHeaderIcon,
   AccordionSkeletonItem as BaseAccordionSkeletonItem,
-} from './component';
+} from '@/components/collections/accordion/skeleton/component';
 import type {
   AccordionSkeletonHeaderContentProps,
   AccordionSkeletonHeaderIconProps,
   AccordionSkeletonHeaderProps,
   AccordionSkeletonItemProps,
   AccordionSkeletonProps,
-} from './component.interface';
+} from '@/components/collections/accordion/skeleton/component.interface';
 
 export const AccordionSkeleton = Object.assign(BaseAccordionSkeleton, {
   Item: BaseAccordionSkeletonItem,

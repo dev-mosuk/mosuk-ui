@@ -1,7 +1,7 @@
+import { SidebarProps } from '@/components/layouts/sidebar/component/component.interface';
+import styles from '@/components/layouts/sidebar/component/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import { SidebarProps } from './component.interface';
-import styles from './component.module.css';
 
 export function Sidebar<C extends ElementType = 'aside'>({
   as,

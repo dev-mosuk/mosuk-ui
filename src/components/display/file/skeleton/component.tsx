@@ -1,10 +1,10 @@
-import { File as FileIcon } from 'lucide-react';
-import React from 'react';
 import {
   FileSkeletonFileProps,
   FileSkeletonProps,
-} from './component.interface';
-import styles from './component.module.css';
+} from '@/components/display/file/skeleton/component.interface';
+import styles from '@/components/display/file/skeleton/component.module.css';
+import { File as FileIcon } from 'lucide-react';
+import React from 'react';
 
 export function FileSkeleton({ ...props }: FileSkeletonProps) {
   return (

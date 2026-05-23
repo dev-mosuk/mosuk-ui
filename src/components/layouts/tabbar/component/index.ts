@@ -1,5 +1,5 @@
-import { Tabbar as BaseTabbar } from './.partials/components/component';
-import type { TabbarProps } from './.partials/components/component.interface';
+import { Tabbar as BaseTabbar } from '@/components/layouts/tabbar/component/.partials/components/component';
+import type { TabbarProps } from '@/components/layouts/tabbar/component/.partials/components/component.interface';
 
 export const Tabbar = Object.assign(BaseTabbar, {});
 

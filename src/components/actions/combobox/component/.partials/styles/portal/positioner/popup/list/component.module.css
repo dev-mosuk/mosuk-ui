@@ -1,0 +1,18 @@
+@import './row/component.module.css';
+@import './item/component.module.css';
+@import './separator/component.module.css';
+@import './group/component.module.css';
+@import './collection/component.module.css';
+
+@layer mosuk-ui {
+    @layer index-11 {
+        .ComboboxPortalPositionerPopupList {
+            overflow-x: hidden;
+            overflow-y: auto;
+
+            max-height: inherit;
+
+            outline: none;
+        }
+    }
+}

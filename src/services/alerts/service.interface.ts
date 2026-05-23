@@ -1,5 +1,5 @@
+import { AlertType } from '@/services/alerts/service.enums';
 import { ReactNode } from 'react';
-import { AlertType } from './service.enums';
 
 export interface Alert {
   type: AlertType;
@@ -8,7 +8,7 @@ export interface Alert {
 
 export interface AlertsServiceProps {
   manager(manager: any): void;
-  
+
   info(content: ReactNode): void;
   success(content: ReactNode): void;
   warning(content: ReactNode): void;

@@ -1,10 +1,16 @@
+import {
+  VideoProps,
+  VideoVideoProps,
+} from '@/components/display/video/component/component.interface';
+import styles from '@/components/display/video/component/component.module.css';
 import React from 'react';
-import { VideoProps, VideoVideoProps } from './component.interface';
-import styles from './component.module.css';
 
 export function Video({ ...props }: VideoProps) {
   return (
-    <div {...props} className={`mosuk-video ${styles.video} ${props?.className ?? ''}`}>
+    <div
+      {...props}
+      className={`mosuk-video ${styles.video} ${props?.className ?? ''}`}
+    >
       {props?.children}
     </div>
   );

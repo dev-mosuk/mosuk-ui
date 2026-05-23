@@ -1,5 +1,5 @@
+import { ToggleContext } from '@/components/actions/toggle/component/.partials/providers/context/context';
 import { useContext } from 'react';
-import { ToggleContext } from '../providers/context/context';
 
 export function useToggle() {
   const context = useContext(ToggleContext);

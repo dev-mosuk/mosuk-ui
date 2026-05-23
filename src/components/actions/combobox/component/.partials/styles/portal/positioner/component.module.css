@@ -1,0 +1,9 @@
+@import './popup/component.module.css';
+
+@layer mosuk-ui {
+    @layer index-11 {
+        .ComboboxPortalPositioner {
+            z-index: 100;
+        }
+    }
+}

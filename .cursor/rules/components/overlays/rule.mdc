@@ -1,0 +1,71 @@
+---
+description: Overlays — dialog, drawer, dropdown, popover; index-17+, z-index 100+
+globs: 'src/components/overlays/**'
+alwaysApply: false
+---
+
+# components/overlays
+
+index: **17** (базовый), **27/37…** (варианты) · Orchestrator: [../rule.mdc](../rule.mdc)
+
+## Назначение
+
+Floating UI: drawer, dialog, dropdown, tooltip, popover.
+
+## z-index
+
+- Dropdown/popover/tooltip: **100–199**
+- Dialog/drawer/modal: **200+**
+
+## Deep compound (drawer)
+
+Overlays с глубокой композицией допускают **tree без `.partials`**:
+
+```
+drawer/component/
+├── index.ts
+├── component.tsx
+├── open/component.tsx
+├── close/component.tsx
+└── portal/viewport/popup/content/component.tsx
+```
+
+`index.ts` — вложенный `Object.assign`:
+
+```ts
+export const Drawer = Object.assign(Component, {
+  Open: DrawerOpen,
+  Portal: Object.assign(DrawerPortal, {
+    Viewport: Object.assign(DrawerPortalViewport, {
+      Popup: Object.assign(DrawerPortalViewportPopup, {
+        Content: DrawerPortalViewportPopupContent,
+      }),
+    }),
+  }),
+});
+```
+
+Namespace types зеркалят ту же вложенность.
+
+## @base-ui
+
+Drawer/dialog/dropdown — на `@base-ui/react`. Не дублировать focus trap, portal, aria.
+
+## CSS
+
+- `@layer index-17` (или 27/37)
+- `component.module.css` на уровне root или sub-part по необходимости
+- Backdrop, popup — отдельные modules если стили различаются
+
+## Props
+
+- `component.interface.ts` на каждом sub-part
+- Open/Close triggers — отдельные compound parts (`Drawer.Open`, `Drawer.Close`)
+
+## Skeleton
+
+Для overlay content — optional; если есть, следовать OTP skeleton rules для content area.
+
+## Эталон
+
+`src/components/overlays/drawer/` — deep compound + namespace

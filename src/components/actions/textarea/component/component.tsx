@@ -1,7 +1,7 @@
+import { TextareaProps } from '@/components/actions/textarea/component/component.interface';
+import styles from '@/components/actions/textarea/component/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType, useId } from 'react';
-import { TextareaProps } from './component.interface';
-import styles from './component.module.css';
 
 export function Textarea<C extends ElementType = 'textarea'>({
   as,

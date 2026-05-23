@@ -1,7 +1,7 @@
+import { TBankContext } from '@/providers/tbank/context/context';
+import { TBankProviderProps } from '@/providers/tbank/provider.interface';
 import Script from 'next/script';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { TBankContext } from './context/context';
-import { TBankProviderProps } from './provider.interface';
 
 declare global {
   interface Window {
@@ -44,7 +44,7 @@ export const TBankProvider = ({ children }: TBankProviderProps) => {
         }, retryDelay);
 
         setError(
-          `Попытка ${retryCountRef.current}/${maxRetries}. Повтор через ${retryDelay / 1000}с...`
+          `Попытка ${retryCountRef.current}/${maxRetries}. Повтор через ${retryDelay / 1000}с...`,
         );
       } else {
         setError('Не удалось загрузить T-Bank после 3 попыток');
@@ -64,7 +64,8 @@ export const TBankProvider = ({ children }: TBankProviderProps) => {
 
   // Проверяем, не загружен ли уже скрипт
   useEffect(() => {
-    const isScriptAlreadyLoaded = typeof window !== 'undefined' && window.PaymentIntegration;
+    const isScriptAlreadyLoaded =
+      typeof window !== 'undefined' && window.PaymentIntegration;
 
     if (isScriptAlreadyLoaded && !scriptLoaded) {
       setScriptLoaded(true);
@@ -73,7 +74,10 @@ export const TBankProvider = ({ children }: TBankProviderProps) => {
 
   // Инициализируем интеграцию когда скрипт загружен
   useEffect(() => {
-    if (scriptLoaded || (typeof window !== 'undefined' && window.PaymentIntegration)) {
+    if (
+      scriptLoaded ||
+      (typeof window !== 'undefined' && window.PaymentIntegration)
+    ) {
       initializeIntegration();
     }
   }, [scriptLoaded, initializeIntegration]);
@@ -93,14 +97,15 @@ export const TBankProvider = ({ children }: TBankProviderProps) => {
     error,
   };
 
-  const isScriptAlreadyLoaded = typeof window !== 'undefined' && window.PaymentIntegration;
+  const isScriptAlreadyLoaded =
+    typeof window !== 'undefined' && window.PaymentIntegration;
 
   return (
     <TBankContext.Provider value={contextValue}>
       {!isScriptAlreadyLoaded && (
         <Script
-          src="https://integrationjs.tbank.ru/integration.js"
-          strategy="afterInteractive"
+          src='https://integrationjs.tbank.ru/integration.js'
+          strategy='afterInteractive'
           onLoad={handleScriptLoad}
           onError={handleScriptError}
         />

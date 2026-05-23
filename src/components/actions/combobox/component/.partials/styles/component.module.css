@@ -1,0 +1,13 @@
+@import './fieldset/component.module.css';
+@import './portal/component.module.css';
+
+@layer mosuk-ui {
+    @layer index-11 {
+        .root {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing, 0.25rem) * 1.5);
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+---
+description: Integrations — UI для внешних SDK (maps, payment, analytics); index-15
+globs: 'src/components/integrations/**'
+alwaysApply: false
+---
+
+# components/integrations
+
+index: **15** · Orchestrator: [../rule.mdc](../rule.mdc)
+
+## Назначение
+
+UI-обёртки вокруг внешних сервисов. Логика инициализации SDK — в `providers/`, не в leaf component.
+
+## Разделение
+
+| Слой | Ответственность |
+| ---- | --------------- |
+| `providers/{vendor}/` | Script load, context, API keys props |
+| `components/integrations/` | Visual UI, markers, widgets |
+| `hooks/` | Consumer hook если нужен вне provider tree |
+
+## Структура component
+
+Canonical OTP или flat по сложности. Provider dependency через context hook.
+
+## Props
+
+- Config props на provider (`provider.interface.ts`)
+- Display props на component (`component.interface.ts`)
+
+## CSS
+
+- `@layer index-15`
+- Изолировать vendor-specific classes в module
+
+## Эталоны
+
+Pair с `src/providers/yandex/`, `src/providers/tbank/` — смотреть связку provider + integration component.

@@ -1,7 +1,7 @@
+import { DrawerOpenProps } from '@/components/overlays/drawer/component/open/component.interface';
 import { Drawer as BaseUiDrawer } from '@base-ui/react';
 import classNames from 'classnames';
 import React from 'react';
-import { DrawerOpenProps } from './component.interface';
 
 export function DrawerOpen({ ...rest }: DrawerOpenProps) {
   return (

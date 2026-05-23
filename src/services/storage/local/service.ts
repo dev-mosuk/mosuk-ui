@@ -1,6 +1,7 @@
-import { StorageLocalServiceInterface } from './service.interface';
+import { StorageLocalServiceInterface } from '@/services/storage/local/service.interface';
 
-const isBrowser = typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+const isBrowser =
+  typeof window !== 'undefined' && typeof localStorage !== 'undefined';
 
 export class StorageLocalService implements StorageLocalServiceInterface {
   private static instance: StorageLocalService;
@@ -9,22 +10,29 @@ export class StorageLocalService implements StorageLocalServiceInterface {
     if (!StorageLocalService.instance) {
       StorageLocalService.instance = new StorageLocalService();
     }
-    
+
     return StorageLocalService.instance;
   }
 
   create<T = any>(key: string, value: T): void {
-    if (!isBrowser) return;
+    if (!isBrowser) {
+      return;
+    }
 
-    const stringValue = typeof value === 'string' ? value : JSON.stringify(value);
+    const stringValue =
+      typeof value === 'string' ? value : JSON.stringify(value);
     localStorage.setItem(key, stringValue);
   }
 
   read<T = any>(key: string): T | null {
-    if (!isBrowser) return null;
+    if (!isBrowser) {
+      return null;
+    }
 
     const raw = localStorage.getItem(key);
-    if (!raw) return null;
+    if (!raw) {
+      return null;
+    }
 
     // Сначала пытаемся JSON (для объектов/массивов)
     try {
@@ -46,7 +54,9 @@ export class StorageLocalService implements StorageLocalServiceInterface {
   }
 
   update<T = any>(key: string, value: Partial<T>): void {
-    if (!isBrowser) return;
+    if (!isBrowser) {
+      return;
+    }
 
     const data = this.read<T>(key);
     if (data && typeof data === 'object' && typeof value === 'object') {
@@ -57,7 +67,9 @@ export class StorageLocalService implements StorageLocalServiceInterface {
   }
 
   delete(key: string): void {
-    if (!isBrowser) return;
+    if (!isBrowser) {
+      return;
+    }
     localStorage.removeItem(key);
   }
 }

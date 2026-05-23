@@ -1,7 +1,7 @@
+import { InputProps } from '@/components/actions/input/component/component.interface';
+import styles from '@/components/actions/input/component/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType, useId } from 'react';
-import { InputProps } from './component.interface';
-import styles from './component.module.css';
 
 export function Input<C extends ElementType = 'input'>({
   as,

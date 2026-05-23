@@ -10,6 +10,7 @@ class AlertsService {
     if (!AlertsService.instance) {
       AlertsService.instance = new AlertsService();
     }
+
     return AlertsService.instance;
   }
 
@@ -19,9 +20,8 @@ class AlertsService {
 
   private action(type: string, content: ReactNode): void {
     if (!this.toastManager) {
-      console.error(
-        'alertsService must be used within <AlertsProvider>'
-      );
+      console.error('alertsService must be used within <AlertsProvider>');
+
       return;
     }
 
@@ -30,7 +30,6 @@ class AlertsService {
       title: content as any,
     });
   }
-
 
   info(content: ReactNode): void {
     this.action('info', content);
@@ -50,20 +49,18 @@ class AlertsService {
 
   custom(content: ReactNode): void {
     if (!this.toastManager) {
-      console.error(
-        'alertsService must be used within <AlertsProvider>'
-      );
+      console.error('alertsService must be used within <AlertsProvider>');
+
       return;
     }
 
     this.toastManager.add({
       type: 'custom',
       data: {
-        customContent: content
-      }
+        customContent: content,
+      },
     });
   }
-
 }
 
 export const alertsService = AlertsService.getInstance();

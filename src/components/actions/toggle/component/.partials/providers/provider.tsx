@@ -1,5 +1,8 @@
 'use client';
 
+import { ToggleContext } from '@/components/actions/toggle/component/.partials/providers/context/context';
+import { ToggleProviderProps } from '@/components/actions/toggle/component/.partials/providers/provider.interface';
+import { scrollToggleOptionIntoView } from '@/components/actions/toggle/component/.partials/utilities/scroll-toggle-option-into-view';
 import React, {
   useCallback,
   useEffect,
@@ -8,9 +11,6 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { scrollToggleOptionIntoView } from '../utilities/scroll-toggle-option-into-view';
-import { ToggleContext } from './context/context';
-import { ToggleProviderProps } from './provider.interface';
 
 export function ToggleProvider({
   value: controlledValue,
@@ -83,6 +83,7 @@ export function ToggleProvider({
         if (n < 12) {
           requestAnimationFrame(() => attempt(n + 1));
         }
+
         return;
       }
 

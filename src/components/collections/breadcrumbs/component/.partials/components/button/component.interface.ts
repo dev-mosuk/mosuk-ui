@@ -1,4 +1,4 @@
+import { ButtonProps } from '@/components/actions/button/component/component.interface';
 import { ElementType } from 'react';
-import { ButtonProps } from '../../../../../../actions/button/component/component.interface';
 
 export interface BreadcrumbsButtonProps extends ButtonProps<ElementType> {}

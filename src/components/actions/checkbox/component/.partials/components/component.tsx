@@ -1,8 +1,8 @@
+import { CheckboxProps } from '@/components/actions/checkbox/component/.partials/components/component.interface';
+import styles from '@/components/actions/checkbox/component/.partials/styles/component.module.css';
 import { Checkbox as BaseCheckbox } from '@base-ui/react';
 import classNames from 'classnames';
 import React, { useId } from 'react';
-import styles from '../styles/component.module.css';
-import { CheckboxProps } from './component.interface';
 
 export function Checkbox({ ref, ...rest }: CheckboxProps) {
   if (!rest?.id) {

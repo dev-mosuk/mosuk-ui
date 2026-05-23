@@ -10,7 +10,12 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "moduleResolution": "node"
-  },  
-  "exclude": ["node_modules"]
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*", "tsconfig.ts", "tsconfig.build.ts"],
+  "exclude": ["node_modules", "dist"]
 }

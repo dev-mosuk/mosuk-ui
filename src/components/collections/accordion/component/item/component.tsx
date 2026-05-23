@@ -1,8 +1,8 @@
+import styles from '@/components/collections/accordion/component/component.module.css';
+import { AccordionItemProps } from '@/components/collections/accordion/component/item/component.interface';
 import { Accordion as BaseAccordion } from '@base-ui/react/accordion';
 import classNames from 'classnames';
 import React from 'react';
-import styles from '../component.module.css';
-import { AccordionItemProps } from './component.interface';
 
 export function AccordionItem({ ...rest }: AccordionItemProps) {
   return (
@@ -11,7 +11,7 @@ export function AccordionItem({ ...rest }: AccordionItemProps) {
       className={classNames(
         'mosuk-accordion-item',
         styles.item,
-        rest.className
+        rest.className,
       )}
     >
       {rest?.children}

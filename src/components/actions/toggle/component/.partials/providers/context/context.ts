@@ -1,4 +1,4 @@
+import { ToggleContextProps } from '@/components/actions/toggle/component/.partials/providers/context/context.interface';
 import { createContext } from 'react';
-import { ToggleContextProps } from './context.interface';
 
 export const ToggleContext = createContext<ToggleContextProps | null>(null);

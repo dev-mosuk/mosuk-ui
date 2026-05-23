@@ -1,8 +1,8 @@
+import { SwitchSkeletonProps } from '@/components/actions/switch/skeleton/component.interface';
+import styles from '@/components/actions/switch/skeleton/component.module.css';
+import { Skeleton } from '@/components/display/skeleton/component/component';
 import classNames from 'classnames';
 import React, { useId } from 'react';
-import { Skeleton } from '../../../display/skeleton/component/component';
-import { SwitchSkeletonProps } from './component.interface';
-import styles from './component.module.css';
 
 export function SwitchSkeleton({ ...rest }: SwitchSkeletonProps) {
   if (!rest?.id) {

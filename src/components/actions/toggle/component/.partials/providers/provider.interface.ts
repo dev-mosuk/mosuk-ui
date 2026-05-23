@@ -1,5 +1,5 @@
+import type { ToggleOrientation } from '@/components/actions/toggle/component/.partials/providers/context/context.interface';
 import { ReactNode, RefObject } from 'react';
-import type { ToggleOrientation } from './context/context.interface';
 
 export interface ToggleProviderProps {
   value?: any | null;

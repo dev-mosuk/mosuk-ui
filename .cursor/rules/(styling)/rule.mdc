@@ -1,0 +1,95 @@
+---
+description: CSS Layers, index-N, z-index и mosuk-* классы в mosuk-ui
+globs:
+  - 'src/**/*.module.css'
+  - 'src/index.css'
+  - 'src/styles/**'
+alwaysApply: false
+---
+
+# styling — CSS Layers
+
+Источник истины: [README.md](../../README.md) §1–3.
+
+## Слои каскада
+
+```css
+@layer theme, base, mosuk-ui, components, utilities;
+```
+
+Все стили компонентов — внутри `@layer mosuk-ui`.
+
+## z-index
+
+| Диапазон | Назначение |
+| -------- | ---------- |
+| 0–99 | контент, карточки, формы |
+| 100–199 | dropdown, popover, tooltip |
+| 200+ | dialog, drawer, modal |
+
+## index-N (1-й уровень — категория)
+
+| index | Категория |
+| ----- | --------- |
+| 0–9 | providers, utilities (зарезервировано) |
+| 10 | texts |
+| 11 | actions |
+| 12 | display |
+| 13 | containers |
+| 14 | collections |
+| 15 | integrations |
+| 16 | layouts |
+| 17 | overlays |
+
+## index-N (2-й уровень — вариант)
+
+- Базовый: `index-11` (button)
+- Вариант 1: `index-21` (button/submit)
+- Вариант 2: `index-31` (button/delete)
+
+Правило: десятки = уровень варианта, единицы = категория.
+
+## CSS module — шаблон
+
+```css
+@layer mosuk-ui {
+  @layer index-11 {
+    .root { /* … */ }
+    .root .input { /* nested */ }
+  }
+}
+```
+
+- Корневой класс — `.root` (или семантичное имя sub-part)
+- Вложенность через `.root .child`, не глобальные селекторы
+- Файл: `component/.partials/styles/component.module.css`
+
+## classNames в TSX
+
+```tsx
+className={classNames('mosuk-otp', styles.root, rest?.className)}
+```
+
+Порядок: **mosuk-{feature}** (глобальный hook) → **styles.\*** → **rest.className** последним.
+
+## Skeleton и стили
+
+Skeleton **переиспользует** CSS module компонента:
+
+```tsx
+import styles from '../../../component/.partials/styles/component.module.css';
+```
+
+Отдельный skeleton CSS — только если layout skeleton принципиально другой (см. `toggle/skeleton/.partials/styles/`).
+
+## Глобальные стили
+
+- `src/index.css` — объявление layers, `@theme`, imports
+- `src/styles/` — tokens, base — **не** дублировать в module без необходимости
+- Tailwind utility-классы в TSX — допустимы для layout; визуальные токены компонента — в module + layers
+
+## Запрещено
+
+- Стили вне `@layer mosuk-ui` для component modules
+- Hardcoded z-index вне согласованных диапазонов README
+- `!important` без крайней необходимости

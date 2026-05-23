@@ -1,8 +1,7 @@
-import { InputSkeleton as Component } from '../../../skeleton/component';
-import { InputSkeletonProps as ComponentProps } from '../../../skeleton/component.interface';
+import { InputSkeleton as Component } from '@/components/actions/input/skeleton/component';
+import { InputSkeletonProps as ComponentProps } from '@/components/actions/input/skeleton/component.interface';
 
-const ChildComponent = (props: ComponentProps) =>
-  Component(props);
+const ChildComponent = (props: ComponentProps) => Component(props);
 
 export const InputMaskDateSkeleton = Object.assign(ChildComponent, {});
 

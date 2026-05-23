@@ -1,13 +1,15 @@
+import { TextProps } from '@/components/texts/text/component/component.interface';
+import styles from '@/components/texts/text/component/component.module.css';
 import React, { Fragment, ReactNode, useEffect, useRef, useState } from 'react';
-import { TextProps } from './component.interface';
-import styles from './component.module.css';
 
 export function Text({ children, ...props }: TextProps) {
   const [text, setText] = useState<string | number>(children ?? '');
   const textRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    if (!textRef.current) return;
+    if (!textRef.current) {
+      return;
+    }
 
     const element = textRef.current;
     const computedStyle = window.getComputedStyle(element);
@@ -24,7 +26,9 @@ export function Text({ children, ...props }: TextProps) {
       const lineHeightStyle = computedStyle.lineHeight;
       const fontSize = parseInt(computedStyle.fontSize, 10);
       let lineHeight =
-        lineHeightStyle === 'normal' ? fontSize * 1.2 : parseInt(lineHeightStyle, 10);
+        lineHeightStyle === 'normal'
+          ? fontSize * 1.2
+          : parseInt(lineHeightStyle, 10);
 
       const maxLines = Math.floor(maxHeight / lineHeight);
       element.style.setProperty('--max-lines', String(maxLines));
@@ -38,9 +42,18 @@ export function Text({ children, ...props }: TextProps) {
     const lines = textContent.split('\n');
 
     return lines.map((line, index: number) => {
-      const boldProcessed = line.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-      const italicProcessed = boldProcessed.replace(/\*(.*?)\*/g, '<em>$1</em>');
-      const linkProcessed = italicProcessed.replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>');
+      const boldProcessed = line.replace(
+        /\*\*(.*?)\*\*/g,
+        '<strong>$1</strong>',
+      );
+      const italicProcessed = boldProcessed.replace(
+        /\*(.*?)\*/g,
+        '<em>$1</em>',
+      );
+      const linkProcessed = italicProcessed.replace(
+        /\[(.*?)\]\((.*?)\)/g,
+        '<a href="$2">$1</a>',
+      );
 
       return (
         <Fragment key={index}>
@@ -52,7 +65,11 @@ export function Text({ children, ...props }: TextProps) {
   };
 
   return (
-    <p ref={textRef} {...props} className={`mosuk-text ${styles.text} ${props?.className ?? ''}`}>
+    <p
+      ref={textRef}
+      {...props}
+      className={`mosuk-text ${styles.text} ${props?.className ?? ''}`}
+    >
       {formatText(text)}
     </p>
   );

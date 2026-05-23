@@ -1,7 +1,7 @@
+import styles from '@/components/display/empty/component/component.module.css';
+import { EmptyContentDescriptionProps } from '@/components/display/empty/component/content/description/component.interface';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
-import styles from './../../component.module.css';
-import { EmptyContentDescriptionProps } from './component.interface';
 
 export function EmptyContentDescription<C extends ElementType = 'p'>({
   as,

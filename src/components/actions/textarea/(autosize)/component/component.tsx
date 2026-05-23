@@ -1,9 +1,9 @@
+import { TextareaAutosizeProps } from '@/components/actions/textarea/(autosize)/component/component.interface';
+import styles from '@/components/actions/textarea/(autosize)/component/component.module.css';
+import { Textarea } from '@/components/actions/textarea/component/component';
 import classNames from 'classnames';
 import React from 'react';
 import TextareaAutosizePrimitive from 'react-textarea-autosize';
-import { Textarea } from '../../component/component';
-import { TextareaAutosizeProps } from './component.interface';
-import styles from './component.module.css';
 
 export function TextareaAutosize({ ...rest }: TextareaAutosizeProps) {
   return (
