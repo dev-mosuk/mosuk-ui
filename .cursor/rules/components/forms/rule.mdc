@@ -1,0 +1,53 @@
+---
+description: Forms — fieldset, form composition, field/input/label; react-hook-form integration
+globs: 'src/components/forms/**'
+alwaysApply: false
+---
+
+# components/forms
+
+Orchestrator: [../rule.mdc](../rule.mdc)
+
+## Назначение
+
+Form composition: fieldset, field groups, label+input+hint, не дублирующие `actions/` primitives.
+
+## Структура
+
+Forms часто глубже OTP — nested `component/components/`:
+
+```
+fieldset/component/
+├── component.tsx
+├── component.interface.ts
+├── components/field/…
+├── components/hint/…
+├── providers/…
+└── hooks/hook.ts
+```
+
+Provider + hook внутри feature допустимы (см. fieldset).
+
+## react-hook-form
+
+- Интеграция через props/context, не hardcode в leaf input
+- Errors/hints — sub-components fieldset
+
+## Props
+
+- `component.interface.ts`
+- Field: label, input slot, error message
+
+## CSS
+
+- Form-specific layers: можно использовать index-11 (actions family) или локальный module без conflict
+- Не смешивать field styles с raw `actions/input` — compose
+
+## Relation to actions/
+
+- `actions/input`, `actions/checkbox` — primitives
+- `forms/fieldset` — composition layer
+
+## Эталон
+
+`src/components/forms/fieldset/` — provider, hooks, nested components

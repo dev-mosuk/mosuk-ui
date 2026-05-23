@@ -1,0 +1,67 @@
+---
+description: Providers — app-level React context (alerts, yandex, tbank), index-0
+globs: 'src/providers/**'
+alwaysApply: false
+---
+
+# providers
+
+index: **0–9** (зарезервировано) · Context pattern: [context/rule.mdc](./context/rule.mdc)
+
+## Назначение
+
+React providers: инициализация SDK, context value, side effects (useEffect).
+
+## Структура feature
+
+```
+{feature}/
+├── index.ts                 ← thin export + namespace
+├── provider.tsx
+├── provider.interface.ts
+├── provider.module.css      ← optional
+├── context/
+│   ├── context.ts
+│   └── context.interface.ts
+└── {sub}/                   ← optional UI (ToastList)
+```
+
+## index.ts
+
+```ts
+export const AlertsProvider = (props) => createElement(BaseAlertsProvider, props);
+
+export namespace AlertsProvider {
+  export type Props = AlertsProviderProps;
+}
+```
+
+## provider.tsx
+
+- `'use client'` если browser APIs / effects
+- Inject service: `alertsService.manager(manager)` в useEffect + cleanup
+- Context.Provider с value object (methods + state)
+
+## Связь с hooks
+
+Hook потребляет context → `src/hooks/{feature}/hook.ts`
+**Не** export hook из provider index — отдельный path.
+
+## Связь с services
+
+Imperative API в `src/services/{feature}/` — provider wiring, service logic.
+
+## CSS
+
+- `@layer index-0` или index из providers range
+- Module рядом с provider.tsx
+
+## Эталоны
+
+- `src/providers/alerts/` — provider + list sub-component + service
+- `src/providers/yandex/maps/` — external SDK
+- `src/providers/tbank/` — payment integration
+
+## Component-local provider
+
+Toggle-style provider в `component/.partials/providers/` — см. [context/rule.mdc](./context/rule.mdc).

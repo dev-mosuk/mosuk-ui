@@ -1,0 +1,129 @@
+---
+description: Общие правила нейминга, структуры папок и паттерны . ( ) [ ] для mosuk-ui
+alwaysApply: true
+---
+
+# architecture — нейминг
+
+## Паттерны имён папок
+
+Три маркера структуры — **обязательная** часть архитектуры компонентов и инфраструктуры.
+
+| Маркер | Смысл | Примеры |
+| ------ | ----- | ------- |
+| **`.`** | Приватная реализация, не часть публичного API | `.partials/`, `.cursor/` |
+| **`()`** | Группа/контекст, **не** сегмент export-имени | `(architecture)/`, `(styling)/` в `.cursor/` |
+| **`[]`** | Динамический/param сегмент | `hooks/[id]/` (если появится) |
+
+### `.` — private
+
+- `.partials/` — component-local реализация (components, styles, providers, hooks)
+- Не импортировать `.partials` извне feature-папки
+
+### `.cursor/` — зеркало паттернов
+
+| Путь | Паттерн | Смысл |
+| ---- | ------- | ----- |
+| `(architecture)/` | `()` | cross-cutting: нейминг, `.` `()` `[]` |
+| `(styling)/` | `()` | CSS layers, index-N |
+| `(exports)/` | `()` | index.ts, namespace, package exports |
+| `components/{category}/` | category | UI по taxonomy README |
+| `providers/`, `hooks/`, `services/` | layer | инфраструктура библиотеки |
+
+### `()` — group
+
+- В `.cursor/rules/` и `.cursor/skills/` — логическая группировка без влияния на пути `src/`
+- Export **не** включает скобки: `(architecture)` → rule про architecture, не `(Architecture)Rule`
+
+### `[]` — dynamic
+
+- Зарезервировано для param-сегментов (hooks, variants)
+- В компонентах предпочитать именованные sub-папки (`input/`, `indicator/`) вместо `[id]/`
+
+## Структура `src/`
+
+```
+src/
+├── components/
+│   ├── texts/          # index-10
+│   ├── actions/        # index-11, 21, 31…
+│   ├── display/        # index-12
+│   ├── containers/     # index-13
+│   ├── collections/    # index-14
+│   ├── integrations/   # index-15
+│   ├── layouts/        # index-16
+│   ├── overlays/       # index-17, 27, 37…
+│   └── forms/          # fieldset, form controls
+├── providers/          # index-0
+├── hooks/
+├── services/
+├── utilities/
+├── styles/
+└── index.css
+```
+
+Orchestrator → `.cursor/rules/components/rule.mdc`
+Стили → `.cursor/rules/(styling)/rule.mdc`
+Exports → `.cursor/rules/(exports)/rule.mdc`
+Providers → `.cursor/rules/providers/rule.mdc` (+ [context](../providers/context/rule.mdc))
+Hooks → `.cursor/rules/hooks/rule.mdc`
+Services → `.cursor/rules/services/rule.mdc`
+Utilities → `.cursor/rules/utilities/rule.mdc`
+
+## Имена файлов
+
+| Артефакт | Файл |
+| -------- | ---- |
+| Компонент | `component.tsx` |
+| Props | `component.interface.ts` |
+| Legacy props (toggle) | `component.props.ts` — **не** для нового кода |
+| Хук | `hook.ts` + `hook.interface.ts` |
+| Provider | `provider.tsx` + `provider.interface.ts` |
+| Context | `context.ts` + `context.interface.ts` |
+| Service | `service.ts` + `service.interface.ts` |
+| Enum | `service.enums.ts` или `component.enums.ts` |
+| Utility | `util.ts` |
+| Публичный API feature | `index.ts` |
+| CSS module | `component.module.css` в `.partials/styles/` |
+
+## Экспорты
+
+| Тип | Паттерн | Пример |
+| --- | ------- | ------ |
+| UI component | `{Name}` PascalCase | `OTP`, `Drawer`, `Toggle` |
+| Skeleton | `{Name}Skeleton` | `OTPSkeleton`, `ToggleSkeleton` |
+| Compound sub-part | `{Name}{Sub}` | `OTPInput`, `Drawer.Portal` |
+| Context hook | `use{Name}` | `useAlerts`, `useToggle` |
+| Service singleton | `{name}Service` | `alertsService` |
+| Utility | `{domain}{Action}` | `formatPhone` |
+
+Подробнее compound + namespace → `.cursor/rules/(exports)/rule.mdc`
+
+## Категории `components/`
+
+| Папка | index | Назначение |
+| ----- | ----- | ---------- |
+| `texts/` | 10 | заголовки, параграфы, ссылки |
+| `actions/` | 11+ | кнопки, инпуты, контролы |
+| `display/` | 12+ | карточки, media, avatar |
+| `containers/` | 13 | секции, grid |
+| `collections/` | 14 | таблицы, tabs, accordion |
+| `integrations/` | 15 | внешние SDK UI |
+| `layouts/` | 16 | header, sidebar |
+| `overlays/` | 17+ | dialog, drawer, dropdown |
+| `forms/` | — | fieldset, form composition |
+
+## Импорты
+
+- **Внутри feature** — относительные пути до файла
+- **Между features** — через `index.ts` feature или shared layer (`hooks/`, `services/`)
+- **Named export** везде
+- **Не** barrel re-export всего `src/` — только точечные `index.ts` на feature
+
+## Legacy vs canonical
+
+| Паттерн | Пример | Статус |
+| ------- | ------ | ------ |
+| Flat `component/component.tsx` | `button/` | legacy — не копировать |
+| `.partials/` + compound | `otp/`, `checkbox/` | **canonical** — новый код |
+| Deep tree без `.partials` | `drawer/` | допустимо для deep compound overlays |

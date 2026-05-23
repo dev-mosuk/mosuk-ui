@@ -1,0 +1,41 @@
+---
+description: Texts — headings, paragraphs, links; index-10
+globs: 'src/components/texts/**'
+alwaysApply: false
+---
+
+# components/texts
+
+index: **10** · Orchestrator: [../rule.mdc](../rule.mdc)
+
+## Назначение
+
+Типографика: headings, text, links, labels без интерактива формы.
+
+## Структура
+
+Предпочитать canonical `.partials/` (OTP). Простые text-кomponentы могут быть flat.
+
+## Props
+
+- `component.interface.ts`
+- Polymorphic `as` для semantic HTML (`h1`–`h6`, `p`, `span`)
+- Typography через CSS module + theme tokens, не inline styles
+
+## CSS
+
+```css
+@layer mosuk-ui {
+  @layer index-10 {
+    .root { /* font-size, color from --text-* */ }
+  }
+}
+```
+
+## Skeleton
+
+Для dynamic text blocks — `{Name}Skeleton` с width/height placeholders.
+
+## Эталоны
+
+Существующие features в `src/components/texts/`; новый код — OTP pattern.

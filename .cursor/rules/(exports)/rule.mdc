@@ -1,0 +1,112 @@
+---
+description: Публичный API через index.ts, Object.assign compound, export namespace, package.json exports
+globs: 'src/**/index.ts'
+alwaysApply: false
+---
+
+# exports — публичный API
+
+## Точка входа feature
+
+Каждый публикуемый feature имеет `index.ts`:
+
+```
+{feature}/
+├── component/index.ts      ← основной export
+└── skeleton/index.ts       ← skeleton export (если есть)
+```
+
+Потребитель импортирует: `mosuk-ui/components/actions/otp/component` (путь после build — см. `tsconfig.build.ts`).
+
+## Compound component
+
+```ts
+import { OTP as Component } from './.partials/components/component';
+import { OTPProps } from './.partials/components/component.interface';
+import { OTPInput } from './.partials/components/input/component';
+
+export const OTP = Object.assign(Component, {
+  Input: OTPInput,
+});
+```
+
+- Root — default callable component
+- Sub-parts — свойства на том же объекте
+- Deep compound (drawer): вложенный `Object.assign` для `Portal.Viewport.Popup.Content`
+
+## Namespace types
+
+```ts
+export namespace OTP {
+  export type Props = OTPProps;
+
+  export namespace Input {
+    export type Props = OTPInputProps;
+  }
+}
+```
+
+- Зеркалит структуру compound
+- Потребитель: `OTP.Props`, `OTP.Input.Props`
+- Импорт типов props **не** из `.partials/` — только через namespace или re-export в index
+
+## Skeleton export
+
+```ts
+export const OTPSkeleton = Object.assign(Component, { Input: OTPInputSkeleton });
+
+export namespace OTPSkeleton {
+  export type Props = ComponentProps;
+  // …
+}
+```
+
+Именование: `{Name}Skeleton`, sub-parts: `{Sub}Skeleton`.
+
+## Provider export
+
+```ts
+export const AlertsProvider = (props: AlertsProviderProps) =>
+  createElement(BaseAlertsProvider, props);
+
+export namespace AlertsProvider {
+  export type Props = AlertsProviderProps;
+}
+```
+
+Thin wrapper в `index.ts` допустим; реализация в `provider.tsx`.
+
+## Service export
+
+```ts
+export { alertsService, type Alert, type AlertsServiceProps };
+
+export namespace AlertsService {
+  export type Props = AlertsServiceProps;
+  export const ENUMS = { Type: AlertType };
+}
+```
+
+## package.json exports (build)
+
+`tsconfig.build.ts` генерирует `exports` в `dist/package.json` по наличию `index.js`:
+
+- Каждая папка с `index.ts` → отдельный subpath export
+- `./index.css` — если есть в dist
+- **Новый feature** — добавить `index.ts`, build подхватит автоматически
+
+## Правила
+
+1. **Не** re-export внутренних `.partials/` paths наружу
+2. **Не** export `component.tsx` напрямую — только через `index.ts`
+3. Sub-parts export только если используются потребителем (compound API)
+4. Enum/constants — через namespace `ENUMS` или named export из index
+
+## Legacy (button)
+
+```ts
+export const Button = BaseButton;
+export namespace Button { export type Props = ButtonProps; }
+```
+
+Без compound — допустимо для простых компонентов; новые предпочитают `.partials/` + sub-parts при необходимости.

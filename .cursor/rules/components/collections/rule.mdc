@@ -1,0 +1,48 @@
+---
+description: Collections — tables, tabs, accordion, lists; index-14
+globs: 'src/components/collections/**'
+alwaysApply: false
+---
+
+# components/collections
+
+index: **14** · Orchestrator: [../rule.mdc](../rule.mdc)
+
+## Назначение
+
+Structured lists: table, tabs, accordion, data list.
+
+## Структура
+
+Compound обязателен: root + item/header/panel sub-parts.
+
+```
+{feature}/component/
+├── index.ts
+└── .partials/components/
+    ├── component.tsx          ← Collection root
+    ├── item/component.tsx
+    └── header/component.tsx
+```
+
+## Props
+
+- Collection root: `children` или data-driven API — по эталону существующего feature
+- Item sub-parts: минимальный interface
+
+## CSS
+
+- `@layer index-14`
+- Row/cell styles nested под `.root`
+
+## Skeleton
+
+Skeleton rows mirroring table/list layout; reuse component CSS where possible.
+
+## @base-ui
+
+Tabs/accordion могут использовать `@base-ui/react` — wrap, don't fork.
+
+## Эталоны
+
+`src/components/collections/` — extend existing patterns.

@@ -1,0 +1,66 @@
+---
+description: Services — imperative singleton API (alerts, storage)
+globs: 'src/services/**'
+alwaysApply: false
+---
+
+# services
+
+## Назначение
+
+Imperative API без React: singletons, registry, side-effect coordinators.
+
+## Структура
+
+```
+{feature}/
+├── index.ts
+├── service.ts
+├── service.interface.ts
+└── service.enums.ts          ← optional
+```
+
+## index.ts
+
+```ts
+export { alertsService, type Alert, type AlertsServiceProps };
+
+export namespace AlertsService {
+  export type Props = AlertsServiceProps;
+  export const ENUMS = { Type: AlertType };
+}
+```
+
+## service.ts
+
+- Module-level singleton или factory
+- Methods mutate external refs (Toast manager from provider)
+- **Не** import React components
+
+## Provider wiring
+
+Provider registers service on mount:
+
+```ts
+useEffect(() => {
+  alertsService.manager(manager);
+  return () => alertsService.manager(null);
+}, [manager]);
+```
+
+## Interface
+
+- `service.interface.ts` — public method signatures, DTO types
+- Enums в `service.enums.ts` — export через namespace `ENUMS`
+
+## Правила
+
+1. Service — single responsibility domain (alerts, storage)
+2. **Не** UI в service
+3. Testable: inject dependencies через setter (`manager(null)`)
+
+## Эталоны
+
+- `src/services/alerts/` — Toast manager registry
+- `src/services/storage/local/` — localStorage wrapper
+- `src/services/storage/cookie/` — cookie wrapper

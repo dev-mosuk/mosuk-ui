@@ -1,0 +1,60 @@
+---
+description: Utilities — pure formatters (phone, price, email, date)
+globs: 'src/utilities/**'
+alwaysApply: false
+---
+
+# utilities
+
+## Назначение
+
+Pure functions: formatting, parsing, normalization. **Без** React, **без** side effects.
+
+## Структура
+
+```
+{domain}/
+├── index.ts
+└── {action}/
+    └── util.ts               ← e.g. format/util.ts
+```
+
+Или flat:
+
+```
+{domain}/
+├── index.ts
+└── format/util.ts
+```
+
+## Naming
+
+- Function: `{action}{Domain}` или `{domain}{Action}` — match existing (`formatPhone`, `formatPrice`)
+- File: `util.ts` в action-папке
+
+## index.ts
+
+```ts
+export { formatPhone } from './format/util';
+```
+
+Namespace optional для grouped utilities:
+
+```ts
+export namespace Phone {
+  export { formatPhone } from './format/util';
+}
+```
+
+## Правила
+
+1. Pure: same input → same output
+2. **Не** import components, providers, hooks
+3. **Не** DOM access — utilities in `hooks/` or `services/`
+4. date-fns / mosuk-utilities — prefer over reinventing
+
+## Эталоны
+
+- `src/utilities/phone/format/util.ts`
+- `src/utilities/price/format/util.ts`
+- `src/utilities/date/` — multiple util.ts

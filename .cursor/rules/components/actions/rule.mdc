@@ -1,0 +1,96 @@
+---
+description: Actions — интерактивные контролы (button, input, otp, toggle, checkbox), index-11+
+globs: 'src/components/actions/**'
+alwaysApply: false
+---
+
+# components/actions
+
+index: **11** (базовый), **21/31…** (варианты) · Orchestrator: [../rule.mdc](../rule.mdc)
+
+## OTP checklist (canonical — копировать для новых actions)
+
+```
+{feature}/
+├── component/
+│   ├── index.ts
+│   └── .partials/
+│       ├── styles/component.module.css    ← @layer mosuk-ui { @layer index-11 { … } }
+│       └── components/
+│           ├── component.tsx              ← root, classNames('mosuk-{feature}', styles.root, …)
+│           ├── component.interface.ts
+│           └── {sub}/component.tsx
+└── skeleton/
+    ├── index.ts                           ← Object.assign + namespace OTPSkeleton
+    └── .partials/components/              ← импорт styles из ../../../component/.partials/styles/
+```
+
+### index.ts
+
+- [ ] `Object.assign(Component, { Sub: SubComponent })`
+- [ ] `export namespace {Name}` с nested namespaces для sub-parts
+- [ ] Типы только из `.partials/...interface.ts`
+
+### component.tsx
+
+- [ ] `classNames('mosuk-{feature}', styles.root, rest?.className)`
+- [ ] Props interface extends `HTMLAttributes` где уместно
+- [ ] Sub-parts — отдельные файлы в `.partials/components/{sub}/`
+
+### skeleton
+
+- [ ] `{Name}Skeleton` + sub `{Sub}Skeleton`
+- [ ] Переиспользует CSS module component (не дублировать стили)
+- [ ] Тот же compound tree что у component
+
+### CSS
+
+- [ ] `@layer mosuk-ui` → `@layer index-11` (или 21/31 для variant)
+- [ ] `.root` + nested `.root .child`
+
+## Sub-parts naming
+
+| Root | Sub-part | Export |
+| ---- | -------- | ------ |
+| `OTP` | input cell | `OTP.Input` |
+| `Checkbox` | indicator | `Checkbox.Indicator` |
+| `Toggle` | button, indicator | `Toggle.Button`, `Toggle.Indicator` |
+
+## Provider в actions (toggle)
+
+Если нужен shared state между sub-parts:
+
+```
+component/.partials/providers/
+├── provider.tsx
+├── provider.interface.ts
+└── context/
+    ├── context.ts
+    └── context.interface.ts
+```
+
+→ `.cursor/rules/providers/context/rule.mdc`
+
+## Legacy button (не копировать)
+
+```
+button/component/component.tsx    ← flat, без .partials
+button/skeleton/component.tsx
+```
+
+Новые actions — **только** OTP-структура.
+
+## Toggle note
+
+Использует `component.props.ts` — historical. Новые features — `component.interface.ts`.
+
+## @base-ui
+
+Input-like controls могут оборачивать `@base-ui/react` primitives. Сохранять ref forwarding и accessibility props.
+
+## Эталоны
+
+- `src/components/actions/otp/` — primary
+- `src/components/actions/checkbox/` — compound + indicator
+- `src/components/actions/toggle/` — provider + hooks in partials
+- `src/components/actions/button/` — legacy
