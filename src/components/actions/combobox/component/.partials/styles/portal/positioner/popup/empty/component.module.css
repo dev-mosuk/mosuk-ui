@@ -1,0 +1,10 @@
+@layer mosuk-ui {
+    @layer index-11 {
+        .ComboboxPortalPositionerPopupEmpty {
+            padding: calc(var(--spacing, 0.25rem) * 3);
+            color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+            font-size: var(--text-sm, 0.875rem);
+            text-align: center;
+        }
+    }
+}

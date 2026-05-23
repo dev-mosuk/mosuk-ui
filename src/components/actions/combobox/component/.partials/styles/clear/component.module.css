@@ -1,0 +1,36 @@
+@layer mosuk-ui {
+    @layer index-11 {
+        .ComboboxClear {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+
+            width: calc(var(--spacing, 0.25rem) * 6);
+            height: calc(var(--spacing, 0.25rem) * 6);
+
+            padding: 0;
+            border: none;
+            border-radius: calc(infinity * 1px);
+
+            background-color: transparent;
+            color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+
+            outline: none;
+            cursor: pointer;
+
+            transition: all 200ms ease-in-out;
+
+            &:hover {
+                color: var(--color-primary-500, #0074e7);
+                background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
+            }
+
+            &:disabled,
+            &[data-disabled] {
+                opacity: 50%;
+                pointer-events: none;
+            }
+        }
+    }
+}

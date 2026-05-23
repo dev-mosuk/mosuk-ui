@@ -1,4 +1,5 @@
 /* === Layers === */
+
 @layer theme, base, mosuk-ui, components, utilities;
 
 @layer mosuk-ui {
@@ -23,7 +24,7 @@
 
 /* === Theme === */
 
-@theme {
+@theme static {
     --spacing: 0.25rem;
 
     --container-3xs: 16rem;
@@ -123,8 +124,6 @@
     --color-primary-800: #004a9f;
     --color-primary-900: #003b80;
 }
-
-
 
 /* === Custom Variants === */
 

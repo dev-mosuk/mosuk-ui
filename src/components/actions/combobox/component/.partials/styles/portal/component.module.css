@@ -1,0 +1,7 @@
+@import './positioner/component.module.css';
+
+@layer mosuk-ui {
+    @layer index-11 {
+        .ComboboxPortal {}
+    }
+}
