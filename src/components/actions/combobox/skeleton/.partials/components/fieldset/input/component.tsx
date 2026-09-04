@@ -1,6 +1,6 @@
 import styles from '@/components/actions/combobox/component/.partials/styles/component.module.css';
 import { ComboboxFieldsetInputSkeletonProps } from '@/components/actions/combobox/skeleton/.partials/components/fieldset/input/component.interface';
-import { Skeleton } from '@/components/display/skeleton/component/component';
+import { Skeleton } from '@/components/core/skeleton/component/component';
 import classNames from 'classnames';
 import React from 'react';
 

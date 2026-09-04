@@ -1,10 +1,11 @@
 {
   "name": "mosuk-ui",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "author": "mosuk",
   "license": "MIT",
-  "private": false, 
+  "private": false,
   "type": "module",
+  "style": "./index.css",
   "dependencies": {
     "@base-ui/react": "^1.4.1",
     "@dnd-kit/core": "^6.3.1",
@@ -32,10 +33,13 @@
     "@yandex/ymaps3-types": "^1.0.17595433"
   },
   "exports": {
+    ".": {
+      "style": "./index.css",
+      "default": "./index.css"
+    },
     "./index.css": {
-      "import": {
-        "default": "./index.css"
-      }
+      "style": "./index.css",
+      "default": "./index.css"
     },
     "./components/actions/button/component": {
       "import": {
@@ -55,6 +59,16 @@
     "./components/actions/checkbox/skeleton": {
       "import": {
         "default": "./components/actions/checkbox/skeleton/index.ts"
+      }
+    },
+    "./components/actions/combobox/component": {
+      "import": {
+        "default": "./components/actions/combobox/component/index.ts"
+      }
+    },
+    "./components/actions/combobox/skeleton": {
+      "import": {
+        "default": "./components/actions/combobox/skeleton/index.ts"
       }
     },
     "./components/actions/icon/component": {
@@ -217,29 +231,9 @@
         "default": "./components/collections/tabs/vertical/skeleton/index.ts"
       }
     },
-    "./components/containers/div/component": {
+    "./components/core/skeleton/component": {
       "import": {
-        "default": "./components/containers/div/component/index.ts"
-      }
-    },
-    "./components/containers/grid/component": {
-      "import": {
-        "default": "./components/containers/grid/component/index.ts"
-      }
-    },
-    "./components/containers/section/component": {
-      "import": {
-        "default": "./components/containers/section/component/index.ts"
-      }
-    },
-    "./components/display/card/(flip)/component": {
-      "import": {
-        "default": "./components/display/card/(flip)/component/index.ts"
-      }
-    },
-    "./components/display/card/component": {
-      "import": {
-        "default": "./components/display/card/component/index.ts"
+        "default": "./components/core/skeleton/component/index.ts"
       }
     },
     "./components/display/dl/component": {
@@ -287,11 +281,6 @@
         "default": "./components/display/image/skeleton/index.ts"
       }
     },
-    "./components/display/skeleton/component": {
-      "import": {
-        "default": "./components/display/skeleton/component/index.ts"
-      }
-    },
     "./components/display/video/component": {
       "import": {
         "default": "./components/display/video/component/index.ts"
@@ -305,41 +294,6 @@
     "./components/forms/fieldset/component": {
       "import": {
         "default": "./components/forms/fieldset/component/index.ts"
-      }
-    },
-    "./components/integrations/tbank/terminal/component": {
-      "import": {
-        "default": "./components/integrations/tbank/terminal/component/index.ts"
-      }
-    },
-    "./components/integrations/tbank/terminal/skeleton": {
-      "import": {
-        "default": "./components/integrations/tbank/terminal/skeleton/index.ts"
-      }
-    },
-    "./components/integrations/yandex/maps/component": {
-      "import": {
-        "default": "./components/integrations/yandex/maps/component/index.ts"
-      }
-    },
-    "./components/integrations/yandex/maps/skeleton": {
-      "import": {
-        "default": "./components/integrations/yandex/maps/skeleton/index.ts"
-      }
-    },
-    "./components/layouts/header/component": {
-      "import": {
-        "default": "./components/layouts/header/component/index.ts"
-      }
-    },
-    "./components/layouts/sidebar/component": {
-      "import": {
-        "default": "./components/layouts/sidebar/component/index.ts"
-      }
-    },
-    "./components/layouts/tabbar/component": {
-      "import": {
-        "default": "./components/layouts/tabbar/component/index.ts"
       }
     },
     "./components/overlays/alert/component": {
@@ -367,89 +321,9 @@
         "default": "./components/overlays/observer/component/index.ts"
       }
     },
-    "./components/texts/a/component": {
-      "import": {
-        "default": "./components/texts/a/component/index.ts"
-      }
-    },
-    "./components/texts/a/skeleton": {
-      "import": {
-        "default": "./components/texts/a/skeleton/index.ts"
-      }
-    },
     "./components/texts/counter/component": {
       "import": {
         "default": "./components/texts/counter/component/index.ts"
-      }
-    },
-    "./components/texts/data/component": {
-      "import": {
-        "default": "./components/texts/data/component/index.ts"
-      }
-    },
-    "./components/texts/data/skeleton": {
-      "import": {
-        "default": "./components/texts/data/skeleton/index.ts"
-      }
-    },
-    "./components/texts/h1/component": {
-      "import": {
-        "default": "./components/texts/h1/component/index.ts"
-      }
-    },
-    "./components/texts/h1/skeleton": {
-      "import": {
-        "default": "./components/texts/h1/skeleton/index.ts"
-      }
-    },
-    "./components/texts/h2/component": {
-      "import": {
-        "default": "./components/texts/h2/component/index.ts"
-      }
-    },
-    "./components/texts/h2/skeleton": {
-      "import": {
-        "default": "./components/texts/h2/skeleton/index.ts"
-      }
-    },
-    "./components/texts/h3/component": {
-      "import": {
-        "default": "./components/texts/h3/component/index.ts"
-      }
-    },
-    "./components/texts/h3/skeleton": {
-      "import": {
-        "default": "./components/texts/h3/skeleton/index.ts"
-      }
-    },
-    "./components/texts/h4/component": {
-      "import": {
-        "default": "./components/texts/h4/component/index.ts"
-      }
-    },
-    "./components/texts/h4/skeleton": {
-      "import": {
-        "default": "./components/texts/h4/skeleton/index.ts"
-      }
-    },
-    "./components/texts/h5/component": {
-      "import": {
-        "default": "./components/texts/h5/component/index.ts"
-      }
-    },
-    "./components/texts/h5/skeleton": {
-      "import": {
-        "default": "./components/texts/h5/skeleton/index.ts"
-      }
-    },
-    "./components/texts/h6/component": {
-      "import": {
-        "default": "./components/texts/h6/component/index.ts"
-      }
-    },
-    "./components/texts/h6/skeleton": {
-      "import": {
-        "default": "./components/texts/h6/skeleton/index.ts"
       }
     },
     "./components/texts/hint/component": {
@@ -460,26 +334,6 @@
     "./components/texts/hint/skeleton": {
       "import": {
         "default": "./components/texts/hint/skeleton/index.ts"
-      }
-    },
-    "./components/texts/p/component": {
-      "import": {
-        "default": "./components/texts/p/component/index.ts"
-      }
-    },
-    "./components/texts/p/skeleton": {
-      "import": {
-        "default": "./components/texts/p/skeleton/index.ts"
-      }
-    },
-    "./components/texts/text/component": {
-      "import": {
-        "default": "./components/texts/text/component/index.ts"
-      }
-    },
-    "./components/texts/text/skeleton": {
-      "import": {
-        "default": "./components/texts/text/skeleton/index.ts"
       }
     },
     "./hooks/alerts": {
@@ -497,24 +351,44 @@
         "default": "./hooks/storage/local/index.ts"
       }
     },
+    "./integrations/tbank/components/terminal/component": {
+      "import": {
+        "default": "./integrations/tbank/components/terminal/component/index.ts"
+      }
+    },
+    "./integrations/tbank/components/terminal/skeleton": {
+      "import": {
+        "default": "./integrations/tbank/components/terminal/skeleton/index.ts"
+      }
+    },
+    "./integrations/tbank/provider": {
+      "import": {
+        "default": "./integrations/tbank/provider/index.ts"
+      }
+    },
+    "./integrations/yandex/maps/components/component": {
+      "import": {
+        "default": "./integrations/yandex/maps/components/component/index.ts"
+      }
+    },
+    "./integrations/yandex/maps/components/skeleton": {
+      "import": {
+        "default": "./integrations/yandex/maps/components/skeleton/index.ts"
+      }
+    },
+    "./integrations/yandex/maps/provider": {
+      "import": {
+        "default": "./integrations/yandex/maps/provider/index.ts"
+      }
+    },
+    "./integrations/yandex/metrika/provider": {
+      "import": {
+        "default": "./integrations/yandex/metrika/provider/index.ts"
+      }
+    },
     "./providers/alerts": {
       "import": {
         "default": "./providers/alerts/index.ts"
-      }
-    },
-    "./providers/tbank": {
-      "import": {
-        "default": "./providers/tbank/index.ts"
-      }
-    },
-    "./providers/yandex/maps": {
-      "import": {
-        "default": "./providers/yandex/maps/index.ts"
-      }
-    },
-    "./providers/yandex/metrika": {
-      "import": {
-        "default": "./providers/yandex/metrika/index.ts"
       }
     },
     "./services/alerts": {
@@ -530,26 +404,6 @@
     "./services/storage/local": {
       "import": {
         "default": "./services/storage/local/index.ts"
-      }
-    },
-    "./utilities/date": {
-      "import": {
-        "default": "./utilities/date/index.ts"
-      }
-    },
-    "./utilities/email": {
-      "import": {
-        "default": "./utilities/email/index.ts"
-      }
-    },
-    "./utilities/phone": {
-      "import": {
-        "default": "./utilities/phone/index.ts"
-      }
-    },
-    "./utilities/price": {
-      "import": {
-        "default": "./utilities/price/index.ts"
       }
     }
   }

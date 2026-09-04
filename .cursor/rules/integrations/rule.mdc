@@ -1,0 +1,66 @@
+---
+description: Integrations — внешние SDK (Yandex, T-Bank); зеркалит слои src; index-15
+globs: 'src/integrations/**'
+alwaysApply: false
+---
+
+# integrations
+
+index: **15** · Orchestrator: [../(architecture)/rule.mdc](../(architecture)/rule.mdc)
+
+## Назначение
+
+Внешние SDK и их UI. Не категория `components/` — отдельное дерево, которое **зеркалит слои `src/`** внутри vendor (и product, если он есть).
+
+## Иерархия
+
+| Случай | Путь |
+| ------ | ---- |
+| Vendor с продуктами | `integrations/{vendor}/{product}/{layer}/` |
+| Vendor без продуктов | `integrations/{vendor}/{layer}/` |
+
+Слои те же, что в `src/`: `components/`, `provider/`, `hooks/`, `utilities/`, …
+
+```
+src/integrations/
+├── yandex/
+│   ├── maps/
+│   │   ├── components/     ← YandexMap + skeleton
+│   │   └── provider/       ← YandexMapProvider
+│   └── metrika/
+│       └── provider/       ← YandexMetrikaProvider
+└── tbank/
+    ├── components/
+    │   └── terminal/       ← TBankTerminal + skeleton
+    └── provider/           ← TBankProvider
+```
+
+- **Yandex** — продукты `maps`, `metrika` → слой после product
+- **T-Bank** — одного продукта нет → слои сразу под `tbank/`
+
+## Разделение слоёв
+
+| Слой | Ответственность |
+| ---- | --------------- |
+| `{…}/provider/` | Script load, context, API keys |
+| `{…}/components/` | Visual UI, markers, widgets |
+| `{…}/hooks/` | Consumer hook, если нужен вне provider tree |
+
+## Структура component
+
+Как в `src/components/`: `{feature}/component/` + `{feature}/skeleton/`. Canonical OTP или flat по сложности.
+
+## Props
+
+- Config на provider (`provider.interface.ts`)
+- Display на component (`component.interface.ts`)
+
+## CSS
+
+- `@layer index-15`
+- Vendor-specific classes в module
+
+## Эталоны
+
+- Product: `src/integrations/yandex/maps/`
+- Vendor: `src/integrations/tbank/`

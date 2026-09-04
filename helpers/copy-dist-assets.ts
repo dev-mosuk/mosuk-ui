@@ -24,17 +24,32 @@ async function copy(src: string, dest: string) {
   }
 }
 
+type JsExport = {
+  import: {
+    types?: string;
+    default: string;
+  };
+};
+type CssExport = { style: string; default: string };
+type PackageExport = JsExport | CssExport;
+
 export async function updateExports(root = process.cwd()) {
   const distDir = path.join(root, 'dist');
   const pkgDistPath = path.join(distDir, 'package.json');
   const pkgText = await fs.readFile(pkgDistPath, 'utf-8');
   const pkg = JSON.parse(pkgText);
 
-  const exportMap: Record<string, { import: { default: string } }> = {};
+  const exportMap: Record<string, PackageExport> = {};
 
   const indexCssPath = path.join(distDir, 'index.css');
   if (await exists(indexCssPath)) {
-    exportMap['./index.css'] = { import: { default: './index.css' } };
+    const cssExport: CssExport = {
+      style: './index.css',
+      default: './index.css',
+    };
+    exportMap['.'] = cssExport;
+    exportMap['./index.css'] = cssExport;
+    pkg.style = './index.css';
   }
 
   async function walkDirs(dir: string) {
@@ -46,7 +61,11 @@ export async function updateExports(root = process.cwd()) {
         if (await exists(indexJs)) {
           const rel = path.relative(distDir, fullDir).replace(/\\/g, '/');
           const key = './' + rel;
-          exportMap[key] = { import: { default: './' + rel + '/index.js' } };
+          const defaultPath = './' + rel + '/index.js';
+          const typesPath = './' + rel + '/index.d.ts';
+          exportMap[key] = (await exists(path.join(fullDir, 'index.d.ts')))
+            ? { import: { types: typesPath, default: defaultPath } }
+            : { import: { default: defaultPath } };
         }
         await walkDirs(fullDir);
       }

@@ -1,3 +1,3 @@
-import { SkeletonProps } from '@/components/display/skeleton/component/component.interface';
+import { SkeletonProps } from '@/components/core/skeleton/component/component.interface';
 
 export interface OTPInputSkeletonProps extends SkeletonProps {}

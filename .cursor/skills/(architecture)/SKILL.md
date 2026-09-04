@@ -32,6 +32,7 @@ Rule: `.cursor/rules/(architecture)/rule.mdc`
 | Что | Путь |
 | --- | ---- |
 | UI component | `components/{category}/{feature}/` |
+| External SDK | `integrations/{vendor}/` или `integrations/{vendor}/{product}/` |
 | App provider | `providers/{feature}/` |
 | Hook | `hooks/{feature}/` или `.partials/hooks/` |
 | Service | `services/{feature}/` |
@@ -42,6 +43,7 @@ Rule: `.cursor/rules/(architecture)/rule.mdc`
 | Слой | Skill |
 | ---- | ----- |
 | Components | [components/SKILL.md](../components/SKILL.md) |
+| Integrations | [integrations/SKILL.md](../integrations/SKILL.md) |
 | Styling | [(styling)/SKILL.md](../(styling)/SKILL.md) |
 | Exports | [(exports)/SKILL.md](../(exports)/SKILL.md) |
 | Providers | [providers/SKILL.md](../providers/SKILL.md) |
@@ -52,6 +54,8 @@ Rule: `.cursor/rules/(architecture)/rule.mdc`
 ## Эталоны
 
 - Component: `src/components/actions/otp/`
+- Integration (product): `src/integrations/yandex/maps/`
+- Integration (vendor): `src/integrations/tbank/`
 - Provider: `src/providers/alerts/`
 - Hook: `src/hooks/alerts/`
 - Service: `src/services/alerts/`

@@ -3,6 +3,7 @@ description: Provider + Context — 4-file pattern (provider, context, interface
 globs:
   - 'src/providers/**'
   - 'src/**/providers/**'
+  - 'src/**/provider/**'
   - 'src/**/context/**'
 alwaysApply: false
 ---
@@ -79,6 +80,7 @@ export function useFeature(): UseFeatureProps {
 | Scope | Path |
 | ----- | ---- |
 | App-level | `src/providers/{feature}/` |
+| External SDK | `src/integrations/{vendor}/…/provider/` |
 | Component-local | `component/.partials/providers/` |
 | Form feature | `forms/.../component/providers/` |
 
