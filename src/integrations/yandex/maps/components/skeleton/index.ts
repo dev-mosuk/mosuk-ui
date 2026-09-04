@@ -1,7 +1,7 @@
-import { YandexMapSkeleton as Component } from '@/components/integrations/yandex/maps/skeleton/component';
-import type { YandexMapSkeletonProps } from '@/components/integrations/yandex/maps/skeleton/component.interface';
-import { YandexMapDefaultSchemeLayerSkeleton } from '@/components/integrations/yandex/maps/skeleton/default/scheme/layer/component';
-import { YandexMapDefaultSchemeLayerSkeletonProps } from '@/components/integrations/yandex/maps/skeleton/default/scheme/layer/component.interface';
+import { YandexMapSkeleton as Component } from '@/integrations/yandex/maps/components/skeleton/component';
+import type { YandexMapSkeletonProps } from '@/integrations/yandex/maps/components/skeleton/component.interface';
+import { YandexMapDefaultSchemeLayerSkeleton } from '@/integrations/yandex/maps/components/skeleton/default/scheme/layer/component';
+import { YandexMapDefaultSchemeLayerSkeletonProps } from '@/integrations/yandex/maps/components/skeleton/default/scheme/layer/component.interface';
 
 export const YandexMapSkeleton = Object.assign(Component, {
   Default: {

@@ -1,5 +1,5 @@
-import { YandexMetrikaProvider as BaseYandexMetrikaProvider } from '@/providers/yandex/metrika/provider';
-import { YandexMetrikaProviderProps } from '@/providers/yandex/metrika/provider.interface';
+import { YandexMetrikaProvider as BaseYandexMetrikaProvider } from '@/integrations/yandex/metrika/provider/provider';
+import { YandexMetrikaProviderProps } from '@/integrations/yandex/metrika/provider/provider.interface';
 import { createElement } from 'react';
 
 export const YandexMetrikaProvider = (props: YandexMetrikaProviderProps) => {

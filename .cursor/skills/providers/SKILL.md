@@ -1,8 +1,8 @@
 ---
 name: providers
 description: >-
-  Creates app-level React providers in src/providers/ (alerts, yandex, tbank).
-  Use for context wiring, SDK init, service injection.
+  Creates app-level React providers in src/providers/ (alerts).
+  Use for context wiring, service injection. External SDK → integrations.
 ---
 
 # providers
@@ -43,5 +43,5 @@ Toggle-style → `component/.partials/providers/` — см. context rule.
 | Scope | Path |
 | ----- | ---- |
 | App + service | `src/providers/alerts/` |
-| External SDK | `src/providers/yandex/maps/` |
+| External SDK | `src/integrations/{vendor}/…/provider/` |
 | Component-local | `src/components/actions/toggle/component/.partials/providers/` |

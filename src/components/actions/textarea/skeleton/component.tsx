@@ -1,6 +1,6 @@
 import { TextareaSkeletonProps } from '@/components/actions/textarea/skeleton/component.interface';
 import styles from '@/components/actions/textarea/skeleton/component.module.css';
-import { Skeleton } from '@/components/display/skeleton/component/component';
+import { Skeleton } from '@/components/core/skeleton/component/component';
 import classNames from 'classnames';
 import React, { CSSProperties } from 'react';
 

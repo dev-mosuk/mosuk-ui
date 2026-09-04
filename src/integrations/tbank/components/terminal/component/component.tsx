@@ -1,7 +1,7 @@
-import { TBankTerminalProps } from '@/components/integrations/tbank/terminal/component/component.interface';
-import component from '@/components/integrations/tbank/terminal/component/component.module.css';
-import { TBankTerminalSkeleton } from '@/components/integrations/tbank/terminal/skeleton/component';
-import { TBankContext } from '@/providers/tbank/context/context';
+import { TBankTerminalProps } from '@/integrations/tbank/components/terminal/component/component.interface';
+import component from '@/integrations/tbank/components/terminal/component/component.module.css';
+import { TBankTerminalSkeleton } from '@/integrations/tbank/components/terminal/skeleton/component';
+import { TBankContext } from '@/integrations/tbank/provider/context/context';
 import classNames from 'classnames';
 import React, {
   ElementType,

@@ -1,6 +1,6 @@
 import styles from '@/components/actions/button/component/component.module.css';
 import { ButtonSkeletonProps } from '@/components/actions/button/skeleton/component.interface';
-import { Skeleton } from '@/components/display/skeleton/component/component';
+import { Skeleton } from '@/components/core/skeleton/component/component';
 import classNames from 'classnames';
 import React from 'react';
 

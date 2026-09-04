@@ -1,5 +1,5 @@
-import { TBankTerminal as BaseTBankTerminal } from '@/components/integrations/tbank/terminal/component/component';
-import { TBankTerminalProps } from '@/components/integrations/tbank/terminal/component/component.interface';
+import { TBankTerminal as BaseTBankTerminal } from '@/integrations/tbank/components/terminal/component/component';
+import { TBankTerminalProps } from '@/integrations/tbank/components/terminal/component/component.interface';
 
 export const TBankTerminal = BaseTBankTerminal;
 

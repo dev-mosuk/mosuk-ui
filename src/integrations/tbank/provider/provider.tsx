@@ -1,5 +1,5 @@
-import { TBankContext } from '@/providers/tbank/context/context';
-import { TBankProviderProps } from '@/providers/tbank/provider.interface';
+import { TBankContext } from '@/integrations/tbank/provider/context/context';
+import { TBankProviderProps } from '@/integrations/tbank/provider/provider.interface';
 import Script from 'next/script';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 

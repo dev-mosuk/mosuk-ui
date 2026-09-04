@@ -16,7 +16,6 @@ alwaysApply: false
 | `texts/` | [texts/rule.mdc](./texts/rule.mdc) | 10 |
 | `layouts/` | [layouts/rule.mdc](./layouts/rule.mdc) | 16 |
 | `collections/` | [collections/rule.mdc](./collections/rule.mdc) | 14 |
-| `integrations/` | [integrations/rule.mdc](./integrations/rule.mdc) | 15 |
 | `forms/` | [forms/rule.mdc](./forms/rule.mdc) | — |
 | `containers/` | — (следовать display/containers паттернам) | 13 |
 

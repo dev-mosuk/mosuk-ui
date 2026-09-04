@@ -1,11 +1,9 @@
 import { ButtonSkeleton } from '@/components/actions/button/skeleton/component';
 import { IconSkeleton } from '@/components/actions/icon/skeleton/component';
-import { Section } from '@/components/containers/section/component/index';
-import { Card } from '@/components/display/card/component/component';
-import component from '@/components/integrations/tbank/terminal/component/component.module.css';
-import { TBankTerminalSkeletonProps } from '@/components/integrations/tbank/terminal/skeleton/component.interface';
-import skeleton from '@/components/integrations/tbank/terminal/skeleton/component.module.css';
-import { H1Skeleton } from '@/components/texts/h1/skeleton/component';
+import { Skeleton } from '@/components/core/skeleton/component/component';
+import component from '@/integrations/tbank/components/terminal/component/component.module.css';
+import { TBankTerminalSkeletonProps } from '@/integrations/tbank/components/terminal/skeleton/component.interface';
+import skeleton from '@/integrations/tbank/components/terminal/skeleton/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 
@@ -25,38 +23,38 @@ export function TBankTerminalSkeleton<C extends ElementType = 'div'>({
         rest?.className,
       )}
     >
-      <Section className={classNames(skeleton.Section)}>
+      <section className={classNames(skeleton.Section)}>
         <article className={classNames(skeleton.Article)}>
-          <H1Skeleton className={classNames(skeleton.H1Skeleton)} />
+          <Skeleton className={classNames(skeleton.H1Skeleton)} />
 
           <IconSkeleton className={classNames(skeleton.IconSkeleton)} />
         </article>
 
-        <Card className={classNames(skeleton.Amount)}>
-          <H1Skeleton className={classNames(skeleton.H1Skeleton)} />
-        </Card>
+        <div className={classNames(skeleton.Amount)}>
+          <Skeleton className={classNames(skeleton.H1Skeleton)} />
+        </div>
 
-        <Card className={classNames(skeleton.PaymentMethod)}>
-          <H1Skeleton className={classNames(skeleton.H1Skeleton)}>
-            <H1Skeleton className={classNames(skeleton.H1Skeleton)} />
-          </H1Skeleton>
+        <div className={classNames(skeleton.PaymentMethod)}>
+          <Skeleton className={classNames(skeleton.H1Skeleton)}>
+            <Skeleton className={classNames(skeleton.H1Skeleton)} />
+          </Skeleton>
 
           <div className={classNames(skeleton.Buttons)}>
             <ButtonSkeleton className={classNames(skeleton.Button)} />
             <ButtonSkeleton className={classNames(skeleton.Button)} />
             <ButtonSkeleton className={classNames(skeleton.Button)} />
           </div>
-        </Card>
+        </div>
 
-        <Card className={classNames(skeleton.BankCard)}>
-          <H1Skeleton className={classNames(skeleton.H1Skeleton)} />
+        <div className={classNames(skeleton.BankCard)}>
+          <Skeleton className={classNames(skeleton.H1Skeleton)} />
 
           <div className={classNames(skeleton.Buttons)}>
             <ButtonSkeleton className={classNames(skeleton.Button)} />
             <ButtonSkeleton className={classNames(skeleton.Button)} />
           </div>
-        </Card>
-      </Section>
+        </div>
+      </section>
 
       {rest?.children}
     </Component>

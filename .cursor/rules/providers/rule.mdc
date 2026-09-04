@@ -1,5 +1,5 @@
 ---
-description: Providers — app-level React context (alerts, yandex, tbank), index-0
+description: Providers — app-level React context (alerts), index-0
 globs: 'src/providers/**'
 alwaysApply: false
 ---
@@ -59,8 +59,7 @@ Imperative API в `src/services/{feature}/` — provider wiring, service logic.
 ## Эталоны
 
 - `src/providers/alerts/` — provider + list sub-component + service
-- `src/providers/yandex/maps/` — external SDK
-- `src/providers/tbank/` — payment integration
+- External SDK → `src/integrations/{vendor}/…/provider/` (не сюда)
 
 ## Component-local provider
 

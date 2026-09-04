@@ -1,6 +1,6 @@
 import { InputSkeletonProps } from '@/components/actions/select/skeleton/component.interface';
 import styles from '@/components/actions/select/skeleton/component.module.css';
-import { Skeleton } from '@/components/display/skeleton/component/component';
+import { Skeleton } from '@/components/core/skeleton/component/component';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 

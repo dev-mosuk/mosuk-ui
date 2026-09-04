@@ -28,6 +28,7 @@ alwaysApply: true
 | `(styling)/` | `()` | CSS layers, index-N |
 | `(exports)/` | `()` | index.ts, namespace, package exports |
 | `components/{category}/` | category | UI по taxonomy README |
+| `integrations/{vendor}/` | vendor | внешние SDK; слои как в `src/` |
 | `providers/`, `hooks/`, `services/` | layer | инфраструктура библиотеки |
 
 ### `()` — group
@@ -50,10 +51,10 @@ src/
 │   ├── display/        # index-12
 │   ├── containers/     # index-13
 │   ├── collections/    # index-14
-│   ├── integrations/   # index-15
 │   ├── layouts/        # index-16
 │   ├── overlays/       # index-17, 27, 37…
 │   └── forms/          # fieldset, form controls
+├── integrations/       # index-15 — внешние SDK (зеркалит слои src)
 ├── providers/          # index-0
 ├── hooks/
 ├── services/
@@ -63,6 +64,7 @@ src/
 ```
 
 Orchestrator → `.cursor/rules/components/rule.mdc`
+Integrations → `.cursor/rules/integrations/rule.mdc`
 Стили → `.cursor/rules/(styling)/rule.mdc`
 Exports → `.cursor/rules/(exports)/rule.mdc`
 Providers → `.cursor/rules/providers/rule.mdc` (+ [context](../providers/context/rule.mdc))
@@ -108,10 +110,11 @@ Utilities → `.cursor/rules/utilities/rule.mdc`
 | `display/` | 12+ | карточки, media, avatar |
 | `containers/` | 13 | секции, grid |
 | `collections/` | 14 | таблицы, tabs, accordion |
-| `integrations/` | 15 | внешние SDK UI |
 | `layouts/` | 16 | header, sidebar |
 | `overlays/` | 17+ | dialog, drawer, dropdown |
 | `forms/` | — | fieldset, form composition |
+
+`src/integrations/` — отдельная иерархия (не категория `components/`). index-15. См. [integrations/rule.mdc](../integrations/rule.mdc).
 
 ## Импорты
 

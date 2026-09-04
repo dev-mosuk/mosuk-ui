@@ -1,5 +1,5 @@
-import type { YandexMapDefaultSchemeLayerProps } from '@/components/integrations/yandex/maps/component/default/scheme/layer/component.interface';
-import { YandexMapContext } from '@/providers/yandex/maps/context/context';
+import type { YandexMapDefaultSchemeLayerProps } from '@/integrations/yandex/maps/components/component/default/scheme/layer/component.interface';
+import { YandexMapContext } from '@/integrations/yandex/maps/provider/context/context';
 import React, { useContext } from 'react';
 
 export function YandexMapDefaultSchemeLayer(

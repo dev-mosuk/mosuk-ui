@@ -1,11 +1,11 @@
+import { Skeleton } from '@/components/core/skeleton/component/component';
 import {
-  DlSkeletonDdProps,
-  DlSkeletonDlProps,
-  DlSkeletonDtProps,
-  DlSkeletonProps,
+    DlSkeletonDdProps,
+    DlSkeletonDlProps,
+    DlSkeletonDtProps,
+    DlSkeletonProps,
 } from '@/components/display/dl/skeleton/component.interface';
 import styles from '@/components/display/dl/skeleton/component.module.css';
-import { Skeleton } from '@/components/display/skeleton/component/component';
 import React, { ReactNode } from 'react';
 
 interface DlProps {

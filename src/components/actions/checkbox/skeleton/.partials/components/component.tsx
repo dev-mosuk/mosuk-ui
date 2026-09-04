@@ -1,6 +1,6 @@
 import styles from '@/components/actions/checkbox/component/.partials/styles/component.module.css';
 import { CheckboxSkeletonProps } from '@/components/actions/checkbox/skeleton/.partials/components/component.interface';
-import { Skeleton } from '@/components/display/skeleton/component/component';
+import { Skeleton } from '@/components/core/skeleton/component/component';
 import classNames from 'classnames';
 import React from 'react';
 

@@ -16,12 +16,19 @@
             gap: calc(var(--spacing, .25rem) * 4);
 
             .H1Skeleton {
-                .H1TextSkeleton {
-                    width: 50%;
-                    max-width: 50%;
+                display: inline-block;
 
-                    background-color: var(--color-gray-200, oklch(0.928 0.006 264.531));
-                }
+                width: 50%;
+                max-width: 50%;
+                height: 1.2em;
+                min-height: 1.2em;
+
+                font-size: var(--text-xl, 1.25rem);
+                line-height: var(--leading-none, 1);
+
+                border-radius: calc(infinity * 1px);
+
+                background-color: var(--color-gray-200, oklch(0.928 0.006 264.531));
             }
 
             .IconSkeleton {
@@ -46,10 +53,17 @@
             pointer-events: none;
 
             .H1Skeleton {
-                .H1TextSkeleton {
-                    width: 65%;
-                    max-width: 65%;
-                }
+                display: inline-block;
+
+                width: 65%;
+                max-width: 65%;
+                height: 1.2em;
+                min-height: 1.2em;
+
+                font-size: var(--text-xl, 1.25rem);
+                line-height: var(--leading-none, 1);
+
+                border-radius: calc(infinity * 1px);
             }
 
             .Buttons {
@@ -72,10 +86,17 @@
             pointer-events: none;
 
             .H1Skeleton {
-                .H1TextSkeleton {
-                    width: 65%;
-                    max-width: 65%;
-                }
+                display: inline-block;
+
+                width: 65%;
+                max-width: 65%;
+                height: 1.2em;
+                min-height: 1.2em;
+
+                font-size: var(--text-xl, 1.25rem);
+                line-height: var(--leading-none, 1);
+
+                border-radius: calc(infinity * 1px);
             }
 
             .Buttons {

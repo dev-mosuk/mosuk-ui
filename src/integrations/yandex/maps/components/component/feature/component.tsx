@@ -1,5 +1,5 @@
-import type { YandexMapFeatureProps } from '@/components/integrations/yandex/maps/component/feature/component.interface';
-import { YandexMapContext } from '@/providers/yandex/maps/context/context';
+import type { YandexMapFeatureProps } from '@/integrations/yandex/maps/components/component/feature/component.interface';
+import { YandexMapContext } from '@/integrations/yandex/maps/provider/context/context';
 import React, { useContext } from 'react';
 
 export function YandexMapFeature({ ...rest }: YandexMapFeatureProps) {

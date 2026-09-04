@@ -1,5 +1,5 @@
-import { TBankProvider as BaseTBankProvider } from '@/providers/tbank/provider';
-import { TBankProviderProps } from '@/providers/tbank/provider.interface';
+import { TBankProvider as BaseTBankProvider } from '@/integrations/tbank/provider/provider';
+import { TBankProviderProps } from '@/integrations/tbank/provider/provider.interface';
 import { createElement } from 'react';
 
 export const TBankProvider = (props: TBankProviderProps) => {

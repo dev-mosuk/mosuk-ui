@@ -1,5 +1,5 @@
-import type { YandexMapControlsZoomPlusProps } from '@/components/integrations/yandex/maps/component/controls/zoom/plus/component.interface';
-import { YMapZoomContext } from '@/components/integrations/yandex/maps/component/zoom/context';
+import type { YandexMapControlsZoomPlusProps } from '@/integrations/yandex/maps/components/component/controls/zoom/plus/component.interface';
+import { YMapZoomContext } from '@/integrations/yandex/maps/components/component/zoom/context';
 import React, { useContext } from 'react';
 
 export function YandexMapControlsZoomPlus(

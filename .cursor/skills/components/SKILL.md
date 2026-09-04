@@ -12,7 +12,8 @@ Rule: `.cursor/rules/components/rule.mdc`
 ## Checklist
 
 ```
-- [ ] Pick category: actions|display|overlays|texts|layouts|collections|integrations|forms
+- [ ] Pick category: actions|display|overlays|texts|layouts|collections|forms
+- [ ] External SDK? → integrations skill, не components/
 - [ ] Canonical: component/index.ts + .partials/ + skeleton/
 - [ ] Styling: (styling) skill
 - [ ] Export: (exports) skill

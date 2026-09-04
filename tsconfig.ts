@@ -1,6 +1,10 @@
 import { promises as fs } from 'fs';
 import * as path from 'path';
 
+type JsExport = { import: { default: string } };
+type CssExport = { style: string; default: string };
+type PackageExport = JsExport | CssExport;
+
 async function exists(filePath: string): Promise<boolean> {
   try {
     await fs.access(filePath);
@@ -13,16 +17,21 @@ async function exists(filePath: string): Promise<boolean> {
 async function updateExports() {
   const root = process.cwd();
   const srcDir = path.join(root, 'src');
-  const distDir = path.join(root, 'dist');
   const pkgSrcPath = path.join(srcDir, 'package.json');
   const pkgText = await fs.readFile(pkgSrcPath, 'utf-8');
   const pkg = JSON.parse(pkgText);
 
-  const exportMap: Record<string, { import: { default: string } }> = {};
+  const exportMap: Record<string, PackageExport> = {};
 
   const indexCssPath = path.join(srcDir, 'index.css');
   if (await exists(indexCssPath)) {
-    exportMap['./index.css'] = { import: { default: './index.css' } };
+    const cssExport: CssExport = {
+      style: './index.css',
+      default: './index.css',
+    };
+    exportMap['.'] = cssExport;
+    exportMap['./index.css'] = cssExport;
+    pkg.style = './index.css';
   }
 
   async function walkDirs(dir: string) {

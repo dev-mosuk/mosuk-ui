@@ -19,7 +19,8 @@ mosuk-ui — **npm UI-библиотека**, не приложение. Упр�
 
 ```
 src/
-├── components/{texts,actions,display,containers,collections,integrations,layouts,overlays,forms}/
+├── components/{texts,actions,display,containers,collections,layouts,overlays,forms}/
+├── integrations/       → внешние SDK; слои как в src/ (vendor → product? → layer)
 ├── providers/          → React context, app-level wiring
 ├── hooks/              → потребление providers / browser API
 ├── services/           → imperative API без React
@@ -30,7 +31,8 @@ src/
 | Слой | Роль | Пример |
 | ---- | ---- | ------ |
 | **Components** | Публичный UI, compound, skeleton | `OTP`, `Drawer`, `Toggle` |
-| **Providers** | Context + side effects | `AlertsProvider`, `YandexMapsProvider` |
+| **Integrations** | Внешние SDK + их UI | `YandexMap`, `TBankProvider` |
+| **Providers** | Context + side effects | `AlertsProvider` |
 | **Hooks** | React-обёртки над context/API | `useAlerts`, `useLocalStorage` |
 | **Services** | Singleton / imperative | `alertsService` |
 | **Utilities** | Pure functions | `formatPhone`, `formatPrice` |
@@ -48,10 +50,10 @@ src/
 
 ### Правила DDD в этой библиотеке
 
-1. **Категория = папка** в `components/`. Не смешивать actions и overlays.
+1. **Категория = папка** в `components/`. Не смешивать actions и overlays. Внешние SDK — в `integrations/`.
 2. **Приватная реализация** — только в `.partials/`; не импортировать извне feature.
 3. **Паттерны папок** — `.` private, `()` group, `[]` dynamic (см. architecture rule).
-4. **Направление зависимостей:** `components` → `hooks` / `providers` / `utilities` / `services`. Не наоборот.
+4. **Направление зависимостей:** `components` / `integrations` → `hooks` / `providers` / `utilities` / `services`. Не наоборот.
 5. **Публичный API** — только через `index.ts` на уровне feature (см. exports rule).
 
 ---
@@ -123,8 +125,8 @@ src/
 │   │   ├── texts/rule.mdc
 │   │   ├── layouts/rule.mdc
 │   │   ├── collections/rule.mdc
-│   │   ├── integrations/rule.mdc
 │   │   └── forms/rule.mdc
+│   ├── integrations/rule.mdc
 │   ├── providers/rule.mdc
 │   ├── providers/context/rule.mdc
 │   ├── hooks/rule.mdc
@@ -135,6 +137,7 @@ src/
     ├── (styling)/SKILL.md
     ├── (exports)/SKILL.md
     ├── components/SKILL.md (+ actions, overlays, display)
+    ├── integrations/SKILL.md
     ├── providers/SKILL.md
     ├── hooks/SKILL.md
     ├── services/SKILL.md
@@ -150,7 +153,8 @@ src/
 | Actions (OTP canonical) | `.cursor/rules/components/actions/rule.mdc` | `.cursor/skills/components/actions/SKILL.md` |
 | Display | `.cursor/rules/components/display/rule.mdc` | `.cursor/skills/components/display/SKILL.md` |
 | Overlays | `.cursor/rules/components/overlays/rule.mdc` | `.cursor/skills/components/overlays/SKILL.md` |
-| Texts, layouts, collections, integrations, forms | `.cursor/rules/components/{category}/rule.mdc` | → rule + components/SKILL.md |
+| Texts, layouts, collections, forms | `.cursor/rules/components/{category}/rule.mdc` | → rule + components/SKILL.md |
+| Integrations (внешние SDK) | `.cursor/rules/integrations/rule.mdc` | `.cursor/skills/integrations/SKILL.md` |
 | Providers | `.cursor/rules/providers/rule.mdc` | `.cursor/skills/providers/SKILL.md` |
 | Provider 4-file pattern | `.cursor/rules/providers/context/rule.mdc` | (см. providers skill) |
 | Hooks | `.cursor/rules/hooks/rule.mdc` | `.cursor/skills/hooks/SKILL.md` |
@@ -168,6 +172,7 @@ src/
 | Deep compound overlay | `src/components/overlays/drawer/` |
 | Checkbox (как OTP) | `src/components/actions/checkbox/` |
 | Legacy flat (не копировать) | `src/components/actions/button/` |
+| Integration (product / vendor) | `src/integrations/yandex/maps/`, `src/integrations/tbank/` |
 | Provider + service | `src/providers/alerts/` |
 | Hook over context | `src/hooks/alerts/` |
 | CSS layers index-N | [README.md](../README.md) §1–3 |

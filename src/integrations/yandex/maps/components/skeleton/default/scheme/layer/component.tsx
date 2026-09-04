@@ -1,9 +1,9 @@
-import styles from '@/components/integrations/yandex/maps/skeleton/component.module.css';
+import styles from '@/integrations/yandex/maps/components/skeleton/component.module.css';
 import {
   MAP_PATH_ACCENT,
   MAP_PATH_MAIN,
-} from '@/components/integrations/yandex/maps/skeleton/default/scheme/layer/component.image';
-import type { YandexMapDefaultSchemeLayerSkeletonProps } from '@/components/integrations/yandex/maps/skeleton/default/scheme/layer/component.interface';
+} from '@/integrations/yandex/maps/components/skeleton/default/scheme/layer/component.image';
+import type { YandexMapDefaultSchemeLayerSkeletonProps } from '@/integrations/yandex/maps/components/skeleton/default/scheme/layer/component.interface';
 import classNames from 'classnames';
 import React, { ElementType, useId } from 'react';
 

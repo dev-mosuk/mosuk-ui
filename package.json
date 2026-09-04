@@ -1,6 +1,6 @@
 {
   "name": "mosuk-ui",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "type": "module",
   "scripts": {
     "watch": "node --loader ts-node/esm --watch=src tsconfig.ts",
@@ -26,7 +26,8 @@
     "react-imask": "^7.6.1",
     "react-textarea-autosize": "^8.5.9",
     "swiper": "^11.2.6",
-    "swr": "^2.3.8"
+    "swr": "^2.3.8",
+    "tailwindcss": "^4.3.3"
   },
   "peerDependencies": {
     "framer-motion": "^12.34.3",

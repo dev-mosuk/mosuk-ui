@@ -1,5 +1,5 @@
-import type { YandexMapMarkerProps } from '@/components/integrations/yandex/maps/component/marker/component.interface';
-import { YandexMapContext } from '@/providers/yandex/maps/context/context';
+import type { YandexMapMarkerProps } from '@/integrations/yandex/maps/components/component/marker/component.interface';
+import { YandexMapContext } from '@/integrations/yandex/maps/provider/context/context';
 import React, { useContext } from 'react';
 
 export function YandexMapMarker({

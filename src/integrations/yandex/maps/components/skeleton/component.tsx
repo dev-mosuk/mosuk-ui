@@ -1,6 +1,6 @@
-import { Skeleton } from '@/components/display/skeleton/component/component';
-import type { YandexMapSkeletonProps } from '@/components/integrations/yandex/maps/skeleton/component.interface';
-import styles from '@/components/integrations/yandex/maps/skeleton/component.module.css';
+import { Skeleton } from '@/components/core/skeleton/component/component';
+import type { YandexMapSkeletonProps } from '@/integrations/yandex/maps/components/skeleton/component.interface';
+import styles from '@/integrations/yandex/maps/components/skeleton/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 

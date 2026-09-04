@@ -1,5 +1,5 @@
-import { YandexMapContext } from '@/providers/yandex/maps/context/context';
-import { YandexMapProviderProps } from '@/providers/yandex/maps/provider.interface';
+import { YandexMapContext } from '@/integrations/yandex/maps/provider/context/context';
+import { YandexMapProviderProps } from '@/integrations/yandex/maps/provider/provider.interface';
 import { ReactifiedModule } from '@yandex/ymaps3-types/reactify';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';

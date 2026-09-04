@@ -1,8 +1,8 @@
-import styles from '@/components/integrations/yandex/maps/component/component.module.css';
-import type { YandexMapControlsZoomProps } from '@/components/integrations/yandex/maps/component/controls/zoom/component.interface';
-import { YandexMapControlsZoomMinus } from '@/components/integrations/yandex/maps/component/controls/zoom/minus/component';
-import { YandexMapControlsZoomPlus } from '@/components/integrations/yandex/maps/component/controls/zoom/plus/component';
-import { YandexMapContext } from '@/providers/yandex/maps/context/context';
+import styles from '@/integrations/yandex/maps/components/component/component.module.css';
+import type { YandexMapControlsZoomProps } from '@/integrations/yandex/maps/components/component/controls/zoom/component.interface';
+import { YandexMapControlsZoomMinus } from '@/integrations/yandex/maps/components/component/controls/zoom/minus/component';
+import { YandexMapControlsZoomPlus } from '@/integrations/yandex/maps/components/component/controls/zoom/plus/component';
+import { YandexMapContext } from '@/integrations/yandex/maps/provider/context/context';
 import React, { useContext } from 'react';
 
 export function YandexMapControlsZoom(props: YandexMapControlsZoomProps = {}) {

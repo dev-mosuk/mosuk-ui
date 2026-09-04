@@ -66,9 +66,9 @@ src/
 │   ├── display/        # index-12, 22, 32...
 │   ├── containers/     # index-13
 │   ├── collections/    # index-14
-│   ├── integrations/   # index-15
 │   ├── layouts/        # index-16
 │   └── overlays/       # index-17, 27, 37...
+├── integrations/       # index-15 — внешние SDK (yandex/maps, tbank, …)
 └── providers/          # index-0
 ```
 

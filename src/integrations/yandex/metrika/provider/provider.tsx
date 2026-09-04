@@ -1,5 +1,5 @@
-import { YandexMetrikaContext } from '@/providers/yandex/metrika/context/context';
-import { YandexMetrikaProviderProps } from '@/providers/yandex/metrika/provider.interface';
+import { YandexMetrikaContext } from '@/integrations/yandex/metrika/provider/context/context';
+import { YandexMetrikaProviderProps } from '@/integrations/yandex/metrika/provider/provider.interface';
 import React, { useEffect, useRef, useState } from 'react';
 
 declare global {

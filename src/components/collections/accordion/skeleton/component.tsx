@@ -7,7 +7,7 @@ import {
   AccordionSkeletonProps,
 } from '@/components/collections/accordion/skeleton/component.interface';
 import styles from '@/components/collections/accordion/skeleton/component.module.css';
-import { H3Skeleton } from '@/components/texts/h3/skeleton/component';
+import { Skeleton } from '@/components/core/skeleton/component/component';
 import React from 'react';
 
 export function AccordionSkeleton({ ...props }: AccordionSkeletonProps) {
@@ -44,7 +44,13 @@ export function AccordionSkeletonHeader({
 export function AccordionSkeletonHeaderContent({
   ...props
 }: AccordionSkeletonHeaderContentProps) {
-  return <H3Skeleton {...props} />;
+  return (
+    <Skeleton
+      as="h3"
+      {...props}
+      className={`${styles.headerContent} ${props.className ?? ''}`}
+    />
+  );
 }
 
 export function AccordionSkeletonHeaderIcon({

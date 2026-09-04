@@ -1,4 +1,4 @@
-import { YandexMetrikaContextProps } from '@/providers/yandex/metrika/context/context.interface';
+import { YandexMetrikaContextProps } from '@/integrations/yandex/metrika/provider/context/context.interface';
 import { createContext } from 'react';
 
 export const YandexMetrikaContext =
