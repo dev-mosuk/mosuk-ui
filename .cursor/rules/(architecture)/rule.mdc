@@ -132,7 +132,7 @@ Utilities → `.cursor/rules/utilities/rule.mdc`
 | cross-feature | `import { AlertsContext } from '@/providers/alerts/context/context'` |
 | same feature | `import { UseAlertsProps } from '@/hooks/alerts/hook.interface'` |
 
-`tsc` **не** переписывает `@/` в emit — build добавляет `tsc-alias`, чтобы в `dist/` остались относительные пути для npm consumers.
+`tsc` **не** переписывает `@/` в emit — build копирует CSS в `dist/`, затем `tsc-alias` заменяет `@/` на относительные пути (включая `*.module.css`). Без CSS до alias потребитель Next.js резолвит `@/` в свой `src/`.
 
 **npm link в CRM:** линковать `dist/` (`npm run link:dist`), не `src/`. Подробнее — README §6, `(exports)/rule.mdc`.
 

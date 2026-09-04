@@ -123,7 +123,40 @@ export async function copyDistAssets(root = process.cwd()) {
   await copy(path.join(srcDir, 'LICENSE'), path.join(distDir, 'LICENSE'));
 }
 
+export async function assertNoAliasImports(root = process.cwd()) {
+  const distDir = path.join(root, 'dist');
+  const leftover: string[] = [];
+
+  async function walk(dir: string) {
+    const entries = await fs.readdir(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        await walk(full);
+        continue;
+      }
+      if (!entry.isFile()) continue;
+      if (!/\.(js|jsx|mjs|cjs|d\.ts)$/.test(entry.name)) continue;
+      const text = await fs.readFile(full, 'utf-8');
+      if (text.includes("'@/") || text.includes('"@/')) {
+        leftover.push(path.relative(distDir, full));
+      }
+    }
+  }
+
+  await walk(distDir);
+
+  if (leftover.length) {
+    throw new Error(
+      `dist/ still contains @/ imports (tsc-alias must run after CSS copy):\n${leftover
+        .slice(0, 20)
+        .join('\n')}`,
+    );
+  }
+}
+
 export async function buildDistAssets(root = process.cwd()) {
   await copyDistAssets(root);
   await updateExports(root);
+  await assertNoAliasImports(root);
 }
