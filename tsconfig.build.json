@@ -8,5 +8,10 @@
     "emitDeclarationOnly": false,
     "rootDir": "src"
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "tsc-alias": {
+    "fileExtensions": {
+      "outputCheck": ["js", "json", "jsx", "mjs", "cjs", "css", "d.ts"]
+    }
+  }
 } 

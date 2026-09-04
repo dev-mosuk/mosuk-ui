@@ -1,10 +1,10 @@
 {
   "name": "mosuk-ui",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "type": "module",
   "scripts": {
     "watch": "node --loader ts-node/esm --watch=src tsconfig.ts",
-    "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json && node --loader ts-node/esm tsconfig.build.ts",
+    "build": "tsc -p tsconfig.build.json && node --loader ts-node/esm helpers/copy-dist-css.ts && tsc-alias -p tsconfig.build.json && node --loader ts-node/esm tsconfig.build.ts",
     "build:watch": "npm run build && tsc -w -p tsconfig.build.json & tsc-alias -w -p tsconfig.build.json & node --loader ts-node/esm helpers/watch-dist-assets.ts",
     "watch:assets": "node --loader ts-node/esm helpers/watch-dist-assets.ts",
     "link:dist": "npm run build && cd dist && npm link",
