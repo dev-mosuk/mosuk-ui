@@ -161,11 +161,6 @@
         "default": "./components/actions/switch/skeleton/index.ts"
       }
     },
-    "./components/actions/textarea/(autosize)/component": {
-      "import": {
-        "default": "./components/actions/textarea/(autosize)/component/index.ts"
-      }
-    },
     "./components/actions/textarea/component": {
       "import": {
         "default": "./components/actions/textarea/component/index.ts"
@@ -201,34 +196,14 @@
         "default": "./components/collections/accordion/skeleton/index.ts"
       }
     },
-    "./components/collections/breadcrumbs/component": {
+    "./components/containers/card": {
       "import": {
-        "default": "./components/collections/breadcrumbs/component/index.ts"
+        "default": "./components/containers/card/index.ts"
       }
     },
-    "./components/collections/breadcrumbs/skeleton": {
+    "./components/containers/hr": {
       "import": {
-        "default": "./components/collections/breadcrumbs/skeleton/index.ts"
-      }
-    },
-    "./components/collections/tabs/horizontal/component": {
-      "import": {
-        "default": "./components/collections/tabs/horizontal/component/index.ts"
-      }
-    },
-    "./components/collections/tabs/horizontal/skeleton": {
-      "import": {
-        "default": "./components/collections/tabs/horizontal/skeleton/index.ts"
-      }
-    },
-    "./components/collections/tabs/vertical/component": {
-      "import": {
-        "default": "./components/collections/tabs/vertical/component/index.ts"
-      }
-    },
-    "./components/collections/tabs/vertical/skeleton": {
-      "import": {
-        "default": "./components/collections/tabs/vertical/skeleton/index.ts"
+        "default": "./components/containers/hr/index.ts"
       }
     },
     "./components/core/skeleton/component": {
@@ -249,16 +224,6 @@
     "./components/display/empty/component": {
       "import": {
         "default": "./components/display/empty/component/index.ts"
-      }
-    },
-    "./components/display/file/(files)/component": {
-      "import": {
-        "default": "./components/display/file/(files)/component/index.ts"
-      }
-    },
-    "./components/display/file/(files)/skeleton": {
-      "import": {
-        "default": "./components/display/file/(files)/skeleton/index.ts"
       }
     },
     "./components/display/file/component": {
@@ -294,6 +259,26 @@
     "./components/forms/fieldset/component": {
       "import": {
         "default": "./components/forms/fieldset/component/index.ts"
+      }
+    },
+    "./components/navigation/breadcrumbs/component": {
+      "import": {
+        "default": "./components/navigation/breadcrumbs/component/index.ts"
+      }
+    },
+    "./components/navigation/breadcrumbs/skeleton": {
+      "import": {
+        "default": "./components/navigation/breadcrumbs/skeleton/index.ts"
+      }
+    },
+    "./components/navigation/stepper/component": {
+      "import": {
+        "default": "./components/navigation/stepper/component/index.ts"
+      }
+    },
+    "./components/navigation/stepper/skeleton": {
+      "import": {
+        "default": "./components/navigation/stepper/skeleton/index.ts"
       }
     },
     "./components/overlays/alert/component": {

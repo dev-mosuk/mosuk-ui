@@ -1,6 +1,6 @@
 /* === Layers === */
 
-@layer theme, base, mosuk-ui, components, utilities;
+@layer properties, theme, base, mosuk-ui, components, utilities;
 
 @layer mosuk-ui {
     @layer index-0, index-1, index-2, index-3, index-4, index-5, index-6, index-7, index-8, index-9;
@@ -20,9 +20,13 @@
 @import "tailwindcss";
 @import './styles/style.css';
 
-
-
 /* === Theme === */
+
+@theme static {
+    --text-4xs: 0.375rem;
+    --text-3xs: 0.5rem;
+    --text-2xs: 0.625rem;
+}
 
 @theme static {
     --spacing: 0.25rem;
@@ -49,6 +53,15 @@
     --radius-2xl: 1rem;
     --radius-3xl: 1.5rem;
     --radius-4xl: 2rem;
+
+    --shadow-2xs: 0 0 1px rgb(0 0 0 / 0.05);
+    --shadow-xs: 0 0 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-sm: 0 0 3px 0 rgb(0 0 0 / 0.1), 0 0 2px -1px rgb(0 0 0 / 0.1);
+    --shadow: 0 0 3px 0 rgb(0 0 0 / 0.1), 0 0 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 0 6px -1px rgb(0 0 0 / 0.1), 0 0 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 0 15px -3px rgb(0 0 0 / 0.1), 0 0 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 0 25px -5px rgb(0 0 0 / 0.1), 0 0 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 0 50px -12px rgb(0 0 0 / 0.25);
 
     --color-red-50: oklch(0.971 0.013 17.38);
     --color-red-100: oklch(0.936 0.032 17.717);

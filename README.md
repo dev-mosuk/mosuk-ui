@@ -27,6 +27,7 @@ UI библиотека компонентов с использованием C
 7. **index-15** — integrations (внешние интеграции)
 8. **index-16** — layouts (header, sidebar, tabbar)
 9. **index-17** — overlays (диалоги, dropdown, модальные окна)
+10. **index-18** — navigation (breadcrumbs, stepper)
 
 ### 3.2. Варианты компонентов (2-й уровень)
 
@@ -67,7 +68,8 @@ src/
 │   ├── containers/     # index-13
 │   ├── collections/    # index-14
 │   ├── layouts/        # index-16
-│   └── overlays/       # index-17, 27, 37...
+│   ├── overlays/       # index-17, 27, 37...
+│   └── navigation/     # index-18
 ├── integrations/       # index-15 — внешние SDK (yandex/maps, tbank, …)
 └── providers/          # index-0
 ```
@@ -166,7 +168,7 @@ Import map: aliased to relative './src/components/...' inside of [project]/
 
 **В `dist/` — относительные пути:** после `npm run build` `tsc-alias` заменяет `@/` на относительные пути в emit. Потребитель (CRM, npm) получает обычные `.js` с `./` и `../`.
 
-**ESLint: `export namespace` в `index.ts`:** в `**/index.ts` правило `@typescript-eslint/no-namespace` **отключено** — публичный API compound-компонентов через `export namespace Feature { export type Props = … }` (см. `.cursor/rules/(exports)/rule.mdc`).
+**ESLint: `export namespace` в `index.ts`:** в `**/index.ts` правило `@typescript-eslint/no-namespace` **отключено** — публичный API compound-компонентов через `export namespace Feature { export type Props = … }` (см. `.cursor/rules/exports.mdc`).
 
 ### 6.5. Полезные npm scripts
 

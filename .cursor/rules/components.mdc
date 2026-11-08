@@ -1,0 +1,420 @@
+---
+description: Components — OTP canonical, taxonomy категорий (actions, display, overlays, texts, layouts, collections, navigation, forms)
+globs: 'src/components/**'
+alwaysApply: false
+---
+
+# components
+
+## Taxonomy (категория = папка верхнего уровня)
+
+| Категория | index |
+| --------- | ----- |
+| `texts/` | 10 |
+| `actions/` | 11+ |
+| `display/` | 12+ |
+| `containers/` | 13 |
+| `collections/` | 14 |
+| `layouts/` | 16 |
+| `overlays/` | 17+ |
+| `navigation/` | 18 |
+| `forms/` | — |
+
+Стили → `.cursor/rules/styling.mdc`
+Exports → `.cursor/rules/exports.mdc`
+Provider внутри component → `.cursor/rules/providers.mdc`
+
+## Canonical structure (OTP)
+
+```
+{feature}/
+├── component/
+│   ├── index.ts                          ← публичный API
+│   └── .partials/
+│       ├── styles/component.module.css
+│       └── components/
+│           ├── component.tsx
+│           ├── component.interface.ts
+│           └── {sub}/component.tsx
+└── skeleton/
+    ├── index.ts
+    └── .partials/components/             ← зеркало component tree
+```
+
+## Общие правила
+
+### Export
+
+- Публичный API **только** `component/index.ts` и `skeleton/index.ts`
+- Compound: `Object.assign` + `export namespace` — см. exports rule
+- Named export функций компонентов в `.partials/`
+
+### Props
+
+- **Новый код:** `component.interface.ts`
+- Legacy toggle: `component.props.ts` — не копировать в новые features
+- Spread `{ ...rest }` на корень; `rest?.className` последним в classNames
+
+### Skeleton
+
+- Layout зеркалит component
+- CSS: импорт из `component/.partials/styles/component.module.css` (OTP этalon)
+- Sub-parts: `{Name}Skeleton`, `{Sub}Skeleton`
+
+### `.partials`
+
+| Подпапка | Содержимое |
+| -------- | ---------- |
+| `components/` | root + sub-parts |
+| `styles/` | CSS modules + layers |
+| `providers/` | feature-local context (toggle) |
+| `hooks/` | feature-local hooks (toggle) |
+| `utilities/` | feature-local pure helpers |
+
+### @base-ui
+
+Overlays и часть actions строятся на `@base-ui/react`. Оборачивать primitives, не форкать behavior.
+
+### Legacy vs canonical
+
+| | Legacy | Canonical |
+| --- | ------ | --------- |
+| Пример | `button/component/component.tsx` | `otp/component/.partials/...` |
+| CSS | рядом с component.tsx | `.partials/styles/` |
+| Новый код | **не использовать** | **использовать** |
+
+## Эталоны
+
+- Canonical: `src/components/actions/otp/`, `checkbox/`
+- Provider in partials: `src/components/actions/toggle/`
+- Deep compound overlay: `src/components/overlays/drawer/`
+- Legacy: `src/components/actions/button/`
+
+## actions
+
+index: **11** (базовый), **21/31…** (варианты)
+
+### OTP checklist (canonical — копировать для новых actions)
+
+```
+{feature}/
+├── component/
+│   ├── index.ts
+│   └── .partials/
+│       ├── styles/component.module.css    ← @layer mosuk-ui { @layer index-11 { … } }
+│       └── components/
+│           ├── component.tsx              ← root, classNames('mosuk-{feature}', styles.root, …)
+│           ├── component.interface.ts
+│           └── {sub}/component.tsx
+└── skeleton/
+    ├── index.ts                           ← Object.assign + namespace OTPSkeleton
+    └── .partials/components/              ← импорт styles из ../../../component/.partials/styles/
+```
+
+#### index.ts
+
+- [ ] `Object.assign(Component, { Sub: SubComponent })`
+- [ ] `export namespace {Name}` с nested namespaces для sub-parts
+- [ ] Типы только из `.partials/...interface.ts`
+
+#### component.tsx
+
+- [ ] `classNames('mosuk-{feature}', styles.root, rest?.className)`
+- [ ] Props interface extends `HTMLAttributes` где уместно
+- [ ] Sub-parts — отдельные файлы в `.partials/components/{sub}/`
+
+#### skeleton
+
+- [ ] `{Name}Skeleton` + sub `{Sub}Skeleton`
+- [ ] Переиспользует CSS module component (не дублировать стили)
+- [ ] Тот же compound tree что у component
+
+#### CSS
+
+- [ ] `@layer mosuk-ui` → `@layer index-11` (или 21/31 для variant)
+- [ ] `.root` + nested `.root .child`
+
+### Sub-parts naming
+
+| Root | Sub-part | Export |
+| ---- | -------- | ------ |
+| `OTP` | input cell | `OTP.Input` |
+| `Checkbox` | indicator | `Checkbox.Indicator` |
+| `Toggle` | button, indicator | `Toggle.Button`, `Toggle.Indicator` |
+
+### Provider в actions (toggle)
+
+Если нужен shared state между sub-parts:
+
+```
+component/.partials/providers/
+├── provider.tsx
+├── provider.interface.ts
+└── context/
+    ├── context.ts
+    └── context.interface.ts
+```
+
+→ `.cursor/rules/providers.mdc`
+
+### Legacy button (не копировать)
+
+```
+button/component/component.tsx    ← flat, без .partials
+button/skeleton/component.tsx
+```
+
+Новые actions — **только** OTP-структура.
+
+### Toggle note
+
+Использует `component.props.ts` — historical. Новые features — `component.interface.ts`.
+
+### @base-ui
+
+Input-like controls могут оборачивать `@base-ui/react` primitives. Сохранять ref forwarding и accessibility props.
+
+### Эталоны
+
+- `src/components/actions/otp/` — primary
+- `src/components/actions/checkbox/` — compound + indicator
+- `src/components/actions/toggle/` — provider + hooks in partials
+- `src/components/actions/button/` — legacy
+
+## display
+
+index: **12** (базовый), **22/32…** (варианты)
+
+Read-only или mostly-static UI: карточки, media, avatar, badge-like display.
+
+Следовать **canonical OTP** где есть skeleton:
+
+```
+{feature}/
+├── component/index.ts + .partials/
+└── skeleton/index.ts + .partials/
+```
+
+Простой display без sub-parts — допустим flat как legacy button, но предпочитать `.partials/`.
+
+- `component.interface.ts`
+- Polymorphic: `as?: ElementType`, spread rest на корень
+- `extends HTMLAttributes<HTMLElement>` для container display
+
+Skeleton обязателен для async-bound display (images, cards с data). Зеркалит layout; CSS из component module.
+
+- `@layer index-12` (или 22/32 для variant)
+- z-index 0–99 (контент)
+
+Крупный display → `.partials/components/{part}/` + compound в index.ts (если sub-parts публичные).
+
+Эталоны: `src/components/display/`; новый код — паттерн OTP/checkbox.
+
+## overlays
+
+index: **17** (базовый), **27/37…** (варианты)
+
+Floating UI: drawer, dialog, dropdown, tooltip, popover.
+
+### z-index
+
+- Dropdown/popover/tooltip: **100–199**
+- Dialog/drawer/modal: **200+**
+
+### Deep compound (drawer)
+
+Overlays с глубокой композицией — **canonical `.partials/`**, nested folders зеркалят compound tree:
+
+```
+drawer/component/
+├── index.ts
+└── .partials/
+    ├── styles/component.module.css
+    ├── providers/                    ← если нужен feature-local context
+    └── components/
+        ├── component.tsx
+        ├── open/component.tsx
+        ├── close/component.tsx
+        └── portal/viewport/popup/content/component.tsx
+```
+
+Feature-local context — `.partials/providers/` (если нужен). `index.ts` — вложенный `Object.assign`:
+
+```ts
+export const Drawer = Object.assign(Component, {
+  Open: DrawerOpen,
+  Portal: Object.assign(DrawerPortal, {
+    Viewport: Object.assign(DrawerPortalViewport, {
+      Popup: Object.assign(DrawerPortalViewportPopup, {
+        Content: DrawerPortalViewportPopupContent,
+      }),
+    }),
+  }),
+});
+```
+
+Namespace types зеркалят ту же вложенность.
+
+### @base-ui
+
+Drawer/dialog/dropdown — на `@base-ui/react`. Не дублировать focus trap, portal, aria.
+
+### CSS
+
+- `@layer index-17` (или 27/37)
+- `component.module.css` в `.partials/styles/` (или рядом с sub-part, если стили различаются)
+- Backdrop, popup — отдельные modules если стили различаются
+
+### Props
+
+- `component.interface.ts` на каждом sub-part
+- Open/Close triggers — отдельные compound parts (`Drawer.Open`, `Drawer.Close`)
+
+### Skeleton
+
+Для overlay content — optional; если есть, следовать OTP skeleton rules для content area.
+
+### Эталон
+
+`src/components/overlays/drawer/` — deep compound + namespace
+
+## texts
+
+index: **10**
+
+Типографика: headings, text, links, labels без интерактива формы.
+
+Предпочитать canonical `.partials/` (OTP). Простые text-компоненты могут быть flat.
+
+- `component.interface.ts`
+- Polymorphic `as` для semantic HTML (`h1`–`h6`, `p`, `span`)
+- Typography через CSS module + theme tokens, не inline styles
+
+```css
+@layer mosuk-ui {
+  @layer index-10 {
+    .root { /* font-size, color from --text-* */ }
+  }
+}
+```
+
+Для dynamic text blocks — `{Name}Skeleton` с width/height placeholders.
+
+Эталоны: `src/components/texts/`; новый код — OTP pattern.
+
+## layouts
+
+index: **16**
+
+App shell primitives: header, sidebar, footer, tabbar — composable layout blocks.
+
+Canonical `.partials/` для compound layouts с sub-regions (nav, logo, actions).
+
+- Regions как compound sub-parts или `children` slots
+- Responsive behavior через CSS module + utilities
+- `@layer index-16`
+- z-index 0–99 для fixed layout chrome (ниже overlays)
+
+Layout state (collapsed sidebar) — provider в `.partials/providers/` или внешний `providers/`.
+
+Эталоны: `src/components/layouts/`; новый — OTP/checkbox pattern.
+
+## collections
+
+index: **14**
+
+Structured lists: table, tabs, accordion, data list.
+
+Compound обязателен: root + item/header/panel sub-parts.
+
+```
+{feature}/component/
+├── index.ts
+└── .partials/components/
+    ├── component.tsx          ← Collection root
+    ├── item/component.tsx
+    └── header/component.tsx
+```
+
+- Collection root: `children` или data-driven API — по эталону существующего feature
+- Item sub-parts: минимальный interface
+- `@layer index-14`
+- Row/cell styles nested под `.root`
+
+Skeleton rows mirroring table/list layout; reuse component CSS where possible.
+
+Tabs/accordion могут использовать `@base-ui/react` — wrap, don't fork.
+
+Эталоны: `src/components/collections/`.
+
+## navigation
+
+index: **18**
+
+Nav trajectories: breadcrumbs, stepper, future trail/progress nav.
+
+Canonical `.partials/` + compound (root + step/item sub-parts).
+
+```
+{feature}/component/
+├── index.ts
+└── .partials/
+    ├── styles/component.module.css
+    ├── providers/                 ← если shared step/current state
+    ├── hooks/
+    └── components/
+        ├── component.tsx
+        └── {sub}/component.tsx
+```
+
+- `@layer index-18`
+- Sequence UI: orientation (horizontal/vertical) через context + `data-orientation`
+- Skeleton зеркалит layout; reuse component CSS
+
+Эталоны: `src/components/navigation/breadcrumbs/`, `src/components/navigation/stepper/`.
+
+## forms
+
+Form composition: fieldset, field groups, label+input+hint, не дублирующие `actions/` primitives.
+
+```
+fieldset/component/
+├── component.tsx
+├── component.interface.ts
+├── components/field/…
+├── components/hint/…
+├── providers/…
+└── hooks/hook.ts
+```
+
+Provider + hook внутри feature допустимы (см. fieldset).
+
+### react-hook-form
+
+- Интеграция через props/context, не hardcode в leaf input
+- Errors/hints — sub-components fieldset
+
+### Props
+
+- `component.interface.ts`
+- Field: label, input slot, error message
+
+### CSS
+
+- Form-specific layers: можно использовать index-11 (actions family) или локальный module без conflict
+- Не смешивать field styles с raw `actions/input` — compose
+
+### Relation to actions/
+
+- `actions/input`, `actions/checkbox` — primitives
+- `forms/fieldset` — composition layer
+
+### Эталон
+
+`src/components/forms/fieldset/` — provider, hooks, nested components
+
+## containers
+
+index: **13**
+
+Секции и grid. Следовать display/containers паттернам и canonical `.partials/`.

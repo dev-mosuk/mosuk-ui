@@ -7,7 +7,7 @@ description: >-
 
 # providers
 
-Rule: `.cursor/rules/providers/rule.mdc` · Context: `.cursor/rules/providers/context/rule.mdc`
+Rule: `.cursor/rules/providers.mdc`
 
 ## Checklist
 
@@ -36,7 +36,7 @@ Rule: `.cursor/rules/providers/rule.mdc` · Context: `.cursor/rules/providers/co
 
 ## Component-local provider
 
-Toggle-style → `component/.partials/providers/` — см. context rule.
+Toggle-style → `component/.partials/providers/` — 4-file pattern в `providers.mdc`.
 
 ## Эталоны
 

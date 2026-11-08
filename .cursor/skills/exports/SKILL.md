@@ -5,9 +5,9 @@ description: >-
   Use when adding or changing feature exports or package subpaths.
 ---
 
-# (exports)
+# exports
 
-Rule: `.cursor/rules/(exports)/rule.mdc`
+Rule: `.cursor/rules/exports.mdc`
 
 ## Checklist
 
@@ -34,7 +34,7 @@ export namespace OTP {
 
 ## Deep compound
 
-→ `src/components/overlays/drawer/component/index.ts`
+Импорты из `.partials/components/…`; nested `Object.assign` — `src/components/overlays/drawer/component/index.ts`
 
 ## Эталоны
 

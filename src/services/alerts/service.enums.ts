@@ -1,7 +1,16 @@
 export enum AlertType {
-  INFO = 'info',
+  DEFAULT = 'default',
+  ACCENT = 'accent',
   SUCCESS = 'success',
   WARNING = 'warning',
-  ERROR = 'error',
+  DANGER = 'danger',
   CUSTOM = 'custom',
+}
+
+export enum AlertActionVariant {
+  DEFAULT = 'default',
+  ACCENT = 'accent',
+  SUCCESS = 'success',
+  WARNING = 'warning',
+  DANGER = 'danger',
 }

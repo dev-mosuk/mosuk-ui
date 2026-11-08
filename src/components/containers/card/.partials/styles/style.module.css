@@ -1,0 +1,19 @@
+@layer components {
+    .card {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--spacing) * 3);
+
+        padding: calc(var(--spacing) * 4);
+
+        background-color: var(--color-white);
+
+        border: 0.75px solid var(--color-gray-100);
+        border-radius: var(--radius-2xl, 1rem);
+
+        box-shadow:
+            0 0 25px -5px color-mix(in oklab, var(--color-gray-300) 50%, transparent),
+            0 0 10px -6px color-mix(in oklab, var(--color-gray-300) 50%, transparent);
+
+    }
+}

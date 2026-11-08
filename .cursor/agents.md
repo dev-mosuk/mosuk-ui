@@ -19,7 +19,7 @@ mosuk-ui — **npm UI-библиотека**, не приложение. Упр�
 
 ```
 src/
-├── components/{texts,actions,display,containers,collections,layouts,overlays,forms}/
+├── components/{texts,actions,display,containers,collections,layouts,overlays,navigation,forms}/
 ├── integrations/       → внешние SDK; слои как в src/ (vendor → product? → layer)
 ├── providers/          → React context, app-level wiring
 ├── hooks/              → потребление providers / browser API
@@ -114,29 +114,20 @@ src/
 .cursor/
 ├── agents.md
 ├── rules/
-│   ├── (architecture)/rule.mdc     ← alwaysApply
-│   ├── (styling)/rule.mdc
-│   ├── (exports)/rule.mdc
-│   ├── components/
-│   │   ├── rule.mdc
-│   │   ├── actions/rule.mdc
-│   │   ├── display/rule.mdc
-│   │   ├── overlays/rule.mdc
-│   │   ├── texts/rule.mdc
-│   │   ├── layouts/rule.mdc
-│   │   ├── collections/rule.mdc
-│   │   └── forms/rule.mdc
-│   ├── integrations/rule.mdc
-│   ├── providers/rule.mdc
-│   ├── providers/context/rule.mdc
-│   ├── hooks/rule.mdc
-│   ├── services/rule.mdc
-│   └── utilities/rule.mdc
+│   ├── architecture.mdc     ← alwaysApply
+│   ├── styling.mdc
+│   ├── exports.mdc
+│   ├── components.mdc       ← actions, display, overlays, texts, layouts, collections, navigation, forms
+│   ├── integrations.mdc
+│   ├── providers.mdc        ← app-level + 4-file context
+│   ├── hooks.mdc
+│   ├── services.mdc
+│   └── utilities.mdc
 └── skills/
-    ├── (architecture)/SKILL.md
-    ├── (styling)/SKILL.md
-    ├── (exports)/SKILL.md
-    ├── components/SKILL.md (+ actions, overlays, display)
+    ├── architecture/SKILL.md
+    ├── styling/SKILL.md
+    ├── exports/SKILL.md
+    ├── components/SKILL.md
     ├── integrations/SKILL.md
     ├── providers/SKILL.md
     ├── hooks/SKILL.md
@@ -146,20 +137,15 @@ src/
 
 | Что | Rule | Skill |
 | --- | ---- | ----- |
-| Паттерны `.` `()` `[]`, структура src | `.cursor/rules/(architecture)/rule.mdc` | `.cursor/skills/(architecture)/SKILL.md` |
-| CSS layers, index-N, z-index | `.cursor/rules/(styling)/rule.mdc` | `.cursor/skills/(styling)/SKILL.md` |
-| index.ts, namespace, package exports | `.cursor/rules/(exports)/rule.mdc` | `.cursor/skills/(exports)/SKILL.md` |
-| Компоненты (orchestrator) | `.cursor/rules/components/rule.mdc` | `.cursor/skills/components/SKILL.md` |
-| Actions (OTP canonical) | `.cursor/rules/components/actions/rule.mdc` | `.cursor/skills/components/actions/SKILL.md` |
-| Display | `.cursor/rules/components/display/rule.mdc` | `.cursor/skills/components/display/SKILL.md` |
-| Overlays | `.cursor/rules/components/overlays/rule.mdc` | `.cursor/skills/components/overlays/SKILL.md` |
-| Texts, layouts, collections, forms | `.cursor/rules/components/{category}/rule.mdc` | → rule + components/SKILL.md |
-| Integrations (внешние SDK) | `.cursor/rules/integrations/rule.mdc` | `.cursor/skills/integrations/SKILL.md` |
-| Providers | `.cursor/rules/providers/rule.mdc` | `.cursor/skills/providers/SKILL.md` |
-| Provider 4-file pattern | `.cursor/rules/providers/context/rule.mdc` | (см. providers skill) |
-| Hooks | `.cursor/rules/hooks/rule.mdc` | `.cursor/skills/hooks/SKILL.md` |
-| Services | `.cursor/rules/services/rule.mdc` | `.cursor/skills/services/SKILL.md` |
-| Utilities | `.cursor/rules/utilities/rule.mdc` | `.cursor/skills/utilities/SKILL.md` |
+| Паттерны `.` `()` `[]`, структура src | `.cursor/rules/architecture.mdc` | `.cursor/skills/architecture/SKILL.md` |
+| CSS layers, index-N, z-index | `.cursor/rules/styling.mdc` | `.cursor/skills/styling/SKILL.md` |
+| index.ts, namespace, package exports | `.cursor/rules/exports.mdc` | `.cursor/skills/exports/SKILL.md` |
+| Компоненты (все категории) | `.cursor/rules/components.mdc` | `.cursor/skills/components/SKILL.md` |
+| Integrations (внешние SDK) | `.cursor/rules/integrations.mdc` | `.cursor/skills/integrations/SKILL.md` |
+| Providers + 4-file context | `.cursor/rules/providers.mdc` | `.cursor/skills/providers/SKILL.md` |
+| Hooks | `.cursor/rules/hooks.mdc` | `.cursor/skills/hooks/SKILL.md` |
+| Services | `.cursor/rules/services.mdc` | `.cursor/skills/services/SKILL.md` |
+| Utilities | `.cursor/rules/utilities.mdc` | `.cursor/skills/utilities/SKILL.md` |
 
 ---
 
@@ -169,7 +155,7 @@ src/
 | ------ | -------- |
 | Канонический компонент + skeleton | `src/components/actions/otp/` |
 | Compound + provider в .partials | `src/components/actions/toggle/` |
-| Deep compound overlay | `src/components/overlays/drawer/` |
+| Deep compound overlay (`.partials/` + nested) | `src/components/overlays/drawer/` |
 | Checkbox (как OTP) | `src/components/actions/checkbox/` |
 | Legacy flat (не копировать) | `src/components/actions/button/` |
 | Integration (product / vendor) | `src/integrations/yandex/maps/`, `src/integrations/tbank/` |

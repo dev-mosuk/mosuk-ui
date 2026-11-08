@@ -7,7 +7,7 @@ description: >-
 
 # services
 
-Rule: `.cursor/rules/services/rule.mdc`
+Rule: `.cursor/rules/services.mdc`
 
 ## Checklist
 

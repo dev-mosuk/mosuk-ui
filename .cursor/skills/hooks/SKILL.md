@@ -7,7 +7,7 @@ description: >-
 
 # hooks
 
-Rule: `.cursor/rules/hooks/rule.mdc`
+Rule: `.cursor/rules/hooks.mdc`
 
 ## Checklist
 

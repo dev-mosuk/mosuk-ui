@@ -40,6 +40,7 @@ alwaysApply: false
 | 15 | integrations |
 | 16 | layouts |
 | 17 | overlays |
+| 18 | navigation |
 
 ## index-N (2-й уровень — вариант)
 

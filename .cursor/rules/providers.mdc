@@ -1,0 +1,150 @@
+---
+description: Providers — app-level React context и 4-file pattern (provider, context, interfaces)
+globs:
+  - 'src/providers/**'
+  - 'src/**/providers/**'
+  - 'src/**/provider/**'
+  - 'src/**/context/**'
+alwaysApply: false
+---
+
+# providers
+
+index: **0–9** (зарезервировано)
+
+## Назначение
+
+React providers: инициализация SDK, context value, side effects (useEffect).
+
+## Структура feature
+
+```
+{feature}/
+├── index.ts                 ← thin export + namespace
+├── provider.tsx
+├── provider.interface.ts
+├── provider.module.css      ← optional
+├── context/
+│   ├── context.ts
+│   └── context.interface.ts
+└── {sub}/                   ← optional UI (ToastList)
+```
+
+## index.ts
+
+```ts
+export const AlertsProvider = (props) => createElement(BaseAlertsProvider, props);
+
+export namespace AlertsProvider {
+  export type Props = AlertsProviderProps;
+}
+```
+
+## provider.tsx
+
+- `'use client'` если browser APIs / effects
+- Inject service: `alertsService.manager(manager)` в useEffect + cleanup
+- Context.Provider с value object (methods + state)
+
+## Связь с hooks
+
+Hook потребляет context → `src/hooks/{feature}/hook.ts`
+**Не** export hook из provider index — отдельный path.
+
+## Связь с services
+
+Imperative API в `src/services/{feature}/` — provider wiring, service logic.
+
+## CSS
+
+- `@layer index-0` или index из providers range
+- Module рядом с provider.tsx
+
+## Эталоны
+
+- `src/providers/alerts/` — provider + list sub-component + service
+- External SDK → `src/integrations/{vendor}/…/provider/` (не сюда)
+- Component: `src/components/actions/toggle/component/.partials/providers/`
+- Form: `src/components/forms/fieldset/component/providers/`
+
+## 4-file context
+
+### Когда
+
+- Shared state между compound sub-parts (toggle)
+- App-level API через context (alerts)
+- Feature-scoped form state (fieldset)
+
+### 4 файла (минимум)
+
+```
+providers/
+├── provider.tsx
+├── provider.interface.ts
+└── context/
+    ├── context.ts
+    └── context.interface.ts
+```
+
++ `index.ts` на уровне feature для публичного export provider.
+
+### context.ts
+
+```ts
+import { createContext } from 'react';
+import { FeatureContextProps } from './context.interface';
+
+export const FeatureContext = createContext<FeatureContextProps | null>(null);
+```
+
+### context.interface.ts
+
+- Shape value: methods, state, refs
+- **Не** import React components
+
+### provider.interface.ts
+
+- Props provider: `children`, config, optional callbacks
+
+### provider.tsx
+
+```tsx
+export function FeatureProvider({ children, ...config }: FeatureProviderProps) {
+  const value = useMemo(() => ({ /* … */ }), [deps]);
+
+  return (
+    <FeatureContext.Provider value={value}>
+      {children}
+    </FeatureContext.Provider>
+  );
+}
+```
+
+### Consumer hook
+
+Отдельный файл `hooks/hook.ts` или `component/.partials/hooks/hook.ts`:
+
+```ts
+export function useFeature(): UseFeatureProps {
+  const context = useContext(FeatureContext);
+  if (!context) {
+    throw new Error('useFeature must be used within <FeatureProvider>');
+  }
+  return context;
+}
+```
+
+### Расположение
+
+| Scope | Path |
+| ----- | ---- |
+| App-level | `src/providers/{feature}/` |
+| External SDK | `src/integrations/{vendor}/…/provider/` |
+| Component-local | `component/.partials/providers/` |
+| Form feature | `forms/.../component/providers/` |
+
+### Export
+
+- Provider — через feature `index.ts` + namespace
+- Context — **не** export наружу (internal)
+- Hook — через `src/hooks/{feature}/index.ts`

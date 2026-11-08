@@ -1,5 +1,5 @@
 import { UseAlertsProps } from '@/hooks/alerts/hook.interface';
-import { AlertsContext } from '@/providers/alerts/context/context';
+import { AlertsContext } from '@/providers/alerts/.partials/context/context';
 import { useContext } from 'react';
 
 export function useAlerts(): UseAlertsProps {

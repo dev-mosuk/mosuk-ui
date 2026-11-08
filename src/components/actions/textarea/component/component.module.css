@@ -23,6 +23,14 @@
                 opacity: 50%;
                 pointer-events: none;
             }
+
+            &.autosize {
+                transition: all 0ms ease-in-out;
+
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+            }
         }
     }
 }

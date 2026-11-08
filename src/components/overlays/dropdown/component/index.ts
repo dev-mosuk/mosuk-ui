@@ -1,30 +1,25 @@
-import {
-  Dropdown as BaseDropdown,
-  DropdownDropdown as BaseDropdownDropdown,
-  DropdownDropdownContent as BaseDropdownDropdownContent,
-  DropdownTrigger as BaseDropdownTrigger,
-} from '@/components/overlays/dropdown/component/component';
-import type {
-  DropdownDropdownContentProps,
-  DropdownDropdownProps,
-  DropdownProps,
-  DropdownTriggerProps,
-} from '@/components/overlays/dropdown/component/component.interface';
+import { Dropdown as Component } from '@/components/overlays/dropdown/component/.partials/components/component';
+import { DropdownProps as ComponentProps } from '@/components/overlays/dropdown/component/.partials/components/component.interface';
+import { DropdownDropdown } from '@/components/overlays/dropdown/component/.partials/components/dropdown/component';
+import { DropdownDropdownProps } from '@/components/overlays/dropdown/component/.partials/components/dropdown/component.interface';
+import { DropdownDropdownContentButton } from '@/components/overlays/dropdown/component/.partials/components/dropdown/content/button/component';
+import { DropdownDropdownContentButtonProps } from '@/components/overlays/dropdown/component/.partials/components/dropdown/content/button/component.interface';
+import { DropdownDropdownContent } from '@/components/overlays/dropdown/component/.partials/components/dropdown/content/component';
+import { DropdownDropdownContentProps } from '@/components/overlays/dropdown/component/.partials/components/dropdown/content/component.interface';
+import { DropdownTrigger } from '@/components/overlays/dropdown/component/.partials/components/trigger/component';
+import { DropdownTriggerProps } from '@/components/overlays/dropdown/component/.partials/components/trigger/component.interface';
 
-export const Dropdown = Object.assign(BaseDropdown, {
-  Trigger: BaseDropdownTrigger,
-  Dropdown: Object.assign(BaseDropdownDropdown, {
-    Content: BaseDropdownDropdownContent,
+export const Dropdown = Object.assign(Component, {
+  Trigger: DropdownTrigger,
+  Dropdown: Object.assign(DropdownDropdown, {
+    Content: Object.assign(DropdownDropdownContent, {
+      Button: DropdownDropdownContentButton,
+    }),
   }),
-}) as typeof BaseDropdown & {
-  Trigger: typeof BaseDropdownTrigger;
-  Dropdown: typeof BaseDropdownDropdown & {
-    Content: typeof BaseDropdownDropdownContent;
-  };
-};
+});
 
 export namespace Dropdown {
-  export type Props = DropdownProps;
+  export type Props = ComponentProps;
 
   export namespace Trigger {
     export type Props = DropdownTriggerProps;
@@ -35,6 +30,10 @@ export namespace Dropdown {
 
     export namespace Content {
       export type Props = DropdownDropdownContentProps;
+
+      export namespace Button {
+        export type Props = DropdownDropdownContentButtonProps;
+      }
     }
   }
 }

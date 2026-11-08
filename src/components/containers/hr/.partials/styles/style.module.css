@@ -1,0 +1,5 @@
+@layer components {
+    .hr {
+        border-top: 0.75px solid var(--color-gray-200);
+    }
+}

@@ -1,3 +1,3 @@
-import type { AlertsContextProps } from '@/providers/alerts/context/context.interface';
+import type { AlertsContextProps } from '@/providers/alerts/.partials/context/context.interface';
 
 export type UseAlertsProps = AlertsContextProps;

@@ -11,6 +11,8 @@
             position: relative;
 
             display: flex;
+            flex-direction: row;
+            align-items: center;
             gap: calc(var(--spacing, .25rem) * 1);
 
             &::-webkit-scrollbar {
@@ -22,61 +24,55 @@
                 pointer-events: none;
             }
 
-            &[data-orientation='horizontal'] {
-                overflow-x: auto;
-                overflow-y: hidden;
-
-                flex-direction: row;
-                align-items: center;
-
-                height: calc(var(--spacing, .25rem) * 8);
-            }
-
-            &[data-orientation='vertical'] {
-                overflow-x: hidden;
-                overflow-y: auto;
-
-                flex-direction: column;
-                align-items: stretch;
-
-                height: auto;
-                min-height: calc(var(--spacing, .25rem) * 8);
-            }
-        }
-
-        .toggle {
             .button {
                 z-index: 1;
-            }
 
-            &[data-orientation='horizontal'] {
-                .button {
-                    width: fit-content;
-                    min-width: fit-content;
-                    height: 100%;
-                    max-height: 100%;
+                width: fit-content;
+                height: calc(var(--spacing, 0.25rem) * 7);
+                min-width: fit-content;
+                min-height: calc(var(--spacing, 0.25rem) * 7);
 
-                    scroll-margin-inline: calc(var(--spacing, .25rem) * 48);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: calc(var(--spacing, 0.25rem) * 0.25 * 7);
+
+                color: var(--color-black);
+                font-size: calc(var(--spacing, 0.25rem) * 0.375 * 7);
+                font-weight: 400;
+                text-wrap: nowrap;
+
+                padding: 0 calc(var(--spacing, 0.25rem) * 0.375 * 7);
+                border-radius: calc(infinity * 1px);
+                outline: none;
+
+                transition: all 200ms ease-in-out;
+
+                & :where(svg) {
+                    width: calc(var(--spacing, 0.25rem) * 0.425 * 7);
+                    height: calc(var(--spacing, 0.25rem) * 0.425 * 7);
+                    min-width: calc(var(--spacing, 0.25rem) * 0.425 * 7);
+                    min-height: calc(var(--spacing, 0.25rem) * 0.425 * 7);
+
+                    transition: all 200ms ease-in-out;
+                }
+
+                &:active,
+                &:hover {
+                    color: var(--color-primary-500);
+
+                    & :where(svg) {
+                        color: var(--color-primary-500);
+                    }
                 }
             }
 
-            &[data-orientation='vertical'] {
-                .button {
-                    width: 100%;
-                    min-height: fit-content;
-                    height: fit-content;
-
-                    scroll-margin-block: calc(var(--spacing, .25rem) * 48);
-                }
-            }
-        }
-
-        .toggle {
             .indicator {
                 position: absolute;
                 z-index: 0;
 
-                background-color: var(--color-gray-100);
+                background-color: var(--color-primary-100);
+                border-radius: calc(infinity * 1px);
 
                 transition:
                     transform 200ms ease-in-out,
@@ -93,6 +89,23 @@
             }
 
             &[data-orientation='horizontal'] {
+                overflow-x: auto;
+                overflow-y: hidden;
+
+                flex-direction: row;
+                align-items: center;
+
+                height: calc(var(--spacing, .25rem) * 8);
+
+                .button {
+                    width: fit-content;
+                    min-width: fit-content;
+                    height: 100%;
+                    max-height: 100%;
+
+                    scroll-margin-inline: calc(var(--spacing, .25rem) * 48);
+                }
+
                 .indicator {
                     top: 0;
                     left: 0;
@@ -105,6 +118,23 @@
             }
 
             &[data-orientation='vertical'] {
+                overflow-x: hidden;
+                overflow-y: auto;
+
+                flex-direction: column;
+                align-items: stretch;
+
+                height: auto;
+                min-height: calc(var(--spacing, .25rem) * 8);
+
+                .button {
+                    width: 100%;
+                    min-height: fit-content;
+                    height: fit-content;
+
+                    scroll-margin-block: calc(var(--spacing, .25rem) * 48);
+                }
+
                 .indicator {
                     top: 0;
                     left: 0;

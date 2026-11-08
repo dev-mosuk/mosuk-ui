@@ -1,7 +1,7 @@
 @layer mosuk-ui {
     @layer index-17 {
         :root {
-            --bleed: calc(var(--spacing, 0.25rem) * 24);
+            --bleed: calc(var(--spacing, 0.25rem) * 12);
         }
 
         .viewport {
@@ -94,8 +94,6 @@
             }
         }
 
-        /* swipeDirection styles */
-
         .viewport {
             &:has(.popup[data-swipe-direction='down']) {
                 display: flex;
@@ -120,8 +118,8 @@
                     max-width: var(--container-lg, 512px);
                     max-height: calc(100dvh - var(--bleed));
 
-                    border-top-left-radius: var(--radius-3xl, 1.5rem);
-                    border-top-right-radius: var(--radius-3xl, 1.5rem);
+                    border-top-left-radius: var(--radius-xl, 0.75rem);
+                    border-top-right-radius: var(--radius-xl, 0.75rem);
 
                     transform: translateY(var(--drawer-swipe-movement-y));
 
@@ -137,7 +135,7 @@
                         bottom: auto;
 
                         width: calc(var(--spacing, 0.25rem) * 24);
-                        height: calc(var(--spacing, 0.25rem) * 1);
+                        height: calc(var(--spacing, 0.25rem) * 0.5);
 
                         margin-inline: auto;
                     }
@@ -168,7 +166,7 @@
                         right: calc(var(--spacing, 0.25rem) * 2);
                         bottom: 0;
 
-                        width: calc(var(--spacing, 0.25rem) * 1);
+                        width: calc(var(--spacing, 0.25rem) * 0.5);
                         height: calc(var(--spacing, 0.25rem) * 24);
 
                         margin: auto 0;
@@ -194,7 +192,7 @@
                         right: auto;
                         bottom: 0;
 
-                        width: calc(var(--spacing, 0.25rem) * 1);
+                        width: calc(var(--spacing, 0.25rem) * 0.5);
                         height: calc(var(--spacing, 0.25rem) * 24);
 
                         margin: auto 0;

@@ -6,7 +6,7 @@ alwaysApply: false
 
 # integrations
 
-index: **15** · Orchestrator: [../(architecture)/rule.mdc](../(architecture)/rule.mdc)
+index: **15** · Architecture: [architecture.mdc](./architecture.mdc)
 
 ## Назначение
 

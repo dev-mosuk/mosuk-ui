@@ -5,9 +5,9 @@ description: >-
   creating artifacts in src/. Use when naming files, folders, exports.
 ---
 
-# (architecture)
+# architecture
 
-Rule: `.cursor/rules/(architecture)/rule.mdc`
+Rule: `.cursor/rules/architecture.mdc`
 
 ## Checklist
 
@@ -24,7 +24,7 @@ Rule: `.cursor/rules/(architecture)/rule.mdc`
 | Маркер | Когда |
 | ------ | ----- |
 | `.partials/` | component-local UI, styles, hooks, providers |
-| `(architecture)/`, `(styling)/` | cross-cutting rules в `.cursor/` |
+| `(mask)/`, `(autosize)/` | группа в `src/`, не часть export-имени |
 | `[id]/` | dynamic/param (если появится) |
 
 ## Куда класть
@@ -44,8 +44,8 @@ Rule: `.cursor/rules/(architecture)/rule.mdc`
 | ---- | ----- |
 | Components | [components/SKILL.md](../components/SKILL.md) |
 | Integrations | [integrations/SKILL.md](../integrations/SKILL.md) |
-| Styling | [(styling)/SKILL.md](../(styling)/SKILL.md) |
-| Exports | [(exports)/SKILL.md](../(exports)/SKILL.md) |
+| Styling | [styling/SKILL.md](../styling/SKILL.md) |
+| Exports | [exports/SKILL.md](../exports/SKILL.md) |
 | Providers | [providers/SKILL.md](../providers/SKILL.md) |
 | Hooks | [hooks/SKILL.md](../hooks/SKILL.md) |
 | Services | [services/SKILL.md](../services/SKILL.md) |
@@ -54,6 +54,8 @@ Rule: `.cursor/rules/(architecture)/rule.mdc`
 ## Эталоны
 
 - Component: `src/components/actions/otp/`
+- Navigation: `src/components/navigation/stepper/`, `src/components/navigation/breadcrumbs/`
+- Deep compound overlay: `src/components/overlays/drawer/`
 - Integration (product): `src/integrations/yandex/maps/`
 - Integration (vendor): `src/integrations/tbank/`
 - Provider: `src/providers/alerts/`

@@ -1,0 +1,330 @@
+@layer mosuk-ui {
+    @layer index-18 {
+        .root {
+            --stepper-separator-size: 1px;
+            --stepper-active-color: var(--color-primary-500, #0074e7);
+            --stepper-complete-color: var(--color-primary-500, #0074e7);
+            --stepper-complete-fg: var(--color-white, #fff);
+            --stepper-inactive-border: var(--color-gray-200, oklch(0.928 0.006 264.531));
+            --stepper-inactive-fg: var(--color-gray-500, oklch(0.551 0.027 264.364));
+
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+
+            &[data-orientation='horizontal'] {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            &[data-orientation='vertical'] {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            &[data-size='sm'] {
+                --stepper-indicator-size: 1.25rem;
+                --stepper-vertical-gap: 0.75rem;
+            }
+
+            &[data-size='md'] {
+                --stepper-indicator-size: 1.5rem;
+                --stepper-vertical-gap: 1rem;
+            }
+
+            &[data-size='lg'] {
+                --stepper-indicator-size: 2rem;
+                --stepper-vertical-gap: 1.5rem;
+            }
+        }
+
+        .step {
+            position: relative;
+            min-width: 0;
+        }
+
+        .stepHorizontal {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex: 1 1 0;
+        }
+
+        .stepHorizontal:last-child {
+            flex: 0 0 auto;
+        }
+
+        .stepVertical {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            padding-bottom: var(--stepper-vertical-gap);
+        }
+
+        .stepVertical:last-child {
+            padding-bottom: 0;
+        }
+
+        .stepButton {
+            appearance: none;
+            border: none;
+            background: transparent;
+            padding: 0;
+            margin: 0;
+            color: inherit;
+            font: inherit;
+            text-align: start;
+            cursor: default;
+            min-width: 0;
+        }
+
+        .stepButton[data-clickable='true'] {
+            cursor: pointer;
+        }
+
+        .stepButton[data-clickable='true']:hover .indicator {
+            opacity: 0.85;
+        }
+
+        .stepButton[data-clickable='true']:active {
+            opacity: 0.75;
+        }
+
+        .stepButton:focus {
+            outline: none;
+        }
+
+        .stepButton:focus-visible {
+            outline: 2px solid var(--stepper-active-color);
+            outline-offset: 2px;
+            border-radius: var(--radius-md, 0.375rem);
+        }
+
+        .stepButtonHorizontal {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: calc(var(--spacing, 0.25rem) * 2.5);
+        }
+
+        .stepButtonVertical {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: calc(var(--spacing, 0.25rem) * 3);
+            width: 100%;
+        }
+
+        .indicator {
+            box-sizing: border-box;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: var(--stepper-indicator-size);
+            height: var(--stepper-indicator-size);
+            border-radius: 9999px;
+            border: 0.75px solid var(--stepper-inactive-border);
+            background-color: var(--color-white, #fff);
+            color: var(--stepper-inactive-fg);
+            font-weight: 300;
+            line-height: 1;
+            transition:
+                background-color 200ms ease,
+                border-color 200ms ease,
+                color 200ms ease,
+                opacity 150ms ease;
+
+            &[data-status='active'] {
+                border-color: var(--stepper-active-color);
+                color: var(--stepper-active-color);
+            }
+
+            &[data-status='complete'] {
+                border-color: var(--stepper-complete-color);
+                background-color: var(--stepper-complete-color);
+                color: var(--stepper-complete-fg);
+            }
+
+            &[data-size='sm'] {
+                font-size: var(--text-3xs, 0.5rem);
+            }
+
+            &[data-size='md'] {
+                font-size: var(--text-2xs, 0.625rem);
+            }
+
+            &[data-size='lg'] {
+                font-size: var(--text-xs, 0.75rem);
+            }
+        }
+
+        .indicatorNumber {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .check {
+            width: 65%;
+            height: 65%;
+            display: block;
+        }
+
+        .checkPath {
+            stroke-dasharray: 28;
+            stroke-dashoffset: 28;
+            animation: mosuk-stepper-check-draw 320ms ease forwards;
+        }
+
+        .icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 65%;
+            height: 65%;
+        }
+
+        .icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .content {
+            display: inline-flex;
+            flex-direction: column;
+            min-width: 0;
+            gap: calc(var(--spacing, 0.25rem) * 0.5);
+        }
+
+        .contentHorizontal {
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .contentVertical {
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding-top: calc((var(--stepper-indicator-size) - 1em) / 2);
+        }
+
+        .title {
+            font-weight: 400;
+            color: var(--color-gray-900, oklch(0.21 0.034 264.665));
+
+            &[data-size='sm'] {
+                font-size: var(--text-2xs, 0.625rem);
+            }
+
+            &[data-size='md'] {
+                font-size: var(--text-xs, 0.75rem);
+            }
+
+            &[data-size='lg'] {
+                font-size: var(--text-sm, 0.875rem);
+            }
+        }
+
+        .description {
+            font-weight: 300;
+            color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+
+            &[data-size='sm'] {
+                font-size: var(--text-3xs, 0.5rem);
+            }
+
+            &[data-size='md'] {
+                font-size: var(--text-2xs, 0.625rem);
+            }
+
+            &[data-size='lg'] {
+                font-size: var(--text-xs, 0.75rem);
+            }
+        }
+
+        .separator {
+            --stepper-separator-progress: 0;
+            pointer-events: none;
+        }
+
+        .separatorHorizontal {
+            flex: 1 1 auto;
+            display: flex;
+            align-items: center;
+            min-width: calc(var(--spacing, 0.25rem) * 4);
+            margin-inline: calc(var(--spacing, 0.25rem) * 2.5);
+            height: var(--stepper-indicator-size);
+        }
+
+        .separatorVertical {
+            position: absolute;
+            left: calc((var(--stepper-indicator-size) - var(--stepper-separator-size)) / 2);
+            top: var(--stepper-indicator-size);
+            bottom: 0;
+            width: var(--stepper-separator-size);
+            display: flex;
+            justify-content: center;
+        }
+
+        .separatorTrack {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--stepper-inactive-border);
+            border-radius: 9999px;
+        }
+
+        .separatorTrackHorizontal {
+            width: 100%;
+            height: var(--stepper-separator-size);
+        }
+
+        .separatorTrackVertical {
+            width: var(--stepper-separator-size);
+            height: 100%;
+        }
+
+        .separatorFill {
+            position: absolute;
+            inset: 0;
+            background-color: var(--stepper-complete-color);
+            transform-origin: left center;
+            transition: transform 280ms ease;
+        }
+
+        .separatorFillHorizontal {
+            transform: scaleX(var(--stepper-separator-progress));
+            transform-origin: left center;
+        }
+
+        .separatorFillVertical {
+            transform: scaleY(var(--stepper-separator-progress));
+            transform-origin: top center;
+        }
+
+        @keyframes mosuk-stepper-check-draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .indicator,
+            .separatorFill,
+            .checkPath {
+                transition: none;
+                animation: none;
+            }
+
+            .checkPath {
+                stroke-dashoffset: 0;
+            }
+
+            .separatorFill {
+                transition: none;
+            }
+        }
+    }
+}

@@ -1,3 +1,5 @@
+import { AlertType } from '@/services/alerts/service.enums';
+import { AlertOptions } from '@/services/alerts/service.interface';
 import { ReactNode } from 'react';
 
 class AlertsService {
@@ -18,48 +20,71 @@ class AlertsService {
     this.toastManager = manager;
   }
 
-  private action(type: string, content: ReactNode): void {
+  private action(
+    type: AlertType,
+    content: ReactNode,
+    options?: AlertOptions,
+  ): string | undefined {
     if (!this.toastManager) {
       console.error('alertsService must be used within <AlertsProvider>');
 
       return;
     }
 
-    this.toastManager.add({
+    return this.toastManager.add({
       type,
       title: content as any,
+      description: options?.description,
+      data: {
+        indicator: options?.indicator,
+        actionProps: options?.actionProps,
+      },
     });
   }
 
-  info(content: ReactNode): void {
-    this.action('info', content);
+  default(content: ReactNode, options?: AlertOptions): string | undefined {
+    return this.action(AlertType.DEFAULT, content, options);
   }
 
-  success(content: ReactNode): void {
-    this.action('success', content);
+  accent(content: ReactNode, options?: AlertOptions): string | undefined {
+    return this.action(AlertType.ACCENT, content, options);
   }
 
-  warning(content: ReactNode): void {
-    this.action('warning', content);
+  success(content: ReactNode, options?: AlertOptions): string | undefined {
+    return this.action(AlertType.SUCCESS, content, options);
   }
 
-  error(content: ReactNode): void {
-    this.action('error', content);
+  warning(content: ReactNode, options?: AlertOptions): string | undefined {
+    return this.action(AlertType.WARNING, content, options);
   }
 
-  custom(content: ReactNode): void {
+  danger(content: ReactNode, options?: AlertOptions): string | undefined {
+    return this.action(AlertType.DANGER, content, options);
+  }
+
+  custom(content: ReactNode): string | undefined {
     if (!this.toastManager) {
       console.error('alertsService must be used within <AlertsProvider>');
 
       return;
     }
 
-    this.toastManager.add({
-      type: 'custom',
+    return this.toastManager.add({
+      type: AlertType.CUSTOM,
       data: {
         customContent: content,
       },
     });
+  }
+
+  close(id?: string): void {
+    if (!this.toastManager) {
+      console.error('alertsService must be used within <AlertsProvider>');
+
+      return;
+    }
+
+    this.toastManager.close(id);
   }
 }
 

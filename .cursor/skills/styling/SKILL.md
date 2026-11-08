@@ -5,9 +5,9 @@ description: >-
   component styles. Use for *.module.css, index.css, styles/.
 ---
 
-# (styling)
+# styling
 
-Rule: `.cursor/rules/(styling)/rule.mdc` · README: [README.md](../../README.md)
+Rule: `.cursor/rules/styling.mdc` · README: [README.md](../../../README.md)
 
 ## Checklist
 
@@ -31,6 +31,7 @@ Rule: `.cursor/rules/(styling)/rule.mdc` · README: [README.md](../../README.md)
 | 15 | integrations |
 | 16 | layouts |
 | 17 | overlays (27/37 variants) |
+| 18 | navigation |
 
 ## Эталон CSS
 

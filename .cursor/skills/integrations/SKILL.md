@@ -7,7 +7,7 @@ description: >-
 
 # integrations
 
-Rule: `.cursor/rules/integrations/rule.mdc`
+Rule: `.cursor/rules/integrations.mdc`
 
 ## Checklist
 
@@ -15,7 +15,7 @@ Rule: `.cursor/rules/integrations/rule.mdc`
 - [ ] Vendor с продуктом? → integrations/{vendor}/{product}/{layer}/
 - [ ] Vendor без продукта? → integrations/{vendor}/{layer}/
 - [ ] Слои как в src: components/, provider/, hooks/, utilities/
-- [ ] Provider: 4-file pattern (см. providers/context)
+- [ ] Provider: 4-file pattern (см. providers skill)
 - [ ] Component: component/ + skeleton/, index-15
 - [ ] Export: index.ts + namespace
 ```
