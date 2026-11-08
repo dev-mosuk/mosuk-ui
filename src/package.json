@@ -306,6 +306,11 @@
         "default": "./components/overlays/observer/component/index.ts"
       }
     },
+    "./components/overlays/tooltip/component": {
+      "import": {
+        "default": "./components/overlays/tooltip/component/index.ts"
+      }
+    },
     "./components/texts/counter/component": {
       "import": {
         "default": "./components/texts/counter/component/index.ts"

@@ -1,4 +1,4 @@
-import type { ToggleOrientation } from '@/components/actions/toggle/component/.partials/providers/context/context.interface';
+import type { ToggleOrientation } from '@/components/actions/toggle/component/.partials/components/component.interface';
 
 export type ScrollToggleIntoViewBehavior = 'auto' | 'smooth';
 

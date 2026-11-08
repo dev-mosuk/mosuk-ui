@@ -1,9 +1,9 @@
 import { ToggleButton } from '@/components/actions/toggle/component/.partials/components/button/component';
-import { ToggleButtonProps } from '@/components/actions/toggle/component/.partials/components/button/component.props';
+import { ToggleButtonProps } from '@/components/actions/toggle/component/.partials/components/button/component.interface';
 import { Toggle as Component } from '@/components/actions/toggle/component/.partials/components/component';
-import type { ToggleProps } from '@/components/actions/toggle/component/.partials/components/component.props';
+import type { ToggleProps } from '@/components/actions/toggle/component/.partials/components/component.interface';
 import { ToggleIndicator } from '@/components/actions/toggle/component/.partials/components/indicator/component';
-import { ToggleIndicatorProps } from '@/components/actions/toggle/component/.partials/components/indicator/component.props';
+import { ToggleIndicatorProps } from '@/components/actions/toggle/component/.partials/components/indicator/component.interface';
 
 export const Toggle = Object.assign(Component, {
   Button: ToggleButton,

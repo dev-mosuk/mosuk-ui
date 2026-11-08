@@ -4,5 +4,6 @@ export type ToggleButtonProps<C extends ElementType = 'button'> = {
   as?: C;
   ref?: Ref<any>;
 
-  value?: any;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref' | 'value'>;
+  value: any;
+  disabled?: boolean;
+} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref' | 'value' | 'disabled'>;

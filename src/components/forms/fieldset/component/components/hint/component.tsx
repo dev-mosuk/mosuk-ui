@@ -3,14 +3,15 @@ import { FieldsetHintType } from '@/components/forms/fieldset/component/componen
 import { FieldsetHintProps } from '@/components/forms/fieldset/component/components/hint/component.interface';
 import { Hint } from '@/components/texts/hint/component';
 import classNames from 'classnames';
-import React, { ElementType } from 'react';
+import React from 'react';
 
-export function FieldsetHint<C extends ElementType = 'p'>({
+export function FieldsetHint({
   as,
   type,
   children,
+  className,
   ...rest
-}: FieldsetHintProps<C>) {
+}: FieldsetHintProps) {
   const hintType = type ?? FieldsetHintType.INFO;
 
   return (
@@ -22,7 +23,7 @@ export function FieldsetHint<C extends ElementType = 'p'>({
         'mosuk-fieldset-hint',
         styles.hint,
         styles[hintType],
-        rest?.className,
+        className,
       )}
     >
       <Hint.Icon />

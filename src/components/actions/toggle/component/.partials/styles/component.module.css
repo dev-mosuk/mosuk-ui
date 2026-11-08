@@ -1,14 +1,8 @@
 @layer mosuk-ui {
     @layer index-21 {
-        :where(.toggle) {
-            --toggle-indicator-width: unset;
-            --toggle-indicator-translate-x: unset;
-            --toggle-indicator-height: unset;
-            --toggle-indicator-translate-y: unset;
-        }
-
         .toggle {
             position: relative;
+            z-index: 0;
 
             display: flex;
             flex-direction: row;
@@ -25,6 +19,7 @@
             }
 
             .button {
+                position: relative;
                 z-index: 1;
 
                 width: fit-content;
@@ -43,9 +38,12 @@
                 text-wrap: nowrap;
 
                 padding: 0 calc(var(--spacing, 0.25rem) * 0.375 * 7);
+                border: none;
+                background: transparent;
                 border-radius: calc(infinity * 1px);
                 outline: none;
 
+                cursor: pointer;
                 transition: all 200ms ease-in-out;
 
                 & :where(svg) {
@@ -58,7 +56,8 @@
                 }
 
                 &:active,
-                &:hover {
+                &:hover,
+                &[data-active] {
                     color: var(--color-primary-500);
 
                     & :where(svg) {
@@ -69,21 +68,24 @@
 
             .indicator {
                 position: absolute;
-                z-index: 0;
+                top: 0;
+                left: 0;
+                z-index: -1;
+
+                width: var(--active-tab-width);
+                height: var(--active-tab-height);
 
                 background-color: var(--color-primary-100);
                 border-radius: calc(infinity * 1px);
 
-                transition:
-                    transform 200ms ease-in-out,
-                    width 200ms ease-in-out,
-                    height 200ms ease-in-out;
+                opacity: 1;
 
-                &.loading {
-                    transition: all 0ms ease-in-out;
-                }
+                translate: var(--active-tab-left) var(--active-tab-top);
+                transition: all 200ms ease-in-out;
 
-                &.hidden {
+                pointer-events: none;
+
+                &.inactive {
                     opacity: 0;
                 }
             }
@@ -95,7 +97,8 @@
                 flex-direction: row;
                 align-items: center;
 
-                height: calc(var(--spacing, .25rem) * 8);
+                width: 100%;
+                height: var(--active-tab-height);
 
                 .button {
                     width: fit-content;
@@ -104,16 +107,6 @@
                     max-height: 100%;
 
                     scroll-margin-inline: calc(var(--spacing, .25rem) * 48);
-                }
-
-                .indicator {
-                    top: 0;
-                    left: 0;
-
-                    width: var(--toggle-indicator-width);
-                    height: 100%;
-
-                    transform: translate3d(var(--toggle-indicator-translate-x), 0, 0);
                 }
             }
 
@@ -133,16 +126,6 @@
                     height: fit-content;
 
                     scroll-margin-block: calc(var(--spacing, .25rem) * 48);
-                }
-
-                .indicator {
-                    top: 0;
-                    left: 0;
-
-                    width: 100%;
-                    height: var(--toggle-indicator-height);
-
-                    transform: translate3d(0, var(--toggle-indicator-translate-y), 0);
                 }
             }
         }

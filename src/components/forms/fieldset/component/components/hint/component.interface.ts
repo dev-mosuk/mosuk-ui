@@ -1,8 +1,14 @@
 import { FieldsetHintType } from '@/components/forms/fieldset/component/components/hint/component.enums';
-import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import {
+  ComponentPropsWithoutRef,
+  ElementType,
+  ReactNode,
+  Ref,
+} from 'react';
 
 export type FieldsetHintProps<C extends ElementType = 'p'> = {
   as?: C;
   ref?: Ref<any>;
   type?: FieldsetHintType;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;
+  children?: ReactNode;
+} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref' | 'children'>;

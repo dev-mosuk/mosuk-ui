@@ -1,49 +1,91 @@
-import { ToggleProps } from '@/components/actions/toggle/component/.partials/components/component.props';
-import { ToggleProvider } from '@/components/actions/toggle/component/.partials/providers/provider';
+import { ToggleProps } from '@/components/actions/toggle/component/.partials/components/component.interface';
 import styles from '@/components/actions/toggle/component/.partials/styles/component.module.css';
 import { scrollToggleOptionIntoView } from '@/components/actions/toggle/component/.partials/utilities/scroll-toggle-option-into-view';
+import { Tabs } from '@base-ui/react/tabs';
 import classNames from 'classnames';
-import React, { ElementType, useCallback, useEffect, useRef } from 'react';
+import React, {
+  ElementType,
+  createElement,
+  useCallback,
+  useEffect,
+  useRef,
+} from 'react';
+
+function scrollActiveIntoView(
+  list: HTMLElement | null,
+  orientation: 'horizontal' | 'vertical',
+  behavior: 'auto' | 'smooth',
+) {
+  if (!list) {
+    return;
+  }
+
+  const active = list.querySelector(
+    '.mosuk-toggle-button[data-active]',
+  ) as HTMLElement | null;
+
+  if (!active) {
+    return;
+  }
+
+  scrollToggleOptionIntoView(list, active, orientation, behavior);
+}
 
 export function Toggle<C extends ElementType = 'div'>({
   as,
   value,
+  defaultValue,
   onChange,
   orientation = 'horizontal',
+  activateOnFocus,
+  loopFocus,
   className,
+  style,
   onClickCapture,
   ref,
+  children,
   ...rest
 }: ToggleProps<C>) {
-  const Component = (as || 'div') as ElementType;
-  const containerRef = useRef<HTMLElement | null>(null);
-  const resizeObserverRef = useRef<ResizeObserver | null>(null);
+  const listRef = useRef<HTMLElement | null>(null);
+  const orientationRef = useRef(orientation);
+  orientationRef.current = orientation;
 
-  useEffect(
-    () => () => {
-      resizeObserverRef.current?.disconnect();
-      resizeObserverRef.current = null;
+  const setListRef = useCallback(
+    (node: HTMLElement | null) => {
+      listRef.current = node;
+
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        (ref as React.MutableRefObject<HTMLElement | null>).current = node;
+      }
     },
-    [],
+    [ref],
+  );
+
+  const handleValueChange = useCallback(
+    (next: any) => {
+      onChange?.(next);
+
+      requestAnimationFrame(() => {
+        scrollActiveIntoView(listRef.current, orientationRef.current, 'smooth');
+      });
+    },
+    [onChange],
   );
 
   const handleClickCapture = useCallback(
     (e: React.MouseEvent<HTMLElement>) => {
       onClickCapture?.(e);
-      if (e.defaultPrevented || !containerRef.current) {
+      if (e.defaultPrevented || !listRef.current) {
         return;
       }
 
-      const containerEl = containerRef.current;
-
-      const overflowsHorizontally =
-        containerEl.scrollWidth > containerEl.clientWidth;
-      const overflowsVertically =
-        containerEl.scrollHeight > containerEl.clientHeight;
+      const list = listRef.current;
+      const overflowsHorizontally = list.scrollWidth > list.clientWidth;
+      const overflowsVertically = list.scrollHeight > list.clientHeight;
       const overflows =
-        orientation === 'vertical'
-          ? overflowsVertically
-          : overflowsHorizontally;
+        orientation === 'vertical' ? overflowsVertically : overflowsHorizontally;
 
       if (!overflows) {
         return;
@@ -53,78 +95,69 @@ export function Toggle<C extends ElementType = 'div'>({
         '.mosuk-toggle-button',
       ) as HTMLElement | null;
 
-      if (!optionEl || !containerEl.contains(optionEl)) {
+      if (!optionEl || !list.contains(optionEl)) {
         return;
       }
 
       requestAnimationFrame(() => {
-        scrollToggleOptionIntoView(
-          containerEl,
-          optionEl,
-          orientation,
-          'smooth',
-        );
+        scrollToggleOptionIntoView(list, optionEl, orientation, 'smooth');
       });
     },
     [onClickCapture, orientation],
   );
 
-  const setRef = useCallback(
-    (node: HTMLElement | null) => {
-      containerRef.current = node;
-      if (typeof ref === 'function') {
-        ref(node);
-      } else if (ref) {
-        (ref as React.MutableRefObject<HTMLElement | null>).current = node;
-      }
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list) {
+      return;
+    }
 
-      if (resizeObserverRef.current) {
-        resizeObserverRef.current.disconnect();
-        resizeObserverRef.current = null;
-      }
+    const runPassiveScroll = () => {
+      scrollActiveIntoView(list, orientationRef.current, 'auto');
+    };
 
-      if (node) {
-        node.style.setProperty(
-          '--toggle-padding',
-          getComputedStyle(node).paddingTop,
-        );
+    const resizeObserver = new ResizeObserver(runPassiveScroll);
+    resizeObserver.observe(list);
 
-        resizeObserverRef.current = new ResizeObserver(() => {
-          node.style.setProperty(
-            '--toggle-padding',
-            getComputedStyle(node).paddingTop,
-          );
-        });
-        resizeObserverRef.current.observe(node);
-      }
-    },
-    [ref],
-  );
+    const mutationObserver = new MutationObserver(runPassiveScroll);
+    mutationObserver.observe(list, { childList: true, subtree: true });
+
+    return () => {
+      resizeObserver.disconnect();
+      mutationObserver.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
-    const el = containerRef.current;
+    requestAnimationFrame(() => {
+      scrollActiveIntoView(listRef.current, orientation, 'smooth');
+    });
+  }, [value, orientation]);
 
-    if (el) {
-      el.style.setProperty('--toggle-padding', getComputedStyle(el).paddingTop);
-    }
-  }, [className]);
+  const listRender = as ? createElement(as) : undefined;
+
+  const rootDefaultValue =
+    value !== undefined ? undefined : (defaultValue ?? null);
 
   return (
-    <ToggleProvider
+    <Tabs.Root
       value={value}
-      onChange={onChange}
-      containerRef={containerRef}
+      defaultValue={rootDefaultValue}
       orientation={orientation}
+      onValueChange={handleValueChange}
     >
-      <Component
+      <Tabs.List
         {...rest}
-        ref={setRef}
-        data-orientation={orientation}
+        ref={setListRef}
+        render={listRender}
+        activateOnFocus={activateOnFocus}
+        loopFocus={loopFocus}
         onClickCapture={handleClickCapture}
+        style={style}
         className={classNames('mosuk-toggle', styles.toggle, className)}
       >
-        {rest?.children}
-      </Component>
-    </ToggleProvider>
+        {children}
+      </Tabs.List>
+    </Tabs.Root>
   );
 }
