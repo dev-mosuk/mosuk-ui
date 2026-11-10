@@ -8,15 +8,15 @@ alwaysApply: false
 
 ## Точка входа feature
 
-Каждый публикуемый feature имеет `index.ts`:
+Каждый публикуемый feature имеет корневой `index.ts`:
 
 ```
 {feature}/
-├── component/index.ts      ← основной export
-└── skeleton/index.ts       ← skeleton export (если есть)
+├── index.ts                 ← Component + Skeleton (если есть)
+└── .partials/…
 ```
 
-Потребитель импортирует: `mosuk-ui/components/actions/otp/component` (путь после build — см. `tsconfig.build.ts`).
+Потребитель: `mosuk-ui/components/actions/otp` (без `/component` / `/skeleton`).
 
 ## Compound component
 

@@ -1,0 +1,18 @@
+import { SwitchSkeletonProps } from '@/components/actions/switch/.partials/skeleton/component.interface';
+import styles from '@/components/actions/switch/.partials/skeleton/component.module.css';
+import { Skeleton } from '@/components/core/skeleton/component';
+import classNames from 'classnames';
+import React, { useId } from 'react';
+
+export function SwitchSkeleton({ ...rest }: SwitchSkeletonProps) {
+  if (!rest?.id) {
+    rest.id = useId();
+  }
+
+  return (
+    <Skeleton
+      {...rest}
+      className={classNames('mosuk-switch', styles.switch, rest?.className)}
+    />
+  );
+}

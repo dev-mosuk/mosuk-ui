@@ -110,7 +110,7 @@ Utilities → `.cursor/rules/utilities.mdc`
 ## Импорты
 
 - **Везде в `src/`** — alias `@/…` → `src/…`; относительные `./…` и `../…` **запрещены** (ESLint `@typescript-eslint/no-restricted-imports`)
-- В т.ч. внутри feature и `.partials/` — `@/components/actions/otp/component/.partials/hooks/hook`, не `../hooks/hook`
+- В т.ч. внутри feature и `.partials/` — `@/components/actions/otp/.partials/hooks/hook`, не `../hooks/hook`
 - **Named export** везде
 - **Не** barrel re-export всего `src/` — только точечные `index.ts` на feature
 - Массовая миграция legacy: `npm run migrate:imports -- --dry-run` / `--apply`
@@ -127,9 +127,19 @@ Utilities → `.cursor/rules/utilities.mdc`
 
 **npm link в CRM:** линковать `dist/` (`npm run link:dist`), не `src/`. Подробнее — README §6, `exports.mdc`.
 
-## Legacy vs canonical
+## Feature layout (canonical)
+
+```
+{feature}/
+├── index.ts                 ← Button + ButtonSkeleton (один public path)
+├── .partials/
+│   ├── components|styles|…  ← реализация component
+│   └── skeleton/            ← реализация skeleton (если есть)
+```
+
+Публичный import: `mosuk-ui/components/…/{feature}` — **без** `/component` и `/skeleton`.
 
 | Паттерн | Пример | Статус |
 | ------- | ------ | ------ |
-| Flat `component/component.tsx` | `button/` | legacy — не копировать |
+| Flat files у корня feature | `button/component.tsx` | legacy flat — не копировать |
 | `.partials/` + compound | `otp/`, `checkbox/`, `drawer/` | **canonical** — новый код |

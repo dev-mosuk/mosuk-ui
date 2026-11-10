@@ -28,26 +28,25 @@ Provider внутри component → `.cursor/rules/providers.mdc`
 
 ```
 {feature}/
-├── component/
-│   ├── index.ts                          ← публичный API
-│   └── .partials/
-│       ├── styles/component.module.css
-│       └── components/
-│           ├── component.tsx
-│           ├── component.interface.ts
-│           └── {sub}/component.tsx
-└── skeleton/
-    ├── index.ts
-    └── .partials/components/             ← зеркало component tree
+├── index.ts                              ← публичный API (Component + Skeleton)
+└── .partials/
+    ├── styles/component.module.css
+    ├── components/
+    │   ├── component.tsx
+    │   ├── component.interface.ts
+    │   └── {sub}/component.tsx
+    └── skeleton/                         ← реализация skeleton (если есть)
+        └── components/…                  ← зеркало component tree
 ```
 
 ## Общие правила
 
 ### Export
 
-- Публичный API **только** `component/index.ts` и `skeleton/index.ts`
+- Публичный API **только** `{feature}/index.ts` (path без `/component` / `/skeleton`)
 - Compound: `Object.assign` + `export namespace` — см. exports rule
 - Named export функций компонентов в `.partials/`
+- Skeleton: named `{Name}Skeleton` из того же `index.ts` (исключение: YandexMap compound `LayerSkeleton`)
 
 ### Props
 
@@ -58,8 +57,9 @@ Provider внутри component → `.cursor/rules/providers.mdc`
 ### Skeleton
 
 - Layout зеркалит component
-- CSS: импорт из `component/.partials/styles/component.module.css` (OTP этalon)
+- CSS: импорт из `.partials/styles/component.module.css` (OTP этalon)
 - Sub-parts: `{Name}Skeleton`, `{Sub}Skeleton`
+- Код в `.partials/skeleton/`, не отдельный public path
 
 ### `.partials`
 
@@ -79,7 +79,7 @@ Overlays и часть actions строятся на `@base-ui/react`. Обор�
 
 | | Legacy | Canonical |
 | --- | ------ | --------- |
-| Пример | `button/component/component.tsx` | `otp/component/.partials/...` |
+| Пример | `button/component.tsx` (flat) | `otp/.partials/...` |
 | CSS | рядом с component.tsx | `.partials/styles/` |
 | Новый код | **не использовать** | **использовать** |
 
@@ -160,8 +160,8 @@ component/.partials/providers/
 ### Legacy button (не копировать)
 
 ```
-button/component/component.tsx    ← flat, без .partials
-button/skeleton/component.tsx
+button/component.tsx              ← flat у корня, без .partials
+button/.partials/skeleton/…
 ```
 
 Новые actions — **только** OTP-структура.
@@ -191,8 +191,8 @@ Read-only или mostly-static UI: карточки, media, avatar, badge-like d
 
 ```
 {feature}/
-├── component/index.ts + .partials/
-└── skeleton/index.ts + .partials/
+├── index.ts
+└── .partials/ (+ .partials/skeleton/)
 ```
 
 Простой display без sub-parts — допустим flat как legacy button, но предпочитать `.partials/`.
@@ -226,7 +226,7 @@ Floating UI: drawer, dialog, dropdown, tooltip, popover.
 Overlays с глубокой композицией — **canonical `.partials/`**, nested folders зеркалят compound tree:
 
 ```
-drawer/component/
+drawer/
 ├── index.ts
 └── .partials/
     ├── styles/component.module.css

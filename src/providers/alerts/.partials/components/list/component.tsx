@@ -1,6 +1,6 @@
-import { Alert } from '@/components/overlays/alert/component/component';
+import { Alert } from '@/components/overlays/alert/component';
 import { AlertTypeConstant } from '@/providers/alerts/.partials/components/list/component.constants';
-import styles from '@/providers/alerts/.partials/styles/provider.module.css';
+import styles from '@/providers/alerts/.partials/styles/styles.module.css';
 import { AlertType } from '@/services/alerts/service.enums';
 import { AlertData } from '@/services/alerts/service.interface';
 import { Toast } from '@base-ui/react/toast';

@@ -1,7 +1,7 @@
 import { AlertsContext } from '@/providers/alerts/.partials/context/context';
 import { ToastList } from '@/providers/alerts/.partials/components/list/component';
 import { AlertsProviderProps } from '@/providers/alerts/.partials/provider.interface';
-import styles from '@/providers/alerts/.partials/styles/provider.module.css';
+import styles from '@/providers/alerts/.partials/styles/styles.module.css';
 import { alertsService } from '@/services/alerts/index';
 import { ToastApi } from '@/services/alerts/service.interface';
 import { Toast } from '@base-ui/react/toast';

@@ -12,7 +12,7 @@ Rule: `.cursor/rules/exports.mdc`
 ## Checklist
 
 ```
-- [ ] component/index.ts — единственная public entry
+- [ ] {feature}/index.ts — единственная public entry (Component + Skeleton)
 - [ ] Object.assign(Component, { Sub: SubComponent })
 - [ ] export namespace {Name} { export type Props; export namespace Sub { … } }
 - [ ] skeleton/index.ts mirrors compound tree
@@ -34,10 +34,10 @@ export namespace OTP {
 
 ## Deep compound
 
-Импорты из `.partials/components/…`; nested `Object.assign` — `src/components/overlays/drawer/component/index.ts`
+Импорты из `.partials/components/…`; nested `Object.assign` — `src/components/overlays/drawer/index.ts`
 
 ## Эталоны
 
-- Simple compound: `src/components/actions/otp/component/index.ts`
-- Deep: `src/components/overlays/drawer/component/index.ts`
+- Simple compound: `src/components/actions/otp/index.ts`
+- Deep: `src/components/overlays/drawer/index.ts`
 - Provider: `src/providers/alerts/index.ts`

@@ -48,7 +48,7 @@ src/integrations/
 
 ## Структура component
 
-Как в `src/components/`: `{feature}/component/` + `{feature}/skeleton/`. Canonical OTP или flat по сложности.
+Как в `src/components/`: `{feature}/index.ts` + `.partials/` (+ `.partials/skeleton/`). YandexMap: skeleton в compound (`LayerSkeleton`), не отдельный export.
 
 ## Props
 

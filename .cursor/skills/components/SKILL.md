@@ -16,7 +16,7 @@ Rule: `.cursor/rules/components.mdc`
 ```
 - [ ] Pick category: actions|display|overlays|texts|layouts|collections|navigation|forms|containers
 - [ ] External SDK? → integrations skill, не components/
-- [ ] Canonical: component/index.ts + .partials/ + skeleton/
+- [ ] Canonical: {feature}/index.ts + .partials/ (+ .partials/skeleton/)
 - [ ] Styling: styling skill
 - [ ] Export: exports skill
 - [ ] Provider in feature? → providers skill
@@ -26,8 +26,8 @@ Rule: `.cursor/rules/components.mdc`
 
 ```
 {feature}/
-├── component/index.ts + .partials/{styles,components,providers?}/
-└── skeleton/index.ts + .partials/components/
+├── index.ts
+└── .partials/{styles,components,providers?,skeleton?}/
 ```
 
 Deep overlay: nested `.partials/components/{portal,viewport,…}` зеркалит compound.
@@ -56,7 +56,7 @@ index-11 (21/31 для variant)
 ```
 
 ```
-- [ ] Структура OTP: component/ + skeleton/ + .partials/
+- [ ] Структура OTP: index.ts + .partials/ (+ .partials/skeleton/)
 - [ ] Props: component.interface.ts (не .props.ts)
 - [ ] index.ts: Object.assign + export namespace
 - [ ] CSS: index-11 (или 21/31 для variant)
@@ -78,7 +78,7 @@ index-11 (21/31 для variant)
 index-12 (22/32 для variant), z-index 0–99
 
 ```
-- [ ] Предпочитать OTP-структуру: component/ + .partials/ + skeleton/
+- [ ] Предпочитать OTP-структуру: index.ts + .partials/ (+ skeleton)
 - [ ] Props: component.interface.ts
 - [ ] Polymorphic: as?: ElementType, spread rest на корень
 - [ ] CSS: @layer index-12 (или 22/32 для variant)
@@ -95,7 +95,7 @@ index-12 (22/32 для variant), z-index 0–99
 index-17 (27/37 для variant)
 
 ```
-- [ ] Canonical: component/index.ts + .partials/{styles,components} (+ providers если нужен context)
+- [ ] Canonical: index.ts + .partials/{styles,components} (+ providers если нужен context)
 - [ ] z-index: 100–199 popover/dropdown, 200+ dialog/drawer
 - [ ] CSS: @layer index-17 (или 27/37 для variant) в .partials/styles/
 - [ ] Props: component.interface.ts на каждом sub-part
@@ -105,7 +105,7 @@ index-17 (27/37 для variant)
 ```
 
 ```
-drawer/component/
+drawer/
 ├── index.ts
 └── .partials/
     ├── styles/component.module.css

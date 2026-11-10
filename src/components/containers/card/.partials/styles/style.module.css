@@ -4,7 +4,7 @@
 
         background-color: var(--color-white);
 
-        border: 0.75px solid var(--color-gray-100);
+        border: 0.75px solid var(--color-gray-200);
         border-radius: var(--radius-2xl, 1rem);
 
         box-shadow:

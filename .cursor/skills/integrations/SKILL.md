@@ -16,7 +16,7 @@ Rule: `.cursor/rules/integrations.mdc`
 - [ ] Vendor без продукта? → integrations/{vendor}/{layer}/
 - [ ] Слои как в src: components/, provider/, hooks/, utilities/
 - [ ] Provider: 4-file pattern (см. providers skill)
-- [ ] Component: component/ + skeleton/, index-15
+- [ ] Component: {feature}/index.ts + .partials/, index-15
 - [ ] Export: index.ts + namespace
 ```
 

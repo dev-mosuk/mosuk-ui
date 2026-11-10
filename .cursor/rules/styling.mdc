@@ -81,7 +81,7 @@ Skeleton **переиспользует** CSS module компонента:
 import styles from '../../../component/.partials/styles/component.module.css';
 ```
 
-Отдельный skeleton CSS — только если layout skeleton принципиально другой (см. `toggle/skeleton/.partials/styles/`).
+Отдельный skeleton CSS — только если layout skeleton принципиально другой (см. `toggle/.partials/skeleton/`).
 
 ## Глобальные стили
 
