@@ -14,7 +14,13 @@ export function CellSlider({
       {...rest}
       orientation={orientation}
       data-variant={variant}
-      className={classNames('mosuk-cell-slider', styles.root, rest?.className)}
+      className={classNames(
+        'mosuk-cell-slider',
+        '@container/cell-slider',
+        'group/cell-slider',
+        styles.root,
+        rest?.className,
+      )}
     />
   );
 }

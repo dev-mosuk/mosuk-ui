@@ -1,7 +1,7 @@
 ---
 name: hooks
 description: >-
-  Creates React hooks in src/hooks/ or component .partials/hooks/.
+  Creates React hooks in src/hooks/ or {feature}/.partials/hooks/.
   Use for context consumers, browser storage wrappers.
 ---
 
@@ -38,10 +38,10 @@ export function useAlerts(): UseAlertsProps {
 | Scope | Path |
 | ----- | ---- |
 | App-level | `src/hooks/{feature}/` |
-| Component-local | `component/.partials/hooks/` |
+| Component-local | `{feature}/.partials/hooks/` |
 
 ## Эталоны
 
 - Context: `src/hooks/alerts/`
 - Browser API: `src/hooks/storage/local/`
-- Feature-local: `src/components/actions/toggle/component/.partials/hooks/`
+- Feature-local: `src/components/navigation/stepper/.partials/hooks/`

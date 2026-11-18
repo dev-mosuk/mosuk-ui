@@ -12,7 +12,13 @@ export function Icon<C extends ElementType = 'button'>({
   return (
     <Component
       {...rest}
-      className={classNames('mosuk-icon', styles.icon, rest?.className)}
+      className={classNames(
+        'mosuk-icon',
+        '@container/icon',
+        'group/icon',
+        styles.icon,
+        rest?.className,
+      )}
     >
       {rest?.children}
     </Component>

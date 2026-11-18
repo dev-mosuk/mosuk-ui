@@ -36,24 +36,3 @@ export namespace File {
     }
   }
 }
-
-import {
-  FileSkeleton as SkeletonComponent,
-  FileSkeletonFile,
-} from '@/components/display/file/.partials/skeleton/component';
-import {
-  FileSkeletonFileProps,
-  FileSkeletonProps,
-} from '@/components/display/file/.partials/skeleton/component.interface';
-
-export const FileSkeleton = Object.assign(SkeletonComponent, {
-  File: FileSkeletonFile,
-});
-
-export namespace FileSkeleton {
-  export type Props = FileSkeletonProps;
-
-  export namespace File {
-    export type Props = FileSkeletonFileProps;
-  }
-}

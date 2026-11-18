@@ -18,7 +18,13 @@ export function Input<C extends ElementType = 'input'>({
       ref={rest?.ref}
       id={id}
       name={name}
-      className={classNames('mosuk-input', styles.input, rest?.className)}
+      className={classNames(
+        'mosuk-input',
+        '@container/input',
+        'group/input',
+        styles.input,
+        rest?.className,
+      )}
     >
       {rest?.children}
     </Component>

@@ -71,7 +71,13 @@ function ImageFrame<C extends ElementType = 'div'>({
           ref.current = value;
         }
       }}
-      className={classNames('mosuk-image', styles.image, rest?.className)}
+      className={classNames(
+        'mosuk-image',
+        '@container/image',
+        'group/image',
+        styles.image,
+        rest?.className,
+      )}
     >
       {children}
     </Component>

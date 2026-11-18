@@ -1,9 +1,5 @@
-import { DrawerClose } from '@/components/overlays/drawer/.partials/components/close/component';
-import { DrawerCloseProps } from '@/components/overlays/drawer/.partials/components/close/component.interface';
 import { Drawer as Component } from '@/components/overlays/drawer/.partials/components/component';
 import { DrawerProps as ComponentProps } from '@/components/overlays/drawer/.partials/components/component.interface';
-import { DrawerOpen } from '@/components/overlays/drawer/.partials/components/open/component';
-import { DrawerOpenProps } from '@/components/overlays/drawer/.partials/components/open/component.interface';
 import { DrawerPortal } from '@/components/overlays/drawer/.partials/components/portal/component';
 import { DrawerPortalProps } from '@/components/overlays/drawer/.partials/components/portal/component.interface';
 import { DrawerPortalViewportBackdrop } from '@/components/overlays/drawer/.partials/components/portal/viewport/backdrop/component';
@@ -12,19 +8,23 @@ import { DrawerPortalViewport } from '@/components/overlays/drawer/.partials/com
 import { DrawerPortalViewportProps } from '@/components/overlays/drawer/.partials/components/portal/viewport/component.interface';
 import { DrawerPortalViewportPopup } from '@/components/overlays/drawer/.partials/components/portal/viewport/popup/component';
 import { DrawerPortalViewportPopupProps } from '@/components/overlays/drawer/.partials/components/portal/viewport/popup/component.interface';
+import { DrawerPortalViewportPopupClose } from '@/components/overlays/drawer/.partials/components/portal/viewport/popup/close/component';
+import { DrawerPortalViewportPopupCloseProps } from '@/components/overlays/drawer/.partials/components/portal/viewport/popup/close/component.interface';
 import { DrawerPortalViewportPopupContent } from '@/components/overlays/drawer/.partials/components/portal/viewport/popup/content/component';
 import { DrawerPortalViewportPopupContentProps } from '@/components/overlays/drawer/.partials/components/portal/viewport/popup/content/component.interface';
 import { DrawerPortalViewportPopupHandle } from '@/components/overlays/drawer/.partials/components/portal/viewport/popup/handle/component';
 import { DrawerPortalViewportPopupHandleProps } from '@/components/overlays/drawer/.partials/components/portal/viewport/popup/handle/component.interface';
+import { DrawerTrigger } from '@/components/overlays/drawer/.partials/components/trigger/component';
+import { DrawerTriggerProps } from '@/components/overlays/drawer/.partials/components/trigger/component.interface';
 
 export const Drawer = Object.assign(Component, {
-  Open: DrawerOpen,
-  Close: DrawerClose,
+  Trigger: DrawerTrigger,
   Portal: Object.assign(DrawerPortal, {
     Viewport: Object.assign(DrawerPortalViewport, {
       Backdrop: DrawerPortalViewportBackdrop,
       Popup: Object.assign(DrawerPortalViewportPopup, {
         Handle: DrawerPortalViewportPopupHandle,
+        Close: DrawerPortalViewportPopupClose,
         Content: DrawerPortalViewportPopupContent,
       }),
     }),
@@ -34,12 +34,8 @@ export const Drawer = Object.assign(Component, {
 export namespace Drawer {
   export type Props = ComponentProps;
 
-  export namespace Open {
-    export type Props = DrawerOpenProps;
-  }
-
-  export namespace Close {
-    export type Props = DrawerCloseProps;
+  export namespace Trigger {
+    export type Props = DrawerTriggerProps;
   }
 
   export namespace Portal {
@@ -57,6 +53,10 @@ export namespace Drawer {
 
         export namespace Handle {
           export type Props = DrawerPortalViewportPopupHandleProps;
+        }
+
+        export namespace Close {
+          export type Props = DrawerPortalViewportPopupCloseProps;
         }
 
         export namespace Content {

@@ -1,7 +1,0 @@
-@layer mosuk-ui {
-    @layer index-11 {
-        .ComboboxPortalPositionerPopupListRow {
-            display: contents;
-        }
-    }
-}

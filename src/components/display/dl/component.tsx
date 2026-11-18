@@ -5,11 +5,20 @@ import {
   DtDtProps,
 } from '@/components/display/dl/component.interface';
 import styles from '@/components/display/dl/component.module.css';
+import classNames from 'classnames';
 import React from 'react';
 
 export function Dl({ ...props }: DlProps) {
   return (
-    <div className={`mosuk-dl-list ${styles['dl-list']} ${props?.className}`}>
+    <div
+      className={classNames(
+        'mosuk-dl-list',
+        '@container/dl',
+        'group/dl',
+        styles['dl-list'],
+        props?.className,
+      )}
+    >
       {props?.children}
     </div>
   );

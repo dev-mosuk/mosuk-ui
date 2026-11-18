@@ -15,8 +15,9 @@ Rule: `.cursor/rules/styling.mdc` · README: [README.md](../../../README.md)
 - [ ] @layer mosuk-ui { @layer index-{N} { … } }
 - [ ] index-N matches category (11=actions, 17=overlays, …)
 - [ ] z-index: 0–99 content, 100–199 popover, 200+ modal
-- [ ] TSX: classNames('mosuk-{feature}', styles.root, rest?.className)
-- [ ] Skeleton imports component CSS module when possible
+- [ ] TSX: classNames('mosuk-{feature}', '@container/{feature}', 'group/{feature}', styles.root, rest?.className)
+- [ ] group/@container на визуальном DOM-корне (Portal для drawer/dialog/dropdown; не headless Root)
+- [ ] Feature skeleton в components не добавляем; shimmer — core/skeleton, карта — yandex maps skeleton CSS
 ```
 
 ## index-N quick ref
@@ -35,4 +36,4 @@ Rule: `.cursor/rules/styling.mdc` · README: [README.md](../../../README.md)
 
 ## Эталон CSS
 
-`src/components/actions/otp/component/.partials/styles/component.module.css`
+`src/components/actions/otp/.partials/styles/component.module.css`

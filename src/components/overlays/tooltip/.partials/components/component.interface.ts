@@ -3,7 +3,11 @@ import { ReactNode } from 'react';
 
 export type TooltipProps = Omit<Tooltip.Root.Props, 'children'> & {
   children: ReactNode;
-  /** Delay before opening on hover, in milliseconds. @default 0 */
+  /**
+   * Delay before opening on hover, in milliseconds.
+   * Hover/focus open on pointer-fine devices; touch opens and closes on tap.
+   * @default 0
+   */
   delay?: number;
   /** Delay before closing, in milliseconds. */
   closeDelay?: number;

@@ -25,13 +25,13 @@ index: **15** · Architecture: [architecture.mdc](./architecture.mdc)
 src/integrations/
 ├── yandex/
 │   ├── maps/
-│   │   ├── components/     ← YandexMap + skeleton
+│   │   ├── components/     ← YandexMap + YandexMap.Skeleton
 │   │   └── provider/       ← YandexMapProvider
 │   └── metrika/
 │       └── provider/       ← YandexMetrikaProvider
 └── tbank/
     ├── components/
-    │   └── terminal/       ← TBankTerminal + skeleton
+    │   └── terminal/       ← TBankTerminal
     └── provider/           ← TBankProvider
 ```
 
@@ -48,7 +48,7 @@ src/integrations/
 
 ## Структура component
 
-Как в `src/components/`: `{feature}/index.ts` + `.partials/` (+ `.partials/skeleton/`). YandexMap: skeleton в compound (`LayerSkeleton`), не отдельный export.
+Как в `src/components/`: `{feature}/index.ts` + `.partials/`. Feature `{Name}Skeleton` не создаём. Исключение — Yandex Maps: skeleton в compound (`YandexMap.Skeleton`, `Default.Scheme.LayerSkeleton`), не отдельный export. Shimmer — `@/components/core/skeleton`.
 
 ## Props
 

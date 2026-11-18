@@ -15,7 +15,13 @@ export function File({ ...props }: FileProps) {
     <FileContext.Provider value={contextValue}>
       <div
         {...props}
-        className={classNames('mosuk-file', styles.container, props?.className)}
+        className={classNames(
+          'mosuk-file',
+          '@container/file',
+          'group/file',
+          styles.container,
+          props?.className,
+        )}
       >
         {props?.children}
       </div>

@@ -1,6 +1,5 @@
 import { TBankTerminalProps } from '@/integrations/tbank/components/terminal/component.interface';
 import component from '@/integrations/tbank/components/terminal/component.module.css';
-import { TBankTerminalSkeleton } from '@/integrations/tbank/components/terminal/.partials/skeleton/component';
 import { TBankContext } from '@/integrations/tbank/provider/context/context';
 import classNames from 'classnames';
 import React, {
@@ -72,14 +71,6 @@ export function TBankTerminal<C extends ElementType = 'div'>({
     }
   }, [config.theme, integrationInstance]);
 
-  if (error) {
-    return <TBankTerminalSkeleton {...rest} />;
-  }
-
-  if (isLoading) {
-    return <TBankTerminalSkeleton {...rest} />;
-  }
-
   return (
     <Component
       {...rest}
@@ -90,7 +81,7 @@ export function TBankTerminal<C extends ElementType = 'div'>({
         rest?.className,
       )}
     >
-      {rest?.children}
+      {error || isLoading ? null : rest?.children}
     </Component>
   );
 }

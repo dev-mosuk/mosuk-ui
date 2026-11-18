@@ -19,6 +19,8 @@ export function Hint<C extends ElementType = 'p'>({
         {...rest}
         className={classNames(
           'mosuk-hint',
+          '@container/hint',
+          'group/hint',
           styles.hint,
           styles[hintType],
           rest.className,

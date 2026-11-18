@@ -11,7 +11,13 @@ export function OTP({ ...rest }: OTPProps) {
     <OTPField.Root
       {...rest}
       id={id}
-      className={classNames('mosuk-otp', styles.root, rest?.className)}
+      className={classNames(
+        'mosuk-otp',
+        '@container/otp',
+        'group/otp',
+        styles.root,
+        rest?.className,
+      )}
     >
       {rest?.children}
     </OTPField.Root>

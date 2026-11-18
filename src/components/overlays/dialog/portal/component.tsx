@@ -10,6 +10,8 @@ export function DialogPortal({ ...rest }: DialogPortalProps) {
       {...rest}
       className={classNames(
         'mosuk-dialog-portal',
+        '@container/dialog',
+        'group/dialog',
         styles.portal,
         rest?.className,
       )}

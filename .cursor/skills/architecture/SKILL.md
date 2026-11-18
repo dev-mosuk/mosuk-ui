@@ -15,7 +15,7 @@ Rule: `.cursor/rules/architecture.mdc`
 - [ ] Папки: . приватное, ( ) группа, [ ] dynamic — по смыслу
 - [ ] Файлы: component.tsx, hook.ts — по таблице rule
 - [ ] Export: named через index.ts feature
-- [ ] Imports: относительные внутри feature; cross-feature через index.ts
+- [ ] Imports: `@/` везде в `src/`, включая `.partials/`; публичный API feature — через его `index.ts`
 - [ ] Props: component.interface.ts (не .props.ts для нового кода)
 ```
 

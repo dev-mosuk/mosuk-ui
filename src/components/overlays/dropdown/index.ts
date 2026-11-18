@@ -1,19 +1,23 @@
 import { Dropdown as Component } from '@/components/overlays/dropdown/.partials/components/component';
 import { DropdownProps as ComponentProps } from '@/components/overlays/dropdown/.partials/components/component.interface';
-import { DropdownDropdown } from '@/components/overlays/dropdown/.partials/components/dropdown/component';
-import { DropdownDropdownProps } from '@/components/overlays/dropdown/.partials/components/dropdown/component.interface';
-import { DropdownDropdownContentButton } from '@/components/overlays/dropdown/.partials/components/dropdown/content/button/component';
-import { DropdownDropdownContentButtonProps } from '@/components/overlays/dropdown/.partials/components/dropdown/content/button/component.interface';
-import { DropdownDropdownContent } from '@/components/overlays/dropdown/.partials/components/dropdown/content/component';
-import { DropdownDropdownContentProps } from '@/components/overlays/dropdown/.partials/components/dropdown/content/component.interface';
+import { DropdownPortal } from '@/components/overlays/dropdown/.partials/components/portal/component';
+import { DropdownPortalProps } from '@/components/overlays/dropdown/.partials/components/portal/component.interface';
+import { DropdownPortalDropdown } from '@/components/overlays/dropdown/.partials/components/portal/dropdown/component';
+import { DropdownPortalDropdownProps } from '@/components/overlays/dropdown/.partials/components/portal/dropdown/component.interface';
+import { DropdownPortalDropdownContentButton } from '@/components/overlays/dropdown/.partials/components/portal/dropdown/content/button/component';
+import { DropdownPortalDropdownContentButtonProps } from '@/components/overlays/dropdown/.partials/components/portal/dropdown/content/button/component.interface';
+import { DropdownPortalDropdownContent } from '@/components/overlays/dropdown/.partials/components/portal/dropdown/content/component';
+import { DropdownPortalDropdownContentProps } from '@/components/overlays/dropdown/.partials/components/portal/dropdown/content/component.interface';
 import { DropdownTrigger } from '@/components/overlays/dropdown/.partials/components/trigger/component';
 import { DropdownTriggerProps } from '@/components/overlays/dropdown/.partials/components/trigger/component.interface';
 
 export const Dropdown = Object.assign(Component, {
   Trigger: DropdownTrigger,
-  Dropdown: Object.assign(DropdownDropdown, {
-    Content: Object.assign(DropdownDropdownContent, {
-      Button: DropdownDropdownContentButton,
+  Portal: Object.assign(DropdownPortal, {
+    Dropdown: Object.assign(DropdownPortalDropdown, {
+      Content: Object.assign(DropdownPortalDropdownContent, {
+        Button: DropdownPortalDropdownContentButton,
+      }),
     }),
   }),
 });
@@ -25,14 +29,18 @@ export namespace Dropdown {
     export type Props = DropdownTriggerProps;
   }
 
-  export namespace Dropdown {
-    export type Props = DropdownDropdownProps;
+  export namespace Portal {
+    export type Props = DropdownPortalProps;
 
-    export namespace Content {
-      export type Props = DropdownDropdownContentProps;
+    export namespace Dropdown {
+      export type Props = DropdownPortalDropdownProps;
 
-      export namespace Button {
-        export type Props = DropdownDropdownContentButtonProps;
+      export namespace Content {
+        export type Props = DropdownPortalDropdownContentProps;
+
+        export namespace Button {
+          export type Props = DropdownPortalDropdownContentButtonProps;
+        }
       }
     }
   }

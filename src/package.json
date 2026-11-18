@@ -46,14 +46,14 @@
         "default": "./components/actions/button/index.ts"
       }
     },
+    "./components/actions/calendar": {
+      "import": {
+        "default": "./components/actions/calendar/index.ts"
+      }
+    },
     "./components/actions/checkbox": {
       "import": {
         "default": "./components/actions/checkbox/index.ts"
-      }
-    },
-    "./components/actions/combobox": {
-      "import": {
-        "default": "./components/actions/combobox/index.ts"
       }
     },
     "./components/actions/icon": {
@@ -96,6 +96,11 @@
         "default": "./components/actions/select/index.ts"
       }
     },
+    "./components/actions/slider": {
+      "import": {
+        "default": "./components/actions/slider/index.ts"
+      }
+    },
     "./components/actions/slider/(cell)": {
       "import": {
         "default": "./components/actions/slider/(cell)/index.ts"
@@ -131,9 +136,9 @@
         "default": "./components/containers/card/index.ts"
       }
     },
-    "./components/containers/hr": {
+    "./components/containers/separator": {
       "import": {
-        "default": "./components/containers/hr/index.ts"
+        "default": "./components/containers/separator/index.ts"
       }
     },
     "./components/core/skeleton": {

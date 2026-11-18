@@ -12,11 +12,11 @@ alwaysApply: false
 
 ```
 {feature}/
-├── index.ts                 ← Component + Skeleton (если есть)
+├── index.ts                 ← публичный API feature
 └── .partials/…
 ```
 
-Потребитель: `mosuk-ui/components/actions/otp` (без `/component` / `/skeleton`).
+Потребитель: `mosuk-ui/components/actions/otp` (без `/component`).
 
 ## Compound component
 
@@ -50,18 +50,9 @@ export namespace OTP {
 - Потребитель: `OTP.Props`, `OTP.Input.Props`
 - Импорт типов props **не** из `.partials/` — только через namespace или re-export в index
 
-## Skeleton export
+## Skeleton
 
-```ts
-export const OTPSkeleton = Object.assign(Component, { Input: OTPInputSkeleton });
-
-export namespace OTPSkeleton {
-  export type Props = ComponentProps;
-  // …
-}
-```
-
-Именование: `{Name}Skeleton`, sub-parts: `{Sub}Skeleton`.
+Feature `{Name}Skeleton` не экспортируем. Единственный product skeleton — compound на Yandex Maps (`YandexMap.Skeleton`, `YandexMap.Default.Scheme.LayerSkeleton`). Shimmer-примитив — `mosuk-ui/components/core/skeleton`.
 
 ## Provider export
 

@@ -83,7 +83,6 @@ Utilities → `.cursor/rules/utilities.mdc`
 | Тип | Паттерн | Пример |
 | --- | ------- | ------ |
 | UI component | `{Name}` PascalCase | `OTP`, `Drawer`, `Toggle` |
-| Skeleton | `{Name}Skeleton` | `OTPSkeleton`, `ToggleSkeleton` |
 | Compound sub-part | `{Name}{Sub}` | `OTPInput`, `Drawer.Portal` |
 | Context hook | `use{Name}` | `useAlerts`, `useToggle` |
 | Service singleton | `{name}Service` | `alertsService` |
@@ -110,7 +109,7 @@ Utilities → `.cursor/rules/utilities.mdc`
 ## Импорты
 
 - **Везде в `src/`** — alias `@/…` → `src/…`; относительные `./…` и `../…` **запрещены** (ESLint `@typescript-eslint/no-restricted-imports`)
-- В т.ч. внутри feature и `.partials/` — `@/components/actions/otp/.partials/hooks/hook`, не `../hooks/hook`
+- В т.ч. внутри feature и `.partials/` — `@/components/navigation/stepper/.partials/hooks/hook`
 - **Named export** везде
 - **Не** barrel re-export всего `src/` — только точечные `index.ts` на feature
 - Массовая миграция legacy: `npm run migrate:imports -- --dry-run` / `--apply`
@@ -131,15 +130,16 @@ Utilities → `.cursor/rules/utilities.mdc`
 
 ```
 {feature}/
-├── index.ts                 ← Button + ButtonSkeleton (один public path)
-├── .partials/
-│   ├── components|styles|…  ← реализация component
-│   └── skeleton/            ← реализация skeleton (если есть)
+├── index.ts                 ← публичный API feature
+└── .partials/
+    └── components|styles|…  ← реализация component
 ```
 
-Публичный import: `mosuk-ui/components/…/{feature}` — **без** `/component` и `/skeleton`.
+Feature `{Name}Skeleton` не создаём. Единственный product skeleton — Yandex Maps (`YandexMap.Skeleton`). Shimmer-примитив — `src/components/core/skeleton`.
+
+Публичный import: `mosuk-ui/components/…/{feature}` — **без** `/component`.
 
 | Паттерн | Пример | Статус |
 | ------- | ------ | ------ |
-| Flat files у корня feature | `button/component.tsx` | legacy flat — не копировать |
-| `.partials/` + compound | `otp/`, `checkbox/`, `drawer/` | **canonical** — новый код |
+| `.partials/` + compound | `otp/`, `checkbox/`, `drawer/` | **canonical** — новый feature |
+| Flat files у корня feature | `button/component.tsx` | только при правке самого button |

@@ -16,6 +16,8 @@ export function Fieldset<C extends ElementType = 'fieldset'>({
         {...rest}
         className={classNames(
           'mosuk-fieldset',
+          '@container/fieldset',
+          'group/fieldset',
           styles.fieldset,
           rest?.className,
         )}

@@ -85,7 +85,9 @@ export function Toggle<C extends ElementType = 'div'>({
       const overflowsHorizontally = list.scrollWidth > list.clientWidth;
       const overflowsVertically = list.scrollHeight > list.clientHeight;
       const overflows =
-        orientation === 'vertical' ? overflowsVertically : overflowsHorizontally;
+        orientation === 'vertical'
+          ? overflowsVertically
+          : overflowsHorizontally;
 
       if (!overflows) {
         return;
@@ -145,19 +147,26 @@ export function Toggle<C extends ElementType = 'div'>({
       defaultValue={rootDefaultValue}
       orientation={orientation}
       onValueChange={handleValueChange}
+      render={
+        <Tabs.List
+          {...rest}
+          ref={setListRef}
+          render={listRender}
+          activateOnFocus={activateOnFocus}
+          loopFocus={loopFocus}
+          onClickCapture={handleClickCapture}
+          style={style}
+          className={classNames(
+            'mosuk-toggle',
+            '@container/toggle',
+            'group/toggle',
+            styles.toggle,
+            className,
+          )}
+        />
+      }
     >
-      <Tabs.List
-        {...rest}
-        ref={setListRef}
-        render={listRender}
-        activateOnFocus={activateOnFocus}
-        loopFocus={loopFocus}
-        onClickCapture={handleClickCapture}
-        style={style}
-        className={classNames('mosuk-toggle', styles.toggle, className)}
-      >
-        {children}
-      </Tabs.List>
+      {children}
     </Tabs.Root>
   );
 }

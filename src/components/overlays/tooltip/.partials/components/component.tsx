@@ -9,14 +9,22 @@ import React, {
   ReactElement,
   ReactNode,
   isValidElement,
+  useId,
+  useRef,
 } from 'react';
 
 export function Tooltip({
   children,
   delay = 0,
   closeDelay,
+  handle: handleProp,
   ...rest
 }: TooltipProps) {
+  const fallbackHandleRef = useRef(TooltipPrimitive.createHandle());
+  const handle = handleProp ?? fallbackHandleRef.current;
+  const triggerId = useId();
+  const isTouchPointerRef = useRef(false);
+
   const contentChildren: ReactElement[] = [];
   const triggerChildren: ReactNode[] = [];
 
@@ -39,12 +47,28 @@ export function Tooltip({
   const triggerChild = triggerChildren[0];
 
   return (
-    <TooltipPrimitive.Root {...rest}>
+    <TooltipPrimitive.Root {...rest} handle={handle}>
       <TooltipPrimitive.Trigger
+        id={triggerId}
         delay={delay}
         closeDelay={closeDelay}
+        closeOnClick={false}
         className={classNames('mosuk-tooltip-trigger')}
         render={isValidElement(triggerChild) ? triggerChild : undefined}
+        onPointerDown={(event) => {
+          isTouchPointerRef.current = event.pointerType === 'touch';
+        }}
+        onClick={() => {
+          if (!isTouchPointerRef.current) {
+            return;
+          }
+
+          if (handle.isOpen) {
+            handle.close();
+          } else {
+            handle.open(triggerId);
+          }
+        }}
       >
         {!isValidElement(triggerChild) ? triggerChild : null}
       </TooltipPrimitive.Trigger>

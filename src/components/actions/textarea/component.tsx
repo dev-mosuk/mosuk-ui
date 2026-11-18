@@ -27,6 +27,8 @@ export function Textarea<C extends ElementType = 'textarea'>({
       name={name}
       className={classNames(
         'mosuk-textarea',
+        '@container/textarea',
+        'group/textarea',
         styles.textarea,
         {
           [styles.autosize]: autoSize,

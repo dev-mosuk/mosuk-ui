@@ -61,27 +61,29 @@ alwaysApply: false
 }
 ```
 
-- Корневой класс — `.root` (или семантичное имя sub-part)
+- Корневой класс нового кода — `.root`. Семантические имена (`.checkbox`, `.button`) — только при правке feature, где они уже есть
 - Вложенность через `.root .child`, не глобальные селекторы
-- Файл: `component/.partials/styles/component.module.css`
+- Файл: `{feature}/.partials/styles/component.module.css`
 
 ## classNames в TSX
 
 ```tsx
-className={classNames('mosuk-otp', styles.root, rest?.className)}
+className={classNames(
+  'mosuk-otp',
+  '@container/otp',
+  'group/otp',
+  styles.root,
+  rest?.className,
+)}
 ```
 
-Порядок: **mosuk-{feature}** (глобальный hook) → **styles.\*** → **rest.className** последним.
+Порядок: **mosuk-{feature}** → **@container/{feature}** → **group/{feature}** → **styles.\*** → **rest.className** последним.
+
+Маркеры `group/{feature}` и `@container/{feature}` — на **визуальном DOM-корне** feature (не на каждый sub-part, не на headless Root). Для Base UI portal-оверлеев (drawer/dialog/dropdown) host = **Portal**.
 
 ## Skeleton и стили
 
-Skeleton **переиспользует** CSS module компонента:
-
-```tsx
-import styles from '../../../component/.partials/styles/component.module.css';
-```
-
-Отдельный skeleton CSS — только если layout skeleton принципиально другой (см. `toggle/.partials/skeleton/`).
+Feature skeleton в `src/components/` нет. Стили shimmer — `src/components/core/skeleton/component.module.css`. Стили карты — `src/integrations/yandex/maps/components/.partials/skeleton/component.module.css`.
 
 ## Глобальные стили
 

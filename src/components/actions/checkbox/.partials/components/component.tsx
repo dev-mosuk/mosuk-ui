@@ -15,7 +15,13 @@ export function Checkbox({ ref, ...rest }: CheckboxProps) {
       ref={ref}
       id={rest.id}
       name={rest.name ?? rest.id}
-      className={classNames('mosuk-checkbox', styles.checkbox, rest?.className)}
+      className={classNames(
+        'mosuk-checkbox',
+        '@container/checkbox',
+        'group/checkbox',
+        styles.checkbox,
+        rest?.className,
+      )}
     >
       {rest?.children}
     </BaseCheckbox.Root>

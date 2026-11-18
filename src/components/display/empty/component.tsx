@@ -12,7 +12,13 @@ export function Empty<C extends ElementType = 'section'>({
   return (
     <Component
       {...rest}
-      className={classNames('mosuk-empty', styles.empty, rest?.className)}
+      className={classNames(
+        'mosuk-empty',
+        '@container/empty',
+        'group/empty',
+        styles.empty,
+        rest?.className,
+      )}
     >
       {rest?.children}
     </Component>

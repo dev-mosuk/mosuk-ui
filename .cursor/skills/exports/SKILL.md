@@ -12,10 +12,10 @@ Rule: `.cursor/rules/exports.mdc`
 ## Checklist
 
 ```
-- [ ] {feature}/index.ts — единственная public entry (Component + Skeleton)
+- [ ] {feature}/index.ts — единственная public entry
 - [ ] Object.assign(Component, { Sub: SubComponent })
 - [ ] export namespace {Name} { export type Props; export namespace Sub { … } }
-- [ ] skeleton/index.ts mirrors compound tree
+- [ ] Feature `{Name}Skeleton` не экспортируем (исключение: `YandexMap.Skeleton`)
 - [ ] build: index.ts → dist export (tsconfig.build.ts walk)
 ```
 
@@ -31,6 +31,8 @@ export namespace OTP {
   }
 }
 ```
+
+Полный файл — `src/components/actions/otp/index.ts`. Product skeleton — `src/integrations/yandex/maps/components/index.ts`.
 
 ## Deep compound
 

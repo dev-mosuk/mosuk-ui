@@ -10,8 +10,6 @@ import { CellSliderTrack } from '@/components/actions/slider/(cell)/.partials/co
 import { CellSliderTrackProps } from '@/components/actions/slider/(cell)/.partials/components/track/component.interface';
 import { CellSliderValue } from '@/components/actions/slider/(cell)/.partials/components/value/component';
 import { CellSliderValueProps } from '@/components/actions/slider/(cell)/.partials/components/value/component.interface';
-import { CellSliderSkeleton as SkeletonComponent } from '@/components/actions/slider/(cell)/.partials/skeleton/components/component';
-import type { CellSliderSkeletonProps } from '@/components/actions/slider/(cell)/.partials/skeleton/components/component.interface';
 
 export const CellSlider = Object.assign(Component, {
   Label: CellSliderLabel,
@@ -43,10 +41,4 @@ export namespace CellSlider {
   export namespace Thumb {
     export type Props = CellSliderThumbProps;
   }
-}
-
-export const CellSliderSkeleton = Object.assign(SkeletonComponent, {});
-
-export namespace CellSliderSkeleton {
-  export type Props = CellSliderSkeletonProps;
 }

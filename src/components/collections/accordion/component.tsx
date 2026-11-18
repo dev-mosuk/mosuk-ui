@@ -10,6 +10,8 @@ export function Accordion({ ...rest }: AccordionProps) {
       {...rest}
       className={classNames(
         'mosuk-accordion',
+        '@container/accordion',
+        'group/accordion',
         styles.accordion,
         rest.className,
       )}

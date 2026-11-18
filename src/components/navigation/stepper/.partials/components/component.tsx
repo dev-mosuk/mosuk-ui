@@ -72,7 +72,13 @@ export function Stepper({
         {...rest}
         data-orientation={orientation}
         data-size={size}
-        className={classNames('mosuk-stepper', styles.root, className)}
+        className={classNames(
+          'mosuk-stepper',
+          '@container/stepper',
+          'group/stepper',
+          styles.root,
+          className,
+        )}
       >
         {steps.map((child, index) => (
           <StepperStepProvider

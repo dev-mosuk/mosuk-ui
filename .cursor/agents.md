@@ -30,7 +30,7 @@ src/
 
 | Слой | Роль | Пример |
 | ---- | ---- | ------ |
-| **Components** | Публичный UI, compound, skeleton | `OTP`, `Drawer`, `Toggle` |
+| **Components** | Публичный UI, compound | `OTP`, `Drawer`, `Toggle` |
 | **Integrations** | Внешние SDK + их UI | `YandexMap`, `TBankProvider` |
 | **Providers** | Context + side effects | `AlertsProvider` |
 | **Hooks** | React-обёртки над context/API | `useAlerts`, `useLocalStorage` |
@@ -45,7 +45,7 @@ src/
 | `common/{domain}/hooks/` | `hooks/` (cross-cutting) |
 | `shared/microservices/` | `providers/`, `services/` |
 | `shared/app/providers/` | `providers/` |
-| `app/(app)/.../.partials/` | `component/.partials/` внутри feature |
+| `app/(app)/.../.partials/` | `{feature}/.partials/` у корня feature |
 | `entities/`, CRUD hooks | **нет** — библиотека не знает API CRM |
 
 ### Правила DDD в этой библиотеке
@@ -62,8 +62,8 @@ src/
 
 ### S — Single Responsibility
 
-- Один файл — одна ответственность: root, sub-part, skeleton, hook.
-- Крупный UI → `component/.partials/components/` + compound в `index.ts`.
+- Один файл — одна ответственность: root, sub-part, hook.
+- Крупный UI → `{feature}/.partials/components/` + compound в `index.ts`.
 
 ### O — Open/Closed
 
@@ -73,7 +73,6 @@ src/
 ### L — Liskov Substitution
 
 - Polymorphic (`as`, `ElementType`) сохраняют контракт props.
-- Skeleton зеркалит layout и **переиспользует** CSS module компонента.
 
 ### I — Interface Segregation
 
@@ -91,8 +90,7 @@ src/
 
 | Паттерн | Смысл |
 | ------- | ----- |
-| `.partials/` | Приватная реализация feature; не импортировать извне |
-| `component/` + `skeleton/` | Пара для loading states |
+| `.partials/` | Приватная реализация у корня feature; не импортировать извне |
 | Provider + Context (4 файла) | Состояние без prop drilling |
 | `index.ts` | Единственная точка публичного export feature |
 
@@ -101,9 +99,9 @@ src/
 ## Принципы при генерации кода
 
 1. **Минимальный diff** — не рефакторить соседний код без запроса.
-2. **Эталон OTP** — новые компоненты копируют `src/components/actions/otp/`, не legacy `button/`.
+2. **Эталон OTP** — новый feature копирует дерево `src/components/actions/otp/` (`index.ts` + `.partials/`). Flat `button/` — только если правка самого button.
 3. **Named exports** — везде; default только если требует внешний контракт.
-4. **Относительные импорты** внутри feature; cross-feature — через `index.ts` потребителя.
+4. **Импорты `@/`** везде в `src/`, включая `.partials/`. Публичный API соседнего feature — через его `index.ts`.
 5. **Не over-engineer** — без лишних абстракций и преждевременных generic.
 
 ---
@@ -153,11 +151,12 @@ src/
 
 | Задача | Смотреть |
 | ------ | -------- |
-| Канонический компонент + skeleton | `src/components/actions/otp/` |
-| Compound + provider в .partials | `src/components/actions/toggle/` |
-| Deep compound overlay (`.partials/` + nested) | `src/components/overlays/drawer/` |
-| Checkbox (как OTP) | `src/components/actions/checkbox/` |
-| Legacy flat (не копировать) | `src/components/actions/button/` |
+| Канонический компонент | `src/components/actions/otp/` |
+| Product skeleton (только карты) | `src/integrations/yandex/maps/` |
+| Indicator sub-part | `src/components/actions/checkbox/` |
+| Deep compound overlay | `src/components/overlays/drawer/` |
+| Shared state в `.partials` | `src/components/navigation/stepper/`, `src/components/display/image/` |
+| Flat — только правка этого feature | `src/components/actions/button/`, `src/components/overlays/dialog/`, `src/components/forms/fieldset/` |
 | Integration (product / vendor) | `src/integrations/yandex/maps/`, `src/integrations/tbank/` |
 | Provider + service | `src/providers/alerts/` |
 | Hook over context | `src/hooks/alerts/` |

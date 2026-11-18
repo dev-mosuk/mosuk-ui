@@ -14,6 +14,7 @@ export default function CardComponent<C extends ElementType = 'div'>({
     <Component
       {...rest}
       className={classNames(
+        'mosuk-card',
         '@container/card',
         'group/card',
         styles.card,

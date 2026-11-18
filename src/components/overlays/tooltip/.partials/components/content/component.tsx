@@ -21,7 +21,12 @@ export function TooltipContent({
       <Tooltip.Positioner
         {...positioner}
         sideOffset={sideOffset}
-        className={classNames('mosuk-tooltip-positioner', styles.positioner)}
+        className={classNames(
+          'mosuk-tooltip-positioner',
+          '@container/tooltip',
+          'group/tooltip',
+          styles.positioner,
+        )}
       >
         <Tooltip.Popup
           className={classNames(

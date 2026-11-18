@@ -63,15 +63,15 @@ Imperative API в `src/services/{feature}/` — provider wiring, service logic.
 ## Эталоны
 
 - `src/providers/alerts/` — provider + list sub-component + service
-- External SDK → `src/integrations/{vendor}/…/provider/` (не сюда)
-- Component: `src/components/actions/toggle/component/.partials/providers/`
-- Form: `src/components/forms/fieldset/component/providers/`
+- External SDK → `src/integrations/{vendor}/…/provider/`
+- Component-local: `src/components/navigation/stepper/.partials/providers/`, `src/components/display/image/.partials/providers/`
+- Form (legacy flat): `src/components/forms/fieldset/providers/`
 
 ## 4-file context
 
 ### Когда
 
-- Shared state между compound sub-parts (toggle)
+- Shared state между compound sub-parts (stepper, image)
 - App-level API через context (alerts)
 - Feature-scoped form state (fieldset)
 
@@ -122,7 +122,7 @@ export function FeatureProvider({ children, ...config }: FeatureProviderProps) {
 
 ### Consumer hook
 
-Отдельный файл `hooks/hook.ts` или `component/.partials/hooks/hook.ts`:
+Отдельный файл `src/hooks/{feature}/hook.ts` или `{feature}/.partials/hooks/hook.ts` (эталон — `src/components/navigation/stepper/.partials/hooks/hook.ts`):
 
 ```ts
 export function useFeature(): UseFeatureProps {
@@ -140,8 +140,8 @@ export function useFeature(): UseFeatureProps {
 | ----- | ---- |
 | App-level | `src/providers/{feature}/` |
 | External SDK | `src/integrations/{vendor}/…/provider/` |
-| Component-local | `component/.partials/providers/` |
-| Form feature | `forms/.../component/providers/` |
+| Component-local | `{feature}/.partials/providers/` |
+| Form feature (legacy flat) | `src/components/forms/fieldset/providers/` |
 
 ### Export
 

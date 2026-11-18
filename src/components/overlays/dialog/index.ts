@@ -1,9 +1,5 @@
-import { DialogClose } from '@/components/overlays/dialog/close/component';
-import { DialogCloseProps } from '@/components/overlays/dialog/close/component.interface';
 import { Dialog as Component } from '@/components/overlays/dialog/component';
 import { DialogProps as ComponentProps } from '@/components/overlays/dialog/component.interface';
-import { DialogOpen } from '@/components/overlays/dialog/open/component';
-import { DialogOpenProps } from '@/components/overlays/dialog/open/component.interface';
 import { DialogPortal } from '@/components/overlays/dialog/portal/component';
 import { DialogPortalProps } from '@/components/overlays/dialog/portal/component.interface';
 import { DialogPortalViewportBackdrop } from '@/components/overlays/dialog/portal/viewport/backdrop/component';
@@ -12,17 +8,21 @@ import { DialogPortalViewport } from '@/components/overlays/dialog/portal/viewpo
 import { DialogPortalViewportProps } from '@/components/overlays/dialog/portal/viewport/component.interface';
 import { DialogPortalViewportPopup } from '@/components/overlays/dialog/portal/viewport/popup/component';
 import { DialogPortalViewportPopupProps } from '@/components/overlays/dialog/portal/viewport/popup/component.interface';
+import { DialogPortalViewportPopupClose } from '@/components/overlays/dialog/portal/viewport/popup/close/component';
+import { DialogPortalViewportPopupCloseProps } from '@/components/overlays/dialog/portal/viewport/popup/close/component.interface';
 import { DialogPortalViewportPopupContent } from '@/components/overlays/dialog/portal/viewport/popup/content/component';
 import { DialogPortalViewportPopupContentProps } from '@/components/overlays/dialog/portal/viewport/popup/content/component.interface';
+import { DialogTrigger } from '@/components/overlays/dialog/trigger/component';
+import { DialogTriggerProps } from '@/components/overlays/dialog/trigger/component.interface';
 
 export const Dialog = Object.assign(Component, {
-  Open: DialogOpen,
-  Close: DialogClose,
+  Trigger: DialogTrigger,
   Portal: Object.assign(DialogPortal, {
     Viewport: Object.assign(DialogPortalViewport, {
       Backdrop: DialogPortalViewportBackdrop,
       Popup: Object.assign(DialogPortalViewportPopup, {
         Content: DialogPortalViewportPopupContent,
+        Close: DialogPortalViewportPopupClose,
       }),
     }),
   }),
@@ -31,12 +31,8 @@ export const Dialog = Object.assign(Component, {
 export namespace Dialog {
   export type Props = ComponentProps;
 
-  export namespace Open {
-    export type Props = DialogOpenProps;
-  }
-
-  export namespace Close {
-    export type Props = DialogCloseProps;
+  export namespace Trigger {
+    export type Props = DialogTriggerProps;
   }
 
   export namespace Portal {
@@ -54,6 +50,10 @@ export namespace Dialog {
 
         export namespace Content {
           export type Props = DialogPortalViewportPopupContentProps;
+        }
+
+        export namespace Close {
+          export type Props = DialogPortalViewportPopupCloseProps;
         }
       }
     }

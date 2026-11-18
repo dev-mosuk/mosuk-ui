@@ -12,7 +12,13 @@ export function Button<C extends ElementType = 'button'>({
   return (
     <Component
       {...rest}
-      className={classNames('mosuk-button', styles.button, rest?.className)}
+      className={classNames(
+        'mosuk-button',
+        '@container/button',
+        'group/button',
+        styles.button,
+        rest?.className,
+      )}
     >
       {rest?.children}
     </Component>

@@ -15,7 +15,13 @@ export function Switch({ ref, ...rest }: SwitchProps) {
       id={rest.id}
       type='checkbox'
       name={rest.name ?? rest.id}
-      className={classNames('mosuk-switch', styles.switch, rest?.className)}
+      className={classNames(
+        'mosuk-switch',
+        '@container/switch',
+        'group/switch',
+        styles.switch,
+        rest?.className,
+      )}
     />
   );
 }

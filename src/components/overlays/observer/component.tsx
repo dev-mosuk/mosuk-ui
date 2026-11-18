@@ -12,7 +12,13 @@ export function Observer<C extends ElementType = 'aside'>({
   return (
     <Component
       {...rest}
-      className={classNames('mosuk-observer', styles.observer, rest?.className)}
+      className={classNames(
+        'mosuk-observer',
+        '@container/observer',
+        'group/observer',
+        styles.observer,
+        rest?.className,
+      )}
     >
       {rest?.children}
     </Component>

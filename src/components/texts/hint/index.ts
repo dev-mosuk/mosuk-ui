@@ -27,12 +27,3 @@ export namespace Hint {
     export type Props = HintTextProps;
   }
 }
-
-import { HintSkeleton as BaseHintSkeleton } from '@/components/texts/hint/.partials/skeleton/component';
-import { HintSkeletonProps } from '@/components/texts/hint/.partials/skeleton/component.interface';
-
-export const HintSkeleton = BaseHintSkeleton;
-
-export namespace HintSkeleton {
-  export type Props = HintSkeletonProps;
-}

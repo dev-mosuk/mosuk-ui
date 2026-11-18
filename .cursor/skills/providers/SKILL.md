@@ -36,7 +36,7 @@ Rule: `.cursor/rules/providers.mdc`
 
 ## Component-local provider
 
-Toggle-style → `component/.partials/providers/` — 4-file pattern в `providers.mdc`.
+Shared state между sub-parts → `{feature}/.partials/providers/` — 4-file pattern в `providers.mdc`.
 
 ## Эталоны
 
@@ -44,4 +44,5 @@ Toggle-style → `component/.partials/providers/` — 4-file pattern в `provide
 | ----- | ---- |
 | App + service | `src/providers/alerts/` |
 | External SDK | `src/integrations/{vendor}/…/provider/` |
-| Component-local | `src/components/actions/toggle/component/.partials/providers/` |
+| Component-local | `src/components/navigation/stepper/.partials/providers/` |
+| Component-local | `src/components/display/image/.partials/providers/` |

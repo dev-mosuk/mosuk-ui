@@ -64,34 +64,3 @@ export namespace Stepper {
 export namespace useStepperStep {
   export type Props = UseStepperStepProps;
 }
-
-import { StepperSkeleton as SkeletonComponent } from '@/components/navigation/stepper/.partials/skeleton/components/component';
-import type { StepperSkeletonProps as SkeletonComponentProps } from '@/components/navigation/stepper/.partials/skeleton/components/component.interface';
-import { StepperContentSkeleton } from '@/components/navigation/stepper/.partials/skeleton/components/content/component';
-import type { StepperContentSkeletonProps } from '@/components/navigation/stepper/.partials/skeleton/components/content/component.interface';
-import { StepperIndicatorSkeleton } from '@/components/navigation/stepper/.partials/skeleton/components/indicator/component';
-import type { StepperIndicatorSkeletonProps } from '@/components/navigation/stepper/.partials/skeleton/components/indicator/component.interface';
-import { StepperStepSkeleton } from '@/components/navigation/stepper/.partials/skeleton/components/step/component';
-import type { StepperStepSkeletonProps } from '@/components/navigation/stepper/.partials/skeleton/components/step/component.interface';
-
-export const StepperSkeleton = Object.assign(SkeletonComponent, {
-  Step: StepperStepSkeleton,
-  Indicator: StepperIndicatorSkeleton,
-  Content: StepperContentSkeleton,
-});
-
-export namespace StepperSkeleton {
-  export type Props = SkeletonComponentProps;
-
-  export namespace Step {
-    export type Props = StepperStepSkeletonProps;
-  }
-
-  export namespace Indicator {
-    export type Props = StepperIndicatorSkeletonProps;
-  }
-
-  export namespace Content {
-    export type Props = StepperContentSkeletonProps;
-  }
-}

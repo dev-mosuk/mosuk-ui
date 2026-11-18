@@ -21,27 +21,3 @@ export namespace Breadcrumbs {
     export type Props = BreadcrumbsButtonProps;
   }
 }
-
-import { BreadcrumbsButtonSkeleton } from '@/components/navigation/breadcrumbs/.partials/skeleton/components/button/component';
-import { BreadcrumbsButtonSkeletonProps } from '@/components/navigation/breadcrumbs/.partials/skeleton/components/button/component.interface';
-import { BreadcrumbsSkeleton as BaseBreadcrumbsSkeleton } from '@/components/navigation/breadcrumbs/.partials/skeleton/components/component';
-import type { BreadcrumbsSkeletonProps } from '@/components/navigation/breadcrumbs/.partials/skeleton/components/component.interface';
-import { BreadcrumbsIconSkeleton } from '@/components/navigation/breadcrumbs/.partials/skeleton/components/icon/component';
-import { BreadcrumbsIconSkeletonProps } from '@/components/navigation/breadcrumbs/.partials/skeleton/components/icon/component.interface';
-
-export const BreadcrumbsSkeleton = Object.assign(BaseBreadcrumbsSkeleton, {
-  Icon: BreadcrumbsIconSkeleton,
-  Button: BreadcrumbsButtonSkeleton,
-});
-
-export namespace BreadcrumbsSkeleton {
-  export type Props = BreadcrumbsSkeletonProps;
-
-  export namespace Icon {
-    export type Props = BreadcrumbsIconSkeletonProps;
-  }
-
-  export namespace Button {
-    export type Props = BreadcrumbsButtonSkeletonProps;
-  }
-}

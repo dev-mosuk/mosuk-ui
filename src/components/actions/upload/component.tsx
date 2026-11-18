@@ -16,7 +16,13 @@ export function Upload<C extends ElementType = 'fieldset'>({
     <UploadProvider>
       <Component
         {...rest}
-        className={classNames('mosuk-upload', styles.fieldset, rest?.className)}
+        className={classNames(
+          'mosuk-upload',
+          '@container/upload',
+          'group/upload',
+          styles.fieldset,
+          rest?.className,
+        )}
       >
         {rest?.children}
       </Component>

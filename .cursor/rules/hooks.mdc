@@ -64,10 +64,10 @@ Re-export из `./hook`; типы из `hook.interface.ts`.
 1. Hooks **не** содержат JSX (кроме rare render hooks — избегать)
 2. **Не** axios/SWR в mosuk-ui hooks — это CRM app concern
 3. Side effects — в provider; hook читает context/state
-4. Feature-local hooks в `component/.partials/hooks/` — для compound components (toggle)
+4. Feature-local hooks в `{feature}/.partials/hooks/` — для compound components (stepper)
 
 ## Эталоны
 
 - `src/hooks/alerts/` — context consumer
 - `src/hooks/storage/local/` — browser API
-- `src/components/actions/toggle/component/.partials/hooks/` — feature-local
+- `src/components/navigation/stepper/.partials/hooks/` — feature-local

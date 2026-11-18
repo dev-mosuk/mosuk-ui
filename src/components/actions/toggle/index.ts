@@ -21,20 +21,3 @@ export namespace Toggle {
     export type Props = ToggleIndicatorProps;
   }
 }
-
-import { ToggleButtonSkeleton } from '@/components/actions/toggle/.partials/skeleton/components/button/component';
-import { ToggleButtonSkeletonProps } from '@/components/actions/toggle/.partials/skeleton/components/button/component.props';
-import { ToggleSkeleton as SkeletonComponent } from '@/components/actions/toggle/.partials/skeleton/components/component';
-import type { ToggleSkeletonProps } from '@/components/actions/toggle/.partials/skeleton/components/component.props';
-
-export const ToggleSkeleton = Object.assign(SkeletonComponent, {
-  Button: ToggleButtonSkeleton,
-});
-
-export namespace ToggleSkeleton {
-  export type Props = ToggleSkeletonProps;
-
-  export namespace Button {
-    export type Props = ToggleButtonSkeletonProps;
-  }
-}

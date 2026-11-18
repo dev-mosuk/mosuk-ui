@@ -21,12 +21,3 @@ export namespace Image {
     export type Props = ImageImageProps;
   }
 }
-
-import { ImageSkeleton as SkeletonComponent } from '@/components/display/image/.partials/skeleton/components/component';
-import { ImageSkeletonProps } from '@/components/display/image/.partials/skeleton/components/component.interface';
-
-export const ImageSkeleton = SkeletonComponent;
-
-export namespace ImageSkeleton {
-  export type Props = ImageSkeletonProps;
-}
