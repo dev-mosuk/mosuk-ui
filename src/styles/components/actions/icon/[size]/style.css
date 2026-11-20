@@ -1,18 +1,18 @@
 @utility icon-* {
-    width: calc(var(--spacing, 0.25rem) * --value(integer));
-    height: calc(var(--spacing, 0.25rem) * --value(integer));
-    min-width: calc(var(--spacing, 0.25rem) * --value(integer));
-    min-height: calc(var(--spacing, 0.25rem) * --value(integer));
+    width: calc(var(--spacing) * --value(integer));
+    height: calc(var(--spacing) * --value(integer));
+    min-width: calc(var(--spacing) * --value(integer));
+    min-height: calc(var(--spacing) * --value(integer));
 
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    font-size: calc(var(--spacing, 0.25rem) * 0.375 * --value(integer));
+    font-size: calc(var(--spacing) * 0.375 * --value(integer));
     font-weight: 400;
     text-wrap: nowrap;
 
-    padding: calc(var(--spacing, 0.25rem) * 0.275 * --value(integer));
+    padding: calc(var(--spacing) * 0.275 * --value(integer));
     border-radius: calc(infinity * 1px);
     outline: none;
 

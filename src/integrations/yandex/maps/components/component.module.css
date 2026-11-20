@@ -4,7 +4,7 @@
           overflow: hidden;
 
           width: 100%;
-          height: calc(var(--spacing, .25rem) * 100);
+          height: calc(var(--spacing) * 100);
       }
 
       /* Кнопки Zoom: плавное приближение/удаление при клике.

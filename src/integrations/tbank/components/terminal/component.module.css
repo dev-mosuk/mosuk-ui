@@ -2,7 +2,7 @@
 
       .TBankTerminal {
           width: 100%;
-          min-height: calc(var(--spacing, .25rem) * 175);
+          min-height: calc(var(--spacing) * 175);
 
           background-color: #f6f7f8;
       }

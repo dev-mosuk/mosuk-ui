@@ -7,18 +7,18 @@
       .content {
           display: flex;
           flex-direction: column;
-          gap: calc(var(--spacing, 0.25rem) * 1);
+          gap: calc(var(--spacing) * 1);
 
           width: fit-content;
 
-          padding: calc(var(--spacing, 0.25rem) * 2);
+          padding: calc(var(--spacing) * 2);
 
           background-color: rgba(255, 255, 255, 0.95);
           backdrop-filter: blur(12px);
 
           border: 0.75px solid var(--color-gray-200);
-          border-radius: var(--radius-2xl, 1rem);
-          box-shadow: 0 25px 50px -12px color-mix(in oklab, var(--color-gray-400) 50%, transparent);
+          border-radius: var(--radius-2xl);
+          box-shadow: 0 25px 50px -12px color-mix(in oklab, var(--color-gray-200) 50%, transparent);
 
           transform-origin: var(--transform-origin);
           transition: transform 200ms, opacity 200ms;
@@ -71,7 +71,7 @@
               width: calc(6px * sqrt(2));
               height: calc(6px * sqrt(2));
               background-color: rgba(255, 255, 255, 0.95);
-              border: 1px solid var(--color-gray-100, oklch(0.967 0.003 264.542));
+              border: 1px solid var(--color-gray-100);
               transform: translate(-50%, 50%) rotate(45deg);
           }
       }

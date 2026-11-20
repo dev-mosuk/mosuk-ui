@@ -1,13 +1,9 @@
 import { Chat as Component } from '@/components/collections/chat/.partials/components/component';
 import { ChatProps } from '@/components/collections/chat/.partials/components/component.interface';
-import { ChatComposerActions } from '@/components/collections/chat/.partials/components/composer/actions/component';
-import { ChatComposerActionsProps } from '@/components/collections/chat/.partials/components/composer/actions/component.interface';
-import { ChatComposerAttach } from '@/components/collections/chat/.partials/components/composer/attach/component';
-import { ChatComposerAttachProps } from '@/components/collections/chat/.partials/components/composer/attach/component.interface';
 import { ChatComposer } from '@/components/collections/chat/.partials/components/composer/component';
 import { ChatComposerProps } from '@/components/collections/chat/.partials/components/composer/component.interface';
-import { ChatComposerSend } from '@/components/collections/chat/.partials/components/composer/send/component';
-import { ChatComposerSendProps } from '@/components/collections/chat/.partials/components/composer/send/component.interface';
+import { ChatComposerIcon } from '@/components/collections/chat/.partials/components/composer/icon/component';
+import { ChatComposerIconProps } from '@/components/collections/chat/.partials/components/composer/icon/component.interface';
 import { ChatComposerTextarea } from '@/components/collections/chat/.partials/components/composer/textarea/component';
 import { ChatComposerTextareaProps } from '@/components/collections/chat/.partials/components/composer/textarea/component.interface';
 import { ChatMessageAvatar } from '@/components/collections/chat/.partials/components/message/avatar/component';
@@ -33,10 +29,8 @@ export const Chat = Object.assign(Component, {
     },
   }),
   Composer: Object.assign(ChatComposer, {
-    Attach: ChatComposerAttach,
+    Icon: ChatComposerIcon,
     Textarea: ChatComposerTextarea,
-    Actions: ChatComposerActions,
-    Send: ChatComposerSend,
   }),
 });
 
@@ -70,20 +64,12 @@ export namespace Chat {
   export namespace Composer {
     export type Props = ChatComposerProps;
 
-    export namespace Attach {
-      export type Props = ChatComposerAttachProps;
+    export namespace Icon {
+      export type Props = ChatComposerIconProps;
     }
 
     export namespace Textarea {
       export type Props = ChatComposerTextareaProps;
-    }
-
-    export namespace Actions {
-      export type Props = ChatComposerActionsProps;
-    }
-
-    export namespace Send {
-      export type Props = ChatComposerSendProps;
     }
   }
 }

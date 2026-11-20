@@ -1,9 +1,9 @@
 @layer base {
     :root {        
-        --swiper-navigation-color: var(--color-gray-700, oklch(0.373 0.034 259.733));
-        --swiper-navigation-top-offset: calc(50% + calc(var(--spacing, .25rem) * -4));
-        --swiper-navigation-sides-offset: calc(var(--spacing, 0.25rem) * -4);
-        --swiper-navigation-size: var(--text-2xs, .625rem);
+        --swiper-navigation-color: var(--color-gray-700);
+        --swiper-navigation-top-offset: calc(50% + calc(var(--spacing) * -4));
+        --swiper-navigation-sides-offset: calc(var(--spacing) * -4);
+        --swiper-navigation-size: var(--text-2xs);
     } 
     
     html, body {
@@ -16,14 +16,14 @@
 
         .swiper-button-prev,
         .swiper-button-next {
-            width: calc(var(--spacing, .25rem) * 8);
-            height: calc(var(--spacing, .25rem) * 8);
-            min-width: calc(var(--spacing, .25rem) * 8);
-            min-height: calc(var(--spacing, .25rem) * 8);
+            width: calc(var(--spacing) * 8);
+            height: calc(var(--spacing) * 8);
+            min-width: calc(var(--spacing) * 8);
+            min-height: calc(var(--spacing) * 8);
 
-            background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
+            background-color: var(--color-gray-100);
 
-            padding: calc(var(--spacing, .25rem) * 2.5);
+            padding: calc(var(--spacing) * 2.5);
             border-radius: calc(infinity * 1px);
             outline: none;
 
@@ -46,10 +46,10 @@
             }
 
             &:hover {
-                background-color: var(--color-primary-100, #e0f2ff);                
+                background-color: var(--color-primary-100);                
 
                 &::after {
-                    color: var(--color-primary-500, #0074e7);
+                    color: var(--color-primary-500);
                 }
             }
         }

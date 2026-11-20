@@ -40,6 +40,27 @@ alwaysApply: false
 - Вложенность через `.root .child`, не глобальные селекторы
 - Файл: `{feature}/.partials/styles/component.module.css`
 
+## Порядок свойств в CSS module
+
+Пустая строка между группами. Внутри группы — без пустых строк.
+
+1. **overflow** — `overflow*`, `overscroll*`, `scrollbar-*`
+2. **position** — `position`, `inset*`, `top`/`right`/`bottom`/`left`, `z-index`
+3. **layout** — `display`, flex/grid props, `gap`, `align-*`, `justify-*`, `place-*`
+4. **size** — `width`/`height`, `min-*`/`max-*`, `flex-basis`/`grow`/`shrink`, `resize`
+5. **spacing** — `margin*`, `padding*`
+6. **type** — `color`, `font-*`, `line-height`, `text-*`, `white-space`, `letter-spacing`
+7. **background** — `background*`
+8. **border** — `border*`, `border-radius`, `outline`
+9. **shadow** — `box-shadow`
+10. **filters** — `opacity`, `filter`, `backdrop-filter`, `transform`
+11. **interaction** — `cursor`, `pointer-events`, `user-select`
+12. **motion** — `transition*`, `animation*`
+
+Запрещено: смешивать spacing/overflow в блок `display`/`grid`; склеивать background / border / shadow; сваливать filters / interaction / motion в одну кучу.
+
+Эталон порядка: `src/components/collections/chat/.partials/styles/component.module.css` → `.composer`.
+
 ## classNames в TSX
 
 ```tsx

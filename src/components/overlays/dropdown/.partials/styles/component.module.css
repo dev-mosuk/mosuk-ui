@@ -13,18 +13,18 @@
           .content {
               display: flex;
               flex-direction: column;
-              gap: calc(var(--spacing, 0.25rem) * 1);
+              gap: calc(var(--spacing) * 1);
 
               width: fit-content;
               min-width: fit-content;
 
-              padding: calc(var(--spacing, 0.25rem) * 1);
+              padding: calc(var(--spacing) * 1);
 
               background-color: var(--color-white);
 
               border: 0.75px solid var(--color-gray-200);
-              border-radius: var(--radius-2xl, 1rem);
-              box-shadow: 0 25px 50px -12px rgba(243, 244, 246, var(--tw-shadow-alpha, 0.5));
+              border-radius: var(--radius-2xl);
+              box-shadow: 0 25px 50px -12px color-mix(in oklab, var(--color-gray-200) 50%, transparent);
 
               transform-origin: var(--transform-origin);
               transition: all 200ms ease-in-out;
@@ -38,22 +38,22 @@
 
           .button {
               width: 100%;
-              height: calc(var(--spacing, 0.25rem) * 7);
+              height: calc(var(--spacing) * 7);
               min-width: 100%;
-              min-height: calc(var(--spacing, 0.25rem) * 7);
+              min-height: calc(var(--spacing) * 7);
 
               display: flex;
               align-items: center;
               justify-content: start;
-              gap: calc(var(--spacing, 0.25rem) * 0.25 * 7);
+              gap: calc(var(--spacing) * 0.25 * 7);
 
               color: var(--color-black);
-              font-size: calc(var(--spacing, 0.25rem) * 0.375 * 7);
+              font-size: calc(var(--spacing) * 0.375 * 7);
               font-weight: 300;
               text-wrap: nowrap;
 
-              padding-left: calc(var(--spacing, 0.25rem) * 0.5 * 7);
-              padding-right: calc(var(--spacing, 0.25rem) * 0.5 * 7);
+              padding-left: calc(var(--spacing) * 0.5 * 7);
+              padding-right: calc(var(--spacing) * 0.5 * 7);
               border-radius: calc(infinity * 1px);
               outline: none;
 
@@ -66,10 +66,10 @@
 
               & :where(svg),
               .icon {
-                  width: calc(var(--spacing, 0.25rem) * 0.425 * 7);
-                  height: calc(var(--spacing, 0.25rem) * 0.425 * 7);
-                  min-width: calc(var(--spacing, 0.25rem) * 0.425 * 7);
-                  min-height: calc(var(--spacing, 0.25rem) * 0.425 * 7);
+                  width: calc(var(--spacing) * 0.425 * 7);
+                  height: calc(var(--spacing) * 0.425 * 7);
+                  min-width: calc(var(--spacing) * 0.425 * 7);
+                  min-height: calc(var(--spacing) * 0.425 * 7);
 
                   color: var(--color-gray-500);
                   stroke-width: 1.25;
@@ -83,10 +83,10 @@
 
               .chevron,
               .arrow {
-                  width: calc(var(--spacing, 0.25rem) * 0.425 * 6);
-                  height: calc(var(--spacing, 0.25rem) * 0.425 * 6);
-                  min-width: calc(var(--spacing, 0.25rem) * 0.425 * 6);
-                  min-height: calc(var(--spacing, 0.25rem) * 0.425 * 6);
+                  width: calc(var(--spacing) * 0.425 * 6);
+                  height: calc(var(--spacing) * 0.425 * 6);
+                  min-width: calc(var(--spacing) * 0.425 * 6);
+                  min-height: calc(var(--spacing) * 0.425 * 6);
 
                   color: var(--color-gray-500);
                   stroke-width: 1.25;

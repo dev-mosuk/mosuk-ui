@@ -2,7 +2,7 @@
 
       .slide {
           width: fit-content;
-          height: calc(var(--spacing, .25rem) * 6);
+          height: calc(var(--spacing) * 6);
 
           display: flex;
           align-items: center;
@@ -10,34 +10,34 @@
       }
 
       .icon {
-          width: calc(var(--spacing, .25rem) * 6);
-          height: calc(var(--spacing, .25rem) * 6);
-          min-width: calc(var(--spacing, .25rem) * 6);
-          min-height: calc(var(--spacing, .25rem) * 6);
+          width: calc(var(--spacing) * 6);
+          height: calc(var(--spacing) * 6);
+          min-width: calc(var(--spacing) * 6);
+          min-height: calc(var(--spacing) * 6);
 
-          padding: calc(var(--spacing, .25rem) * 1.75);
+          padding: calc(var(--spacing) * 1.75);
 
-          font-size: var(--text-sm, 0.875rem);
+          font-size: var(--text-sm);
       }
 
       .button {
-          height: calc(var(--spacing, 0.25rem) * 6);
+          height: calc(var(--spacing) * 6);
 
           display: flex;
           align-items: center;
           justify-content: center;
-          gap: calc(var(--spacing, 0.25rem) * 1.75);
+          gap: calc(var(--spacing) * 1.75);
 
-          font-size: var(--text-xs, 0.75rem);
+          font-size: var(--text-xs);
 
-          padding-left: calc(var(--spacing, 0.25rem) * 2.75);
-          padding-right: calc(var(--spacing, 0.25rem) * 2.75);
+          padding-left: calc(var(--spacing) * 2.75);
+          padding-right: calc(var(--spacing) * 2.75);
 
           & svg {
-              width: calc(var(--spacing, 0.25rem) * 2.5);
-              height: calc(var(--spacing, 0.25rem) * 2.5);
-              min-width: calc(var(--spacing, 0.25rem) * 2.5);
-              min-height: calc(var(--spacing, 0.25rem) * 2.5);
+              width: calc(var(--spacing) * 2.5);
+              height: calc(var(--spacing) * 2.5);
+              min-width: calc(var(--spacing) * 2.5);
+              min-height: calc(var(--spacing) * 2.5);
           }
       }
 
@@ -45,13 +45,13 @@
           .slide {
               &:last-child {
                   .icon {
-                      background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
-                      color: var(--color-primary-500, #0074e7);
+                      background-color: var(--color-gray-100);
+                      color: var(--color-primary-500);
                   }
 
                   .button {
-                      background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
-                      color: var(--color-primary-500, #0074e7);
+                      background-color: var(--color-gray-100);
+                      color: var(--color-primary-500);
                   }
               }
           }

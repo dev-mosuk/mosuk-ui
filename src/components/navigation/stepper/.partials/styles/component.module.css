@@ -2,11 +2,11 @@
 
       .root {
           --stepper-separator-size: 1px;
-          --stepper-active-color: var(--color-primary-500, #0074e7);
-          --stepper-complete-color: var(--color-primary-500, #0074e7);
-          --stepper-complete-fg: var(--color-white, #fff);
-          --stepper-inactive-border: var(--color-gray-200, oklch(0.928 0.006 264.531));
-          --stepper-inactive-fg: var(--color-gray-500, oklch(0.551 0.027 264.364));
+          --stepper-active-color: var(--color-primary-500);
+          --stepper-complete-color: var(--color-primary-500);
+          --stepper-complete-fg: var(--color-white);
+          --stepper-inactive-border: var(--color-gray-200);
+          --stepper-inactive-fg: var(--color-gray-500);
 
           display: flex;
           list-style: none;
@@ -99,21 +99,21 @@
       .stepButton:focus-visible {
           outline: 2px solid var(--stepper-active-color);
           outline-offset: 2px;
-          border-radius: var(--radius-md, 0.375rem);
+          border-radius: var(--radius-md);
       }
 
       .stepButtonHorizontal {
           display: flex;
           flex-direction: row;
           align-items: center;
-          gap: calc(var(--spacing, 0.25rem) * 2.5);
+          gap: calc(var(--spacing) * 2.5);
       }
 
       .stepButtonVertical {
           display: flex;
           flex-direction: row;
           align-items: flex-start;
-          gap: calc(var(--spacing, 0.25rem) * 3);
+          gap: calc(var(--spacing) * 3);
           width: 100%;
       }
 
@@ -127,7 +127,7 @@
           height: var(--stepper-indicator-size);
           border-radius: 9999px;
           border: 0.75px solid var(--stepper-inactive-border);
-          background-color: var(--color-white, #fff);
+          background-color: var(--color-white);
           color: var(--stepper-inactive-fg);
           font-weight: 300;
           line-height: 1;
@@ -149,15 +149,15 @@
           }
 
           &[data-size='sm'] {
-              font-size: var(--text-3xs, 0.5rem);
+              font-size: var(--text-3xs);
           }
 
           &[data-size='md'] {
-              font-size: var(--text-2xs, 0.625rem);
+              font-size: var(--text-2xs);
           }
 
           &[data-size='lg'] {
-              font-size: var(--text-xs, 0.75rem);
+              font-size: var(--text-xs);
           }
       }
 
@@ -196,7 +196,7 @@
           display: inline-flex;
           flex-direction: column;
           min-width: 0;
-          gap: calc(var(--spacing, 0.25rem) * 0.5);
+          gap: calc(var(--spacing) * 0.5);
       }
 
       .contentHorizontal {
@@ -212,35 +212,35 @@
 
       .title {
           font-weight: 400;
-          color: var(--color-gray-900, oklch(0.21 0.034 264.665));
+          color: var(--color-gray-900);
 
           &[data-size='sm'] {
-              font-size: var(--text-2xs, 0.625rem);
+              font-size: var(--text-2xs);
           }
 
           &[data-size='md'] {
-              font-size: var(--text-xs, 0.75rem);
+              font-size: var(--text-xs);
           }
 
           &[data-size='lg'] {
-              font-size: var(--text-sm, 0.875rem);
+              font-size: var(--text-sm);
           }
       }
 
       .description {
           font-weight: 300;
-          color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+          color: var(--color-gray-500);
 
           &[data-size='sm'] {
-              font-size: var(--text-3xs, 0.5rem);
+              font-size: var(--text-3xs);
           }
 
           &[data-size='md'] {
-              font-size: var(--text-2xs, 0.625rem);
+              font-size: var(--text-2xs);
           }
 
           &[data-size='lg'] {
-              font-size: var(--text-xs, 0.75rem);
+              font-size: var(--text-xs);
           }
       }
 
@@ -253,8 +253,8 @@
           flex: 1 1 auto;
           display: flex;
           align-items: center;
-          min-width: calc(var(--spacing, 0.25rem) * 4);
-          margin-inline: calc(var(--spacing, 0.25rem) * 2.5);
+          min-width: calc(var(--spacing) * 4);
+          margin-inline: calc(var(--spacing) * 2.5);
           height: var(--stepper-indicator-size);
       }
 

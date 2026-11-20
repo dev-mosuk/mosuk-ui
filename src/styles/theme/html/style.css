@@ -2,8 +2,20 @@
     html {
         background-color: #ffffff;
 
+    }
+
+    html {
+        svg {
+            stroke-width: 1.25;
+        }
+    }
+
+    html {
+        scrollbar-width: thin;
+        scroll-behavior: smooth;
+
         ::-webkit-scrollbar {
-            width: calc(var(--spacing, .25rem) * 1.5);
+            width: calc(var(--spacing) * 1.5);
         }
 
         ::-webkit-scrollbar-track {
@@ -19,8 +31,6 @@
         ::-webkit-scrollbar-thumb:hover {
             background-color: var(--color-gray-400);
         }
-
-        scrollbar-width: thin;
-        scroll-behavior: smooth;
     }
+
 }

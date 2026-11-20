@@ -9,7 +9,7 @@
     @import 'swiper/css/pagination';
 
     :root {
-        --swiper-theme-color: var(--color-primary-500, #0074e7);
+        --swiper-theme-color: var(--color-primary-500);
     }
 }
 

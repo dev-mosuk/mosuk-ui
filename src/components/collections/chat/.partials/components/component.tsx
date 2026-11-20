@@ -147,13 +147,13 @@ export function Chat({
       ref={scrollRef}
       tabIndex={rest.tabIndex ?? 0}
       aria-label={rest['aria-label'] ?? 'Conversation'}
+      data-composer={hasComposer ? '' : undefined}
       onScroll={handleScroll}
       className={classNames(
         'mosuk-chat',
         '@container/chat',
         'group/chat',
         styles.chat,
-        hasComposer && styles.chatWithComposer,
         rest?.className,
       )}
     >
