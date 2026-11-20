@@ -1,51 +1,50 @@
 @layer mosuk-ui {
-    @layer index-11 {
-        .root {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            gap: calc(var(--spacing, .25rem) * 2);
-        }
 
-        .root {
-            .input {
-                appearance: none;
+      .root {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          gap: calc(var(--spacing, .25rem) * 2);
+      }
 
-                display: block;
+      .root {
+          .input {
+              appearance: none;
 
-                width: calc(var(--spacing, .25rem) * 10);
-                height: calc(var(--spacing, .25rem) * 10);
+              display: block;
 
-                color: var(--color-black, #000);
-                font-size: var(--text-base, 1rem);
-                text-align: center;
+              width: calc(var(--spacing, .25rem) * 10);
+              height: calc(var(--spacing, .25rem) * 10);
 
-                border: 1px solid;
-                border-color: var(--color-gray-200);
-                outline: none;
+              color: var(--color-black, #000);
+              font-size: var(--text-base, 1rem);
+              text-align: center;
 
-                transition: all 200ms ease-in-out;
+              border: 1px solid;
+              border-color: var(--color-gray-200);
+              outline: none;
 
-                &::placeholder {
-                    color: var(--color-gray-500);
-                }
+              transition: all 200ms ease-in-out;
 
-                &:read-only {
-                    opacity: 50%;
-                    pointer-events: none;
-                }
+              &::placeholder {
+                  color: var(--color-gray-500);
+              }
 
-                &:focus {
-                    border-color: var(--color-primary-200);
-                }
-            }
-        }
+              &:read-only {
+                  opacity: 50%;
+                  pointer-events: none;
+              }
 
-        .separator {
-            width: calc(var(--spacing, .25rem) * 10);
-            height: 1px;
-            background-color: var(--color-gray-500);
-        }
+              &:focus {
+                  border-color: var(--color-primary-200);
+              }
+          }
+      }
+
+      .separator {
+          width: calc(var(--spacing, .25rem) * 10);
+          height: 1px;
+          background-color: var(--color-gray-500);
+      }
     }
-}

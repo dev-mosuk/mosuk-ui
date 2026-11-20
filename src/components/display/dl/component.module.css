@@ -1,57 +1,56 @@
 @layer mosuk-ui {
-    @layer index-12 {
-        /* ! DL */
-        .dl-list {
-            display: flex;
-            flex-direction: column;
-            gap: calc(var(--spacing, 0.25rem) * 2);
 
-            font-size: var(--text-sm, 0.875rem);
+      /* ! DL */
+      .dl-list {
+          display: flex;
+          flex-direction: column;
+          gap: calc(var(--spacing, 0.25rem) * 2);
 
-            .dl {
-                position: relative;
+          font-size: var(--text-sm, 0.875rem);
 
-                display: flex;
-                flex-direction: row;
-                align-items: flex-start;
-                justify-content: space-between;
+          .dl {
+              position: relative;
 
-                .dt {
-                    width: fit-content;
-                    max-width: 41.666667%;
+              display: flex;
+              flex-direction: row;
+              align-items: flex-start;
+              justify-content: space-between;
 
-                    background-color: white;
-                    hyphens: auto;
-                    word-break: break-word;
+              .dt {
+                  width: fit-content;
+                  max-width: 41.666667%;
 
-                    padding-right: calc(var(--spacing, 0.25rem) * 2);
+                  background-color: white;
+                  hyphens: auto;
+                  word-break: break-word;
 
-                    &:before {
-                        position: absolute;
-                        top: calc(1.1em - 1px);
-                        left: 0;
-                        z-index: -1;
+                  padding-right: calc(var(--spacing, 0.25rem) * 2);
 
-                        display: block;
-                        width: 100%;
+                  &:before {
+                      position: absolute;
+                      top: calc(1.1em - 1px);
+                      left: 0;
+                      z-index: -1;
 
-                        border-bottom: 1px dotted var(--color-gray-200, oklch(0.928 0.006 264.531));
-                        content: "";
-                    }
-                }
+                      display: block;
+                      width: 100%;
 
-                .dd {
-                    width: fit-content;
-                    max-width: 58.333333%;
+                      border-bottom: 1px dotted var(--color-gray-200, oklch(0.928 0.006 264.531));
+                      content: "";
+                  }
+              }
 
-                    background-color: white;
-                    text-align: end;
-                    hyphens: auto;
-                    word-break: break-word;
+              .dd {
+                  width: fit-content;
+                  max-width: 58.333333%;
 
-                    padding-left: calc(var(--spacing, 0.25rem) * 2);
-                }
-            }
-        }
+                  background-color: white;
+                  text-align: end;
+                  hyphens: auto;
+                  word-break: break-word;
+
+                  padding-left: calc(var(--spacing, 0.25rem) * 2);
+              }
+          }
+      }
     }
-}

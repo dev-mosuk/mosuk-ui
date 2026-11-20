@@ -1,79 +1,78 @@
 @layer mosuk-ui {
-    @layer index-17 {
-        .positioner {
-            z-index: 100;
-        }
 
-        .content {
-            display: flex;
-            flex-direction: column;
-            gap: calc(var(--spacing, 0.25rem) * 1);
+      .positioner {
+          z-index: 100;
+      }
 
-            width: fit-content;
+      .content {
+          display: flex;
+          flex-direction: column;
+          gap: calc(var(--spacing, 0.25rem) * 1);
 
-            padding: calc(var(--spacing, 0.25rem) * 2);
+          width: fit-content;
 
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(12px);
+          padding: calc(var(--spacing, 0.25rem) * 2);
 
-            border: 0.75px solid var(--color-gray-200);
-            border-radius: var(--radius-2xl, 1rem);
-            box-shadow: 0 25px 50px -12px color-mix(in oklab, var(--color-gray-400) 50%, transparent);
+          background-color: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(12px);
 
-            transform-origin: var(--transform-origin);
-            transition: transform 200ms, opacity 200ms;
+          border: 0.75px solid var(--color-gray-200);
+          border-radius: var(--radius-2xl, 1rem);
+          box-shadow: 0 25px 50px -12px color-mix(in oklab, var(--color-gray-400) 50%, transparent);
 
-            &[data-starting-style],
-            &[data-ending-style] {
-                opacity: 0;
-                transform: scale(0.9);
-            }
+          transform-origin: var(--transform-origin);
+          transition: transform 200ms, opacity 200ms;
 
-            &[data-instant] {
-                transition: none;
-            }
-        }
+          &[data-starting-style],
+          &[data-ending-style] {
+              opacity: 0;
+              transform: scale(0.9);
+          }
 
-        .arrow {
-            display: block;
-            position: relative;
-            width: 12px;
-            height: 6px;
-            overflow: clip;
+          &[data-instant] {
+              transition: none;
+          }
+      }
 
-            &[data-side='top'] {
-                bottom: -6px;
-                rotate: 180deg;
-            }
+      .arrow {
+          display: block;
+          position: relative;
+          width: 12px;
+          height: 6px;
+          overflow: clip;
 
-            &[data-side='bottom'] {
-                top: -6px;
-                rotate: 0deg;
-            }
+          &[data-side='top'] {
+              bottom: -6px;
+              rotate: 180deg;
+          }
 
-            &[data-side='left'] {
-                right: -9px;
-                rotate: 90deg;
-            }
+          &[data-side='bottom'] {
+              top: -6px;
+              rotate: 0deg;
+          }
 
-            &[data-side='right'] {
-                left: -9px;
-                rotate: -90deg;
-            }
+          &[data-side='left'] {
+              right: -9px;
+              rotate: 90deg;
+          }
 
-            &::before {
-                content: '';
-                display: block;
-                position: absolute;
-                bottom: 0;
-                left: 50%;
-                box-sizing: border-box;
-                width: calc(6px * sqrt(2));
-                height: calc(6px * sqrt(2));
-                background-color: rgba(255, 255, 255, 0.95);
-                border: 1px solid var(--color-gray-100, oklch(0.967 0.003 264.542));
-                transform: translate(-50%, 50%) rotate(45deg);
-            }
-        }
+          &[data-side='right'] {
+              left: -9px;
+              rotate: -90deg;
+          }
+
+          &::before {
+              content: '';
+              display: block;
+              position: absolute;
+              bottom: 0;
+              left: 50%;
+              box-sizing: border-box;
+              width: calc(6px * sqrt(2));
+              height: calc(6px * sqrt(2));
+              background-color: rgba(255, 255, 255, 0.95);
+              border: 1px solid var(--color-gray-100, oklch(0.967 0.003 264.542));
+              transform: translate(-50%, 50%) rotate(45deg);
+          }
+      }
     }
-}

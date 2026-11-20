@@ -1,56 +1,55 @@
 @layer mosuk-ui {
-    @layer index-11 {
-        .checkbox {
-            appearance: none;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+      .checkbox {
+          appearance: none;
 
-            width: calc(var(--spacing, .25rem) * 4);
-            height: calc(var(--spacing, .25rem) * 4);
-            min-width: calc(var(--spacing, .25rem) * 4);
-            min-height: calc(var(--spacing, .25rem) * 4);
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
-            border: 1px solid;
-            border-color: var(--color-gray-200);
-            outline: none;
+          width: calc(var(--spacing, .25rem) * 4);
+          height: calc(var(--spacing, .25rem) * 4);
+          min-width: calc(var(--spacing, .25rem) * 4);
+          min-height: calc(var(--spacing, .25rem) * 4);
 
-            cursor: pointer;
-            transition: all 200ms ease-in-out;
+          border: 1px solid;
+          border-color: var(--color-gray-200);
+          outline: none;
 
-            & :where(svg) {
-                width: 100%;
-                height: 100%;
-                min-width: 100%;
-                min-height: 100%;
+          cursor: pointer;
+          transition: all 200ms ease-in-out;
 
-                color: var(--color-primary-500);
+          & :where(svg) {
+              width: 100%;
+              height: 100%;
+              min-width: 100%;
+              min-height: 100%;
 
-                opacity: 0;
-                transition: all 200ms ease-in-out;
-            }
+              color: var(--color-primary-500);
 
-            &:hover {
-                & :where(svg) {
-                    opacity: 0.25;
-                }
-            }
+              opacity: 0;
+              transition: all 200ms ease-in-out;
+          }
 
-            &[data-checked],
-            &[data-indeterminate] {
-                & :where(svg) {
-                    opacity: 1;
-                }
-            }
-        }
+          &:hover {
+              & :where(svg) {
+                  opacity: 0.25;
+              }
+          }
 
-        .indicator {
-            display: flex;
+          &[data-checked],
+          &[data-indeterminate] {
+              & :where(svg) {
+                  opacity: 1;
+              }
+          }
+      }
 
-            &[data-unchecked] {
-                display: none;
-            }
-        }
+      .indicator {
+          display: flex;
+
+          &[data-unchecked] {
+              display: none;
+          }
+      }
     }
-}

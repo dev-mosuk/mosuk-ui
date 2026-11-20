@@ -8,17 +8,17 @@ alwaysApply: false
 
 ## Taxonomy (категория = папка верхнего уровня)
 
-| Категория | index |
-| --------- | ----- |
-| `texts/` | 10 |
-| `actions/` | 11+ |
-| `display/` | 12+ |
-| `containers/` | 13 |
-| `collections/` | 14 |
-| `layouts/` | 16 |
-| `overlays/` | 17+ |
-| `navigation/` | 18 |
-| `forms/` | — |
+| Категория | Назначение |
+| --------- | ---------- |
+| `texts/` | заголовки, параграфы, ссылки |
+| `actions/` | кнопки, инпуты, контролы |
+| `display/` | карточки, media, avatar |
+| `containers/` | секции, grid |
+| `collections/` | таблицы, tabs, accordion |
+| `layouts/` | header, sidebar |
+| `overlays/` | dialog, drawer, dropdown |
+| `navigation/` | breadcrumbs, stepper |
+| `forms/` | fieldset, form composition |
 
 Стили → `.cursor/rules/styling.mdc`
 Exports → `.cursor/rules/exports.mdc`
@@ -43,7 +43,7 @@ Provider внутри component → `.cursor/rules/providers.mdc`
 
 Импорты везде `@/`, включая `.partials`. `{feature}/index.ts` — единственный public path: `Object.assign` + `export namespace`. Feature `{Name}Skeleton` не создаём.
 
-Раскладка файлов нового feature — это дерево. Категория меняет index-N, z-index и форму compound, не папки.
+Раскладка файлов нового feature — это дерево. Категория меняет z-index и форму compound, не папки.
 
 ## Идиома
 
@@ -54,7 +54,7 @@ Provider внутри component → `.cursor/rules/providers.mdc`
 - `{...rest}` на primitive, `rest?.children`
 - `classNames`: `mosuk-{feature}` → `@container/{feature}` → `group/{feature}` → `styles.*` → `rest?.className`
 - `group` и `@container` на визуальном host. У portal-оверлея host = Portal, не headless Root
-- CSS: `@layer mosuk-ui { @layer index-N { .root { … } } }`. Размеры и цвета через `var(--spacing)`, `var(--color-*)`, `var(--text-*)`
+- CSS: `@layer mosuk-ui { .root { … } }`. Размеры и цвета через `var(--spacing)`, `var(--color-*)`, `var(--text-*)`
 - Класс модуля нового кода — `.root`. Семантические `.checkbox` / `.button` — только при правке feature, где они уже есть
 - Иконки — `lucide-react` / `mosuk-icons`. Склейка классов — пакет `classnames`
 
@@ -99,8 +99,6 @@ Overlays и часть actions строятся на `@base-ui/react`. Обор�
 
 ## actions
 
-index: **11** (базовый), **21/31…** (варианты)
-
 Раскладка — canonical tree.
 
 ### index.ts
@@ -117,7 +115,7 @@ index: **11** (базовый), **21/31…** (варианты)
 
 ### CSS
 
-- `@layer mosuk-ui` → `@layer index-11` (или 21/31 для variant)
+- `@layer mosuk-ui`
 - `.root` + nested `.root .child`
 
 ### Sub-parts naming
@@ -134,7 +132,7 @@ Input-like controls оборачивают `@base-ui/react` primitives. Сохр
 
 ## display
 
-index: **12** (базовый), **22/32…** (варианты). z-index 0–99.
+z-index 0–99.
 
 Раскладка — canonical tree.
 
@@ -144,8 +142,6 @@ index: **12** (базовый), **22/32…** (варианты). z-index 0–99.
 - Крупный display с публичными sub-parts → `.partials/components/{part}/` + compound в `index.ts`
 
 ## overlays
-
-index: **17** (базовый), **27/37…** (варианты)
 
 Floating UI: drawer, dialog, dropdown, tooltip, popover.
 
@@ -160,7 +156,7 @@ Floating UI: drawer, dialog, dropdown, tooltip, popover.
 
 Drawer/dialog/dropdown — на `@base-ui/react`. Focus trap, portal и aria остаются у primitive.
 
-- `@layer index-17` (или 27/37)
+- `@layer mosuk-ui`
 - `component.module.css` в `.partials/styles/`
 - Backdrop и popup — отдельные modules, если стили различаются
 - `group/{feature}` + `@container/{feature}` на **Portal** (визуальный host), не на headless Root
@@ -168,8 +164,6 @@ Drawer/dialog/dropdown — на `@base-ui/react`. Focus trap, portal и aria о�
 - Trigger / Close — отдельные compound parts
 
 ## texts
-
-index: **10**
 
 Типографика: headings, text, links, labels без интерактива формы.
 
@@ -181,28 +175,22 @@ index: **10**
 
 ```css
 @layer mosuk-ui {
-  @layer index-10 {
-    .root { /* font-size, color from --text-* */ }
-  }
+  .root { /* font-size, color from --text-* */ }
 }
 ```
 
 ## layouts
-
-index: **16**
 
 App shell primitives: header, sidebar, footer, tabbar.
 
 Раскладка — canonical tree. Regions — compound sub-parts или `children` slots.
 
 - Responsive behavior через CSS module + utilities
-- `@layer index-16`
+- `@layer mosuk-ui`
 - z-index 0–99 для fixed layout chrome (ниже overlays)
 - Layout state (collapsed sidebar) — provider в `.partials/providers/` или внешний `providers/`
 
 ## collections
-
-index: **14**
 
 Structured lists: table, tabs, accordion, data list.
 
@@ -210,19 +198,17 @@ Structured lists: table, tabs, accordion, data list.
 
 - Collection root: `children` или data-driven API — по эталону существующего feature
 - Item sub-parts: минимальный interface
-- `@layer index-14`
+- `@layer mosuk-ui`
 - Row/cell styles nested под `.root`
 - Tabs/accordion оборачивают `@base-ui/react`, если primitive есть
 
 ## navigation
 
-index: **18**
-
 Nav trajectories: breadcrumbs, stepper.
 
 Раскладка — canonical tree. Compound: root + step/item в `.partials/components/`. Shared step state — `.partials/providers/` + `.partials/hooks/` (эталон stepper).
 
-- `@layer index-18`
+- `@layer mosuk-ui`
 - Sequence UI: orientation (horizontal/vertical) через context + `data-orientation`
 
 ## forms
@@ -234,11 +220,9 @@ Form composition: fieldset, field groups, label+input+hint. Primitives оста�
 - react-hook-form через props/context; leaf input остаётся primitive из `actions/`
 - Errors/hints — sub-components fieldset
 - `component.interface.ts`; field: label, input slot, error message
-- Слои: index-11 (actions family) или локальный module
+- `@layer mosuk-ui`
 - `actions/input`, `actions/checkbox` — primitives; `forms/fieldset` — composition layer
 
 ## containers
 
-index: **13**
-
-Секции и grid. Раскладка — canonical tree. index-13, z-index 0–99.
+Секции и grid. Раскладка — canonical tree. z-index 0–99.

@@ -1,10 +1,9 @@
 @layer mosuk-ui {
-    @layer index-15 {
-        .TBankTerminal {
-            width: 100%;
-            min-height: calc(var(--spacing, .25rem) * 175);
 
-            background-color: #f6f7f8;
-        }
+      .TBankTerminal {
+          width: 100%;
+          min-height: calc(var(--spacing, .25rem) * 175);
+
+          background-color: #f6f7f8;
+      }
     }
-}

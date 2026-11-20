@@ -8,77 +8,46 @@ UI библиотека компонентов с использованием C
 @layer theme, base, mosuk-ui, components, utilities;
 ```
 
+Все стили компонентов — внутри `@layer mosuk-ui`.
+
 ## 2. z-index
 
 1. **0–99** — обычные компоненты (контент, карточки, формы)
 2. **100–199** — dropdown, popover, tooltip и другие всплывающие элементы
 3. **200+** — dialog, drawer, модальные окна
 
-## 3. Структура индексов внутри `mosuk-ui`
-
-### 3.1. Компоненты (1-й уровень)
-
-1. **index-0 до index-9** — зарезервировано для технических слоёв (providers, utilities)
-2. **index-10** — texts (заголовки, параграфы, ссылки)
-3. **index-11** — actions (кнопки, инпуты, формы)
-4. **index-12** — display (карточки, изображения, видео)
-5. **index-13** — containers (секции, сетки, контейнеры)
-6. **index-14** — collections (таблицы, аккордеоны, табы)
-7. **index-15** — integrations (внешние интеграции)
-8. **index-16** — layouts (header, sidebar, tabbar)
-9. **index-17** — overlays (диалоги, dropdown, модальные окна)
-10. **index-18** — navigation (breadcrumbs, stepper)
-
-### 3.2. Варианты компонентов (2-й уровень)
-
-1. **Базовый компонент**: `index-11` (например, `button`)
-2. **Вариант 1**: `index-21` (например, `button/submit`)
-3. **Вариант 2**: `index-31` (например, `button/delete`)
-
-## 4. Примеры использования
+## 3. Примеры использования
 
 ```css
-/* Базовый компонент кнопки */
 @layer mosuk-ui {
-  @layer index-11 {
-    .button {
-      /* стили */
-    }
-  }
-}
-
-/* Вариант кнопки submit */
-@layer mosuk-ui {
-  @layer index-21 {
-    .button {
-      /* переопределённые стили */
-    }
+  .root {
+    /* стили */
   }
 }
 ```
 
-## 5. Файловая структура
+## 4. Файловая структура
 
 ```
 src/
 ├── components/
-│   ├── texts/          # index-10
-│   ├── actions/        # index-11, 21, 31...
-│   ├── display/        # index-12, 22, 32...
-│   ├── containers/     # index-13
-│   ├── collections/    # index-14
-│   ├── layouts/        # index-16
-│   ├── overlays/       # index-17, 27, 37...
-│   └── navigation/     # index-18
-├── integrations/       # index-15 — внешние SDK (yandex/maps, tbank, …)
-└── providers/          # index-0
+│   ├── texts/
+│   ├── actions/
+│   ├── display/
+│   ├── containers/
+│   ├── collections/
+│   ├── layouts/
+│   ├── overlays/
+│   └── navigation/
+├── integrations/       # внешние SDK (yandex/maps, tbank, …)
+└── providers/
 ```
 
-## 6. Разработка и подключение в CRM
+## 5. Разработка и подключение в CRM
 
 Архитектура, naming и конвенции кода — в [.cursor/agents.md](./.cursor/agents.md).
 
-### 6.1. Локальная разработка библиотеки
+### 5.1. Локальная разработка библиотеки
 
 **Одноразовая сборка:**
 
@@ -104,7 +73,7 @@ npm run migrate:imports -- --dry-run   # просмотр
 npm run migrate:imports -- --apply     # замена ./../ на @/
 ```
 
-### 6.2. Линковка в CRM
+### 5.2. Линковка в CRM
 
 **Первичное подключение:**
 
@@ -139,7 +108,7 @@ npm unlink mosuk-ui && npm install
 npm unlink
 ```
 
-### 6.3. Почему `dist/`, а не `src/`
+### 5.3. Почему `dist/`, а не `src/`
 
 В `src/` импорты используют alias `@/` → `src/` (см. `tsconfig.json`). **`tsc` не переписывает их** — это делает `tsc-alias` при сборке в `dist/`. Next.js в CRM резолвит `@/` как `./src/*` **своего** проекта, поэтому линковка **исходников** (`src/`) ломает бандлер:
 
@@ -157,7 +126,7 @@ Import map: aliased to relative './src/components/...' inside of [project]/
 
 **Не линковать `src/`.**
 
-### 6.4. Импорты
+### 5.4. Импорты
 
 **В `src/` — только `@/`:**
 
@@ -170,7 +139,7 @@ Import map: aliased to relative './src/components/...' inside of [project]/
 
 **ESLint: `export namespace` в `index.ts`:** в `**/index.ts` правило `@typescript-eslint/no-namespace` **отключено** — публичный API compound-компонентов через `export namespace Feature { export type Props = … }` (см. `.cursor/rules/exports.mdc`).
 
-### 6.5. Полезные npm scripts
+### 5.5. Полезные npm scripts
 
 | Script | Назначение |
 | ------ | ---------- |
@@ -182,6 +151,6 @@ Import map: aliased to relative './src/components/...' inside of [project]/
 | `npm run migrate:imports -- --dry-run` | Превью миграции relative → `@/` |
 | `npm run migrate:imports -- --apply` | Применить миграцию импортов |
 
-### 6.6. Опубликованный пакет (без link)
+### 5.6. Опубликованный пакет (без link)
 
 Публиковать и ставить из npm — артефакт `dist/` (`npm run build` перед publish). В CRM: `"mosuk-ui": "^1.0.x"` без `npm link`.

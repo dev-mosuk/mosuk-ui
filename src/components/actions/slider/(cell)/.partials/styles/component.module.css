@@ -1,137 +1,136 @@
 @layer mosuk-ui {
-    @layer index-11 {
-        .root {
-            position: relative;
 
-            width: 100%;
+      .root {
+          position: relative;
 
-            display: block;
+          width: 100%;
 
-            &[data-disabled] {
-                opacity: 50%;
-                pointer-events: none;
-            }
-        }
+          display: block;
 
-        .control {
-            width: 100%;
-            height: calc(var(--spacing, 0.25rem) * 9);
+          &[data-disabled] {
+              opacity: 50%;
+              pointer-events: none;
+          }
+      }
 
-            display: flex;
-            align-items: center;
-            touch-action: none;
-        }
+      .control {
+          width: 100%;
+          height: calc(var(--spacing, 0.25rem) * 9);
 
-        .track {
-            position: relative;
+          display: flex;
+          align-items: center;
+          touch-action: none;
+      }
 
-            width: 100%;
-            height: 100%;
+      .track {
+          position: relative;
 
-            display: flex;
-            align-items: center;
+          width: 100%;
+          height: 100%;
 
-            overflow: hidden;
+          display: flex;
+          align-items: center;
 
-            border-radius: var(--radius-xl, 0.75rem);
-            background-color: var(--color-white, #fff);
-            box-shadow:
-                0 2px 4px 0 rgba(0, 0, 0, 0.04),
-                0 1px 2px 0 rgba(0, 0, 0, 0.06),
-                0 0 1px 0 rgba(0, 0, 0, 0.06);
+          overflow: hidden;
 
-            :global(.mosuk-cell-slider[data-variant='secondary']) & {
-                background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
-                box-shadow: none;
-            }
-        }
+          border-radius: var(--radius-xl, 0.75rem);
+          background-color: var(--color-white, #fff);
+          box-shadow:
+              0 2px 4px 0 rgba(0, 0, 0, 0.04),
+              0 1px 2px 0 rgba(0, 0, 0, 0.06),
+              0 0 1px 0 rgba(0, 0, 0, 0.06);
 
-        .indicator {
-            position: absolute;
-            inset-block: 0;
-            left: 0;
+          :global(.mosuk-cell-slider[data-variant='secondary']) & {
+              background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
+              box-shadow: none;
+          }
+      }
 
-            pointer-events: none;
+      .indicator {
+          position: absolute;
+          inset-block: 0;
+          left: 0;
 
-            background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
+          pointer-events: none;
 
-            :global(.mosuk-cell-slider[data-variant='secondary']) & {
-                background-color: var(--color-white, #fff);
-            }
-        }
+          background-color: var(--color-gray-100, oklch(0.967 0.003 264.542));
 
-        .label {
-            position: absolute;
-            top: 50%;
-            left: calc(var(--spacing, 0.25rem) * 3);
-            z-index: 1;
+          :global(.mosuk-cell-slider[data-variant='secondary']) & {
+              background-color: var(--color-white, #fff);
+          }
+      }
 
-            transform: translateY(-50%);
+      .label {
+          position: absolute;
+          top: 50%;
+          left: calc(var(--spacing, 0.25rem) * 3);
+          z-index: 1;
 
-            font-size: calc(var(--spacing, 0.25rem) * 3.5);
-            font-weight: 500;
-            color: var(--color-black, #000);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+          transform: translateY(-50%);
 
-            pointer-events: none;
-        }
+          font-size: calc(var(--spacing, 0.25rem) * 3.5);
+          font-weight: 500;
+          color: var(--color-black, #000);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
 
-        .value {
-            position: absolute;
-            top: 50%;
-            right: calc(var(--spacing, 0.25rem) * 3);
-            z-index: 1;
+          pointer-events: none;
+      }
 
-            transform: translateY(-50%);
+      .value {
+          position: absolute;
+          top: 50%;
+          right: calc(var(--spacing, 0.25rem) * 3);
+          z-index: 1;
 
-            font-size: calc(var(--spacing, 0.25rem) * 3.5);
-            font-weight: 400;
-            color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-            white-space: nowrap;
+          transform: translateY(-50%);
 
-            pointer-events: none;
-        }
+          font-size: calc(var(--spacing, 0.25rem) * 3.5);
+          font-weight: 400;
+          color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+          white-space: nowrap;
 
-        .thumb {
-            position: absolute;
-            z-index: 2;
+          pointer-events: none;
+      }
 
-            width: calc(var(--spacing, 0.25rem) * 5);
-            height: 100%;
+      .thumb {
+          position: absolute;
+          z-index: 2;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+          width: calc(var(--spacing, 0.25rem) * 5);
+          height: 100%;
 
-            background: transparent;
-            border: none;
-            outline: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
-            cursor: grab;
-            touch-action: none;
+          background: transparent;
+          border: none;
+          outline: none;
 
-            &:active {
-                cursor: grabbing;
-            }
+          cursor: grab;
+          touch-action: none;
 
-            &::after {
-                content: '';
+          &:active {
+              cursor: grabbing;
+          }
 
-                width: 2px;
-                height: calc(var(--spacing, 0.25rem) * 4);
+          &::after {
+              content: '';
 
-                border-radius: calc(var(--spacing, 0.25rem) * 1.5);
-                background-color: var(--color-black, #000);
-            }
-        }
+              width: 2px;
+              height: calc(var(--spacing, 0.25rem) * 4);
 
-        .skeleton {
-            width: 100%;
-            height: calc(var(--spacing, 0.25rem) * 9);
+              border-radius: calc(var(--spacing, 0.25rem) * 1.5);
+              background-color: var(--color-black, #000);
+          }
+      }
 
-            border-radius: var(--radius-xl, 0.75rem);
-        }
+      .skeleton {
+          width: 100%;
+          height: calc(var(--spacing, 0.25rem) * 9);
+
+          border-radius: var(--radius-xl, 0.75rem);
+      }
     }
-}

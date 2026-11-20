@@ -1,13 +1,12 @@
 @layer mosuk-ui {
-    @layer index-21 {
-        .fieldset {
-            .input {
-                display: none;
-            }
 
-            .label {
-                cursor: pointer;
-            }
-        }
+      .fieldset {
+          .input {
+              display: none;
+          }
+
+          .label {
+              cursor: pointer;
+          }
+      }
     }
-}

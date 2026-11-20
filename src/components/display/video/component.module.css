@@ -1,34 +1,33 @@
 @layer mosuk-ui {
-    @layer index-12 {
-        .video {
-            overflow: hidden;
-            position: relative;
-            display: block;
 
-            aspect-ratio: 1/1;
-            width: 100%;
-            height: fit-content;
+      .video {
+          overflow: hidden;
+          position: relative;
+          display: block;
 
-            transition: all 200ms ease-in-out;
+          aspect-ratio: 1/1;
+          width: 100%;
+          height: fit-content;
 
-            .player {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                object-position: center;
+          transition: all 200ms ease-in-out;
 
-                &:fullscreen,
-                &:-webkit-full-screen {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
-                    object-position: center;
-                }
-            }
+          .player {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center;
 
-            &:not(:hover) {
-                transition: all 600ms ease-in-out;
-            }
-        }
+              &:fullscreen,
+              &:-webkit-full-screen {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: contain;
+                  object-position: center;
+              }
+          }
+
+          &:not(:hover) {
+              transition: all 600ms ease-in-out;
+          }
+      }
     }
-}

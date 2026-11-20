@@ -35,17 +35,17 @@ alwaysApply: true
 ```
 src/
 ├── components/
-│   ├── texts/          # index-10
-│   ├── actions/        # index-11, 21, 31…
-│   ├── display/        # index-12
-│   ├── containers/     # index-13
-│   ├── collections/    # index-14
-│   ├── layouts/        # index-16
-│   ├── overlays/       # index-17, 27, 37…
-│   ├── navigation/     # index-18
+│   ├── texts/
+│   ├── actions/
+│   ├── display/
+│   ├── containers/
+│   ├── collections/
+│   ├── layouts/
+│   ├── overlays/
+│   ├── navigation/
 │   └── forms/          # fieldset, form controls
-├── integrations/       # index-15 — внешние SDK (зеркалит слои src)
-├── providers/          # index-0
+├── integrations/       # внешние SDK (зеркалит слои src)
+├── providers/
 ├── hooks/
 ├── services/
 ├── utilities/
@@ -92,19 +92,19 @@ Utilities → `.cursor/rules/utilities.mdc`
 
 ## Категории `components/`
 
-| Папка | index | Назначение |
-| ----- | ----- | ---------- |
-| `texts/` | 10 | заголовки, параграфы, ссылки |
-| `actions/` | 11+ | кнопки, инпуты, контролы |
-| `display/` | 12+ | карточки, media, avatar |
-| `containers/` | 13 | секции, grid |
-| `collections/` | 14 | таблицы, tabs, accordion |
-| `layouts/` | 16 | header, sidebar |
-| `overlays/` | 17+ | dialog, drawer, dropdown |
-| `navigation/` | 18 | breadcrumbs, stepper |
-| `forms/` | — | fieldset, form composition |
+| Папка | Назначение |
+| ----- | ---------- |
+| `texts/` | заголовки, параграфы, ссылки |
+| `actions/` | кнопки, инпуты, контролы |
+| `display/` | карточки, media, avatar |
+| `containers/` | секции, grid |
+| `collections/` | таблицы, tabs, accordion |
+| `layouts/` | header, sidebar |
+| `overlays/` | dialog, drawer, dropdown |
+| `navigation/` | breadcrumbs, stepper |
+| `forms/` | fieldset, form composition |
 
-`src/integrations/` — отдельная иерархия (не категория `components/`). index-15. См. [integrations.mdc](./integrations.mdc).
+`src/integrations/` — отдельная иерархия (не категория `components/`). См. [integrations.mdc](./integrations.mdc).
 
 ## Импорты
 

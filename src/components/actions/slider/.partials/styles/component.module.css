@@ -1,172 +1,171 @@
 @layer mosuk-ui {
-    @layer index-11 {
-        .root {
-            position: relative;
 
-            width: 100%;
+      .root {
+          position: relative;
 
-            display: grid;
-            grid-template-areas:
-                'label value'
-                'track track';
-            grid-template-columns: 1fr auto;
-            align-items: center;
-            gap: var(--spacing, 0.25rem);
+          width: 100%;
 
-            &[data-disabled] {
-                opacity: 50%;
-                pointer-events: none;
-            }
+          display: grid;
+          grid-template-areas:
+              'label value'
+              'track track';
+          grid-template-columns: 1fr auto;
+          align-items: center;
+          gap: var(--spacing, 0.25rem);
 
-            &[data-orientation='vertical'] {
-                height: 100%;
+          &[data-disabled] {
+              opacity: 50%;
+              pointer-events: none;
+          }
 
-                grid-template-areas:
-                    'value'
-                    'track'
-                    'label';
-                grid-template-columns: 1fr;
-                grid-template-rows: auto 1fr auto;
-                justify-items: center;
-            }
-        }
+          &[data-orientation='vertical'] {
+              height: 100%;
 
-        .label {
-            grid-area: label;
+              grid-template-areas:
+                  'value'
+                  'track'
+                  'label';
+              grid-template-columns: 1fr;
+              grid-template-rows: auto 1fr auto;
+              justify-items: center;
+          }
+      }
 
-            width: fit-content;
+      .label {
+          grid-area: label;
 
-            font-size: var(--text-sm, 0.875rem);
-            font-weight: 500;
-            color: var(--color-black, #000);
+          width: fit-content;
 
-            :global(.mosuk-slider[data-orientation='vertical']) & {
-                text-align: center;
-            }
-        }
+          font-size: var(--text-sm, 0.875rem);
+          font-weight: 500;
+          color: var(--color-black, #000);
 
-        .value {
-            grid-area: value;
+          :global(.mosuk-slider[data-orientation='vertical']) & {
+              text-align: center;
+          }
+      }
 
-            font-size: var(--text-sm, 0.875rem);
-            font-weight: 500;
-            font-variant-numeric: tabular-nums;
-            color: var(--color-black, #000);
+      .value {
+          grid-area: value;
 
-            :global(.mosuk-slider[data-orientation='vertical']) & {
-                text-align: center;
-            }
-        }
+          font-size: var(--text-sm, 0.875rem);
+          font-weight: 500;
+          font-variant-numeric: tabular-nums;
+          color: var(--color-black, #000);
 
-        .control {
-            grid-area: track;
+          :global(.mosuk-slider[data-orientation='vertical']) & {
+              text-align: center;
+          }
+      }
 
-            width: 100%;
-            height: calc(var(--spacing, 0.25rem) * 5);
+      .control {
+          grid-area: track;
 
-            display: flex;
-            align-items: center;
+          width: 100%;
+          height: calc(var(--spacing, 0.25rem) * 5);
 
-            touch-action: none;
+          display: flex;
+          align-items: center;
 
-            :global(.mosuk-slider[data-orientation='vertical']) & {
-                width: calc(var(--spacing, 0.25rem) * 5);
-                height: 100%;
+          touch-action: none;
 
-                justify-content: center;
-            }
-        }
+          :global(.mosuk-slider[data-orientation='vertical']) & {
+              width: calc(var(--spacing, 0.25rem) * 5);
+              height: 100%;
 
-        .track {
-            position: relative;
+              justify-content: center;
+          }
+      }
 
-            width: 100%;
-            height: 100%;
+      .track {
+          position: relative;
 
-            overflow: hidden;
+          width: 100%;
+          height: 100%;
 
-            border-radius: var(--radius-xl, 0.75rem);
-            background-color: var(--color-gray-200);
+          overflow: hidden;
 
-            :global(.mosuk-slider[data-orientation='vertical']) & {
-                width: 100%;
-                height: 100%;
-            }
-        }
+          border-radius: var(--radius-xl, 0.75rem);
+          background-color: var(--color-gray-200);
 
-        .indicator {
-            height: 100%;
+          :global(.mosuk-slider[data-orientation='vertical']) & {
+              width: 100%;
+              height: 100%;
+          }
+      }
 
-            background-color: var(--color-primary-500);
+      .indicator {
+          height: 100%;
 
-            pointer-events: none;
+          background-color: var(--color-primary-500);
 
-            :global(.mosuk-slider[data-orientation='vertical']) & {
-                width: 100%;
-            }
-        }
+          pointer-events: none;
 
-        .thumb {
-            z-index: 0;
+          :global(.mosuk-slider[data-orientation='vertical']) & {
+              width: 100%;
+          }
+      }
 
-            width: calc(1.5rem + 0.25rem);
-            height: 100%;
+      .thumb {
+          z-index: 0;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+          width: calc(1.5rem + 0.25rem);
+          height: 100%;
 
-            background-color: var(--color-primary-500);
-            border: none;
-            border-radius: var(--radius-xl, 0.75rem);
-            outline: none;
-            box-shadow: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
 
-            cursor: grab;
-            touch-action: none;
+          background-color: var(--color-primary-500);
+          border: none;
+          border-radius: var(--radius-xl, 0.75rem);
+          outline: none;
+          box-shadow: none;
 
-            &::after {
-                content: '';
+          cursor: grab;
+          touch-action: none;
 
-                width: 1.5rem;
-                height: 1rem;
+          &::after {
+              content: '';
 
-                border-radius: var(--radius-lg, 0.5rem);
-                background-color: var(--color-white, #fff);
-                box-shadow: var(--shadow-sm);
-            }
+              width: 1.5rem;
+              height: 1rem;
 
-            &:active,
-            &[data-dragging] {
-                cursor: grabbing;
+              border-radius: var(--radius-lg, 0.5rem);
+              background-color: var(--color-white, #fff);
+              box-shadow: var(--shadow-sm);
+          }
 
-                &::after {
-                    transform: scale(0.9);
-                }
-            }
+          &:active,
+          &[data-dragging] {
+              cursor: grabbing;
 
-            &:focus,
-            &:focus-visible,
-            &:focus-within {
-                outline: none;
-            }
+              &::after {
+                  transform: scale(0.9);
+              }
+          }
 
-            :global(.mosuk-slider[data-orientation='vertical']) & {
-                width: 100%;
-                height: calc(1.5rem + 0.25rem);
+          &:focus,
+          &:focus-visible,
+          &:focus-within {
+              outline: none;
+          }
 
-                &::after {
-                    width: 1rem;
-                    height: 1.5rem;
-                }
-            }
-        }
+          :global(.mosuk-slider[data-orientation='vertical']) & {
+              width: 100%;
+              height: calc(1.5rem + 0.25rem);
 
-        .skeleton {
-            width: 100%;
-            height: calc(var(--spacing, 0.25rem) * 5);
+              &::after {
+                  width: 1rem;
+                  height: 1.5rem;
+              }
+          }
+      }
 
-            border-radius: var(--radius-xl, 0.75rem);
-        }
+      .skeleton {
+          width: 100%;
+          height: calc(var(--spacing, 0.25rem) * 5);
+
+          border-radius: var(--radius-xl, 0.75rem);
+      }
     }
-}

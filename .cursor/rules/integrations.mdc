@@ -1,12 +1,12 @@
 ---
-description: Integrations — внешние SDK (Yandex, T-Bank); зеркалит слои src; index-15
+description: Integrations — внешние SDK (Yandex, T-Bank); зеркалит слои src
 globs: 'src/integrations/**'
 alwaysApply: false
 ---
 
 # integrations
 
-index: **15** · Architecture: [architecture.mdc](./architecture.mdc)
+Architecture: [architecture.mdc](./architecture.mdc)
 
 ## Назначение
 
@@ -57,7 +57,7 @@ src/integrations/
 
 ## CSS
 
-- `@layer index-15`
+- `@layer mosuk-ui`
 - Vendor-specific classes в module
 
 ## Эталоны

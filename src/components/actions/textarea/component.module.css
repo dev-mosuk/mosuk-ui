@@ -1,36 +1,35 @@
 @layer mosuk-ui {
-    @layer index-11 {
-        .textarea {
-            resize: none;
 
-            width: 100%;
+      .textarea {
+          resize: none;
 
-            display: block;
+          width: 100%;
 
-            color: var(--color-black, #000);
-            font-size: var(--text-base, 1rem);
+          display: block;
 
-            border: 1px solid transparent;
-            outline: none;
+          color: var(--color-black, #000);
+          font-size: var(--text-base, 1rem);
 
-            transition: all 200ms ease-in-out;
+          border: 1px solid transparent;
+          outline: none;
 
-            &::placeholder {
-                color: var(--color-gray-500, oklch(0.551 0.027 264.364));
-            }
+          transition: all 200ms ease-in-out;
 
-            &:read-only {
-                opacity: 50%;
-                pointer-events: none;
-            }
+          &::placeholder {
+              color: var(--color-gray-500, oklch(0.551 0.027 264.364));
+          }
 
-            &.autosize {
-                transition: all 0ms ease-in-out;
+          &:read-only {
+              opacity: 50%;
+              pointer-events: none;
+          }
 
-                &::-webkit-scrollbar {
-                    display: none;
-                }
-            }
-        }
+          &.autosize {
+              transition: all 0ms ease-in-out;
+
+              &::-webkit-scrollbar {
+                  display: none;
+              }
+          }
+      }
     }
-}

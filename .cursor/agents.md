@@ -1,7 +1,7 @@
 # mosuk-ui — принципы проекта
 
 Документ для AI-агента и команды. Описывает **зачем** устроена библиотека так, а не иначе.
-Детальные конвенции (CSS layers, index-N, файлы) — в [README.md](../README.md) в корне репозитория.
+Детальные конвенции (CSS layers, файлы) — в [README.md](../README.md) в корне репозитория.
 
 ---
 
@@ -136,7 +136,7 @@ src/
 | Что | Rule | Skill |
 | --- | ---- | ----- |
 | Паттерны `.` `()` `[]`, структура src | `.cursor/rules/architecture.mdc` | `.cursor/skills/architecture/SKILL.md` |
-| CSS layers, index-N, z-index | `.cursor/rules/styling.mdc` | `.cursor/skills/styling/SKILL.md` |
+| CSS layers, z-index | `.cursor/rules/styling.mdc` | `.cursor/skills/styling/SKILL.md` |
 | index.ts, namespace, package exports | `.cursor/rules/exports.mdc` | `.cursor/skills/exports/SKILL.md` |
 | Компоненты (все категории) | `.cursor/rules/components.mdc` | `.cursor/skills/components/SKILL.md` |
 | Integrations (внешние SDK) | `.cursor/rules/integrations.mdc` | `.cursor/skills/integrations/SKILL.md` |
@@ -160,4 +160,4 @@ src/
 | Integration (product / vendor) | `src/integrations/yandex/maps/`, `src/integrations/tbank/` |
 | Provider + service | `src/providers/alerts/` |
 | Hook over context | `src/hooks/alerts/` |
-| CSS layers index-N | [README.md](../README.md) §1–3 |
+| CSS layers | [README.md](../README.md) §1–3 |

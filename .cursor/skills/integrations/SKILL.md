@@ -16,7 +16,7 @@ Rule: `.cursor/rules/integrations.mdc`
 - [ ] Vendor без продукта? → integrations/{vendor}/{layer}/
 - [ ] Слои как в src: components/, provider/, hooks/, utilities/
 - [ ] Provider: 4-file pattern (см. providers skill)
-- [ ] Component: {feature}/index.ts + .partials/, index-15
+- [ ] Component: {feature}/index.ts + .partials/, @layer mosuk-ui
 - [ ] Export: index.ts + namespace
 ```
 

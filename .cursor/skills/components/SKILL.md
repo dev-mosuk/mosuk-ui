@@ -25,13 +25,13 @@ Rule: `.cursor/rules/components.mdc`
     └── hooks/
 ```
 
-Импорты `@/`. Публичный API — `{feature}/index.ts`. Feature `{Name}Skeleton` не создаём. Идиома, index-N, z-index и карта эталонов — в правиле.
+Импорты `@/`. Публичный API — `{feature}/index.ts`. Feature `{Name}Skeleton` не создаём. Идиома, z-index и карта эталонов — в правиле.
 
 Внешний SDK → [integrations/SKILL.md](../integrations/SKILL.md), не `components/`.
 
 ## 1. Факты
 
-Категория и index-N — из правила. Ближайший эталон — из карты эталонов в правиле. Primitive — поиск в `@base-ui/react`.
+Категория — из правила. Ближайший эталон — из карты эталонов в правиле. Primitive — поиск в `@base-ui/react`.
 
 Это не вопросы пользователю.
 
@@ -53,10 +53,9 @@ Rule: `.cursor/rules/components.mdc`
 - публичные sub-parts
 - какой primitive, если подходят несколько
 - controlled value, если неочевидно
-- один компонент или вариант `index-21` / `index-31`
 - polymorphic `as` или фиксированный тег
 
-Папки, алиас, имя файла, index-N, z-index и порядок `classNames` — факты. Их не спрашивать.
+Папки, алиас, имя файла, z-index и порядок `classNames` — факты. Их не спрашивать.
 
 Запрос, который уже закрывает фронтир, шаг пропускает. Пример: «OTP-подобный input на `@base-ui/react/otp-field`, части Root и Input».
 
@@ -70,6 +69,6 @@ Rule: `.cursor/rules/components.mdc`
 
 - public API только из `{feature}/index.ts`
 - каждый part имеет `component.interface.ts`
-- стили в `@layer index-N`
+- стили в `@layer mosuk-ui`
 - импорты `@/`
 - `.partials` импортируется только из этого feature

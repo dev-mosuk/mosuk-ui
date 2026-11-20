@@ -1,5 +1,5 @@
 ---
-description: CSS Layers, index-N, z-index и mosuk-* классы в mosuk-ui
+description: CSS Layers, z-index и mosuk-* классы в mosuk-ui
 globs:
   - 'src/**/*.module.css'
   - 'src/index.css'
@@ -27,37 +27,12 @@ alwaysApply: false
 | 100–199 | dropdown, popover, tooltip |
 | 200+ | dialog, drawer, modal |
 
-## index-N (1-й уровень — категория)
-
-| index | Категория |
-| ----- | --------- |
-| 0–9 | providers, utilities (зарезервировано) |
-| 10 | texts |
-| 11 | actions |
-| 12 | display |
-| 13 | containers |
-| 14 | collections |
-| 15 | integrations |
-| 16 | layouts |
-| 17 | overlays |
-| 18 | navigation |
-
-## index-N (2-й уровень — вариант)
-
-- Базовый: `index-11` (button)
-- Вариант 1: `index-21` (button/submit)
-- Вариант 2: `index-31` (button/delete)
-
-Правило: десятки = уровень варианта, единицы = категория.
-
 ## CSS module — шаблон
 
 ```css
 @layer mosuk-ui {
-  @layer index-11 {
-    .root { /* … */ }
-    .root .input { /* nested */ }
-  }
+  .root { /* … */ }
+  .root .input { /* nested */ }
 }
 ```
 

@@ -131,6 +131,11 @@
         "default": "./components/collections/accordion/index.ts"
       }
     },
+    "./components/collections/chat": {
+      "import": {
+        "default": "./components/collections/chat/index.ts"
+      }
+    },
     "./components/containers/card": {
       "import": {
         "default": "./components/containers/card/index.ts"
@@ -224,6 +229,11 @@
     "./components/texts/hint": {
       "import": {
         "default": "./components/texts/hint/index.ts"
+      }
+    },
+    "./components/texts/typography": {
+      "import": {
+        "default": "./components/texts/typography/index.ts"
       }
     },
     "./hooks/alerts": {

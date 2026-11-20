@@ -57,7 +57,7 @@ Imperative API в `src/services/{feature}/` — provider wiring, service logic.
 
 ## CSS
 
-- `@layer index-0` или index из providers range
+- `@layer mosuk-ui`
 - Module рядом с provider.tsx
 
 ## Эталоны

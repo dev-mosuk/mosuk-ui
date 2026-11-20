@@ -1,196 +1,195 @@
 @layer mosuk-ui {
-    @layer index-11 {
-        .trigger {
-            display: flex;
-            align-items: center;
-            gap: calc(var(--spacing, 0.25rem) * 1);
 
-            width: 100%;
-            min-height: calc(var(--spacing, 0.25rem) * 10);
+      .trigger {
+          display: flex;
+          align-items: center;
+          gap: calc(var(--spacing, 0.25rem) * 1);
 
-            padding: 0 calc(var(--spacing, 0.25rem) * 3);
+          width: 100%;
+          min-height: calc(var(--spacing, 0.25rem) * 10);
 
-            background-color: var(--color-white);
-            color: var(--color-black, #000);
-            font-size: var(--text-base, 1rem);
-            text-align: start;
+          padding: 0 calc(var(--spacing, 0.25rem) * 3);
 
-            border: 1px solid var(--color-gray-200);
-            border-radius: var(--radius-2xl);
-            outline: none;
-            cursor: pointer;
+          background-color: var(--color-white);
+          color: var(--color-black, #000);
+          font-size: var(--text-base, 1rem);
+          text-align: start;
 
-            transition: border-color 200ms ease, opacity 200ms ease;
+          border: 1px solid var(--color-gray-200);
+          border-radius: var(--radius-2xl);
+          outline: none;
+          cursor: pointer;
 
-            &:focus-visible,
-            &[data-popup-open] {
-                border-color: var(--color-primary-500);
-            }
+          transition: border-color 200ms ease, opacity 200ms ease;
 
-            &:disabled,
-            &[data-disabled] {
-                opacity: 0.5;
-                pointer-events: none;
-            }
-        }
+          &:focus-visible,
+          &[data-popup-open] {
+              border-color: var(--color-primary-500);
+          }
 
-        .value {
-            flex: 1 1 auto;
-            min-width: 0;
+          &:disabled,
+          &[data-disabled] {
+              opacity: 0.5;
+              pointer-events: none;
+          }
+      }
 
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+      .value {
+          flex: 1 1 auto;
+          min-width: 0;
 
-            &[data-placeholder] {
-                color: var(--color-gray-500);
-            }
-        }
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
 
-        .clear {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+          &[data-placeholder] {
+              color: var(--color-gray-500);
+          }
+      }
 
-            width: calc(var(--spacing, 0.25rem) * 6);
-            height: calc(var(--spacing, 0.25rem) * 6);
+      .clear {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
 
-            color: var(--color-gray-500);
-            border-radius: calc(infinity * 1px);
-            cursor: pointer;
+          width: calc(var(--spacing, 0.25rem) * 6);
+          height: calc(var(--spacing, 0.25rem) * 6);
 
-            &:hover {
-                color: var(--color-primary-500);
-            }
-        }
+          color: var(--color-gray-500);
+          border-radius: calc(infinity * 1px);
+          cursor: pointer;
 
-        .indicator {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+          &:hover {
+              color: var(--color-primary-500);
+          }
+      }
 
-            color: var(--color-gray-500);
-        }
+      .indicator {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
 
-        .icon {
-            width: calc(var(--spacing, 0.25rem) * 4);
-            height: calc(var(--spacing, 0.25rem) * 4);
-            stroke-width: 1.75;
+          color: var(--color-gray-500);
+      }
 
-            transition: transform 200ms ease;
-        }
+      .icon {
+          width: calc(var(--spacing, 0.25rem) * 4);
+          height: calc(var(--spacing, 0.25rem) * 4);
+          stroke-width: 1.75;
 
-        .indicator[data-open] .icon {
-            transform: rotate(180deg);
-        }
+          transition: transform 200ms ease;
+      }
 
-        .positioner {
-            z-index: 100;
-        }
+      .indicator[data-open] .icon {
+          transform: rotate(180deg);
+      }
 
-        .popup {
-            overflow: hidden;
+      .positioner {
+          z-index: 100;
+      }
 
-            width: var(--anchor-width);
-            max-height: min(var(--available-height, 24rem), 24rem);
+      .popup {
+          overflow: hidden;
 
-            padding: calc(var(--spacing, 0.25rem) * 1);
+          width: var(--anchor-width);
+          max-height: min(var(--available-height, 24rem), 24rem);
 
-            background-color: var(--color-white);
+          padding: calc(var(--spacing, 0.25rem) * 1);
 
-            border: 1px solid var(--color-gray-200);
-            border-radius: var(--radius-2xl);
-            box-shadow: 0 12px 32px -8px color-mix(in oklch, var(--color-gray-500) 28%, transparent);
+          background-color: var(--color-white);
 
-            transform-origin: var(--transform-origin);
-            transition: transform 200ms ease, opacity 200ms ease;
+          border: 1px solid var(--color-gray-200);
+          border-radius: var(--radius-2xl);
+          box-shadow: 0 12px 32px -8px color-mix(in oklch, var(--color-gray-500) 28%, transparent);
 
-            &[data-starting-style],
-            &[data-ending-style] {
-                opacity: 0;
-                transform: scale(0.96);
-            }
-        }
+          transform-origin: var(--transform-origin);
+          transition: transform 200ms ease, opacity 200ms ease;
 
-        .list {
-            overflow: auto;
-            max-height: inherit;
-            outline: none;
-        }
+          &[data-starting-style],
+          &[data-ending-style] {
+              opacity: 0;
+              transform: scale(0.96);
+          }
+      }
 
-        .item {
-            display: flex;
-            align-items: center;
-            gap: calc(var(--spacing, 0.25rem) * 2);
+      .list {
+          overflow: auto;
+          max-height: inherit;
+          outline: none;
+      }
 
-            width: 100%;
+      .item {
+          display: flex;
+          align-items: center;
+          gap: calc(var(--spacing, 0.25rem) * 2);
 
-            padding: calc(var(--spacing, 0.25rem) * 2) calc(var(--spacing, 0.25rem) * 3);
-            border-radius: var(--radius-lg, 0.5rem);
+          width: 100%;
 
-            color: var(--color-black, #000);
-            font-size: var(--text-base, 1rem);
-            text-align: start;
+          padding: calc(var(--spacing, 0.25rem) * 2) calc(var(--spacing, 0.25rem) * 3);
+          border-radius: var(--radius-lg, 0.5rem);
 
-            outline: none;
-            cursor: pointer;
-            user-select: none;
+          color: var(--color-black, #000);
+          font-size: var(--text-base, 1rem);
+          text-align: start;
 
-            &:hover,
-            &[data-highlighted] {
-                background-color: var(--color-primary-100);
-                color: var(--color-primary-500);
-            }
+          outline: none;
+          cursor: pointer;
+          user-select: none;
 
-            &[data-selected],
-            &[aria-selected='true'] {
-                background-color: var(--color-primary-100);
-                color: var(--color-primary-500);
-            }
+          &:hover,
+          &[data-highlighted] {
+              background-color: var(--color-primary-100);
+              color: var(--color-primary-500);
+          }
 
-            &[data-disabled] {
-                opacity: 0.5;
-                pointer-events: none;
-            }
-        }
+          &[data-selected],
+          &[aria-selected='true'] {
+              background-color: var(--color-primary-100);
+              color: var(--color-primary-500);
+          }
 
-        .itemIndicator {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+          &[data-disabled] {
+              opacity: 0.5;
+              pointer-events: none;
+          }
+      }
 
-            width: calc(var(--spacing, 0.25rem) * 4);
-            height: calc(var(--spacing, 0.25rem) * 4);
-            margin-left: auto;
+      .itemIndicator {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
 
-            color: transparent;
-        }
+          width: calc(var(--spacing, 0.25rem) * 4);
+          height: calc(var(--spacing, 0.25rem) * 4);
+          margin-left: auto;
 
-        .item[data-selected] .itemIndicator,
-        .item[aria-selected='true'] .itemIndicator {
-            color: var(--color-primary-500);
-        }
+          color: transparent;
+      }
 
-        .group {
-            display: flex;
-            flex-direction: column;
-        }
+      .item[data-selected] .itemIndicator,
+      .item[aria-selected='true'] .itemIndicator {
+          color: var(--color-primary-500);
+      }
 
-        .groupLabel {
-            padding: calc(var(--spacing, 0.25rem) * 2) calc(var(--spacing, 0.25rem) * 3);
+      .group {
+          display: flex;
+          flex-direction: column;
+      }
 
-            color: var(--color-gray-500);
-            font-size: var(--text-xs, 0.75rem);
-        }
+      .groupLabel {
+          padding: calc(var(--spacing, 0.25rem) * 2) calc(var(--spacing, 0.25rem) * 3);
 
-        .separator {
-            height: 1px;
-            margin: calc(var(--spacing, 0.25rem) * 1) calc(var(--spacing, 0.25rem) * 2);
+          color: var(--color-gray-500);
+          font-size: var(--text-xs, 0.75rem);
+      }
 
-            background-color: var(--color-gray-200);
-        }
+      .separator {
+          height: 1px;
+          margin: calc(var(--spacing, 0.25rem) * 1) calc(var(--spacing, 0.25rem) * 2);
+
+          background-color: var(--color-gray-200);
+      }
     }
-}

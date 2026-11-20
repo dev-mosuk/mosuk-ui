@@ -1,126 +1,125 @@
 @layer mosuk-ui {
-    @layer index-17 {
-        .trigger {
-            cursor: pointer;
-        }
 
-        .dropdown {
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 100;
+      .trigger {
+          cursor: pointer;
+      }
 
-            .content {
-                display: flex;
-                flex-direction: column;
-                gap: calc(var(--spacing, 0.25rem) * 1);
+      .dropdown {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 100;
 
-                width: fit-content;
-                min-width: fit-content;
+          .content {
+              display: flex;
+              flex-direction: column;
+              gap: calc(var(--spacing, 0.25rem) * 1);
 
-                padding: calc(var(--spacing, 0.25rem) * 1);
+              width: fit-content;
+              min-width: fit-content;
 
-                background-color: var(--color-white);
+              padding: calc(var(--spacing, 0.25rem) * 1);
 
-                border: 0.75px solid var(--color-gray-200);
-                border-radius: var(--radius-2xl, 1rem);
-                box-shadow: 0 25px 50px -12px rgba(243, 244, 246, var(--tw-shadow-alpha, 0.5));
+              background-color: var(--color-white);
 
-                transform-origin: var(--transform-origin);
-                transition: all 200ms ease-in-out;
+              border: 0.75px solid var(--color-gray-200);
+              border-radius: var(--radius-2xl, 1rem);
+              box-shadow: 0 25px 50px -12px rgba(243, 244, 246, var(--tw-shadow-alpha, 0.5));
 
-                &[data-starting-style],
-                &[data-ending-style] {
-                    opacity: 0;
-                    transform: scale(0.9);
-                }
-            }
+              transform-origin: var(--transform-origin);
+              transition: all 200ms ease-in-out;
 
-            .button {
-                width: 100%;
-                height: calc(var(--spacing, 0.25rem) * 7);
-                min-width: 100%;
-                min-height: calc(var(--spacing, 0.25rem) * 7);
+              &[data-starting-style],
+              &[data-ending-style] {
+                  opacity: 0;
+                  transform: scale(0.9);
+              }
+          }
 
-                display: flex;
-                align-items: center;
-                justify-content: start;
-                gap: calc(var(--spacing, 0.25rem) * 0.25 * 7);
+          .button {
+              width: 100%;
+              height: calc(var(--spacing, 0.25rem) * 7);
+              min-width: 100%;
+              min-height: calc(var(--spacing, 0.25rem) * 7);
 
-                color: var(--color-black);
-                font-size: calc(var(--spacing, 0.25rem) * 0.375 * 7);
-                font-weight: 300;
-                text-wrap: nowrap;
+              display: flex;
+              align-items: center;
+              justify-content: start;
+              gap: calc(var(--spacing, 0.25rem) * 0.25 * 7);
 
-                padding-left: calc(var(--spacing, 0.25rem) * 0.5 * 7);
-                padding-right: calc(var(--spacing, 0.25rem) * 0.5 * 7);
-                border-radius: calc(infinity * 1px);
-                outline: none;
+              color: var(--color-black);
+              font-size: calc(var(--spacing, 0.25rem) * 0.375 * 7);
+              font-weight: 300;
+              text-wrap: nowrap;
 
-                background: transparent;
-                border: none;
-                box-shadow: none;
+              padding-left: calc(var(--spacing, 0.25rem) * 0.5 * 7);
+              padding-right: calc(var(--spacing, 0.25rem) * 0.5 * 7);
+              border-radius: calc(infinity * 1px);
+              outline: none;
 
-                cursor: pointer;
-                transition: all 200ms ease-in-out;
+              background: transparent;
+              border: none;
+              box-shadow: none;
 
-                & :where(svg),
-                .icon {
-                    width: calc(var(--spacing, 0.25rem) * 0.425 * 7);
-                    height: calc(var(--spacing, 0.25rem) * 0.425 * 7);
-                    min-width: calc(var(--spacing, 0.25rem) * 0.425 * 7);
-                    min-height: calc(var(--spacing, 0.25rem) * 0.425 * 7);
+              cursor: pointer;
+              transition: all 200ms ease-in-out;
 
-                    color: var(--color-gray-500);
-                    stroke-width: 1.25;
+              & :where(svg),
+              .icon {
+                  width: calc(var(--spacing, 0.25rem) * 0.425 * 7);
+                  height: calc(var(--spacing, 0.25rem) * 0.425 * 7);
+                  min-width: calc(var(--spacing, 0.25rem) * 0.425 * 7);
+                  min-height: calc(var(--spacing, 0.25rem) * 0.425 * 7);
 
-                    transition: all 200ms ease-in-out;
-                }
+                  color: var(--color-gray-500);
+                  stroke-width: 1.25;
 
-                .trailing {
-                    margin-left: auto;
-                }
+                  transition: all 200ms ease-in-out;
+              }
 
-                .chevron,
-                .arrow {
-                    width: calc(var(--spacing, 0.25rem) * 0.425 * 6);
-                    height: calc(var(--spacing, 0.25rem) * 0.425 * 6);
-                    min-width: calc(var(--spacing, 0.25rem) * 0.425 * 6);
-                    min-height: calc(var(--spacing, 0.25rem) * 0.425 * 6);
+              .trailing {
+                  margin-left: auto;
+              }
 
-                    color: var(--color-gray-500);
-                    stroke-width: 1.25;
+              .chevron,
+              .arrow {
+                  width: calc(var(--spacing, 0.25rem) * 0.425 * 6);
+                  height: calc(var(--spacing, 0.25rem) * 0.425 * 6);
+                  min-width: calc(var(--spacing, 0.25rem) * 0.425 * 6);
+                  min-height: calc(var(--spacing, 0.25rem) * 0.425 * 6);
 
-                    &[data-direction='right'] {
-                        transform: rotate(90deg);
-                    }
+                  color: var(--color-gray-500);
+                  stroke-width: 1.25;
 
-                    &[data-direction='down'] {
-                        transform: rotate(180deg);
-                    }
+                  &[data-direction='right'] {
+                      transform: rotate(90deg);
+                  }
 
-                    &[data-direction='left'] {
-                        transform: rotate(-90deg);
-                    }
-                }
+                  &[data-direction='down'] {
+                      transform: rotate(180deg);
+                  }
 
-                &:hover,
-                &.active,
-                &[data-active] {
-                    background-color: var(--color-primary-100);
-                    color: var(--color-primary-500);
+                  &[data-direction='left'] {
+                      transform: rotate(-90deg);
+                  }
+              }
 
-                    & :where(svg),
-                    .icon {
-                        color: var(--color-primary-500);
-                    }
-                }
+              &:hover,
+              &.active,
+              &[data-active] {
+                  background-color: var(--color-primary-100);
+                  color: var(--color-primary-500);
 
-                &:disabled {
-                    opacity: 0.5;
-                    pointer-events: none;
-                }
-            }
-        }
+                  & :where(svg),
+                  .icon {
+                      color: var(--color-primary-500);
+                  }
+              }
+
+              &:disabled {
+                  opacity: 0.5;
+                  pointer-events: none;
+              }
+          }
+      }
     }
-}

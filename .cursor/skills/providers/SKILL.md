@@ -17,7 +17,7 @@ Rule: `.cursor/rules/providers.mdc`
 - [ ] useEffect: inject service (alertsService.manager) + cleanup
 - [ ] Context value: methods + state (useMemo где нужно)
 - [ ] Hook — отдельно в src/hooks/{feature}/, не в provider index
-- [ ] CSS: @layer index-0, provider.module.css optional
+- [ ] CSS: @layer mosuk-ui, provider.module.css optional
 ```
 
 ## Структура
