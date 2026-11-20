@@ -5,20 +5,20 @@
           --gap: calc(var(--spacing) * 3);
       }
 
-      .alerts {
+      .toasts {
           position: fixed;
           top: auto;
-          left: calc(var(--spacing) * 2);
           right: calc(var(--spacing) * 2);
           bottom: calc(var(--spacing) * 2);
+          left: calc(var(--spacing) * 2);
           z-index: 300;
 
           width: 100%;
-          max-width: calc(100% - (var(--spacing) * 4));
           min-width: calc(100% - (var(--spacing) * 4));
+          max-width: calc(100% - (var(--spacing) * 4));
       }
 
-      .alert {
+      .toast {
           --offset-y: calc(var(--toast-offset-y) * -1 + (var(--toast-index) * var(--gap) * -1) + var(--toast-swipe-movement-y));
 
           position: absolute;
@@ -27,29 +27,31 @@
           bottom: 0;
           z-index: calc(1000 - var(--toast-index));
 
-          width: 100%;
-
           display: flex;
           flex-direction: row;
           align-items: start;
           justify-content: start;
           gap: calc(var(--spacing) * 2);
 
-          background-color: var(--color-white);
+          width: 100%;
 
           padding: calc(var(--spacing) * 4);
+
+          background-color: var(--color-white);
 
           border: 0.75px solid var(--color-gray-100);
           border-radius: var(--radius-3xl);
 
           box-shadow: 0 25px 50px -12px color-mix(in oklab, var(--color-gray-200) 50%, transparent);
 
+          transform: translateX(var(--toast-swipe-movement-x)) translateY(calc(var(--toast-swipe-movement-y) + (var(--toast-index) * -20%))) scale(calc(1 - (var(--toast-index) * 0.1)));
+
           -webkit-user-select: none;
           user-select: none;
 
-          transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s;
           cursor: default;
-          transform: translateX(var(--toast-swipe-movement-x)) translateY(calc(var(--toast-swipe-movement-y) + (var(--toast-index) * -20%))) scale(calc(1 - (var(--toast-index) * 0.1)));
+
+          transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s;
 
           &::after {
               top: 100%;
@@ -152,19 +154,23 @@
               min-width: fit-content;
               min-height: calc(var(--spacing) * var(--button-size));
 
+              padding: 0 calc(var(--spacing) * 0.375 * var(--button-size));
+
               color: white;
               font-size: calc(var(--spacing) * 0.375 * var(--button-size));
               font-weight: 400;
               text-wrap: nowrap;
 
-              padding: 0 calc(var(--spacing) * 0.375 * var(--button-size));
               border: none;
               border-radius: calc(infinity * 1px);
               outline: none;
+
               box-shadow: transparent;
+
               backdrop-filter: blur(18px);
 
               cursor: pointer;
+
               transition: all 200ms ease-in-out;
 
               & :where(svg) {
@@ -257,7 +263,7 @@
       }
 
       @media (min-width: 468px) {
-          .alerts {
+          .toasts {
               position: fixed;
               top: auto;
               left: calc(var(--spacing) * 4);
@@ -270,11 +276,11 @@
               min-width: calc(100% - (var(--spacing) * 8));
           }
 
-          .alert {
+          .toast {
               width: calc((var(--spacing) * 100));
 
-              padding: calc(var(--spacing) * 4);
               margin-left: auto;
+              padding: calc(var(--spacing) * 4);
 
               &:hover {
                   scale: 101%;

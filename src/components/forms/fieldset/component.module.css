@@ -26,13 +26,15 @@
                   width: fit-content;
                   max-width: calc(100% - calc(var(--spacing) * 8));
 
-                  background-color: white;
-                  color: var(--color-gray-500);
-
                   padding-left: calc(var(--spacing) * 1);
                   padding-right: calc(var(--spacing) * 1);
 
+                  color: var(--color-gray-500);
+
+                  background-color: white;
+
                   cursor: text;
+
                   transition: all 0.2s ease-in-out;
               }
 
@@ -44,8 +46,8 @@
                   padding-left: calc(var(--spacing) * 3.5);
                   padding-right: calc(var(--spacing) * 3.5);
 
-                  border-radius: calc(infinity * 1px);
                   border: 1px solid var(--color-gray-200);
+                  border-radius: calc(infinity * 1px);
 
                   &:hover {
                       border: 1px solid var(--color-primary-200);

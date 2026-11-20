@@ -1,7 +1,7 @@
-import type { HTMLAttributes } from 'react';
+import type { Image } from '@/components/display/image';
 
-export interface ChatMessageAvatarProps extends HTMLAttributes<HTMLSpanElement> {
+export type ChatMessageAvatarProps = Omit<Image.Props, 'children'> & {
   src?: string;
   alt?: string;
   fallback?: string;
-}
+};

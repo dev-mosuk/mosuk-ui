@@ -17,16 +17,20 @@ import { ChatMessageImage } from '@/components/collections/chat/.partials/compon
 import { ChatMessageImageProps } from '@/components/collections/chat/.partials/components/message/image/component.interface';
 import { ChatSeparator } from '@/components/collections/chat/.partials/components/separator/component';
 import { ChatSeparatorProps } from '@/components/collections/chat/.partials/components/separator/component.interface';
+import { ChatViewport } from '@/components/collections/chat/.partials/components/viewport/component';
+import { ChatViewportProps } from '@/components/collections/chat/.partials/components/viewport/component.interface';
 
 export const Chat = Object.assign(Component, {
-  Separator: ChatSeparator,
-  Message: Object.assign(ChatMessage, {
-    Avatar: ChatMessageAvatar,
-    Image: ChatMessageImage,
-    File: ChatMessageFile,
-    ENUMS: {
-      Status: ChatMessageStatus,
-    },
+  Viewport: Object.assign(ChatViewport, {
+    Separator: ChatSeparator,
+    Message: Object.assign(ChatMessage, {
+      Avatar: ChatMessageAvatar,
+      Image: ChatMessageImage,
+      File: ChatMessageFile,
+      ENUMS: {
+        Status: ChatMessageStatus,
+      },
+    }),
   }),
   Composer: Object.assign(ChatComposer, {
     Icon: ChatComposerIcon,
@@ -37,27 +41,31 @@ export const Chat = Object.assign(Component, {
 export namespace Chat {
   export type Props = ChatProps;
 
-  export namespace Separator {
-    export type Props = ChatSeparatorProps;
-  }
+  export namespace Viewport {
+    export type Props = ChatViewportProps;
 
-  export namespace Message {
-    export type Props = ChatMessageProps;
-
-    export namespace Avatar {
-      export type Props = ChatMessageAvatarProps;
+    export namespace Separator {
+      export type Props = ChatSeparatorProps;
     }
 
-    export namespace Image {
-      export type Props = ChatMessageImageProps;
-    }
+    export namespace Message {
+      export type Props = ChatMessageProps;
 
-    export namespace File {
-      export type Props = ChatMessageFileProps;
-    }
+      export namespace Avatar {
+        export type Props = ChatMessageAvatarProps;
+      }
 
-    export namespace ENUMS {
-      export type Status = ChatMessageStatus;
+      export namespace Image {
+        export type Props = ChatMessageImageProps;
+      }
+
+      export namespace File {
+        export type Props = ChatMessageFileProps;
+      }
+
+      export namespace ENUMS {
+        export type Status = ChatMessageStatus;
+      }
     }
   }
 

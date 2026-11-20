@@ -8,11 +8,13 @@
           gap: calc(var(--spacing) * 3);
 
           width: var(--container-2xs);
+
           padding: calc(var(--spacing) * 3);
 
           color: var(--color-black);
 
           background-color: var(--color-white);
+
           border: 1px solid var(--color-gray-200);
           border-radius: var(--radius-2xl);
 
@@ -69,6 +71,7 @@
 
           &[data-disabled='true'] {
               opacity: 0.4;
+
               pointer-events: none;
           }
       }
@@ -155,6 +158,7 @@
 
           &[data-disabled='true'] {
               opacity: 0.4;
+
               pointer-events: none;
           }
 
@@ -230,6 +234,8 @@
       }
 
       .yearGrid {
+          overflow: auto;
+
           position: absolute;
           right: calc(var(--spacing) * 3);
           left: calc(var(--spacing) * 3);
@@ -238,8 +244,6 @@
           grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: calc(var(--spacing) * 1);
           align-content: start;
-
-          overflow: auto;
 
           background-color: var(--color-white);
 

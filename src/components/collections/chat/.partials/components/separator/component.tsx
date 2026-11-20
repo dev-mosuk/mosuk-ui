@@ -13,7 +13,7 @@ export function ChatSeparator({ ...rest }: ChatSeparatorProps) {
         rest?.className,
       )}
     >
-      <span className={styles.separatorLabel}>{rest?.children}</span>
+      <span className={styles.label}>{rest?.children}</span>
     </div>
   );
 }

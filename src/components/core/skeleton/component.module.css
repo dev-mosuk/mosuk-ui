@@ -2,6 +2,7 @@
 
       .skeleton {
           overflow: hidden;
+
           position: relative;
 
           width: 100%;
@@ -14,14 +15,18 @@
           &::after {
               position: absolute;
               inset: 0;
+
               content: "";
-              transform: translateX(-100%) skewX(-20deg);
+
               background: linear-gradient(90deg,
                       transparent 0%,
                       transparent 20%,
                       var(--color-gray-50),
                       transparent 80%,
                       transparent 100%);
+
+              transform: translateX(-100%) skewX(-20deg);
+
               animation: shimmer 1.5s infinite;
           }
       }

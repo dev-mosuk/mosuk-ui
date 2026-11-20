@@ -24,10 +24,10 @@ Rule: `.cursor/rules/hooks.mdc`
 ## Context hook template
 
 ```ts
-export function useAlerts(): UseAlertsProps {
-  const context = useContext(AlertsContext);
+export function useToasts(): UseToastsProps {
+  const context = useContext(ToastsContext);
   if (!context) {
-    throw new Error('useAlerts must be used within <AlertsProvider>');
+    throw new Error('useToasts must be used within <ToastsProvider>');
   }
   return context;
 }
@@ -42,6 +42,6 @@ export function useAlerts(): UseAlertsProps {
 
 ## Эталоны
 
-- Context: `src/hooks/alerts/`
+- Context: `src/hooks/toasts/`
 - Browser API: `src/hooks/storage/local/`
 - Feature-local: `src/components/navigation/stepper/.partials/hooks/`

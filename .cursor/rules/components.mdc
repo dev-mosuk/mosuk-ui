@@ -54,7 +54,7 @@ Provider внутри component → `.cursor/rules/providers.mdc`
 - `{...rest}` на primitive, `rest?.children`
 - `classNames`: `mosuk-{feature}` → `@container/{feature}` → `group/{feature}` → `styles.*` → `rest?.className`
 - `group` и `@container` на визуальном host. У portal-оверлея host = Portal, не headless Root
-- CSS: `@layer mosuk-ui { .root { … } }`. Размеры и цвета через `var(--spacing)`, `var(--color-*)`, `var(--text-*)`
+- CSS: `@layer mosuk-ui { .root { … } }`. Размеры и цвета через `var(--spacing)`, `var(--color-*)`, `var(--text-*)`. Дерево host + nested `&[data-*]` / `.child` — styling rule (не `*With*` / плоские state-классы)
 - Класс модуля нового кода — `.root`. Семантические `.checkbox` / `.button` — только при правке feature, где они уже есть
 - Иконки — `lucide-react` / `mosuk-icons`. Склейка классов — пакет `classnames`
 

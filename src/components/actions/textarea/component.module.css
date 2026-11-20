@@ -1,11 +1,11 @@
 @layer mosuk-ui {
 
       .textarea {
-          resize: none;
+          display: block;
 
           width: 100%;
 
-          display: block;
+          resize: none;
 
           color: var(--color-black);
           font-size: var(--text-base);
@@ -21,6 +21,7 @@
 
           &:read-only {
               opacity: 50%;
+
               pointer-events: none;
           }
 

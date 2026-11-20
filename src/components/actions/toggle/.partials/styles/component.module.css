@@ -15,6 +15,7 @@
 
           &:disabled {
               opacity: 50%;
+
               pointer-events: none;
           }
 
@@ -22,28 +23,31 @@
               position: relative;
               z-index: 1;
 
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: calc(var(--spacing) * 0.25 * 7);
+
               width: fit-content;
               height: calc(var(--spacing) * 7);
               min-width: fit-content;
               min-height: calc(var(--spacing) * 7);
 
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              gap: calc(var(--spacing) * 0.25 * 7);
+              padding: 0 calc(var(--spacing) * 0.375 * 7);
 
               color: var(--color-black);
               font-size: calc(var(--spacing) * 0.375 * 7);
               font-weight: 400;
               text-wrap: nowrap;
 
-              padding: 0 calc(var(--spacing) * 0.375 * 7);
-              border: none;
               background: transparent;
+
+              border: none;
               border-radius: calc(infinity * 1px);
               outline: none;
 
               cursor: pointer;
+
               transition: all 200ms ease-in-out;
 
               & :where(svg) {
@@ -76,14 +80,16 @@
               height: var(--active-tab-height);
 
               background-color: var(--color-primary-100);
+
               border-radius: calc(infinity * 1px);
 
               opacity: 1;
 
               translate: var(--active-tab-left) var(--active-tab-top);
-              transition: all 200ms ease-in-out;
 
               pointer-events: none;
+
+              transition: all 200ms ease-in-out;
 
               &.inactive {
                   opacity: 0;

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
 
-export interface AlertsProviderProps {
+export interface ToastsProviderProps {
   children: ReactNode;
 }

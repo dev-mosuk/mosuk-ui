@@ -47,13 +47,13 @@ export function ChatMessage({
             {showStatus ? (
               status === ChatMessageStatus.Read ? (
                 <CheckCheck
-                  className={classNames(styles.status, styles.statusRead)}
+                  className={classNames(styles.status, styles.read)}
                   strokeWidth={1.75}
                   aria-label='Read'
                 />
               ) : (
                 <Check
-                  className={classNames(styles.status, styles.statusSend)}
+                  className={classNames(styles.status, styles.send)}
                   strokeWidth={1.75}
                   aria-label='Sent'
                 />

@@ -42,4 +42,4 @@ export namespace OTP {
 
 - Simple compound: `src/components/actions/otp/index.ts`
 - Deep: `src/components/overlays/drawer/index.ts`
-- Provider: `src/providers/alerts/index.ts`
+- Provider: `src/providers/toasts/index.ts`

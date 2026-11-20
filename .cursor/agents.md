@@ -32,9 +32,9 @@ src/
 | ---- | ---- | ------ |
 | **Components** | Публичный UI, compound | `OTP`, `Drawer`, `Toggle` |
 | **Integrations** | Внешние SDK + их UI | `YandexMap`, `TBankProvider` |
-| **Providers** | Context + side effects | `AlertsProvider` |
-| **Hooks** | React-обёртки над context/API | `useAlerts`, `useLocalStorage` |
-| **Services** | Singleton / imperative | `alertsService` |
+| **Providers** | Context + side effects | `ToastsProvider` |
+| **Hooks** | React-обёртки над context/API | `useToasts`, `useLocalStorage` |
+| **Services** | Singleton / imperative | `toastsService` |
 | **Utilities** | Pure functions | `formatPhone`, `formatPrice` |
 
 ### Маппинг CRM → mosuk-ui (исторический контекст)
@@ -82,7 +82,7 @@ src/
 ### D — Dependency Inversion
 
 - UI зависит от hooks/services через context, не от DOM API напрямую в leaf-компонентах.
-- Provider инжектит service (`alertsService.manager(...)`).
+- Provider инжектит service (`toastsService.manager(...)`).
 
 ---
 
@@ -158,6 +158,6 @@ src/
 | Shared state в `.partials` | `src/components/navigation/stepper/`, `src/components/display/image/` |
 | Flat — только правка этого feature | `src/components/actions/button/`, `src/components/overlays/dialog/`, `src/components/forms/fieldset/` |
 | Integration (product / vendor) | `src/integrations/yandex/maps/`, `src/integrations/tbank/` |
-| Provider + service | `src/providers/alerts/` |
-| Hook over context | `src/hooks/alerts/` |
+| Provider + service | `src/providers/toasts/` |
+| Hook over context | `src/hooks/toasts/` |
 | CSS layers | [README.md](../README.md) §1–3 |

@@ -1,125 +1,132 @@
 @layer mosuk-ui {
 
-      .trigger {
-          cursor: pointer;
-      }
-
-      .dropdown {
-          position: absolute;
-          top: 0;
-          left: 0;
-          z-index: 100;
-
-          .content {
-              display: flex;
-              flex-direction: column;
-              gap: calc(var(--spacing) * 1);
-
-              width: fit-content;
-              min-width: fit-content;
-
-              padding: calc(var(--spacing) * 1);
-
-              background-color: var(--color-white);
-
-              border: 0.75px solid var(--color-gray-200);
-              border-radius: var(--radius-2xl);
-              box-shadow: 0 25px 50px -12px color-mix(in oklab, var(--color-gray-200) 50%, transparent);
-
-              transform-origin: var(--transform-origin);
-              transition: all 200ms ease-in-out;
-
-              &[data-starting-style],
-              &[data-ending-style] {
-                  opacity: 0;
-                  transform: scale(0.9);
-              }
-          }
-
-          .button {
-              width: 100%;
-              height: calc(var(--spacing) * 7);
-              min-width: 100%;
-              min-height: calc(var(--spacing) * 7);
-
-              display: flex;
-              align-items: center;
-              justify-content: start;
-              gap: calc(var(--spacing) * 0.25 * 7);
-
-              color: var(--color-black);
-              font-size: calc(var(--spacing) * 0.375 * 7);
-              font-weight: 300;
-              text-wrap: nowrap;
-
-              padding-left: calc(var(--spacing) * 0.5 * 7);
-              padding-right: calc(var(--spacing) * 0.5 * 7);
-              border-radius: calc(infinity * 1px);
-              outline: none;
-
-              background: transparent;
-              border: none;
-              box-shadow: none;
-
-              cursor: pointer;
-              transition: all 200ms ease-in-out;
-
-              & :where(svg),
-              .icon {
-                  width: calc(var(--spacing) * 0.425 * 7);
-                  height: calc(var(--spacing) * 0.425 * 7);
-                  min-width: calc(var(--spacing) * 0.425 * 7);
-                  min-height: calc(var(--spacing) * 0.425 * 7);
-
-                  color: var(--color-gray-500);
-                  stroke-width: 1.25;
-
-                  transition: all 200ms ease-in-out;
-              }
-
-              .trailing {
-                  margin-left: auto;
-              }
-
-              .chevron,
-              .arrow {
-                  width: calc(var(--spacing) * 0.425 * 6);
-                  height: calc(var(--spacing) * 0.425 * 6);
-                  min-width: calc(var(--spacing) * 0.425 * 6);
-                  min-height: calc(var(--spacing) * 0.425 * 6);
-
-                  color: var(--color-gray-500);
-                  stroke-width: 1.25;
-
-                  &[data-direction='right'] {
-                      transform: rotate(90deg);
-                  }
-
-                  &[data-direction='down'] {
-                      transform: rotate(180deg);
-                  }
-
-                  &[data-direction='left'] {
-                      transform: rotate(-90deg);
-                  }
-              }
-
-              &:hover,
-              &.active,
-              &[data-active] {
-                  background-color: var(--color-primary-100);
-                  color: var(--color-primary-500);
-
-                  & :where(svg),
-                  .icon {
-                      color: var(--color-primary-500);
-                  }
-              }
-
-              &:disabled {
-                  opacity: 0.5;
-                  pointer-events: none;
-              }
-          }
-      }
+    .trigger {
+        cursor: pointer;
     }
+
+    .dropdown {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: calc(var(--spacing) * 1);
+
+            width: fit-content;
+            min-width: fit-content;
+
+            padding: calc(var(--spacing) * 1);
+
+            background-color: var(--color-white);
+
+            border: 0.75px solid var(--color-gray-200);
+            border-radius: var(--radius-2xl);
+            box-shadow: 0 25px 50px -12px color-mix(in oklab, var(--color-gray-200) 50%, transparent);
+
+            transform-origin: var(--transform-origin);
+
+            transition: all 200ms ease-in-out;
+
+            &[data-starting-style],
+            &[data-ending-style] {
+                opacity: 0;
+
+                transform: scale(0.9);
+            }
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            gap: calc(var(--spacing) * 0.25 * 7);
+
+            width: 100%;
+            height: calc(var(--spacing) * 7);
+            min-width: 100%;
+            min-height: calc(var(--spacing) * 7);
+
+            padding-left: calc(var(--spacing) * 0.5 * 7);
+            padding-right: calc(var(--spacing) * 0.5 * 7);
+
+            color: var(--color-black);
+            font-size: calc(var(--spacing) * 0.375 * 7);
+            font-weight: 300;
+            text-wrap: nowrap;
+
+            background: transparent;
+
+            border: none;
+            border-radius: calc(infinity * 1px);
+            outline: none;
+
+            box-shadow: none;
+
+            cursor: pointer;
+
+            transition: all 200ms ease-in-out;
+
+            & :where(svg),
+            .icon {
+                width: calc(var(--spacing) * 0.425 * 7);
+                height: calc(var(--spacing) * 0.425 * 7);
+                min-width: calc(var(--spacing) * 0.425 * 7);
+                min-height: calc(var(--spacing) * 0.425 * 7);
+
+                color: var(--color-gray-500);
+                stroke-width: 1.25;
+
+                transition: all 200ms ease-in-out;
+            }
+
+            .trailing {
+                margin-left: auto;
+            }
+
+            .chevron,
+            .arrow {
+                width: calc(var(--spacing) * 0.425 * 6);
+                height: calc(var(--spacing) * 0.425 * 6);
+                min-width: calc(var(--spacing) * 0.425 * 6);
+                min-height: calc(var(--spacing) * 0.425 * 6);
+
+                color: var(--color-gray-500);
+                stroke-width: 1.25;
+
+                &[data-direction='right'] {
+                    transform: rotate(90deg);
+                }
+
+                &[data-direction='down'] {
+                    transform: rotate(180deg);
+                }
+
+                &[data-direction='left'] {
+                    transform: rotate(-90deg);
+                }
+            }
+
+            &:hover,
+            &.active,
+            &[data-active] {
+                color: var(--color-primary-500);
+
+                background-color: var(--color-primary-100);
+
+                & :where(svg),
+                .icon {
+                    color: var(--color-primary-500);
+                }
+            }
+
+            &:disabled {
+                opacity: 0.5;
+
+                pointer-events: none;
+            }
+        }
+    }
+}

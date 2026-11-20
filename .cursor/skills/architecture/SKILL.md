@@ -58,7 +58,7 @@ Rule: `.cursor/rules/architecture.mdc`
 - Deep compound overlay: `src/components/overlays/drawer/`
 - Integration (product): `src/integrations/yandex/maps/`
 - Integration (vendor): `src/integrations/tbank/`
-- Provider: `src/providers/alerts/`
-- Hook: `src/hooks/alerts/`
-- Service: `src/services/alerts/`
+- Provider: `src/providers/toasts/`
+- Hook: `src/hooks/toasts/`
+- Service: `src/services/toasts/`
 - Utility: `src/utilities/phone/`

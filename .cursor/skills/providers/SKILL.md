@@ -1,7 +1,7 @@
 ---
 name: providers
 description: >-
-  Creates app-level React providers in src/providers/ (alerts).
+  Creates app-level React providers in src/providers/ (toasts).
   Use for context wiring, service injection. External SDK → integrations.
 ---
 
@@ -14,7 +14,7 @@ Rule: `.cursor/rules/providers.mdc`
 ```
 - [ ] 4-file pattern: provider.tsx, provider.interface.ts, context/context.ts, context.interface.ts
 - [ ] index.ts: thin wrapper + export namespace {Name} { export type Props }
-- [ ] useEffect: inject service (alertsService.manager) + cleanup
+- [ ] useEffect: inject service (toastsService.manager) + cleanup
 - [ ] Context value: methods + state (useMemo где нужно)
 - [ ] Hook — отдельно в src/hooks/{feature}/, не в provider index
 - [ ] CSS: @layer mosuk-ui, provider.module.css optional
@@ -42,7 +42,7 @@ Shared state между sub-parts → `{feature}/.partials/providers/` — 4-fil
 
 | Scope | Path |
 | ----- | ---- |
-| App + service | `src/providers/alerts/` |
+| App + service | `src/providers/toasts/` |
 | External SDK | `src/integrations/{vendor}/…/provider/` |
 | Component-local | `src/components/navigation/stepper/.partials/providers/` |
 | Component-local | `src/components/display/image/.partials/providers/` |

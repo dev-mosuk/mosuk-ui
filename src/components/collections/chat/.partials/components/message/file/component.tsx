@@ -25,18 +25,16 @@ export function ChatMessageFile({
 
   const content = (
     <>
-      <span className={styles.fileIcon}>
+      <span className={styles.icon}>
         {isPdf ? (
-          <AdobePdf alt='PDF' className={styles.fileIconGlyph} />
+          <AdobePdf alt='PDF' className={styles.glyph} />
         ) : (
-          <FileIcon className={styles.fileIconGlyph} strokeWidth={1.5} />
+          <FileIcon className={styles.glyph} strokeWidth={1.5} />
         )}
       </span>
-      <span className={styles.fileInfo}>
-        <span className={styles.fileName}>{name}</span>
-        {sizeLabel ? (
-          <span className={styles.fileSize}>{sizeLabel}</span>
-        ) : null}
+      <span className={styles.info}>
+        <span className={styles.name}>{name}</span>
+        {sizeLabel ? <span className={styles.size}>{sizeLabel}</span> : null}
       </span>
     </>
   );

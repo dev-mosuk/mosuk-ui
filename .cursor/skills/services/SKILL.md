@@ -1,7 +1,7 @@
 ---
 name: services
 description: >-
-  Creates imperative singleton services in src/services/ (alerts, storage).
+  Creates imperative singleton services in src/services/ (toasts, storage).
   Use for non-React API, registry, side-effect coordinators.
 ---
 
@@ -33,11 +33,11 @@ Rule: `.cursor/rules/services.mdc`
 ## index.ts template
 
 ```ts
-export { alertsService, type Alert, type AlertsServiceProps };
+export { toastsService, type ToastEntry, type ToastsServiceProps };
 
-export namespace AlertsService {
-  export type Props = AlertsServiceProps;
-  export const ENUMS = { Type: AlertType };
+export namespace ToastsService {
+  export type Props = ToastsServiceProps;
+  export const ENUMS = { Type: ToastType };
 }
 ```
 
@@ -45,13 +45,13 @@ export namespace AlertsService {
 
 ```ts
 useEffect(() => {
-  alertsService.manager(manager);
-  return () => alertsService.manager(null);
+  toastsService.manager(manager);
+  return () => toastsService.manager(null);
 }, [manager]);
 ```
 
 ## Эталоны
 
-- Toast registry: `src/services/alerts/`
+- Toast registry: `src/services/toasts/`
 - localStorage: `src/services/storage/local/`
 - cookie: `src/services/storage/cookie/`

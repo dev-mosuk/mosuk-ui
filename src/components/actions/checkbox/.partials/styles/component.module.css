@@ -17,6 +17,7 @@
           outline: none;
 
           cursor: pointer;
+
           transition: all 200ms ease-in-out;
 
           & :where(svg) {
@@ -28,6 +29,7 @@
               color: var(--color-primary-500);
 
               opacity: 0;
+
               transition: all 200ms ease-in-out;
           }
 

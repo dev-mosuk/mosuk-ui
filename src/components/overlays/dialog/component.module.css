@@ -33,6 +33,7 @@
 
           .popup {
               overflow: hidden;
+
               position: relative;
 
               width: 100%;
@@ -41,12 +42,13 @@
               max-height: calc(100dvh - var(--bleed));
 
               background-color: var(--color-white);
-              opacity: 1;
 
               border-radius: var(--radius-3xl);
               outline: 0;
 
               box-shadow: 0 25px 50px -12px color-mix(in oklab, var(--color-gray-200) 50%, transparent);
+
+              opacity: 1;
 
               transition: transform 400ms cubic-bezier(0.45, 1.005, 0, 1.005);
 
@@ -58,12 +60,14 @@
 
               &[data-ending-style] {
                   transform: translateY(max(100vh, 100%));
+
                   transition-duration: 200ms;
                   transition-timing-function: cubic-bezier(0.375, 0.015, 0.545, 0.455);
               }
 
               .content {
                   overflow-y: auto;
+
                   touch-action: auto;
 
                   width: 100%;

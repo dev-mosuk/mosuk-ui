@@ -3,9 +3,9 @@
       .input {
           appearance: none;
 
-          width: 100%;
-
           display: block;
+
+          width: 100%;
 
           color: var(--color-black);
           font-size: var(--text-base);
@@ -21,6 +21,7 @@
 
           &:read-only {
               opacity: 50%;
+
               pointer-events: none;
           }
       }

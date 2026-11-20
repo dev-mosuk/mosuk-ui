@@ -1,4 +1,4 @@
-export enum AlertType {
+export enum ToastType {
   DEFAULT = 'default',
   ACCENT = 'accent',
   SUCCESS = 'success',
@@ -7,7 +7,7 @@ export enum AlertType {
   CUSTOM = 'custom',
 }
 
-export enum AlertActionVariant {
+export enum ToastActionVariant {
   DEFAULT = 'default',
   ACCENT = 'accent',
   SUCCESS = 'success',

@@ -20,11 +20,12 @@
                   width: fit-content;
                   max-width: 41.666667%;
 
-                  background-color: white;
+                  padding-right: calc(var(--spacing) * 2);
+
                   hyphens: auto;
                   word-break: break-word;
 
-                  padding-right: calc(var(--spacing) * 2);
+                  background-color: white;
 
                   &:before {
                       position: absolute;
@@ -44,12 +45,13 @@
                   width: fit-content;
                   max-width: 58.333333%;
 
-                  background-color: white;
+                  padding-left: calc(var(--spacing) * 2);
+
                   text-align: end;
                   hyphens: auto;
                   word-break: break-word;
 
-                  padding-left: calc(var(--spacing) * 2);
+                  background-color: white;
               }
           }
       }

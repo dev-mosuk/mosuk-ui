@@ -3,8 +3,6 @@
       .root {
           position: relative;
 
-          width: 100%;
-
           display: grid;
           grid-template-areas:
               'label value'
@@ -13,8 +11,11 @@
           align-items: center;
           gap: var(--spacing);
 
+          width: 100%;
+
           &[data-disabled] {
               opacity: 50%;
+
               pointer-events: none;
           }
 
@@ -36,9 +37,9 @@
 
           width: fit-content;
 
+          color: var(--color-black);
           font-size: var(--text-sm);
           font-weight: 500;
-          color: var(--color-black);
 
           :global(.mosuk-slider[data-orientation='vertical']) & {
               text-align: center;
@@ -48,10 +49,10 @@
       .value {
           grid-area: value;
 
+          color: var(--color-black);
           font-size: var(--text-sm);
           font-weight: 500;
           font-variant-numeric: tabular-nums;
-          color: var(--color-black);
 
           :global(.mosuk-slider[data-orientation='vertical']) & {
               text-align: center;
@@ -61,11 +62,11 @@
       .control {
           grid-area: track;
 
-          width: 100%;
-          height: calc(var(--spacing) * 5);
-
           display: flex;
           align-items: center;
+
+          width: 100%;
+          height: calc(var(--spacing) * 5);
 
           touch-action: none;
 
@@ -78,15 +79,16 @@
       }
 
       .track {
+          overflow: hidden;
+
           position: relative;
 
           width: 100%;
           height: 100%;
 
-          overflow: hidden;
+          background-color: var(--color-gray-200);
 
           border-radius: var(--radius-xl);
-          background-color: var(--color-gray-200);
 
           :global(.mosuk-slider[data-orientation='vertical']) & {
               width: 100%;
@@ -109,17 +111,19 @@
       .thumb {
           z-index: 0;
 
-          width: calc(1.5rem + 0.25rem);
-          height: 100%;
-
           display: flex;
           align-items: center;
           justify-content: center;
 
+          width: calc(1.5rem + 0.25rem);
+          height: 100%;
+
           background-color: var(--color-primary-500);
+
           border: none;
           border-radius: var(--radius-xl);
           outline: none;
+
           box-shadow: none;
 
           cursor: grab;
@@ -131,8 +135,10 @@
               width: 1.5rem;
               height: 1rem;
 
-              border-radius: var(--radius-lg);
               background-color: var(--color-white);
+
+              border-radius: var(--radius-lg);
+
               box-shadow: var(--shadow-sm);
           }
 

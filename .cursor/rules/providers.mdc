@@ -33,17 +33,17 @@ React providers: инициализация SDK, context value, side effects (us
 ## index.ts
 
 ```ts
-export const AlertsProvider = (props) => createElement(BaseAlertsProvider, props);
+export const ToastsProvider = (props) => createElement(BaseToastsProvider, props);
 
-export namespace AlertsProvider {
-  export type Props = AlertsProviderProps;
+export namespace ToastsProvider {
+  export type Props = ToastsProviderProps;
 }
 ```
 
 ## provider.tsx
 
 - `'use client'` если browser APIs / effects
-- Inject service: `alertsService.manager(manager)` в useEffect + cleanup
+- Inject service: `toastsService.manager(manager)` в useEffect + cleanup
 - Context.Provider с value object (methods + state)
 
 ## Связь с hooks
@@ -62,7 +62,7 @@ Imperative API в `src/services/{feature}/` — provider wiring, service logic.
 
 ## Эталоны
 
-- `src/providers/alerts/` — provider + list sub-component + service
+- `src/providers/toasts/` — provider + list sub-component + service
 - External SDK → `src/integrations/{vendor}/…/provider/`
 - Component-local: `src/components/navigation/stepper/.partials/providers/`, `src/components/display/image/.partials/providers/`
 - Form (legacy flat): `src/components/forms/fieldset/providers/`
@@ -72,7 +72,7 @@ Imperative API в `src/services/{feature}/` — provider wiring, service logic.
 ### Когда
 
 - Shared state между compound sub-parts (stepper, image)
-- App-level API через context (alerts)
+- App-level API через context (toasts)
 - Feature-scoped form state (fieldset)
 
 ### 4 файла (минимум)

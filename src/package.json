@@ -191,9 +191,9 @@
         "default": "./components/navigation/stepper/index.ts"
       }
     },
-    "./components/overlays/alert": {
+    "./components/overlays/toast": {
       "import": {
-        "default": "./components/overlays/alert/index.ts"
+        "default": "./components/overlays/toast/index.ts"
       }
     },
     "./components/overlays/dialog": {
@@ -236,9 +236,9 @@
         "default": "./components/texts/typography/index.ts"
       }
     },
-    "./hooks/alerts": {
+    "./hooks/toasts": {
       "import": {
-        "default": "./hooks/alerts/index.ts"
+        "default": "./hooks/toasts/index.ts"
       }
     },
     "./hooks/storage/cookie": {
@@ -276,14 +276,14 @@
         "default": "./integrations/yandex/metrika/provider/index.ts"
       }
     },
-    "./providers/alerts": {
+    "./providers/toasts": {
       "import": {
-        "default": "./providers/alerts/index.ts"
+        "default": "./providers/toasts/index.ts"
       }
     },
-    "./services/alerts": {
+    "./services/toasts": {
       "import": {
-        "default": "./services/alerts/index.ts"
+        "default": "./services/toasts/index.ts"
       }
     },
     "./services/storage/cookie": {

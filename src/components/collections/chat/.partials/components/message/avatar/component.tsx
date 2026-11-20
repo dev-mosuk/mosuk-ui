@@ -1,5 +1,8 @@
+'use client';
+
 import { ChatMessageAvatarProps } from '@/components/collections/chat/.partials/components/message/avatar/component.interface';
 import styles from '@/components/collections/chat/.partials/styles/component.module.css';
+import { Image } from '@/components/display/image';
 import classNames from 'classnames';
 import React from 'react';
 
@@ -12,7 +15,7 @@ export function ChatMessageAvatar({
   const label = fallback?.trim().slice(0, 2);
 
   return (
-    <span
+    <Image
       {...rest}
       className={classNames(
         'mosuk-chat-message-avatar',
@@ -20,13 +23,15 @@ export function ChatMessageAvatar({
         rest?.className,
       )}
     >
+      <Image.Dots />
+
       {src ? (
-        <img src={src} alt={alt ?? ''} className={styles.avatarImage} />
+        <Image.Image src={src} alt={alt ?? ''} className={styles.image} />
       ) : (
-        <span className={styles.avatarFallback} aria-hidden={!alt}>
+        <span className={styles.fallback} aria-hidden={!alt}>
           {label || alt?.slice(0, 2) || '?'}
         </span>
       )}
-    </span>
+    </Image>
   );
 }

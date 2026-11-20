@@ -33,6 +33,7 @@
 
               &:read-only {
                   opacity: 50%;
+
                   pointer-events: none;
               }
 

@@ -50,6 +50,7 @@
               box-shadow: 0 25px 50px -12px color-mix(in oklab, var(--color-gray-200) 50%, transparent);
 
               will-change: transform;
+
               transition: transform 400ms cubic-bezier(0.32, 0.72, 0, 1);
 
               &[data-swiping] {
@@ -65,9 +66,10 @@
                   z-index: 10;
 
                   background-color: color-mix(in oklab, var(--color-gray-400) 50%, transparent);
-                  backdrop-filter: blur(4px);
 
                   border-radius: calc(infinity * 1px);
+
+                  backdrop-filter: blur(4px);
 
                   transition-duration: 200ms;
 
@@ -78,6 +80,7 @@
 
               .content {
                   overflow-y: auto;
+
                   touch-action: auto;
 
                   width: 100%;

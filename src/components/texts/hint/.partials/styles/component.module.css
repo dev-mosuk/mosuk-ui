@@ -5,11 +5,10 @@
           align-items: flex-start;
           gap: var(--leading-2);
 
+          color: var(--color-black);
           font-size: var(--text-xs);
           font-weight: 400;
           line-height: var(--leading-relaxed);
-
-          color: var(--color-black);
 
           transition: all 200ms ease-in-out;
 
@@ -19,9 +18,9 @@
               min-width: var(--leading-4);
               min-height: var(--leading-4);
 
-              color: var(--color-primary-500);
-
               margin-top: 0.25em;
+
+              color: var(--color-primary-500);
 
               & svg {
                   width: inherit;

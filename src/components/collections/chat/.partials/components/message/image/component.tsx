@@ -11,16 +11,16 @@ export function ChatMessageImage({ src, alt, ...rest }: ChatMessageImageProps) {
       {...rest}
       className={classNames(
         'mosuk-chat-message-image',
-        styles.image,
+        styles.photo,
         rest?.className,
       )}
     >
-      <Image className={styles.imageFrame}>
+      <Image className={styles.frame}>
         <Image.Dots />
         <Image.Image
           src={src}
           alt={alt || 'Image'}
-          className={styles.imageMedia}
+          className={styles.media}
         />
       </Image>
     </button>

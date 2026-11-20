@@ -40,6 +40,29 @@ alwaysApply: false
 - Вложенность через `.root .child`, не глобальные селекторы
 - Файл: `{feature}/.partials/styles/component.module.css`
 
+## CSS tree (host + nested)
+
+Один host-класс на блок (`.root` / `.composer` / …). Состояния и варианты — nested под host: `&[data-…]`, `&:hover`, `&:disabled`. Дети — nested `.child` внутри host (или `.host .child`).
+
+```css
+.composer {
+  /* props… */
+  &[data-expanded='true'] { /* … */ }
+  .icon { /* … */ }
+  .textarea { /* … */ }
+}
+```
+
+В TSX: один `styles.composer` + `data-expanded={…}` на DOM — не второй класс модуля.
+
+Запрещено:
+
+- `*With*`, `*Expanded` / `*Active` как отдельные module-классы для того же узла
+- плоская сетка `composer {}` + `composerFoo {}` вместо дерева
+- `styles.composerWith…` в TSX вместо `data-*`
+
+Эталон дерева: `src/components/collections/chat/.partials/styles/component.module.css` → `.composer`.
+
 ## Порядок свойств в CSS module
 
 Пустая строка между группами. Внутри группы — без пустых строк.
@@ -87,8 +110,23 @@ Feature skeleton в `src/components/` нет. Стили shimmer — `src/compon
 - `src/styles/` — tokens, base — **не** дублировать в module без необходимости
 - Tailwind utility-классы в TSX — допустимы для layout; визуальные токены компонента — в module + layers
 
+## Typography
+
+- `font-size` — только `var(--text-*)` (`--text-4xs` … `--text-4xl` из `src/index.css`)
+- `line-height` — `var(--leading-*)` (`--leading-normal`, `--leading-relaxed`, …) или безразмерный коэффициент (`1`, `1.45`)
+- **Запрещено:** `font-size` / `line-height` через `calc(var(--spacing) * N)`  
+  Исключение: относительный scale размера контрола (`calc(var(--spacing) * 0.375 * var(--button-size))` и аналоги в `[size]/`)
+
+## Radius
+
+- `border-radius` — только `var(--radius-*)` (`--radius-xs` … `--radius-4xl` из `src/index.css`)
+- Pill / full: `9999px` или `calc(infinity * 1px)`
+- **Запрещено:** `border-radius: calc(var(--spacing) * N)`
+
 ## Запрещено
 
 - Стили вне `@layer mosuk-ui` для component modules
 - Hardcoded z-index вне согласованных диапазонов README
 - `!important` без крайней необходимости
+- Плоские state-классы модуля (`*With*`, `*Expanded`) вместо nested `&[data-*]`
+- `font-size` / `line-height` / `border-radius` из `calc(var(--spacing) * N)` (см. Typography / Radius)

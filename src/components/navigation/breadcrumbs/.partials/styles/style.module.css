@@ -1,12 +1,12 @@
 @layer mosuk-ui {
 
       .slide {
-          width: fit-content;
-          height: calc(var(--spacing) * 6);
-
           display: flex;
           align-items: center;
           justify-content: start;
+
+          width: fit-content;
+          height: calc(var(--spacing) * 6);
       }
 
       .icon {
@@ -21,17 +21,17 @@
       }
 
       .button {
-          height: calc(var(--spacing) * 6);
-
           display: flex;
           align-items: center;
           justify-content: center;
           gap: calc(var(--spacing) * 1.75);
 
-          font-size: var(--text-xs);
+          height: calc(var(--spacing) * 6);
 
           padding-left: calc(var(--spacing) * 2.75);
           padding-right: calc(var(--spacing) * 2.75);
+
+          font-size: var(--text-xs);
 
           & svg {
               width: calc(var(--spacing) * 2.5);
@@ -45,13 +45,15 @@
           .slide {
               &:last-child {
                   .icon {
-                      background-color: var(--color-gray-100);
                       color: var(--color-primary-500);
+
+                      background-color: var(--color-gray-100);
                   }
 
                   .button {
-                      background-color: var(--color-gray-100);
                       color: var(--color-primary-500);
+
+                      background-color: var(--color-gray-100);
                   }
               }
           }

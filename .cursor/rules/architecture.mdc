@@ -84,8 +84,8 @@ Utilities → `.cursor/rules/utilities.mdc`
 | --- | ------- | ------ |
 | UI component | `{Name}` PascalCase | `OTP`, `Drawer`, `Toggle` |
 | Compound sub-part | `{Name}{Sub}` | `OTPInput`, `Drawer.Portal` |
-| Context hook | `use{Name}` | `useAlerts`, `useToggle` |
-| Service singleton | `{name}Service` | `alertsService` |
+| Context hook | `use{Name}` | `useToasts`, `useToggle` |
+| Service singleton | `{name}Service` | `toastsService` |
 | Utility | `{domain}{Action}` | `formatPhone` |
 
 Подробнее compound + namespace → `.cursor/rules/exports.mdc`
@@ -119,8 +119,8 @@ Utilities → `.cursor/rules/utilities.mdc`
 | Контекст | Пример |
 | -------- | ------ |
 | tsconfig | `"paths": { "@/*": ["src/*"] }` |
-| cross-feature | `import { AlertsContext } from '@/providers/alerts/context/context'` |
-| same feature | `import { UseAlertsProps } from '@/hooks/alerts/hook.interface'` |
+| cross-feature | `import { ToastsContext } from '@/providers/toasts/context/context'` |
+| same feature | `import { UseToastsProps } from '@/hooks/toasts/hook.interface'` |
 
 `tsc` **не** переписывает `@/` в emit — build копирует CSS в `dist/`, затем `tsc-alias` заменяет `@/` на относительные пути (включая `*.module.css`). Без CSS до alias потребитель Next.js резолвит `@/` в свой `src/`.
 

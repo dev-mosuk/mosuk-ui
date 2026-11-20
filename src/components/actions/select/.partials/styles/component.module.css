@@ -10,14 +10,16 @@
 
           padding: 0 calc(var(--spacing) * 3);
 
-          background-color: var(--color-white);
           color: var(--color-black);
           font-size: var(--text-base);
           text-align: start;
 
+          background-color: var(--color-white);
+
           border: 1px solid var(--color-gray-200);
           border-radius: var(--radius-2xl);
           outline: none;
+
           cursor: pointer;
 
           transition: border-color 200ms ease, opacity 200ms ease;
@@ -30,15 +32,18 @@
           &:disabled,
           &[data-disabled] {
               opacity: 0.5;
+
               pointer-events: none;
           }
       }
 
       .value {
+          overflow: hidden;
+
           flex: 1 1 auto;
+
           min-width: 0;
 
-          overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
 
@@ -57,7 +62,9 @@
           height: calc(var(--spacing) * 6);
 
           color: var(--color-gray-500);
+
           border-radius: calc(infinity * 1px);
+
           cursor: pointer;
 
           &:hover {
@@ -102,21 +109,26 @@
 
           border: 1px solid var(--color-gray-200);
           border-radius: var(--radius-2xl);
+
           box-shadow: 0 12px 32px -8px color-mix(in oklch, var(--color-gray-500) 28%, transparent);
 
           transform-origin: var(--transform-origin);
+
           transition: transform 200ms ease, opacity 200ms ease;
 
           &[data-starting-style],
           &[data-ending-style] {
               opacity: 0;
+
               transform: scale(0.96);
           }
       }
 
       .list {
           overflow: auto;
+
           max-height: inherit;
+
           outline: none;
       }
 
@@ -128,30 +140,35 @@
           width: 100%;
 
           padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
-          border-radius: var(--radius-lg);
 
           color: var(--color-black);
           font-size: var(--text-base);
           text-align: start;
 
+          border-radius: var(--radius-lg);
+
           outline: none;
+
           cursor: pointer;
           user-select: none;
 
           &:hover,
           &[data-highlighted] {
-              background-color: var(--color-primary-100);
               color: var(--color-primary-500);
+
+              background-color: var(--color-primary-100);
           }
 
           &[data-selected],
           &[aria-selected='true'] {
-              background-color: var(--color-primary-100);
               color: var(--color-primary-500);
+
+              background-color: var(--color-primary-100);
           }
 
           &[data-disabled] {
               opacity: 0.5;
+
               pointer-events: none;
           }
       }

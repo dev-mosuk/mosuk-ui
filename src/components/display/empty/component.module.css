@@ -1,14 +1,14 @@
 @layer mosuk-ui {
 
       .empty {
-          width: 100%;
-          height: calc(var(--spacing) * 100);
-
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           gap: calc(var(--spacing) * 4);
+
+          width: 100%;
+          height: calc(var(--spacing) * 100);
 
           background-color: var(--color-gray-100);
 

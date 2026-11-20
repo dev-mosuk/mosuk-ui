@@ -10,6 +10,8 @@
   },
   "include": ["src/**/*"],
   "tsc-alias": {
+    "resolveFullPaths": true,
+    "resolveFullExtension": ".js",
     "fileExtensions": {
       "outputCheck": ["js", "json", "jsx", "mjs", "cjs", "css", "d.ts"]
     }

@@ -12,19 +12,19 @@
       .switch {
           appearance: none;
 
+          position: relative;
+
+          box-sizing: border-box;
+
           width: var(--switch-width);
           height: var(--switch-height);
 
-          background-color: var(--switch-track-off);
-
           margin: 0;
 
+          background-color: var(--switch-track-off);
+
           border-radius: calc(infinity * 1px);
-
           outline: none;
-
-          position: relative;
-          box-sizing: border-box;
 
           cursor: pointer;
 
@@ -42,10 +42,12 @@
 
               width: auto;
               aspect-ratio: 1 / 1;
-              transform: translateX(1px);
+
+              background-color: var(--switch-thumb);
 
               border-radius: calc(infinity * 1px);
-              background-color: var(--switch-thumb);
+
+              transform: translateX(1px);
 
               transition-property: left, transform, background-color;
               transition-duration: 100ms;
@@ -63,6 +65,7 @@
 
           &:disabled {
               opacity: 50%;
+
               pointer-events: none;
           }
       }
