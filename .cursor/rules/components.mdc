@@ -16,8 +16,8 @@ alwaysApply: false
 | `containers/` | секции, grid |
 | `collections/` | таблицы, tabs, accordion |
 | `layouts/` | header, sidebar |
-| `overlays/` | dialog, drawer, dropdown |
-| `navigation/` | breadcrumbs, stepper |
+| `overlays/` | dialog, drawer |
+| `navigation/` | stepper |
 | `forms/` | fieldset, form composition |
 
 Стили → `.cursor/rules/styling.mdc`
@@ -64,7 +64,7 @@ Provider внутри component → `.cursor/rules/providers.mdc`
 
 - Shallow compound — `src/components/actions/otp/`
 - Sub-part indicator — `src/components/actions/checkbox/`
-- Deep portal — `src/components/overlays/drawer/` (dropdown — тот же приём)
+- Deep portal — `src/components/overlays/drawer/` (dropdown top-level — тот же приём)
 - Shared state внутри feature — `src/components/navigation/stepper/`, `src/components/display/image/`
 - Flat `button/`, `dialog/`, `fieldset/` — только если правка именно их
 
@@ -80,7 +80,7 @@ Provider внутри component → `.cursor/rules/providers.mdc`
 ### Props
 
 - Новый код: `component.interface.ts`
-- `component.props.ts` у toggle — историческое имя; новый feature использует `component.interface.ts`
+- Новый feature использует `component.interface.ts`
 - Spread `{ ...rest }` на корень; `rest?.className` последним в classNames
 
 ### `.partials`
@@ -143,7 +143,7 @@ z-index 0–99.
 
 ## overlays
 
-Floating UI: drawer, dialog, dropdown, tooltip, popover.
+Floating UI: drawer, dialog, tooltip, popover. Dropdown — top-level `src/components/dropdown/`.
 
 ### z-index
 
@@ -154,7 +154,7 @@ Floating UI: drawer, dialog, dropdown, tooltip, popover.
 
 **Trigger** на корне; floating tree под **Portal**; **Close** внутри `Portal.Viewport.Popup` (рядом с Content/Handle). Dropdown: `Dropdown.Portal.Dropdown.Content`.
 
-Drawer/dialog/dropdown — на `@base-ui/react`. Focus trap, portal и aria остаются у primitive.
+Drawer/dialog/dropdown — на `@base-ui/react`. Focus trap, portal и aria остаются у primitive. Dropdown живёт в `src/components/dropdown/`.
 
 - `@layer mosuk-ui`
 - `component.module.css` в `.partials/styles/`
@@ -204,7 +204,7 @@ Structured lists: table, tabs, accordion, data list.
 
 ## navigation
 
-Nav trajectories: breadcrumbs, stepper.
+Nav trajectories: stepper. Breadcrumbs — top-level feature `src/components/breadcrumbs/` (как `button/`).
 
 Раскладка — canonical tree. Compound: root + step/item в `.partials/components/`. Shared step state — `.partials/providers/` + `.partials/hooks/` (эталон stepper).
 

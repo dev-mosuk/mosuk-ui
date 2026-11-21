@@ -54,7 +54,10 @@ Rule: `.cursor/rules/architecture.mdc`
 ## Эталоны
 
 - Component: `src/components/actions/otp/`
-- Navigation: `src/components/navigation/stepper/`, `src/components/navigation/breadcrumbs/`
+- Navigation: `src/components/navigation/stepper/`
+- Breadcrumbs: `src/components/breadcrumbs/`
+- Toggle: `src/components/toggle/`
+- Dropdown: `src/components/dropdown/`
 - Deep compound overlay: `src/components/overlays/drawer/`
 - Integration (product): `src/integrations/yandex/maps/`
 - Integration (vendor): `src/integrations/tbank/`

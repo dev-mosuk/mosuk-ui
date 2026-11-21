@@ -68,7 +68,7 @@ Utilities → `.cursor/rules/utilities.mdc`
 | -------- | ---- |
 | Компонент | `component.tsx` |
 | Props | `component.interface.ts` |
-| Legacy props (toggle) | `component.props.ts` — **не** для нового кода |
+| Legacy props | `component.props.ts` — **не** для нового кода |
 | Хук | `hook.ts` + `hook.interface.ts` |
 | Provider | `provider.tsx` + `provider.interface.ts` |
 | Context | `context.ts` + `context.interface.ts` |
@@ -100,8 +100,8 @@ Utilities → `.cursor/rules/utilities.mdc`
 | `containers/` | секции, grid |
 | `collections/` | таблицы, tabs, accordion |
 | `layouts/` | header, sidebar |
-| `overlays/` | dialog, drawer, dropdown |
-| `navigation/` | breadcrumbs, stepper |
+| `overlays/` | dialog, drawer |
+| `navigation/` | stepper |
 | `forms/` | fieldset, form composition |
 
 `src/integrations/` — отдельная иерархия (не категория `components/`). См. [integrations.mdc](./integrations.mdc).

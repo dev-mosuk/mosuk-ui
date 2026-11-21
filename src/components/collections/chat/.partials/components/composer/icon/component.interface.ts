@@ -1,5 +1,6 @@
-import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { Icon } from '@/components/icon';
+import type { ReactNode } from 'react';
 
-export interface ChatComposerIconProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export type ChatComposerIconProps = Icon.Props & {
   children: ReactNode;
-}
+};

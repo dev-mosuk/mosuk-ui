@@ -1,9 +1,9 @@
 ---
 name: components
 description: >-
-  Creates mosuk-ui UI in src/components/: actions (OTP, checkbox, toggle),
-  display (card, image, avatar), overlays (drawer, dialog, dropdown), texts,
-  layouts, collections, navigation (breadcrumbs, stepper), forms. Use when
+  Creates mosuk-ui UI in src/components/: actions (OTP, checkbox),
+  display (card, image, avatar), overlays (drawer, dialog), dropdown, texts,
+  layouts, collections, navigation (stepper), breadcrumbs, toggle, forms. Use when
   building components or deep compound on @base-ui/react. When the
   API shape, public sub-parts, or exemplar are not named, ask one frontier
   round and wait before writing files.

@@ -1,0 +1,272 @@
+@layer mosuk-ui {
+  .root {
+    overflow: hidden;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--spacing) * 0.25 * var(--button-size));
+
+    width: fit-content;
+    height: calc(var(--spacing) * var(--button-size));
+    min-width: fit-content;
+    min-height: calc(var(--spacing) * var(--button-size));
+
+    padding-inline: calc(var(--spacing) * 0.425 * var(--button-size));
+
+    color: var(--color-white);
+    font-size: calc(var(--spacing) * 0.375 * var(--button-size));
+    font-weight: 400;
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    text-decoration: none;
+
+    background-color: var(--color-primary-500);
+
+    border: none;
+    border-radius: calc(infinity * 1px);
+    outline: none;
+
+    cursor: pointer;
+    user-select: none;
+
+    transition: all 200ms ease-in-out;
+
+    & :where(svg) {
+      width: calc(var(--spacing) * 0.425 * var(--button-size));
+      height: calc(var(--spacing) * 0.425 * var(--button-size));
+      min-width: calc(var(--spacing) * 0.425 * var(--button-size));
+      min-height: calc(var(--spacing) * 0.425 * var(--button-size));
+
+      transition: all 200ms ease-in-out;
+    }
+
+    &[data-width='full'] {
+      width: 100%;
+      min-width: 100%;
+    }
+
+    &[data-variant='primary'] {
+      color: var(--color-white);
+
+      background-color: var(--color-primary-500);
+
+      &:hover {
+        background-color: var(--color-primary-600);
+      }
+    }
+
+    &[data-variant='secondary'] {
+      color: var(--color-black);
+
+      background-color: var(--color-gray-100);
+
+      &:hover {
+        background-color: var(--color-gray-200);
+      }
+    }
+
+    &[data-variant='outline'] {
+      color: var(--color-black);
+
+      background-color: transparent;
+
+      border: 1px solid var(--color-gray-200);
+
+      &:hover {
+        background-color: var(--color-gray-50);
+      }
+    }
+
+    &[data-variant='ghost'] {
+      color: var(--color-black);
+
+      background-color: transparent;
+
+      &:hover {
+        background-color: var(--color-gray-100);
+      }
+    }
+
+    &[data-variant='danger'] {
+      color: var(--color-white);
+
+      background-color: var(--color-red-500);
+
+      &:hover {
+        background-color: var(--color-red-600);
+      }
+    }
+
+    &[data-variant='link'] {
+      height: auto;
+      min-height: 0;
+
+      padding-inline: 0;
+
+      color: var(--color-primary-500);
+
+      background-color: transparent;
+
+      border-radius: 0;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &[data-press='scale']:active:not(:disabled):not([data-pending]):not([data-loading]),
+    &[data-press='scale-highlight']:active:not(:disabled):not([data-pending]):not([data-loading]),
+    &[data-press='scale-ripple']:active:not(:disabled):not([data-pending]):not([data-loading]) {
+      transform: scale(0.97);
+    }
+
+    &[data-press='highlight']::before,
+    &[data-press='scale-highlight']::before {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+
+      content: '';
+
+      background-color: currentColor;
+
+      opacity: 0;
+
+      border-radius: inherit;
+
+      pointer-events: none;
+
+      transition: opacity 150ms ease;
+    }
+
+    /* light text (primary / danger): currentColor = white */
+    &[data-press='highlight']:hover:not(:disabled):not([data-pending]):not([data-loading])::before,
+    &[data-press='scale-highlight']:hover:not(:disabled):not([data-pending]):not([data-loading])::before {
+      opacity: 0.2;
+    }
+
+    &[data-press='highlight']:active:not(:disabled):not([data-pending]):not([data-loading])::before,
+    &[data-press='scale-highlight']:active:not(:disabled):not([data-pending]):not([data-loading])::before {
+      opacity: 0.32;
+    }
+
+    /* dark text: currentColor = black — softer overlay */
+    &:is([data-variant='secondary'],
+      [data-variant='outline'],
+      [data-variant='ghost'],
+      [data-variant='link']):is([data-press='highlight'], [data-press='scale-highlight']):hover:not( :disabled):not([data-pending]):not([data-loading])::before {
+      opacity: 0.06;
+    }
+
+    &:is([data-variant='secondary'],
+      [data-variant='outline'],
+      [data-variant='ghost'],
+      [data-variant='link']):is([data-press='highlight'], [data-press='scale-highlight']):active:not( :disabled):not([data-pending]):not([data-loading])::before {
+      opacity: 0.12;
+    }
+
+    &[data-press='ripple']:not([data-loading])::after,
+    &[data-press='scale-ripple']:not([data-loading])::after {
+      position: absolute;
+      top: var(--press-y, 50%);
+      left: var(--press-x, 50%);
+      z-index: 0;
+
+      width: 200%;
+      max-width: 400px;
+      aspect-ratio: 1;
+
+      content: '';
+
+      background-color: currentColor;
+
+      opacity: 0;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+
+      pointer-events: none;
+
+      transition:
+        transform 225ms ease-out,
+        opacity 225ms ease-out;
+    }
+
+    &[data-press='ripple']:active:not(:disabled):not([data-pending]):not([data-loading])::after,
+    &[data-press='scale-ripple']:active:not(:disabled):not([data-pending]):not([data-loading])::after {
+      opacity: 0.12;
+
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    &[data-loading]::after {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      content: '';
+
+      background: linear-gradient(90deg,
+          transparent 0%,
+          transparent 20%,
+          var(--color-gray-50),
+          transparent 80%,
+          transparent 100%);
+
+      transform: translateX(-100%) skewX(-20deg);
+
+      pointer-events: none;
+
+      animation: button-shimmer 1.5s infinite;
+    }
+
+    &:disabled:not([data-loading]),
+    &[aria-disabled='true']:not([data-loading]),
+    &[data-pending]:not([data-loading]) {
+      opacity: 0.5;
+
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    &[data-loading] {
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .root {
+      transition: none;
+
+      &[data-press='scale']:active,
+      &[data-press='scale-highlight']:active,
+      &[data-press='scale-ripple']:active {
+        transform: none;
+      }
+
+      &[data-press='highlight']::before,
+      &[data-press='scale-highlight']::before,
+      &[data-press='ripple']::after,
+      &[data-press='scale-ripple']::after {
+        transition: none;
+      }
+
+      &[data-loading]::after {
+        animation: none;
+
+        opacity: 0.35;
+
+        transform: none;
+      }
+    }
+  }
+
+  @keyframes button-shimmer {
+    100% {
+      transform: translateX(100%) skewX(-20deg);
+    }
+  }
+}

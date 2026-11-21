@@ -1,9 +1,9 @@
 'use client';
 
-import { Icon } from '@/components/actions/icon';
 import { ChatComposerIconProps } from '@/components/collections/chat/.partials/components/composer/icon/component.interface';
 import { useChat } from '@/components/collections/chat/.partials/hooks/hook';
 import styles from '@/components/collections/chat/.partials/styles/component.module.css';
+import { Icon } from '@/components/icon';
 import classNames from 'classnames';
 import React from 'react';
 
@@ -14,7 +14,7 @@ export function ChatComposerIcon({ children, ...rest }: ChatComposerIconProps) {
     <Icon
       type='button'
       {...rest}
-      disabled={rest.disabled ?? disabled}
+      isDisabled={rest.isDisabled ?? disabled}
       className={classNames(
         'mosuk-chat-composer-icon',
         styles.icon,

@@ -20,7 +20,6 @@
     "react-hook-form": "^7.56.4",
     "react-imask": "^7.6.1",
     "react-textarea-autosize": "^8.5.9",
-    "swiper": "^11.2.6",
     "swr": "^2.3.8"
   },
   "peerDependencies": {
@@ -41,11 +40,6 @@
       "style": "./index.css",
       "default": "./index.css"
     },
-    "./components/actions/button": {
-      "import": {
-        "default": "./components/actions/button/index.ts"
-      }
-    },
     "./components/actions/calendar": {
       "import": {
         "default": "./components/actions/calendar/index.ts"
@@ -54,11 +48,6 @@
     "./components/actions/checkbox": {
       "import": {
         "default": "./components/actions/checkbox/index.ts"
-      }
-    },
-    "./components/actions/icon": {
-      "import": {
-        "default": "./components/actions/icon/index.ts"
       }
     },
     "./components/actions/input": {
@@ -116,14 +105,24 @@
         "default": "./components/actions/textarea/index.ts"
       }
     },
-    "./components/actions/toggle": {
-      "import": {
-        "default": "./components/actions/toggle/index.ts"
-      }
-    },
     "./components/actions/upload": {
       "import": {
         "default": "./components/actions/upload/index.ts"
+      }
+    },
+    "./components/breadcrumbs": {
+      "import": {
+        "default": "./components/breadcrumbs/index.ts"
+      }
+    },
+    "./components/button": {
+      "import": {
+        "default": "./components/button/index.ts"
+      }
+    },
+    "./components/button-group": {
+      "import": {
+        "default": "./components/button-group/index.ts"
       }
     },
     "./components/collections/accordion": {
@@ -139,6 +138,11 @@
     "./components/containers/card": {
       "import": {
         "default": "./components/containers/card/index.ts"
+      }
+    },
+    "./components/containers/section": {
+      "import": {
+        "default": "./components/containers/section/index.ts"
       }
     },
     "./components/containers/separator": {
@@ -176,24 +180,24 @@
         "default": "./components/display/video/index.ts"
       }
     },
+    "./components/dropdown": {
+      "import": {
+        "default": "./components/dropdown/index.ts"
+      }
+    },
     "./components/forms/fieldset": {
       "import": {
         "default": "./components/forms/fieldset/index.ts"
       }
     },
-    "./components/navigation/breadcrumbs": {
+    "./components/icon": {
       "import": {
-        "default": "./components/navigation/breadcrumbs/index.ts"
+        "default": "./components/icon/index.ts"
       }
     },
     "./components/navigation/stepper": {
       "import": {
         "default": "./components/navigation/stepper/index.ts"
-      }
-    },
-    "./components/overlays/toast": {
-      "import": {
-        "default": "./components/overlays/toast/index.ts"
       }
     },
     "./components/overlays/dialog": {
@@ -206,14 +210,14 @@
         "default": "./components/overlays/drawer/index.ts"
       }
     },
-    "./components/overlays/dropdown": {
-      "import": {
-        "default": "./components/overlays/dropdown/index.ts"
-      }
-    },
     "./components/overlays/observer": {
       "import": {
         "default": "./components/overlays/observer/index.ts"
+      }
+    },
+    "./components/overlays/toast": {
+      "import": {
+        "default": "./components/overlays/toast/index.ts"
       }
     },
     "./components/overlays/tooltip": {
@@ -236,9 +240,9 @@
         "default": "./components/texts/typography/index.ts"
       }
     },
-    "./hooks/toasts": {
+    "./components/toggle": {
       "import": {
-        "default": "./hooks/toasts/index.ts"
+        "default": "./components/toggle/index.ts"
       }
     },
     "./hooks/storage/cookie": {
@@ -249,6 +253,11 @@
     "./hooks/storage/local": {
       "import": {
         "default": "./hooks/storage/local/index.ts"
+      }
+    },
+    "./hooks/toasts": {
+      "import": {
+        "default": "./hooks/toasts/index.ts"
       }
     },
     "./integrations/tbank/components/terminal": {
@@ -281,11 +290,6 @@
         "default": "./providers/toasts/index.ts"
       }
     },
-    "./services/toasts": {
-      "import": {
-        "default": "./services/toasts/index.ts"
-      }
-    },
     "./services/storage/cookie": {
       "import": {
         "default": "./services/storage/cookie/index.ts"
@@ -294,6 +298,11 @@
     "./services/storage/local": {
       "import": {
         "default": "./services/storage/local/index.ts"
+      }
+    },
+    "./services/toasts": {
+      "import": {
+        "default": "./services/toasts/index.ts"
       }
     }
   }

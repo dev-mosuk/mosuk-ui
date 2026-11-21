@@ -1,0 +1,92 @@
+@layer mosuk-ui {
+  .trigger {
+    cursor: pointer;
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: calc(var(--spacing) * 1);
+
+      width: fit-content;
+      min-width: fit-content;
+
+      padding: calc(var(--spacing) * 1);
+
+      background-color: var(--color-white);
+
+      border: 0.75px solid var(--color-gray-200);
+      border-radius: var(--radius-2xl);
+      box-shadow: 0 25px 50px -12px
+        color-mix(in oklab, var(--color-gray-200) 50%, transparent);
+
+      transform-origin: var(--transform-origin);
+
+      transition: all 200ms ease-in-out;
+
+      &[data-starting-style],
+      &[data-ending-style] {
+        opacity: 0;
+
+        transform: scale(0.9);
+      }
+    }
+
+    .button {
+      justify-content: start;
+
+      font-weight: 300;
+
+      .trailing {
+        margin-left: auto;
+      }
+
+      .chevron,
+      .arrow {
+        width: calc(var(--spacing) * 0.425 * 6);
+        height: calc(var(--spacing) * 0.425 * 6);
+        min-width: calc(var(--spacing) * 0.425 * 6);
+        min-height: calc(var(--spacing) * 0.425 * 6);
+
+        color: var(--color-gray-500);
+        stroke-width: 1.25;
+
+        &[data-direction='right'] {
+          transform: rotate(90deg);
+        }
+
+        &[data-direction='down'] {
+          transform: rotate(180deg);
+        }
+
+        &[data-direction='left'] {
+          transform: rotate(-90deg);
+        }
+      }
+
+      & :where(svg),
+      .icon {
+        color: var(--color-gray-500);
+        stroke-width: 1.25;
+      }
+
+      &:hover,
+      &[data-active] {
+        color: var(--color-primary-500);
+
+        background-color: var(--color-primary-100);
+
+        & :where(svg),
+        .icon {
+          color: var(--color-primary-500);
+        }
+      }
+    }
+  }
+}
