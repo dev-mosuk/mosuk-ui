@@ -1,24 +1,26 @@
 ---
-description: Components — OTP canonical, taxonomy категорий (actions, display, overlays, texts, layouts, collections, navigation, forms)
+description: Components — OTP canonical, flat features under src/components/, logical roles (actions, display, overlays, …)
 globs: 'src/components/**'
 alwaysApply: false
 ---
 
 # components
 
-## Taxonomy (категория = папка верхнего уровня)
+## Layout
 
-| Категория | Назначение |
-| --------- | ---------- |
-| `texts/` | заголовки, параграфы, ссылки |
-| `actions/` | кнопки, инпуты, контролы |
-| `display/` | карточки, media, avatar |
-| `containers/` | секции, grid |
-| `collections/` | таблицы, tabs, accordion |
-| `layouts/` | header, sidebar |
-| `overlays/` | dialog, drawer |
-| `navigation/` | stepper |
-| `forms/` | fieldset, form composition |
+Все UI features — плоско: `src/components/{feature}/` (`otp/`, `drawer/`, `input-mask/`, …). Категории — **логические роли** (z-index, форма compound), не папки.
+
+| Роль | Назначение | Примеры |
+| ---- | ---------- | ------- |
+| texts | заголовки, параграфы, ссылки | typography, hint, counter |
+| actions | кнопки, инпуты, контролы | button, otp, checkbox, input, input-mask, slider |
+| display | media, empty states | image, video, file, empty, dl |
+| containers | секции, grid | card, section, separator |
+| collections | таблицы, tabs, accordion | accordion, chat |
+| layouts | header, sidebar | (когда появятся) |
+| overlays | dialog, drawer, toast | dialog, drawer, tooltip, toast, observer |
+| navigation | stepper, breadcrumbs | stepper, breadcrumbs |
+| forms | fieldset, form composition | fieldset |
 
 Стили → `.cursor/rules/styling.mdc`
 Exports → `.cursor/rules/exports.mdc`
@@ -43,11 +45,11 @@ Provider внутри component → `.cursor/rules/providers.mdc`
 
 Импорты везде `@/`, включая `.partials`. `{feature}/index.ts` — единственный public path: `Object.assign` + `export namespace`. Feature `{Name}Skeleton` не создаём.
 
-Раскладка файлов нового feature — это дерево. Категория меняет z-index и форму compound, не папки.
+Варианты product-level — отдельные hyphenated features (`input-mask`, `input-search`, `slider-cell`), не `()` под родителем.
 
 ## Идиома
 
-По `actions/otp`, portal в `overlays/drawer`, `actions/select`:
+По `otp`, portal в `drawer`, `select`:
 
 - `export function {Name}`
 - Props — тип part из `@base-ui/react`, если primitive есть (`Checkbox.Root.Props`). Interface-файл пустой, когда своих полей нет
@@ -60,13 +62,13 @@ Provider внутри component → `.cursor/rules/providers.mdc`
 
 ## Эталоны
 
-Поведение и API — здесь. Раскладку файлов — всегда по canonical tree, даже если сосед flat.
+Поведение и API — здесь. Раскладку файлов — всегда по canonical tree.
 
-- Shallow compound — `src/components/actions/otp/`
-- Sub-part indicator — `src/components/actions/checkbox/`
-- Deep portal — `src/components/overlays/drawer/` (dropdown top-level — тот же приём)
-- Shared state внутри feature — `src/components/navigation/stepper/`, `src/components/display/image/`
-- Flat `button/`, `dialog/`, `fieldset/` — только если правка именно их
+- Shallow compound — `src/components/otp/`
+- Sub-part indicator — `src/components/checkbox/`
+- Deep portal — `src/components/drawer/` (dropdown — тот же приём)
+- Shared state внутри feature — `src/components/stepper/`, `src/components/image/`
+- Legacy flat files у корня feature — только если правка именно их (`fieldset/`, части `accordion/`)
 
 ## Общие правила
 
@@ -99,7 +101,7 @@ Overlays и часть actions строятся на `@base-ui/react`. Обор�
 
 ## actions
 
-Раскладка — canonical tree.
+Раскладка — canonical tree в `src/components/{feature}/`.
 
 ### index.ts
 
@@ -143,18 +145,18 @@ z-index 0–99.
 
 ## overlays
 
-Floating UI: drawer, dialog, tooltip, popover. Dropdown — top-level `src/components/dropdown/`.
+Floating UI: drawer, dialog, tooltip, toast. Dropdown — `src/components/dropdown/`.
 
 ### z-index
 
 - Dropdown/popover/tooltip: **100–199**
 - Dialog/drawer/modal: **200+**
 
-Раскладка — canonical tree. Вложенность папок зеркалит compound: `components/{component,trigger}/` и `components/portal/viewport/popup/{handle,close,content}/`. `index.ts` — вложенный `Object.assign` (`src/components/overlays/drawer/index.ts`).
+Раскладка — canonical tree. Вложенность папок зеркалит compound: `components/{component,trigger}/` и `components/portal/viewport/popup/{handle,close,content}/`. `index.ts` — вложенный `Object.assign` (`src/components/drawer/index.ts`).
 
 **Trigger** на корне; floating tree под **Portal**; **Close** внутри `Portal.Viewport.Popup` (рядом с Content/Handle). Dropdown: `Dropdown.Portal.Dropdown.Content`.
 
-Drawer/dialog/dropdown — на `@base-ui/react`. Focus trap, portal и aria остаются у primitive. Dropdown живёт в `src/components/dropdown/`.
+Drawer/dialog/dropdown — на `@base-ui/react`. Focus trap, portal и aria остаются у primitive.
 
 - `@layer mosuk-ui`
 - `component.module.css` в `.partials/styles/`
@@ -204,7 +206,7 @@ Structured lists: table, tabs, accordion, data list.
 
 ## navigation
 
-Nav trajectories: stepper. Breadcrumbs — top-level feature `src/components/breadcrumbs/` (как `button/`).
+Nav trajectories: stepper, breadcrumbs.
 
 Раскладка — canonical tree. Compound: root + step/item в `.partials/components/`. Shared step state — `.partials/providers/` + `.partials/hooks/` (эталон stepper).
 
@@ -213,15 +215,15 @@ Nav trajectories: stepper. Breadcrumbs — top-level feature `src/components/bre
 
 ## forms
 
-Form composition: fieldset, field groups, label+input+hint. Primitives остаются в `actions/`.
+Form composition: fieldset, field groups, label+input+hint. Leaf controls — отдельные features (`input`, `checkbox`, …).
 
-Раскладка нового feature — canonical tree. `forms/fieldset/` — legacy flat, только если правка именно его.
+Раскладка нового feature — canonical tree. `fieldset/` — legacy flat, только если правка именно его.
 
-- react-hook-form через props/context; leaf input остаётся primitive из `actions/`
+- react-hook-form через props/context; leaf input остаётся primitive feature
 - Errors/hints — sub-components fieldset
 - `component.interface.ts`; field: label, input slot, error message
 - `@layer mosuk-ui`
-- `actions/input`, `actions/checkbox` — primitives; `forms/fieldset` — composition layer
+- `input`, `checkbox` — primitives; `fieldset` — composition layer
 
 ## containers
 

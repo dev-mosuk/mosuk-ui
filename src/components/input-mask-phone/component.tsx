@@ -1,5 +1,5 @@
-import { InputMask } from '@/components/actions/input/(mask)/component';
-import { InputMaskProps } from '@/components/actions/input/(mask)/component.interface';
+import { InputMask } from '@/components/input-mask/component';
+import { InputMaskProps } from '@/components/input-mask/component.interface';
 import React from 'react';
 
 export function InputMaskPhone({ ...props }: InputMaskProps) {

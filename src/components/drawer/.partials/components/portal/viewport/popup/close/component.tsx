@@ -1,4 +1,4 @@
-import { DrawerPortalViewportPopupCloseProps } from '@/components/overlays/drawer/.partials/components/portal/viewport/popup/close/component.interface';
+import { DrawerPortalViewportPopupCloseProps } from '@/components/drawer/.partials/components/portal/viewport/popup/close/component.interface';
 import { Drawer as BaseUiDrawer } from '@base-ui/react';
 import classNames from 'classnames';
 import React from 'react';

@@ -1,7 +1,7 @@
 'use client';
 
-import { SelectIndicatorProps } from '@/components/actions/select/.partials/components/indicator/component.interface';
-import styles from '@/components/actions/select/.partials/styles/component.module.css';
+import { SelectIndicatorProps } from '@/components/select/.partials/components/indicator/component.interface';
+import styles from '@/components/select/.partials/styles/component.module.css';
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 import classNames from 'classnames';
 import { ChevronDown } from 'lucide-react';

@@ -1,8 +1,8 @@
 import {
   VideoProps,
   VideoVideoProps,
-} from '@/components/display/video/component.interface';
-import styles from '@/components/display/video/component.module.css';
+} from '@/components/video/component.interface';
+import styles from '@/components/video/component.module.css';
 import classNames from 'classnames';
 import React from 'react';
 

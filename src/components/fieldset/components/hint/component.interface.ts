@@ -1,4 +1,4 @@
-import { FieldsetHintType } from '@/components/forms/fieldset/components/hint/component.enums';
+import { FieldsetHintType } from '@/components/fieldset/components/hint/component.enums';
 import {
   ComponentPropsWithoutRef,
   ElementType,

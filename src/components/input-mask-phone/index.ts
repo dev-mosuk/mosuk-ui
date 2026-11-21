@@ -1,8 +1,8 @@
-import { InputMaskPhone as ParentComponent } from '@/components/actions/input/(mask)/(phone)/component';
+import { InputMaskPhone as ParentComponent } from '@/components/input-mask-phone/component';
 import {
   InputMaskPhoneProps,
   InputMaskPhoneProps as ParentComponentProps,
-} from '@/components/actions/input/(mask)/(phone)/component.interface';
+} from '@/components/input-mask-phone/component.interface';
 
 const Component = (props: ParentComponentProps) => ParentComponent(props);
 

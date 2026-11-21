@@ -1,7 +1,7 @@
-import { HintTypeEnum } from '@/components/texts/hint/.partials/component.enums';
-import { HintProps } from '@/components/texts/hint/.partials/components/component.interface';
-import { HintContext } from '@/components/texts/hint/.partials/context/context';
-import styles from '@/components/texts/hint/.partials/styles/component.module.css';
+import { HintTypeEnum } from '@/components/hint/.partials/component.enums';
+import { HintProps } from '@/components/hint/.partials/components/component.interface';
+import { HintContext } from '@/components/hint/.partials/context/context';
+import styles from '@/components/hint/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 

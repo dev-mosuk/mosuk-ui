@@ -1,4 +1,4 @@
-import { Skeleton } from '@/components/core/skeleton';
+import { Skeleton } from '@/components/skeleton';
 import type { YandexMapSkeletonProps } from '@/integrations/yandex/maps/components/.partials/skeleton/component.interface';
 import styles from '@/integrations/yandex/maps/components/.partials/skeleton/component.module.css';
 import classNames from 'classnames';

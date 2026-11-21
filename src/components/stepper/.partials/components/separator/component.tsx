@@ -1,12 +1,12 @@
 'use client';
 
-import { StepperSeparatorProps } from '@/components/navigation/stepper/.partials/components/separator/component.interface';
+import { StepperSeparatorProps } from '@/components/stepper/.partials/components/separator/component.interface';
 import {
   useStepper,
   useStepperStep,
-} from '@/components/navigation/stepper/.partials/hooks/hook';
-import styles from '@/components/navigation/stepper/.partials/styles/component.module.css';
-import { STEPPER_SEPARATOR_PART } from '@/components/navigation/stepper/.partials/utilities/parts';
+} from '@/components/stepper/.partials/hooks/hook';
+import styles from '@/components/stepper/.partials/styles/component.module.css';
+import { STEPPER_SEPARATOR_PART } from '@/components/stepper/.partials/utilities/parts';
 import classNames from 'classnames';
 import type { CSSProperties } from 'react';
 import React from 'react';

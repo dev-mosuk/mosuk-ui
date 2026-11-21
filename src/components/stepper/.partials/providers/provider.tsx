@@ -3,11 +3,11 @@
 import {
   StepperContext,
   StepperStepContext,
-} from '@/components/navigation/stepper/.partials/providers/context/context';
+} from '@/components/stepper/.partials/providers/context/context';
 import type {
   StepperProviderProps,
   StepperStepProviderProps,
-} from '@/components/navigation/stepper/.partials/providers/provider.interface';
+} from '@/components/stepper/.partials/providers/provider.interface';
 import React, { useMemo } from 'react';
 
 export function StepperProvider({

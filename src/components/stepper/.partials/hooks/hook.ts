@@ -1,11 +1,11 @@
 import type {
   UseStepperProps,
   UseStepperStepProps,
-} from '@/components/navigation/stepper/.partials/hooks/hook.interface';
+} from '@/components/stepper/.partials/hooks/hook.interface';
 import {
   StepperContext,
   StepperStepContext,
-} from '@/components/navigation/stepper/.partials/providers/context/context';
+} from '@/components/stepper/.partials/providers/context/context';
 import { useContext } from 'react';
 
 export function useStepper(): UseStepperProps {

@@ -3,8 +3,8 @@
 import React, { cloneElement, useMemo } from 'react';
 import { useLocale } from 'react-aria-components/I18nProvider';
 
-import type { CalendarDayViewGridHeaderProps } from '@/components/actions/calendar/.partials/components/grid-header/day-view/component.interface';
-import { getDayViewWeekDayLabels } from '@/components/actions/calendar/.partials/utilities/util';
+import type { CalendarDayViewGridHeaderProps } from '@/components/calendar/.partials/components/grid-header/day-view/component.interface';
+import { getDayViewWeekDayLabels } from '@/components/calendar/.partials/utilities/util';
 
 export function CalendarDayViewGridHeader({
   children,

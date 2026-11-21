@@ -3,9 +3,9 @@
 import React from 'react';
 import { CalendarCell as CalendarCellPrimitive } from 'react-aria-components/Calendar';
 
-import type { CalendarCellProps } from '@/components/actions/calendar/.partials/components/cell/component.interface';
-import styles from '@/components/actions/calendar/.partials/styles/component.module.css';
-import { calendarClassName } from '@/components/actions/calendar/.partials/utilities/util';
+import type { CalendarCellProps } from '@/components/calendar/.partials/components/cell/component.interface';
+import styles from '@/components/calendar/.partials/styles/component.module.css';
+import { calendarClassName } from '@/components/calendar/.partials/utilities/util';
 
 export function CalendarCell({
   children,

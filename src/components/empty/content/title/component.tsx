@@ -1,5 +1,5 @@
-import styles from '@/components/display/empty/component.module.css';
-import { EmptyContentTitleProps } from '@/components/display/empty/content/title/component.interface';
+import styles from '@/components/empty/component.module.css';
+import { EmptyContentTitleProps } from '@/components/empty/content/title/component.interface';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 

@@ -1,5 +1,5 @@
-import { InputMaskDateProps } from '@/components/actions/input/(mask)/(date)/component.interface';
-import { InputMask } from '@/components/actions/input/(mask)/component';
+import { InputMaskDateProps } from '@/components/input-mask-date/component.interface';
+import { InputMask } from '@/components/input-mask/component';
 import { format, parse } from 'date-fns';
 import { createMask } from 'imask';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';

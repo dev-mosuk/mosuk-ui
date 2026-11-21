@@ -1,6 +1,6 @@
-import { Typography } from '@/components/texts/typography/.partials/components/component';
-import { TypographyProps } from '@/components/texts/typography/.partials/components/component.interface';
-import { TypographyH4Props } from '@/components/texts/typography/.partials/components/h4/component.interface';
+import { Typography } from '@/components/typography/.partials/components/component';
+import { TypographyProps } from '@/components/typography/.partials/components/component.interface';
+import { TypographyH4Props } from '@/components/typography/.partials/components/h4/component.interface';
 import React, { ElementType } from 'react';
 
 export function TypographyH4<C extends ElementType = 'h4'>(

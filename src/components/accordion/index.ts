@@ -1,13 +1,13 @@
-import { Accordion as BaseAccordion } from '@/components/collections/accordion/component';
-import type { AccordionProps } from '@/components/collections/accordion/component.interface';
-import { AccordionItem as BaseAccordionItem } from '@/components/collections/accordion/item/component';
-import { AccordionItemProps } from '@/components/collections/accordion/item/component.interface';
-import { AccordionContent as BaseAccordionContent } from '@/components/collections/accordion/item/content/component';
-import { AccordionContentProps } from '@/components/collections/accordion/item/content/component.interface';
-import { AccordionHeader as BaseAccordionHeader } from '@/components/collections/accordion/item/header/component';
-import { AccordionHeaderProps } from '@/components/collections/accordion/item/header/component.interface';
-import { AccordionHeaderTrigger as BaseAccordionHeaderTrigger } from '@/components/collections/accordion/item/header/trigger/component';
-import { AccordionHeaderTriggerProps } from '@/components/collections/accordion/item/header/trigger/component.interface';
+import { Accordion as BaseAccordion } from '@/components/accordion/component';
+import type { AccordionProps } from '@/components/accordion/component.interface';
+import { AccordionItem as BaseAccordionItem } from '@/components/accordion/item/component';
+import { AccordionItemProps } from '@/components/accordion/item/component.interface';
+import { AccordionContent as BaseAccordionContent } from '@/components/accordion/item/content/component';
+import { AccordionContentProps } from '@/components/accordion/item/content/component.interface';
+import { AccordionHeader as BaseAccordionHeader } from '@/components/accordion/item/header/component';
+import { AccordionHeaderProps } from '@/components/accordion/item/header/component.interface';
+import { AccordionHeaderTrigger as BaseAccordionHeaderTrigger } from '@/components/accordion/item/header/trigger/component';
+import { AccordionHeaderTriggerProps } from '@/components/accordion/item/header/trigger/component.interface';
 
 export const Accordion = Object.assign(BaseAccordion, {
   Item: BaseAccordionItem,

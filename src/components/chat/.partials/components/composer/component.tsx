@@ -1,8 +1,8 @@
 'use client';
 
-import { ChatComposerProps } from '@/components/collections/chat/.partials/components/composer/component.interface';
-import { ChatProvider } from '@/components/collections/chat/.partials/providers/provider';
-import styles from '@/components/collections/chat/.partials/styles/component.module.css';
+import { ChatComposerProps } from '@/components/chat/.partials/components/composer/component.interface';
+import { ChatProvider } from '@/components/chat/.partials/providers/provider';
+import styles from '@/components/chat/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { useCallback, useState } from 'react';
 

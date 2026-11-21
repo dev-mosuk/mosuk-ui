@@ -1,4 +1,4 @@
-import { HintTypeEnum } from '@/components/texts/hint/.partials/component.enums';
+import { HintTypeEnum } from '@/components/hint/.partials/component.enums';
 import { CircleAlert, CircleCheck, CircleMinus, Info } from 'lucide-react';
 
 export const HintTypeConstant = {

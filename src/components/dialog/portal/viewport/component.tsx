@@ -1,5 +1,5 @@
-import styles from '@/components/overlays/dialog/component.module.css';
-import { DialogPortalViewportProps } from '@/components/overlays/dialog/portal/viewport/component.interface';
+import styles from '@/components/dialog/component.module.css';
+import { DialogPortalViewportProps } from '@/components/dialog/portal/viewport/component.interface';
 import { Dialog as BaseUIDialog } from '@base-ui/react';
 import classNames from 'classnames';
 import React from 'react';

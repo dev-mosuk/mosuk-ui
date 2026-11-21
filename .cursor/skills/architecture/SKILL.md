@@ -24,14 +24,16 @@ Rule: `.cursor/rules/architecture.mdc`
 | Маркер | Когда |
 | ------ | ----- |
 | `.partials/` | component-local UI, styles, hooks, providers |
-| `(mask)/`, `(autosize)/` | группа в `src/`, не часть export-имени |
+| `(autosize)/` | редкая группа в `src/`, не часть export-имени |
 | `[id]/` | dynamic/param (если появится) |
+
+Варианты product-level — hyphenated features: `input-mask/`, `slider-cell/`.
 
 ## Куда класть
 
 | Что | Путь |
 | --- | ---- |
-| UI component | `components/{category}/{feature}/` |
+| UI component | `components/{feature}/` |
 | External SDK | `integrations/{vendor}/` или `integrations/{vendor}/{product}/` |
 | App provider | `providers/{feature}/` |
 | Hook | `hooks/{feature}/` или `.partials/hooks/` |
@@ -53,12 +55,12 @@ Rule: `.cursor/rules/architecture.mdc`
 
 ## Эталоны
 
-- Component: `src/components/actions/otp/`
-- Navigation: `src/components/navigation/stepper/`
+- Component: `src/components/otp/`
+- Navigation: `src/components/stepper/`
 - Breadcrumbs: `src/components/breadcrumbs/`
 - Toggle: `src/components/toggle/`
 - Dropdown: `src/components/dropdown/`
-- Deep compound overlay: `src/components/overlays/drawer/`
+- Deep compound overlay: `src/components/drawer/`
 - Integration (product): `src/integrations/yandex/maps/`
 - Integration (vendor): `src/integrations/tbank/`
 - Provider: `src/providers/toasts/`

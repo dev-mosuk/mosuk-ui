@@ -16,7 +16,7 @@ alwaysApply: false
 └── .partials/…
 ```
 
-Потребитель: `mosuk-ui/components/actions/otp` (без `/component`).
+Потребитель: `mosuk-ui/components/otp` (без `/component`).
 
 ## Compound component
 
@@ -52,7 +52,7 @@ export namespace OTP {
 
 ## Skeleton
 
-Feature `{Name}Skeleton` не экспортируем. Единственный product skeleton — compound на Yandex Maps (`YandexMap.Skeleton`, `YandexMap.Default.Scheme.LayerSkeleton`). Shimmer-примитив — `mosuk-ui/components/core/skeleton`.
+Feature `{Name}Skeleton` не экспортируем. Единственный product skeleton — compound на Yandex Maps (`YandexMap.Skeleton`, `YandexMap.Default.Scheme.LayerSkeleton`). Shimmer-примитив — `mosuk-ui/components/skeleton`.
 
 ## Provider export
 

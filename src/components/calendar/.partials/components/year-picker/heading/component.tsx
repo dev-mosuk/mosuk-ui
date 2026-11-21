@@ -4,10 +4,10 @@ import classNames from 'classnames';
 import React from 'react';
 import { useCalendarHeading } from 'react-aria/useCalendar';
 
-import type { CalendarYearPickerTriggerHeadingProps } from '@/components/actions/calendar/.partials/components/year-picker/heading/component.interface';
-import { useCalendarYearPickerTrigger } from '@/components/actions/calendar/.partials/components/year-picker/trigger/context';
-import { useCalendarState } from '@/components/actions/calendar/.partials/hooks/hook';
-import styles from '@/components/actions/calendar/.partials/styles/component.module.css';
+import type { CalendarYearPickerTriggerHeadingProps } from '@/components/calendar/.partials/components/year-picker/heading/component.interface';
+import { useCalendarYearPickerTrigger } from '@/components/calendar/.partials/components/year-picker/trigger/context';
+import { useCalendarState } from '@/components/calendar/.partials/hooks/hook';
+import styles from '@/components/calendar/.partials/styles/component.module.css';
 
 export function CalendarYearPickerTriggerHeading({
   children,

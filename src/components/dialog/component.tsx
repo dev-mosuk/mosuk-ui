@@ -1,4 +1,4 @@
-import { DialogProps } from '@/components/overlays/dialog/component.interface';
+import { DialogProps } from '@/components/dialog/component.interface';
 import { Dialog as BaseUIDialog } from '@base-ui/react';
 import React from 'react';
 

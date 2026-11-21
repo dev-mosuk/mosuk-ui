@@ -1,7 +1,7 @@
 'use client';
 
-import { UploadContext } from '@/components/actions/upload/providers/context/context';
-import { UploadProviderProps } from '@/components/actions/upload/providers/provider.interface';
+import { UploadContext } from '@/components/upload/providers/context/context';
+import { UploadProviderProps } from '@/components/upload/providers/provider.interface';
 import React, { useState } from 'react';
 
 export const UploadProvider = ({ ...rest }: UploadProviderProps) => {

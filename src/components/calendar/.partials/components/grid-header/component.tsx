@@ -4,10 +4,10 @@ import classNames from 'classnames';
 import React from 'react';
 import { CalendarGridHeader as CalendarGridHeaderPrimitive } from 'react-aria-components/Calendar';
 
-import type { CalendarGridHeaderProps } from '@/components/actions/calendar/.partials/components/grid-header/component.interface';
-import { CalendarDayViewGridHeader } from '@/components/actions/calendar/.partials/components/grid-header/day-view/component';
-import { useCalendarDayView } from '@/components/actions/calendar/.partials/hooks/hook';
-import styles from '@/components/actions/calendar/.partials/styles/component.module.css';
+import type { CalendarGridHeaderProps } from '@/components/calendar/.partials/components/grid-header/component.interface';
+import { CalendarDayViewGridHeader } from '@/components/calendar/.partials/components/grid-header/day-view/component';
+import { useCalendarDayView } from '@/components/calendar/.partials/hooks/hook';
+import styles from '@/components/calendar/.partials/styles/component.module.css';
 
 export function CalendarGridHeader({
   children,

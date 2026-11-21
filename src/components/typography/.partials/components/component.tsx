@@ -3,8 +3,8 @@ import {
   TypographyProps,
   TypographyType,
   TypographyWeight,
-} from '@/components/texts/typography/.partials/components/component.interface';
-import styles from '@/components/texts/typography/.partials/styles/component.module.css';
+} from '@/components/typography/.partials/components/component.interface';
+import styles from '@/components/typography/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 

@@ -1,6 +1,6 @@
-import { FieldsetProps } from '@/components/forms/fieldset/component.interface';
-import styles from '@/components/forms/fieldset/component.module.css';
-import { FieldsetProvider } from '@/components/forms/fieldset/providers/provider';
+import { FieldsetProps } from '@/components/fieldset/component.interface';
+import styles from '@/components/fieldset/component.module.css';
+import { FieldsetProvider } from '@/components/fieldset/providers/provider';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 

@@ -24,6 +24,7 @@ export function ButtonGroup({
   size,
   width = BUTTON_GROUP_DEFAULT_WIDTH,
   isDisabled,
+  isDetached = false,
   orientation = BUTTON_GROUP_DEFAULT_ORIENTATION,
   className,
   children,
@@ -50,6 +51,7 @@ export function ButtonGroup({
       data-orientation={orientation}
       data-variant={variant || undefined}
       data-width={width}
+      data-detached={isDetached || undefined}
       className={classNames(
         'mosuk-button-group',
         '@container/button-group',

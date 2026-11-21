@@ -1,8 +1,8 @@
 'use client';
 
-import { ChatComposerTextareaProps } from '@/components/collections/chat/.partials/components/composer/textarea/component.interface';
-import { useChat } from '@/components/collections/chat/.partials/hooks/hook';
-import styles from '@/components/collections/chat/.partials/styles/component.module.css';
+import { ChatComposerTextareaProps } from '@/components/chat/.partials/components/composer/textarea/component.interface';
+import { useChat } from '@/components/chat/.partials/hooks/hook';
+import styles from '@/components/chat/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { useId, type ElementType, type KeyboardEvent } from 'react';
 import TextareaAutosizePrimitive from 'react-textarea-autosize';

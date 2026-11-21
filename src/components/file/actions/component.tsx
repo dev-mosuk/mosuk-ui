@@ -1,6 +1,6 @@
-import { FileActionsProps } from '@/components/display/file/actions/component.interface';
-import { FileContext } from '@/components/display/file/component';
-import styles from '@/components/display/file/component.module.css';
+import { FileActionsProps } from '@/components/file/actions/component.interface';
+import { FileContext } from '@/components/file/component';
+import styles from '@/components/file/component.module.css';
 import classNames from 'classnames';
 import React, { useContext } from 'react';
 

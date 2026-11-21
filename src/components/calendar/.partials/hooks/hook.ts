@@ -8,11 +8,11 @@ import type {
   UseCalendarStateProps,
   UseCalendarYearPickerStateProps,
   UseYearPickerOpenProps,
-} from '@/components/actions/calendar/.partials/hooks/hook.interface';
+} from '@/components/calendar/.partials/hooks/hook.interface';
 import {
   CalendarDayViewContext,
   CalendarYearPickerContext,
-} from '@/components/actions/calendar/.partials/providers/context/context';
+} from '@/components/calendar/.partials/providers/context/context';
 
 export function useCalendarState(): UseCalendarStateProps {
   const state = useContext(CalendarStateContext);

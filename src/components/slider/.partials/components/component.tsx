@@ -1,5 +1,5 @@
-import { SliderProps } from '@/components/actions/slider/.partials/components/component.interface';
-import styles from '@/components/actions/slider/.partials/styles/component.module.css';
+import { SliderProps } from '@/components/slider/.partials/components/component.interface';
+import styles from '@/components/slider/.partials/styles/component.module.css';
 import { Slider as BaseSlider } from '@base-ui/react/slider';
 import classNames from 'classnames';
 import React from 'react';

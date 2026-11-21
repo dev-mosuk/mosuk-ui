@@ -6,7 +6,7 @@ import type {
 import type {
   CalendarDayViewContextProps,
   CalendarYearPickerContextProps,
-} from '@/components/actions/calendar/.partials/providers/context/context.interface';
+} from '@/components/calendar/.partials/providers/context/context.interface';
 
 export type UseCalendarStateProps = CalendarState<CalendarSelectionMode>;
 

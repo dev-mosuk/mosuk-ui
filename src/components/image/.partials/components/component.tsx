@@ -1,11 +1,11 @@
 'use client';
 
-import { ImageProps } from '@/components/display/image/.partials/components/component.interface';
-import { ImageDots } from '@/components/display/image/.partials/components/dots/component';
-import { ImageDotsProps } from '@/components/display/image/.partials/components/dots/component.interface';
-import { ImageContext } from '@/components/display/image/.partials/providers/context/context';
-import { ImageProvider } from '@/components/display/image/.partials/providers/provider';
-import styles from '@/components/display/image/.partials/styles/component.module.css';
+import { ImageProps } from '@/components/image/.partials/components/component.interface';
+import { ImageDots } from '@/components/image/.partials/components/dots/component';
+import { ImageDotsProps } from '@/components/image/.partials/components/dots/component.interface';
+import { ImageContext } from '@/components/image/.partials/providers/context/context';
+import { ImageProvider } from '@/components/image/.partials/providers/provider';
+import styles from '@/components/image/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, {
   Children,

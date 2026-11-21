@@ -1,7 +1,7 @@
 'use client';
 
-import { FieldsetContext } from '@/components/forms/fieldset/providers/context/context';
-import { FieldsetProviderProps } from '@/components/forms/fieldset/providers/provider.interface';
+import { FieldsetContext } from '@/components/fieldset/providers/context/context';
+import { FieldsetProviderProps } from '@/components/fieldset/providers/provider.interface';
 import React, { useState } from 'react';
 
 export const FieldsetProvider = ({ ...rest }: FieldsetProviderProps) => {

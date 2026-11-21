@@ -1,7 +1,7 @@
-import styles from '@/components/forms/fieldset/component.module.css';
-import { FieldsetHintType } from '@/components/forms/fieldset/components/hint/component.enums';
-import { FieldsetHintProps } from '@/components/forms/fieldset/components/hint/component.interface';
-import { Hint } from '@/components/texts/hint';
+import styles from '@/components/fieldset/component.module.css';
+import { FieldsetHintType } from '@/components/fieldset/components/hint/component.enums';
+import { FieldsetHintProps } from '@/components/fieldset/components/hint/component.interface';
+import { Hint } from '@/components/hint';
 import classNames from 'classnames';
 import React from 'react';
 

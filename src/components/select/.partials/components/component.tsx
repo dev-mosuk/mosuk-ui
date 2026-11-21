@@ -1,8 +1,8 @@
 'use client';
 
-import { SelectProps } from '@/components/actions/select/.partials/components/component.interface';
-import { SelectProvider } from '@/components/actions/select/.partials/providers/provider';
-import { createSelectClearDetails } from '@/components/actions/select/.partials/utilities/util';
+import { SelectProps } from '@/components/select/.partials/components/component.interface';
+import { SelectProvider } from '@/components/select/.partials/providers/provider';
+import { createSelectClearDetails } from '@/components/select/.partials/utilities/util';
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 import React, { useCallback, useRef, useState } from 'react';
 

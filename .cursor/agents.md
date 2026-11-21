@@ -19,7 +19,7 @@ mosuk-ui — **npm UI-библиотека**, не приложение. Упр�
 
 ```
 src/
-├── components/{texts,actions,display,containers,collections,layouts,overlays,navigation,forms}/
+├── components/         → плоский список features (button/, drawer/, otp/, …)
 ├── integrations/       → внешние SDK; слои как в src/ (vendor → product? → layer)
 ├── providers/          → React context, app-level wiring
 ├── hooks/              → потребление providers / browser API
@@ -41,7 +41,7 @@ src/
 
 | Было (CRM app) | Стало (mosuk-ui) |
 | -------------- | ---------------- |
-| `common/{domain}/components/` | `components/{category}/{feature}/` |
+| `common/{domain}/components/` | `components/{feature}/` |
 | `common/{domain}/hooks/` | `hooks/` (cross-cutting) |
 | `shared/microservices/` | `providers/`, `services/` |
 | `shared/app/providers/` | `providers/` |
@@ -50,9 +50,9 @@ src/
 
 ### Правила DDD в этой библиотеке
 
-1. **Категория = папка** в `components/`. Не смешивать actions и overlays. Внешние SDK — в `integrations/`.
+1. **Feature = папка** в `components/` (плоско, без category nesting). Внешние SDK — в `integrations/`.
 2. **Приватная реализация** — только в `.partials/`; не импортировать извне feature.
-3. **Паттерны папок** — `.` private, `()` group, `[]` dynamic (см. architecture rule).
+3. **Паттерны папок** — `.` private, `()` group (редко), `[]` dynamic (см. architecture rule). Product-варианты — hyphenated features (`input-mask/`).
 4. **Направление зависимостей:** `components` / `integrations` → `hooks` / `providers` / `utilities` / `services`. Не наоборот.
 5. **Публичный API** — только через `index.ts` на уровне feature (см. exports rule).
 
@@ -99,7 +99,7 @@ src/
 ## Принципы при генерации кода
 
 1. **Минимальный diff** — не рефакторить соседний код без запроса.
-2. **Эталон OTP** — новый feature копирует дерево `src/components/actions/otp/` (`index.ts` + `.partials/`). Flat `button/` — только если правка самого button.
+2. **Эталон OTP** — новый feature копирует дерево `src/components/otp/` (`index.ts` + `.partials/`). Flat `button/` — только если правка самого button.
 3. **Named exports** — везде; default только если требует внешний контракт.
 4. **Импорты `@/`** везде в `src/`, включая `.partials/`. Публичный API соседнего feature — через его `index.ts`.
 5. **Не over-engineer** — без лишних абстракций и преждевременных generic.
@@ -151,12 +151,12 @@ src/
 
 | Задача | Смотреть |
 | ------ | -------- |
-| Канонический компонент | `src/components/actions/otp/` |
+| Канонический компонент | `src/components/otp/` |
 | Product skeleton (только карты) | `src/integrations/yandex/maps/` |
-| Indicator sub-part | `src/components/actions/checkbox/` |
-| Deep compound overlay | `src/components/overlays/drawer/` |
-| Shared state в `.partials` | `src/components/navigation/stepper/`, `src/components/display/image/` |
-| Flat — только правка этого feature | `src/components/actions/button/`, `src/components/overlays/dialog/`, `src/components/forms/fieldset/` |
+| Indicator sub-part | `src/components/checkbox/` |
+| Deep compound overlay | `src/components/drawer/` |
+| Shared state в `.partials` | `src/components/stepper/`, `src/components/image/` |
+| Flat — только правка этого feature | `src/components/button/`, `src/components/dialog/`, `src/components/fieldset/` |
 | Integration (product / vendor) | `src/integrations/yandex/maps/`, `src/integrations/tbank/` |
 | Provider + service | `src/providers/toasts/` |
 | Hook over context | `src/hooks/toasts/` |

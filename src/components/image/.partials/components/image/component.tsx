@@ -1,8 +1,8 @@
 'use client';
 
-import { ImageImageProps } from '@/components/display/image/.partials/components/image/component.interface';
-import { ImageContext } from '@/components/display/image/.partials/providers/context/context';
-import styles from '@/components/display/image/.partials/styles/component.module.css';
+import { ImageImageProps } from '@/components/image/.partials/components/image/component.interface';
+import { ImageContext } from '@/components/image/.partials/providers/context/context';
+import styles from '@/components/image/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import { Images } from 'lucide-react';
 import React, {

@@ -1,5 +1,5 @@
-import styles from '@/components/overlays/observer/component.module.css';
-import { ObserverProps } from '@/components/overlays/observer/component.props';
+import styles from '@/components/observer/component.module.css';
+import { ObserverProps } from '@/components/observer/component.props';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 

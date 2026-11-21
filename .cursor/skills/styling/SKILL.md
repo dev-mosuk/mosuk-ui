@@ -26,5 +26,5 @@ Rule: `.cursor/rules/styling.mdc` · README: [README.md](../../../README.md)
 
 ## Эталон CSS
 
-- Structure / layers: `src/components/actions/otp/.partials/styles/component.module.css`
-- Tree + property order: `src/components/collections/chat/.partials/styles/component.module.css` → `.composer`
+- Structure / layers: `src/components/otp/.partials/styles/component.module.css`
+- Tree + property order: `src/components/chat/.partials/styles/component.module.css` → `.composer`

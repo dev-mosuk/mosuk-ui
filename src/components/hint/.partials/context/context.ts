@@ -1,4 +1,4 @@
-import { HintContextProps } from '@/components/texts/hint/.partials/context/context.interface';
+import { HintContextProps } from '@/components/hint/.partials/context/context.interface';
 import { createContext } from 'react';
 
 export const HintContext = createContext<HintContextProps | null>(null);

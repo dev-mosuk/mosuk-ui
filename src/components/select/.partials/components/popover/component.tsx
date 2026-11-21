@@ -1,7 +1,7 @@
 'use client';
 
-import { SelectPopoverProps } from '@/components/actions/select/.partials/components/popover/component.interface';
-import styles from '@/components/actions/select/.partials/styles/component.module.css';
+import { SelectPopoverProps } from '@/components/select/.partials/components/popover/component.interface';
+import styles from '@/components/select/.partials/styles/component.module.css';
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 import classNames from 'classnames';
 import React from 'react';

@@ -1,4 +1,4 @@
-import { InputMaskProps } from '@/components/actions/input/(mask)/component.interface';
+import { InputMaskProps } from '@/components/input-mask/component.interface';
 
 export interface InputMaskDateProps extends Omit<
   InputMaskProps,

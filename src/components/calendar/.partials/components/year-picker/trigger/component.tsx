@@ -4,14 +4,14 @@ import React, { useCallback, useMemo } from 'react';
 import { Button } from 'react-aria-components/Button';
 import { useCalendarHeading } from 'react-aria/useCalendar';
 
-import type { CalendarYearPickerTriggerProps } from '@/components/actions/calendar/.partials/components/year-picker/trigger/component.interface';
-import { CalendarYearPickerTriggerContext } from '@/components/actions/calendar/.partials/components/year-picker/trigger/context';
+import type { CalendarYearPickerTriggerProps } from '@/components/calendar/.partials/components/year-picker/trigger/component.interface';
+import { CalendarYearPickerTriggerContext } from '@/components/calendar/.partials/components/year-picker/trigger/context';
 import {
   useCalendarState,
   useCalendarYearPickerState,
-} from '@/components/actions/calendar/.partials/hooks/hook';
-import styles from '@/components/actions/calendar/.partials/styles/component.module.css';
-import { calendarClassName } from '@/components/actions/calendar/.partials/utilities/util';
+} from '@/components/calendar/.partials/hooks/hook';
+import styles from '@/components/calendar/.partials/styles/component.module.css';
+import { calendarClassName } from '@/components/calendar/.partials/utilities/util';
 
 export function CalendarYearPickerTrigger({
   children,

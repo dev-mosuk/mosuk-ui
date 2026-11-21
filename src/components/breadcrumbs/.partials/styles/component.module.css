@@ -24,13 +24,6 @@
       cursor: grabbing;
     }
 
-    .icon[aria-current='page'],
-    .button[aria-current='page'] {
-      color: var(--color-primary-500);
-
-      background-color: var(--color-primary-100);
-    }
-
     .button {
       flex-shrink: 0;
 

@@ -1,5 +1,5 @@
-import { InputMaskProps } from '@/components/actions/input/(mask)/component.interface';
-import { Input } from '@/components/actions/input/component';
+import { InputMaskProps } from '@/components/input-mask/component.interface';
+import { Input } from '@/components/input/component';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 import { IMaskInput } from 'react-imask';

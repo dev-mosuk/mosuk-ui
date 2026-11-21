@@ -3,13 +3,13 @@ import {
   DlDd as BaseDlDd,
   DlDl as BaseDlDl,
   DlDt as BaseDlDt,
-} from '@/components/display/dl/component';
+} from '@/components/dl/component';
 import type {
   DlDlProps,
   DlProps,
   DtDdProps,
   DtDtProps,
-} from '@/components/display/dl/component.interface';
+} from '@/components/dl/component.interface';
 
 export function Dl(props: DlProps) {
   return BaseDl(props);

@@ -1,4 +1,4 @@
-import { DialogPortalViewportPopupCloseProps } from '@/components/overlays/dialog/portal/viewport/popup/close/component.interface';
+import { DialogPortalViewportPopupCloseProps } from '@/components/dialog/portal/viewport/popup/close/component.interface';
 import { Dialog as BaseUIDialog } from '@base-ui/react';
 import classNames from 'classnames';
 import React from 'react';

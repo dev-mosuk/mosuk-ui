@@ -1,7 +1,7 @@
 'use client';
 
-import { StepperIconProps } from '@/components/navigation/stepper/.partials/components/icon/component.interface';
-import styles from '@/components/navigation/stepper/.partials/styles/component.module.css';
+import { StepperIconProps } from '@/components/stepper/.partials/components/icon/component.interface';
+import styles from '@/components/stepper/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React from 'react';
 

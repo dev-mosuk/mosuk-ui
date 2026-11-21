@@ -1,5 +1,5 @@
-import { Switch as Component } from '@/components/actions/switch/component';
-import type { SwitchProps } from '@/components/actions/switch/component.interface';
+import { Switch as Component } from '@/components/switch/component';
+import type { SwitchProps } from '@/components/switch/component.interface';
 
 export const Switch = Object.assign(Component, {});
 

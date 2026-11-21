@@ -14,17 +14,17 @@ import {
 } from 'react-aria-components/Calendar';
 import { useLocale } from 'react-aria-components/I18nProvider';
 
-import type { CalendarProps } from '@/components/actions/calendar/.partials/components/component.interface';
-import { useYearPickerOpen } from '@/components/actions/calendar/.partials/hooks/hook';
+import type { CalendarProps } from '@/components/calendar/.partials/components/component.interface';
+import { useYearPickerOpen } from '@/components/calendar/.partials/hooks/hook';
 import {
   CalendarDayViewProvider,
   CalendarYearPickerProvider,
-} from '@/components/actions/calendar/.partials/providers/provider';
-import styles from '@/components/actions/calendar/.partials/styles/component.module.css';
+} from '@/components/calendar/.partials/providers/provider';
+import styles from '@/components/calendar/.partials/styles/component.module.css';
 import {
   calendarClassName,
   getGregorianYearOffset,
-} from '@/components/actions/calendar/.partials/utilities/util';
+} from '@/components/calendar/.partials/utilities/util';
 
 function setRef<Node>(ref: Ref<Node> | undefined, value: Node | null) {
   if (!ref) {

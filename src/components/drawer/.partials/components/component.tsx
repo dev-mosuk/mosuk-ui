@@ -1,4 +1,4 @@
-import { DrawerProps } from '@/components/overlays/drawer/.partials/components/component.interface';
+import { DrawerProps } from '@/components/drawer/.partials/components/component.interface';
 import { Drawer as BaseUiDrawer } from '@base-ui/react';
 import React from 'react';
 

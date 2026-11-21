@@ -1,5 +1,5 @@
-import { CardComponentProps } from '@/components/containers/card/.partials/components/component.interface';
-import styles from '@/components/containers/card/.partials/styles/style.module.css';
+import { CardComponentProps } from '@/components/card/.partials/components/component.interface';
+import styles from '@/components/card/.partials/styles/style.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 

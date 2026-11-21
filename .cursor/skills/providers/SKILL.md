@@ -44,5 +44,5 @@ Shared state между sub-parts → `{feature}/.partials/providers/` — 4-fil
 | ----- | ---- |
 | App + service | `src/providers/toasts/` |
 | External SDK | `src/integrations/{vendor}/…/provider/` |
-| Component-local | `src/components/navigation/stepper/.partials/providers/` |
-| Component-local | `src/components/display/image/.partials/providers/` |
+| Component-local | `src/components/stepper/.partials/providers/` |
+| Component-local | `src/components/image/.partials/providers/` |

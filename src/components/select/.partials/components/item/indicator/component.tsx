@@ -1,7 +1,7 @@
 'use client';
 
-import { SelectItemIndicatorProps } from '@/components/actions/select/.partials/components/item/indicator/component.interface';
-import styles from '@/components/actions/select/.partials/styles/component.module.css';
+import { SelectItemIndicatorProps } from '@/components/select/.partials/components/item/indicator/component.interface';
+import styles from '@/components/select/.partials/styles/component.module.css';
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 import classNames from 'classnames';
 import { Check } from 'lucide-react';

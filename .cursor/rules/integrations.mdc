@@ -48,7 +48,7 @@ src/integrations/
 
 ## Структура component
 
-Как в `src/components/`: `{feature}/index.ts` + `.partials/`. Feature `{Name}Skeleton` не создаём. Исключение — Yandex Maps: skeleton в compound (`YandexMap.Skeleton`, `Default.Scheme.LayerSkeleton`), не отдельный export. Shimmer — `@/components/core/skeleton`.
+Как в `src/components/`: `{feature}/index.ts` + `.partials/`. Feature `{Name}Skeleton` не создаём. Исключение — Yandex Maps: skeleton в compound (`YandexMap.Skeleton`, `Default.Scheme.LayerSkeleton`), не отдельный export. Shimmer — `@/components/skeleton`.
 
 ## Props
 

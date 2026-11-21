@@ -1,7 +1,7 @@
 import type {
   StepperOrientation,
   StepperSize,
-} from '@/components/navigation/stepper/.partials/providers/context/context.interface';
+} from '@/components/stepper/.partials/providers/context/context.interface';
 import type { OlHTMLAttributes, ReactNode } from 'react';
 
 export interface StepperProps extends Omit<

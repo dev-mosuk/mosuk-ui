@@ -1,15 +1,15 @@
-import { EmptyButtons } from '@/components/display/empty/buttons/component';
-import { EmptyButtonsProps } from '@/components/display/empty/buttons/component.interface';
-import { Empty as BaseEmpty } from '@/components/display/empty/component';
-import type { EmptyProps } from '@/components/display/empty/component.interface';
-import { EmptyContent as BaseEmptyContent } from '@/components/display/empty/content/component';
-import { EmptyContentProps } from '@/components/display/empty/content/component.interface';
-import { EmptyContentDescription } from '@/components/display/empty/content/description/component';
-import { EmptyContentDescriptionProps } from '@/components/display/empty/content/description/component.interface';
-import { EmptyContentTitle } from '@/components/display/empty/content/title/component';
-import { EmptyContentTitleProps } from '@/components/display/empty/content/title/component.interface';
-import { EmptyIcon } from '@/components/display/empty/icon/component';
-import { EmptyIconProps } from '@/components/display/empty/icon/component.interface';
+import { EmptyButtons } from '@/components/empty/buttons/component';
+import { EmptyButtonsProps } from '@/components/empty/buttons/component.interface';
+import { Empty as BaseEmpty } from '@/components/empty/component';
+import type { EmptyProps } from '@/components/empty/component.interface';
+import { EmptyContent as BaseEmptyContent } from '@/components/empty/content/component';
+import { EmptyContentProps } from '@/components/empty/content/component.interface';
+import { EmptyContentDescription } from '@/components/empty/content/description/component';
+import { EmptyContentDescriptionProps } from '@/components/empty/content/description/component.interface';
+import { EmptyContentTitle } from '@/components/empty/content/title/component';
+import { EmptyContentTitleProps } from '@/components/empty/content/title/component.interface';
+import { EmptyIcon } from '@/components/empty/icon/component';
+import { EmptyIconProps } from '@/components/empty/icon/component.interface';
 
 export const Empty = Object.assign(BaseEmpty, {
   Icon: EmptyIcon,

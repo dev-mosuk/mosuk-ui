@@ -44,4 +44,4 @@ export function useToasts(): UseToastsProps {
 
 - Context: `src/hooks/toasts/`
 - Browser API: `src/hooks/storage/local/`
-- Feature-local: `src/components/navigation/stepper/.partials/hooks/`
+- Feature-local: `src/components/stepper/.partials/hooks/`

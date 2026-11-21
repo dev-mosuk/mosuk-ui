@@ -2,9 +2,9 @@
 
 import React, { Fragment } from 'react';
 
-import type { CalendarYearPickerGridBodyProps } from '@/components/actions/calendar/.partials/components/year-picker/body/component.interface';
-import { CalendarYearPickerCell } from '@/components/actions/calendar/.partials/components/year-picker/cell/component';
-import { useCalendarYearPickerGrid } from '@/components/actions/calendar/.partials/components/year-picker/grid/context';
+import type { CalendarYearPickerGridBodyProps } from '@/components/calendar/.partials/components/year-picker/body/component.interface';
+import { CalendarYearPickerCell } from '@/components/calendar/.partials/components/year-picker/cell/component';
+import { useCalendarYearPickerGrid } from '@/components/calendar/.partials/components/year-picker/grid/context';
 
 export function CalendarYearPickerGridBody({
   children,

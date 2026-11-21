@@ -1,6 +1,6 @@
-import { ChatMessageFileProps } from '@/components/collections/chat/.partials/components/message/file/component.interface';
-import styles from '@/components/collections/chat/.partials/styles/component.module.css';
-import { formatFileSize } from '@/components/collections/chat/.partials/utilities/format-file-size';
+import { ChatMessageFileProps } from '@/components/chat/.partials/components/message/file/component.interface';
+import styles from '@/components/chat/.partials/styles/component.module.css';
+import { formatFileSize } from '@/components/chat/.partials/utilities/format-file-size';
 import classNames from 'classnames';
 import { File as FileIcon } from 'lucide-react';
 import { AdobePdf } from 'mosuk-icons/shared/components/adobe/pdf';

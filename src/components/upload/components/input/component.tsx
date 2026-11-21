@@ -1,8 +1,8 @@
 'use client';
 
-import styles from '@/components/actions/upload/component.module.css';
-import { UploadInputProps } from '@/components/actions/upload/components/input/component.interface';
-import { useUpload } from '@/components/actions/upload/hooks/hook';
+import styles from '@/components/upload/component.module.css';
+import { UploadInputProps } from '@/components/upload/components/input/component.interface';
+import { useUpload } from '@/components/upload/hooks/hook';
 import classNames from 'classnames';
 import React, { ChangeEvent, useEffect, useId } from 'react';
 

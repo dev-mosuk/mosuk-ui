@@ -1,5 +1,5 @@
-import styles from '@/components/forms/fieldset/component.module.css';
-import { FieldsetFieldProps } from '@/components/forms/fieldset/components/field/component.interface';
+import styles from '@/components/fieldset/component.module.css';
+import { FieldsetFieldProps } from '@/components/fieldset/components/field/component.interface';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 

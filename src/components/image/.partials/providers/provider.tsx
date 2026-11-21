@@ -1,8 +1,8 @@
 'use client';
 
-import { ImageContext } from '@/components/display/image/.partials/providers/context/context';
-import { ImageProviderProps } from '@/components/display/image/.partials/providers/provider.interface';
-import { isNearViewport } from '@/components/display/image/.partials/services/scheduler';
+import { ImageContext } from '@/components/image/.partials/providers/context/context';
+import { ImageProviderProps } from '@/components/image/.partials/providers/provider.interface';
+import { isNearViewport } from '@/components/image/.partials/services/scheduler';
 import React, {
   useCallback,
   useEffect,

@@ -1,11 +1,11 @@
-import { HintTypeConstant } from '@/components/texts/hint/.partials/component.constants';
-import { HintTypeEnum } from '@/components/texts/hint/.partials/component.enums';
-import { Hint as BaseHint } from '@/components/texts/hint/.partials/components/component';
-import { HintProps } from '@/components/texts/hint/.partials/components/component.interface';
-import { HintIcon } from '@/components/texts/hint/.partials/components/icon/component';
-import { HintIconProps } from '@/components/texts/hint/.partials/components/icon/component.interface';
-import { HintText } from '@/components/texts/hint/.partials/components/text/component';
-import { HintTextProps } from '@/components/texts/hint/.partials/components/text/component.interface';
+import { HintTypeConstant } from '@/components/hint/.partials/component.constants';
+import { HintTypeEnum } from '@/components/hint/.partials/component.enums';
+import { Hint as BaseHint } from '@/components/hint/.partials/components/component';
+import { HintProps } from '@/components/hint/.partials/components/component.interface';
+import { HintIcon } from '@/components/hint/.partials/components/icon/component';
+import { HintIconProps } from '@/components/hint/.partials/components/icon/component.interface';
+import { HintText } from '@/components/hint/.partials/components/text/component';
+import { HintTextProps } from '@/components/hint/.partials/components/text/component.interface';
 
 export const Hint = Object.assign(BaseHint, {
   Icon: HintIcon,

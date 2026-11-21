@@ -1,7 +1,7 @@
 'use client';
 
-import { SelectGroupLabelProps } from '@/components/actions/select/.partials/components/group/label/component.interface';
-import styles from '@/components/actions/select/.partials/styles/component.module.css';
+import { SelectGroupLabelProps } from '@/components/select/.partials/components/group/label/component.interface';
+import styles from '@/components/select/.partials/styles/component.module.css';
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 import classNames from 'classnames';
 import React from 'react';

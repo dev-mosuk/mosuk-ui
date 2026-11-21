@@ -1,9 +1,9 @@
-import { TooltipArrow } from '@/components/overlays/tooltip/.partials/components/arrow/component';
-import { TooltipArrowProps } from '@/components/overlays/tooltip/.partials/components/arrow/component.interface';
-import { Tooltip as Component } from '@/components/overlays/tooltip/.partials/components/component';
-import { TooltipProps } from '@/components/overlays/tooltip/.partials/components/component.interface';
-import { TooltipContent } from '@/components/overlays/tooltip/.partials/components/content/component';
-import { TooltipContentProps } from '@/components/overlays/tooltip/.partials/components/content/component.interface';
+import { TooltipArrow } from '@/components/tooltip/.partials/components/arrow/component';
+import { TooltipArrowProps } from '@/components/tooltip/.partials/components/arrow/component.interface';
+import { Tooltip as Component } from '@/components/tooltip/.partials/components/component';
+import { TooltipProps } from '@/components/tooltip/.partials/components/component.interface';
+import { TooltipContent } from '@/components/tooltip/.partials/components/content/component';
+import { TooltipContentProps } from '@/components/tooltip/.partials/components/content/component.interface';
 import { FC } from 'react';
 
 export type TooltipComponent = FC<TooltipProps> & {

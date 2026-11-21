@@ -4,9 +4,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React from 'react';
 import { Button } from 'react-aria-components/Button';
 
-import type { CalendarNavButtonProps } from '@/components/actions/calendar/.partials/components/nav-button/component.interface';
-import styles from '@/components/actions/calendar/.partials/styles/component.module.css';
-import { calendarClassName } from '@/components/actions/calendar/.partials/utilities/util';
+import type { CalendarNavButtonProps } from '@/components/calendar/.partials/components/nav-button/component.interface';
+import styles from '@/components/calendar/.partials/styles/component.module.css';
+import { calendarClassName } from '@/components/calendar/.partials/utilities/util';
 
 export function CalendarNavButton({
   children,

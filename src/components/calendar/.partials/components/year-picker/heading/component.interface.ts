@@ -1,7 +1,7 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import type { CalendarHeadingProps } from 'react-aria/useCalendar';
 
-import type { CalendarYearPickerTriggerContextProps } from '@/components/actions/calendar/.partials/components/year-picker/trigger/context';
+import type { CalendarYearPickerTriggerContextProps } from '@/components/calendar/.partials/components/year-picker/trigger/context';
 
 export interface CalendarYearPickerTriggerHeadingProps
   extends

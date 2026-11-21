@@ -12,7 +12,7 @@ alwaysApply: true
 | Маркер | Смысл | Примеры |
 | ------ | ----- | ------- |
 | **`.`** | Приватная реализация, не часть публичного API | `.partials/`, `.cursor/` |
-| **`()`** | Группа/контекст, **не** сегмент export-имени | `input/(mask)/`, `textarea/(autosize)/` |
+| **`()`** | Группа/контекст, **не** сегмент export-имени | `textarea/(autosize)/` (редко) |
 | **`[]`** | Динамический/param сегмент | `hooks/[id]/` (если появится) |
 
 ### `.` — private
@@ -22,8 +22,9 @@ alwaysApply: true
 
 ### `()` — group
 
-- В `src/` — логическая группировка без влияния на export-имя (`input/(mask)/`)
+- В `src/` — логическая группировка без влияния на export-имя
 - Export **не** включает скобки
+- Варианты product-level features — отдельные hyphenated папки (`input-mask/`, `slider-cell/`), не `()` под родителем
 
 ### `[]` — dynamic
 
@@ -34,16 +35,7 @@ alwaysApply: true
 
 ```
 src/
-├── components/
-│   ├── texts/
-│   ├── actions/
-│   ├── display/
-│   ├── containers/
-│   ├── collections/
-│   ├── layouts/
-│   ├── overlays/
-│   ├── navigation/
-│   └── forms/          # fieldset, form controls
+├── components/         # плоский список features: button/, drawer/, otp/, …
 ├── integrations/       # внешние SDK (зеркалит слои src)
 ├── providers/
 ├── hooks/
@@ -90,26 +82,28 @@ Utilities → `.cursor/rules/utilities.mdc`
 
 Подробнее compound + namespace → `.cursor/rules/exports.mdc`
 
-## Категории `components/`
+## Логические роли `components/`
 
-| Папка | Назначение |
-| ----- | ---------- |
-| `texts/` | заголовки, параграфы, ссылки |
-| `actions/` | кнопки, инпуты, контролы |
-| `display/` | карточки, media, avatar |
-| `containers/` | секции, grid |
-| `collections/` | таблицы, tabs, accordion |
-| `layouts/` | header, sidebar |
-| `overlays/` | dialog, drawer |
-| `navigation/` | stepper |
-| `forms/` | fieldset, form composition |
+Категории — **не** папки. Feature лежит плоско: `src/components/{feature}/`. Роль влияет на z-index и форму compound (см. `components.mdc`).
 
-`src/integrations/` — отдельная иерархия (не категория `components/`). См. [integrations.mdc](./integrations.mdc).
+| Роль | Примеры features |
+| ---- | ---------------- |
+| texts | typography, hint, counter |
+| actions | button, otp, checkbox, input, input-mask, slider |
+| display | image, video, file, empty, dl |
+| containers | card, section, separator |
+| collections | accordion, chat |
+| overlays | dialog, drawer, tooltip, toast, observer |
+| navigation | stepper, breadcrumbs |
+| forms | fieldset |
+| primitives | skeleton, icon |
+
+`src/integrations/` — отдельная иерархия (не роль `components/`). См. [integrations.mdc](./integrations.mdc).
 
 ## Импорты
 
 - **Везде в `src/`** — alias `@/…` → `src/…`; относительные `./…` и `../…` **запрещены** (ESLint `@typescript-eslint/no-restricted-imports`)
-- В т.ч. внутри feature и `.partials/` — `@/components/navigation/stepper/.partials/hooks/hook`
+- В т.ч. внутри feature и `.partials/` — `@/components/stepper/.partials/hooks/hook`
 - **Named export** везде
 - **Не** barrel re-export всего `src/` — только точечные `index.ts` на feature
 - Массовая миграция legacy: `npm run migrate:imports -- --dry-run` / `--apply`
@@ -135,9 +129,9 @@ Utilities → `.cursor/rules/utilities.mdc`
     └── components|styles|…  ← реализация component
 ```
 
-Feature `{Name}Skeleton` не создаём. Единственный product skeleton — Yandex Maps (`YandexMap.Skeleton`). Shimmer-примитив — `src/components/core/skeleton`.
+Feature `{Name}Skeleton` не создаём. Единственный product skeleton — Yandex Maps (`YandexMap.Skeleton`). Shimmer-примитив — `src/components/skeleton`.
 
-Публичный import: `mosuk-ui/components/…/{feature}` — **без** `/component`.
+Публичный import: `mosuk-ui/components/{feature}` — **без** `/component`.
 
 | Паттерн | Пример | Статус |
 | ------- | ------ | ------ |

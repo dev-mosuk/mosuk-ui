@@ -1,9 +1,9 @@
-import { Image as Component } from '@/components/display/image/.partials/components/component';
-import { ImageProps as ComponentProps } from '@/components/display/image/.partials/components/component.interface';
-import { ImageDots } from '@/components/display/image/.partials/components/dots/component';
-import { ImageDotsProps } from '@/components/display/image/.partials/components/dots/component.interface';
-import { ImageImage } from '@/components/display/image/.partials/components/image/component';
-import { ImageImageProps } from '@/components/display/image/.partials/components/image/component.interface';
+import { Image as Component } from '@/components/image/.partials/components/component';
+import { ImageProps as ComponentProps } from '@/components/image/.partials/components/component.interface';
+import { ImageDots } from '@/components/image/.partials/components/dots/component';
+import { ImageDotsProps } from '@/components/image/.partials/components/dots/component.interface';
+import { ImageImage } from '@/components/image/.partials/components/image/component';
+import { ImageImageProps } from '@/components/image/.partials/components/image/component.interface';
 
 export const Image = Object.assign(Component, {
   Dots: ImageDots,

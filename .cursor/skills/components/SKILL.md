@@ -1,9 +1,9 @@
 ---
 name: components
 description: >-
-  Creates mosuk-ui UI in src/components/: actions (OTP, checkbox),
-  display (card, image, avatar), overlays (drawer, dialog), dropdown, texts,
-  layouts, collections, navigation (stepper), breadcrumbs, toggle, forms. Use when
+  Creates mosuk-ui UI in src/components/{feature}/: actions (OTP, checkbox),
+  display (image, empty), overlays (drawer, dialog), dropdown, texts,
+  collections, navigation (stepper, breadcrumbs), toggle, forms. Use when
   building components or deep compound on @base-ui/react. When the
   API shape, public sub-parts, or exemplar are not named, ask one frontier
   round and wait before writing files.
@@ -25,17 +25,17 @@ Rule: `.cursor/rules/components.mdc`
     └── hooks/
 ```
 
-Импорты `@/`. Публичный API — `{feature}/index.ts`. Feature `{Name}Skeleton` не создаём. Идиома, z-index и карта эталонов — в правиле.
+Импорты `@/`. Публичный API — `{feature}/index.ts` → `mosuk-ui/components/{feature}`. Feature `{Name}Skeleton` не создаём. Идиома, z-index и карта эталонов — в правиле.
 
 Внешний SDK → [integrations/SKILL.md](../integrations/SKILL.md), не `components/`.
 
 ## 1. Факты
 
-Категория — из правила. Ближайший эталон — из карты эталонов в правиле. Primitive — поиск в `@base-ui/react`.
+Роль (actions / overlays / …) — из правила (логическая, не папка). Ближайший эталон — из карты эталонов в правиле. Primitive — поиск в `@base-ui/react`.
 
 Это не вопросы пользователю.
 
-Готово, когда названы категория, эталон и primitive — или явно зафиксировано, что primitive нет.
+Готово, когда названы роль, эталон и primitive — или явно зафиксировано, что primitive нет.
 
 ## 2. Фронтир
 

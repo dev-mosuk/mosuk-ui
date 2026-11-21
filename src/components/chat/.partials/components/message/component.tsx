@@ -1,7 +1,7 @@
-import { ChatMessageAvatar } from '@/components/collections/chat/.partials/components/message/avatar/component';
-import { ChatMessageStatus } from '@/components/collections/chat/.partials/components/message/component.enums';
-import { ChatMessageProps } from '@/components/collections/chat/.partials/components/message/component.interface';
-import styles from '@/components/collections/chat/.partials/styles/component.module.css';
+import { ChatMessageAvatar } from '@/components/chat/.partials/components/message/avatar/component';
+import { ChatMessageStatus } from '@/components/chat/.partials/components/message/component.enums';
+import { ChatMessageProps } from '@/components/chat/.partials/components/message/component.interface';
+import styles from '@/components/chat/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import { Check, CheckCheck } from 'lucide-react';
 import React, { Children, isValidElement, type ReactNode } from 'react';

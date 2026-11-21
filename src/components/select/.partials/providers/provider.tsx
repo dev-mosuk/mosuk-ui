@@ -1,7 +1,7 @@
 'use client';
 
-import { SelectContext } from '@/components/actions/select/.partials/providers/context/context';
-import type { SelectProviderProps } from '@/components/actions/select/.partials/providers/provider.interface';
+import { SelectContext } from '@/components/select/.partials/providers/context/context';
+import type { SelectProviderProps } from '@/components/select/.partials/providers/provider.interface';
 import React, { useMemo } from 'react';
 
 export function SelectProvider({

@@ -1,8 +1,8 @@
-import { HintTypeConstant } from '@/components/texts/hint/.partials/component.constants';
-import { HintTypeEnum } from '@/components/texts/hint/.partials/component.enums';
-import { HintIconProps } from '@/components/texts/hint/.partials/components/icon/component.interface';
-import { HintContext } from '@/components/texts/hint/.partials/context/context';
-import styles from '@/components/texts/hint/.partials/styles/component.module.css';
+import { HintTypeConstant } from '@/components/hint/.partials/component.constants';
+import { HintTypeEnum } from '@/components/hint/.partials/component.enums';
+import { HintIconProps } from '@/components/hint/.partials/components/icon/component.interface';
+import { HintContext } from '@/components/hint/.partials/context/context';
+import styles from '@/components/hint/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType, useContext } from 'react';
 

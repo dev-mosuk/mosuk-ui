@@ -32,14 +32,14 @@ export namespace OTP {
 }
 ```
 
-Полный файл — `src/components/actions/otp/index.ts`. Product skeleton — `src/integrations/yandex/maps/components/index.ts`.
+Полный файл — `src/components/otp/index.ts`. Product skeleton — `src/integrations/yandex/maps/components/index.ts`.
 
 ## Deep compound
 
-Импорты из `.partials/components/…`; nested `Object.assign` — `src/components/overlays/drawer/index.ts`
+Импорты из `.partials/components/…`; nested `Object.assign` — `src/components/drawer/index.ts`
 
 ## Эталоны
 
-- Simple compound: `src/components/actions/otp/index.ts`
-- Deep: `src/components/overlays/drawer/index.ts`
+- Simple compound: `src/components/otp/index.ts`
+- Deep: `src/components/drawer/index.ts`
 - Provider: `src/providers/toasts/index.ts`

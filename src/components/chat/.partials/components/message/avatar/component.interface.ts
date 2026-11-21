@@ -1,4 +1,4 @@
-import type { Image } from '@/components/display/image';
+import type { Image } from '@/components/image';
 
 export type ChatMessageAvatarProps = Omit<Image.Props, 'children'> & {
   src?: string;

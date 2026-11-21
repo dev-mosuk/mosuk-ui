@@ -1,5 +1,5 @@
-import { useUploadProps } from '@/components/actions/upload/hooks/hook.interface';
-import { UploadContext } from '@/components/actions/upload/providers/context/context';
+import { useUploadProps } from '@/components/upload/hooks/hook.interface';
+import { UploadContext } from '@/components/upload/providers/context/context';
 import { useContext } from 'react';
 
 export function useUpload(): useUploadProps {

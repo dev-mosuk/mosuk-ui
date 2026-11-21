@@ -2,9 +2,9 @@ import classNames from 'classnames';
 import { ChevronRight } from 'lucide-react';
 import React from 'react';
 
-import type { CalendarYearPickerTriggerIndicatorProps } from '@/components/actions/calendar/.partials/components/year-picker/indicator/component.interface';
-import { useCalendarYearPickerTrigger } from '@/components/actions/calendar/.partials/components/year-picker/trigger/context';
-import styles from '@/components/actions/calendar/.partials/styles/component.module.css';
+import type { CalendarYearPickerTriggerIndicatorProps } from '@/components/calendar/.partials/components/year-picker/indicator/component.interface';
+import { useCalendarYearPickerTrigger } from '@/components/calendar/.partials/components/year-picker/trigger/context';
+import styles from '@/components/calendar/.partials/styles/component.module.css';
 
 export function CalendarYearPickerTriggerIndicator({
   children,

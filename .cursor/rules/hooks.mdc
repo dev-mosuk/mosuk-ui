@@ -70,4 +70,4 @@ Re-export из `./hook`; типы из `hook.interface.ts`.
 
 - `src/hooks/toasts/` — context consumer
 - `src/hooks/storage/local/` — browser API
-- `src/components/navigation/stepper/.partials/hooks/` — feature-local
+- `src/components/stepper/.partials/hooks/` — feature-local

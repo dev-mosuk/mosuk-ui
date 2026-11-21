@@ -3,10 +3,10 @@
 import React from 'react';
 import { Button } from 'react-aria-components/Button';
 
-import type { CalendarYearPickerCellProps } from '@/components/actions/calendar/.partials/components/year-picker/cell/component.interface';
-import { useCalendarYearPickerGrid } from '@/components/actions/calendar/.partials/components/year-picker/grid/context';
-import styles from '@/components/actions/calendar/.partials/styles/component.module.css';
-import { calendarClassName } from '@/components/actions/calendar/.partials/utilities/util';
+import type { CalendarYearPickerCellProps } from '@/components/calendar/.partials/components/year-picker/cell/component.interface';
+import { useCalendarYearPickerGrid } from '@/components/calendar/.partials/components/year-picker/grid/context';
+import styles from '@/components/calendar/.partials/styles/component.module.css';
+import { calendarClassName } from '@/components/calendar/.partials/utilities/util';
 
 export function CalendarYearPickerCell({
   children,

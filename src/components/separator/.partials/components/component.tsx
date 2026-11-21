@@ -1,5 +1,5 @@
-import { SeparatorComponentProps } from '@/components/containers/separator/.partials/components/component.interface';
-import styles from '@/components/containers/separator/.partials/styles/style.module.css';
+import { SeparatorComponentProps } from '@/components/separator/.partials/components/component.interface';
+import styles from '@/components/separator/.partials/styles/style.module.css';
 import classNames from 'classnames';
 import React from 'react';
 

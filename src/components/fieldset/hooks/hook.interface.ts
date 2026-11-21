@@ -1,3 +1,3 @@
-import { FieldsetContextProps } from '@/components/forms/fieldset/providers/context/context.interface';
+import { FieldsetContextProps } from '@/components/fieldset/providers/context/context.interface';
 
 export interface useFieldsetProps extends FieldsetContextProps {}

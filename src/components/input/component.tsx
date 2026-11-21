@@ -1,5 +1,5 @@
-import { InputProps } from '@/components/actions/input/component.interface';
-import styles from '@/components/actions/input/component.module.css';
+import { InputProps } from '@/components/input/component.interface';
+import styles from '@/components/input/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType, useId } from 'react';
 

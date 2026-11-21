@@ -1,8 +1,8 @@
 import {
   FileContextProps,
   FileProps,
-} from '@/components/display/file/component.interface';
-import styles from '@/components/display/file/component.module.css';
+} from '@/components/file/component.interface';
+import styles from '@/components/file/component.module.css';
 import classNames from 'classnames';
 import React, { createContext, useMemo } from 'react';
 

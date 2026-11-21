@@ -1,13 +1,13 @@
-import { FileActionsAction } from '@/components/display/file/actions/action/component';
-import { FileActionsActionProps } from '@/components/display/file/actions/action/component.interface';
-import { FileActions } from '@/components/display/file/actions/component';
-import { FileActionsProps } from '@/components/display/file/actions/component.interface';
-import { File as Component } from '@/components/display/file/component';
-import { FileProps } from '@/components/display/file/component.interface';
-import { FileFile } from '@/components/display/file/file/component';
-import { FileFileProps } from '@/components/display/file/file/component.interface';
-import { FileInput } from '@/components/display/file/input/component';
-import { FileInputProps } from '@/components/display/file/input/component.interface';
+import { FileActionsAction } from '@/components/file/actions/action/component';
+import { FileActionsActionProps } from '@/components/file/actions/action/component.interface';
+import { FileActions } from '@/components/file/actions/component';
+import { FileActionsProps } from '@/components/file/actions/component.interface';
+import { File as Component } from '@/components/file/component';
+import { FileProps } from '@/components/file/component.interface';
+import { FileFile } from '@/components/file/file/component';
+import { FileFileProps } from '@/components/file/file/component.interface';
+import { FileInput } from '@/components/file/input/component';
+import { FileInputProps } from '@/components/file/input/component.interface';
 
 export const File = Object.assign(Component, {
   File: FileFile,

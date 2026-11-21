@@ -1,5 +1,5 @@
-import styles from '@/components/overlays/drawer/.partials/styles/component.module.css';
-import { DrawerPortalViewportPopupContentProps } from '@/components/overlays/drawer/.partials/components/portal/viewport/popup/content/component.interface';
+import styles from '@/components/drawer/.partials/styles/component.module.css';
+import { DrawerPortalViewportPopupContentProps } from '@/components/drawer/.partials/components/portal/viewport/popup/content/component.interface';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 

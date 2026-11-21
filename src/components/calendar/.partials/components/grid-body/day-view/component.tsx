@@ -4,8 +4,8 @@ import type { CalendarDate } from '@internationalized/date';
 import React, { cloneElement, useMemo } from 'react';
 import { useLocale } from 'react-aria-components/I18nProvider';
 
-import type { CalendarDayViewGridBodyProps } from '@/components/actions/calendar/.partials/components/grid-body/day-view/component.interface';
-import { getDayViewGridRows } from '@/components/actions/calendar/.partials/utilities/util';
+import type { CalendarDayViewGridBodyProps } from '@/components/calendar/.partials/components/grid-body/day-view/component.interface';
+import { getDayViewGridRows } from '@/components/calendar/.partials/utilities/util';
 
 export function CalendarDayViewGridBody({
   children,

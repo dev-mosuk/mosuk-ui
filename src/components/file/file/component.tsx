@@ -1,7 +1,7 @@
-import styles from '@/components/display/file/component.module.css';
-import { imageExtensions } from '@/components/display/file/file/component.constant';
-import { FileFileProps } from '@/components/display/file/file/component.interface';
-import { Image } from '@/components/display/image';
+import styles from '@/components/file/component.module.css';
+import { imageExtensions } from '@/components/file/file/component.constant';
+import { FileFileProps } from '@/components/file/file/component.interface';
+import { Image } from '@/components/image';
 import classNames from 'classnames';
 import { File as FileIcon, FileMinus } from 'lucide-react';
 import { AdobePdf } from 'mosuk-icons/shared/components/adobe/pdf';

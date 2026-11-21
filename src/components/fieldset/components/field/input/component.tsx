@@ -1,7 +1,7 @@
-import { Input } from '@/components/actions/input/component';
-import styles from '@/components/forms/fieldset/component.module.css';
-import { FieldsetFieldInputProps } from '@/components/forms/fieldset/components/field/input/component.interface';
-import { useFieldset } from '@/components/forms/fieldset/hooks/hook';
+import { Input } from '@/components/input/component';
+import styles from '@/components/fieldset/component.module.css';
+import { FieldsetFieldInputProps } from '@/components/fieldset/components/field/input/component.interface';
+import { useFieldset } from '@/components/fieldset/hooks/hook';
 import classNames from 'classnames';
 import React, { ElementType, useEffect, useId } from 'react';
 

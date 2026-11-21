@@ -1,5 +1,5 @@
-import { InputSearchProps } from '@/components/actions/input/(search)/component.interface';
-import { Input } from '@/components/actions/input/component';
+import { InputSearchProps } from '@/components/input-search/component.interface';
+import { Input } from '@/components/input/component';
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 
 export function InputSearch({ ...rest }: InputSearchProps) {

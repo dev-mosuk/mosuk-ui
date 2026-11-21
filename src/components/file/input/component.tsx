@@ -1,6 +1,6 @@
-import { FileContext } from '@/components/display/file/component';
-import styles from '@/components/display/file/component.module.css';
-import { FileInputProps } from '@/components/display/file/input/component.interface';
+import { FileContext } from '@/components/file/component';
+import styles from '@/components/file/component.module.css';
+import { FileInputProps } from '@/components/file/input/component.interface';
 import React, { useContext, useId } from 'react';
 
 export function FileInput({ ...props }: FileInputProps) {

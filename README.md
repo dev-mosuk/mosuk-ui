@@ -30,15 +30,7 @@ UI библиотека компонентов с использованием C
 
 ```
 src/
-├── components/
-│   ├── texts/
-│   ├── actions/
-│   ├── display/
-│   ├── containers/
-│   ├── collections/
-│   ├── layouts/
-│   ├── overlays/
-│   └── navigation/
+├── components/         # плоский список features: button/, drawer/, otp/, …
 ├── integrations/       # внешние SDK (yandex/maps, tbank, …)
 └── providers/
 ```
@@ -113,7 +105,7 @@ npm unlink
 В `src/` импорты используют alias `@/` → `src/` (см. `tsconfig.json`). **`tsc` не переписывает их** — это делает `tsc-alias` при сборке в `dist/`. Next.js в CRM резолвит `@/` как `./src/*` **своего** проекта, поэтому линковка **исходников** (`src/`) ломает бандлер:
 
 ```
-Can't resolve '@/components/actions/button/component/component'
+Can't resolve '@/components/button/component/component'
 Import map: aliased to relative './src/components/...' inside of [project]/
 ```
 

@@ -40,74 +40,9 @@
       "style": "./index.css",
       "default": "./index.css"
     },
-    "./components/actions/calendar": {
+    "./components/accordion": {
       "import": {
-        "default": "./components/actions/calendar/index.ts"
-      }
-    },
-    "./components/actions/checkbox": {
-      "import": {
-        "default": "./components/actions/checkbox/index.ts"
-      }
-    },
-    "./components/actions/input": {
-      "import": {
-        "default": "./components/actions/input/index.ts"
-      }
-    },
-    "./components/actions/input/(mask)": {
-      "import": {
-        "default": "./components/actions/input/(mask)/index.ts"
-      }
-    },
-    "./components/actions/input/(mask)/(date)": {
-      "import": {
-        "default": "./components/actions/input/(mask)/(date)/index.ts"
-      }
-    },
-    "./components/actions/input/(mask)/(phone)": {
-      "import": {
-        "default": "./components/actions/input/(mask)/(phone)/index.ts"
-      }
-    },
-    "./components/actions/input/(search)": {
-      "import": {
-        "default": "./components/actions/input/(search)/index.ts"
-      }
-    },
-    "./components/actions/otp": {
-      "import": {
-        "default": "./components/actions/otp/index.ts"
-      }
-    },
-    "./components/actions/select": {
-      "import": {
-        "default": "./components/actions/select/index.ts"
-      }
-    },
-    "./components/actions/slider": {
-      "import": {
-        "default": "./components/actions/slider/index.ts"
-      }
-    },
-    "./components/actions/slider/(cell)": {
-      "import": {
-        "default": "./components/actions/slider/(cell)/index.ts"
-      }
-    },
-    "./components/actions/switch": {
-      "import": {
-        "default": "./components/actions/switch/index.ts"
-      }
-    },
-    "./components/actions/textarea": {
-      "import": {
-        "default": "./components/actions/textarea/index.ts"
-      }
-    },
-    "./components/actions/upload": {
-      "import": {
-        "default": "./components/actions/upload/index.ts"
+        "default": "./components/accordion/index.ts"
       }
     },
     "./components/breadcrumbs": {
@@ -125,59 +60,44 @@
         "default": "./components/button-group/index.ts"
       }
     },
-    "./components/collections/accordion": {
+    "./components/calendar": {
       "import": {
-        "default": "./components/collections/accordion/index.ts"
+        "default": "./components/calendar/index.ts"
       }
     },
-    "./components/collections/chat": {
+    "./components/card": {
       "import": {
-        "default": "./components/collections/chat/index.ts"
+        "default": "./components/card/index.ts"
       }
     },
-    "./components/containers/card": {
+    "./components/chat": {
       "import": {
-        "default": "./components/containers/card/index.ts"
+        "default": "./components/chat/index.ts"
       }
     },
-    "./components/containers/section": {
+    "./components/checkbox": {
       "import": {
-        "default": "./components/containers/section/index.ts"
+        "default": "./components/checkbox/index.ts"
       }
     },
-    "./components/containers/separator": {
+    "./components/counter": {
       "import": {
-        "default": "./components/containers/separator/index.ts"
+        "default": "./components/counter/index.ts"
       }
     },
-    "./components/core/skeleton": {
+    "./components/dialog": {
       "import": {
-        "default": "./components/core/skeleton/index.ts"
+        "default": "./components/dialog/index.ts"
       }
     },
-    "./components/display/dl": {
+    "./components/dl": {
       "import": {
-        "default": "./components/display/dl/index.ts"
+        "default": "./components/dl/index.ts"
       }
     },
-    "./components/display/empty": {
+    "./components/drawer": {
       "import": {
-        "default": "./components/display/empty/index.ts"
-      }
-    },
-    "./components/display/file": {
-      "import": {
-        "default": "./components/display/file/index.ts"
-      }
-    },
-    "./components/display/image": {
-      "import": {
-        "default": "./components/display/image/index.ts"
-      }
-    },
-    "./components/display/video": {
-      "import": {
-        "default": "./components/display/video/index.ts"
+        "default": "./components/drawer/index.ts"
       }
     },
     "./components/dropdown": {
@@ -185,9 +105,24 @@
         "default": "./components/dropdown/index.ts"
       }
     },
-    "./components/forms/fieldset": {
+    "./components/empty": {
       "import": {
-        "default": "./components/forms/fieldset/index.ts"
+        "default": "./components/empty/index.ts"
+      }
+    },
+    "./components/fieldset": {
+      "import": {
+        "default": "./components/fieldset/index.ts"
+      }
+    },
+    "./components/file": {
+      "import": {
+        "default": "./components/file/index.ts"
+      }
+    },
+    "./components/hint": {
+      "import": {
+        "default": "./components/hint/index.ts"
       }
     },
     "./components/icon": {
@@ -195,54 +130,119 @@
         "default": "./components/icon/index.ts"
       }
     },
-    "./components/navigation/stepper": {
+    "./components/image": {
       "import": {
-        "default": "./components/navigation/stepper/index.ts"
+        "default": "./components/image/index.ts"
       }
     },
-    "./components/overlays/dialog": {
+    "./components/input": {
       "import": {
-        "default": "./components/overlays/dialog/index.ts"
+        "default": "./components/input/index.ts"
       }
     },
-    "./components/overlays/drawer": {
+    "./components/input-mask": {
       "import": {
-        "default": "./components/overlays/drawer/index.ts"
+        "default": "./components/input-mask/index.ts"
       }
     },
-    "./components/overlays/observer": {
+    "./components/input-mask-date": {
       "import": {
-        "default": "./components/overlays/observer/index.ts"
+        "default": "./components/input-mask-date/index.ts"
       }
     },
-    "./components/overlays/toast": {
+    "./components/input-mask-phone": {
       "import": {
-        "default": "./components/overlays/toast/index.ts"
+        "default": "./components/input-mask-phone/index.ts"
       }
     },
-    "./components/overlays/tooltip": {
+    "./components/input-search": {
       "import": {
-        "default": "./components/overlays/tooltip/index.ts"
+        "default": "./components/input-search/index.ts"
       }
     },
-    "./components/texts/counter": {
+    "./components/observer": {
       "import": {
-        "default": "./components/texts/counter/index.ts"
+        "default": "./components/observer/index.ts"
       }
     },
-    "./components/texts/hint": {
+    "./components/otp": {
       "import": {
-        "default": "./components/texts/hint/index.ts"
+        "default": "./components/otp/index.ts"
       }
     },
-    "./components/texts/typography": {
+    "./components/section": {
       "import": {
-        "default": "./components/texts/typography/index.ts"
+        "default": "./components/section/index.ts"
+      }
+    },
+    "./components/select": {
+      "import": {
+        "default": "./components/select/index.ts"
+      }
+    },
+    "./components/separator": {
+      "import": {
+        "default": "./components/separator/index.ts"
+      }
+    },
+    "./components/skeleton": {
+      "import": {
+        "default": "./components/skeleton/index.ts"
+      }
+    },
+    "./components/slider": {
+      "import": {
+        "default": "./components/slider/index.ts"
+      }
+    },
+    "./components/slider-cell": {
+      "import": {
+        "default": "./components/slider-cell/index.ts"
+      }
+    },
+    "./components/stepper": {
+      "import": {
+        "default": "./components/stepper/index.ts"
+      }
+    },
+    "./components/switch": {
+      "import": {
+        "default": "./components/switch/index.ts"
+      }
+    },
+    "./components/textarea": {
+      "import": {
+        "default": "./components/textarea/index.ts"
+      }
+    },
+    "./components/toast": {
+      "import": {
+        "default": "./components/toast/index.ts"
       }
     },
     "./components/toggle": {
       "import": {
         "default": "./components/toggle/index.ts"
+      }
+    },
+    "./components/tooltip": {
+      "import": {
+        "default": "./components/tooltip/index.ts"
+      }
+    },
+    "./components/typography": {
+      "import": {
+        "default": "./components/typography/index.ts"
+      }
+    },
+    "./components/upload": {
+      "import": {
+        "default": "./components/upload/index.ts"
+      }
+    },
+    "./components/video": {
+      "import": {
+        "default": "./components/video/index.ts"
       }
     },
     "./hooks/storage/cookie": {

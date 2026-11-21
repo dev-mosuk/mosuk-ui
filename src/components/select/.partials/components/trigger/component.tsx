@@ -1,8 +1,8 @@
 'use client';
 
-import { SelectTriggerProps } from '@/components/actions/select/.partials/components/trigger/component.interface';
-import { useSelect } from '@/components/actions/select/.partials/hooks/hook';
-import styles from '@/components/actions/select/.partials/styles/component.module.css';
+import { SelectTriggerProps } from '@/components/select/.partials/components/trigger/component.interface';
+import { useSelect } from '@/components/select/.partials/hooks/hook';
+import styles from '@/components/select/.partials/styles/component.module.css';
 import { Select as SelectPrimitive } from '@base-ui/react/select';
 import classNames from 'classnames';
 import React from 'react';

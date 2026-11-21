@@ -1,5 +1,5 @@
-import styles from '@/components/collections/accordion/component.module.css';
-import { AccordionHeaderProps } from '@/components/collections/accordion/item/header/component.interface';
+import styles from '@/components/accordion/component.module.css';
+import { AccordionHeaderProps } from '@/components/accordion/item/header/component.interface';
 import { Accordion as BaseAccordion } from '@base-ui/react/accordion';
 import classNames from 'classnames';
 import React from 'react';

@@ -3,8 +3,8 @@ import {
   DlProps,
   DtDdProps,
   DtDtProps,
-} from '@/components/display/dl/component.interface';
-import styles from '@/components/display/dl/component.module.css';
+} from '@/components/dl/component.interface';
+import styles from '@/components/dl/component.module.css';
 import classNames from 'classnames';
 import React from 'react';
 

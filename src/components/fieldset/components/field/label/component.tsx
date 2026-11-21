@@ -1,6 +1,6 @@
-import styles from '@/components/forms/fieldset/component.module.css';
-import { FieldsetFieldLabelProps } from '@/components/forms/fieldset/components/field/label/component.interface';
-import { useFieldset } from '@/components/forms/fieldset/hooks/hook';
+import styles from '@/components/fieldset/component.module.css';
+import { FieldsetFieldLabelProps } from '@/components/fieldset/components/field/label/component.interface';
+import { useFieldset } from '@/components/fieldset/hooks/hook';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 

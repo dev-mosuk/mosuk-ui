@@ -1,7 +1,7 @@
 'use client';
 
-import { ChatViewportProps } from '@/components/collections/chat/.partials/components/viewport/component.interface';
-import styles from '@/components/collections/chat/.partials/styles/component.module.css';
+import { ChatViewportProps } from '@/components/chat/.partials/components/viewport/component.interface';
+import styles from '@/components/chat/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, {
   useCallback,

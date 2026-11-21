@@ -1,5 +1,5 @@
-import { SectionProps } from '@/components/containers/section/.partials/components/component.interface';
-import styles from '@/components/containers/section/.partials/styles/component.module.css';
+import { SectionProps } from '@/components/section/.partials/components/component.interface';
+import styles from '@/components/section/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 

@@ -1,5 +1,5 @@
-import type { UseSelectProps } from '@/components/actions/select/.partials/hooks/hook.interface';
-import { SelectContext } from '@/components/actions/select/.partials/providers/context/context';
+import type { UseSelectProps } from '@/components/select/.partials/hooks/hook.interface';
+import { SelectContext } from '@/components/select/.partials/providers/context/context';
 import { useContext } from 'react';
 
 export function useSelect(): UseSelectProps {

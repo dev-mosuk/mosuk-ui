@@ -1,11 +1,11 @@
 'use client';
 
-import { ImageDotsProps } from '@/components/display/image/.partials/components/dots/component.interface';
+import { ImageDotsProps } from '@/components/image/.partials/components/dots/component.interface';
 import {
   isNearViewport,
   watchDots,
-} from '@/components/display/image/.partials/services/scheduler';
-import styles from '@/components/display/image/.partials/styles/component.module.css';
+} from '@/components/image/.partials/services/scheduler';
+import styles from '@/components/image/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { useLayoutEffect, useRef, useState } from 'react';
 

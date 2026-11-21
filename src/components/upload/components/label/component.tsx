@@ -1,8 +1,8 @@
 'use client';
 
-import styles from '@/components/actions/upload/component.module.css';
-import { UploadLabelProps } from '@/components/actions/upload/components/label/component.interface';
-import { UploadContext } from '@/components/actions/upload/providers/context/context';
+import styles from '@/components/upload/component.module.css';
+import { UploadLabelProps } from '@/components/upload/components/label/component.interface';
+import { UploadContext } from '@/components/upload/providers/context/context';
 import classNames from 'classnames';
 import React, { ElementType, useContext } from 'react';
 

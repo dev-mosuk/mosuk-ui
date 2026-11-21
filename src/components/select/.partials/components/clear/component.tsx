@@ -1,8 +1,8 @@
 'use client';
 
-import { SelectClearProps } from '@/components/actions/select/.partials/components/clear/component.interface';
-import { useSelect } from '@/components/actions/select/.partials/hooks/hook';
-import styles from '@/components/actions/select/.partials/styles/component.module.css';
+import { SelectClearProps } from '@/components/select/.partials/components/clear/component.interface';
+import { useSelect } from '@/components/select/.partials/hooks/hook';
+import styles from '@/components/select/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import { X } from 'lucide-react';
 import React, { useEffect } from 'react';

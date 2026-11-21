@@ -1,8 +1,8 @@
 'use client';
 
-import { UploadProps } from '@/components/actions/upload/component.interface';
-import styles from '@/components/actions/upload/component.module.css';
-import { UploadProvider } from '@/components/actions/upload/providers/provider';
+import { UploadProps } from '@/components/upload/component.interface';
+import styles from '@/components/upload/component.module.css';
+import { UploadProvider } from '@/components/upload/providers/provider';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 

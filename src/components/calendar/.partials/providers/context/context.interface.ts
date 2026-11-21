@@ -4,7 +4,7 @@ import type { RefObject } from 'react';
 import type {
   CalendarDayOfWeek,
   CalendarWeekdayStyle,
-} from '@/components/actions/calendar/.partials/utilities/util';
+} from '@/components/calendar/.partials/utilities/util';
 
 export interface CalendarYearPickerContextProps {
   isYearPickerOpen: boolean;

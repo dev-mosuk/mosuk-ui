@@ -1,6 +1,6 @@
-import { ChatMessageImageProps } from '@/components/collections/chat/.partials/components/message/image/component.interface';
-import styles from '@/components/collections/chat/.partials/styles/component.module.css';
-import { Image } from '@/components/display/image';
+import { ChatMessageImageProps } from '@/components/chat/.partials/components/message/image/component.interface';
+import styles from '@/components/chat/.partials/styles/component.module.css';
+import { Image } from '@/components/image';
 import classNames from 'classnames';
 import React from 'react';
 

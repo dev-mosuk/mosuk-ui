@@ -1,5 +1,5 @@
-import { TextareaProps } from '@/components/actions/textarea/component.interface';
-import styles from '@/components/actions/textarea/component.module.css';
+import { TextareaProps } from '@/components/textarea/component.interface';
+import styles from '@/components/textarea/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType, useId } from 'react';
 import TextareaAutosizePrimitive from 'react-textarea-autosize';

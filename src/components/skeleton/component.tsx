@@ -1,5 +1,5 @@
-import { SkeletonProps } from '@/components/core/skeleton/component.interface';
-import styles from '@/components/core/skeleton/component.module.css';
+import { SkeletonProps } from '@/components/skeleton/component.interface';
+import styles from '@/components/skeleton/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 

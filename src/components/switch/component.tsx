@@ -1,5 +1,5 @@
-import { SwitchProps } from '@/components/actions/switch/component.interface';
-import styles from '@/components/actions/switch/component.module.css';
+import { SwitchProps } from '@/components/switch/component.interface';
+import styles from '@/components/switch/component.module.css';
 import classNames from 'classnames';
 import React, { useId } from 'react';
 

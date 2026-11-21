@@ -1,5 +1,5 @@
-import { CellSliderTrackProps } from '@/components/actions/slider/(cell)/.partials/components/track/component.interface';
-import styles from '@/components/actions/slider/(cell)/.partials/styles/component.module.css';
+import { CellSliderTrackProps } from '@/components/slider-cell/.partials/components/track/component.interface';
+import styles from '@/components/slider-cell/.partials/styles/component.module.css';
 import { Slider } from '@base-ui/react/slider';
 import classNames from 'classnames';
 import React from 'react';

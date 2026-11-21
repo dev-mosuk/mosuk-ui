@@ -1,5 +1,5 @@
-import { CheckboxProps } from '@/components/actions/checkbox/.partials/components/component.interface';
-import styles from '@/components/actions/checkbox/.partials/styles/component.module.css';
+import { CheckboxProps } from '@/components/checkbox/.partials/components/component.interface';
+import styles from '@/components/checkbox/.partials/styles/component.module.css';
 import { Checkbox as BaseCheckbox } from '@base-ui/react';
 import classNames from 'classnames';
 import React, { useId } from 'react';

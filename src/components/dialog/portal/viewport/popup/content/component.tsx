@@ -1,5 +1,5 @@
-import styles from '@/components/overlays/dialog/component.module.css';
-import { DialogPortalViewportPopupContentProps } from '@/components/overlays/dialog/portal/viewport/popup/content/component.interface';
+import styles from '@/components/dialog/component.module.css';
+import { DialogPortalViewportPopupContentProps } from '@/components/dialog/portal/viewport/popup/content/component.interface';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 

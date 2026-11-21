@@ -1,12 +1,12 @@
 'use client';
 
-import { StepperProps } from '@/components/navigation/stepper/.partials/components/component.interface';
-import type { StepperStepStatus } from '@/components/navigation/stepper/.partials/providers/context/context.interface';
+import { StepperProps } from '@/components/stepper/.partials/components/component.interface';
+import type { StepperStepStatus } from '@/components/stepper/.partials/providers/context/context.interface';
 import {
   StepperProvider,
   StepperStepProvider,
-} from '@/components/navigation/stepper/.partials/providers/provider';
-import styles from '@/components/navigation/stepper/.partials/styles/component.module.css';
+} from '@/components/stepper/.partials/providers/provider';
+import styles from '@/components/stepper/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, {
   Children,

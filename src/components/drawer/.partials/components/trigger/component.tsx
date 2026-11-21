@@ -1,4 +1,4 @@
-import { DrawerTriggerProps } from '@/components/overlays/drawer/.partials/components/trigger/component.interface';
+import { DrawerTriggerProps } from '@/components/drawer/.partials/components/trigger/component.interface';
 import { Drawer as BaseUiDrawer } from '@base-ui/react';
 import classNames from 'classnames';
 import React from 'react';

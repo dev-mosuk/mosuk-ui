@@ -1,5 +1,5 @@
-import { SliderThumbProps } from '@/components/actions/slider/.partials/components/thumb/component.interface';
-import styles from '@/components/actions/slider/.partials/styles/component.module.css';
+import { SliderThumbProps } from '@/components/slider/.partials/components/thumb/component.interface';
+import styles from '@/components/slider/.partials/styles/component.module.css';
 import { Slider } from '@base-ui/react/slider';
 import classNames from 'classnames';
 import React from 'react';

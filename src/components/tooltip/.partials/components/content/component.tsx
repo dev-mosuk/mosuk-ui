@@ -1,7 +1,7 @@
 'use client';
 
-import { TooltipContentProps } from '@/components/overlays/tooltip/.partials/components/content/component.interface';
-import styles from '@/components/overlays/tooltip/.partials/styles/component.module.css';
+import { TooltipContentProps } from '@/components/tooltip/.partials/components/content/component.interface';
+import styles from '@/components/tooltip/.partials/styles/component.module.css';
 import { Tooltip } from '@base-ui/react/tooltip';
 import classNames from 'classnames';
 import React from 'react';

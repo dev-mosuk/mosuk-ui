@@ -7,6 +7,7 @@ export type ButtonGroupProps = {
   size?: Button.Props['size'];
   width?: Button.Props['width'];
   isDisabled?: boolean;
+  isDetached?: boolean;
   orientation?: ButtonGroupOrientation | `${ButtonGroupOrientation}`;
   className?: string;
   children?: ReactNode;

@@ -1,8 +1,8 @@
 'use client';
 
-import { StepperContentProps } from '@/components/navigation/stepper/.partials/components/content/component.interface';
-import { useStepper } from '@/components/navigation/stepper/.partials/hooks/hook';
-import styles from '@/components/navigation/stepper/.partials/styles/component.module.css';
+import { StepperContentProps } from '@/components/stepper/.partials/components/content/component.interface';
+import { useStepper } from '@/components/stepper/.partials/hooks/hook';
+import styles from '@/components/stepper/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React from 'react';
 

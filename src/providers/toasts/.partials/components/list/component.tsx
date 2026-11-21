@@ -1,4 +1,4 @@
-import { Toast } from '@/components/overlays/toast';
+import { Toast } from '@/components/toast';
 import { ToastTypeConstant } from '@/providers/toasts/.partials/components/list/component.constants';
 import styles from '@/providers/toasts/.partials/styles/styles.module.css';
 import { ToastType } from '@/services/toasts/service.enums';

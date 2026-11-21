@@ -1,5 +1,5 @@
-import { CounterProps } from '@/components/texts/counter/component.interface';
-import styles from '@/components/texts/counter/component.module.css';
+import { CounterProps } from '@/components/counter/component.interface';
+import styles from '@/components/counter/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType, forwardRef, useEffect, useRef } from 'react';
 

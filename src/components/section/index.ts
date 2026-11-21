@@ -1,5 +1,5 @@
-import { Section as Component } from '@/components/containers/section/.partials/components/component';
-import { SectionProps } from '@/components/containers/section/.partials/components/component.interface';
+import { Section as Component } from '@/components/section/.partials/components/component';
+import { SectionProps } from '@/components/section/.partials/components/component.interface';
 
 export const Section = Object.assign(Component, {});
 

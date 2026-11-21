@@ -5,11 +5,11 @@ import React, { useMemo } from 'react';
 import {
   CalendarDayViewContext,
   CalendarYearPickerContext,
-} from '@/components/actions/calendar/.partials/providers/context/context';
+} from '@/components/calendar/.partials/providers/context/context';
 import type {
   CalendarDayViewProviderProps,
   CalendarYearPickerProviderProps,
-} from '@/components/actions/calendar/.partials/providers/provider.interface';
+} from '@/components/calendar/.partials/providers/provider.interface';
 
 export function CalendarYearPickerProvider({
   children,

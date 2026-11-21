@@ -1,9 +1,9 @@
-import { Upload as UploadComponent } from '@/components/actions/upload/component';
-import type { UploadProps } from '@/components/actions/upload/component.interface';
-import { UploadInput } from '@/components/actions/upload/components/input/component';
-import { UploadInputProps } from '@/components/actions/upload/components/input/component.interface';
-import { UploadLabel } from '@/components/actions/upload/components/label/component';
-import { UploadLabelProps } from '@/components/actions/upload/components/label/component.interface';
+import { Upload as UploadComponent } from '@/components/upload/component';
+import type { UploadProps } from '@/components/upload/component.interface';
+import { UploadInput } from '@/components/upload/components/input/component';
+import { UploadInputProps } from '@/components/upload/components/input/component.interface';
+import { UploadLabel } from '@/components/upload/components/label/component';
+import { UploadLabelProps } from '@/components/upload/components/label/component.interface';
 
 export const Upload = Object.assign(UploadComponent, {
   Input: UploadInput,

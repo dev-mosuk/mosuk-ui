@@ -11,14 +11,14 @@ import React, {
 } from 'react';
 import { useCalendarYearPicker } from 'react-aria/useCalendar';
 
-import type { CalendarYearPickerGridProps } from '@/components/actions/calendar/.partials/components/year-picker/grid/component.interface';
-import { CalendarYearPickerGridContext } from '@/components/actions/calendar/.partials/components/year-picker/grid/context';
+import type { CalendarYearPickerGridProps } from '@/components/calendar/.partials/components/year-picker/grid/component.interface';
+import { CalendarYearPickerGridContext } from '@/components/calendar/.partials/components/year-picker/grid/context';
 import {
   useCalendarState,
   useCalendarYearPickerState,
-} from '@/components/actions/calendar/.partials/hooks/hook';
-import styles from '@/components/actions/calendar/.partials/styles/component.module.css';
-import { getYearRange } from '@/components/actions/calendar/.partials/utilities/util';
+} from '@/components/calendar/.partials/hooks/hook';
+import styles from '@/components/calendar/.partials/styles/component.module.css';
+import { getYearRange } from '@/components/calendar/.partials/utilities/util';
 
 export function CalendarYearPickerGrid({
   children,

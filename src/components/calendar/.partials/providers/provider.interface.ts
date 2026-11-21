@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 import type {
   CalendarDayViewContextProps,
   CalendarYearPickerContextProps,
-} from '@/components/actions/calendar/.partials/providers/context/context.interface';
+} from '@/components/calendar/.partials/providers/context/context.interface';
 
 export interface CalendarYearPickerProviderProps extends CalendarYearPickerContextProps {
   children?: ReactNode;

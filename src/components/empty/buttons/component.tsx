@@ -1,5 +1,5 @@
-import { EmptyButtonsProps } from '@/components/display/empty/buttons/component.interface';
-import styles from '@/components/display/empty/component.module.css';
+import { EmptyButtonsProps } from '@/components/empty/buttons/component.interface';
+import styles from '@/components/empty/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 

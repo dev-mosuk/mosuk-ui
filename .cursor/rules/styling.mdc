@@ -61,7 +61,7 @@ alwaysApply: false
 - плоская сетка `composer {}` + `composerFoo {}` вместо дерева
 - `styles.composerWith…` в TSX вместо `data-*`
 
-Эталон дерева: `src/components/collections/chat/.partials/styles/component.module.css` → `.composer`.
+Эталон дерева: `src/components/chat/.partials/styles/component.module.css` → `.composer`.
 
 ## Порядок свойств в CSS module
 
@@ -82,7 +82,7 @@ alwaysApply: false
 
 Запрещено: смешивать spacing/overflow в блок `display`/`grid`; склеивать background / border / shadow; сваливать filters / interaction / motion в одну кучу.
 
-Эталон порядка: `src/components/collections/chat/.partials/styles/component.module.css` → `.composer`.
+Эталон порядка: `src/components/chat/.partials/styles/component.module.css` → `.composer`.
 
 ## classNames в TSX
 
@@ -102,7 +102,7 @@ className={classNames(
 
 ## Skeleton и стили
 
-Feature skeleton в `src/components/` нет. Стили shimmer — `src/components/core/skeleton/component.module.css`. Стили карты — `src/integrations/yandex/maps/components/.partials/skeleton/component.module.css`.
+Feature skeleton в `src/components/` нет. Стили shimmer — `src/components/skeleton/component.module.css`. Стили карты — `src/integrations/yandex/maps/components/.partials/skeleton/component.module.css`.
 
 ## Глобальные стили
 
