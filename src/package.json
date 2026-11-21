@@ -125,11 +125,6 @@
         "default": "./components/hint/index.ts"
       }
     },
-    "./components/icon": {
-      "import": {
-        "default": "./components/icon/index.ts"
-      }
-    },
     "./components/image": {
       "import": {
         "default": "./components/image/index.ts"
@@ -210,6 +205,11 @@
         "default": "./components/switch/index.ts"
       }
     },
+    "./components/tabs": {
+      "import": {
+        "default": "./components/tabs/index.ts"
+      }
+    },
     "./components/textarea": {
       "import": {
         "default": "./components/textarea/index.ts"
@@ -243,6 +243,11 @@
     "./components/video": {
       "import": {
         "default": "./components/video/index.ts"
+      }
+    },
+    "./hooks/screen-size": {
+      "import": {
+        "default": "./hooks/screen-size/index.ts"
       }
     },
     "./hooks/storage/cookie": {

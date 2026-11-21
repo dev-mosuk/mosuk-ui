@@ -96,7 +96,7 @@ Utilities → `.cursor/rules/utilities.mdc`
 | overlays | dialog, drawer, tooltip, toast, observer |
 | navigation | stepper, breadcrumbs |
 | forms | fieldset |
-| primitives | skeleton, icon |
+| primitives | skeleton |
 
 `src/integrations/` — отдельная иерархия (не роль `components/`). См. [integrations.mdc](./integrations.mdc).
 

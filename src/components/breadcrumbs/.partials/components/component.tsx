@@ -5,7 +5,6 @@ import { BREADCRUMBS_ARIA_LABEL } from '@/components/breadcrumbs/.partials/const
 import { useScroll } from '@/components/breadcrumbs/.partials/hooks/scroll';
 import styles from '@/components/breadcrumbs/.partials/styles/component.module.css';
 import { Button } from '@/components/button';
-import { Icon } from '@/components/icon';
 import classNames from 'classnames';
 import React, {
   Children,
@@ -67,10 +66,7 @@ export function Breadcrumbs({
     }
 
     const props = child.props as CrumbProps;
-    const secondary =
-      child.type === BreadcrumbsIcon
-        ? Icon.ENUMS.Variant.Secondary
-        : Button.ENUMS.Variant.Secondary;
+    const secondary = Button.ENUMS.Variant.Secondary;
 
     return cloneElement(child as ReactElement<Record<string, unknown>>, {
       'aria-current': 'page',

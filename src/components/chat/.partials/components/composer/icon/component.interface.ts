@@ -1,3 +1,3 @@
-import type { Icon } from '@/components/icon';
+import type { Button } from '@/components/button';
 
-export type ChatComposerIconProps<C = 'button'> = Icon.Props<C>;
+export type ChatComposerIconProps<C = 'button'> = Button.Props<C>;

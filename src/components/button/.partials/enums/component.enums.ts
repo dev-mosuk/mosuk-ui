@@ -10,6 +10,7 @@ export enum ButtonVariant {
 export enum ButtonWidth {
   Auto = 'auto',
   Full = 'full',
+  Square = 'square',
 }
 
 export enum ButtonPress {

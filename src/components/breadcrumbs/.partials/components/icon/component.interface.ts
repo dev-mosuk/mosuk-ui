@@ -1,3 +1,3 @@
-import type { Icon } from '@/components/icon';
+import type { Button } from '@/components/button';
 
-export type BreadcrumbsIconProps<C = 'span'> = Icon.Props<C>;
+export type BreadcrumbsIconProps<C = 'span'> = Button.Props<C>;

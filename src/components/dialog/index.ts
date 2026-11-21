@@ -1,29 +1,25 @@
 import { Dialog as Component } from '@/components/dialog/component';
 import { DialogProps as ComponentProps } from '@/components/dialog/component.interface';
-import { DialogPortal } from '@/components/dialog/portal/component';
-import { DialogPortalProps } from '@/components/dialog/portal/component.interface';
-import { DialogPortalViewportBackdrop } from '@/components/dialog/portal/viewport/backdrop/component';
-import { DialogPortalViewportBackdropProps } from '@/components/dialog/portal/viewport/backdrop/component.interface';
-import { DialogPortalViewport } from '@/components/dialog/portal/viewport/component';
-import { DialogPortalViewportProps } from '@/components/dialog/portal/viewport/component.interface';
-import { DialogPortalViewportPopup } from '@/components/dialog/portal/viewport/popup/component';
-import { DialogPortalViewportPopupProps } from '@/components/dialog/portal/viewport/popup/component.interface';
-import { DialogPortalViewportPopupClose } from '@/components/dialog/portal/viewport/popup/close/component';
-import { DialogPortalViewportPopupCloseProps } from '@/components/dialog/portal/viewport/popup/close/component.interface';
-import { DialogPortalViewportPopupContent } from '@/components/dialog/portal/viewport/popup/content/component';
-import { DialogPortalViewportPopupContentProps } from '@/components/dialog/portal/viewport/popup/content/component.interface';
-import { DialogTrigger } from '@/components/dialog/trigger/component';
-import { DialogTriggerProps } from '@/components/dialog/trigger/component.interface';
+import { DialogClose } from '@/components/dialog/close/component';
+import { DialogCloseProps } from '@/components/dialog/close/component.interface';
+import { DialogOpen } from '@/components/dialog/open/component';
+import { DialogOpenProps } from '@/components/dialog/open/component.interface';
+import { DialogViewport } from '@/components/dialog/viewport/component';
+import { DialogViewportProps } from '@/components/dialog/viewport/component.interface';
+import { DialogViewportBackdrop } from '@/components/dialog/viewport/backdrop/component';
+import { DialogViewportBackdropProps } from '@/components/dialog/viewport/backdrop/component.interface';
+import { DialogViewportPopup } from '@/components/dialog/viewport/popup/component';
+import { DialogViewportPopupProps } from '@/components/dialog/viewport/popup/component.interface';
+import { DialogViewportPopupContent } from '@/components/dialog/viewport/popup/content/component';
+import { DialogViewportPopupContentProps } from '@/components/dialog/viewport/popup/content/component.interface';
 
 export const Dialog = Object.assign(Component, {
-  Trigger: DialogTrigger,
-  Portal: Object.assign(DialogPortal, {
-    Viewport: Object.assign(DialogPortalViewport, {
-      Backdrop: DialogPortalViewportBackdrop,
-      Popup: Object.assign(DialogPortalViewportPopup, {
-        Content: DialogPortalViewportPopupContent,
-        Close: DialogPortalViewportPopupClose,
-      }),
+  Open: DialogOpen,
+  Close: DialogClose,
+  Viewport: Object.assign(DialogViewport, {
+    Backdrop: DialogViewportBackdrop,
+    Popup: Object.assign(DialogViewportPopup, {
+      Content: DialogViewportPopupContent,
     }),
   }),
 });
@@ -31,30 +27,26 @@ export const Dialog = Object.assign(Component, {
 export namespace Dialog {
   export type Props = ComponentProps;
 
-  export namespace Trigger {
-    export type Props = DialogTriggerProps;
+  export namespace Open {
+    export type Props = DialogOpenProps;
   }
 
-  export namespace Portal {
-    export type Props = DialogPortalProps;
+  export namespace Close {
+    export type Props = DialogCloseProps;
+  }
 
-    export namespace Viewport {
-      export type Props = DialogPortalViewportProps;
+  export namespace Viewport {
+    export type Props = DialogViewportProps;
 
-      export namespace Backdrop {
-        export type Props = DialogPortalViewportBackdropProps;
-      }
+    export namespace Backdrop {
+      export type Props = DialogViewportBackdropProps;
+    }
 
-      export namespace Popup {
-        export type Props = DialogPortalViewportPopupProps;
+    export namespace Popup {
+      export type Props = DialogViewportPopupProps;
 
-        export namespace Content {
-          export type Props = DialogPortalViewportPopupContentProps;
-        }
-
-        export namespace Close {
-          export type Props = DialogPortalViewportPopupCloseProps;
-        }
+      export namespace Content {
+        export type Props = DialogViewportPopupContentProps;
       }
     }
   }

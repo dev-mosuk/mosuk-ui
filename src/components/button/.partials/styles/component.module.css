@@ -48,6 +48,17 @@
       min-width: 100%;
     }
 
+    &[data-width='square'] {
+      aspect-ratio: 1 / 1;
+
+      width: calc(var(--spacing) * var(--button-size));
+      height: calc(var(--spacing) * var(--button-size));
+      min-width: calc(var(--spacing) * var(--button-size));
+      min-height: calc(var(--spacing) * var(--button-size));
+
+      padding-inline: 0;
+    }
+
     &[data-variant='primary'] {
       color: var(--color-white);
 
@@ -131,7 +142,7 @@
 
       content: '';
 
-      background-color: currentColor;
+      background-color: white;
 
       opacity: 0;
 
@@ -142,30 +153,14 @@
       transition: opacity 150ms ease;
     }
 
-    /* light text (primary / danger): currentColor = white */
     &[data-press='highlight']:hover:not(:disabled):not([data-pending]):not([data-loading])::before,
     &[data-press='scale-highlight']:hover:not(:disabled):not([data-pending]):not([data-loading])::before {
-      opacity: 0.2;
+      opacity: 0.1;
     }
 
     &[data-press='highlight']:active:not(:disabled):not([data-pending]):not([data-loading])::before,
     &[data-press='scale-highlight']:active:not(:disabled):not([data-pending]):not([data-loading])::before {
-      opacity: 0.32;
-    }
-
-    /* dark text: currentColor = black — softer overlay */
-    &:is([data-variant='secondary'],
-      [data-variant='outline'],
-      [data-variant='ghost'],
-      [data-variant='link']):is([data-press='highlight'], [data-press='scale-highlight']):hover:not( :disabled):not([data-pending]):not([data-loading])::before {
-      opacity: 0.06;
-    }
-
-    &:is([data-variant='secondary'],
-      [data-variant='outline'],
-      [data-variant='ghost'],
-      [data-variant='link']):is([data-press='highlight'], [data-press='scale-highlight']):active:not( :disabled):not([data-pending]):not([data-loading])::before {
-      opacity: 0.12;
+      opacity: 0.18;
     }
 
     &[data-press='ripple']:not([data-loading])::after,
@@ -181,7 +176,7 @@
 
       content: '';
 
-      background-color: currentColor;
+      background-color: white;
 
       opacity: 0;
       border-radius: 50%;
@@ -196,7 +191,7 @@
 
     &[data-press='ripple']:active:not(:disabled):not([data-pending]):not([data-loading])::after,
     &[data-press='scale-ripple']:active:not(:disabled):not([data-pending]):not([data-loading])::after {
-      opacity: 0.12;
+      opacity: 0.1;
 
       transform: translate(-50%, -50%) scale(1);
     }

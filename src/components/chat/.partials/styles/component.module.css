@@ -67,7 +67,7 @@
 
         background: var(--color-gray-100);
 
-        border: 0.75px solid var(--color-gray-200);
+        border: 0.75px solid var(--color-gray-100);
         border-radius: calc(infinity * 1px);
 
         box-shadow: 0 25px 50px -12px
@@ -114,7 +114,7 @@
 
         background: var(--color-white);
 
-        border: 0.75px solid var(--color-gray-200);
+        border: 0.75px solid var(--color-gray-100);
         border-radius: var(--radius-xl);
         outline: none;
 
@@ -348,7 +348,7 @@
 
       background: var(--color-white);
 
-      border: 0.75px solid var(--color-gray-200);
+      border: 0.75px solid var(--color-gray-100);
       border-radius: var(--radius-3xl);
       outline: none;
 
@@ -376,25 +376,6 @@
       }
 
       .icon {
-        color: var(--color-gray-500);
-
-        background-color: transparent;
-
-        transition: all 200ms ease-in-out;
-
-        &:hover:not(:disabled) {
-          color: var(--color-primary-500);
-
-          background-color: var(--color-primary-100);
-        }
-
-        &:disabled {
-          opacity: 0.5;
-
-          cursor: not-allowed;
-          pointer-events: none;
-        }
-
         &:first-of-type {
           grid-area: start;
         }

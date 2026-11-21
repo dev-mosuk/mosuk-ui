@@ -3,7 +3,7 @@
 import { ChatComposerIconProps } from '@/components/chat/.partials/components/composer/icon/component.interface';
 import { useChat } from '@/components/chat/.partials/hooks/hook';
 import styles from '@/components/chat/.partials/styles/component.module.css';
-import { Icon } from '@/components/icon';
+import { Button } from '@/components/button';
 import classNames from 'classnames';
 import React from 'react';
 
@@ -13,11 +13,12 @@ export function ChatComposerIcon<C = 'button'>({
   const { disabled } = useChat();
 
   return (
-    <Icon
+    <Button
       {...rest}
       as={(rest.as ?? 'button') as C}
-      variant={rest.variant ?? Icon.ENUMS.Variant.Ghost}
-      press={rest.press ?? Icon.ENUMS.Press.None}
+      width={rest.width ?? Button.ENUMS.Width.Square}
+      variant={rest.variant ?? Button.ENUMS.Variant.Ghost}
+      press={rest.press ?? Button.ENUMS.Press.None}
       isDisabled={rest.isDisabled ?? disabled}
       className={classNames(
         'mosuk-chat-composer-icon',
@@ -26,6 +27,6 @@ export function ChatComposerIcon<C = 'button'>({
       )}
     >
       {rest?.children}
-    </Icon>
+    </Button>
   );
 }
