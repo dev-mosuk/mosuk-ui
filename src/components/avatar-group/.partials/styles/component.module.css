@@ -1,0 +1,112 @@
+@layer mosuk-ui {
+  .avatarGroup {
+    --avatar-group-overlap: calc(var(--spacing) * 2);
+    --avatar-group-seam: 2px;
+
+    display: inline-flex;
+    align-items: center;
+
+    width: fit-content;
+    height: auto;
+
+    &[data-grid] {
+      flex-wrap: wrap;
+      gap: calc(var(--spacing) * 3);
+    }
+
+    &:not([data-grid]) :global(.mosuk-avatar) + :global(.mosuk-avatar),
+    &:not([data-grid]) :global(.mosuk-avatar) + .count {
+      margin-inline-start: calc(-1 * var(--avatar-group-overlap));
+    }
+
+    &[data-overlap='ring']:not([data-grid]) :global(.mosuk-avatar),
+    &[data-overlap='ring']:not([data-grid]) .count {
+      position: relative;
+
+      box-shadow: 0 0 0 var(--avatar-group-seam) var(--color-white);
+    }
+
+    &[data-overlap='clip']:not([data-grid])
+      :global(.mosuk-avatar:not(:last-child)) {
+      --avatar-group-cut-size: calc(
+        var(--avatar-length, 2.5rem) + 2 * var(--avatar-group-seam)
+      );
+      --avatar-group-cut-radius: calc(
+        min(
+            var(--avatar-radius, calc(var(--avatar-length, 2.5rem) / 2)),
+            calc(var(--avatar-length, 2.5rem) / 2)
+          ) + var(--avatar-group-seam)
+      );
+      --avatar-group-cut-diameter: calc(2 * var(--avatar-group-cut-radius));
+      --avatar-group-cut-span: calc(
+        var(--avatar-group-cut-size) - var(--avatar-group-cut-diameter)
+      );
+      --avatar-group-cut-x: calc(
+        var(--avatar-length, 2.5rem) - var(--avatar-group-overlap) -
+          var(--avatar-group-seam)
+      );
+      --avatar-group-cut-y: calc(-1 * var(--avatar-group-seam));
+      --avatar-group-cut-x2: calc(
+        var(--avatar-group-cut-x) + var(--avatar-group-cut-span)
+      );
+      --avatar-group-cut-y2: calc(
+        var(--avatar-group-cut-y) + var(--avatar-group-cut-span)
+      );
+      --avatar-group-cut-fill: linear-gradient(#000 0 0);
+      --avatar-group-cut-arc: radial-gradient(
+        circle closest-side,
+        #000 99%,
+        #0000
+      );
+
+      mask:
+        var(--avatar-group-cut-fill) 0 0 / 100% 100% no-repeat exclude,
+        var(--avatar-group-cut-fill)
+          calc(
+            var(--avatar-group-cut-x) + var(--avatar-group-cut-radius)
+          )
+          var(--avatar-group-cut-y) / var(--avatar-group-cut-span)
+          var(--avatar-group-cut-size) no-repeat add,
+        var(--avatar-group-cut-fill) var(--avatar-group-cut-x)
+          calc(
+            var(--avatar-group-cut-y) + var(--avatar-group-cut-radius)
+          ) / var(--avatar-group-cut-size) var(--avatar-group-cut-span)
+          no-repeat add,
+        var(--avatar-group-cut-arc) var(--avatar-group-cut-x)
+          var(--avatar-group-cut-y) / var(--avatar-group-cut-diameter)
+          var(--avatar-group-cut-diameter) no-repeat add,
+        var(--avatar-group-cut-arc) var(--avatar-group-cut-x2)
+          var(--avatar-group-cut-y) / var(--avatar-group-cut-diameter)
+          var(--avatar-group-cut-diameter) no-repeat add,
+        var(--avatar-group-cut-arc) var(--avatar-group-cut-x)
+          var(--avatar-group-cut-y2) / var(--avatar-group-cut-diameter)
+          var(--avatar-group-cut-diameter) no-repeat add,
+        var(--avatar-group-cut-arc) var(--avatar-group-cut-x2)
+          var(--avatar-group-cut-y2) / var(--avatar-group-cut-diameter)
+          var(--avatar-group-cut-diameter) no-repeat add;
+    }
+
+    &[data-overlap='clip']:not([data-grid]):dir(rtl)
+      :global(.mosuk-avatar:not(:last-child)),
+    :dir(rtl)
+      &[data-overlap='clip']:not([data-grid])
+      :global(.mosuk-avatar:not(:last-child)) {
+      --avatar-group-cut-x: calc(
+        var(--avatar-group-overlap) - var(--avatar-length, 2.5rem) -
+          var(--avatar-group-seam)
+      );
+    }
+
+    &[data-overlap='clip']:not([data-grid])
+      :global(.mosuk-avatar:not(:last-child))
+      :global(.mosuk-avatar-fallback) {
+      box-sizing: border-box;
+
+      padding-inline-end: calc(var(--avatar-group-overlap) * 0.35);
+    }
+  }
+
+  .count {
+    flex-shrink: 0;
+  }
+}

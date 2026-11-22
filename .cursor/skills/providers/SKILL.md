@@ -1,23 +1,24 @@
 ---
 name: providers
 description: >-
-  Creates app-level React providers in src/providers/ (alerts).
-  Use for context wiring, service injection. External SDK → integrations.
+  Creates app-level React providers in src/providers/ (toasts, yandex-maps,
+  tbank). Use for context wiring, service injection. Vendor SDK → providers/.
 ---
 
 # providers
 
-Rule: `.cursor/rules/providers/rule.mdc` · Context: `.cursor/rules/providers/context/rule.mdc`
+Rule: `.cursor/rules/providers.mdc`
 
 ## Checklist
 
 ```
-- [ ] 4-file pattern: provider.tsx, provider.interface.ts, context/context.ts, context.interface.ts
+- [ ] Layout: {feature}/index.ts + .partials/ (provider, context)
+- [ ] 4-file pattern в .partials/: provider.tsx, provider.interface.ts, context/…
 - [ ] index.ts: thin wrapper + export namespace {Name} { export type Props }
-- [ ] useEffect: inject service (alertsService.manager) + cleanup
+- [ ] useEffect: inject service (toastsService.manager) + cleanup
 - [ ] Context value: methods + state (useMemo где нужно)
 - [ ] Hook — отдельно в src/hooks/{feature}/, не в provider index
-- [ ] CSS: @layer index-0, provider.module.css optional
+- [ ] CSS: @layer mosuk-ui, provider.module.css optional
 ```
 
 ## Структура
@@ -25,23 +26,25 @@ Rule: `.cursor/rules/providers/rule.mdc` · Context: `.cursor/rules/providers/co
 ```
 {feature}/
 ├── index.ts
-├── provider.tsx
-├── provider.interface.ts
-├── provider.module.css      ← optional
-├── context/
-│   ├── context.ts
-│   └── context.interface.ts
-└── {sub}/                   ← optional UI (ToastList)
+└── .partials/
+    ├── provider.tsx
+    ├── provider.interface.ts
+    ├── provider.module.css      ← optional
+    ├── context/
+    │   ├── context.ts
+    │   └── context.interface.ts
+    └── {sub}/                   ← optional UI (ToastList)
 ```
 
 ## Component-local provider
 
-Toggle-style → `component/.partials/providers/` — см. context rule.
+Shared state между sub-parts → `{feature}/.partials/providers/` — 4-file pattern в `providers.mdc`.
 
 ## Эталоны
 
 | Scope | Path |
 | ----- | ---- |
-| App + service | `src/providers/alerts/` |
-| External SDK | `src/integrations/{vendor}/…/provider/` |
-| Component-local | `src/components/actions/toggle/component/.partials/providers/` |
+| App + service | `src/providers/toasts/` |
+| External SDK | `src/providers/yandex-maps/`, `src/providers/tbank/` |
+| Component-local | `src/components/stepper/.partials/providers/` |
+| Component-local | `src/components/image/.partials/providers/` |

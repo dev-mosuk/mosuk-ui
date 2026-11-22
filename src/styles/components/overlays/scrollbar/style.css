@@ -1,6 +1,6 @@
 @utility scrollbar-* {
     &::-webkit-scrollbar {
-        width: calc(var(--spacing, .25rem) * --value(--scrollbar-width-*, integer, [integer]));
+        width: calc(var(--spacing) * --value(--scrollbar-width-*, integer, [integer]));
     }
 }
 

@@ -1,0 +1,10 @@
+@layer mosuk-ui {
+
+  .root {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 4);
+  }
+  }

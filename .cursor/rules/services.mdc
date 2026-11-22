@@ -1,0 +1,69 @@
+---
+description: Services — imperative singleton API (toasts, storage)
+globs: 'src/services/**'
+alwaysApply: false
+---
+
+# services
+
+## Назначение
+
+Imperative API без React: singletons, registry, side-effect coordinators.
+
+## Структура
+
+```
+{feature}/
+├── index.ts
+└── .partials/
+    ├── service.ts
+    ├── service.interface.ts
+    └── service.enums.ts          ← optional
+```
+
+Feature-имена — **плоские hyphenated** (`storage-local`, `storage-cookie`).
+
+## index.ts
+
+```ts
+export { toastsService, type ToastEntry, type ToastsServiceProps };
+
+export namespace ToastsService {
+  export type Props = ToastsServiceProps;
+  export const ENUMS = { Type: ToastType };
+}
+```
+
+## service.ts
+
+- Module-level singleton или factory
+- Methods mutate external refs (Toast manager from provider)
+- **Не** import React components
+
+## Provider wiring
+
+Provider registers service on mount:
+
+```ts
+useEffect(() => {
+  toastsService.manager(manager);
+  return () => toastsService.manager(null);
+}, [manager]);
+```
+
+## Interface
+
+- `service.interface.ts` — public method signatures, DTO types
+- Enums в `service.enums.ts` — export через namespace `ENUMS`
+
+## Правила
+
+1. Service — single responsibility domain (toasts, storage)
+2. **Не** UI в service
+3. Testable: inject dependencies через setter (`manager(null)`)
+
+## Эталоны
+
+- `src/services/toasts/` — Toast manager registry
+- `src/services/storage-local/` — localStorage wrapper
+- `src/services/storage-cookie/` — cookie wrapper

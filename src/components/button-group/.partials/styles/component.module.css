@@ -1,0 +1,257 @@
+@layer mosuk-ui {
+  .root {
+    display: inline-flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0;
+
+    width: fit-content;
+    height: auto;
+
+    &[data-orientation='horizontal'] {
+      flex-direction: row;
+    }
+
+    &[data-orientation='vertical'] {
+      flex-direction: column;
+    }
+
+    &[data-width='full'] {
+      display: flex;
+
+      width: 100%;
+    }
+
+    :global(.mosuk-button[data-width='full']) {
+      flex: 1 1 auto;
+      width: auto;
+      min-width: 0;
+    }
+
+    :global(.mosuk-button[data-width='square']) {
+      flex-shrink: 0;
+    }
+
+    :global(.mosuk-button:focus-visible) {
+      z-index: 1;
+    }
+
+    /* attached (default): buttons form the group edge */
+    &:not([data-detached]) {
+      :global(.mosuk-button) {
+        border-radius: 0;
+      }
+
+      :global(.mosuk-button[data-press='scale']):active:not(:disabled):not([data-pending]):not([data-loading]),
+      :global(.mosuk-button[data-press='scale-highlight']):active:not(:disabled):not([data-pending]):not([data-loading]),
+      :global(.mosuk-button[data-press='scale-ripple']):active:not(:disabled):not([data-pending]):not([data-loading]) {
+        transform: none;
+      }
+
+      &[data-orientation='horizontal'] {
+        :global(.mosuk-button:first-child) {
+          border-start-start-radius: calc(infinity * 1px);
+          border-end-start-radius: calc(infinity * 1px);
+        }
+
+        :global(.mosuk-button:last-child) {
+          border-start-end-radius: calc(infinity * 1px);
+          border-end-end-radius: calc(infinity * 1px);
+        }
+
+        :global(.mosuk-button:first-child:last-child) {
+          border-radius: calc(infinity * 1px);
+        }
+
+        :global(.mosuk-button[data-variant='outline']:first-child:not(:last-child)) {
+          border-inline-end-width: 0;
+        }
+
+        :global(.mosuk-button[data-variant='outline']:last-child:not(:first-child)) {
+          border-inline-start-width: 0;
+        }
+
+        :global(.mosuk-button[data-variant='outline']:not(:first-child):not(:last-child)) {
+          border-inline-width: 0;
+        }
+
+        .separator {
+          width: 0;
+
+          &::before {
+            top: calc(var(--spacing) * 1);
+            bottom: calc(var(--spacing) * 1);
+            left: 0;
+            transform: translateX(-50%);
+
+            width: 0.75px;
+            height: auto;
+          }
+        }
+      }
+
+      &[data-orientation='vertical'] {
+        :global(.mosuk-button:first-child) {
+          border-start-start-radius: calc(infinity * 1px);
+          border-start-end-radius: calc(infinity * 1px);
+        }
+
+        :global(.mosuk-button:last-child) {
+          border-end-start-radius: calc(infinity * 1px);
+          border-end-end-radius: calc(infinity * 1px);
+        }
+
+        :global(.mosuk-button:first-child:last-child) {
+          border-radius: calc(infinity * 1px);
+        }
+
+        :global(.mosuk-button[data-variant='outline']:first-child:not(:last-child)) {
+          border-block-end-width: 0;
+        }
+
+        :global(.mosuk-button[data-variant='outline']:last-child:not(:first-child)) {
+          border-block-start-width: 0;
+        }
+
+        :global(.mosuk-button[data-variant='outline']:not(:first-child):not(:last-child)) {
+          border-block-width: 0;
+        }
+
+        .separator {
+          height: 0;
+
+          &::before {
+            top: 0;
+            right: calc(var(--spacing) * 1);
+            left: calc(var(--spacing) * 1);
+            transform: translateY(-50%);
+
+            width: auto;
+            height: 1px;
+          }
+        }
+      }
+
+      &[data-variant='primary'],
+      &[data-variant='danger'] {
+        color: var(--color-white);
+      }
+
+      &[data-variant='secondary'],
+      &[data-variant='outline'],
+      &[data-variant='ghost'] {
+        color: var(--color-black);
+      }
+
+      &[data-variant='link'] {
+        color: var(--color-primary-500);
+      }
+    }
+
+    &[data-detached] {
+      gap: 0;
+      padding: calc(var(--spacing) * 0.5);
+
+      color: var(--color-black);
+
+      background-color: var(--color-gray-100);
+
+      border-radius: calc(infinity * 1px);
+
+      &[data-variant='primary'] {
+        color: var(--color-white);
+
+        background-color: var(--color-primary-500);
+      }
+
+      &[data-variant='danger'] {
+        color: var(--color-white);
+
+        background-color: var(--color-red-500);
+      }
+
+      &[data-variant='secondary'] {
+        color: var(--color-black);
+
+        background-color: var(--color-gray-200);
+      }
+
+      &[data-variant='outline'],
+      &[data-variant='ghost'] {
+        color: var(--color-black);
+
+        background-color: var(--color-gray-100);
+      }
+
+      &[data-variant='link'] {
+        color: var(--color-primary-500);
+
+        background-color: var(--color-gray-100);
+      }
+
+      :global(.mosuk-button) {
+        border-radius: calc(infinity * 1px);
+      }
+
+      :global(.mosuk-button[data-variant='outline']) {
+        border-inline-width: 0.75px;
+        border-block-width: 0.75px;
+      }
+
+      /* no Separator in JSX: keep a small gap between pills */
+      &:not(:has(.separator)) {
+        gap: calc(var(--spacing) * 1);
+      }
+
+      &[data-orientation='horizontal'] .separator {
+        width: calc(var(--spacing) * 1);
+
+        &::before {
+          top: 25%;
+          bottom: auto;
+          left: 50%;
+          transform: translateX(-50%);
+
+          width: 0.75px;
+          height: 50%;
+        }
+      }
+
+      &[data-orientation='vertical'] .separator {
+        height: calc(var(--spacing) * 1);
+
+        &::before {
+          top: 50%;
+          right: 25%;
+          left: 25%;
+          transform: translateY(-50%);
+
+          width: auto;
+          height: 0.75px;
+        }
+      }
+    }
+  }
+
+  .separator {
+    position: relative;
+    z-index: 1;
+
+    flex-shrink: 0;
+    align-self: stretch;
+
+    pointer-events: none;
+
+    &::before {
+      position: absolute;
+
+      content: '';
+
+      background-color: currentColor;
+
+      opacity: 0.15;
+
+      border-radius: var(--radius-sm);
+    }
+  }
+}

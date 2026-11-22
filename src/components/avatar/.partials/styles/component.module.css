@@ -1,0 +1,82 @@
+@layer mosuk-ui {
+  .avatar {
+    --avatar-length: calc(var(--spacing) * var(--avatar-size));
+    --avatar-radius: calc(var(--avatar-length) / 2);
+
+    overflow: hidden;
+
+    position: relative;
+
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+
+    width: var(--avatar-length);
+    height: var(--avatar-length);
+    min-width: var(--avatar-length);
+    min-height: var(--avatar-length);
+
+    color: var(--color-black);
+    font-size: calc(var(--spacing) * 0.35 * var(--avatar-size));
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    user-select: none;
+
+    background-color: var(--color-gray-100);
+
+    border-radius: calc(infinity * 1px);
+
+    &[data-variant='secondary'] {
+      color: var(--color-black);
+
+      background-color: var(--color-gray-100);
+    }
+
+    &[data-variant='soft'] {
+      color: var(--color-gray-600);
+
+      background-color: var(--color-gray-50);
+    }
+
+    &[data-variant='primary'] {
+      color: var(--color-white);
+
+      background-color: var(--color-primary-500);
+    }
+
+    &[data-variant='success'] {
+      color: var(--color-white);
+
+      background-color: var(--color-green-500);
+    }
+
+    &[data-variant='warning'] {
+      color: var(--color-black);
+
+      background-color: var(--color-yellow-500);
+    }
+
+    .image {
+      position: absolute;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      border-radius: inherit;
+    }
+
+    .fallback {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

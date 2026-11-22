@@ -1,0 +1,76 @@
+@layer mosuk-ui {
+  .progressBar {
+    overflow: hidden;
+
+    display: block;
+
+    width: 100%;
+    height: calc(var(--spacing) * var(--progress-bar-size));
+
+    background-color: var(--color-gray-200);
+
+    border-radius: calc(infinity * 1px);
+
+    &[data-color='default'] {
+      .indicator {
+        background-color: var(--color-gray-400);
+      }
+    }
+
+    &[data-color='primary'] {
+      .indicator {
+        background-color: var(--color-primary-500);
+      }
+    }
+
+    &[data-color='success'] {
+      .indicator {
+        background-color: var(--color-green-500);
+      }
+    }
+
+    &[data-color='warning'] {
+      .indicator {
+        background-color: var(--color-orange-500);
+      }
+    }
+
+    &[data-color='danger'] {
+      .indicator {
+        background-color: var(--color-red-500);
+      }
+    }
+
+    &[data-loading] {
+      .indicator {
+        width: 40%;
+
+        animation: mosuk-progress-bar-indeterminate 1.2s ease-in-out infinite
+          alternate;
+      }
+    }
+
+    .indicator {
+      display: block;
+
+      width: var(--progress-bar-value, 0%);
+      height: 100%;
+
+      background-color: var(--color-primary-500);
+
+      border-radius: inherit;
+
+      transition: width 500ms ease;
+    }
+  }
+
+  @keyframes mosuk-progress-bar-indeterminate {
+    from {
+      transform: translateX(-60%);
+    }
+
+    to {
+      transform: translateX(160%);
+    }
+  }
+}

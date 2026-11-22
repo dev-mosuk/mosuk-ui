@@ -1,0 +1,30 @@
+import {
+  FileContextProps,
+  FileProps,
+} from '@/components/file/.partials/components/component.interface';
+import styles from '@/components/file/.partials/styles/component.module.css';
+import classNames from 'classnames';
+import React, { createContext, useMemo } from 'react';
+
+export const FileContext = createContext<FileContextProps>({});
+
+export function File({ ...props }: FileProps) {
+  const contextValue = useMemo(() => ({}), []);
+
+  return (
+    <FileContext.Provider value={contextValue}>
+      <div
+        {...props}
+        className={classNames(
+          'mosuk-file',
+          '@container/file',
+          'group/file',
+          styles.container,
+          props?.className,
+        )}
+      >
+        {props?.children}
+      </div>
+    </FileContext.Provider>
+  );
+}

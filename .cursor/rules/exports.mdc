@@ -1,0 +1,110 @@
+---
+description: Публичный API через index.ts, Object.assign compound, export namespace, package.json exports
+globs: 'src/**/index.ts'
+alwaysApply: false
+---
+
+# exports — публичный API
+
+## Точка входа feature
+
+Каждый публикуемый feature имеет корневой `index.ts`:
+
+```
+{feature}/
+├── index.ts                 ← публичный API feature
+└── .partials/…
+```
+
+Потребитель: `mosuk-ui/components/otp` (без `/component`).
+
+## Compound component
+
+```ts
+import { OTP as Component } from './.partials/components/component';
+import { OTPProps } from './.partials/components/component.interface';
+import { OTPInput } from './.partials/components/input/component';
+
+export const OTP = Object.assign(Component, {
+  Input: OTPInput,
+});
+```
+
+- Root — default callable component
+- Sub-parts — свойства на том же объекте
+- Deep compound: вложенный `Object.assign` (`Dropdown.Overview.Popup`). Файлы при этом плоские: `.partials/components/overview-popup/` — эталон `src/components/dropdown/index.ts`
+
+## Namespace types
+
+```ts
+export namespace OTP {
+  export type Props = OTPProps;
+
+  export namespace Input {
+    export type Props = OTPInputProps;
+  }
+}
+```
+
+- Зеркалит структуру compound
+- Потребитель: `OTP.Props`, `OTP.Input.Props`
+- Импорт типов props **не** из `.partials/` — только через namespace или re-export в index
+
+## Skeleton
+
+Feature `{Name}Skeleton` не экспортируем. Единственный product skeleton — compound на Yandex Maps (`YandexMap.Skeleton`, `YandexMap.Default.Scheme.LayerSkeleton`). Shimmer-примитив — `mosuk-ui/components/skeleton`.
+
+## Provider export
+
+```ts
+export const ToastsProvider = (props: ToastsProviderProps) =>
+  createElement(BaseToastsProvider, props);
+
+export namespace ToastsProvider {
+  export type Props = ToastsProviderProps;
+}
+```
+
+Thin wrapper в `index.ts` допустим; реализация в `provider.tsx`.
+
+## Service export
+
+```ts
+export { toastsService, type ToastEntry, type ToastsServiceProps };
+
+export namespace ToastsService {
+  export type Props = ToastsServiceProps;
+  export const ENUMS = { Type: ToastType };
+}
+```
+
+## package.json exports (build)
+
+`tsconfig.build.ts` генерирует `exports` в `dist/package.json` по наличию `index.js`:
+
+- Каждая папка с `index.ts` → отдельный subpath export
+- `./index.css` — если есть в dist
+- **Новый feature** — добавить `index.ts`, build подхватит автоматически
+
+### Потребление в Next.js (CRM, npm link)
+
+- **Публиковать и линковать `dist/`**, не `src/`: `npm run link:dist` → в CRM `npm link mosuk-ui`
+- `src/` с `@/` импортами — только для разработки библиотеки; Next.js потребителя резолвит `@/` в **свой** `src/`
+- Watch при link: `npm run build:watch` в `.mosuk-ui/`
+- `src/package.json` exports → `index.ts` (генерирует `tsconfig.ts`); `dist/package.json` exports → `index.js` (после `tsc-alias`)
+
+## Правила
+
+1. **Не** re-export внутренних `.partials/` paths наружу
+2. **Не** export `component.tsx` напрямую — только через `index.ts`
+3. Sub-parts export только если используются потребителем (compound API)
+4. Enum/constants — через namespace `ENUMS` или named export из index
+
+## Legacy (button)
+
+```ts
+export const Button = BaseButton;
+export namespace Button { export type Props = ButtonProps; }
+```
+
+Без compound — допустимо для простых компонентов; новые предпочитают `.partials/` + sub-parts при необходимости.

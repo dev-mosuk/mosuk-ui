@@ -1,0 +1,19 @@
+import { ChatSeparatorProps } from '@/components/chat/.partials/components/separator/component.interface';
+import styles from '@/components/chat/.partials/styles/component.module.css';
+import classNames from 'classnames';
+import React from 'react';
+
+export function ChatSeparator({ ...rest }: ChatSeparatorProps) {
+  return (
+    <div
+      {...rest}
+      className={classNames(
+        'mosuk-chat-separator',
+        styles.separator,
+        rest?.className,
+      )}
+    >
+      <span className={styles.label}>{rest?.children}</span>
+    </div>
+  );
+}

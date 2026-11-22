@@ -1,0 +1,146 @@
+@layer mosuk-ui {
+    .input {
+        appearance: none;
+
+        display: block;
+
+        width: 100%;
+        height: calc(var(--spacing) * var(--input-size));
+        min-height: calc(var(--spacing) * var(--input-size));
+
+        padding-inline: calc(var(--spacing) * 0.425 * var(--input-size));
+
+        color: var(--color-black);
+        font-size: calc(var(--spacing) * 0.425 * var(--input-size));
+
+        background-color: white;
+
+        border: 0.75px solid transparent;
+        border-radius: var(--radius-xl);
+        outline: none;
+
+        box-shadow:
+            0 0 15px -3px color-mix(in oklab, var(--color-gray-200) 50%, transparent),
+            0 0 6px -4px color-mix(in oklab, var(--color-gray-200) 50%, transparent);
+
+        transition: all 200ms ease-in-out;
+
+        &::placeholder {
+            color: var(--color-gray-500);
+        }
+
+        &:disabled,
+        &:read-only {
+            opacity: 50%;
+
+            pointer-events: none;
+        }
+
+        &[data-ios-zoom-lock] {
+            font-size: 16px;
+
+            transition-duration: 0s;
+        }
+
+
+        &[data-width='auto'] {
+            width: fit-content;
+            min-width: fit-content;
+        }
+
+        &[data-width='full'] {
+            width: 100%;
+            min-width: 100%;
+        }
+
+        &[data-variant='primary'] {
+            background-color: white;
+
+            border-color: var(--color-gray-100);
+
+            box-shadow:
+                0 0 15px -3px color-mix(in oklab, var(--color-gray-200) 50%, transparent),
+                0 0 6px -4px color-mix(in oklab, var(--color-gray-200) 50%, transparent);
+        }
+
+        &[data-variant='secondary'] {
+            background-color: var(--color-gray-100);
+
+            border-color: transparent;
+
+            box-shadow: transparent;
+        }
+
+        &[data-variant='outline'] {
+            background-color: transparent;
+
+            border-color: var(--color-gray-200);
+
+            box-shadow: transparent;
+
+            &:hover:not(:disabled):not(:read-only) {
+                border-color: var(--color-primary-200);
+            }
+
+            &:focus:not(:disabled):not(:read-only) {
+                border-color: var(--color-primary-500);
+            }
+        }
+
+        &[data-variant='ghost'] {
+            background-color: transparent;
+
+            border-color: transparent;
+            border-radius: 0;
+
+            box-shadow:
+                0 0 0 0 transparent,
+                0 0 0 0 transparent;
+        }
+
+        &[data-variant='danger'] {
+            color: var(--color-red-600);
+
+            background-color: var(--color-red-100);
+
+            border-color: transparent;
+
+            box-shadow: transparent;
+
+            &::placeholder {
+                color: var(--color-red-300);
+            }
+        }
+
+        &[data-invalid] {
+            color: var(--color-red-600);
+
+            border-color: var(--color-red-200);
+
+            &::placeholder {
+                color: var(--color-red-300);
+            }
+
+            &:hover:not(:disabled):not(:read-only) {
+                border-color: var(--color-red-300);
+            }
+
+            &:focus:not(:disabled):not(:read-only) {
+                border-color: var(--color-red-500);
+            }
+        }
+
+        &[data-invalid][data-variant='secondary'],
+        &[data-invalid][data-variant='ghost'] {
+            background-color: var(--color-red-50);
+
+            border-color: transparent;
+        }
+
+        &[data-invalid][data-variant='danger'] {
+            background-color: var(--color-red-100);
+
+            border-color: transparent;
+        }
+    }
+}

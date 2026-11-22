@@ -1,0 +1,61 @@
+---
+description: Vendor UI и SDK — hyphenated features в components/ и providers/ (не отдельное дерево)
+globs:
+  - 'src/components/yandex-maps/**'
+  - 'src/components/tbank-terminal/**'
+  - 'src/providers/yandex-maps/**'
+  - 'src/providers/yandex-metrika/**'
+  - 'src/providers/tbank/**'
+alwaysApply: false
+---
+
+# integrations (vendor features)
+
+Architecture: [architecture.mdc](./architecture.mdc)
+
+Отдельного `src/integrations/` **нет**. Vendor UI и SDK-providers — обычные плоские hyphenated features в слоях `components/` и `providers/`.
+
+## Куда класть
+
+| Что | Путь | Публичный path |
+| --- | ---- | -------------- |
+| Yandex Maps UI | `components/yandex-maps/` | `mosuk-ui/components/yandex-maps` |
+| Yandex Maps SDK | `providers/yandex-maps/` | `mosuk-ui/providers/yandex-maps` |
+| Yandex Metrika SDK | `providers/yandex-metrika/` | `mosuk-ui/providers/yandex-metrika` |
+| T-Bank Terminal UI | `components/tbank-terminal/` | `mosuk-ui/components/tbank-terminal` |
+| T-Bank SDK | `providers/tbank/` | `mosuk-ui/providers/tbank` |
+
+## Layout
+
+Канон как у остальных features:
+
+```
+{layer}/{feature}/
+├── index.ts
+└── .partials/
+```
+
+- Components: `.partials/components|styles|…` (как otp/drawer)
+- Providers: `.partials/` (provider, context) — как `providers/toasts`
+
+## Разделение
+
+| Слой | Ответственность |
+| ---- | --------------- |
+| `providers/{vendor-…}/` | Script load, context, API keys |
+| `components/{vendor-…}/` | Visual UI, markers, widgets |
+
+## Props / CSS
+
+- Config на provider (`provider.interface.ts`)
+- Display на component (`component.interface.ts`)
+- `@layer mosuk-ui`; vendor classes в module
+
+## Product skeleton
+
+Feature `{Name}Skeleton` не создаём. Исключение — Yandex Maps: skeleton в compound (`YandexMap.Skeleton`, …). Shimmer — `@/components/skeleton`.
+
+## Эталоны
+
+- UI + compound: `src/components/yandex-maps/`
+- SDK provider: `src/providers/yandex-maps/`, `src/providers/tbank/`

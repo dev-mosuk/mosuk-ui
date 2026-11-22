@@ -1,0 +1,14 @@
+@layer mosuk-ui {
+  .field {
+    display: block;
+
+    width: 100%;
+  }
+
+  .dropdown {
+    .content {
+      width: var(--anchor-width);
+      min-width: var(--anchor-width);
+    }
+  }
+}

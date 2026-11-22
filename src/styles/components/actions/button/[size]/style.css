@@ -1,27 +1,29 @@
 @utility button-* {
-    height: calc(var(--spacing, 0.25rem) * --value(integer));
+    width: fit-content;
+    height: calc(var(--spacing) * --value(integer));
+    min-width: fit-content;
+    min-height: calc(var(--spacing) * --value(integer));
 
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: calc(var(--spacing, 0.25rem) * 0.25 * --value(integer));
+    gap: calc(var(--spacing) * 0.25 * --value(integer));
 
-    font-size: calc(var(--spacing, 0.25rem) * 0.375 * --value(integer));
-    font-weight: 500;
+    font-size: calc(var(--spacing) * 0.375 * --value(integer));
+    font-weight: 400;
     text-wrap: nowrap;
 
-    padding-left: calc(var(--spacing, 0.25rem) * 0.5 * --value(integer));
-    padding-right: calc(var(--spacing, 0.25rem) * 0.5 * --value(integer));
+    padding: 0 calc(var(--spacing) * 0.375 * --value(integer));
     border-radius: calc(infinity * 1px);
     outline: none;
 
     transition: all 200ms ease-in-out;
 
     & :where(svg) {
-        width: calc(var(--spacing, 0.25rem) * 0.425 * --value(integer));
-        height: calc(var(--spacing, 0.25rem) * 0.425 * --value(integer));
-        min-width: calc(var(--spacing, 0.25rem) * 0.425 * --value(integer));
-        min-height: calc(var(--spacing, 0.25rem) * 0.425 * --value(integer));
+        width: calc(var(--spacing) * 0.425 * --value(integer));
+        height: calc(var(--spacing) * 0.425 * --value(integer));
+        min-width: calc(var(--spacing) * 0.425 * --value(integer));
+        min-height: calc(var(--spacing) * 0.425 * --value(integer));
 
         transition: all 200ms ease-in-out;
     }

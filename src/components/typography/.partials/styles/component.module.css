@@ -1,0 +1,232 @@
+@layer mosuk-ui {
+    .typography {
+        display: block;
+
+        &[data-size='3xs'] {
+            font-size: var(--text-3xs);
+        }
+
+        &[data-size='2xs'] {
+            font-size: var(--text-2xs);
+        }
+
+        &[data-size='xs'] {
+            font-size: var(--text-xs);
+        }
+
+        &[data-size='sm'] {
+            font-size: var(--text-sm);
+        }
+
+        &[data-size='base'] {
+            font-size: var(--text-base);
+        }
+
+        &[data-size='lg'] {
+            font-size: var(--text-lg);
+        }
+
+        &[data-size='xl'] {
+            font-size: var(--text-xl);
+        }
+
+        &[data-size='2xl'] {
+            font-size: var(--text-2xl);
+        }
+
+        &[data-size='3xl'] {
+            font-size: var(--text-3xl);
+        }
+
+        &[data-size='4xl'] {
+            font-size: var(--text-4xl);
+        }
+
+        &[data-color='black'] {
+            color: var(--color-black);
+        }
+
+        &[data-color='white'] {
+            color: var(--color-white);
+        }
+
+        &[data-color='gray'] {
+            color: var(--color-gray-500);
+        }
+
+        &[data-color='primary'] {
+            color: var(--color-primary-500);
+        }
+
+        &[data-color='red'] {
+            color: var(--color-red-500);
+        }
+
+        &[data-color='green'] {
+            color: var(--color-green-500);
+        }
+
+        &[data-color='orange'] {
+            color: var(--color-orange-500);
+        }
+
+        &[data-color='yellow'] {
+            color: var(--color-yellow-500);
+        }
+
+        &[data-weight='light'] {
+            font-weight: 300;
+        }
+
+        &[data-weight='normal'] {
+            font-weight: 400;
+        }
+
+        &[data-weight='medium'] {
+            font-weight: 500;
+        }
+
+        &[data-weight='semibold'] {
+            font-weight: 600;
+        }
+
+        &[data-weight='bold'] {
+            font-weight: 700;
+        }
+
+        &[data-leading='none'] {
+            line-height: 1;
+        }
+
+        &[data-leading='tight'] {
+            line-height: 1.25;
+        }
+
+        &[data-leading='snug'] {
+            line-height: 1.375;
+        }
+
+        &[data-leading='normal'] {
+            line-height: 1.5;
+        }
+
+        &[data-leading='relaxed'] {
+            line-height: var(--leading-relaxed);
+        }
+
+        &[data-leading='loose'] {
+            line-height: 2;
+        }
+
+        &[data-muted='true'] {
+            opacity: 0.5;
+
+            cursor: default;
+        }
+
+        transition: all 200ms ease-in-out;
+    }
+
+    .h1 {
+        font-size: var(--text-4xl);
+        font-weight: 500;
+        line-height: 1.11;
+        letter-spacing: var(--tracking-tight);
+    }
+
+    .h2 {
+        font-size: var(--text-3xl);
+        font-weight: 500;
+        line-height: 1.17;
+        letter-spacing: var(--tracking-tight);
+    }
+
+    .h3 {
+        font-size: var(--text-2xl);
+        font-weight: 500;
+        line-height: 1.25;
+        letter-spacing: var(--tracking-tight);
+    }
+
+    .h4 {
+        font-size: var(--text-xl);
+        font-weight: 500;
+        line-height: 1.33;
+        letter-spacing: var(--tracking-tight);
+    }
+
+    .h5 {
+        font-size: var(--text-lg);
+        font-weight: 500;
+        line-height: 1.39;
+        letter-spacing: var(--tracking-tight);
+    }
+
+    .h6 {
+        font-size: var(--text-base);
+        font-weight: 500;
+        line-height: 1.5;
+        letter-spacing: var(--tracking-tight);
+    }
+
+    .lead {
+        font-size: var(--text-lg);
+        font-weight: 400;
+        line-height: 1.55;
+    }
+
+    .text {
+        font-size: var(--text-base);
+        font-weight: 400;
+        line-height: 1.75;
+    }
+
+    .detail {
+        font-size: var(--text-sm);
+        font-weight: 300;
+        line-height: 1.5;
+    }
+
+    .meta {
+        font-size: var(--text-xs);
+        font-weight: 300;
+        line-height: 1.25;
+    }
+
+    .caption {
+        font-size: var(--text-2xs);
+        font-weight: 300;
+        line-height: 1.25;
+    }
+
+    .fine {
+        font-size: var(--text-3xs);
+        font-weight: 300;
+        line-height: 1.2;
+    }
+
+    .alignStart {
+        text-align: start;
+    }
+
+    .alignCenter {
+        text-align: center;
+    }
+
+    .alignEnd {
+        text-align: end;
+    }
+
+    .alignJustify {
+        text-align: justify;
+    }
+
+    .truncate {
+        overflow: hidden;
+
+        display: block;
+
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

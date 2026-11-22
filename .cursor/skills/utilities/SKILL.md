@@ -7,7 +7,7 @@ description: >-
 
 # utilities
 
-Rule: `.cursor/rules/utilities/rule.mdc`
+Rule: `.cursor/rules/utilities.mdc`
 
 ## Checklist
 

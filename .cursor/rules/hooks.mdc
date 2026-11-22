@@ -1,0 +1,77 @@
+---
+description: Hooks — React hooks потребляющие providers, browser storage, toasts
+globs:
+  - 'src/hooks/**'
+  - 'src/**/.partials/hooks/**'
+alwaysApply: false
+---
+
+# hooks
+
+## Назначение
+
+React hooks: context consumers, browser API wrappers.
+
+## Структура
+
+```
+{feature}/
+├── index.ts
+└── .partials/
+    ├── hook.ts
+    ├── hook.interface.ts
+    └── …
+```
+
+Feature-имена — **плоские hyphenated** (`storage-local`, `storage-cookie`, `screen-size`).
+
+## Naming
+
+| Hook | Interface |
+| ---- | --------- |
+| `useToasts` | `UseToastsProps` |
+| `useStorageLocal` | `UseStorageLocalProps` |
+
+## Context hooks
+
+```ts
+export function useToasts(): UseToastsProps {
+  const context = useContext(ToastsContext);
+  if (!context) {
+    throw new Error('useToasts must be used within <ToastsProvider>');
+  }
+  return context;
+}
+```
+
+- Import context из `providers/`, не duplicate createContext
+- Guard throw — обязателен
+
+## Storage hooks
+
+`hooks/storage-local/`, `hooks/storage-cookie/` — wrap services или direct browser API.
+
+## index.ts
+
+```ts
+export const useToasts = BaseUseToasts;
+
+export namespace useToasts {
+  export type Props = UseToastsProps;
+}
+```
+
+Re-export из `.partials/hook`; типы из `.partials/hook.interface.ts`.
+
+## Правила
+
+1. Hooks **не** содержат JSX (кроме rare render hooks — избегать)
+2. **Не** axios/SWR в mosuk-ui hooks — это CRM app concern
+3. Side effects — в provider; hook читает context/state
+4. Feature-local hooks в `{feature}/.partials/hooks/` — для compound components (stepper)
+
+## Эталоны
+
+- `src/hooks/toasts/` — context consumer
+- `src/hooks/storage-local/` — browser API
+- `src/components/stepper/.partials/hooks/` — feature-local

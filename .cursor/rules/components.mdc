@@ -1,0 +1,268 @@
+---
+description: Components — OTP canonical, flat features under src/components/, logical roles (actions, display, overlays, …)
+globs: 'src/components/**'
+alwaysApply: false
+---
+
+# components
+
+## Layout
+
+Все UI features — плоско: `src/components/{feature}/` (`otp/`, `drawer/`, `input-mask/`, …). Категории — **логические роли** (z-index, форма compound), не папки.
+
+| Роль | Назначение | Примеры |
+| ---- | ---------- | ------- |
+| texts | заголовки, параграфы, ссылки | typography, hint, counter |
+| actions | кнопки, инпуты, контролы | button, otp, checkbox, input, input-mask, slider |
+| display | media, empty states | image, video, file, empty, dl |
+| containers | секции, grid | card, section, separator |
+| collections | таблицы, tabs, accordion | accordion, chat |
+| layouts | header, sidebar | (когда появятся) |
+| overlays | dialog, drawer, toast | dialog, drawer, tooltip, toast, observer |
+| navigation | stepper, breadcrumbs | stepper, breadcrumbs |
+| forms | fieldset, form composition | fieldset |
+
+Стили → `.cursor/rules/styling.mdc`
+Exports → `.cursor/rules/exports.mdc`
+Provider внутри component → `.cursor/rules/providers.mdc`
+
+## Canonical structure
+
+Новый feature:
+
+```
+{feature}/
+├── index.ts
+└── .partials/
+    ├── styles/component.module.css
+    ├── components/
+    │   ├── component.tsx
+    │   ├── component.interface.ts
+    │   ├── {part}/
+    │   └── {part}-{child}/
+    ├── providers/               ← если sub-parts делят state
+    └── hooks/
+```
+
+Sub-parts — **плоские** папки-соседи в `.partials/components/`. Глубина compound не вкладывает директории: сегменты пути склеиваются дефисом. Root остаётся `components/component.tsx`.
+
+| Compound | Папка |
+| -------- | ----- |
+| `Dropdown.Close` | `close/` |
+| `Dropdown.Overview` | `overview/` |
+| `Dropdown.Overview.Popup` | `overview-popup/` |
+
+Эталон раскладки — `src/components/dropdown/`. Публичный API (`Object.assign`, namespace) остаётся вложенным. Папки при этом плоские: `Drawer.Viewport.Popup.Handle` → `viewport-popup-handle/`.
+
+Импорты везде `@/`, включая `.partials`. `{feature}/index.ts` — единственный public path: `Object.assign` + `export namespace`. Feature `{Name}Skeleton` не создаём.
+
+Варианты product-level — отдельные hyphenated features (`input-mask`, `input-search`, `slider-cell`), не `()` под родителем.
+
+## Идиома
+
+По `otp`, portal в `drawer`, `select`:
+
+- `export function {Name}`
+- Props — тип part из `@base-ui/react`, если primitive есть (`Checkbox.Root.Props`). Interface-файл пустой, когда своих полей нет
+- `{...rest}` на primitive, `rest?.children`
+- `classNames`: `mosuk-{feature}` → `@container/{feature}` → `group/{feature}` → `styles.*` → `rest?.className`
+- `group` и `@container` на визуальном host. У portal-оверлея host = Portal, не headless Root
+- CSS: `@layer mosuk-ui { .{feature} { … } }`. Размеры и цвета через `var(--spacing)`, `var(--color-*)`, `var(--text-*)`. Дерево host + nested `&[data-*]` / `.child` — styling rule (не `*With*` / плоские state-классы)
+- Host-класс модуля нового кода — `.{feature}` camelCase (`typography` → `.typography`). Legacy `.root` — только при правке feature, где он уже есть
+- Иконки — `lucide-react` / `mosuk-icons`. Склейка классов — пакет `classnames`
+
+## Эталоны
+
+Поведение и API — здесь. Раскладку файлов — всегда по canonical tree.
+
+- Shallow compound — `src/components/otp/`
+- Sub-part indicator — `src/components/checkbox/`
+- Deep compound folders — `src/components/dropdown/`
+- Deep portal behavior — `src/components/drawer/`
+- Shared state внутри feature — `src/components/stepper/`, `src/components/image/`
+
+## Общие правила
+
+### Export
+
+- Публичный API только `{feature}/index.ts` (path без `/component`)
+- Compound: `Object.assign` + `export namespace` — см. exports rule
+- Named export функций компонентов в `.partials/`
+- Feature `{Name}Skeleton` не экспортируем. Product skeleton только у Yandex Maps (`YandexMap.Skeleton`)
+
+### Props
+
+- Новый код: `component.interface.ts`
+- Новый feature использует `component.interface.ts`
+- Spread `{ ...rest }` на корень; `rest?.className` последним в classNames
+
+#### Naming (boolean / state)
+
+Публичные boolean и controlled state — префикс `is` / `default` / `on*Change`. Не экспортировать DOM/Base UI имена (`disabled`, `checked`, `open`), если есть product-эквивалент.
+
+| Избегать (DOM / Base UI) | Публичный prop |
+| ------------------------ | -------------- |
+| `disabled` | `isDisabled` |
+| `checked` / `selected` | `isSelected` / `defaultSelected` |
+| `open` | `isOpen` / `defaultOpen` |
+| `readOnly` | `isReadOnly` |
+| `required` | `isRequired` |
+| `invalid` / `aria-invalid` как prop API | `isInvalid` |
+| `indeterminate` | `isIndeterminate` |
+| `pending` | `isPending` |
+| (loading UI) | `isLoading` |
+
+Callbacks: `onChange` / `onOpenChange` / `onSelectionChange` — по смыслу. При обёртке Base UI маппить внутри feature (`onCheckedChange` → `onChange(isSelected)`).
+
+Обёртка над `@base-ui/react`:
+
+- `component.interface.ts` — own `is*` + `Omit<Primitive.Props, 'disabled' | 'checked' | …>`
+- `component.tsx` — map на primitive (`disabled={isDisabled}`, `open={isOpen}`, …)
+
+Эталон: `src/components/checkbox/` (`isSelected`, `isDisabled`, …), `src/components/button/` (`isDisabled`, `isPending`, `isLoading`).
+
+CSS / `data-*` / native `disabled` на DOM — ок внутри реализации; наружу — `is*`.
+
+### `.partials`
+
+| Подпапка | Содержимое |
+| -------- | ---------- |
+| `components/` | root + sub-parts |
+| `styles/` | CSS modules + layers |
+| `providers/` | feature-local context (stepper, image) |
+| `hooks/` | feature-local hooks (stepper) |
+| `utilities/` | feature-local pure helpers |
+
+### @base-ui
+
+Overlays и часть actions строятся на `@base-ui/react`. Оборачивать primitives, сохраняя focus trap, portal и aria самого primitive.
+
+## actions
+
+Раскладка — canonical tree в `src/components/{feature}/`.
+
+### index.ts
+
+- `Object.assign(Component, { Sub: SubComponent })`
+- `export namespace {Name}` с nested namespaces для sub-parts
+- Типы только из `.partials/...interface.ts`
+
+### component.tsx
+
+- `classNames('mosuk-{feature}', '@container/{feature}', 'group/{feature}', styles.{feature}, rest?.className)`
+- Props extends тип primitive или `HTMLAttributes`, где primitive нет
+- Sub-parts — плоские папки `.partials/components/{part}/`; глубокий compound — `{part}-{child}/`
+
+### CSS
+
+- `@layer mosuk-ui`
+- `.{feature}` + nested `.{feature} .child`
+
+### Sub-parts naming
+
+| Root | Sub-part | Export |
+| ---- | -------- | ------ |
+| `OTP` | input cell | `OTP.Input` |
+| `Checkbox` | indicator | `Checkbox.Indicator` |
+| `Toggle` | button, indicator | `Toggle.Button`, `Toggle.Indicator` |
+
+Shared state между sub-parts — `{feature}/.partials/providers/` и `.partials/hooks/`. Эталон — stepper. → `.cursor/rules/providers.mdc`
+
+Input-like controls оборачивают `@base-ui/react` primitives. Сохранять ref forwarding и accessibility props.
+
+## display
+
+z-index 0–99.
+
+Раскладка — canonical tree.
+
+- `component.interface.ts`
+- Polymorphic: `as?: ElementType`, spread rest на корень
+- `extends HTMLAttributes<HTMLElement>` для container display, если primitive нет
+- Крупный display с публичными sub-parts → `.partials/components/{part}/` + compound в `index.ts`
+
+## overlays
+
+Floating UI: drawer, dialog, tooltip, toast. Dropdown — `src/components/dropdown/`.
+
+### z-index
+
+- Dropdown/popover/tooltip: **100–199**
+- Dialog/drawer/modal: **200+**
+
+Раскладка — canonical tree: плоские hyphenated папки (`close/`, `overview/`, `overview-popup/`, `viewport-popup-handle/`). `index.ts` — вложенный `Object.assign`. Эталон папок — `src/components/dropdown/`.
+
+**Trigger** на корне; floating tree под **Portal**; **Close** внутри `Portal.Viewport.Popup` (рядом с Content/Handle). Dropdown: `Dropdown.Overview.Popup`.
+
+Drawer/dialog/dropdown — на `@base-ui/react`. Focus trap, portal и aria остаются у primitive.
+
+- `@layer mosuk-ui`
+- `component.module.css` в `.partials/styles/`
+- Backdrop и popup — отдельные modules, если стили различаются
+- `group/{feature}` + `@container/{feature}` на **Portal** (визуальный host), не на headless Root
+- `component.interface.ts` на каждом sub-part
+- Trigger / Close — отдельные compound parts
+
+## texts
+
+Типографика: headings, text, links, labels без интерактива формы.
+
+Раскладка — canonical tree.
+
+- `component.interface.ts`
+- Polymorphic `as` для semantic HTML (`h1`–`h6`, `p`, `span`)
+- Typography через CSS module + theme tokens
+
+```css
+@layer mosuk-ui {
+  .typography { /* font-size, color from --text-* */ }
+}
+```
+
+## layouts
+
+App shell primitives: header, sidebar, footer, tabbar.
+
+Раскладка — canonical tree. Regions — compound sub-parts или `children` slots.
+
+- Responsive behavior через CSS module + utilities
+- `@layer mosuk-ui`
+- z-index 0–99 для fixed layout chrome (ниже overlays)
+- Layout state (collapsed sidebar) — provider в `.partials/providers/` или внешний `providers/`
+
+## collections
+
+Structured lists: table, tabs, accordion, data list.
+
+Раскладка — canonical tree. Compound обязателен: root + item/header/panel в `.partials/components/`.
+
+- Collection root: `children` или data-driven API — по эталону существующего feature
+- Item sub-parts: минимальный interface
+- `@layer mosuk-ui`
+- Row/cell styles nested под host `.{feature}`
+- Tabs/accordion оборачивают `@base-ui/react`, если primitive есть
+
+## navigation
+
+Nav trajectories: stepper, breadcrumbs.
+
+Раскладка — canonical tree. Compound: root + step/item в `.partials/components/`. Shared step state — `.partials/providers/` + `.partials/hooks/` (эталон stepper).
+
+- `@layer mosuk-ui`
+- Sequence UI: orientation (horizontal/vertical) через context + `data-orientation`
+
+## forms
+
+Form composition: fieldset, field groups, label+input+hint. Leaf controls — отдельные features (`input`, `checkbox`, …).
+
+Раскладка — canonical tree. Эталон — `src/components/fieldset/`.
+
+- react-hook-form через props/context; leaf input остаётся primitive feature
+- Errors/hints — sub-components fieldset
+- `component.interface.ts`; field: label, input slot, error message
+- `@layer mosuk-ui`
+- `input`, `checkbox` — primitives; `fieldset` — composition layer
+
+## containers
+
+Секции и grid. Раскладка — canonical tree. z-index 0–99.

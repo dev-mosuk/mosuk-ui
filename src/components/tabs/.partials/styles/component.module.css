@@ -1,0 +1,203 @@
+@layer mosuk-ui {
+  .root {
+    display: flex;
+    gap: calc(var(--spacing) * 2);
+
+    &[data-orientation='horizontal'] {
+      flex-direction: column;
+    }
+
+    &[data-orientation='vertical'] {
+      flex-direction: row;
+    }
+
+    .list {
+      position: relative;
+      z-index: 0;
+
+      display: inline-flex;
+      align-items: center;
+
+      &[data-orientation='horizontal'] {
+        flex-direction: row;
+        width: 100%;
+      }
+
+      &[data-orientation='vertical'] {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+
+    .tab {
+      position: relative;
+      z-index: 1;
+
+      display: flex;
+      flex: 1 1 auto;
+      align-items: center;
+      justify-content: center;
+
+      height: calc(var(--spacing) * 8);
+      min-width: fit-content;
+
+      padding-inline: calc(var(--spacing) * 4);
+
+      color: var(--color-gray-500);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      line-height: 1.25;
+      text-align: center;
+      white-space: nowrap;
+
+      background-color: transparent;
+      border: none;
+      outline: none;
+
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+
+      transition-duration: 150ms;
+      transition-property: color, opacity;
+      transition-timing-function: ease;
+
+      &[data-active],
+      &[aria-selected='true'] {
+        color: var(--color-gray-900);
+      }
+
+      &:disabled,
+      &[data-disabled],
+      &[aria-disabled='true'] {
+        opacity: 0.5;
+
+        pointer-events: none;
+      }
+
+      @media (hover: hover) {
+        &:not([data-active]):not([aria-selected='true']):not(:disabled):hover {
+          opacity: 0.7;
+        }
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--color-primary-500);
+        outline-offset: 2px;
+      }
+    }
+
+    .indicator {
+      position: absolute;
+      top: var(--active-tab-top);
+      left: var(--active-tab-left);
+      z-index: -1;
+
+      width: var(--active-tab-width);
+      height: var(--active-tab-height);
+
+      pointer-events: none;
+
+      transition-duration: 250ms;
+      transition-property: top, left, width, height, transform;
+      transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    .panel {
+      width: 100%;
+
+      outline: none;
+
+      &[data-orientation='horizontal'] {
+        margin-top: calc(var(--spacing) * 4);
+      }
+
+      &[data-orientation='vertical'] {
+        margin-left: calc(var(--spacing) * 4);
+      }
+    }
+
+    &[data-variant='primary'] {
+      .list {
+        padding: calc(var(--spacing) * 1);
+
+        background-color: var(--color-gray-100);
+
+        border-radius: var(--radius-3xl);
+      }
+
+      .tab {
+        border-radius: var(--radius-3xl);
+      }
+
+      .indicator {
+        background-color: var(--color-white);
+
+        border: 0.75px solid var(--color-gray-100);
+        border-radius: var(--radius-3xl);
+
+        box-shadow:
+          0 0 25px -5px color-mix(in oklab, var(--color-gray-200) 50%, transparent),
+          0 0 10px -6px color-mix(in oklab, var(--color-gray-200) 50%, transparent);
+      }
+    }
+
+    &[data-variant='secondary'] {
+      .list {
+        padding: 0;
+
+        background-color: transparent;
+
+        border-radius: 0;
+
+        &[data-orientation='horizontal'] {
+          overflow-x: auto;
+          overflow-y: clip;
+
+          border-bottom: 1px solid var(--color-gray-200);
+
+          scrollbar-width: none;
+
+          &::-webkit-scrollbar {
+            display: none;
+          }
+        }
+
+        &[data-orientation='vertical'] {
+          border-left: 1px solid var(--color-gray-200);
+        }
+      }
+
+      .tab {
+        border-radius: 0;
+      }
+
+      .indicator {
+        background-color: var(--color-primary-500);
+
+        border: none;
+        border-radius: 0;
+
+        box-shadow: none;
+      }
+
+      &[data-orientation='horizontal'] {
+        .indicator {
+          top: auto;
+          bottom: 0;
+
+          height: 2px;
+        }
+      }
+
+      &[data-orientation='vertical'] {
+        .indicator {
+          left: 0;
+          top: var(--active-tab-top);
+
+          width: 2px;
+          height: var(--active-tab-height);
+        }
+      }
+    }
+  }
+}

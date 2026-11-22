@@ -1,0 +1,7 @@
+import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+
+export type UploadProps<C extends ElementType = 'fieldset'> = {
+  as?: C;
+  ref?: Ref<any>;
+  isDisabled?: boolean;
+} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref' | 'disabled'>;

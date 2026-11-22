@@ -1,0 +1,108 @@
+@layer mosuk-ui {
+  .inputGroup {
+    --input-group-fade: white;
+
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    &[data-width='auto'] {
+      width: fit-content;
+    }
+
+    &[data-width='full'] {
+      width: 100%;
+    }
+
+    &:has(:global(.mosuk-input[data-variant='primary'])) {
+      --input-group-fade: white;
+    }
+
+    &:has(:global(.mosuk-input[data-variant='secondary'])) {
+      --input-group-fade: var(--color-gray-100);
+    }
+
+    &:has(:global(.mosuk-input[data-variant='danger'])) {
+      --input-group-fade: var(--color-red-100);
+    }
+
+    &:has(:global(.mosuk-input[data-variant='outline'])),
+    &:has(:global(.mosuk-input[data-variant='ghost'])) {
+      --input-group-fade: transparent;
+    }
+
+  }
+
+  .prefix,
+  .postfix {
+    position: absolute;
+    top: 1px;
+    z-index: 1;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--spacing) * 0.25 * var(--input-size));
+
+    height: calc(100% - 2px);
+
+    color: var(--color-gray-500);
+    font-size: calc(var(--spacing) * 0.425 * var(--input-size));
+    line-height: 1;
+    white-space: nowrap;
+
+    cursor: text;
+    user-select: none;
+
+    :where(svg) {
+      width: calc(var(--spacing) * 0.425 * var(--input-size));
+      height: calc(var(--spacing) * 0.425 * var(--input-size));
+      min-width: calc(var(--spacing) * 0.425 * var(--input-size));
+      min-height: calc(var(--spacing) * 0.425 * var(--input-size));
+    }
+
+    :where(button, a) {
+      cursor: pointer;
+      user-select: auto;
+    }
+  }
+
+  .prefix {
+    left: 1px;
+
+    padding-inline-start: calc(var(--spacing) * 0.425 * var(--input-size));
+    padding-inline-end: calc(var(--spacing) * 0.425 * var(--input-size));
+
+    border-start-start-radius: var(--radius-xl);
+    border-end-start-radius: var(--radius-xl);
+  }
+
+  .postfix {
+    right: 1px;
+
+    padding-inline-start: calc(var(--spacing) * 0.425 * var(--input-size));
+    padding-inline-end: calc(var(--spacing) * 0.425 * var(--input-size));
+
+    border-start-end-radius: var(--radius-xl);
+    border-end-end-radius: var(--radius-xl);
+
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 100%;
+      bottom: 0;
+
+      width: calc(var(--spacing) * 3);
+
+      content: '';
+
+      background: linear-gradient(to left,
+          var(--input-group-fade),
+          transparent);
+
+      pointer-events: none;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@layer mosuk-ui {
+
+      @property --value {
+          syntax: "<number>";
+          initial-value: 0;
+          inherits: false;
+      }
+
+      .counter {
+          transition: --value 200ms cubic-bezier(0.22, 0.61, 0.36, 1);
+
+          &:not(:hover) {
+              transition: --value 600ms cubic-bezier(0.22, 0.61, 0.36, 1);
+          }
+      }
+    }

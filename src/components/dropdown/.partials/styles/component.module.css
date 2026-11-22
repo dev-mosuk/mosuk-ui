@@ -1,0 +1,36 @@
+@layer mosuk-ui {
+  .trigger {
+    cursor: pointer;
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+
+    .content {
+      width: fit-content;
+      min-width: calc(var(--spacing) * 32);
+
+      padding: calc(var(--spacing) * 1);
+
+      background-color: var(--color-white);
+
+      border: 0.75px solid var(--color-gray-100);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 0 50px -12px color-mix(in oklab, var(--color-gray-200) 50%, transparent);
+
+      transform-origin: var(--transform-origin);
+
+      transition: all 200ms ease-in-out;
+
+      &[data-starting-style],
+      &[data-ending-style] {
+        opacity: 0;
+
+        transform: scale(0.9);
+      }
+    }
+  }
+}

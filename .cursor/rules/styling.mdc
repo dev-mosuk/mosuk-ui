@@ -1,0 +1,133 @@
+---
+description: CSS Layers, z-index и mosuk-* классы в mosuk-ui
+globs:
+  - 'src/**/*.module.css'
+  - 'src/index.css'
+  - 'src/styles/**'
+alwaysApply: false
+---
+
+# styling — CSS Layers
+
+Источник истины: [README.md](../../README.md) §1–3.
+
+## Слои каскада
+
+```css
+@layer theme, base, mosuk-ui, components, utilities;
+```
+
+Все стили компонентов — внутри `@layer mosuk-ui`.
+
+## z-index
+
+| Диапазон | Назначение |
+| -------- | ---------- |
+| 0–99 | контент, карточки, формы |
+| 100–199 | dropdown, popover, tooltip |
+| 200+ | dialog, drawer, modal |
+
+## CSS module — шаблон
+
+```css
+@layer mosuk-ui {
+  .typography { /* … */ }
+  .typography .child { /* nested */ }
+}
+```
+
+- Host-класс нового кода — `.{feature}` в camelCase от folder (`typography` → `.typography`, `checkbox` → `.checkbox`, `input-mask` → `.inputMask`)
+- Legacy `.root` не мигрируем массово; при правке стилей feature можно переименовать host в том же PR
+- Вложенность через `.{feature} .child`, не глобальные селекторы
+- Файл: `{feature}/.partials/styles/component.module.css`
+
+## CSS tree (host + nested)
+
+Один host-класс на блок (`.typography` / `.checkbox` / `.composer` / …). Состояния и варианты — nested под host: `&[data-…]`, `&:hover`, `&:disabled`. Дети — nested `.child` внутри host (или `.host .child`).
+
+```css
+.composer {
+  /* props… */
+  &[data-expanded='true'] { /* … */ }
+  .icon { /* … */ }
+  .textarea { /* … */ }
+}
+```
+
+В TSX: один `styles.composer` + `data-expanded={…}` на DOM — не второй класс модуля.
+
+Запрещено:
+
+- `*With*`, `*Expanded` / `*Active` как отдельные module-классы для того же узла
+- плоская сетка `composer {}` + `composerFoo {}` вместо дерева
+- `styles.composerWith…` в TSX вместо `data-*`
+
+Эталон дерева: `src/components/chat/.partials/styles/component.module.css` → `.composer`.
+
+## Порядок свойств в CSS module
+
+Пустая строка между группами. Внутри группы — без пустых строк.
+
+1. **overflow** — `overflow*`, `overscroll*`, `scrollbar-*`
+2. **position** — `position`, `inset*`, `top`/`right`/`bottom`/`left`, `z-index`
+3. **layout** — `display`, flex/grid props, `gap`, `align-*`, `justify-*`, `place-*`
+4. **size** — `width`/`height`, `min-*`/`max-*`, `flex-basis`/`grow`/`shrink`, `resize`
+5. **spacing** — `margin*`, `padding*`
+6. **type** — `color`, `font-*`, `line-height`, `text-*`, `white-space`, `letter-spacing`
+7. **background** — `background*`
+8. **border** — `border*`, `border-radius`, `outline`
+9. **shadow** — `box-shadow`
+10. **filters** — `opacity`, `filter`, `backdrop-filter`, `transform`
+11. **interaction** — `cursor`, `pointer-events`, `user-select`
+12. **motion** — `transition*`, `animation*`
+
+Запрещено: смешивать spacing/overflow в блок `display`/`grid`; склеивать background / border / shadow; сваливать filters / interaction / motion в одну кучу.
+
+Эталон порядка: `src/components/chat/.partials/styles/component.module.css` → `.composer`.
+
+## classNames в TSX
+
+```tsx
+className={classNames(
+  'mosuk-typography',
+  '@container/typography',
+  'group/typography',
+  styles.typography,
+  rest?.className,
+)}
+```
+
+Порядок: **mosuk-{feature}** → **@container/{feature}** → **group/{feature}** → **styles.\*** → **rest.className** последним.
+
+Маркеры `group/{feature}` и `@container/{feature}` — на **визуальном DOM-корне** feature (не на каждый sub-part, не на headless Root). Для Base UI portal-оверлеев (drawer/dialog/dropdown) host = **Portal**.
+
+## Skeleton и стили
+
+Feature skeleton в `src/components/` нет. Стили shimmer — `src/components/skeleton/`. Стили карты — `src/components/yandex-maps/.partials/styles/skeleton.module.css`.
+
+## Глобальные стили
+
+- `src/index.css` — объявление layers, `@theme`, imports
+- `src/styles/` — tokens, base — **не** дублировать в module без необходимости
+- Tailwind utility-классы в TSX — допустимы для layout; визуальные токены компонента — в module + layers
+
+## Typography
+
+- `font-size` — только `var(--text-*)` (`--text-4xs` … `--text-4xl` из `src/index.css`)
+- `line-height` — `var(--leading-*)` (`--leading-normal`, `--leading-relaxed`, …) или безразмерный коэффициент (`1`, `1.45`)
+- **Запрещено:** `font-size` / `line-height` через `calc(var(--spacing) * N)`  
+  Исключение: относительный scale размера контрола (`calc(var(--spacing) * 0.375 * var(--button-size))` и аналоги в `[size]/`)
+
+## Radius
+
+- `border-radius` — только `var(--radius-*)` (`--radius-xs` … `--radius-4xl` из `src/index.css`)
+- Pill / full: `9999px` или `calc(infinity * 1px)`
+- **Запрещено:** `border-radius: calc(var(--spacing) * N)`
+
+## Запрещено
+
+- Стили вне `@layer mosuk-ui` для component modules
+- Hardcoded z-index вне согласованных диапазонов README
+- `!important` без крайней необходимости
+- Плоские state-классы модуля (`*With*`, `*Expanded`) вместо nested `&[data-*]`
+- `font-size` / `line-height` / `border-radius` из `calc(var(--spacing) * N)` (см. Typography / Radius)

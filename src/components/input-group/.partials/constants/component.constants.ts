@@ -1,0 +1,1 @@
+export const INPUT_GROUP_DEFAULT_SIZE = 9;

@@ -1,0 +1,309 @@
+@layer mosuk-ui {
+  .stepper {
+    --stepper-primary-color: var(--color-primary-500);
+    --stepper-secondary-color: var(--color-gray-200);
+
+    --stepper-duration-line: 450ms;
+    --stepper-duration-step: 500ms;
+    --stepper-duration-delay: 300ms;
+    --stepper-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --stepper-shift: 100%;
+
+    width: 100%;
+    min-width: 0;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    > .track {
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+
+      display: flex;
+      align-items: center;
+
+      width: 100%;
+
+      cursor: grab;
+      user-select: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      &[data-dragging] {
+        cursor: grabbing;
+      }
+    }
+
+    &[data-orientation='horizontal'] {
+      > .track {
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+
+        flex-direction: row;
+      }
+
+      .progress {
+        flex-direction: row;
+
+        height: calc(var(--stepper-stroke) * 1px);
+        min-width: calc(var(--spacing) * 0.67 * var(--stepper-size));
+      }
+
+      .step {
+        background-color: transparent;
+        background-image:
+          linear-gradient(var(--color-white), var(--color-white)),
+          linear-gradient(to right in oklab,
+            var(--stepper-primary-color) 0%,
+            var(--stepper-primary-color) 38.333%,
+            var(--stepper-secondary-color) 50%,
+            var(--stepper-secondary-color) 100%);
+        background-repeat: no-repeat;
+        background-position: 0 0, var(--stepper-shift) 0;
+        background-size: 100% 100%, 300% 100%;
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+      }
+
+      &[data-variant='fill'] .step::before {
+        background-image: radial-gradient(ellipse 80% 80% at 72% 50%,
+            transparent 0,
+            transparent 28%,
+            color-mix(in oklab, var(--stepper-primary-color) 12%, var(--stepper-secondary-color)) 62%,
+            color-mix(in oklab, var(--stepper-primary-color) 28%, var(--stepper-secondary-color)) 100%);
+      }
+    }
+
+    &[data-orientation='vertical'] {
+      height: 100%;
+      min-height: 0;
+
+      > .track {
+        overflow-y: auto;
+        overscroll-behavior-y: contain;
+
+        flex-direction: column;
+
+        height: 100%;
+      }
+
+      .progress {
+        flex-direction: column;
+
+        width: calc(var(--stepper-stroke) * 1px);
+        min-height: calc(var(--spacing) * 0.67 * var(--stepper-size));
+      }
+
+      .step {
+        background-color: transparent;
+        background-image:
+          linear-gradient(var(--color-white), var(--color-white)),
+          linear-gradient(to bottom in oklab,
+            var(--stepper-primary-color) 0%,
+            var(--stepper-primary-color) 38.333%,
+            var(--stepper-secondary-color) 50%,
+            var(--stepper-secondary-color) 100%);
+        background-repeat: no-repeat;
+        background-position: 0 0, 0 var(--stepper-shift);
+        background-size: 100% 100%, 100% 300%;
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+      }
+
+      &[data-variant='fill'] .step::before {
+        background-image: radial-gradient(ellipse 80% 80% at 50% 72%,
+            transparent 0,
+            transparent 28%,
+            color-mix(in oklab, var(--stepper-primary-color) 12%, var(--stepper-secondary-color)) 62%,
+            color-mix(in oklab, var(--stepper-primary-color) 28%, var(--stepper-secondary-color)) 100%);
+      }
+    }
+
+    &[data-variant='fill'] {
+      --stepper-secondary-color: var(--color-gray-100);
+
+      .step {
+        background-color: var(--stepper-secondary-color);
+        background-image: none;
+
+        &::before {
+          content: '';
+
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+
+          border-radius: inherit;
+
+          opacity: 0;
+          pointer-events: none;
+
+          transition: opacity var(--stepper-duration-step) var(--stepper-ease);
+        }
+
+        &[data-status='active']::before {
+          opacity: 1;
+
+          transition:
+            opacity var(--stepper-duration-step) var(--stepper-ease) var(--stepper-duration-delay);
+        }
+
+        &[data-status='complete'] {
+          color: var(--color-white);
+
+          background-color: var(--stepper-primary-color);
+        }
+      }
+    }
+
+    &[data-orientation='horizontal'] .fill {
+      transform-origin: left center;
+    }
+
+    &[data-orientation='vertical'] .fill {
+      transform-origin: top center;
+    }
+
+    .step {
+      overflow: hidden;
+
+      position: relative;
+
+      box-sizing: border-box;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+
+      width: calc(var(--spacing) * var(--stepper-size));
+      height: calc(var(--spacing) * var(--stepper-size));
+
+      margin: 0;
+      padding: 0;
+
+      color: var(--color-black);
+      font: inherit;
+      line-height: 1;
+
+      background-color: transparent;
+
+      border-width: calc(var(--stepper-stroke) * 1px);
+      border-style: solid;
+      border-color: transparent;
+      border-radius: 9999px;
+
+      appearance: none;
+
+      cursor: default;
+
+      transition: --stepper-shift var(--stepper-duration-step) var(--stepper-ease),
+        background-color var(--stepper-duration-step) var(--stepper-ease),
+        border-color var(--stepper-duration-step) var(--stepper-ease),
+        color var(--stepper-duration-step) var(--stepper-ease),
+        opacity 200ms ease;
+
+      &[data-status='active'] {
+        color: var(--stepper-primary-color);
+
+        --stepper-shift: 50%;
+
+        transition:
+          --stepper-shift var(--stepper-duration-step) var(--stepper-ease) var(--stepper-duration-delay),
+          background-color var(--stepper-duration-step) var(--stepper-ease),
+          border-color var(--stepper-duration-step) var(--stepper-ease),
+          color var(--stepper-duration-step) var(--stepper-ease) var(--stepper-duration-delay),
+          opacity 200ms ease;
+      }
+
+      &[data-status='complete'] {
+        color: var(--stepper-primary-color);
+
+        border-color: var(--stepper-primary-color);
+      }
+
+      &[data-clickable='true'] {
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.85;
+        }
+
+        &:active {
+          opacity: 0.75;
+        }
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--stepper-primary-color);
+        outline-offset: 2px;
+      }
+
+      &>* {
+        position: relative;
+        z-index: 1;
+      }
+
+      .check {
+        width: 65%;
+        height: 65%;
+      }
+    }
+
+    .progress {
+      display: flex;
+      flex: 1 1 auto;
+
+      margin: 0;
+
+      pointer-events: none;
+
+      .track {
+        overflow: hidden;
+
+        position: relative;
+
+        flex: 1 1 auto;
+
+        background-color: var(--stepper-secondary-color);
+      }
+
+      .fill {
+        position: absolute;
+        inset: 0;
+
+        background-color: var(--stepper-primary-color);
+
+        transition: transform var(--stepper-duration-line) var(--stepper-ease);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .step,
+      .step::before,
+      .step[data-status='active'],
+      .step[data-status='active']::before,
+      .step[data-status='complete'],
+      &[data-variant='fill'] .step[data-status='complete'],
+      .fill {
+        transition: none;
+        animation: none;
+      }
+    }
+  }
+
+  @property --stepper-shift {
+    syntax: '<percentage>';
+    inherits: true;
+    initial-value: 100%;
+  }
+}

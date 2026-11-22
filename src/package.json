@@ -1,6 +1,6 @@
 {
   "name": "mosuk-ui",
-  "version": "1.0.16",
+  "version": "1.0.18",
   "author": "mosuk",
   "license": "MIT",
   "private": false,
@@ -20,7 +20,6 @@
     "react-hook-form": "^7.56.4",
     "react-imask": "^7.6.1",
     "react-textarea-autosize": "^8.5.9",
-    "swiper": "^11.2.6",
     "swr": "^2.3.8"
   },
   "peerDependencies": {
@@ -41,369 +40,299 @@
       "style": "./index.css",
       "default": "./index.css"
     },
-    "./components/actions/button/component": {
+    "./components/accordion": {
       "import": {
-        "default": "./components/actions/button/component/index.ts"
+        "default": "./components/accordion/index.ts"
       }
     },
-    "./components/actions/button/skeleton": {
+    "./components/autocomplete": {
       "import": {
-        "default": "./components/actions/button/skeleton/index.ts"
+        "default": "./components/autocomplete/index.ts"
       }
     },
-    "./components/actions/checkbox/component": {
+    "./components/avatar": {
       "import": {
-        "default": "./components/actions/checkbox/component/index.ts"
+        "default": "./components/avatar/index.ts"
       }
     },
-    "./components/actions/checkbox/skeleton": {
+    "./components/avatar-group": {
       "import": {
-        "default": "./components/actions/checkbox/skeleton/index.ts"
+        "default": "./components/avatar-group/index.ts"
       }
     },
-    "./components/actions/combobox/component": {
+    "./components/breadcrumbs": {
       "import": {
-        "default": "./components/actions/combobox/component/index.ts"
+        "default": "./components/breadcrumbs/index.ts"
       }
     },
-    "./components/actions/combobox/skeleton": {
+    "./components/button": {
       "import": {
-        "default": "./components/actions/combobox/skeleton/index.ts"
+        "default": "./components/button/index.ts"
       }
     },
-    "./components/actions/icon/component": {
+    "./components/button-group": {
       "import": {
-        "default": "./components/actions/icon/component/index.ts"
+        "default": "./components/button-group/index.ts"
       }
     },
-    "./components/actions/icon/skeleton": {
+    "./components/calendar": {
       "import": {
-        "default": "./components/actions/icon/skeleton/index.ts"
+        "default": "./components/calendar/index.ts"
       }
     },
-    "./components/actions/input/(mask)/(date)/component": {
+    "./components/card": {
       "import": {
-        "default": "./components/actions/input/(mask)/(date)/component/index.ts"
+        "default": "./components/card/index.ts"
       }
     },
-    "./components/actions/input/(mask)/(date)/skeleton": {
+    "./components/chat": {
       "import": {
-        "default": "./components/actions/input/(mask)/(date)/skeleton/index.ts"
+        "default": "./components/chat/index.ts"
       }
     },
-    "./components/actions/input/(mask)/(phone)/component": {
+    "./components/checkbox": {
       "import": {
-        "default": "./components/actions/input/(mask)/(phone)/component/index.ts"
+        "default": "./components/checkbox/index.ts"
       }
     },
-    "./components/actions/input/(mask)/(phone)/skeleton": {
+    "./components/combobox": {
       "import": {
-        "default": "./components/actions/input/(mask)/(phone)/skeleton/index.ts"
+        "default": "./components/combobox/index.ts"
       }
     },
-    "./components/actions/input/(mask)/component": {
+    "./components/counter": {
       "import": {
-        "default": "./components/actions/input/(mask)/component/index.ts"
+        "default": "./components/counter/index.ts"
       }
     },
-    "./components/actions/input/(mask)/skeleton": {
+    "./components/dialog": {
       "import": {
-        "default": "./components/actions/input/(mask)/skeleton/index.ts"
+        "default": "./components/dialog/index.ts"
       }
     },
-    "./components/actions/input/(search)/component": {
+    "./components/dl": {
       "import": {
-        "default": "./components/actions/input/(search)/component/index.ts"
+        "default": "./components/dl/index.ts"
       }
     },
-    "./components/actions/input/(search)/skeleton": {
+    "./components/drawer": {
       "import": {
-        "default": "./components/actions/input/(search)/skeleton/index.ts"
+        "default": "./components/drawer/index.ts"
       }
     },
-    "./components/actions/input/component": {
+    "./components/dropdown": {
       "import": {
-        "default": "./components/actions/input/component/index.ts"
+        "default": "./components/dropdown/index.ts"
       }
     },
-    "./components/actions/input/skeleton": {
+    "./components/empty": {
       "import": {
-        "default": "./components/actions/input/skeleton/index.ts"
+        "default": "./components/empty/index.ts"
       }
     },
-    "./components/actions/otp/component": {
+    "./components/fieldset": {
       "import": {
-        "default": "./components/actions/otp/component/index.ts"
+        "default": "./components/fieldset/index.ts"
       }
     },
-    "./components/actions/otp/skeleton": {
+    "./components/file": {
       "import": {
-        "default": "./components/actions/otp/skeleton/index.ts"
+        "default": "./components/file/index.ts"
       }
     },
-    "./components/actions/select/component": {
+    "./components/hint": {
       "import": {
-        "default": "./components/actions/select/component/index.ts"
+        "default": "./components/hint/index.ts"
       }
     },
-    "./components/actions/select/skeleton": {
+    "./components/image": {
       "import": {
-        "default": "./components/actions/select/skeleton/index.ts"
+        "default": "./components/image/index.ts"
       }
     },
-    "./components/actions/switch/component": {
+    "./components/input": {
       "import": {
-        "default": "./components/actions/switch/component/index.ts"
+        "default": "./components/input/index.ts"
       }
     },
-    "./components/actions/switch/skeleton": {
+    "./components/input-group": {
       "import": {
-        "default": "./components/actions/switch/skeleton/index.ts"
+        "default": "./components/input-group/index.ts"
       }
     },
-    "./components/actions/textarea/(autosize)/component": {
+    "./components/list-box": {
       "import": {
-        "default": "./components/actions/textarea/(autosize)/component/index.ts"
+        "default": "./components/list-box/index.ts"
       }
     },
-    "./components/actions/textarea/component": {
+    "./components/observer": {
       "import": {
-        "default": "./components/actions/textarea/component/index.ts"
+        "default": "./components/observer/index.ts"
       }
     },
-    "./components/actions/textarea/skeleton": {
+    "./components/otp": {
       "import": {
-        "default": "./components/actions/textarea/skeleton/index.ts"
+        "default": "./components/otp/index.ts"
       }
     },
-    "./components/actions/toggle/component": {
+    "./components/progress-bar": {
       "import": {
-        "default": "./components/actions/toggle/component/index.ts"
+        "default": "./components/progress-bar/index.ts"
       }
     },
-    "./components/actions/toggle/skeleton": {
+    "./components/progress-circle": {
       "import": {
-        "default": "./components/actions/toggle/skeleton/index.ts"
+        "default": "./components/progress-circle/index.ts"
       }
     },
-    "./components/actions/upload/component": {
+    "./components/scroll-shadow": {
       "import": {
-        "default": "./components/actions/upload/component/index.ts"
+        "default": "./components/scroll-shadow/index.ts"
       }
     },
-    "./components/collections/accordion/component": {
+    "./components/section": {
       "import": {
-        "default": "./components/collections/accordion/component/index.ts"
+        "default": "./components/section/index.ts"
       }
     },
-    "./components/collections/accordion/skeleton": {
+    "./components/select": {
       "import": {
-        "default": "./components/collections/accordion/skeleton/index.ts"
+        "default": "./components/select/index.ts"
       }
     },
-    "./components/collections/breadcrumbs/component": {
+    "./components/separator": {
       "import": {
-        "default": "./components/collections/breadcrumbs/component/index.ts"
+        "default": "./components/separator/index.ts"
       }
     },
-    "./components/collections/breadcrumbs/skeleton": {
+    "./components/skeleton": {
       "import": {
-        "default": "./components/collections/breadcrumbs/skeleton/index.ts"
+        "default": "./components/skeleton/index.ts"
       }
     },
-    "./components/collections/tabs/horizontal/component": {
+    "./components/slider": {
       "import": {
-        "default": "./components/collections/tabs/horizontal/component/index.ts"
+        "default": "./components/slider/index.ts"
       }
     },
-    "./components/collections/tabs/horizontal/skeleton": {
+    "./components/slider-cell": {
       "import": {
-        "default": "./components/collections/tabs/horizontal/skeleton/index.ts"
+        "default": "./components/slider-cell/index.ts"
       }
     },
-    "./components/collections/tabs/vertical/component": {
+    "./components/stepper": {
       "import": {
-        "default": "./components/collections/tabs/vertical/component/index.ts"
+        "default": "./components/stepper/index.ts"
       }
     },
-    "./components/collections/tabs/vertical/skeleton": {
+    "./components/switch": {
       "import": {
-        "default": "./components/collections/tabs/vertical/skeleton/index.ts"
+        "default": "./components/switch/index.ts"
       }
     },
-    "./components/core/skeleton/component": {
+    "./components/tabs": {
       "import": {
-        "default": "./components/core/skeleton/component/index.ts"
+        "default": "./components/tabs/index.ts"
       }
     },
-    "./components/display/dl/component": {
+    "./components/tbank-terminal": {
       "import": {
-        "default": "./components/display/dl/component/index.ts"
+        "default": "./components/tbank-terminal/index.ts"
       }
     },
-    "./components/display/dl/skeleton": {
+    "./components/textarea": {
       "import": {
-        "default": "./components/display/dl/skeleton/index.ts"
+        "default": "./components/textarea/index.ts"
       }
     },
-    "./components/display/empty/component": {
+    "./components/toast": {
       "import": {
-        "default": "./components/display/empty/component/index.ts"
+        "default": "./components/toast/index.ts"
       }
     },
-    "./components/display/file/(files)/component": {
+    "./components/toggle": {
       "import": {
-        "default": "./components/display/file/(files)/component/index.ts"
+        "default": "./components/toggle/index.ts"
       }
     },
-    "./components/display/file/(files)/skeleton": {
+    "./components/tooltip": {
       "import": {
-        "default": "./components/display/file/(files)/skeleton/index.ts"
+        "default": "./components/tooltip/index.ts"
       }
     },
-    "./components/display/file/component": {
+    "./components/typography": {
       "import": {
-        "default": "./components/display/file/component/index.ts"
+        "default": "./components/typography/index.ts"
       }
     },
-    "./components/display/file/skeleton": {
+    "./components/upload": {
       "import": {
-        "default": "./components/display/file/skeleton/index.ts"
+        "default": "./components/upload/index.ts"
       }
     },
-    "./components/display/image/component": {
+    "./components/video": {
       "import": {
-        "default": "./components/display/image/component/index.ts"
+        "default": "./components/video/index.ts"
       }
     },
-    "./components/display/image/skeleton": {
+    "./components/yandex-maps": {
       "import": {
-        "default": "./components/display/image/skeleton/index.ts"
+        "default": "./components/yandex-maps/index.ts"
       }
     },
-    "./components/display/video/component": {
+    "./hooks/screen-size": {
       "import": {
-        "default": "./components/display/video/component/index.ts"
+        "default": "./hooks/screen-size/index.ts"
       }
     },
-    "./components/display/video/skeleton": {
+    "./hooks/storage-cookie": {
       "import": {
-        "default": "./components/display/video/skeleton/index.ts"
+        "default": "./hooks/storage-cookie/index.ts"
       }
     },
-    "./components/forms/fieldset/component": {
+    "./hooks/storage-local": {
       "import": {
-        "default": "./components/forms/fieldset/component/index.ts"
+        "default": "./hooks/storage-local/index.ts"
       }
     },
-    "./components/overlays/alert/component": {
+    "./hooks/toasts": {
       "import": {
-        "default": "./components/overlays/alert/component/index.ts"
+        "default": "./hooks/toasts/index.ts"
       }
     },
-    "./components/overlays/dialog/component": {
+    "./providers/tbank": {
       "import": {
-        "default": "./components/overlays/dialog/component/index.ts"
+        "default": "./providers/tbank/index.ts"
       }
     },
-    "./components/overlays/drawer/component": {
+    "./providers/toasts": {
       "import": {
-        "default": "./components/overlays/drawer/component/index.ts"
+        "default": "./providers/toasts/index.ts"
       }
     },
-    "./components/overlays/dropdown/component": {
+    "./providers/yandex-maps": {
       "import": {
-        "default": "./components/overlays/dropdown/component/index.ts"
+        "default": "./providers/yandex-maps/index.ts"
       }
     },
-    "./components/overlays/observer/component": {
+    "./providers/yandex-metrika": {
       "import": {
-        "default": "./components/overlays/observer/component/index.ts"
+        "default": "./providers/yandex-metrika/index.ts"
       }
     },
-    "./components/texts/counter/component": {
+    "./services/storage-cookie": {
       "import": {
-        "default": "./components/texts/counter/component/index.ts"
+        "default": "./services/storage-cookie/index.ts"
       }
     },
-    "./components/texts/hint/component": {
+    "./services/storage-local": {
       "import": {
-        "default": "./components/texts/hint/component/index.ts"
+        "default": "./services/storage-local/index.ts"
       }
     },
-    "./components/texts/hint/skeleton": {
+    "./services/toasts": {
       "import": {
-        "default": "./components/texts/hint/skeleton/index.ts"
-      }
-    },
-    "./hooks/alerts": {
-      "import": {
-        "default": "./hooks/alerts/index.ts"
-      }
-    },
-    "./hooks/storage/cookie": {
-      "import": {
-        "default": "./hooks/storage/cookie/index.ts"
-      }
-    },
-    "./hooks/storage/local": {
-      "import": {
-        "default": "./hooks/storage/local/index.ts"
-      }
-    },
-    "./integrations/tbank/components/terminal/component": {
-      "import": {
-        "default": "./integrations/tbank/components/terminal/component/index.ts"
-      }
-    },
-    "./integrations/tbank/components/terminal/skeleton": {
-      "import": {
-        "default": "./integrations/tbank/components/terminal/skeleton/index.ts"
-      }
-    },
-    "./integrations/tbank/provider": {
-      "import": {
-        "default": "./integrations/tbank/provider/index.ts"
-      }
-    },
-    "./integrations/yandex/maps/components/component": {
-      "import": {
-        "default": "./integrations/yandex/maps/components/component/index.ts"
-      }
-    },
-    "./integrations/yandex/maps/components/skeleton": {
-      "import": {
-        "default": "./integrations/yandex/maps/components/skeleton/index.ts"
-      }
-    },
-    "./integrations/yandex/maps/provider": {
-      "import": {
-        "default": "./integrations/yandex/maps/provider/index.ts"
-      }
-    },
-    "./integrations/yandex/metrika/provider": {
-      "import": {
-        "default": "./integrations/yandex/metrika/provider/index.ts"
-      }
-    },
-    "./providers/alerts": {
-      "import": {
-        "default": "./providers/alerts/index.ts"
-      }
-    },
-    "./services/alerts": {
-      "import": {
-        "default": "./services/alerts/index.ts"
-      }
-    },
-    "./services/storage/cookie": {
-      "import": {
-        "default": "./services/storage/cookie/index.ts"
-      }
-    },
-    "./services/storage/local": {
-      "import": {
-        "default": "./services/storage/local/index.ts"
+        "default": "./services/toasts/index.ts"
       }
     }
   }

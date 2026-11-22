@@ -1,0 +1,43 @@
+'use client';
+
+import classNames from 'classnames';
+import React from 'react';
+import { CalendarGridHeader as CalendarGridHeaderPrimitive } from 'react-aria-components/Calendar';
+
+import { CalendarDayViewGridHeader } from '@/components/calendar/.partials/components/grid-header-day-view/component';
+import type { CalendarGridHeaderProps } from '@/components/calendar/.partials/components/grid-header/component.interface';
+import { useCalendarDayView } from '@/components/calendar/.partials/hooks/hook';
+import styles from '@/components/calendar/.partials/styles/component.module.css';
+
+export function CalendarGridHeader({
+  children,
+  className,
+  ...rest
+}: CalendarGridHeaderProps) {
+  const dayView = useCalendarDayView();
+  const headerClassName = classNames(
+    'mosuk-calendar-grid-header',
+    styles.gridHeader,
+    className,
+  );
+
+  if (dayView && dayView.days >= 7) {
+    return (
+      <CalendarDayViewGridHeader
+        className={headerClassName}
+        firstDayOfWeek={dayView.firstDayOfWeek}
+        timeZone={dayView.timeZone}
+        visibleRange={dayView.visibleRange}
+        weekdayStyle={dayView.weekdayStyle}
+      >
+        {children}
+      </CalendarDayViewGridHeader>
+    );
+  }
+
+  return (
+    <CalendarGridHeaderPrimitive {...rest} className={headerClassName}>
+      {children}
+    </CalendarGridHeaderPrimitive>
+  );
+}
