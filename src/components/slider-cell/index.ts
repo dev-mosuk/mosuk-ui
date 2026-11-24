@@ -10,6 +10,7 @@ import { CellSliderTrack } from '@/components/slider-cell/.partials/components/t
 import { CellSliderTrackProps } from '@/components/slider-cell/.partials/components/track/component.interface';
 import { CellSliderValue } from '@/components/slider-cell/.partials/components/value/component';
 import { CellSliderValueProps } from '@/components/slider-cell/.partials/components/value/component.interface';
+import { CellSliderVariant } from '@/components/slider-cell/.partials/enums/component.enums';
 
 export const CellSlider = Object.assign(Component, {
   Label: CellSliderLabel,
@@ -17,6 +18,9 @@ export const CellSlider = Object.assign(Component, {
   Track: CellSliderTrack,
   Indicator: CellSliderIndicator,
   Thumb: CellSliderThumb,
+  ENUMS: {
+    Variant: CellSliderVariant,
+  },
 });
 
 export namespace CellSlider {

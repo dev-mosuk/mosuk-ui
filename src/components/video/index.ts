@@ -1,17 +1,8 @@
-import {
-  Video as BaseVideo,
-  VideoVideo as BaseVideoVideo,
-} from '@/components/video/component';
-import type { VideoProps } from '@/components/video/component.interface';
+import { Video as Component } from '@/components/video/.partials/components/component';
+import type { VideoProps } from '@/components/video/.partials/components/component.interface';
 
-export function Video(props: VideoProps) {
-  return BaseVideo(props);
-}
-
-Video.Video = BaseVideoVideo;
+export const Video = Component;
 
 export namespace Video {
   export type Props = VideoProps;
-
-  export declare const Video: typeof BaseVideoVideo;
 }

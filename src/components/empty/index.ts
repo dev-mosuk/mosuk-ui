@@ -1,45 +1,48 @@
-import { EmptyButtons } from '@/components/empty/.partials/components/buttons/component';
-import { EmptyButtonsProps } from '@/components/empty/.partials/components/buttons/component.interface';
+import { EmptyButton } from '@/components/empty/.partials/components/button/component';
+import type { EmptyButtonProps } from '@/components/empty/.partials/components/button/component.interface';
 import { Empty as BaseEmpty } from '@/components/empty/.partials/components/component';
 import type { EmptyProps } from '@/components/empty/.partials/components/component.interface';
-import { EmptyContentDescription } from '@/components/empty/.partials/components/content-description/component';
-import { EmptyContentDescriptionProps } from '@/components/empty/.partials/components/content-description/component.interface';
-import { EmptyContentTitle } from '@/components/empty/.partials/components/content-title/component';
-import { EmptyContentTitleProps } from '@/components/empty/.partials/components/content-title/component.interface';
-import { EmptyContent as BaseEmptyContent } from '@/components/empty/.partials/components/content/component';
-import { EmptyContentProps } from '@/components/empty/.partials/components/content/component.interface';
+import { EmptyComment } from '@/components/empty/.partials/components/comment/component';
+import type { EmptyCommentProps } from '@/components/empty/.partials/components/comment/component.interface';
 import { EmptyIcon } from '@/components/empty/.partials/components/icon/component';
-import { EmptyIconProps } from '@/components/empty/.partials/components/icon/component.interface';
+import type { EmptyIconProps } from '@/components/empty/.partials/components/icon/component.interface';
+import { EmptySubject } from '@/components/empty/.partials/components/subject/component';
+import type { EmptySubjectProps } from '@/components/empty/.partials/components/subject/component.interface';
+import {
+  CardAnimation,
+  CardPress,
+  CardVariant,
+} from '@/components/card/.partials/enums/component.enums';
+import type { ElementType } from 'react';
 
 export const Empty = Object.assign(BaseEmpty, {
   Icon: EmptyIcon,
-  Content: Object.assign(BaseEmptyContent, {
-    Title: EmptyContentTitle,
-    Description: EmptyContentDescription,
-  }),
-  Buttons: EmptyButtons,
+  Subject: EmptySubject,
+  Comment: EmptyComment,
+  Button: EmptyButton,
+  ENUMS: {
+    Variant: CardVariant,
+    Animation: CardAnimation,
+    Press: CardPress,
+  },
 });
 
 export namespace Empty {
-  export type Props = EmptyProps;
+  export type Props<C extends ElementType = 'section'> = EmptyProps<C>;
 
   export namespace Icon {
     export type Props = EmptyIconProps;
   }
 
-  export namespace Content {
-    export type Props = EmptyContentProps;
-
-    export namespace Title {
-      export type Props = EmptyContentTitleProps;
-    }
-
-    export namespace Description {
-      export type Props = EmptyContentDescriptionProps;
-    }
+  export namespace Subject {
+    export type Props<C extends ElementType = 'p'> = EmptySubjectProps<C>;
   }
 
-  export namespace Buttons {
-    export type Props = EmptyButtonsProps;
+  export namespace Comment {
+    export type Props<C extends ElementType = 'p'> = EmptyCommentProps<C>;
+  }
+
+  export namespace Button {
+    export type Props<C = 'button'> = EmptyButtonProps<C>;
   }
 }

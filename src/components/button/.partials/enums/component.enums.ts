@@ -1,16 +1,19 @@
 export enum ButtonVariant {
   Primary = 'primary',
   Secondary = 'secondary',
+  Tertiary = 'tertiary',
   Outline = 'outline',
   Ghost = 'ghost',
-  Danger = 'danger',
-  Link = 'link',
 }
 
-export enum ButtonWidth {
-  Auto = 'auto',
-  Full = 'full',
-  Square = 'square',
+export enum ButtonFormat {
+  Button = 'button',
+  Icon = 'icon',
+}
+
+export enum ButtonAnimation {
+  None = 'none',
+  Shimmer = 'shimmer',
 }
 
 export enum ButtonPress {
@@ -18,6 +21,4 @@ export enum ButtonPress {
   Scale = 'scale',
   Highlight = 'highlight',
   Ripple = 'ripple',
-  ScaleHighlight = 'scale-highlight',
-  ScaleRipple = 'scale-ripple',
 }

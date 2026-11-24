@@ -1,0 +1,63 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --specifications-dots: var(--color-zinc-200);
+  }
+
+  :global([data-theme='dark']) {
+    --specifications-dots: var(--color-zinc-700);
+  }
+}
+
+/* Specifications */
+@layer mosuk-ui {
+  .specifications {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 2);
+
+    font-size: var(--text-sm);
+
+    .item {
+      position: relative;
+
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .term {
+      width: fit-content;
+      max-width: 41.666667%;
+
+      padding-right: calc(var(--spacing) * 2);
+
+      hyphens: auto;
+      word-break: break-word;
+    }
+
+    .separator {
+      flex: 1 1 auto;
+      align-self: flex-start;
+
+      min-width: calc(var(--spacing) * 2);
+      height: 0;
+      margin-top: calc(1.1em - 1px);
+
+      color: var(--specifications-dots);
+
+      border-bottom: 1px dotted currentColor;
+    }
+
+    .value {
+      width: fit-content;
+      max-width: 58.333333%;
+
+      padding-left: calc(var(--spacing) * 2);
+
+      text-align: end;
+      hyphens: auto;
+      word-break: break-word;
+    }
+  }
+}

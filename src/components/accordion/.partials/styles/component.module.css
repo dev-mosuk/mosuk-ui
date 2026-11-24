@@ -1,15 +1,93 @@
+/* Tokens */
 @layer mosuk-ui {
+  :global(:root) {
+    --accordion-header-color: var(--color-zinc-900);
+    --accordion-header-color-hover: var(--color-black);
+    --accordion-header-muted: var(--color-zinc-500);
+    --accordion-content-color: var(--color-zinc-700);
+    --accordion-content-bg: var(--color-white);
+  }
 
+  :global([data-theme='dark']) {
+    --accordion-header-color: var(--color-zinc-100);
+    --accordion-header-color-hover: var(--color-white);
+    --accordion-header-muted: var(--color-zinc-400);
+    --accordion-content-color: var(--color-zinc-300);
+    --accordion-content-bg: var(--color-zinc-950);
+  }
+}
+
+/* Accordion */
+@layer mosuk-ui {
   .accordion {
     .item {
       .header {
         width: 100%;
+        margin: 0;
+      }
+
+      .trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: calc(var(--spacing) * 4);
+
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+        color: var(--accordion-header-color);
+        font: inherit;
+        text-align: start;
+
+        background: transparent;
+
+        border: 0;
+        outline: none;
+
+        cursor: pointer;
+
+        transition: color 200ms ease;
+
+        &:hover {
+          color: var(--accordion-header-color-hover);
+        }
+
+        &:focus,
+        &:focus-visible {
+          outline: none;
+        }
+
+        :where(svg) {
+          color: var(--accordion-header-muted);
+
+          transition:
+            color 200ms ease,
+            transform 200ms ease;
+        }
+
+        &:hover :where(svg) {
+          color: var(--accordion-header-color-hover);
+        }
+
+        &[data-panel-open] :where(svg) {
+          transform: rotate(90deg);
+        }
       }
 
       .content {
+        --accordion-content-shadow-size: 40px;
+        --accordion-content-bg: var(--color-white);
+
         overflow: hidden;
 
+        position: relative;
+
         height: var(--accordion-panel-height);
+
+        color: var(--accordion-content-color);
+
+        background-color: var(--accordion-content-bg);
 
         transition: height 150ms ease-out;
 
@@ -17,7 +95,89 @@
         &[data-ending-style] {
           height: 0;
         }
+
+        &[data-shadow='true'] {
+          &::before,
+          &::after {
+            content: '';
+
+            position: absolute;
+            z-index: 2;
+
+            left: 0;
+
+            width: 100%;
+            height: var(--accordion-content-shadow-size);
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition: opacity 150ms ease;
+          }
+
+          &::before {
+            top: 0;
+
+            background: linear-gradient(
+              to bottom,
+              var(--accordion-content-bg),
+              transparent
+            );
+          }
+
+          &::after {
+            bottom: 0;
+
+            background: linear-gradient(
+              to top,
+              var(--accordion-content-bg),
+              transparent
+            );
+          }
+
+          &[data-shadow-active='true'] {
+            &::before,
+            &::after {
+              opacity: 1;
+            }
+          }
+        }
+
+        &[data-variant='primary'] {
+          --accordion-content-bg: var(--color-white);
+        }
+
+        &[data-variant='secondary'] {
+          --accordion-content-bg: var(--color-zinc-50);
+        }
+
+        &[data-variant='tertiary'] {
+          --accordion-content-bg: var(--color-zinc-100);
+        }
       }
     }
   }
+}
+
+@layer mosuk-ui {
+  :global([data-theme='dark']) {
+    .accordion {
+      .item {
+        .content {
+          &[data-variant='primary'] {
+            --accordion-content-bg: var(--color-zinc-950);
+          }
+
+          &[data-variant='secondary'] {
+            --accordion-content-bg: var(--color-zinc-900);
+          }
+
+          &[data-variant='tertiary'] {
+            --accordion-content-bg: var(--color-zinc-800);
+          }
+        }
+      }
+    }
   }
+}

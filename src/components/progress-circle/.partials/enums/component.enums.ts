@@ -1,7 +1,6 @@
-export enum ProgressCircleColor {
-  Default = 'default',
+export enum ProgressCircleVariant {
   Primary = 'primary',
-  Success = 'success',
-  Warning = 'warning',
-  Danger = 'danger',
+  Secondary = 'secondary',
+  Tertiary = 'tertiary',
+  Outline = 'outline',
 }

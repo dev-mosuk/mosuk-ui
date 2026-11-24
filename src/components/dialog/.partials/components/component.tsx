@@ -5,6 +5,7 @@ import React from 'react';
 
 export function Dialog({
   isOpen,
+  defaultOpen,
   keepMounted,
   container,
   children,
@@ -12,7 +13,7 @@ export function Dialog({
 }: DialogProps) {
   return (
     <DialogProvider keepMounted={keepMounted} container={container}>
-      <BaseUIDialog.Root {...rest} open={isOpen}>
+      <BaseUIDialog.Root {...rest} open={isOpen} defaultOpen={defaultOpen}>
         {children}
       </BaseUIDialog.Root>
     </DialogProvider>

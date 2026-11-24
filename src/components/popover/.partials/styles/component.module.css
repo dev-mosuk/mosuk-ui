@@ -1,0 +1,113 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --popover-bg: var(--color-white);
+    --popover-color: var(--color-black);
+
+    --popover-border: var(--color-zinc-100);
+    --popover-radius: var(--radius-xl);
+    --popover-shadow: 0 25px 50px -12px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+  }
+
+  :global([data-theme='dark']) {
+    --popover-bg: var(--color-zinc-950);
+    --popover-color: var(--color-white);
+
+    --popover-border: var(--color-zinc-900);
+    --popover-radius: var(--radius-xl);
+    --popover-shadow: 0 0 #0000;
+  }
+}
+
+/* Popover */
+@layer mosuk-ui {
+  .trigger {
+    cursor: pointer;
+  }
+
+  .popover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+
+  .content {
+    width: fit-content;
+    height: fit-content;
+
+    padding: calc(var(--spacing) * 1);
+
+    color: var(--popover-color);
+
+    background-color: var(--popover-bg);
+
+    border: 1px solid transparent;
+    border-color: var(--popover-border);
+    border-radius: var(--popover-radius);
+
+    box-shadow: var(--popover-shadow);
+
+    transform-origin: var(--transform-origin);
+
+    transition: all 200ms ease-in-out;
+
+    &[data-starting-style],
+    &[data-ending-style] {
+      opacity: 0;
+
+      transform: scale(0.9);
+    }
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .content {
+    &[data-variant='primary'] {
+      --popover-bg: var(--color-white);
+      --popover-color: var(--color-black);
+      --popover-border: var(--color-zinc-100);
+      --popover-shadow: 0 25px 50px -12px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+    }
+
+    &[data-variant='secondary'] {
+      --popover-bg: var(--color-gray-50);
+      --popover-color: var(--color-black);
+      --popover-border: var(--color-zinc-100);
+      --popover-shadow: 0 0 #0000;
+    }
+
+    &[data-variant='tertiary'] {
+      --popover-bg: var(--color-gray-100);
+      --popover-color: var(--color-black);
+      --popover-border: var(--color-zinc-200);
+      --popover-shadow: 0 0 #0000;
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .content {
+      &[data-variant='primary'] {
+        --popover-bg: var(--color-zinc-950);
+        --popover-color: var(--color-white);
+        --popover-border: var(--color-zinc-900);
+        --popover-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='secondary'] {
+        --popover-bg: var(--color-zinc-900);
+        --popover-color: var(--color-white);
+        --popover-border: var(--color-zinc-800);
+        --popover-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='tertiary'] {
+        --popover-bg: var(--color-zinc-800);
+        --popover-color: var(--color-white);
+        --popover-border: var(--color-zinc-700);
+        --popover-shadow: 0 0 #0000;
+      }
+    }
+  }
+}

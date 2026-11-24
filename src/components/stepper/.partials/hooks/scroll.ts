@@ -5,7 +5,7 @@ import type {
 } from 'react';
 import { useCallback, useRef, useState } from 'react';
 
-const DRAG_THRESHOLD_PX = 6;
+const DRAG_THRESHOLD_PX = 10;
 
 type ScrollAxis = 'x' | 'y';
 
@@ -55,6 +55,7 @@ export function useScroll(axis: ScrollAxis): UseScrollResult {
         return;
       }
 
+      suppressClickRef.current = false;
       pointerIdRef.current = event.pointerId;
       startClientRef.current = axis === 'x' ? event.clientX : event.clientY;
       startScrollRef.current =

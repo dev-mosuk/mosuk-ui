@@ -1,6 +1,8 @@
 'use client';
 
+import { IMAGE_DEFAULT_IS_LOADING } from '@/components/image/.partials/constants/component.constants';
 import { ImageContext } from '@/components/image/.partials/providers/context/context';
+import type { ImageLoadStatus } from '@/components/image/.partials/providers/context/context.interface';
 import { ImageProviderProps } from '@/components/image/.partials/providers/provider.interface';
 import { isNearViewport } from '@/components/image/.partials/services/scheduler';
 import React, {
@@ -17,11 +19,12 @@ type ImagePhase = 'dots' | 'arm' | 'fade' | 'done';
 const FADE_MS = 1125;
 
 export function ImageProvider({
-  isLoading = false,
+  isLoading = IMAGE_DEFAULT_IS_LOADING,
   children,
 }: ImageProviderProps) {
   const [phase, setPhase] = useState<ImagePhase>('dots');
   const [instant, setInstant] = useState(false);
+  const [status, setStatus] = useState<ImageLoadStatus>('idle');
   const node = useRef<HTMLElement | null>(null);
 
   const cover = useCallback(() => {
@@ -103,12 +106,14 @@ export function ImageProvider({
       instant,
       isLoading,
       visibleDots: phase !== 'done',
+      status,
+      setStatus,
       node,
       cover,
       reveal,
       finish,
     }),
-    [cover, finish, instant, isLoading, phase, reveal],
+    [cover, finish, instant, isLoading, phase, reveal, status],
   );
 
   return (

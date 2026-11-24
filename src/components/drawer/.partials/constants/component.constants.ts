@@ -1,4 +1,7 @@
-import { DrawerDirection } from '@/components/drawer/.partials/enums/component.enums';
+import {
+  DrawerDirection,
+  DrawerVariant,
+} from '@/components/drawer/.partials/enums/component.enums';
 import type { Drawer as BaseUiDrawer } from '@base-ui/react';
 
 type DrawerSwipeDirection = NonNullable<
@@ -6,6 +9,7 @@ type DrawerSwipeDirection = NonNullable<
 >;
 
 export const DRAWER_DEFAULT_DIRECTION = DrawerDirection.Bottom;
+export const DRAWER_DEFAULT_VARIANT = DrawerVariant.Primary;
 
 export const DRAWER_DIRECTION_TO_SWIPE: Record<
   DrawerDirection,

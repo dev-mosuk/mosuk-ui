@@ -1,9 +1,15 @@
 import type { ButtonProps } from '@/components/button/.partials/components/component.interface';
 import {
+  BUTTON_DEFAULT_ANIMATION,
+  BUTTON_DEFAULT_AS,
+  BUTTON_DEFAULT_FORMAT,
+  BUTTON_DEFAULT_IS_ACTIVE,
+  BUTTON_DEFAULT_IS_LOADING,
+  BUTTON_DEFAULT_IS_PENDING,
   BUTTON_DEFAULT_PRESS,
   BUTTON_DEFAULT_SIZE,
+  BUTTON_DEFAULT_TYPE,
   BUTTON_DEFAULT_VARIANT,
-  BUTTON_DEFAULT_WIDTH,
 } from '@/components/button/.partials/constants/component.constants';
 import { ButtonPress } from '@/components/button/.partials/enums/component.enums';
 import styles from '@/components/button/.partials/styles/component.module.css';
@@ -12,40 +18,47 @@ import React, { type CSSProperties, type ElementType } from 'react';
 
 export function Button<C = 'button'>({
   as,
-  variant = BUTTON_DEFAULT_VARIANT,
   size = BUTTON_DEFAULT_SIZE,
-  isPending = false,
-  isLoading = false,
-  width = BUTTON_DEFAULT_WIDTH,
+  format = BUTTON_DEFAULT_FORMAT,
+  variant = BUTTON_DEFAULT_VARIANT,
+  animation = BUTTON_DEFAULT_ANIMATION,
   press = BUTTON_DEFAULT_PRESS,
+  type = BUTTON_DEFAULT_TYPE,
   isDisabled,
+  isPending = BUTTON_DEFAULT_IS_PENDING,
+  isLoading = BUTTON_DEFAULT_IS_LOADING,
+  isActive = BUTTON_DEFAULT_IS_ACTIVE,
   className,
   style,
   onPointerDown,
-  type,
   ...rest
 }: ButtonProps<C>) {
-  const Component = (as ?? 'button') as ElementType;
+  const { 'data-active': dataActiveAttr, ...domRest } = rest as typeof rest & {
+    'data-active'?: string | boolean;
+  };
+
+  const Component = (as ?? BUTTON_DEFAULT_AS) as ElementType;
   const pressMode = press === false ? ButtonPress.None : press;
-  const needsRippleCoords =
-    pressMode === ButtonPress.Ripple || pressMode === ButtonPress.ScaleRipple;
+  const needsRippleCoords = pressMode === ButtonPress.Ripple;
   const locked = Boolean(isDisabled || isPending || isLoading);
-  const isNativeButton = (as ?? 'button') === 'button';
+  const isNativeButton = (as ?? BUTTON_DEFAULT_AS) === BUTTON_DEFAULT_AS;
+  const hasDataActive =
+    isActive || (dataActiveAttr !== undefined && dataActiveAttr !== false);
 
   return (
     <Component
-      {...rest}
-      type={
-        isNativeButton ? ((type as string | undefined) ?? 'button') : undefined
-      }
+      {...domRest}
+      type={isNativeButton ? (type as string | undefined) : undefined}
       disabled={isNativeButton ? locked : undefined}
       aria-disabled={!isNativeButton && locked ? true : undefined}
       data-variant={variant}
       data-size={size}
+      data-format={format}
       data-pending={isPending || undefined}
       data-loading={isLoading || undefined}
-      data-width={width}
+      data-active={hasDataActive ? true : undefined}
       data-press={pressMode}
+      data-animation={animation}
       style={
         {
           '--button-size': size,
@@ -69,7 +82,6 @@ export function Button<C = 'button'>({
       }}
       className={classNames(
         'mosuk-button',
-        '@container/button',
         'group/button',
         styles.button,
         className,

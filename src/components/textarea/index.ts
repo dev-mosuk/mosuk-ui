@@ -1,8 +1,20 @@
-import { Textarea as Component } from '@/components/textarea/component';
-import { TextareaProps as ComponentProps } from '@/components/textarea/component.interface';
+import { Textarea as Component } from '@/components/textarea/.partials/components/component';
+import type { TextareaProps } from '@/components/textarea/.partials/components/component.interface';
+import {
+  TextareaAnimation,
+  TextareaPress,
+  TextareaVariant,
+} from '@/components/textarea/.partials/enums/component.enums';
+import type { ElementType } from 'react';
 
-export const Textarea = Object.assign(Component, {});
+export const Textarea = Object.assign(Component, {
+  ENUMS: {
+    Variant: TextareaVariant,
+    Press: TextareaPress,
+    Animation: TextareaAnimation,
+  },
+});
 
 export namespace Textarea {
-  export type Props = ComponentProps;
+  export type Props<C extends ElementType = 'textarea'> = TextareaProps<C>;
 }

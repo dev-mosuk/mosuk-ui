@@ -1,3 +1,4 @@
+import type { ScrollShadowVariant } from '@/components/scroll-shadow/.partials/enums/component.enums';
 import type { ComponentPropsWithoutRef, Ref } from 'react';
 
 export type ScrollShadowVisibility =
@@ -19,9 +20,9 @@ export type ScrollShadowProps = {
   orientation?: 'vertical' | 'horizontal';
   size?: number;
   offset?: number;
-  isScrollBarHidden?: boolean;
+  scrollbar?: number;
   isEnabled?: boolean;
   visibility?: ScrollShadowVisibility;
-  variant?: 'fade';
+  variant?: ScrollShadowVariant | `${ScrollShadowVariant}`;
   onVisibilityChange?: (visibility: ScrollShadowEdgeVisibility) => void;
 } & Omit<ComponentPropsWithoutRef<'div'>, 'ref'>;

@@ -1,5 +1,6 @@
 import { CheckboxProps } from '@/components/checkbox/.partials/components/component.interface';
 import {
+  CHECKBOX_DEFAULT_ANIMATION,
   CHECKBOX_DEFAULT_SIZE,
   CHECKBOX_DEFAULT_VARIANT,
 } from '@/components/checkbox/.partials/constants/component.constants';
@@ -10,10 +11,11 @@ import React, { type CSSProperties, useId } from 'react';
 
 export function Checkbox({
   ref,
-  variant = CHECKBOX_DEFAULT_VARIANT,
   size = CHECKBOX_DEFAULT_SIZE,
-  isChecked,
-  defaultChecked,
+  variant = CHECKBOX_DEFAULT_VARIANT,
+  animation = CHECKBOX_DEFAULT_ANIMATION,
+  defaultSelected,
+  isSelected,
   isIndeterminate,
   isDisabled,
   isReadOnly,
@@ -36,8 +38,8 @@ export function Checkbox({
       ref={ref}
       id={resolvedId}
       name={name ?? resolvedId}
-      checked={isChecked}
-      defaultChecked={defaultChecked}
+      checked={isSelected}
+      defaultChecked={defaultSelected}
       indeterminate={isIndeterminate}
       disabled={isDisabled}
       readOnly={isReadOnly}
@@ -45,6 +47,7 @@ export function Checkbox({
       aria-invalid={isInvalid || undefined}
       data-invalid={isInvalid || undefined}
       data-variant={variant}
+      data-animation={animation}
       data-size={size}
       style={
         {

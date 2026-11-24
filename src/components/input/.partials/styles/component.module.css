@@ -1,146 +1,485 @@
+/* Tokens */
 @layer mosuk-ui {
-    .input {
-        appearance: none;
+  :global(:root) {
+    --input-bg: var(--color-zinc-100);
+    --input-bg-hover: var(--color-zinc-200);
+    --input-bg-focus: var(--color-zinc-200);
+    --input-color: var(--color-black);
+    --input-placeholder: var(--color-zinc-500);
 
-        display: block;
+    --input-border: transparent;
+    --input-outline: none;
+    --input-shadow: none;
 
-        width: 100%;
-        height: calc(var(--spacing) * var(--input-size));
-        min-height: calc(var(--spacing) * var(--input-size));
+    --input-border-hover: transparent;
+    --input-border-focus: transparent;
+  }
 
-        padding-inline: calc(var(--spacing) * 0.425 * var(--input-size));
+  :global([data-theme='dark']) {
+    --input-bg: var(--color-zinc-900);
+    --input-bg-hover: var(--color-zinc-800);
+    --input-bg-focus: var(--color-zinc-800);
+    --input-color: var(--color-white);
+    --input-placeholder: var(--color-zinc-400);
 
-        color: var(--color-black);
-        font-size: calc(var(--spacing) * 0.425 * var(--input-size));
+    --input-border: transparent;
+    --input-outline: none;
+    --input-shadow: none;
 
-        background-color: white;
+    --input-border-hover: transparent;
+    --input-border-focus: transparent;
+  }
+}
 
-        border: 0.75px solid transparent;
-        border-radius: var(--radius-xl);
-        outline: none;
+/* Input */
+@layer mosuk-ui {
+  .input {
+    appearance: none;
+    overflow: hidden;
 
-        box-shadow:
-            0 0 15px -3px color-mix(in oklab, var(--color-gray-200) 50%, transparent),
-            0 0 6px -4px color-mix(in oklab, var(--color-gray-200) 50%, transparent);
+    position: relative;
 
-        transition: all 200ms ease-in-out;
+    display: block;
 
-        &::placeholder {
-            color: var(--color-gray-500);
-        }
+    width: 100%;
+    height: calc(var(--spacing) * var(--input-size));
+    min-height: calc(var(--spacing) * var(--input-size));
 
-        &:disabled,
-        &:read-only {
-            opacity: 50%;
+    padding-inline: calc(var(--spacing) * 0.425 * var(--input-size));
 
-            pointer-events: none;
-        }
+    color: var(--input-color);
+    font-size: var(--text-sm);
 
-        &[data-ios-zoom-lock] {
-            font-size: 16px;
+    background-color: var(--input-bg);
 
-            transition-duration: 0s;
-        }
+    border: 1px solid transparent;
+    border-color: var(--input-border);
+    border-radius: var(--radius-xl);
+    outline: var(--input-outline);
 
+    box-shadow: var(--input-shadow);
 
-        &[data-width='auto'] {
-            width: fit-content;
-            min-width: fit-content;
-        }
+    transition: all 200ms ease-in-out;
 
-        &[data-width='full'] {
-            width: 100%;
-            min-width: 100%;
-        }
-
-        &[data-variant='primary'] {
-            background-color: white;
-
-            border-color: var(--color-gray-100);
-
-            box-shadow:
-                0 0 15px -3px color-mix(in oklab, var(--color-gray-200) 50%, transparent),
-                0 0 6px -4px color-mix(in oklab, var(--color-gray-200) 50%, transparent);
-        }
-
-        &[data-variant='secondary'] {
-            background-color: var(--color-gray-100);
-
-            border-color: transparent;
-
-            box-shadow: transparent;
-        }
-
-        &[data-variant='outline'] {
-            background-color: transparent;
-
-            border-color: var(--color-gray-200);
-
-            box-shadow: transparent;
-
-            &:hover:not(:disabled):not(:read-only) {
-                border-color: var(--color-primary-200);
-            }
-
-            &:focus:not(:disabled):not(:read-only) {
-                border-color: var(--color-primary-500);
-            }
-        }
-
-        &[data-variant='ghost'] {
-            background-color: transparent;
-
-            border-color: transparent;
-            border-radius: 0;
-
-            box-shadow:
-                0 0 0 0 transparent,
-                0 0 0 0 transparent;
-        }
-
-        &[data-variant='danger'] {
-            color: var(--color-red-600);
-
-            background-color: var(--color-red-100);
-
-            border-color: transparent;
-
-            box-shadow: transparent;
-
-            &::placeholder {
-                color: var(--color-red-300);
-            }
-        }
-
-        &[data-invalid] {
-            color: var(--color-red-600);
-
-            border-color: var(--color-red-200);
-
-            &::placeholder {
-                color: var(--color-red-300);
-            }
-
-            &:hover:not(:disabled):not(:read-only) {
-                border-color: var(--color-red-300);
-            }
-
-            &:focus:not(:disabled):not(:read-only) {
-                border-color: var(--color-red-500);
-            }
-        }
-
-        &[data-invalid][data-variant='secondary'],
-        &[data-invalid][data-variant='ghost'] {
-            background-color: var(--color-red-50);
-
-            border-color: transparent;
-        }
-
-        &[data-invalid][data-variant='danger'] {
-            background-color: var(--color-red-100);
-
-            border-color: transparent;
-        }
+    &::placeholder {
+      color: var(--input-placeholder);
     }
+
+    &:hover:not(:disabled):not(:read-only),
+    &[data-active]:not(:disabled),
+    &[data-focus]:not(:disabled) {
+      background-color: var(--input-bg-hover);
+
+      border-color: var(--input-border-hover);
+    }
+
+    &:focus:not(:disabled):not(:read-only) {
+      background-color: var(--input-bg-focus);
+
+      border-color: var(--input-border-focus);
+    }
+
+    &:disabled,
+    &:read-only {
+      opacity: 50%;
+
+      pointer-events: none;
+    }
+
+    &[data-ios-zoom-lock] {
+      font-size: 16px;
+
+      transition-duration: 0s;
+    }
+
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .input {
+    &[data-variant='primary'] {
+      --input-bg: var(--color-zinc-100);
+      --input-bg-hover: var(--color-zinc-200);
+      --input-bg-focus: var(--color-zinc-200);
+      --input-color: var(--color-black);
+      --input-placeholder: var(--color-zinc-500);
+
+      --input-border: transparent;
+      --input-outline: none;
+      --input-shadow: none;
+
+      --input-border-hover: transparent;
+      --input-border-focus: transparent;
+    }
+
+    &[data-variant='secondary'] {
+      --input-bg: var(--color-zinc-50);
+      --input-bg-hover: var(--color-zinc-100);
+      --input-bg-focus: var(--color-zinc-100);
+      --input-color: var(--color-black);
+      --input-placeholder: var(--color-zinc-500);
+
+      --input-border: transparent;
+      --input-outline: none;
+      --input-shadow: none;
+
+      --input-border-hover: transparent;
+      --input-border-focus: transparent;
+    }
+
+    &[data-variant='outline'] {
+      --input-bg: transparent;
+      --input-bg-hover: transparent;
+      --input-bg-focus: transparent;
+      --input-color: var(--color-black);
+      --input-placeholder: var(--color-zinc-500);
+
+      --input-border: var(--color-zinc-200);
+      --input-outline: none;
+      --input-shadow: none;
+
+      --input-border-hover: var(--color-primary-500);
+      --input-border-focus: var(--color-primary-500);
+    }
+
+    &[data-variant='ghost'] {
+      --input-bg: transparent;
+      --input-bg-hover: transparent;
+      --input-bg-focus: transparent;
+      --input-color: var(--color-black);
+      --input-placeholder: var(--color-zinc-500);
+
+      --input-border: transparent;
+      --input-outline: none;
+      --input-shadow: none;
+
+      --input-border-hover: transparent;
+      --input-border-focus: transparent;
+
+      padding-inline: 0;
+      border-radius: 0;
+    }
+
+    &[data-danger][data-variant='primary'] {
+      --input-bg: var(--color-red-100);
+      --input-bg-hover: var(--color-red-200);
+      --input-bg-focus: var(--color-red-200);
+      --input-color: var(--color-black);
+      --input-placeholder: var(--color-red-300);
+
+      --input-border: transparent;
+      --input-border-hover: transparent;
+      --input-border-focus: transparent;
+    }
+
+    &[data-danger][data-variant='secondary'] {
+      --input-bg: var(--color-red-50);
+      --input-bg-hover: var(--color-red-100);
+      --input-bg-focus: var(--color-red-100);
+      --input-color: var(--color-black);
+      --input-placeholder: var(--color-red-300);
+
+      --input-border: transparent;
+      --input-border-hover: transparent;
+      --input-border-focus: transparent;
+    }
+
+    &[data-danger][data-variant='outline'] {
+      --input-bg: transparent;
+      --input-bg-hover: transparent;
+      --input-bg-focus: transparent;
+      --input-color: var(--color-black);
+      --input-placeholder: var(--color-red-300);
+
+      --input-border: var(--color-red-200);
+      --input-border-hover: var(--color-red-500);
+      --input-border-focus: var(--color-red-500);
+    }
+
+    &[data-danger][data-variant='ghost'] {
+      --input-bg: transparent;
+      --input-bg-hover: transparent;
+      --input-bg-focus: transparent;
+      --input-color: var(--color-red-500);
+      --input-placeholder: var(--color-red-300);
+
+      --input-border: transparent;
+      --input-border-hover: transparent;
+      --input-border-focus: transparent;
+
+      padding-inline: 0;
+      border-radius: 0;
+    }
+  }
+}
+
+/* Dark */
+@layer mosuk-ui {
+  :global([data-theme='dark']) {
+    .input {
+      &[data-variant='primary'] {
+        --input-bg: var(--color-zinc-800);
+        --input-bg-hover: var(--color-zinc-700);
+        --input-bg-focus: var(--color-zinc-700);
+        --input-color: var(--color-white);
+        --input-placeholder: var(--color-zinc-400);
+
+        --input-border: transparent;
+        --input-outline: none;
+        --input-shadow: none;
+
+        --input-border-hover: transparent;
+        --input-border-focus: transparent;
+      }
+
+      &[data-variant='secondary'] {
+        --input-bg: var(--color-zinc-900);
+        --input-bg-hover: var(--color-zinc-800);
+        --input-bg-focus: var(--color-zinc-800);
+        --input-color: var(--color-white);
+        --input-placeholder: var(--color-zinc-400);
+
+        --input-border: transparent;
+        --input-outline: none;
+        --input-shadow: none;
+
+        --input-border-hover: transparent;
+        --input-border-focus: transparent;
+      }
+
+      &[data-variant='outline'] {
+        --input-bg: transparent;
+        --input-bg-hover: transparent;
+        --input-bg-focus: transparent;
+        --input-color: var(--color-white);
+        --input-placeholder: var(--color-zinc-400);
+
+        --input-border: var(--color-zinc-700);
+        --input-outline: none;
+        --input-shadow: none;
+
+        --input-border-hover: var(--color-primary-500);
+        --input-border-focus: var(--color-primary-500);
+      }
+
+      &[data-variant='ghost'] {
+        --input-bg: transparent;
+        --input-bg-hover: transparent;
+        --input-bg-focus: transparent;
+        --input-color: var(--color-white);
+        --input-placeholder: var(--color-zinc-400);
+
+        --input-border: transparent;
+        --input-outline: none;
+        --input-shadow: none;
+
+        --input-border-hover: transparent;
+        --input-border-focus: transparent;
+
+        padding-inline: 0;
+        border-radius: 0;
+      }
+
+      &[data-danger][data-variant='primary'] {
+        --input-bg: color-mix(
+          in oklab,
+          var(--color-red-500) 25%,
+          var(--color-zinc-900)
+        );
+        --input-bg-hover: color-mix(
+          in oklab,
+          var(--color-red-500) 35%,
+          var(--color-zinc-900)
+        );
+        --input-bg-focus: color-mix(
+          in oklab,
+          var(--color-red-500) 35%,
+          var(--color-zinc-900)
+        );
+        --input-color: var(--color-white);
+        --input-placeholder: var(--color-red-300);
+
+        --input-border: transparent;
+        --input-border-hover: transparent;
+        --input-border-focus: transparent;
+      }
+
+      &[data-danger][data-variant='secondary'] {
+        --input-bg: color-mix(
+          in oklab,
+          var(--color-red-500) 15%,
+          var(--color-zinc-900)
+        );
+        --input-bg-hover: color-mix(
+          in oklab,
+          var(--color-red-500) 25%,
+          var(--color-zinc-900)
+        );
+        --input-bg-focus: color-mix(
+          in oklab,
+          var(--color-red-500) 25%,
+          var(--color-zinc-900)
+        );
+        --input-color: var(--color-white);
+        --input-placeholder: var(--color-red-300);
+
+        --input-border: transparent;
+        --input-border-hover: transparent;
+        --input-border-focus: transparent;
+      }
+
+      &[data-danger][data-variant='outline'] {
+        --input-bg: transparent;
+        --input-bg-hover: transparent;
+        --input-bg-focus: transparent;
+        --input-color: var(--color-white);
+        --input-placeholder: var(--color-red-300);
+
+        --input-border: var(--color-red-400);
+        --input-border-hover: var(--color-red-500);
+        --input-border-focus: var(--color-red-500);
+      }
+
+      &[data-danger][data-variant='ghost'] {
+        --input-bg: transparent;
+        --input-bg-hover: transparent;
+        --input-bg-focus: transparent;
+        --input-color: var(--color-red-400);
+        --input-placeholder: var(--color-red-300);
+
+        --input-border: transparent;
+        --input-border-hover: transparent;
+        --input-border-focus: transparent;
+
+        padding-inline: 0;
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+/* Press */
+@layer mosuk-ui {
+  .input {
+    &[data-press='scale']:active:not(:disabled):not(:read-only) {
+      transform: scale(0.97);
+    }
+
+    &[data-press='highlight']::before {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+
+      content: '';
+
+      background-color: white;
+
+      opacity: 0;
+
+      border-radius: inherit;
+
+      pointer-events: none;
+
+      transition: opacity 150ms ease;
+    }
+
+    &[data-press='highlight']:hover:not(:disabled):not(:read-only)::before {
+      opacity: 0.1;
+    }
+
+    &[data-press='highlight']:active:not(:disabled):not(:read-only)::before {
+      opacity: 0.18;
+    }
+
+    &[data-press='ripple']:not([data-animation='shimmer'])::after {
+      position: absolute;
+      top: var(--press-y, 50%);
+      left: var(--press-x, 50%);
+      z-index: 0;
+
+      width: 200%;
+      max-width: 400px;
+      aspect-ratio: 1;
+
+      content: '';
+
+      background-color: white;
+
+      opacity: 0;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+
+      pointer-events: none;
+
+      transition:
+        transform 225ms ease-out,
+        opacity 225ms ease-out;
+    }
+
+    &[data-press='ripple']:active:not(:disabled):not(:read-only):not(
+        [data-animation='shimmer']
+      )::after {
+      opacity: 0.1;
+
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+
+/* Animation */
+@layer mosuk-ui {
+  .input {
+    &[data-animation='shimmer']::after {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      content: '';
+
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        transparent 20%,
+        color-mix(in oklab, white 35%, transparent),
+        transparent 80%,
+        transparent 100%
+      );
+
+      transform: translateX(-100%) skewX(-20deg);
+
+      pointer-events: none;
+
+      animation: input-shimmer 1.5s infinite;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .input {
+      transition: none;
+
+      &[data-press='scale']:active {
+        transform: none;
+      }
+
+      &[data-press='highlight']::before,
+      &[data-press='ripple']::after {
+        transition: none;
+      }
+
+      &[data-animation='shimmer']::after {
+        animation: none;
+
+        opacity: 0.35;
+
+        transform: none;
+      }
+    }
+  }
+
+  @keyframes input-shimmer {
+    100% {
+      transform: translateX(100%) skewX(-20deg);
+    }
+  }
 }

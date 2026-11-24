@@ -1,0 +1,317 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --toast-bg: var(--color-gray-50);
+    --toast-color: var(--color-black);
+
+    --toast-border: var(--color-zinc-100);
+    --toast-radius: var(--radius-3xl);
+    --toast-shadow: 0 0 #0000;
+
+    --toast-gap: calc(var(--spacing) * 3);
+  }
+
+  :global([data-theme='dark']) {
+    --toast-bg: var(--color-zinc-900);
+    --toast-color: var(--color-white);
+
+    --toast-border: var(--color-zinc-800);
+    --toast-radius: var(--radius-3xl);
+    --toast-shadow: 0 0 #0000;
+  }
+}
+
+/* Toast */
+@layer mosuk-ui {
+  .toast {
+    --offset-y: calc(var(--toast-offset-y) * -1 + (var(--toast-index) * var(--toast-gap) * -1) + var(--toast-swipe-movement-y));
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: calc(1000 - var(--toast-index));
+
+    display: flex;
+    flex-direction: row;
+    gap: calc(var(--spacing) * 2);
+    align-items: start;
+    justify-content: start;
+
+    width: 100%;
+
+    padding: calc(var(--spacing) * 4);
+
+    color: var(--toast-color);
+
+    background-color: var(--toast-bg);
+
+    border: 1px solid transparent;
+    border-color: var(--toast-border);
+    border-radius: var(--toast-radius);
+
+    box-shadow: var(--toast-shadow);
+
+    transform: translateX(var(--toast-swipe-movement-x)) translateY(calc(var(--toast-swipe-movement-y) + (var(--toast-index) * -20%))) scale(calc(1 - (var(--toast-index) * 0.1)));
+
+    transition:
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.5s;
+
+    cursor: default;
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    &::after {
+      content: '';
+
+      position: absolute;
+      top: 100%;
+      left: 0;
+
+      width: 100%;
+      height: calc(var(--toast-gap) + 1px);
+    }
+
+    &[data-expanded] {
+      transform: translateX(var(--toast-swipe-movement-x)) translateY(var(--offset-y));
+    }
+
+    &[data-starting-style],
+    &[data-ending-style] {
+      transform: translateY(150%);
+    }
+
+    &[data-limited] {
+      opacity: 0;
+    }
+
+    &[data-ending-style] {
+      opacity: 0;
+
+      &[data-swipe-direction='up'] {
+        transform: translateY(calc(var(--toast-swipe-movement-y) - 0%));
+      }
+
+      &[data-swipe-direction='left'] {
+        transform: translateX(calc(var(--toast-swipe-movement-x) - 150%)) translateY(var(--offset-y));
+      }
+
+      &[data-swipe-direction='right'] {
+        transform: translateX(calc(var(--toast-swipe-movement-x) + 150%)) translateY(var(--offset-y));
+      }
+
+      &[data-swipe-direction='down'] {
+        transform: translateY(calc(var(--toast-swipe-movement-y) + 150%));
+      }
+    }
+
+    &:not(:hover) {
+      transition: all 400ms ease-in-out;
+    }
+
+    &:hover {
+      transition: all 200ms ease-in-out;
+    }
+
+    .icon {
+      color: var(--color-zinc-500);
+
+      margin-top: calc(var(--spacing) * 0.5);
+
+      & svg {
+        width: calc(var(--spacing) * 4);
+        height: calc(var(--spacing) * 4);
+        min-width: calc(var(--spacing) * 4);
+        min-height: calc(var(--spacing) * 4);
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: calc(var(--spacing) * 1);
+
+      width: 100%;
+    }
+
+    &[data-type='default'] {
+      .icon {
+        color: var(--color-zinc-500);
+      }
+
+      .action {
+        --button-bg: var(--color-zinc-700);
+        --button-bg-hover: var(--color-zinc-800);
+      }
+    }
+
+    &[data-type='accent'] {
+      .icon {
+        color: var(--color-primary-500);
+      }
+
+      .action {
+        --button-bg: var(--color-primary-500);
+        --button-bg-hover: var(--color-primary-600);
+      }
+    }
+
+    &[data-type='success'] {
+      .icon {
+        color: var(--color-green-500);
+      }
+
+      .action {
+        --button-bg: var(--color-green-500);
+        --button-bg-hover: var(--color-green-600);
+      }
+    }
+
+    &[data-type='warning'] {
+      .icon {
+        color: var(--color-orange-500);
+      }
+
+      .action {
+        --button-bg: var(--color-orange-500);
+        --button-bg-hover: var(--color-orange-600);
+      }
+    }
+
+    &[data-type='danger'] {
+      .icon {
+        color: var(--color-red-500);
+      }
+
+      .action {
+        --button-bg: var(--color-red-500);
+        --button-bg-hover: var(--color-red-600);
+      }
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .toast {
+      &[data-type='default'] {
+        .icon {
+          color: var(--color-zinc-400);
+        }
+
+        .action {
+          --button-bg: var(--color-zinc-600);
+          --button-bg-hover: var(--color-zinc-500);
+        }
+      }
+
+      &[data-type='accent'] {
+        .icon {
+          color: var(--color-primary-400);
+        }
+
+        .action {
+          --button-bg: var(--color-primary-500);
+          --button-bg-hover: var(--color-primary-400);
+        }
+      }
+
+      &[data-type='success'] {
+        .icon {
+          color: var(--color-green-400);
+        }
+
+        .action {
+          --button-bg: var(--color-green-500);
+          --button-bg-hover: var(--color-green-400);
+        }
+      }
+
+      &[data-type='warning'] {
+        .icon {
+          color: var(--color-orange-400);
+        }
+
+        .action {
+          --button-bg: var(--color-orange-500);
+          --button-bg-hover: var(--color-orange-400);
+        }
+      }
+
+      &[data-type='danger'] {
+        .icon {
+          color: var(--color-red-400);
+        }
+
+        .action {
+          --button-bg: var(--color-red-500);
+          --button-bg-hover: var(--color-red-400);
+        }
+      }
+    }
+  }
+
+  @media (min-width: 468px) {
+    .toast {
+      width: calc(var(--spacing) * 100);
+
+      margin-left: auto;
+      padding: calc(var(--spacing) * 4);
+
+      &:hover {
+        scale: 101%;
+      }
+    }
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .toast {
+    &[data-variant='primary'] {
+      --toast-bg: var(--color-white);
+      --toast-color: var(--color-black);
+      --toast-border: var(--color-zinc-100);
+      --toast-shadow: 0 0 50px -12px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+    }
+
+    &[data-variant='secondary'] {
+      --toast-bg: var(--color-gray-50);
+      --toast-color: var(--color-black);
+      --toast-border: var(--color-zinc-100);
+      --toast-shadow: 0 0 #0000;
+    }
+
+    &[data-variant='tertiary'] {
+      --toast-bg: var(--color-gray-100);
+      --toast-color: var(--color-black);
+      --toast-border: var(--color-zinc-200);
+      --toast-shadow: 0 0 #0000;
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .toast {
+      &[data-variant='primary'] {
+        --toast-bg: var(--color-zinc-950);
+        --toast-color: var(--color-white);
+        --toast-border: var(--color-zinc-900);
+        --toast-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='secondary'] {
+        --toast-bg: var(--color-zinc-900);
+        --toast-color: var(--color-white);
+        --toast-border: var(--color-zinc-800);
+        --toast-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='tertiary'] {
+        --toast-bg: var(--color-zinc-800);
+        --toast-color: var(--color-white);
+        --toast-border: var(--color-zinc-700);
+        --toast-shadow: 0 0 #0000;
+      }
+    }
+  }
+}

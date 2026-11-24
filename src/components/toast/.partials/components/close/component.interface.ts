@@ -1,3 +1,19 @@
-import { Toast as BaseUiToast } from '@base-ui/react/toast';
+import type {
+  ComponentPropsWithoutRef,
+  CSSProperties,
+  ElementType,
+  ReactNode,
+  Ref,
+} from 'react';
 
-export interface CloseProps extends BaseUiToast.Close.Props {}
+export type CloseProps<C extends ElementType = 'button'> = {
+  as?: C;
+  ref?: Ref<any>;
+  isDisabled?: boolean;
+  className?: string;
+  style?: CSSProperties;
+  children?: ReactNode;
+} & Omit<
+  ComponentPropsWithoutRef<C>,
+  'as' | 'ref' | 'disabled' | 'className' | 'style' | 'children'
+>;

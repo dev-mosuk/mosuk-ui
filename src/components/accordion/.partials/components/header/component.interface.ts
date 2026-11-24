@@ -1,3 +1,4 @@
-import { Accordion } from '@base-ui/react/accordion';
+import type { Accordion } from '@base-ui/react/accordion';
 
-export interface AccordionHeaderProps extends Accordion.Header.Props {}
+export type AccordionHeaderProps = Accordion.Header.Props &
+  Pick<Accordion.Trigger.Props, 'nativeButton'>;

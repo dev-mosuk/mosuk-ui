@@ -1,85 +1,342 @@
+/* Tokens */
 @layer mosuk-ui {
+  :global(:root) {
+    --image-bg: var(--color-white);
+    --image-border: var(--color-zinc-100);
+    --image-shadow:
+      0 4px 6px -1px color-mix(in oklab, var(--color-zinc-200) 50%, transparent),
+      0 2px 4px -2px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+    --image-radius: min(var(--radius-2xl), 25%);
+    --image-dots-color: var(--color-primary-500);
+    --image-icon-color: var(--color-zinc-500);
+    --image-press: var(--color-white);
+  }
 
-      .image {
-          position: relative;
+  :global([data-theme='dark']) {
+    --image-bg: var(--color-zinc-900);
+    --image-border: var(--color-zinc-800);
+    --image-shadow: 0 0 #0000;
+    --image-radius: min(var(--radius-2xl), 25%);
+    --image-dots-color: var(--color-primary-500);
+    --image-icon-color: var(--color-zinc-400);
+    --image-press: var(--color-white);
+  }
+}
 
-          width: 100%;
-          height: 100%;
+/* Image */
+@layer mosuk-ui {
+  .image {
+    overflow: hidden;
+
+    position: relative;
+
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--image-bg);
+
+    border: 1px solid transparent;
+    border-color: var(--image-border);
+    border-radius: var(--image-radius);
+
+    box-shadow: var(--image-shadow);
+
+    transition: all 200ms ease-in-out;
+
+    &[data-size] {
+      width: calc(var(--spacing) * var(--image-size));
+      height: calc(var(--spacing) * var(--image-size));
+      aspect-ratio: 1;
+    }
+
+    .dots {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      opacity: 1;
+    }
+
+    .view {
+      position: absolute;
+      inset: 0;
+
+      opacity: 0;
+
+      &[data-shown] {
+        animation: mosuk-image-show 675ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
       }
 
-      .dots {
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-
-          opacity: 1;
-      }
-
-      .media {
-          position: absolute;
-          inset: 0;
-
-          opacity: 0;
-
-          &.shown {
-              animation: show 675ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
-          }
-
-          &.instant {
-              opacity: 1;
-          }
-      }
-
-      @keyframes show {
-          from {
-              opacity: 0;
-          }
-
-          to {
-              opacity: 1;
-          }
-      }
-
-      .icon {
-          position: absolute;
-          inset: auto;
-          top: 50%;
-          left: 50%;
-
-          width: 41.666%;
-          height: 41.666%;
-
-          color: var(--color-gray-500);
-
-          transform: translate(-50%, -50%);
-      }
-
-      .canvas {
-          display: block;
-
-          width: 100%;
-          height: 100%;
-
-          color: var(--color-primary-500);
-
-          background-image: radial-gradient(
-              circle,
-              currentColor var(--dot-size, 0.25px),
-              transparent calc(var(--dot-size, 0.25px) + 0.5px)
-          );
-          background-position: center;
-          background-repeat: repeat;
-          background-size: var(--dot-gap, calc(100% / 7))
-              var(--dot-gap, calc(100% / 7));
-
-          clip-path: inset(5%);
-
-          transition: color 400ms ease-in-out;
-      }
-
-      .ready {
-          background-image: none;
-
-          clip-path: none;
+      &[data-instant] {
+        opacity: 1;
       }
     }
+
+    .fallback {
+      position: absolute;
+      inset: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 100%;
+      height: 100%;
+
+      color: var(--image-icon-color);
+
+      &:has(:where(svg)) {
+        padding: 29.167%;
+      }
+
+      :where(svg) {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .canvas {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      color: var(--image-dots-color);
+
+      background-image: radial-gradient(
+        circle,
+        currentColor var(--dot-size, 0.25px),
+        transparent calc(var(--dot-size, 0.25px) + 0.5px)
+      );
+      background-position: center;
+      background-repeat: repeat;
+      background-size:
+        var(--dot-gap, calc(100% / 7)) var(--dot-gap, calc(100% / 7));
+
+      clip-path: inset(5%);
+
+      transition: color 400ms ease-in-out;
+
+      &[data-ready] {
+        background-image: none;
+
+        clip-path: none;
+      }
+    }
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .image {
+    &[data-variant='primary'] {
+      --image-bg: var(--color-white);
+      --image-border: var(--color-zinc-100);
+      --image-shadow:
+        0 4px 6px -1px color-mix(in oklab, var(--color-zinc-200) 50%, transparent),
+        0 2px 4px -2px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+    }
+
+    &[data-variant='secondary'] {
+      --image-bg: var(--color-zinc-50);
+      --image-border: var(--color-zinc-100);
+      --image-shadow: 0 0 #0000;
+    }
+
+    &[data-variant='tertiary'] {
+      --image-bg: var(--color-zinc-100);
+      --image-border: color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+      --image-shadow: 0 0 #0000;
+    }
+
+    &[data-variant='outline'] {
+      --image-bg: transparent;
+      --image-border: var(--color-zinc-200);
+      --image-shadow: 0 0 #0000;
+    }
+
+    &[data-variant='transparent'] {
+      --image-bg: transparent;
+      --image-border: transparent;
+      --image-shadow: 0 0 #0000;
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .image {
+      &[data-variant='primary'] {
+        --image-bg: var(--color-zinc-900);
+        --image-border: var(--color-zinc-800);
+        --image-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='secondary'] {
+        --image-bg: var(--color-zinc-800);
+        --image-border: var(--color-zinc-700);
+        --image-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='tertiary'] {
+        --image-bg: var(--color-zinc-700);
+        --image-border: var(--color-zinc-600);
+        --image-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='outline'] {
+        --image-bg: transparent;
+        --image-border: var(--color-zinc-700);
+        --image-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='transparent'] {
+        --image-bg: transparent;
+        --image-border: transparent;
+        --image-shadow: 0 0 #0000;
+      }
+    }
+  }
+}
+
+/* Animation */
+@layer mosuk-ui {
+  .image {
+    &[data-animation='shimmer']::after {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      content: '';
+
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        transparent 20%,
+        color-mix(in oklab, var(--image-press) 35%, transparent),
+        transparent 80%,
+        transparent 100%
+      );
+
+      transform: translateX(-100%) skewX(-20deg);
+
+      pointer-events: none;
+
+      animation: mosuk-image-shimmer 1.5s infinite;
+    }
+  }
+
+  @keyframes mosuk-image-show {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes mosuk-image-shimmer {
+    100% {
+      transform: translateX(100%) skewX(-20deg);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .image {
+      transition: none;
+
+      .view[data-shown] {
+        animation: none;
+
+        opacity: 1;
+      }
+
+      &[data-animation='shimmer']::after {
+        animation: none;
+
+        opacity: 0.35;
+
+        transform: none;
+      }
+    }
+  }
+}
+
+/* Press */
+@layer mosuk-ui {
+  .image {
+    &[data-press='scale']:active {
+      transform: scale(0.97);
+    }
+
+    &[data-press='highlight']::before {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+
+      content: '';
+
+      background-color: var(--image-press);
+      opacity: 0;
+
+      border-radius: inherit;
+
+      pointer-events: none;
+
+      transition: opacity 150ms ease;
+    }
+
+    &[data-press='highlight']:hover::before {
+      opacity: 0.1;
+    }
+
+    &[data-press='highlight']:active::before {
+      opacity: 0.18;
+    }
+
+    &[data-press='ripple']:not([data-animation='shimmer'])::after {
+      position: absolute;
+      top: var(--press-y, 50%);
+      left: var(--press-x, 50%);
+      z-index: 0;
+
+      width: 200%;
+      max-width: 400px;
+      aspect-ratio: 1;
+
+      content: '';
+
+      background-color: var(--image-press);
+
+      opacity: 0;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+
+      pointer-events: none;
+
+      transition:
+        transform 225ms ease-out,
+        opacity 225ms ease-out;
+    }
+
+    &[data-press='ripple']:active:not([data-animation='shimmer'])::after {
+      opacity: 0.1;
+
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .image {
+      &[data-press='scale']:active {
+        transform: none;
+      }
+
+      &[data-press='highlight']::before,
+      &[data-press='ripple']::after {
+        transition: none;
+      }
+    }
+  }
+}

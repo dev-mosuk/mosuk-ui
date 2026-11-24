@@ -1,86 +1,189 @@
 @layer mosuk-ui {
+  :global(:root) {
+    --bleed: calc(var(--spacing) * 24);
 
-      :root {
-          --bleed: calc(var(--spacing) * 24);
-      }
+    --dialog-bg: var(--color-white);
+    --dialog-color: var(--color-black);
+    --dialog-border: var(--color-zinc-100);
+    --dialog-shadow:
+      0 4px 6px -1px color-mix(in oklab, var(--color-zinc-200) 50%, transparent),
+      0 2px 4px -2px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+  }
 
-      .viewport {
-          position: fixed;
-          inset: 0;
-          z-index: 200;
+  :global([data-theme='dark']) {
+    --dialog-bg: var(--color-zinc-950);
+    --dialog-color: var(--color-white);
+    --dialog-border: var(--color-zinc-900);
+    --dialog-shadow: 0 0 #0000;
+  }
+}
 
-          display: flex;
-          align-items: center;
-          justify-content: center;
+@layer mosuk-ui {
+  .viewport {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
 
-          .backdrop {
-              position: fixed;
-              inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-              background-color: rgba(0, 0, 0, 0.1);
-              backdrop-filter: blur(2px);
+    .backdrop {
+      position: fixed;
+      inset: 0;
 
-              transition-duration: 400ms;
-              transition-property: background-color, backdrop-filter;
-              transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+      background-color: rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(2px);
 
-              &[data-starting-style],
-              &[data-ending-style] {
-                  background-color: rgba(0, 0, 0, 0);
-                  backdrop-filter: blur(0);
-              }
-          }
+      transition-duration: 400ms;
+      transition-property: background-color, backdrop-filter;
+      transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
 
-          .popup {
-              overflow: hidden;
-
-              position: relative;
-
-              width: 100%;
-              height: fit-content;
-              max-width: var(--container-lg);
-              max-height: calc(100dvh - var(--bleed));
-
-              background-color: var(--color-white);
-
-              border-radius: var(--radius-2xl);
-              outline: 0;
-
-              box-shadow: 0 0 50px -12px color-mix(in oklab, var(--color-gray-200) 50%, transparent);
-
-              opacity: 1;
-
-              transition: transform 400ms cubic-bezier(0.45, 1.005, 0, 1.005);
-
-              &[data-starting-style] {
-                  opacity: 0;
-
-                  transform: translateY(100vh);
-              }
-
-              &[data-ending-style] {
-                  transform: translateY(max(100vh, 100%));
-
-                  transition-duration: 200ms;
-                  transition-timing-function: cubic-bezier(0.375, 0.015, 0.545, 0.455);
-              }
-
-              .content {
-                  overflow-y: auto;
-
-                  touch-action: auto;
-
-                  width: 100%;
-                  height: var(--drawer-frontmost-height, 100%);
-
-                  padding: calc(var(--spacing) * 4);
-
-                  &::-webkit-scrollbar {
-                      display: none;
-                      width: 0;
-                      height: 0;
-                  }
-              }
-          }
+      &[data-starting-style],
+      &[data-ending-style] {
+        background-color: rgba(0, 0, 0, 0);
+        backdrop-filter: blur(0);
       }
     }
+
+    .popup {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+
+      position: relative;
+
+      width: 100%;
+      height: fit-content;
+      max-width: var(--container-lg);
+      max-height: calc(100dvh - var(--bleed));
+
+      color: var(--dialog-color);
+
+      background-color: var(--dialog-bg);
+
+      border: 1px solid transparent;
+      border-color: var(--dialog-border);
+      border-radius: var(--radius-2xl);
+      outline: 0;
+
+      box-shadow: var(--dialog-shadow);
+
+      opacity: 1;
+
+      transition: transform 400ms cubic-bezier(0.45, 1.005, 0, 1.005);
+
+      &[data-starting-style] {
+        opacity: 0;
+
+        transform: translateY(100vh);
+      }
+
+      &[data-ending-style] {
+        transform: translateY(max(100vh, 100%));
+
+        transition-duration: 200ms;
+        transition-timing-function: cubic-bezier(0.375, 0.015, 0.545, 0.455);
+      }
+
+      .header {
+        flex-shrink: 0;
+
+        padding: calc(var(--spacing) * 4);
+        padding-bottom: calc(var(--spacing) * 2);
+
+        color: inherit;
+
+        background-color: transparent;
+      }
+
+      .body {
+        flex: 1 1 auto;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+
+        touch-action: auto;
+
+        min-height: 0;
+        width: 100%;
+
+        padding: calc(var(--spacing) * 4);
+        padding-block: calc(var(--spacing) * 2);
+
+        color: inherit;
+
+        background-color: transparent;
+
+        &::-webkit-scrollbar {
+          display: none;
+          width: 0;
+          height: 0;
+        }
+      }
+
+      .footer {
+        flex-shrink: 0;
+
+        padding: calc(var(--spacing) * 4);
+        padding-top: calc(var(--spacing) * 2);
+
+        color: inherit;
+
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .popup {
+    &[data-variant='primary'] {
+      --dialog-bg: var(--color-white);
+      --dialog-color: var(--color-black);
+      --dialog-border: var(--color-zinc-100);
+      --dialog-shadow:
+        0 4px 6px -1px color-mix(in oklab, var(--color-zinc-200) 50%, transparent),
+        0 2px 4px -2px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+    }
+
+    &[data-variant='secondary'] {
+      --dialog-bg: var(--color-gray-50);
+      --dialog-color: var(--color-black);
+      --dialog-border: var(--color-zinc-100);
+      --dialog-shadow: 0 0 #0000;
+    }
+
+    &[data-variant='tertiary'] {
+      --dialog-bg: var(--color-gray-100);
+      --dialog-color: var(--color-black);
+      --dialog-border: var(--color-zinc-200);
+      --dialog-shadow: 0 0 #0000;
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .popup {
+      &[data-variant='primary'] {
+        --dialog-bg: var(--color-zinc-950);
+        --dialog-color: var(--color-white);
+        --dialog-border: var(--color-zinc-900);
+        --dialog-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='secondary'] {
+        --dialog-bg: var(--color-zinc-900);
+        --dialog-color: var(--color-white);
+        --dialog-border: var(--color-zinc-800);
+        --dialog-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='tertiary'] {
+        --dialog-bg: var(--color-zinc-800);
+        --dialog-color: var(--color-white);
+        --dialog-border: var(--color-zinc-700);
+        --dialog-shadow: 0 0 #0000;
+      }
+    }
+  }
+}

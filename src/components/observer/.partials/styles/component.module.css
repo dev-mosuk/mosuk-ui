@@ -1,0 +1,18 @@
+@layer mosuk-ui {
+  .observer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+
+    width: 1px;
+    height: 1px;
+
+    margin: auto;
+
+    opacity: 0;
+
+    pointer-events: none;
+  }
+}

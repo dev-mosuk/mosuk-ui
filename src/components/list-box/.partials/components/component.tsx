@@ -1,8 +1,11 @@
 'use client';
 
 import type { ListBoxProps } from '@/components/list-box/.partials/components/component.interface';
-import { LIST_BOX_DEFAULT_SELECTION_MODE } from '@/components/list-box/.partials/constants/component.constants';
-import { ListBoxSelectionMode } from '@/components/list-box/.partials/enums/component.enums';
+import {
+  LIST_BOX_DEFAULT_MODE,
+  LIST_BOX_DEFAULT_VARIANT,
+} from '@/components/list-box/.partials/constants/component.constants';
+import { ListBoxMode } from '@/components/list-box/.partials/enums/component.enums';
 import { useListBoxKeyboard } from '@/components/list-box/.partials/hooks/hook';
 import type { ListBoxItemRegistration } from '@/components/list-box/.partials/providers/context/context.interface';
 import { ListBoxProvider } from '@/components/list-box/.partials/providers/provider';
@@ -17,10 +20,11 @@ import React, {
 } from 'react';
 
 export function ListBox({
-  selectionMode = LIST_BOX_DEFAULT_SELECTION_MODE,
-  value: valueProp,
-  defaultValue,
-  onValueChange,
+  selected: selectedProp,
+  defaultSelected,
+  onSelectChange,
+  mode = LIST_BOX_DEFAULT_MODE,
+  variant = LIST_BOX_DEFAULT_VARIANT,
   onAction,
   matches,
   onItemRegister,
@@ -32,11 +36,11 @@ export function ListBox({
 }: ListBoxProps) {
   const listRef = useRef<HTMLUListElement>(null);
   const itemsRef = useRef(new Map<string, ListBoxItemRegistration>());
-  const isControlled = valueProp !== undefined;
-  const [uncontrolledValue, setUncontrolledValue] = useState<string[]>(
-    defaultValue ?? [],
+  const isControlled = selectedProp !== undefined;
+  const [uncontrolledSelected, setUncontrolledSelected] = useState<string[]>(
+    defaultSelected ?? [],
   );
-  const value = isControlled ? (valueProp ?? []) : uncontrolledValue;
+  const selected = isControlled ? (selectedProp ?? []) : uncontrolledSelected;
   const [highlightedId, setHighlightedId] = useState<string | null>(null);
   const [itemsVersion, setItemsVersion] = useState(0);
   const syncScheduledRef = useRef(false);
@@ -73,15 +77,15 @@ export function ListBox({
 
   const getItems = useCallback(() => itemsRef.current, []);
 
-  const commitValue = useCallback(
+  const commitSelected = useCallback(
     (next: string[]) => {
       if (!isControlled) {
-        setUncontrolledValue(next);
+        setUncontrolledSelected(next);
       }
 
-      onValueChange?.(next);
+      onSelectChange?.(next);
     },
-    [isControlled, onValueChange],
+    [isControlled, onSelectChange],
   );
 
   const select = useCallback(
@@ -94,22 +98,20 @@ export function ListBox({
 
       onAction?.(id);
 
-      if (selectionMode === ListBoxSelectionMode.None) {
-        return;
-      }
-
-      if (selectionMode === ListBoxSelectionMode.Multiple) {
-        const next = value.includes(id)
-          ? value.filter((entry) => entry !== id)
-          : [...value, id];
-        commitValue(next);
+      if (mode === ListBoxMode.Multiple) {
+        const next = selected.includes(id)
+          ? selected.filter((entry) => entry !== id)
+          : [...selected, id];
+        commitSelected(next);
 
         return;
       }
 
-      commitValue(value.includes(id) && value.length === 1 ? value : [id]);
+      commitSelected(
+        selected.includes(id) && selected.length === 1 ? selected : [id],
+      );
     },
-    [commitValue, onAction, selectionMode, value],
+    [commitSelected, mode, onAction, selected],
   );
 
   useEffect(() => {
@@ -131,7 +133,7 @@ export function ListBox({
       return;
     }
 
-    const firstSelected = value.find((id) => isVisible(id));
+    const firstSelected = selected.find((id) => isVisible(id));
 
     if (firstSelected) {
       setHighlightedId(firstSelected);
@@ -150,7 +152,7 @@ export function ListBox({
     const firstEnabled = orderedIds.find((id) => isVisible(id));
 
     setHighlightedId(firstEnabled ?? null);
-  }, [highlightedId, matches, value, itemsVersion]);
+  }, [highlightedId, matches, selected, itemsVersion]);
 
   const visibleCount = useMemo(() => {
     let count = 0;
@@ -168,8 +170,9 @@ export function ListBox({
 
   const contextValue = useMemo(
     () => ({
-      selectionMode,
-      value,
+      mode,
+      variant,
+      selected,
       highlightedId,
       registerItem,
       unregisterItem,
@@ -182,8 +185,9 @@ export function ListBox({
       onItemRegister,
     }),
     [
-      selectionMode,
-      value,
+      mode,
+      variant,
+      selected,
       highlightedId,
       registerItem,
       unregisterItem,
@@ -200,7 +204,7 @@ export function ListBox({
     <ListBoxProvider {...contextValue}>
       <ListBoxList
         listRef={listRef}
-        selectionMode={selectionMode}
+        mode={mode}
         className={className}
         onKeyDownProp={onKeyDownProp}
         {...rest}
@@ -214,23 +218,24 @@ export function ListBox({
 
 function ListBoxList({
   listRef,
-  selectionMode,
+  mode,
   className,
   children,
   onKeyDownProp,
   ...rest
 }: {
   listRef: React.RefObject<HTMLUListElement | null>;
-  selectionMode: ListBoxProps['selectionMode'];
+  mode: ListBoxProps['mode'];
   className?: string;
   children?: React.ReactNode;
   onKeyDownProp?: ListBoxProps['onKeyDown'];
 } & Omit<
   ListBoxProps,
-  | 'selectionMode'
-  | 'value'
-  | 'defaultValue'
-  | 'onValueChange'
+  | 'selected'
+  | 'defaultSelected'
+  | 'onSelectChange'
+  | 'mode'
+  | 'variant'
   | 'onAction'
   | 'className'
   | 'children'
@@ -244,7 +249,7 @@ function ListBoxList({
       ref={listRef}
       role='listbox'
       aria-multiselectable={
-        selectionMode === ListBoxSelectionMode.Multiple ? true : undefined
+        mode === ListBoxMode.Multiple ? true : undefined
       }
       tabIndex={-1}
       onKeyDown={(event) => {

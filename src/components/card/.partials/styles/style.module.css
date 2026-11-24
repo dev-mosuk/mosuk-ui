@@ -1,12 +1,282 @@
-@layer components {
-    .card {
-        padding: calc(var(--spacing) * 4);
+@layer mosuk-ui {
+  :global(:root) {
+    --card-bg: var(--color-white);
+    --card-color: var(--color-black);
 
-        background-color: var(--color-white);
+    --card-border: var(--color-zinc-100);
+    --card-radius: min(var(--radius-2xl), 25%);
 
-        border: 0.75px solid var(--color-gray-100);
-        border-radius: var(--radius-2xl);
+    --card-shadow:
+      0 4px 6px -1px color-mix(in oklab, var(--color-zinc-200) 50%, transparent),
+      0 2px 4px -2px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
 
-        box-shadow: 0 0 50px -12px color-mix(in oklab, var(--color-gray-200) 50%, transparent);
+    --card-press: var(--color-white);
+
+    --card-muted: 50%;
+  }
+
+  :global([data-theme='dark']) {
+    --card-bg: var(--color-zinc-900);
+    --card-color: var(--color-white);
+
+    --card-border: var(--color-zinc-800);
+    --card-radius: min(var(--radius-2xl), 25%);
+
+    --card-shadow: 0 0 #0000;
+
+    --card-press: var(--color-white);
+
+    --card-muted: 50%;
+  }
+}
+
+/* Card */
+@layer mosuk-ui {
+  .card {
+    overflow: hidden;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 3);
+
+    padding: calc(var(--spacing) * 4);
+
+    background-color: var(--card-bg);
+    color: var(--color-black);
+
+    border: 1px solid transparent;
+    border-color: var(--card-border);
+    border-radius: var(--card-radius);
+
+    box-shadow: var(--card-shadow);
+
+    backdrop-filter: blur(0px) saturate(100%) brightness(1);
+
+    transition: all 200ms ease-in-out;
+
+    &:disabled,
+    &[aria-disabled='true'],
+    &[data-disabled] {
+      opacity: 0.5;
+
+      cursor: not-allowed;
+      pointer-events: none;
     }
+  }
+}
+
+/* Dark */
+@layer mosuk-ui {
+  :global([data-theme='dark']) {
+    .card {
+      color: var(--color-white);
+    }
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .card {
+    &[data-variant='primary'] {
+      --card-bg: var(--color-white);
+      --card-color: var(--color-black);
+      --card-border: var(--color-zinc-100);
+      --card-shadow:
+        0 4px 6px -1px color-mix(in oklab, var(--color-zinc-200) 50%, transparent),
+        0 2px 4px -2px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+    }
+
+    &[data-variant='secondary'] {
+      --card-bg: var(--color-zinc-50);
+      --card-color: var(--color-black);
+      --card-border: var(--color-zinc-100);
+      --card-shadow: 0 0 #0000;
+    }
+
+    &[data-variant='tertiary'] {
+      --card-bg: var(--color-zinc-100);
+      --card-color: var(--color-black);
+      --card-border: color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+      --card-shadow: 0 0 #0000;
+    }
+
+    &[data-variant='outline'] {
+      --card-bg: transparent;
+      --card-color: var(--color-black);
+      --card-border: var(--color-zinc-200);
+      --card-shadow: 0 0 #0000;
+    }
+
+    &[data-variant='ghost'] {
+      --card-bg: transparent;
+      --card-color: var(--color-black);
+      --card-border: transparent;
+      --card-shadow: 0 0 #0000;
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .card {
+      &[data-variant='primary'] {
+        --card-bg: var(--color-zinc-900);
+        --card-color: var(--color-white);
+        --card-border: var(--color-zinc-800);
+        --card-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='secondary'] {
+        --card-bg: var(--color-zinc-800);
+        --card-color: var(--color-white);
+        --card-border: var(--color-zinc-700);
+        --card-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='tertiary'] {
+        --card-bg: var(--color-zinc-700);
+        --card-color: var(--color-white);
+        --card-border: var(--color-zinc-600);
+        --card-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='outline'] {
+        --card-bg: transparent;
+        --card-color: var(--color-white);
+        --card-border: var(--color-zinc-700);
+        --card-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='ghost'] {
+        --card-bg: transparent;
+        --card-color: var(--color-white);
+        --card-border: transparent;
+        --card-shadow: 0 0 #0000;
+      }
+    }
+  }
+}
+
+/* ! Animation */
+@layer mosuk-ui {
+  .card {
+    &[data-animation='shimmer']::after {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      content: '';
+
+      background: linear-gradient(90deg,
+          transparent 0%,
+          transparent 20%,
+          color-mix(in oklab, var(--card-press) 35%, transparent),
+          transparent 80%,
+          transparent 100%);
+
+      transform: translateX(-100%) skewX(-20deg);
+
+      pointer-events: none;
+
+      animation: card-shimmer 1.5s infinite;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card {
+      transition: none;
+
+      &[data-animation='shimmer']::after {
+        animation: none;
+
+        opacity: 0.35;
+
+        transform: none;
+      }
+    }
+  }
+
+  @keyframes card-shimmer {
+    100% {
+      transform: translateX(100%) skewX(-20deg);
+    }
+  }
+}
+
+/* ! Press */
+@layer mosuk-ui {
+  .card {
+    &[data-press='scale']:active:not(:disabled):not([data-disabled]) {
+      transform: scale(0.97);
+    }
+
+    &[data-press='highlight']::before {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+
+      content: '';
+
+      background-color: var(--card-press);
+      opacity: 0;
+
+      border-radius: inherit;
+
+      pointer-events: none;
+
+      transition: opacity 150ms ease;
+    }
+
+    &[data-press='highlight']:hover:not(:disabled):not([data-disabled])::before {
+      opacity: 0.1;
+    }
+
+    &[data-press='highlight']:active:not(:disabled):not([data-disabled])::before {
+      opacity: 0.18;
+    }
+
+    &[data-press='ripple']:not([data-animation='shimmer'])::after {
+      position: absolute;
+      top: var(--press-y, 50%);
+      left: var(--press-x, 50%);
+      z-index: 0;
+
+      width: 200%;
+      max-width: 400px;
+      aspect-ratio: 1;
+
+      content: '';
+
+      background-color: var(--card-press);
+
+      opacity: 0;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+
+      pointer-events: none;
+
+      transition:
+        transform 225ms ease-out,
+        opacity 225ms ease-out;
+    }
+
+    &[data-press='ripple']:active:not(:disabled):not([data-disabled]):not([data-animation='shimmer'])::after {
+      opacity: 0.1;
+
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card {
+      &[data-press='scale']:active {
+        transform: none;
+      }
+
+      &[data-press='highlight']::before,
+      &[data-press='ripple']::after {
+        transition: none;
+      }
+    }
+  }
 }

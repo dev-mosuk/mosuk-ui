@@ -17,8 +17,8 @@ function resolveBehavior(
 }
 
 /**
- * Scrolls the toggle container so that `child` is fully visible on the main axis
- * (horizontal: overflow-x, vertical: overflow-y). No-op if there is no overflow
+ * Scrolls the toggle container so that a partially visible `child` sits near
+ * the center of the viewport on the main axis. No-op if there is no overflow
  * or the child is already fully in view.
  */
 export function scrollToggleOptionIntoView(
@@ -50,16 +50,14 @@ export function scrollToggleOptionIntoView(
     if (!overLeft && !overRight) {
       return;
     }
-    let delta = 0;
-    if (overLeft && overRight) {
-      delta = tr.left - cr.left;
-    } else if (overLeft) {
-      delta = tr.left - cr.left;
-    } else {
-      delta = tr.right - cr.right;
-    }
+
+    const childCenter = (tr.left + tr.right) / 2;
+    const containerCenter = (cr.left + cr.right) / 2;
+    const delta = childCenter - containerCenter;
+    const max = container.scrollWidth - container.clientWidth;
+
     container.scrollTo({
-      left: container.scrollLeft + delta,
+      left: Math.min(max, Math.max(0, container.scrollLeft + delta)),
       behavior: resolved,
     });
 
@@ -71,16 +69,14 @@ export function scrollToggleOptionIntoView(
   if (!overTop && !overBottom) {
     return;
   }
-  let delta = 0;
-  if (overTop && overBottom) {
-    delta = tr.top - cr.top;
-  } else if (overTop) {
-    delta = tr.top - cr.top;
-  } else {
-    delta = tr.bottom - cr.bottom;
-  }
+
+  const childCenter = (tr.top + tr.bottom) / 2;
+  const containerCenter = (cr.top + cr.bottom) / 2;
+  const delta = childCenter - containerCenter;
+  const max = container.scrollHeight - container.clientHeight;
+
   container.scrollTo({
-    top: container.scrollTop + delta,
+    top: Math.min(max, Math.max(0, container.scrollTop + delta)),
     behavior: resolved,
   });
 }

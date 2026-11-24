@@ -1,3 +1,8 @@
-import { Select as SelectPrimitive } from '@base-ui/react/select';
+import type { Popover } from '@/components/popover';
+import type { ReactNode } from 'react';
 
-export type SelectPopoverProps = SelectPrimitive.Popup.Props;
+export type SelectPopoverProps = Omit<Popover.Overview.Props, 'children'> & {
+  children?: ReactNode;
+  contentClassName?: string;
+  empty?: ReactNode;
+};

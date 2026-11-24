@@ -1,9 +1,8 @@
 import { ChatMessageFileProps } from '@/components/chat/.partials/components/message-file/component.interface';
 import styles from '@/components/chat/.partials/styles/component.module.css';
 import { formatFileSize } from '@/components/chat/.partials/utilities/format-file-size';
+import { File } from '@/components/file';
 import classNames from 'classnames';
-import { File as FileIcon } from 'lucide-react';
-import { AdobePdf } from 'mosuk-icons/shared/components/adobe/pdf';
 import React from 'react';
 
 export function ChatMessageFile({
@@ -16,7 +15,6 @@ export function ChatMessageFile({
     typeof size === 'number' && Number.isFinite(size)
       ? formatFileSize(size)
       : null;
-  const isPdf = name.toLowerCase().endsWith('.pdf');
   const className = classNames(
     'mosuk-chat-message-file',
     styles.file,
@@ -25,13 +23,11 @@ export function ChatMessageFile({
 
   const content = (
     <>
-      <span className={styles.icon}>
-        {isPdf ? (
-          <AdobePdf alt='PDF' className={styles.glyph} />
-        ) : (
-          <FileIcon className={styles.glyph} strokeWidth={1.5} />
-        )}
-      </span>
+      <File name={name} size={8} variant='secondary'>
+        <File.Fallback>
+          <File.Icon />
+        </File.Fallback>
+      </File>
       <span className={styles.info}>
         <span className={styles.name}>{name}</span>
         {sizeLabel ? <span className={styles.size}>{sizeLabel}</span> : null}

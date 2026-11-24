@@ -1,14 +1,36 @@
-import { LinkProps as NextLinkProps } from 'next/link';
-import { HTMLAttributes, ReactNode } from 'react';
+import type {
+  FileAnimation,
+  FilePress,
+  FileVariant,
+} from '@/components/file/.partials/enums/component.enums';
+import type { PropsOf } from '@/components/file/.partials/utilities/props-of';
+import type { CSSProperties, PointerEventHandler, ReactNode, Ref } from 'react';
 
-export interface FileContextProps {}
-
-export type FileProps = HTMLAttributes<HTMLDivElement> & {};
-
-export type FileLinkProps = NextLinkProps & {
-  href: string;
-  title?: string;
-  target?: '_self' | '_blank' | '_parent' | '_top';
+type FileOwnProps<C> = {
+  as?: C;
+  ref?: Ref<any>;
+  size?: number;
+  variant?: FileVariant | `${FileVariant}`;
+  animation?: FileAnimation | `${FileAnimation}`;
+  press?: FilePress | `${FilePress}` | false;
+  isDisabled?: boolean;
+  name?: string | null;
+  extension?: string | null;
+  style?: CSSProperties;
   className?: string;
-  children: ReactNode;
+  onPointerDown?: PointerEventHandler<any>;
+  children?: ReactNode;
 };
+
+export type FileProps<C = 'div'> = FileOwnProps<C> &
+  Omit<
+    PropsOf<C>,
+    | 'as'
+    | 'ref'
+    | 'className'
+    | 'style'
+    | 'onPointerDown'
+    | 'children'
+    | 'color'
+    | 'name'
+  >;

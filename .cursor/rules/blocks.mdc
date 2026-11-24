@@ -1,0 +1,68 @@
+---
+description: Blocks — page-level UI blocks under src/blocks/ (breadcrumbs, yandex-map, …)
+globs: 'src/blocks/**'
+alwaysApply: false
+---
+
+# blocks
+
+## Layout
+
+Составные UI-блоки страницы — не leaf-компоненты. Плоско: `src/blocks/{feature}/` (`breadcrumbs/`, `yandex-map/`, …). Слой на одном уровне с `components/`.
+
+| Feature | Назначение |
+| ------- | ---------- |
+| breadcrumbs | цепочка навигации / путь |
+| yandex-map | карта Yandex Maps (UI compound; SDK — `providers/yandex-map`) |
+
+Leaf controls, overlays, texts (включая accordion) — в `components/`. Сюда — только блоки, которые собирают страницу, а не атомарный UI.
+
+Стили → `.cursor/rules/styling.mdc`
+Exports → `.cursor/rules/exports.mdc`
+
+## Canonical structure
+
+Тот же layout, что у components:
+
+```
+{feature}/
+├── index.ts
+└── .partials/
+    ├── styles/component.module.css
+    ├── components/
+    │   ├── component.tsx
+    │   ├── component.interface.ts
+    │   ├── {part}/
+    │   └── {part}-{child}/
+    ├── constants/               ← defaults пропов, если есть
+    ├── providers/               ← если sub-parts делят state
+    └── hooks/
+```
+
+Sub-parts — **плоские** папки-соседи в `.partials/components/`. Глубина compound склеивается дефисом. Root — `components/component.tsx`.
+
+Импорты везде `@/`. Публичный API — `{feature}/index.ts` → `mosuk-ui/blocks/{feature}` (без `/component`).
+
+## Идиома
+
+Как у components (см. `.cursor/rules/components.mdc`):
+
+- `export function {Name}`
+- Props — тип part из `@base-ui/react`, если primitive есть
+- Публичные boolean/state — `is*` / `has*` / `can*` / `default*` / `on*Change` (components rule § Props naming); DOM/Base UI имена наружу не экспортировать
+- OwnProps order + defaults из `.partials/constants/` — components rule § Props order / § Props defaults
+- `{...rest}` на primitive, `rest?.children`
+- `classNames`: `mosuk-{feature}` → `@container/{feature}` → `group/{feature}` → `styles.*` → `rest?.className`
+- CSS: `@layer mosuk-ui { .{feature} { … } }`
+- Host-класс модуля — `.{feature}` camelCase
+- Склейка классов — пакет `classnames`
+
+## Эталоны
+
+- Breadcrumbs (compound + scroll): `src/blocks/breadcrumbs/`
+- Yandex Map (vendor UI block): `src/blocks/yandex-map/`
+- Раскладка compound-папок — как у `src/components/popover/`
+
+## Playgrounds
+
+`playgrounds/**` не создавать и не обновлять — только по явному запросу. См. architecture rule § Playgrounds.

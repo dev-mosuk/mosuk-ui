@@ -1,12 +1,19 @@
 @layer mosuk-ui {
-
-      .fieldset {
-          .input {
-              display: none;
-          }
-
-          .label {
-              cursor: pointer;
-          }
-      }
+  .fieldset {
+    .input {
+      display: none;
     }
+
+    .open {
+      cursor: pointer;
+    }
+
+    &:disabled .open,
+    &[disabled] .open,
+    &[aria-disabled='true'] .open {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+}

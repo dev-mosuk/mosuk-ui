@@ -1,13 +1,12 @@
-export enum ListBoxItemVariant {
+export enum ListBoxVariant {
   Primary = 'primary',
   Secondary = 'secondary',
+  Tertiary = 'tertiary',
   Outline = 'outline',
   Ghost = 'ghost',
-  Danger = 'danger',
 }
 
-export enum ListBoxSelectionMode {
+export enum ListBoxMode {
   Single = 'single',
   Multiple = 'multiple',
-  None = 'none',
 }

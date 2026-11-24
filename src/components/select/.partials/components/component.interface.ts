@@ -1,16 +1,24 @@
-import { Select as SelectPrimitive } from '@base-ui/react/select';
+import type { SelectMode } from '@/components/select/.partials/enums/component.enums';
+import type { Popover } from '@/components/popover';
 import type { ReactNode } from 'react';
 
-export type SelectProps<
-  Value,
-  Multiple extends boolean | undefined = false,
-> = Omit<
-  SelectPrimitive.Root.Props<Value, Multiple>,
-  'open' | 'disabled' | 'readOnly' | 'required'
-> & {
+type SelectOwnProps = {
+  mode?: SelectMode | `${SelectMode}`;
+  keepMounted?: boolean;
+  container?: Popover.Props['container'];
+  placeholder?: string;
+  selected?: string[];
+  defaultSelected?: string[];
+  query?: string;
+  defaultQuery?: string;
+  defaultOpen?: boolean;
   isOpen?: boolean;
   isDisabled?: boolean;
-  isReadOnly?: boolean;
-  isRequired?: boolean;
-  placeholder?: ReactNode;
+  isMultiple?: boolean;
+  onOpenChange?: (isOpen: boolean) => void;
+  onSelectChange?: (selected: string[]) => void;
+  onQueryChange?: (query: string) => void;
+  children?: ReactNode;
 };
+
+export type SelectProps = SelectOwnProps;

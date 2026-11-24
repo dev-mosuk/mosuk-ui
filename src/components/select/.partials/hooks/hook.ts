@@ -6,7 +6,7 @@ export function useSelect(): UseSelectProps {
   const context = useContext(SelectContext);
 
   if (!context) {
-    throw new Error('useSelect must be used within Select');
+    throw new Error('useSelect must be used within <Select>');
   }
 
   return context;

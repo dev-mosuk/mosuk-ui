@@ -1,0 +1,505 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --input-bg: var(--color-zinc-100);
+    --input-bg-hover: var(--color-zinc-200);
+    --input-bg-focus: var(--color-zinc-200);
+    --input-color: var(--color-black);
+    --input-placeholder: var(--color-zinc-500);
+
+    --input-border: transparent;
+    --input-outline: none;
+    --input-shadow: none;
+
+    --input-border-hover: transparent;
+    --input-border-focus: transparent;
+  }
+
+  :global([data-theme='dark']) {
+    --input-bg: var(--color-zinc-900);
+    --input-bg-hover: var(--color-zinc-800);
+    --input-bg-focus: var(--color-zinc-800);
+    --input-color: var(--color-white);
+    --input-placeholder: var(--color-zinc-400);
+
+    --input-border: transparent;
+    --input-outline: none;
+    --input-shadow: none;
+
+    --input-border-hover: transparent;
+    --input-border-focus: transparent;
+  }
+}
+
+/* Textarea */
+@layer mosuk-ui {
+  .textarea {
+    box-sizing: border-box;
+    appearance: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    resize: none;
+
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+    min-height: calc(var(--spacing) * var(--input-size));
+
+    padding-inline: calc(var(--spacing) * 0.425 * var(--input-size));
+    padding-block: calc(
+      (
+          var(--spacing) * var(--input-size) - var(--text-sm) *
+            var(--leading-normal)
+        ) /
+        2
+    );
+
+    color: var(--input-color);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+
+    background-color: var(--input-bg);
+
+    border: 1px solid transparent;
+    border-color: var(--input-border);
+    border-radius: var(--radius-xl);
+    outline: var(--input-outline);
+
+    box-shadow: var(--input-shadow);
+
+    transition: all 200ms ease-in-out;
+
+    &::placeholder {
+      color: var(--input-placeholder);
+    }
+
+    &:hover:not(:disabled):not(:read-only) {
+      background-color: var(--input-bg-hover);
+
+      border-color: var(--input-border-hover);
+    }
+
+    &:focus:not(:disabled):not(:read-only) {
+      background-color: var(--input-bg-focus);
+
+      border-color: var(--input-border-focus);
+    }
+
+    &:disabled,
+    &:read-only {
+      opacity: 50%;
+
+      pointer-events: none;
+    }
+
+    &[data-ios-zoom-lock] {
+      font-size: 16px;
+
+      transition-duration: 0s;
+    }
+
+    /* overflow:hidden — иначе react-textarea-autosize даёт ложный scrollbar */
+    &[data-autosize] {
+      overflow: hidden;
+
+      transition: none;
+
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .textarea {
+    &[data-variant='primary'] {
+      --input-bg: var(--color-zinc-100);
+      --input-bg-hover: var(--color-zinc-200);
+      --input-bg-focus: var(--color-zinc-200);
+      --input-color: var(--color-black);
+      --input-placeholder: var(--color-zinc-500);
+
+      --input-border: transparent;
+      --input-outline: none;
+      --input-shadow: none;
+
+      --input-border-hover: transparent;
+      --input-border-focus: transparent;
+    }
+
+    &[data-variant='secondary'] {
+      --input-bg: var(--color-zinc-50);
+      --input-bg-hover: var(--color-zinc-100);
+      --input-bg-focus: var(--color-zinc-100);
+      --input-color: var(--color-black);
+      --input-placeholder: var(--color-zinc-500);
+
+      --input-border: transparent;
+      --input-outline: none;
+      --input-shadow: none;
+
+      --input-border-hover: transparent;
+      --input-border-focus: transparent;
+    }
+
+    &[data-variant='outline'] {
+      --input-bg: transparent;
+      --input-bg-hover: transparent;
+      --input-bg-focus: transparent;
+      --input-color: var(--color-black);
+      --input-placeholder: var(--color-zinc-500);
+
+      --input-border: var(--color-zinc-200);
+      --input-outline: none;
+      --input-shadow: none;
+
+      --input-border-hover: var(--color-primary-500);
+      --input-border-focus: var(--color-primary-500);
+    }
+
+    &[data-variant='ghost'] {
+      --input-bg: transparent;
+      --input-bg-hover: transparent;
+      --input-bg-focus: transparent;
+      --input-color: var(--color-black);
+      --input-placeholder: var(--color-zinc-500);
+
+      --input-border: transparent;
+      --input-outline: none;
+      --input-shadow: none;
+
+      --input-border-hover: transparent;
+      --input-border-focus: transparent;
+
+      padding-inline: 0;
+      border-radius: 0;
+    }
+
+    &[data-danger][data-variant='primary'] {
+      --input-bg: var(--color-red-100);
+      --input-bg-hover: var(--color-red-200);
+      --input-bg-focus: var(--color-red-200);
+      --input-color: var(--color-black);
+      --input-placeholder: var(--color-red-300);
+
+      --input-border: transparent;
+      --input-border-hover: transparent;
+      --input-border-focus: transparent;
+    }
+
+    &[data-danger][data-variant='secondary'] {
+      --input-bg: var(--color-red-50);
+      --input-bg-hover: var(--color-red-100);
+      --input-bg-focus: var(--color-red-100);
+      --input-color: var(--color-black);
+      --input-placeholder: var(--color-red-300);
+
+      --input-border: transparent;
+      --input-border-hover: transparent;
+      --input-border-focus: transparent;
+    }
+
+    &[data-danger][data-variant='outline'] {
+      --input-bg: transparent;
+      --input-bg-hover: transparent;
+      --input-bg-focus: transparent;
+      --input-color: var(--color-black);
+      --input-placeholder: var(--color-red-300);
+
+      --input-border: var(--color-red-200);
+      --input-border-hover: var(--color-red-500);
+      --input-border-focus: var(--color-red-500);
+    }
+
+    &[data-danger][data-variant='ghost'] {
+      --input-bg: transparent;
+      --input-bg-hover: transparent;
+      --input-bg-focus: transparent;
+      --input-color: var(--color-red-500);
+      --input-placeholder: var(--color-red-300);
+
+      --input-border: transparent;
+      --input-border-hover: transparent;
+      --input-border-focus: transparent;
+
+      padding-inline: 0;
+      border-radius: 0;
+    }
+  }
+}
+
+/* Dark */
+@layer mosuk-ui {
+  :global([data-theme='dark']) {
+    .textarea {
+      &[data-variant='primary'] {
+        --input-bg: var(--color-zinc-800);
+        --input-bg-hover: var(--color-zinc-700);
+        --input-bg-focus: var(--color-zinc-700);
+        --input-color: var(--color-white);
+        --input-placeholder: var(--color-zinc-400);
+
+        --input-border: transparent;
+        --input-outline: none;
+        --input-shadow: none;
+
+        --input-border-hover: transparent;
+        --input-border-focus: transparent;
+      }
+
+      &[data-variant='secondary'] {
+        --input-bg: var(--color-zinc-900);
+        --input-bg-hover: var(--color-zinc-800);
+        --input-bg-focus: var(--color-zinc-800);
+        --input-color: var(--color-white);
+        --input-placeholder: var(--color-zinc-400);
+
+        --input-border: transparent;
+        --input-outline: none;
+        --input-shadow: none;
+
+        --input-border-hover: transparent;
+        --input-border-focus: transparent;
+      }
+
+      &[data-variant='outline'] {
+        --input-bg: transparent;
+        --input-bg-hover: transparent;
+        --input-bg-focus: transparent;
+        --input-color: var(--color-white);
+        --input-placeholder: var(--color-zinc-400);
+
+        --input-border: var(--color-zinc-700);
+        --input-outline: none;
+        --input-shadow: none;
+
+        --input-border-hover: var(--color-primary-500);
+        --input-border-focus: var(--color-primary-500);
+      }
+
+      &[data-variant='ghost'] {
+        --input-bg: transparent;
+        --input-bg-hover: transparent;
+        --input-bg-focus: transparent;
+        --input-color: var(--color-white);
+        --input-placeholder: var(--color-zinc-400);
+
+        --input-border: transparent;
+        --input-outline: none;
+        --input-shadow: none;
+
+        --input-border-hover: transparent;
+        --input-border-focus: transparent;
+
+        padding-inline: 0;
+        border-radius: 0;
+      }
+
+      &[data-danger][data-variant='primary'] {
+        --input-bg: color-mix(
+          in oklab,
+          var(--color-red-500) 25%,
+          var(--color-zinc-900)
+        );
+        --input-bg-hover: color-mix(
+          in oklab,
+          var(--color-red-500) 35%,
+          var(--color-zinc-900)
+        );
+        --input-bg-focus: color-mix(
+          in oklab,
+          var(--color-red-500) 35%,
+          var(--color-zinc-900)
+        );
+        --input-color: var(--color-white);
+        --input-placeholder: var(--color-red-300);
+
+        --input-border: transparent;
+        --input-border-hover: transparent;
+        --input-border-focus: transparent;
+      }
+
+      &[data-danger][data-variant='secondary'] {
+        --input-bg: color-mix(
+          in oklab,
+          var(--color-red-500) 15%,
+          var(--color-zinc-900)
+        );
+        --input-bg-hover: color-mix(
+          in oklab,
+          var(--color-red-500) 25%,
+          var(--color-zinc-900)
+        );
+        --input-bg-focus: color-mix(
+          in oklab,
+          var(--color-red-500) 25%,
+          var(--color-zinc-900)
+        );
+        --input-color: var(--color-white);
+        --input-placeholder: var(--color-red-300);
+
+        --input-border: transparent;
+        --input-border-hover: transparent;
+        --input-border-focus: transparent;
+      }
+
+      &[data-danger][data-variant='outline'] {
+        --input-bg: transparent;
+        --input-bg-hover: transparent;
+        --input-bg-focus: transparent;
+        --input-color: var(--color-white);
+        --input-placeholder: var(--color-red-300);
+
+        --input-border: var(--color-red-400);
+        --input-border-hover: var(--color-red-500);
+        --input-border-focus: var(--color-red-500);
+      }
+
+      &[data-danger][data-variant='ghost'] {
+        --input-bg: transparent;
+        --input-bg-hover: transparent;
+        --input-bg-focus: transparent;
+        --input-color: var(--color-red-400);
+        --input-placeholder: var(--color-red-300);
+
+        --input-border: transparent;
+        --input-border-hover: transparent;
+        --input-border-focus: transparent;
+
+        padding-inline: 0;
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+/* Press */
+@layer mosuk-ui {
+  .textarea {
+    &[data-press='scale']:active:not(:disabled):not(:read-only) {
+      transform: scale(0.97);
+    }
+
+    &[data-press='highlight']::before {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+
+      content: '';
+
+      background-color: white;
+
+      opacity: 0;
+
+      border-radius: inherit;
+
+      pointer-events: none;
+
+      transition: opacity 150ms ease;
+    }
+
+    &[data-press='highlight']:hover:not(:disabled):not(:read-only)::before {
+      opacity: 0.1;
+    }
+
+    &[data-press='highlight']:active:not(:disabled):not(:read-only)::before {
+      opacity: 0.18;
+    }
+
+    &[data-press='ripple']:not([data-animation='shimmer'])::after {
+      position: absolute;
+      top: var(--press-y, 50%);
+      left: var(--press-x, 50%);
+      z-index: 0;
+
+      width: 200%;
+      max-width: 400px;
+      aspect-ratio: 1;
+
+      content: '';
+
+      background-color: white;
+
+      opacity: 0;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+
+      pointer-events: none;
+
+      transition:
+        transform 225ms ease-out,
+        opacity 225ms ease-out;
+    }
+
+    &[data-press='ripple']:active:not(:disabled):not(:read-only):not(
+        [data-animation='shimmer']
+      )::after {
+      opacity: 0.1;
+
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+
+/* Animation */
+@layer mosuk-ui {
+  .textarea {
+    &[data-animation='shimmer']::after {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      content: '';
+
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        transparent 20%,
+        color-mix(in oklab, white 35%, transparent),
+        transparent 80%,
+        transparent 100%
+      );
+
+      transform: translateX(-100%) skewX(-20deg);
+
+      pointer-events: none;
+
+      animation: textarea-shimmer 1.5s infinite;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .textarea {
+      transition: none;
+
+      &[data-press='scale']:active {
+        transform: none;
+      }
+
+      &[data-press='highlight']::before,
+      &[data-press='ripple']::after {
+        transition: none;
+      }
+
+      &[data-animation='shimmer']::after {
+        animation: none;
+
+        opacity: 0.35;
+
+        transform: none;
+      }
+    }
+  }
+
+  @keyframes textarea-shimmer {
+    100% {
+      transform: translateX(100%) skewX(-20deg);
+    }
+  }
+}

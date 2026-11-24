@@ -1,29 +1,20 @@
-import { HintTypeConstant } from '@/components/hint/.partials/component.constants';
-import { HintTypeEnum } from '@/components/hint/.partials/component.enums';
-import { Hint as BaseHint } from '@/components/hint/.partials/components/component';
-import { HintProps } from '@/components/hint/.partials/components/component.interface';
-import { HintIcon } from '@/components/hint/.partials/components/icon/component';
-import { HintIconProps } from '@/components/hint/.partials/components/icon/component.interface';
-import { HintText } from '@/components/hint/.partials/components/text/component';
-import { HintTextProps } from '@/components/hint/.partials/components/text/component.interface';
+import { Hint as Component } from '@/components/hint/.partials/components/component';
+import type { HintProps } from '@/components/hint/.partials/components/component.interface';
+import {
+  HintAnimation,
+  HintColor,
+  HintPress,
+} from '@/components/hint/.partials/enums/component.enums';
+import type { ElementType } from 'react';
 
-export const Hint = Object.assign(BaseHint, {
-  Icon: HintIcon,
-  Text: HintText,
-  Type: {
-    ENUM: HintTypeEnum,
-    CONSTANT: HintTypeConstant,
+export const Hint = Object.assign(Component, {
+  ENUMS: {
+    Color: HintColor,
+    Animation: HintAnimation,
+    Press: HintPress,
   },
 });
 
 export namespace Hint {
-  export type Props = HintProps;
-
-  export namespace Icon {
-    export type Props = HintIconProps;
-  }
-
-  export namespace Text {
-    export type Props = HintTextProps;
-  }
+  export type Props<C extends ElementType = 'p'> = HintProps<C>;
 }

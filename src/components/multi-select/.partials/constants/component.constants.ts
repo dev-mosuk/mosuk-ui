@@ -1,0 +1,6 @@
+export const MULTI_SELECT_DEFAULT_SIZE = 9;
+export const MULTI_SELECT_CHIP_SIZE = 5;
+export const MULTI_SELECT_DEFAULT_OPEN = false;
+export const MULTI_SELECT_DEFAULT_SELECTED: string[] = [];
+export const MULTI_SELECT_DEFAULT_QUERY = '';
+export const MULTI_SELECT_POPOVER_DEFAULT_SIDE_OFFSET = 8;

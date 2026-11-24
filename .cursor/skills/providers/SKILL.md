@@ -1,7 +1,7 @@
 ---
 name: providers
 description: >-
-  Creates app-level React providers in src/providers/ (toasts, yandex-maps,
+  Creates app-level React providers in src/providers/ (toasts, yandex-map,
   tbank). Use for context wiring, service injection. Vendor SDK → providers/.
 ---
 
@@ -19,6 +19,7 @@ Rule: `.cursor/rules/providers.mdc`
 - [ ] Context value: methods + state (useMemo где нужно)
 - [ ] Hook — отдельно в src/hooks/{feature}/, не в provider index
 - [ ] CSS: @layer mosuk-ui, provider.module.css optional
+- [ ] Boolean fields в provider/context — `is*` / `has*` / `can*` (components rule § Props naming)
 ```
 
 ## Структура
@@ -45,6 +46,6 @@ Shared state между sub-parts → `{feature}/.partials/providers/` — 4-fil
 | Scope | Path |
 | ----- | ---- |
 | App + service | `src/providers/toasts/` |
-| External SDK | `src/providers/yandex-maps/`, `src/providers/tbank/` |
+| External SDK | `src/providers/yandex-map/`, `src/providers/tbank/` |
 | Component-local | `src/components/stepper/.partials/providers/` |
 | Component-local | `src/components/image/.partials/providers/` |

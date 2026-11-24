@@ -3,7 +3,7 @@ import { ToastsContext } from '@/providers/toasts/.partials/context/context';
 import type { ToastsProviderProps } from '@/providers/toasts/.partials/provider.interface';
 import styles from '@/providers/toasts/.partials/styles/styles.module.css';
 import { toastsService } from '@/services/toasts';
-import type { ToastsApi } from '@/services/toasts/.partials/service.interface';
+import type { ToastsApi } from '@/services/toasts';
 import { Toast as BaseUiToast } from '@base-ui/react/toast';
 import React, { useEffect, useMemo } from 'react';
 
@@ -20,11 +20,11 @@ export function ToastsProvider({ children }: ToastsProviderProps) {
 
   const toast = useMemo<ToastsApi>(
     () => ({
-      default: (content, options) => toastsService.default(content, options),
-      accent: (content, options) => toastsService.accent(content, options),
-      success: (content, options) => toastsService.success(content, options),
-      warning: (content, options) => toastsService.warning(content, options),
-      danger: (content, options) => toastsService.danger(content, options),
+      default: toastsService.default.bind(toastsService) as ToastsApi['default'],
+      accent: toastsService.accent.bind(toastsService) as ToastsApi['accent'],
+      success: toastsService.success.bind(toastsService) as ToastsApi['success'],
+      warning: toastsService.warning.bind(toastsService) as ToastsApi['warning'],
+      danger: toastsService.danger.bind(toastsService) as ToastsApi['danger'],
       custom: (content) => toastsService.custom(content),
       close: (id) => toastsService.close(id),
     }),

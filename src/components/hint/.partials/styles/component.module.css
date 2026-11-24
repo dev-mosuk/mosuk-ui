@@ -1,69 +1,243 @@
+/* Tokens */
 @layer mosuk-ui {
+  :global(:root) {
+    --hint-color: var(--color-black);
+    --hint-press: var(--color-white);
+    --hint-shimmer: color-mix(in oklab, var(--color-zinc-50) 55%, transparent);
+  }
 
-      .hint {
-          display: flex;
-          align-items: flex-start;
-          gap: var(--leading-2);
+  :global([data-theme='dark']) {
+    --hint-color: var(--color-white);
+    --hint-press: var(--color-white);
+    --hint-shimmer: color-mix(in oklab, var(--color-zinc-700) 55%, transparent);
+  }
+}
 
-          color: var(--color-black);
-          font-size: var(--text-xs);
-          font-weight: 400;
-          line-height: var(--leading-relaxed);
+/* Hint */
+@layer mosuk-ui {
+  .hint {
+    overflow: hidden;
 
-          transition: all 200ms ease-in-out;
+    position: relative;
 
-          .icon {
-              width: var(--leading-4);
-              height: var(--leading-4);
-              min-width: var(--leading-4);
-              min-height: var(--leading-4);
+    display: flex;
+    align-items: flex-start;
+    gap: calc(var(--spacing) * 1.5);
 
-              margin-top: 0.25em;
+    width: fit-content;
 
-              color: var(--color-primary-500);
+    color: var(--hint-color);
+    font-size: var(--text-xs);
+    font-weight: 400;
+    line-height: var(--leading-relaxed);
 
-              & svg {
-                  width: inherit;
-                  height: inherit;
-                  min-width: inherit;
-                  min-height: inherit;
+    transition:
+      color 200ms ease-in-out,
+      transform 150ms ease,
+      opacity 200ms ease-in-out;
 
-                  color: inherit;
-              }
-          }
+    :where(svg) {
+      flex-shrink: 0;
 
-          .text {
-              min-width: 0;
-          }
+      width: calc(var(--spacing) * 4);
+      height: calc(var(--spacing) * 4);
 
-          &.info {
-              .icon {
-                  color: var(--color-primary-500);
-              }
-          }
+      margin-top: calc(var(--spacing) * 0.25);
 
-          &.success {
-              color: var(--color-green-500);
+      color: inherit;
+    }
+  }
+}
 
-              .icon {
-                  color: var(--color-green-500);
-              }
-          }
+/* Color */
+@layer mosuk-ui {
+  .hint {
+    &[data-color='primary'] {
+      --hint-color: var(--color-primary-500);
+    }
 
-          &.warning {
-              color: var(--color-orange-500);
+    &[data-color='secondary'] {
+      --hint-color: var(--color-black);
+    }
 
-              .icon {
-                  color: var(--color-orange-500);
-              }
-          }
+    &[data-color='tertiary'] {
+      --hint-color: var(--color-zinc-500);
+    }
 
-          &.error {
-              color: var(--color-red-500);
+    &[data-color='red'] {
+      --hint-color: var(--color-red-500);
+    }
 
-              .icon {
-                  color: var(--color-red-500);
-              }
-          }
+    &[data-color='green'] {
+      --hint-color: var(--color-green-500);
+    }
+
+    &[data-color='blue'] {
+      --hint-color: var(--color-blue-500);
+    }
+
+    &[data-color='orange'] {
+      --hint-color: var(--color-orange-600);
+    }
+
+    &[data-color='yellow'] {
+      --hint-color: var(--color-yellow-600);
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .hint {
+      &[data-color='primary'] {
+        --hint-color: var(--color-primary-400);
+      }
+
+      &[data-color='secondary'] {
+        --hint-color: var(--color-white);
+      }
+
+      &[data-color='tertiary'] {
+        --hint-color: var(--color-zinc-400);
+      }
+
+      &[data-color='red'] {
+        --hint-color: var(--color-red-400);
+      }
+
+      &[data-color='green'] {
+        --hint-color: var(--color-green-400);
+      }
+
+      &[data-color='blue'] {
+        --hint-color: var(--color-blue-400);
+      }
+
+      &[data-color='orange'] {
+        --hint-color: var(--color-orange-500);
+      }
+
+      &[data-color='yellow'] {
+        --hint-color: var(--color-yellow-500);
       }
     }
+  }
+}
+
+/* Press */
+@layer mosuk-ui {
+  .hint {
+    &[data-press='scale']:active {
+      transform: scale(0.97);
+    }
+
+    &[data-press='highlight']::before {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+
+      content: '';
+
+      background-color: var(--hint-press);
+      opacity: 0;
+
+      border-radius: inherit;
+
+      pointer-events: none;
+
+      transition: opacity 150ms ease;
+    }
+
+    &[data-press='highlight']:hover::before {
+      opacity: 0.234375;
+    }
+
+    &[data-press='highlight']:active::before {
+      opacity: 0.421875;
+    }
+
+    &[data-press='ripple']:not([data-animation='shimmer'])::after {
+      position: absolute;
+      top: var(--press-y, 50%);
+      left: var(--press-x, 50%);
+      z-index: 0;
+
+      width: 200%;
+      max-width: 400px;
+      aspect-ratio: 1;
+
+      content: '';
+
+      background-color: var(--hint-press);
+
+      opacity: 0;
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+
+      pointer-events: none;
+
+      transition:
+        transform 225ms ease-out,
+        opacity 225ms ease-out;
+    }
+
+    &[data-press='ripple']:active:not([data-animation='shimmer'])::after {
+      opacity: 0.234375;
+
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}
+
+/* Animation */
+@layer mosuk-ui {
+  .hint {
+    &[data-animation='shimmer']::after {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      content: '';
+
+      background: linear-gradient(90deg,
+          transparent 0%,
+          transparent 20%,
+          var(--hint-shimmer),
+          transparent 80%,
+          transparent 100%);
+
+      transform: translateX(-100%) skewX(-20deg);
+
+      pointer-events: none;
+
+      animation: mosuk-hint-shimmer 1.5s infinite;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hint {
+      transition: none;
+
+      &[data-press='scale']:active {
+        transform: none;
+      }
+
+      &[data-press='highlight']::before,
+      &[data-press='ripple']::after {
+        transition: none;
+      }
+
+      &[data-animation='shimmer']::after {
+        animation: none;
+
+        opacity: 0.35;
+
+        transform: none;
+      }
+    }
+  }
+
+  @keyframes mosuk-hint-shimmer {
+    100% {
+      transform: translateX(100%) skewX(-20deg);
+    }
+  }
+}

@@ -1,3 +1,25 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --checkbox-color: var(--color-black);
+    --checkbox-bg: var(--color-white);
+    --checkbox-border: transparent;
+    --checkbox-outline: none;
+    --checkbox-shadow: none;
+    --checkbox-shadow-hover: none;
+  }
+
+  :global([data-theme='dark']) {
+    --checkbox-color: var(--color-white);
+    --checkbox-bg: var(--color-zinc-900);
+    --checkbox-border: transparent;
+    --checkbox-outline: none;
+    --checkbox-shadow: none;
+    --checkbox-shadow-hover: none;
+  }
+}
+
+/* Checkbox */
 @layer mosuk-ui {
   .checkbox {
     appearance: none;
@@ -13,81 +35,25 @@
 
     padding: calc(var(--spacing) * 0.125 * var(--checkbox-size));
 
+    color: var(--checkbox-color);
+
+    background-color: var(--checkbox-bg);
+
     border: 1px solid transparent;
+    border-color: var(--checkbox-border);
     border-radius: var(--radius-sm);
-    outline: none;
+    outline: var(--checkbox-outline);
+
+    box-shadow: var(--checkbox-shadow);
 
     cursor: pointer;
 
-    transition: all 200ms ease-in-out;
-
-    & :where(svg) {
-      width: 100%;
-      height: 100%;
-      min-width: 100%;
-      min-height: 100%;
-
-      opacity: 0;
-
-      transition: all 200ms ease-in-out;
-    }
-
-    &:hover {
-      & :where(svg) {
-        opacity: 0.25;
-      }
-    }
-
-    &[data-checked],
-    &[data-indeterminate] {
-      & :where(svg) {
-        opacity: 1;
-      }
-    }
-
-    &[data-variant='primary'] {
-      color: var(--color-white);
-
-      background-color: var(--color-primary-500);
-
-      border-color: transparent;
-
-      &:hover {
-        background-color: var(--color-primary-600);
-      }
-    }
-
-    &[data-variant='secondary'] {
-      color: var(--color-black);
-
-      background-color: var(--color-gray-100);
-
-      border-color: transparent;
-
-      &:hover {
-        background-color: var(--color-gray-200);
-      }
-    }
-
-    &[data-variant='outline'] {
-      color: var(--color-black);
-
-      background-color: transparent;
-
-      border-color: var(--color-gray-200);
-
-      &:hover {
-        background-color: var(--color-gray-50);
-      }
-    }
-
-    &[data-invalid] {
-      color: var(--color-white);
-
-      background-color: var(--color-red-500);
-
-      border-color: var(--color-red-500);
-    }
+    transition:
+      background-color 200ms ease-in-out,
+      border-color 200ms ease-in-out,
+      box-shadow 200ms ease-in-out,
+      color 200ms ease-in-out,
+      opacity 200ms ease-in-out;
 
     &[data-disabled],
     &:disabled,
@@ -97,9 +63,188 @@
       cursor: not-allowed;
       pointer-events: none;
     }
+
+    &[data-invalid] {
+      --checkbox-color: var(--color-white);
+      --checkbox-bg: var(--color-red-500);
+      --checkbox-border: var(--color-red-500);
+      --checkbox-outline: none;
+      --checkbox-shadow: none;
+    }
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .checkbox {
+    &[data-variant='primary'] {
+      --checkbox-bg: var(--color-zinc-100);
+      --checkbox-border: transparent;
+      --checkbox-outline: none;
+      --checkbox-color: var(--color-black);
+      --checkbox-shadow: transparent;
+      --checkbox-shadow-hover: transparent;
+
+      &[data-checked],
+      &[data-indeterminate] {
+        --checkbox-bg: var(--color-primary-500);
+        --checkbox-border: transparent;
+        --checkbox-color: var(--color-white);
+      }
+    }
+
+    &[data-variant='secondary'] {
+      --checkbox-bg: var(--color-zinc-50);
+      --checkbox-border: transparent;
+      --checkbox-outline: none;
+      --checkbox-color: var(--color-black);
+      --checkbox-shadow: transparent;
+      --checkbox-shadow-hover: transparent;
+
+      &[data-checked],
+      &[data-indeterminate] {
+        --checkbox-bg: var(--color-primary-500);
+        --checkbox-border: transparent;
+        --checkbox-color: var(--color-white);
+      }
+    }
+
+    &[data-variant='outline'] {
+      --checkbox-bg: transparent;
+      --checkbox-border: var(--color-zinc-200);
+      --checkbox-outline: none;
+      --checkbox-color: var(--color-black);
+      --checkbox-shadow: transparent;
+      --checkbox-shadow-hover: transparent;
+
+      &:hover:not([data-disabled]):not(:disabled):not([data-checked]):not(
+          [data-indeterminate]
+        ) {
+        --checkbox-border: var(--color-primary-200);
+      }
+
+      &[data-checked],
+      &[data-indeterminate] {
+        --checkbox-bg: transparent;
+        --checkbox-border: var(--color-primary-500);
+        --checkbox-color: var(--color-primary-500);
+      }
+    }
   }
 
+  :global([data-theme='dark']) {
+    .checkbox {
+      &[data-variant='primary'] {
+        --checkbox-bg: var(--color-zinc-800);
+        --checkbox-border: transparent;
+        --checkbox-outline: none;
+        --checkbox-color: var(--color-white);
+        --checkbox-shadow: transparent;
+        --checkbox-shadow-hover: transparent;
+
+        &[data-checked],
+        &[data-indeterminate] {
+          --checkbox-bg: var(--color-primary-500);
+          --checkbox-border: transparent;
+          --checkbox-color: var(--color-white);
+        }
+      }
+
+      &[data-variant='secondary'] {
+        --checkbox-bg: var(--color-zinc-900);
+        --checkbox-border: transparent;
+        --checkbox-outline: none;
+        --checkbox-color: var(--color-white);
+        --checkbox-shadow: transparent;
+        --checkbox-shadow-hover: transparent;
+
+        &[data-checked],
+        &[data-indeterminate] {
+          --checkbox-bg: var(--color-primary-500);
+          --checkbox-border: transparent;
+          --checkbox-color: var(--color-white);
+        }
+      }
+
+      &[data-variant='outline'] {
+        --checkbox-bg: transparent;
+        --checkbox-border: var(--color-zinc-600);
+        --checkbox-outline: none;
+        --checkbox-color: var(--color-white);
+        --checkbox-shadow: transparent;
+        --checkbox-shadow-hover: transparent;
+
+        &:hover:not([data-disabled]):not(:disabled):not([data-checked]):not(
+            [data-indeterminate]
+          ) {
+          --checkbox-border: var(--color-primary-400);
+        }
+
+        &[data-checked],
+        &[data-indeterminate] {
+          --checkbox-bg: transparent;
+          --checkbox-border: var(--color-primary-400);
+          --checkbox-color: var(--color-primary-400);
+        }
+      }
+
+      &[data-invalid] {
+        --checkbox-color: var(--color-white);
+        --checkbox-bg: var(--color-red-500);
+        --checkbox-border: var(--color-red-500);
+        --checkbox-outline: none;
+        --checkbox-shadow: none;
+      }
+    }
+  }
+}
+
+/* Indicator */
+@layer mosuk-ui {
   .indicator {
     display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    transform-origin: center;
+
+    transition:
+      opacity 200ms ease-in-out,
+      transform 200ms ease-in-out;
+
+    & :where(svg) {
+      width: 100%;
+      height: 100%;
+      min-width: 100%;
+      min-height: 100%;
+
+      color: inherit;
+    }
+  }
+
+  .checkbox[data-animation='opacity'] {
+    .indicator {
+      opacity: 0;
+    }
+
+    &[data-checked] .indicator,
+    &[data-indeterminate] .indicator {
+      opacity: 1;
+    }
+  }
+
+  .checkbox[data-animation='scale'] {
+    .indicator {
+      opacity: 1;
+      transform: scale(0);
+    }
+
+    &[data-checked] .indicator,
+    &[data-indeterminate] .indicator {
+      transform: scale(1);
+    }
   }
 }

@@ -64,7 +64,7 @@ Imperative API в `src/services/{feature}/` — provider wiring, service logic.
 ## Эталоны
 
 - `src/providers/toasts/` — provider + list sub-component + service
-- External SDK → `src/providers/yandex-maps/`, `src/providers/tbank/`, …
+- External SDK → `src/providers/yandex-map/`, `src/providers/tbank/`, …
 - Component-local: `src/components/stepper/.partials/providers/`, `src/components/image/.partials/providers/`
 - Form: `src/components/fieldset/.partials/providers/`
 
@@ -140,7 +140,7 @@ export function useFeature(): UseFeatureProps {
 | Scope | Path |
 | ----- | ---- |
 | App-level | `src/providers/{feature}/` (`index.ts` + `.partials/`) |
-| External SDK | `src/providers/{hyphenated}/` (yandex-maps, tbank, …) |
+| External SDK | `src/providers/{hyphenated}/` (yandex-map, tbank, …) |
 | Component-local | `{feature}/.partials/providers/` |
 | Form feature | `src/components/fieldset/.partials/providers/` |
 

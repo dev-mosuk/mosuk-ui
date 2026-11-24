@@ -22,7 +22,7 @@ export function ListBoxItemIndicator({
       data-visible={isSelected || undefined}
       className={classNames(
         'mosuk-list-box-item-indicator',
-        styles.itemIndicator,
+        styles.indicator,
         className,
       )}
     >

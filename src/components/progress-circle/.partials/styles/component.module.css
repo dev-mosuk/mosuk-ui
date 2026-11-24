@@ -1,3 +1,17 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --progress-circle-size: 12;
+    --progress-circle-stroke: 1;
+    --progress-circle-track: var(--color-zinc-200);
+  }
+
+  :global([data-theme='dark']) {
+    --progress-circle-track: var(--color-zinc-700);
+  }
+}
+
+/* ProgressCircle */
 @layer mosuk-ui {
   .progressCircle {
     display: inline-grid;
@@ -10,36 +24,6 @@
       z-index: 1;
 
       grid-area: 1 / 1;
-    }
-
-    &[data-color='default'] {
-      .fill {
-        stroke: var(--color-gray-400);
-      }
-    }
-
-    &[data-color='primary'] {
-      .fill {
-        stroke: var(--color-primary-500);
-      }
-    }
-
-    &[data-color='success'] {
-      .fill {
-        stroke: var(--color-green-500);
-      }
-    }
-
-    &[data-color='warning'] {
-      .fill {
-        stroke: var(--color-orange-500);
-      }
-    }
-
-    &[data-color='danger'] {
-      .fill {
-        stroke: var(--color-red-500);
-      }
     }
 
     &[data-loading] {
@@ -64,15 +48,15 @@
     .track {
       fill: none;
 
-      stroke: var(--color-gray-200);
-      stroke-width: 3;
+      stroke: var(--progress-circle-track);
+      stroke-width: calc(var(--spacing) * var(--progress-circle-stroke));
     }
 
     .fill {
       fill: none;
 
       stroke: var(--color-primary-500);
-      stroke-width: 3;
+      stroke-width: calc(var(--spacing) * var(--progress-circle-stroke));
       stroke-linecap: round;
 
       transform: rotate(-90deg);
@@ -81,7 +65,51 @@
       transition: stroke-dashoffset 500ms ease;
     }
   }
+}
 
+/* Variant */
+@layer mosuk-ui {
+  .progressCircle {
+    &[data-variant='primary'] {
+      --progress-circle-track: var(--color-zinc-200);
+    }
+
+    &[data-variant='secondary'] {
+      --progress-circle-track: var(--color-zinc-100);
+    }
+
+    &[data-variant='tertiary'] {
+      --progress-circle-track: var(--color-zinc-50);
+    }
+
+    &[data-variant='outline'] {
+      --progress-circle-track: var(--color-zinc-200);
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .progressCircle {
+      &[data-variant='primary'] {
+        --progress-circle-track: var(--color-zinc-700);
+      }
+
+      &[data-variant='secondary'] {
+        --progress-circle-track: var(--color-zinc-800);
+      }
+
+      &[data-variant='tertiary'] {
+        --progress-circle-track: var(--color-zinc-900);
+      }
+
+      &[data-variant='outline'] {
+        --progress-circle-track: var(--color-zinc-700);
+      }
+    }
+  }
+}
+
+/* Animation */
+@layer mosuk-ui {
   @keyframes mosuk-progress-circle-indeterminate {
     from {
       transform: rotate(-90deg);

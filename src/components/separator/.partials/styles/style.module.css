@@ -1,5 +1,0 @@
-@layer components {
-    .separator {
-        border-top: 0.75px solid var(--color-gray-200);
-    }
-}

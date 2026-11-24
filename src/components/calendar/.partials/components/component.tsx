@@ -15,6 +15,10 @@ import {
 import { useLocale } from 'react-aria-components/I18nProvider';
 
 import type { CalendarProps } from '@/components/calendar/.partials/components/component.interface';
+import {
+  CALENDAR_DEFAULT_VARIANT,
+  CALENDAR_DEFAULT_YEAR_PICKER_OPEN,
+} from '@/components/calendar/.partials/constants/component.constants';
 import { useYearPickerOpen } from '@/components/calendar/.partials/hooks/hook';
 import {
   CalendarDayViewProvider,
@@ -47,7 +51,8 @@ export function Calendar<
   ref,
   children,
   className,
-  defaultYearPickerOpen = false,
+  variant = CALENDAR_DEFAULT_VARIANT,
+  defaultYearPickerOpen = CALENDAR_DEFAULT_YEAR_PICKER_OPEN,
   firstDayOfWeek,
   isYearPickerOpen: isYearPickerOpenProp,
   maxValue: maxValueProp,
@@ -124,8 +129,9 @@ export function Calendar<
           'mosuk-calendar',
           '@container/calendar',
           'group/calendar',
-          styles.root,
+          styles.calendar,
         )}
+        data-variant={variant}
         data-day-view={isDayView || undefined}
         data-week-view={isWeekView || undefined}
         firstDayOfWeek={firstDayOfWeek}

@@ -1,9 +1,9 @@
 ---
 description: Vendor UI и SDK — hyphenated features в components/ и providers/ (не отдельное дерево)
 globs:
-  - 'src/components/yandex-maps/**'
+  - 'src/blocks/yandex-map/**'
   - 'src/components/tbank-terminal/**'
-  - 'src/providers/yandex-maps/**'
+  - 'src/providers/yandex-map/**'
   - 'src/providers/yandex-metrika/**'
   - 'src/providers/tbank/**'
 alwaysApply: false
@@ -13,14 +13,14 @@ alwaysApply: false
 
 Architecture: [architecture.mdc](./architecture.mdc)
 
-Отдельного `src/integrations/` **нет**. Vendor UI и SDK-providers — обычные плоские hyphenated features в слоях `components/` и `providers/`.
+Отдельного `src/integrations/` **нет**. Vendor UI — плоские hyphenated features в `components/` или `blocks/` (page-level); SDK — в `providers/`.
 
 ## Куда класть
 
 | Что | Путь | Публичный path |
 | --- | ---- | -------------- |
-| Yandex Maps UI | `components/yandex-maps/` | `mosuk-ui/components/yandex-maps` |
-| Yandex Maps SDK | `providers/yandex-maps/` | `mosuk-ui/providers/yandex-maps` |
+| Yandex Maps UI | `blocks/yandex-map/` | `mosuk-ui/blocks/yandex-map` |
+| Yandex Maps SDK | `providers/yandex-map/` | `mosuk-ui/providers/yandex-map` |
 | Yandex Metrika SDK | `providers/yandex-metrika/` | `mosuk-ui/providers/yandex-metrika` |
 | T-Bank Terminal UI | `components/tbank-terminal/` | `mosuk-ui/components/tbank-terminal` |
 | T-Bank SDK | `providers/tbank/` | `mosuk-ui/providers/tbank` |
@@ -35,7 +35,7 @@ Architecture: [architecture.mdc](./architecture.mdc)
 └── .partials/
 ```
 
-- Components: `.partials/components|styles|…` (как otp/drawer)
+- Components: `.partials/components|styles|…` (как input-otp/drawer)
 - Providers: `.partials/` (provider, context) — как `providers/toasts`
 
 ## Разделение
@@ -43,7 +43,7 @@ Architecture: [architecture.mdc](./architecture.mdc)
 | Слой | Ответственность |
 | ---- | --------------- |
 | `providers/{vendor-…}/` | Script load, context, API keys |
-| `components/{vendor-…}/` | Visual UI, markers, widgets |
+| `blocks/{vendor-…}/` / `components/{vendor-…}/` | Visual UI, markers, widgets (maps → blocks) |
 
 ## Props / CSS
 
@@ -51,11 +51,11 @@ Architecture: [architecture.mdc](./architecture.mdc)
 - Display на component (`component.interface.ts`)
 - `@layer mosuk-ui`; vendor classes в module
 
-## Product skeleton
+## Skeleton
 
-Feature `{Name}Skeleton` не создаём. Исключение — Yandex Maps: skeleton в compound (`YandexMap.Skeleton`, …). Shimmer — `@/components/skeleton`.
+Feature `{Name}Skeleton` не создаём. Shimmer — `@/components/skeleton`.
 
 ## Эталоны
 
-- UI + compound: `src/components/yandex-maps/`
-- SDK provider: `src/providers/yandex-maps/`, `src/providers/tbank/`
+- UI + compound: `src/blocks/yandex-map/`
+- SDK provider: `src/providers/yandex-map/`, `src/providers/tbank/`

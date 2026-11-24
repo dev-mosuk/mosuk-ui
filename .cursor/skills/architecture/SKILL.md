@@ -13,18 +13,21 @@ Rule: `.cursor/rules/architecture.mdc`
 
 ```
 - [ ] Папки: . приватное, ( ) группа, [ ] dynamic — по смыслу
-- [ ] Sub-parts плоско: `{part}/`, глубокий compound — `{part}-{child}/` (эталон `dropdown/`)
+- [ ] Sub-parts плоско: `{part}/`, глубокий compound — `{part}-{child}/` (эталон `popover/`)
 - [ ] Файлы: component.tsx, hook.ts — по таблице rule
 - [ ] Export: named через index.ts feature
 - [ ] Imports: `@/` везде в `src/`, включая `.partials/`; публичный API feature — через его `index.ts`
 - [ ] Props: component.interface.ts (не .props.ts для нового кода)
+- [ ] Public booleans → `is*` / `has*` / `can*` (components rule § Props naming)
+- [ ] OwnProps order → § Props order; defaults → `.partials/constants/component.constants.ts` (§ Props defaults)
+- [ ] playgrounds/** — не трогать, пока пользователь явно не попросил
 ```
 
 ## Паттерны папок
 
 | Маркер | Когда |
 | ------ | ----- |
-| `.partials/` | component-local UI, styles, hooks, providers |
+| `.partials/` | component-local UI, styles, constants, hooks, providers |
 | `(autosize)/` | редкая группа в `src/`, не часть export-имени |
 | `[id]/` | dynamic/param (если появится) |
 
@@ -35,7 +38,8 @@ Rule: `.cursor/rules/architecture.mdc`
 | Что | Путь |
 | --- | ---- |
 | UI component | `components/{feature}/` |
-| Vendor UI | `components/{hyphenated}/` (yandex-maps, tbank-terminal) |
+| Page block | `blocks/{feature}/` (breadcrumbs, yandex-map) |
+| Vendor UI | `blocks/` или `components/{hyphenated}/` (yandex-map → blocks, tbank-terminal → components) |
 | App / SDK provider | `providers/{feature}/` |
 | Hook | `hooks/{feature}/` или `.partials/hooks/` |
 | Service | `services/{feature}/` |
@@ -45,6 +49,7 @@ Rule: `.cursor/rules/architecture.mdc`
 
 | Слой | Skill |
 | ---- | ----- |
+| Blocks | [blocks/SKILL.md](../blocks/SKILL.md) |
 | Components | [components/SKILL.md](../components/SKILL.md) |
 | Integrations | [integrations/SKILL.md](../integrations/SKILL.md) |
 | Styling | [styling/SKILL.md](../styling/SKILL.md) |
@@ -56,15 +61,17 @@ Rule: `.cursor/rules/architecture.mdc`
 
 ## Эталоны
 
-- Component: `src/components/otp/`
+- Component: `src/components/input-otp/`
+- Block: `src/blocks/breadcrumbs/`, `src/blocks/yandex-map/`
+- Accordion: `src/components/accordion/`
 - Navigation: `src/components/stepper/`
-- Breadcrumbs: `src/components/breadcrumbs/`
+- Segment: `src/components/segment/`
 - Toggle: `src/components/toggle/`
-- Dropdown: `src/components/dropdown/`
-- Deep compound folders: `src/components/dropdown/` (`close/`, `overview/`, `overview-popup/`)
+- Popover: `src/components/popover/`
+- Deep compound folders: `src/components/popover/` (`close/`, `overview/`, `overview-popup/`)
 - Deep portal behavior: `src/components/drawer/`
-- Vendor UI: `src/components/yandex-maps/`, `src/components/tbank-terminal/`
-- Vendor SDK: `src/providers/yandex-maps/`, `src/providers/tbank/`
+- Vendor UI: `src/blocks/yandex-map/`, `src/components/tbank-terminal/`
+- Vendor SDK: `src/providers/yandex-map/`, `src/providers/tbank/`
 - Provider: `src/providers/toasts/`
 - Hook: `src/hooks/toasts/`, `src/hooks/storage-local/`
 - Service: `src/services/toasts/`, `src/services/storage-local/`

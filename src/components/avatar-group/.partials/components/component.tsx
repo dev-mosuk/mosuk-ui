@@ -1,7 +1,10 @@
 import { Avatar } from '@/components/avatar';
 import type { AvatarGroupProps } from '@/components/avatar-group/.partials/components/component.interface';
 import { AvatarGroupCount } from '@/components/avatar-group/.partials/components/count/component';
-import { AVATAR_GROUP_DEFAULT_OVERLAP } from '@/components/avatar-group/.partials/constants/component.constants';
+import {
+  AVATAR_GROUP_DEFAULT_IS_GRID,
+  AVATAR_GROUP_DEFAULT_OVERLAP,
+} from '@/components/avatar-group/.partials/constants/component.constants';
 import styles from '@/components/avatar-group/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, {
@@ -23,7 +26,7 @@ export function AvatarGroup<C = 'nav'>({
   size,
   variant,
   max,
-  isGrid = false,
+  isGrid = AVATAR_GROUP_DEFAULT_IS_GRID,
   overlap = AVATAR_GROUP_DEFAULT_OVERLAP,
   className,
   children,

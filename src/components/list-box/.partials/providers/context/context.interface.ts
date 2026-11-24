@@ -1,5 +1,8 @@
 import type { ListBoxItemMatch } from '@/components/list-box/.partials/components/component.interface';
-import type { ListBoxSelectionMode } from '@/components/list-box/.partials/enums/component.enums';
+import type {
+  ListBoxMode,
+  ListBoxVariant,
+} from '@/components/list-box/.partials/enums/component.enums';
 
 export interface ListBoxItemRegistration {
   id: string;
@@ -8,8 +11,9 @@ export interface ListBoxItemRegistration {
 }
 
 export interface ListBoxContextProps {
-  selectionMode: ListBoxSelectionMode | `${ListBoxSelectionMode}`;
-  value: string[];
+  mode: ListBoxMode | `${ListBoxMode}`;
+  variant: ListBoxVariant | `${ListBoxVariant}`;
+  selected: string[];
   highlightedId: string | null;
   registerItem: (item: ListBoxItemRegistration) => void;
   unregisterItem: (id: string) => void;

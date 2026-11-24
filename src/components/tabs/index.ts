@@ -1,41 +1,59 @@
 import { Tabs as Component } from '@/components/tabs/.partials/components/component';
-import { TabsProps as ComponentProps } from '@/components/tabs/.partials/components/component.interface';
-import { TabsIndicator } from '@/components/tabs/.partials/components/indicator/component';
-import { TabsIndicatorProps } from '@/components/tabs/.partials/components/indicator/component.interface';
-import { TabsList } from '@/components/tabs/.partials/components/list/component';
-import { TabsListProps } from '@/components/tabs/.partials/components/list/component.interface';
-import { TabsPanel } from '@/components/tabs/.partials/components/panel/component';
-import { TabsPanelProps } from '@/components/tabs/.partials/components/panel/component.interface';
-import { TabsTab } from '@/components/tabs/.partials/components/tab/component';
-import { TabsTabProps } from '@/components/tabs/.partials/components/tab/component.interface';
-import { TabsVariant } from '@/components/tabs/.partials/enums/component.enums';
+import type { TabsProps as ComponentProps } from '@/components/tabs/.partials/components/component.interface';
+import { TabsContent } from '@/components/tabs/.partials/components/content/component';
+import type { TabsContentProps } from '@/components/tabs/.partials/components/content/component.interface';
+import { TabsContentItem } from '@/components/tabs/.partials/components/content-item/component';
+import type { TabsContentItemProps } from '@/components/tabs/.partials/components/content-item/component.interface';
+import { TabsHeader } from '@/components/tabs/.partials/components/header/component';
+import type { TabsHeaderProps } from '@/components/tabs/.partials/components/header/component.interface';
+import { TabsHeaderIndicator } from '@/components/tabs/.partials/components/header-indicator/component';
+import type { TabsHeaderIndicatorProps } from '@/components/tabs/.partials/components/header-indicator/component.interface';
+import { TabsHeaderItem } from '@/components/tabs/.partials/components/header-item/component';
+import type { TabsHeaderItemProps } from '@/components/tabs/.partials/components/header-item/component.interface';
+import {
+  TabsContentVariant,
+  TabsOrientation,
+  TabsVariant,
+} from '@/components/tabs/.partials/enums/component.enums';
+import type { ElementType } from 'react';
 
 export const Tabs = Object.assign(Component, {
-  List: TabsList,
-  Tab: TabsTab,
-  Indicator: TabsIndicator,
-  Panel: TabsPanel,
+  Header: Object.assign(TabsHeader, {
+    Item: TabsHeaderItem,
+    Indicator: TabsHeaderIndicator,
+  }),
+  Content: Object.assign(TabsContent, {
+    Item: TabsContentItem,
+    ENUMS: {
+      Variant: TabsContentVariant,
+    },
+  }),
   ENUMS: {
+    Orientation: TabsOrientation,
     Variant: TabsVariant,
   },
 });
 
 export namespace Tabs {
-  export type Props = ComponentProps;
+  export type Props<C extends ElementType = 'div'> = ComponentProps<C>;
 
-  export namespace List {
-    export type Props = TabsListProps;
+  export namespace Header {
+    export type Props<C extends ElementType = 'div'> = TabsHeaderProps<C>;
+
+    export namespace Item {
+      export type Props<C = 'button'> = TabsHeaderItemProps<C>;
+    }
+
+    export namespace Indicator {
+      export type Props<C = 'figure'> = TabsHeaderIndicatorProps<C>;
+    }
   }
 
-  export namespace Tab {
-    export type Props = TabsTabProps;
-  }
+  export namespace Content {
+    export type Props = TabsContentProps;
 
-  export namespace Indicator {
-    export type Props = TabsIndicatorProps;
-  }
-
-  export namespace Panel {
-    export type Props = TabsPanelProps;
+    export namespace Item {
+      export type Props = TabsContentItemProps;
+    }
   }
 }

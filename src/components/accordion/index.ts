@@ -1,20 +1,21 @@
 import { Accordion as BaseAccordion } from '@/components/accordion/.partials/components/component';
 import type { AccordionProps } from '@/components/accordion/.partials/components/component.interface';
 import { AccordionContent as BaseAccordionContent } from '@/components/accordion/.partials/components/content/component';
-import { AccordionContentProps } from '@/components/accordion/.partials/components/content/component.interface';
-import { AccordionHeaderTrigger as BaseAccordionHeaderTrigger } from '@/components/accordion/.partials/components/header-trigger/component';
-import { AccordionHeaderTriggerProps } from '@/components/accordion/.partials/components/header-trigger/component.interface';
+import type { AccordionContentProps } from '@/components/accordion/.partials/components/content/component.interface';
 import { AccordionHeader as BaseAccordionHeader } from '@/components/accordion/.partials/components/header/component';
-import { AccordionHeaderProps } from '@/components/accordion/.partials/components/header/component.interface';
+import type { AccordionHeaderProps } from '@/components/accordion/.partials/components/header/component.interface';
 import { AccordionItem as BaseAccordionItem } from '@/components/accordion/.partials/components/item/component';
-import { AccordionItemProps } from '@/components/accordion/.partials/components/item/component.interface';
+import type { AccordionItemProps } from '@/components/accordion/.partials/components/item/component.interface';
+import { AccordionContentVariant } from '@/components/accordion/.partials/enums/component.enums';
 
 export const Accordion = Object.assign(BaseAccordion, {
   Item: BaseAccordionItem,
-  Header: Object.assign(BaseAccordionHeader, {
-    Trigger: BaseAccordionHeaderTrigger,
+  Header: BaseAccordionHeader,
+  Content: Object.assign(BaseAccordionContent, {
+    ENUMS: {
+      Variant: AccordionContentVariant,
+    },
   }),
-  Content: BaseAccordionContent,
 });
 
 export namespace Accordion {
@@ -26,10 +27,6 @@ export namespace Accordion {
 
   export namespace Header {
     export type Props = AccordionHeaderProps;
-
-    export namespace Trigger {
-      export type Props = AccordionHeaderTriggerProps;
-    }
   }
 
   export namespace Content {

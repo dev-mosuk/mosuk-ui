@@ -4,10 +4,14 @@ import { Toggle as Component } from '@/components/toggle/.partials/components/co
 import type { ToggleProps } from '@/components/toggle/.partials/components/component.interface';
 import { ToggleIndicator } from '@/components/toggle/.partials/components/indicator/component';
 import { ToggleIndicatorProps } from '@/components/toggle/.partials/components/indicator/component.interface';
+import { ToggleVariant } from '@/components/toggle/.partials/enums/component.enums';
 
 export const Toggle = Object.assign(Component, {
   Button: ToggleButton,
   Indicator: ToggleIndicator,
+  ENUMS: {
+    Variant: ToggleVariant,
+  },
 });
 
 export namespace Toggle {

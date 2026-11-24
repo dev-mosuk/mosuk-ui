@@ -16,7 +16,6 @@ export function ChatComposerIcon<C = 'button'>({
     <Button
       {...rest}
       as={(rest.as ?? 'button') as C}
-      width={rest.width ?? Button.ENUMS.Width.Square}
       variant={rest.variant ?? Button.ENUMS.Variant.Ghost}
       press={rest.press ?? Button.ENUMS.Press.None}
       isDisabled={rest.isDisabled ?? isDisabled}

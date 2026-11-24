@@ -3,10 +3,16 @@ export enum InputVariant {
   Secondary = 'secondary',
   Outline = 'outline',
   Ghost = 'ghost',
-  Danger = 'danger',
 }
 
-export enum InputWidth {
-  Auto = 'auto',
-  Full = 'full',
+export enum InputAnimation {
+  None = 'none',
+  Shimmer = 'shimmer',
+}
+
+export enum InputPress {
+  None = 'none',
+  Scale = 'scale',
+  Highlight = 'highlight',
+  Ripple = 'ripple',
 }

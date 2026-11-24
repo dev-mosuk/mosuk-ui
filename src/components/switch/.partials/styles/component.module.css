@@ -1,0 +1,160 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --switch-track-off: var(--color-zinc-200);
+    --switch-track-on: var(--color-primary-500);
+    --switch-thumb: var(--color-white);
+    --switch-thumb-color: var(--color-zinc-600);
+  }
+
+  :global([data-theme='dark']) {
+    --switch-track-off: var(--color-zinc-700);
+    --switch-track-on: var(--color-primary-500);
+    --switch-thumb: var(--color-white);
+    --switch-thumb-color: var(--color-zinc-300);
+  }
+}
+
+/* Switch */
+@layer mosuk-ui {
+  .switch {
+    appearance: none;
+
+    position: relative;
+
+    box-sizing: border-box;
+
+    flex-shrink: 0;
+
+    width: calc(var(--spacing) * var(--switch-size) * 1.8);
+    height: calc(var(--spacing) * var(--switch-size));
+    min-width: calc(var(--spacing) * var(--switch-size) * 1.8);
+    min-height: calc(var(--spacing) * var(--switch-size));
+
+    margin: 0;
+    padding: 0;
+
+    background-color: var(--switch-track-off);
+
+    border: 1px solid transparent;
+    border-color: var(--switch-border, transparent);
+    border-radius: calc(infinity * 1px);
+    outline: none;
+
+    cursor: pointer;
+
+    transition-property: background-color, border-color;
+    transition-duration: 400ms;
+    transition-timing-function: cubic-bezier(0.05, 0.9, 0.1, 1);
+
+    &[data-checked] {
+      background-color: var(--switch-track-on);
+
+      border-color: transparent;
+    }
+
+    &[data-disabled],
+    &[aria-disabled='true'] {
+      opacity: 0.5;
+
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    &[data-invalid] {
+      outline: 1px solid var(--color-red-500);
+      outline-offset: 2px;
+    }
+  }
+
+  .thumb {
+    position: absolute;
+    top: 1px;
+    bottom: 1px;
+    left: 1px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+
+    width: auto;
+    height: calc(100% - 2px);
+    aspect-ratio: 1 / 1;
+
+    color: var(--switch-thumb-color);
+
+    background-color: var(--switch-thumb);
+
+    border-radius: calc(infinity * 1px);
+
+    transition-property: left, transform, background-color, color;
+    transition-duration: 400ms;
+    transition-timing-function: cubic-bezier(0.05, 0.9, 0.1, 1);
+
+    & :where(svg) {
+      width: 55%;
+      height: 55%;
+      min-width: 55%;
+      min-height: 55%;
+    }
+  }
+
+  .switch[data-checked] .thumb {
+    left: 100%;
+
+    transform: translateX(calc(-100% - 1px));
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .switch {
+    &[data-variant='primary'] {
+      --switch-track-off: var(--color-zinc-200);
+      --switch-border: transparent;
+    }
+
+    &[data-variant='secondary'] {
+      --switch-track-off: var(--color-zinc-100);
+      --switch-border: transparent;
+    }
+
+    &[data-variant='tertiary'] {
+      --switch-track-off: var(--color-zinc-50);
+      --switch-border: transparent;
+    }
+
+    &[data-variant='outline'] {
+      --switch-track-off: transparent;
+      --switch-border: var(--color-zinc-200);
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .switch {
+      &[data-variant='primary'] {
+        --switch-track-off: var(--color-zinc-700);
+        --switch-border: transparent;
+      }
+
+      &[data-variant='secondary'] {
+        --switch-track-off: var(--color-zinc-800);
+        --switch-border: transparent;
+      }
+
+      &[data-variant='tertiary'] {
+        --switch-track-off: var(--color-zinc-900);
+        --switch-border: transparent;
+      }
+
+      &[data-variant='outline'] {
+        --switch-track-off: transparent;
+        --switch-border: var(--color-zinc-700);
+      }
+    }
+  }
+}

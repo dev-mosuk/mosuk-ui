@@ -2,23 +2,30 @@
 
 import { TooltipArrowProps } from '@/components/tooltip/.partials/components/arrow/component.interface';
 import styles from '@/components/tooltip/.partials/styles/component.module.css';
-import { Tooltip } from '@base-ui/react/tooltip';
+import { Tooltip as BaseUITooltip } from '@base-ui/react/tooltip';
 import classNames from 'classnames';
-import React from 'react';
+import React, { type ElementType } from 'react';
 
-export function TooltipArrow({ ...rest }: TooltipArrowProps) {
+export function TooltipArrow<C extends ElementType = 'div'>({
+  as,
+  ref,
+  className,
+  children,
+  ...rest
+}: TooltipArrowProps<C>) {
+  const Component = (as ?? 'div') as ElementType;
+
   return (
-    <Tooltip.Arrow
+    <BaseUITooltip.Arrow
       {...rest}
       className={classNames(
         'mosuk-tooltip-arrow',
         styles.arrow,
-        rest?.className,
+        className,
       )}
+      render={<Component ref={ref} />}
     >
-      {rest?.children}
-    </Tooltip.Arrow>
+      {children}
+    </BaseUITooltip.Arrow>
   );
 }
-
-TooltipArrow.displayName = 'Tooltip.Arrow';

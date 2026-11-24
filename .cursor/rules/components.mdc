@@ -1,5 +1,5 @@
 ---
-description: Components — OTP canonical, flat features under src/components/, logical roles (actions, display, overlays, …)
+description: Components — InputOtp canonical, flat features under src/components/, logical roles (actions, display, overlays, …)
 globs: 'src/components/**'
 alwaysApply: false
 ---
@@ -8,19 +8,21 @@ alwaysApply: false
 
 ## Layout
 
-Все UI features — плоско: `src/components/{feature}/` (`otp/`, `drawer/`, `input-mask/`, …). Категории — **логические роли** (z-index, форма compound), не папки.
+Все UI features — плоско: `src/components/{feature}/` (`input-otp/`, `drawer/`, `input-mask/`, …). Категории — **логические роли** (z-index, форма compound), не папки.
 
 | Роль | Назначение | Примеры |
 | ---- | ---------- | ------- |
 | texts | заголовки, параграфы, ссылки | typography, hint, counter |
-| actions | кнопки, инпуты, контролы | button, otp, checkbox, input, input-mask, slider |
-| display | media, empty states | image, video, file, empty, dl |
-| containers | секции, grid | card, section, separator |
-| collections | таблицы, tabs, accordion | accordion, chat |
+| actions | кнопки, инпуты, контролы | button, input-otp, checkbox, input, input-mask, slider |
+| display | media, empty states | image, video, file, empty, specifications |
+| containers | секции, grid, accordion | card, section, separator, accordion |
+| collections | таблицы, tabs, data lists | chat |
 | layouts | header, sidebar | (когда появятся) |
 | overlays | dialog, drawer, toast | dialog, drawer, tooltip, toast, observer |
-| navigation | stepper, breadcrumbs | stepper, breadcrumbs |
+| navigation | stepper | stepper |
 | forms | fieldset, form composition | fieldset |
+
+Page blocks (breadcrumbs, yandex-map) — `src/blocks/`, см. `.cursor/rules/blocks.mdc`.
 
 Стили → `.cursor/rules/styling.mdc`
 Exports → `.cursor/rules/exports.mdc`
@@ -40,6 +42,7 @@ Provider внутри component → `.cursor/rules/providers.mdc`
     │   ├── component.interface.ts
     │   ├── {part}/
     │   └── {part}-{child}/
+    ├── constants/               ← defaults пропов (component.constants.ts)
     ├── providers/               ← если sub-parts делят state
     └── hooks/
 ```
@@ -48,11 +51,11 @@ Sub-parts — **плоские** папки-соседи в `.partials/component
 
 | Compound | Папка |
 | -------- | ----- |
-| `Dropdown.Close` | `close/` |
-| `Dropdown.Overview` | `overview/` |
-| `Dropdown.Overview.Popup` | `overview-popup/` |
+| `Popover.Close` | `close/` |
+| `Popover.Overview` | `overview/` |
+| `Popover.Overview.Popup` | `overview-popup/` |
 
-Эталон раскладки — `src/components/dropdown/`. Публичный API (`Object.assign`, namespace) остаётся вложенным. Папки при этом плоские: `Drawer.Viewport.Popup.Handle` → `viewport-popup-handle/`.
+Эталон раскладки — `src/components/popover/`. Публичный API (`Object.assign`, namespace) остаётся вложенным. Папки при этом плоские: `Drawer.Viewport.Popup.Handle` → `viewport-popup-handle/`.
 
 Импорты везде `@/`, включая `.partials`. `{feature}/index.ts` — единственный public path: `Object.assign` + `export namespace`. Feature `{Name}Skeleton` не создаём.
 
@@ -60,7 +63,7 @@ Sub-parts — **плоские** папки-соседи в `.partials/component
 
 ## Идиома
 
-По `otp`, portal в `drawer`, `select`:
+По `input-otp`, portal в `drawer`, `select`:
 
 - `export function {Name}`
 - Props — тип part из `@base-ui/react`, если primitive есть (`Checkbox.Root.Props`). Interface-файл пустой, когда своих полей нет
@@ -75,20 +78,24 @@ Sub-parts — **плоские** папки-соседи в `.partials/component
 
 Поведение и API — здесь. Раскладку файлов — всегда по canonical tree.
 
-- Shallow compound — `src/components/otp/`
+- Shallow compound — `src/components/input-otp/`
 - Sub-part indicator — `src/components/checkbox/`
-- Deep compound folders — `src/components/dropdown/`
+- Deep compound folders — `src/components/popover/`
 - Deep portal behavior — `src/components/drawer/`
 - Shared state внутри feature — `src/components/stepper/`, `src/components/image/`
 
 ## Общие правила
+
+### Playgrounds
+
+`playgrounds/**` не создавать и не обновлять при работе над feature — только по явному запросу. См. architecture rule § Playgrounds.
 
 ### Export
 
 - Публичный API только `{feature}/index.ts` (path без `/component`)
 - Compound: `Object.assign` + `export namespace` — см. exports rule
 - Named export функций компонентов в `.partials/`
-- Feature `{Name}Skeleton` не экспортируем. Product skeleton только у Yandex Maps (`YandexMap.Skeleton`)
+- Feature `{Name}Skeleton` не экспортируем. Shimmer — `src/components/skeleton`
 
 ### Props
 
@@ -96,9 +103,19 @@ Sub-parts — **плоские** папки-соседи в `.partials/component
 - Новый feature использует `component.interface.ts`
 - Spread `{ ...rest }` на корень; `rest?.className` последним в classNames
 
-#### Naming (boolean / state)
+#### Props naming
 
-Публичные boolean и controlled state — префикс `is` / `default` / `on*Change`. Не экспортировать DOM/Base UI имена (`disabled`, `checked`, `open`), если есть product-эквивалент.
+Public API — лагерь React Aria / Spectrum (`isDisabled`, `isOpen`), не bare HTML/Radix/Base UI (`disabled`, `open`). Product-layer поверх `@base-ui/react`: наружу — `is*` / `has*` / `can*`; внутри feature — map на primitive. Не «чинить» публичные имена под Base UI или Chakra v3.
+
+| Префикс | Смысл | Примеры |
+| ------- | ----- | ------- |
+| `is*` | UI / interaction state | `isDisabled`, `isOpen`, `isSelected`, `isInvalid`, `isLoading`, `isPending`, `isIndeterminate`, `isFocused`, `isActive` |
+| `has*` | possession / availability | `hasMore` |
+| `can*` | capability | `canSubmit` |
+| `default*` | uncontrolled twin; stem **без** повторного `is` | `defaultOpen`, `defaultSelected` (не `defaultIsOpen`) |
+| `on*Change` | callbacks; arg с тем же смыслом | `onChange(isSelected)`, `onOpenChange(isOpen)` |
+
+Default boolean = `false`. Variants — enum (`variant="danger"`), не boolean `isPrimary`. `isDanger` (visual) и `isInvalid` (form validity) — разные пропы, оба ок. Grammar: `isFocused` (не `isFocus`); selection — `isSelected` (не `isChecked`).
 
 | Избегать (DOM / Base UI) | Публичный prop |
 | ------------------------ | -------------- |
@@ -111,17 +128,83 @@ Sub-parts — **плоские** папки-соседи в `.partials/component
 | `indeterminate` | `isIndeterminate` |
 | `pending` | `isPending` |
 | (loading UI) | `isLoading` |
+| `focus` / `focused` | `isFocused` |
+
+Исключения — bare имена **оставить**: Base UI passthrough (`keepMounted`, `activateOnFocus`, `loopFocus`); vendor shapes (`active` у Recharts); DOM / CSS / `data-*` **внутри** реализации. Vendor passthrough, internal locals (`hasDataActive`), service config (`secure`) — не переименовывать в `is*`.
 
 Callbacks: `onChange` / `onOpenChange` / `onSelectionChange` — по смыслу. При обёртке Base UI маппить внутри feature (`onCheckedChange` → `onChange(isSelected)`).
 
-Обёртка над `@base-ui/react`:
+Обёртка над `@base-ui/react` / `HTMLAttributes`:
 
-- `component.interface.ts` — own `is*` + `Omit<Primitive.Props, 'disabled' | 'checked' | …>`
+- `component.interface.ts` — own `is*` + `Omit<Primitive.Props, 'disabled' | 'checked' | 'open' | …>`
+- Опционально `disabled?: never` / `open?: never` + `@deprecated Use \`isDisabled\`` — когда нужно сломать старый public name на уровне типов (эталон: `input/`, `textarea/`, `context-menu/`). Не требовать на каждом file, если `Omit` уже убрал имя
 - `component.tsx` — map на primitive (`disabled={isDisabled}`, `open={isOpen}`, …)
 
-Эталон: `src/components/checkbox/` (`isSelected`, `isDisabled`, …), `src/components/button/` (`isDisabled`, `isPending`, `isLoading`).
+Эталоны: `src/components/button/` (`isDisabled`, `isPending`, `isLoading`), `src/components/switch/` (`isSelected`, `isDisabled`), `src/components/drawer/` / `popover/` (`isOpen`). Checkbox target — `isSelected` (сейчас `isChecked` — долг, см. ниже).
+
+При правке legacy feature — переименовать boolean props в том же diff.
 
 CSS / `data-*` / native `disabled` на DOM — ок внутри реализации; наружу — `is*`.
+
+#### Props order
+
+Публичные OwnProps — фиксированные группы сверху вниз. Предпочитать `*OwnProps` + `& Omit<…>`.
+
+1. **Polymorphic** — `as`, `ref`
+2. **Appearance** — `size` → `format` → `variant` → `type` (дизайн-токен, как Typography) → `color` → `stroke` → `orientation` → `animation` → `press` → `direction` → `mode`
+3. **Host config** — HTML `type` (Button), `keepMounted`, `container`, `syntax`, `placeholder`, `minRows`, `maxRows`, `activateOnFocus`, `loopFocus`
+4. **Data** — `code`, `value`, `defaultValue`, `selected`, `defaultSelected`, `query`, `defaultQuery`, `min`, `max`
+5. **Flags** — `defaultX` рядом с `isX`; затем остальные `is*` / `has*` / `can*`
+6. **Presentation** — `style`, `className`
+7. **Events** — все `on*`
+8. **Slot** — `children` / slots
+9. **Deprecated never** — `disabled?: never`, … в конце Own
+
+Внутри Flags (семантика): form (`isDisabled` → `isReadOnly` → `isRequired` → `isInvalid` → `isIndeterminate` → `isSelected`) → overlay (`isOpen`) → visual (`isDanger` → `isActive` → `isFocused` → `isMuted` → `isTruncate`) → async (`isPending` → `isLoading`) → feature (`isMultiple`, `isAutoSize`, `isLineNumbers`, …).
+
+Эталон порядка (Button): Appearance (`size`…`press`) → Host (`type`) → Flags → Presentation → Events → Slot. HTML `type` **до** `is*`, не после.
+
+```ts
+as, ref,
+size, format, variant, animation, press,
+type,
+isDisabled, isPending, isLoading, isActive,
+style, className,
+onPointerDown,
+children
+```
+
+#### Props defaults
+
+Все runtime-default значений пропов — **только** в `.partials/constants/component.constants.ts` (toast: `.tsx` ок, если нужен JSX).
+
+- Имя: `{FEATURE}_DEFAULT_{STEM}` (`BUTTON_DEFAULT_SIZE`, `BUTTON_DEFAULT_IS_PENDING`). Sub-part: `{FEATURE}_{SUB}_DEFAULT_{STEM}` (`POPOVER_OVERVIEW_DEFAULT_SIDE_OFFSET`).
+- В `component.tsx`: `prop = FEATURE_DEFAULT_*` — без литералов `false` / `8` / `'button'` / `[]` / `''`.
+- Покрывает: appearance, boolean flags (в т.ч. `false`), host (`type`, `as`), uncontrolled (`defaultOpen`), numeric host (`min`/`max`/`step`), feature flags.
+- Не класть: вычисляемые локали (`locked`, `pressMode`), `useId()` без prop default.
+- Файл создавать, если есть ≥1 default. Feature-private; public export из `index.ts` не обязателен.
+- Default boolean = `false` (семантика API) — литерал всё равно через константу `*_DEFAULT_IS_* = false`.
+
+Эталон constants (Button target):
+
+```ts
+export const BUTTON_DEFAULT_SIZE = 8;
+export const BUTTON_DEFAULT_VARIANT = ButtonVariant.Primary;
+export const BUTTON_DEFAULT_FORMAT = ButtonFormat.Button;
+export const BUTTON_DEFAULT_PRESS = ButtonPress.None;
+export const BUTTON_DEFAULT_ANIMATION = ButtonAnimation.None;
+export const BUTTON_DEFAULT_TYPE = 'button';
+export const BUTTON_DEFAULT_AS = 'button';
+export const BUTTON_DEFAULT_IS_PENDING = false;
+export const BUTTON_DEFAULT_IS_LOADING = false;
+export const BUTTON_DEFAULT_IS_ACTIVE = false;
+```
+
+Target naming для нового/будущего кода: `isSelected` (не `isChecked`), `isFocused` (не `isFocus`); code flags без глаголов Show/Use (`isLineNumbers`, не `isShowLineNumbers`).
+
+##### Follow-up (код)
+
+Миграция `src/` по § Props naming / order / defaults — **закрыта** (см. [`PROPS_MIGRATION_HANDOFF.md`](../../PROPS_MIGRATION_HANDOFF.md)). Новые features сразу по канону; при касании legacy — дотянуть residual literals если остались.
 
 ### `.partials`
 
@@ -129,6 +212,7 @@ CSS / `data-*` / native `disabled` на DOM — ок внутри реализа
 | -------- | ---------- |
 | `components/` | root + sub-parts |
 | `styles/` | CSS modules + layers |
+| `constants/` | defaults пропов (`component.constants.ts`) |
 | `providers/` | feature-local context (stepper, image) |
 | `hooks/` | feature-local hooks (stepper) |
 | `utilities/` | feature-local pure helpers |
@@ -162,8 +246,9 @@ Overlays и часть actions строятся на `@base-ui/react`. Обор�
 
 | Root | Sub-part | Export |
 | ---- | -------- | ------ |
-| `OTP` | input cell | `OTP.Input` |
+| `InputOtp` | input cell | `InputOtp.Input` |
 | `Checkbox` | indicator | `Checkbox.Indicator` |
+| `Segment` | button, indicator | `Segment.Button`, `Segment.Indicator` |
 | `Toggle` | button, indicator | `Toggle.Button`, `Toggle.Indicator` |
 
 Shared state между sub-parts — `{feature}/.partials/providers/` и `.partials/hooks/`. Эталон — stepper. → `.cursor/rules/providers.mdc`
@@ -183,18 +268,18 @@ z-index 0–99.
 
 ## overlays
 
-Floating UI: drawer, dialog, tooltip, toast. Dropdown — `src/components/dropdown/`.
+Floating UI: drawer, dialog, tooltip, toast. Popover — `src/components/popover/`.
 
 ### z-index
 
-- Dropdown/popover/tooltip: **100–199**
+- Popover/tooltip: **100–199**
 - Dialog/drawer/modal: **200+**
 
-Раскладка — canonical tree: плоские hyphenated папки (`close/`, `overview/`, `overview-popup/`, `viewport-popup-handle/`). `index.ts` — вложенный `Object.assign`. Эталон папок — `src/components/dropdown/`.
+Раскладка — canonical tree: плоские hyphenated папки (`close/`, `overview/`, `overview-popup/`, `viewport-popup-handle/`). `index.ts` — вложенный `Object.assign`. Эталон папок — `src/components/popover/`.
 
-**Trigger** на корне; floating tree под **Portal**; **Close** внутри `Portal.Viewport.Popup` (рядом с Content/Handle). Dropdown: `Dropdown.Overview.Popup`.
+**Trigger** на корне; floating tree под **Portal**; **Close** внутри `Portal.Viewport.Popup` (рядом с Content/Handle). Popover: `Popover.Overview.Popup`.
 
-Drawer/dialog/dropdown — на `@base-ui/react`. Focus trap, portal и aria остаются у primitive.
+Drawer/dialog/popover — на `@base-ui/react`. Focus trap, portal и aria остаются у primitive.
 
 - `@layer mosuk-ui`
 - `component.module.css` в `.partials/styles/`
@@ -232,7 +317,7 @@ App shell primitives: header, sidebar, footer, tabbar.
 
 ## collections
 
-Structured lists: table, tabs, accordion, data list.
+Structured lists: table, tabs, data list, chat.
 
 Раскладка — canonical tree. Compound обязателен: root + item/header/panel в `.partials/components/`.
 
@@ -240,11 +325,11 @@ Structured lists: table, tabs, accordion, data list.
 - Item sub-parts: минимальный interface
 - `@layer mosuk-ui`
 - Row/cell styles nested под host `.{feature}`
-- Tabs/accordion оборачивают `@base-ui/react`, если primitive есть
+- Tabs оборачивают `@base-ui/react`, если primitive есть
 
 ## navigation
 
-Nav trajectories: stepper, breadcrumbs.
+Nav trajectories: stepper.
 
 Раскладка — canonical tree. Compound: root + step/item в `.partials/components/`. Shared step state — `.partials/providers/` + `.partials/hooks/` (эталон stepper).
 

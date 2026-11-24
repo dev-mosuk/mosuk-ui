@@ -1,15 +1,17 @@
 import { Input as Component } from '@/components/input/.partials/components/component';
 import type { InputProps } from '@/components/input/.partials/components/component.interface';
 import {
+  InputAnimation,
+  InputPress,
   InputVariant,
-  InputWidth,
 } from '@/components/input/.partials/enums/component.enums';
 import type { ElementType } from 'react';
 
 export const Input = Object.assign(Component, {
   ENUMS: {
     Variant: InputVariant,
-    Width: InputWidth,
+    Press: InputPress,
+    Animation: InputAnimation,
   },
 });
 

@@ -1,9 +1,11 @@
 import { ProgressCircleProps } from '@/components/progress-circle/.partials/components/component.interface';
 import {
-  PROGRESS_CIRCLE_DEFAULT_COLOR,
+  PROGRESS_CIRCLE_DEFAULT_IS_LOADING,
   PROGRESS_CIRCLE_DEFAULT_MAX,
   PROGRESS_CIRCLE_DEFAULT_MIN,
   PROGRESS_CIRCLE_DEFAULT_SIZE,
+  PROGRESS_CIRCLE_DEFAULT_STROKE,
+  PROGRESS_CIRCLE_DEFAULT_VARIANT,
 } from '@/components/progress-circle/.partials/constants/component.constants';
 import { ProgressCircleContext } from '@/components/progress-circle/.partials/providers/context/context';
 import styles from '@/components/progress-circle/.partials/styles/component.module.css';
@@ -21,11 +23,12 @@ function progressCirclePercent(value: number, min: number, max: number) {
 
 export function ProgressCircle({
   size = PROGRESS_CIRCLE_DEFAULT_SIZE,
-  color = PROGRESS_CIRCLE_DEFAULT_COLOR,
-  isLoading = false,
+  stroke = PROGRESS_CIRCLE_DEFAULT_STROKE,
+  variant = PROGRESS_CIRCLE_DEFAULT_VARIANT,
   value = PROGRESS_CIRCLE_DEFAULT_MIN,
   min = PROGRESS_CIRCLE_DEFAULT_MIN,
   max = PROGRESS_CIRCLE_DEFAULT_MAX,
+  isLoading = PROGRESS_CIRCLE_DEFAULT_IS_LOADING,
   className,
   style,
   children,
@@ -47,7 +50,8 @@ export function ProgressCircle({
         aria-valuemax={max}
         aria-valuenow={isLoading ? undefined : value}
         data-size={size}
-        data-color={color}
+        data-stroke={stroke}
+        data-variant={variant}
         data-min={min}
         data-max={max}
         data-value={isLoading ? undefined : value}
@@ -56,6 +60,7 @@ export function ProgressCircle({
         style={
           {
             '--progress-circle-size': size,
+            '--progress-circle-stroke': stroke,
             ...(isLoading ? undefined : { '--progress-circle-value': percent }),
             ...style,
           } as CSSProperties

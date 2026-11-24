@@ -17,7 +17,7 @@ alwaysApply: true
 
 ### `.` — private
 
-- `.partials/` — component-local реализация (components, styles, providers, hooks)
+- `.partials/` — component-local реализация (components, styles, constants, providers, hooks)
 - Не импортировать `.partials` извне feature-папки
 
 ### `()` — group
@@ -36,8 +36,9 @@ alwaysApply: true
 
 ```
 src/
-├── components/         # плоский список features: button/, drawer/, yandex-maps/, …
-├── providers/          # toasts, yandex-maps, yandex-metrika, tbank, …
+├── blocks/             # page blocks: breadcrumbs/, yandex-map/, …
+├── components/         # плоский список features: button/, drawer/, …
+├── providers/          # toasts, yandex-map, yandex-metrika, tbank, …
 ├── hooks/
 ├── services/
 ├── utilities/
@@ -45,6 +46,7 @@ src/
 └── index.css
 ```
 
+Blocks → `.cursor/rules/blocks.mdc`
 Components → `.cursor/rules/components.mdc`
 Vendor (UI/SDK) → `.cursor/rules/integrations.mdc` (features в `components/` + `providers/`)
 Стили → `.cursor/rules/styling.mdc`
@@ -66,6 +68,7 @@ Utilities → `.cursor/rules/utilities.mdc`
 | Context | `context.ts` + `context.interface.ts` |
 | Service | `service.ts` + `service.interface.ts` |
 | Enum | `service.enums.ts` или `component.enums.ts` |
+| Constants (defaults пропов) | `component.constants.ts` в `.partials/constants/` — см. components § Props defaults |
 | Utility | `util.ts` |
 | Публичный API feature | `index.ts` |
 | CSS module | `component.module.css` в `.partials/styles/` |
@@ -74,8 +77,8 @@ Utilities → `.cursor/rules/utilities.mdc`
 
 | Тип | Паттерн | Пример |
 | --- | ------- | ------ |
-| UI component | `{Name}` PascalCase | `OTP`, `Drawer`, `Toggle` |
-| Compound sub-part | `{Name}{Sub}` | `OTPInput`, `Drawer.Portal` |
+| UI component | `{Name}` PascalCase | `InputOtp`, `Drawer`, `Segment`, `Toggle` |
+| Compound sub-part | `{Name}{Sub}` | `InputOtpInput`, `Drawer.Portal` |
 | Context hook | `use{Name}` | `useToasts`, `useToggle` |
 | Service singleton | `{name}Service` | `toastsService` |
 | Utility | `{domain}{Action}` | `formatPhone` |
@@ -89,14 +92,16 @@ Utilities → `.cursor/rules/utilities.mdc`
 | Роль | Примеры features |
 | ---- | ---------------- |
 | texts | typography, hint, counter |
-| actions | button, otp, checkbox, input, input-mask, slider |
-| display | image, video, file, empty, dl |
-| containers | card, section, separator |
-| collections | accordion, chat |
+| actions | button, input-otp, checkbox, input, input-mask, slider |
+| display | image, video, file, empty, specifications |
+| containers | card, section, separator, accordion |
+| collections | chat |
 | overlays | dialog, drawer, tooltip, toast, observer |
-| navigation | stepper, breadcrumbs |
+| navigation | stepper |
 | forms | fieldset |
 | primitives | skeleton |
+
+Page blocks (breadcrumbs, yandex-map, …) — слой `src/blocks/`, не роль в `components/`. См. [blocks.mdc](./blocks.mdc).
 
 Vendor UI (Yandex Maps, T-Bank Terminal) — обычные features в `components/` (hyphenated). SDK-providers — в `providers/`. См. [integrations.mdc](./integrations.mdc).
 
@@ -126,18 +131,28 @@ Vendor UI (Yandex Maps, T-Bank Terminal) — обычные features в `compone
 {feature}/
 ├── index.ts                 ← публичный API feature
 └── .partials/
-    └── components|styles|…  ← реализация component
+    └── components|styles|constants|…  ← реализация component
 ```
 
-Sub-parts лежат **плоско** в `.partials/components/{part}/`. Глубина compound склеивается дефисом в имя папки (`Dropdown.Overview.Popup` → `overview-popup/`). Root остаётся `components/component.tsx`. Эталон — `src/components/dropdown/`.
+OwnProps order и defaults — `.cursor/rules/components.mdc` § Props order / § Props defaults (не дублировать здесь).
 
-Feature `{Name}Skeleton` не создаём. Единственный product skeleton — Yandex Maps (`YandexMap.Skeleton`). Shimmer-примитив — `src/components/skeleton`.
+Sub-parts лежат **плоско** в `.partials/components/{part}/`. Глубина compound склеивается дефисом в имя папки (`Popover.Overview.Popup` → `overview-popup/`). Root остаётся `components/component.tsx`. Эталон — `src/components/popover/`.
 
-Публичный import: `mosuk-ui/components/{feature}` — **без** `/component`.
+Feature `{Name}Skeleton` не создаём. Shimmer-примитив — `src/components/skeleton`.
 
-Тот же layout (`index.ts` + `.partials/`) — для `hooks/`, `services/`, `providers/` (плоские hyphenated имена: `storage-local`, `yandex-metrika`).
+Публичный import: `mosuk-ui/components/{feature}` или `mosuk-ui/blocks/{feature}` — **без** `/component`.
+
+Тот же layout (`index.ts` + `.partials/`) — для `blocks/`, `hooks/`, `services/`, `providers/` (плоские hyphenated имена: `storage-local`, `yandex-metrika`).
 
 | Паттерн | Пример | Статус |
 | ------- | ------ | ------ |
-| `.partials/` + compound | `otp/`, `checkbox/`, `dropdown/`, `yandex-maps/` | **canonical** — новый feature |
+| `.partials/` + compound | `input-otp/`, `checkbox/`, `popover/`, `blocks/yandex-map/` | **canonical** — новый feature |
 | Flat files у корня feature | `textarea/component.tsx` | только при правке самого textarea |
+
+## Playgrounds
+
+`playgrounds/` — локальные HTML-демо (часто в `.gitignore`).
+
+- **Не** создавать и **не** обновлять `playgrounds/**` при правках feature, docs или `/test`
+- Трогать только по **явному** запросу пользователя («обнови playground», «добавь card.html»)
+- Не включать обновление playgrounds в планы/todos по умолчанию

@@ -5,8 +5,8 @@ import type { ListBoxItemIndicatorProps } from '@/components/list-box/.partials/
 import { ListBoxItem } from '@/components/list-box/.partials/components/item/component';
 import type { ListBoxItemProps } from '@/components/list-box/.partials/components/item/component.interface';
 import {
-  ListBoxItemVariant,
-  ListBoxSelectionMode,
+  ListBoxMode,
+  ListBoxVariant,
 } from '@/components/list-box/.partials/enums/component.enums';
 import { useListBox as BaseUseListBox } from '@/components/list-box/.partials/hooks/hook';
 import type { UseListBoxProps } from '@/components/list-box/.partials/hooks/hook.interface';
@@ -16,8 +16,8 @@ export const ListBox = Object.assign(Component, {
     Indicator: ListBoxItemIndicator,
   }),
   ENUMS: {
-    SelectionMode: ListBoxSelectionMode,
-    ItemVariant: ListBoxItemVariant,
+    Mode: ListBoxMode,
+    Variant: ListBoxVariant,
   },
 });
 

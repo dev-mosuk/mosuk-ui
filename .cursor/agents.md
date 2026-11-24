@@ -19,8 +19,9 @@ mosuk-ui — **npm UI-библиотека**, не приложение. Упр�
 
 ```
 src/
-├── components/         → плоский список features (button/, drawer/, yandex-maps/, …)
-├── providers/          → React context + SDK providers (toasts, yandex-maps, tbank, …)
+├── blocks/             → page blocks (breadcrumbs/, yandex-map/, …)
+├── components/         → плоский список features (button/, drawer/, …)
+├── providers/          → React context + SDK providers (toasts, yandex-map, tbank, …)
 ├── hooks/              → потребление providers / browser API
 ├── services/           → imperative API без React
 ├── utilities/          → pure formatters
@@ -29,7 +30,8 @@ src/
 
 | Слой | Роль | Пример |
 | ---- | ---- | ------ |
-| **Components** | Публичный UI, compound (в т.ч. vendor UI) | `OTP`, `YandexMap`, `TBankTerminal` |
+| **Blocks** | Составные UI-блоки страницы | `Breadcrumbs`, `YandexMap` |
+| **Components** | Публичный UI, compound (в т.ч. vendor UI) | `InputOtp`, `Accordion`, `TBankTerminal` |
 | **Providers** | Context + side effects / SDK | `ToastsProvider`, `YandexMapProvider` |
 | **Hooks** | React-обёртки над context/API | `useToasts`, `useStorageLocal` |
 | **Services** | Singleton / imperative | `toastsService` |
@@ -48,10 +50,10 @@ src/
 
 ### Правила DDD в этой библиотеке
 
-1. **Feature = папка** плоско в слое (`components/`, `hooks/`, …); без category nesting. Vendor UI → `components/`, SDK → `providers/` (hyphenated).
+1. **Feature = папка** плоско в слое (`blocks/`, `components/`, `hooks/`, …); без category nesting. Vendor UI → `blocks/` или `components/`, SDK → `providers/` (hyphenated).
 2. **Приватная реализация** — только в `.partials/`; не импортировать извне feature.
 3. **Паттерны папок** — `.` private, `()` group (редко), `[]` dynamic (см. architecture rule). Product-варианты — hyphenated features (`input-mask/`, `storage-local/`).
-4. **Направление зависимостей:** `components` → `hooks` / `providers` / `utilities` / `services`. Не наоборот.
+4. **Направление зависимостей:** `blocks` / `components` → `hooks` / `providers` / `utilities` / `services`. Не наоборот.
 5. **Публичный API** — только через `index.ts` на уровне feature (см. exports rule).
 
 ---
@@ -75,7 +77,7 @@ src/
 ### I — Interface Segregation
 
 - Props в `component.interface.ts` — только нужное sub-part'у.
-- Публичные boolean/state — `isDisabled` / `isOpen` / `isSelected` … (не `disabled` / `open` / `checked`); детали — `.cursor/rules/components.mdc` § Props naming.
+- Публичные boolean/state — `is*` / `has*` / `can*` (`isDisabled`, `isOpen`, `isSelected` …; не `disabled` / `open` / `checked`); порядок OwnProps — § Props order; defaults только из `.partials/constants/` — § Props defaults. Детали — `.cursor/rules/components.mdc`.
 - Hook: `hook.interface.ts` отдельно от `hook.ts`.
 
 ### D — Dependency Inversion
@@ -98,10 +100,11 @@ src/
 ## Принципы при генерации кода
 
 1. **Минимальный diff** — не рефакторить соседний код без запроса.
-2. **Эталон OTP** — новый feature копирует дерево `src/components/otp/` (`index.ts` + `.partials/`). Flat `button/` — только если правка самого button.
+2. **Эталон InputOtp** — новый feature копирует дерево `src/components/input-otp/` (`index.ts` + `.partials/`). Flat `button/` — только если правка самого button.
 3. **Named exports** — везде; default только если требует внешний контракт.
 4. **Импорты `@/`** везде в `src/`, включая `.partials/`. Публичный API соседнего feature — через его `index.ts`.
 5. **Не over-engineer** — без лишних абстракций и преждевременных generic.
+6. **Playgrounds** — `playgrounds/**` не создавать и не обновлять, пока пользователь явно не попросил.
 
 ---
 
@@ -114,6 +117,7 @@ src/
 │   ├── architecture.mdc     ← alwaysApply
 │   ├── styling.mdc
 │   ├── exports.mdc
+│   ├── blocks.mdc           ← page blocks (breadcrumbs, yandex-map)
 │   ├── components.mdc       ← actions, display, overlays, texts, layouts, collections, navigation, forms
 │   ├── integrations.mdc
 │   ├── providers.mdc        ← app-level + 4-file context
@@ -124,6 +128,7 @@ src/
     ├── architecture/SKILL.md
     ├── styling/SKILL.md
     ├── exports/SKILL.md
+    ├── blocks/SKILL.md
     ├── components/SKILL.md
     ├── integrations/SKILL.md
     ├── providers/SKILL.md
@@ -137,6 +142,7 @@ src/
 | Паттерны `.` `()` `[]`, структура src | `.cursor/rules/architecture.mdc` | `.cursor/skills/architecture/SKILL.md` |
 | CSS layers, z-index | `.cursor/rules/styling.mdc` | `.cursor/skills/styling/SKILL.md` |
 | index.ts, namespace, package exports | `.cursor/rules/exports.mdc` | `.cursor/skills/exports/SKILL.md` |
+| Page blocks | `.cursor/rules/blocks.mdc` | `.cursor/skills/blocks/SKILL.md` |
 | Компоненты (все категории) | `.cursor/rules/components.mdc` | `.cursor/skills/components/SKILL.md` |
 | Vendor UI/SDK (в components + providers) | `.cursor/rules/integrations.mdc` | `.cursor/skills/integrations/SKILL.md` |
 | Providers + 4-file context | `.cursor/rules/providers.mdc` | `.cursor/skills/providers/SKILL.md` |
@@ -150,13 +156,13 @@ src/
 
 | Задача | Смотреть |
 | ------ | -------- |
-| Канонический компонент | `src/components/otp/` |
-| Product skeleton (только карты) | `src/components/yandex-maps/` |
+| Канонический компонент | `src/components/input-otp/` |
+| Page block | `src/blocks/breadcrumbs/`, `src/blocks/yandex-map/` |
 | Indicator sub-part | `src/components/checkbox/` |
-| Deep compound folders | `src/components/dropdown/` |
+| Deep compound folders | `src/components/popover/` |
 | Deep portal behavior | `src/components/drawer/` |
 | Shared state в `.partials` | `src/components/stepper/`, `src/components/image/` |
-| Vendor UI / SDK provider | `src/components/yandex-maps/`, `src/providers/tbank/` |
+| Vendor UI / SDK provider | `src/blocks/yandex-map/`, `src/providers/tbank/` |
 | Provider + service | `src/providers/toasts/` |
 | Hook over context | `src/hooks/toasts/` |
 | CSS layers | [README.md](../README.md) §1–3 |

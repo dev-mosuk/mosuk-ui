@@ -1,3 +1,35 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --list-box-item-color: var(--color-black);
+    --list-box-item-bg: transparent;
+    --list-box-item-border: transparent;
+
+    --list-box-item-color-hover: var(--color-black);
+    --list-box-item-bg-hover: transparent;
+    --list-box-item-border-hover: transparent;
+
+    --list-box-item-color-selected: var(--color-black);
+    --list-box-item-bg-selected: transparent;
+    --list-box-item-border-selected: transparent;
+  }
+
+  :global([data-theme='dark']) {
+    --list-box-item-color: var(--color-white);
+    --list-box-item-bg: transparent;
+    --list-box-item-border: transparent;
+
+    --list-box-item-color-hover: var(--color-white);
+    --list-box-item-bg-hover: transparent;
+    --list-box-item-border-hover: transparent;
+
+    --list-box-item-color-selected: var(--color-white);
+    --list-box-item-bg-selected: transparent;
+    --list-box-item-border-selected: transparent;
+  }
+}
+
+/* ListBox */
 @layer mosuk-ui {
   .listBox {
     display: flex;
@@ -11,7 +43,6 @@
 
     outline: none;
 
-
     .item {
       display: flex;
       align-items: center;
@@ -19,13 +50,16 @@
 
       width: 100%;
 
-      padding: calc(var(--spacing) * var(--list-box-item-size));
+      padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3);
 
-      color: var(--color-black);
+      color: var(--list-box-item-color);
       font-size: var(--text-base);
       text-align: start;
 
-      border: 0.75px solid transparent;
+      background-color: var(--list-box-item-bg);
+
+      border: 1px solid transparent;
+      border-color: var(--list-box-item-border);
       border-radius: var(--radius-xl);
       outline: none;
 
@@ -39,85 +73,24 @@
         display: none;
       }
 
-      &[data-variant='primary'] {
-        color: var(--color-black);
+      &:hover,
+      &:focus-visible,
+      &:active,
+      &[data-active] {
+        color: var(--list-box-item-color-hover);
 
-        background-color: transparent;
+        background-color: var(--list-box-item-bg-hover);
 
-        border-color: transparent;
-
-        &:hover,
-        &:focus-visible {
-          color: var(--color-primary-500);
-
-          background-color: var(--color-primary-50);
-        }
-
-        &[data-selected] {
-          color: var(--color-primary-500);
-
-          background-color: var(--color-primary-50);
-        }
+        border-color: var(--list-box-item-border-hover);
       }
 
-      &[data-variant='secondary'] {
-        color: var(--color-black);
+      &[data-selected] {
+        color: var(--list-box-item-color-selected);
 
-        background-color: transparent;
+        background-color: var(--list-box-item-bg-selected);
 
-        border-color: transparent;
-
-        &:hover,
-        &:focus-visible {
-          background-color: var(--color-gray-50);
-        }
-
-        &[data-selected] {
-          background-color: var(--color-gray-50);
-        }
+        border-color: var(--list-box-item-border-selected);
       }
-
-      &[data-variant='ghost'] {
-        color: var(--color-black);
-
-        background-color: transparent;
-
-        border-color: transparent;
-
-        &:hover,
-        &:focus-visible {
-          background-color: var(--color-gray-50);
-        }
-
-        &[data-selected] {
-          color: var(--color-black);
-
-          background-color: transparent;
-
-        }
-      }
-
-      &[data-variant='outline'] {
-        color: var(--color-black);
-
-        background-color: transparent;
-
-        border-color: var(--color-gray-200);
-
-        &:hover,
-        &:focus-visible {
-          color: var(--color-primary-500);
-
-          border-color: var(--color-primary-200);
-        }
-
-        &[data-selected] {
-          color: var(--color-primary-500);
-
-          border-color: var(--color-primary-200);
-        }
-      }
-
 
       &[data-disabled] {
         opacity: 0.5;
@@ -126,7 +99,7 @@
         pointer-events: none;
       }
 
-      .itemIndicator {
+      .indicator {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -134,6 +107,7 @@
 
         width: calc(var(--spacing) * 4);
         height: calc(var(--spacing) * 4);
+
         margin-left: auto;
 
         color: currentColor;
@@ -150,8 +124,161 @@
       }
 
       &[data-selected] {
-        .itemIndicator {
+        .indicator {
           opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .listBox {
+    .item {
+      &[data-variant='primary'] {
+        --list-box-item-color: var(--color-black);
+        --list-box-item-bg: transparent;
+        --list-box-item-border: transparent;
+
+        --list-box-item-color-hover: var(--color-primary-500);
+        --list-box-item-bg-hover: var(--color-primary-100);
+        --list-box-item-border-hover: transparent;
+
+        --list-box-item-color-selected: var(--color-primary-500);
+        --list-box-item-bg-selected: var(--color-primary-100);
+        --list-box-item-border-selected: transparent;
+      }
+
+      &[data-variant='secondary'] {
+        --list-box-item-color: var(--color-black);
+        --list-box-item-bg: transparent;
+        --list-box-item-border: transparent;
+
+        --list-box-item-color-hover: var(--color-black);
+        --list-box-item-bg-hover: var(--color-zinc-100);
+        --list-box-item-border-hover: transparent;
+
+        --list-box-item-color-selected: var(--color-black);
+        --list-box-item-bg-selected: var(--color-zinc-100);
+        --list-box-item-border-selected: transparent;
+      }
+
+      &[data-variant='tertiary'] {
+        --list-box-item-color: var(--color-black);
+        --list-box-item-bg: transparent;
+        --list-box-item-border: transparent;
+
+        --list-box-item-color-hover: var(--color-black);
+        --list-box-item-bg-hover: var(--color-zinc-50);
+        --list-box-item-border-hover: transparent;
+
+        --list-box-item-color-selected: var(--color-black);
+        --list-box-item-bg-selected: var(--color-zinc-50);
+        --list-box-item-border-selected: transparent;
+      }
+
+      &[data-variant='outline'] {
+        --list-box-item-color: var(--color-black);
+        --list-box-item-bg: transparent;
+        --list-box-item-border: var(--color-primary-200);
+
+        --list-box-item-color-hover: var(--color-primary-500);
+        --list-box-item-bg-hover: transparent;
+        --list-box-item-border-hover: var(--color-primary-200);
+
+        --list-box-item-color-selected: var(--color-primary-500);
+        --list-box-item-bg-selected: transparent;
+        --list-box-item-border-selected: var(--color-primary-200);
+      }
+
+      &[data-variant='ghost'] {
+        --list-box-item-color: var(--color-black);
+        --list-box-item-bg: transparent;
+        --list-box-item-border: transparent;
+
+        --list-box-item-color-hover: var(--color-black);
+        --list-box-item-bg-hover: transparent;
+        --list-box-item-border-hover: transparent;
+
+        --list-box-item-color-selected: var(--color-black);
+        --list-box-item-bg-selected: transparent;
+        --list-box-item-border-selected: transparent;
+      }
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .listBox {
+      .item {
+        &[data-variant='primary'] {
+          --list-box-item-color: var(--color-white);
+          --list-box-item-bg: transparent;
+          --list-box-item-border: transparent;
+
+          --list-box-item-color-hover: var(--color-primary-400);
+          --list-box-item-bg-hover: var(--color-primary-900);
+          --list-box-item-border-hover: transparent;
+
+          --list-box-item-color-selected: var(--color-primary-400);
+          --list-box-item-bg-selected: var(--color-primary-900);
+          --list-box-item-border-selected: transparent;
+        }
+
+        &[data-variant='secondary'] {
+          --list-box-item-color: var(--color-white);
+          --list-box-item-bg: transparent;
+          --list-box-item-border: transparent;
+
+          --list-box-item-color-hover: var(--color-white);
+          --list-box-item-bg-hover: var(--color-zinc-800);
+          --list-box-item-border-hover: transparent;
+
+          --list-box-item-color-selected: var(--color-white);
+          --list-box-item-bg-selected: var(--color-zinc-800);
+          --list-box-item-border-selected: transparent;
+        }
+
+        &[data-variant='tertiary'] {
+          --list-box-item-color: var(--color-white);
+          --list-box-item-bg: transparent;
+          --list-box-item-border: transparent;
+
+          --list-box-item-color-hover: var(--color-white);
+          --list-box-item-bg-hover: var(--color-zinc-900);
+          --list-box-item-border-hover: transparent;
+
+          --list-box-item-color-selected: var(--color-white);
+          --list-box-item-bg-selected: var(--color-zinc-900);
+          --list-box-item-border-selected: transparent;
+        }
+
+        &[data-variant='outline'] {
+          --list-box-item-color: var(--color-white);
+          --list-box-item-bg: transparent;
+          --list-box-item-border: var(--color-primary-700);
+
+          --list-box-item-color-hover: var(--color-primary-400);
+          --list-box-item-bg-hover: transparent;
+          --list-box-item-border-hover: var(--color-primary-700);
+
+          --list-box-item-color-selected: var(--color-primary-400);
+          --list-box-item-bg-selected: transparent;
+          --list-box-item-border-selected: var(--color-primary-700);
+        }
+
+        &[data-variant='ghost'] {
+          --list-box-item-color: var(--color-white);
+          --list-box-item-bg: transparent;
+          --list-box-item-border: transparent;
+
+          --list-box-item-color-hover: var(--color-white);
+          --list-box-item-bg-hover: transparent;
+          --list-box-item-border-hover: transparent;
+
+          --list-box-item-color-selected: var(--color-white);
+          --list-box-item-bg-selected: transparent;
+          --list-box-item-border-selected: transparent;
         }
       }
     }

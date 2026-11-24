@@ -1,3 +1,3 @@
 import { UploadContextProps } from '@/components/upload/.partials/providers/context/context.interface';
 
-export interface useUploadProps extends UploadContextProps {}
+export interface UseUploadProps extends UploadContextProps {}

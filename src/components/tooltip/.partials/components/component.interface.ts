@@ -1,19 +1,12 @@
-import { Tooltip } from '@base-ui/react/tooltip';
-import { ReactNode } from 'react';
+import { Tooltip as BaseUITooltip } from '@base-ui/react/tooltip';
+import type { ReactNode } from 'react';
 
-export type TooltipProps = Omit<
-  Tooltip.Root.Props,
-  'children' | 'open' | 'disabled'
-> & {
-  children: ReactNode;
+type TooltipOwnProps = {
   isOpen?: boolean;
   isDisabled?: boolean;
-  /**
-   * Delay before opening on hover, in milliseconds.
-   * Hover/focus open on pointer-fine devices; touch opens and closes on tap.
-   * @default 0
-   */
-  delay?: number;
-  /** Delay before closing, in milliseconds. */
-  closeDelay?: number;
+  handle?: BaseUITooltip.Root.Props['handle'];
+  children?: ReactNode;
 };
+
+export type TooltipProps = TooltipOwnProps &
+  Omit<BaseUITooltip.Root.Props, 'children' | 'open' | 'disabled' | 'handle'>;

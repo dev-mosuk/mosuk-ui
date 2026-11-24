@@ -1,4 +1,9 @@
 import { ToggleProps } from '@/components/toggle/.partials/components/component.interface';
+import {
+  TOGGLE_DEFAULT_ORIENTATION,
+  TOGGLE_DEFAULT_VARIANT,
+} from '@/components/toggle/.partials/constants/component.constants';
+import { ToggleProvider } from '@/components/toggle/.partials/providers/provider';
 import styles from '@/components/toggle/.partials/styles/component.module.css';
 import { scrollToggleOptionIntoView } from '@/components/toggle/.partials/utilities/scroll-toggle-option-into-view';
 import { Tabs } from '@base-ui/react/tabs';
@@ -33,12 +38,14 @@ function scrollActiveIntoView(
 
 export function Toggle<C extends ElementType = 'div'>({
   as,
+  size,
+  variant = TOGGLE_DEFAULT_VARIANT,
+  orientation = TOGGLE_DEFAULT_ORIENTATION,
+  activateOnFocus,
+  loopFocus,
   value,
   defaultValue,
   onChange,
-  orientation = 'horizontal',
-  activateOnFocus,
-  loopFocus,
   className,
   style,
   onClickCapture,
@@ -142,31 +149,35 @@ export function Toggle<C extends ElementType = 'div'>({
     value !== undefined ? undefined : (defaultValue ?? null);
 
   return (
-    <Tabs.Root
-      value={value}
-      defaultValue={rootDefaultValue}
-      orientation={orientation}
-      onValueChange={handleValueChange}
-      render={
-        <Tabs.List
-          {...rest}
-          ref={setListRef}
-          render={listRender}
-          activateOnFocus={activateOnFocus}
-          loopFocus={loopFocus}
-          onClickCapture={handleClickCapture}
-          style={style}
-          className={classNames(
-            'mosuk-toggle',
-            '@container/toggle',
-            'group/toggle',
-            styles.toggle,
-            className,
-          )}
-        />
-      }
-    >
-      {children}
-    </Tabs.Root>
+    <ToggleProvider size={size}>
+      <Tabs.Root
+        value={value}
+        defaultValue={rootDefaultValue}
+        orientation={orientation}
+        onValueChange={handleValueChange}
+        render={
+          <Tabs.List
+            {...rest}
+            ref={setListRef}
+            render={listRender}
+            activateOnFocus={activateOnFocus}
+            loopFocus={loopFocus}
+            onClickCapture={handleClickCapture}
+            data-size={size != null ? size : undefined}
+            data-variant={variant}
+            style={style}
+            className={classNames(
+              'mosuk-toggle',
+              '@container/toggle',
+              'group/toggle',
+              styles.toggle,
+              className,
+            )}
+          />
+        }
+      >
+        {children}
+      </Tabs.Root>
+    </ToggleProvider>
   );
 }

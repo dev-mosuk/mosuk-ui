@@ -1,0 +1,65 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --radar-chart-tick: var(--color-zinc-500);
+    --radar-chart-grid: color-mix(in oklab, var(--color-zinc-400) 20%, transparent);
+  }
+
+  :global([data-theme='dark']) {
+    --radar-chart-tick: var(--color-zinc-400);
+    --radar-chart-grid: color-mix(in oklab, var(--color-zinc-500) 20%, transparent);
+  }
+}
+
+/* RadarChart */
+@layer mosuk-ui {
+  .radarChart {
+    width: 100%;
+    height: 100%;
+
+    outline: none;
+
+    :global(svg),
+    :global(.recharts-surface),
+    :global(.recharts-sector),
+    :global(path),
+    :global(.recharts-layer) {
+      outline: none;
+    }
+
+    :global(.recharts-responsive-container) {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    :global(.recharts-polar-angle-axis-tick-value) {
+      fill: var(--radar-chart-tick);
+
+      font-size: var(--text-2xs);
+    }
+
+    :global(.recharts-polar-radius-axis-tick-value) {
+      fill: var(--radar-chart-tick);
+
+      font-size: var(--text-2xs);
+    }
+
+    :global(.recharts-polar-grid-concentric-polygon),
+    :global(.recharts-polar-grid-concentric-circle) {
+      stroke: var(--radar-chart-grid);
+    }
+
+    :global(.recharts-polar-grid-angle line) {
+      stroke: var(--radar-chart-grid);
+    }
+
+    :global(.recharts-tooltip-cursor) {
+      display: none;
+    }
+
+    :global(.recharts-tooltip-wrapper) {
+      z-index: 150;
+      outline: none;
+    }
+  }
+}

@@ -24,14 +24,10 @@ export function ChatMessageAvatar({
       )}
     >
       <Image.Dots />
-
-      {src ? (
-        <Image.Image src={src} alt={alt ?? ''} className={styles.image} />
-      ) : (
-        <span className={styles.fallback} aria-hidden={!alt}>
-          {label || alt?.slice(0, 2) || '?'}
-        </span>
-      )}
+      <Image.View src={src ?? null} alt={alt ?? ''} className={styles.image} />
+      <Image.Fallback aria-hidden={!alt} className={styles.fallback}>
+        {label || alt?.slice(0, 2) || '?'}
+      </Image.Fallback>
     </Image>
   );
 }

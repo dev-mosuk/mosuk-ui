@@ -2,8 +2,8 @@
 
 import type { ListBoxItemProps } from '@/components/list-box/.partials/components/item/component.interface';
 import {
-  LIST_BOX_ITEM_DEFAULT_SIZE,
-  LIST_BOX_ITEM_DEFAULT_VARIANT,
+  LIST_BOX_ITEM_DEFAULT_IS_ACTIVE,
+  LIST_BOX_ITEM_DEFAULT_IS_DISABLED,
 } from '@/components/list-box/.partials/constants/component.constants';
 import { useListBox } from '@/components/list-box/.partials/hooks/hook';
 import { ListBoxItemContext } from '@/components/list-box/.partials/providers/context/item-context';
@@ -36,9 +36,9 @@ function resolveTextValue(
 export function ListBoxItem({
   id,
   textValue,
-  size = LIST_BOX_ITEM_DEFAULT_SIZE,
-  variant = LIST_BOX_ITEM_DEFAULT_VARIANT,
-  isDisabled = false,
+  size,
+  isDisabled = LIST_BOX_ITEM_DEFAULT_IS_DISABLED,
+  isActive = LIST_BOX_ITEM_DEFAULT_IS_ACTIVE,
   className,
   style,
   children,
@@ -47,7 +47,8 @@ export function ListBoxItem({
   ...rest
 }: ListBoxItemProps) {
   const {
-    value,
+    selected,
+    variant,
     highlightedId,
     registerItem,
     unregisterItem,
@@ -56,13 +57,18 @@ export function ListBoxItem({
     matches,
     onItemRegister,
   } = useListBox();
+  const { 'data-active': dataActiveAttr, ...domRest } = rest as typeof rest & {
+    'data-active'?: string | boolean;
+  };
+  const hasDataActive =
+    isActive || (dataActiveAttr !== undefined && dataActiveAttr !== false);
 
   const resolvedTextValue = useMemo(
     () => resolveTextValue(textValue, children),
     [textValue, children],
   );
 
-  const isSelected = value.includes(id);
+  const isSelected = selected.includes(id);
   const isHidden = Boolean(
     matches && !matches({ id, textValue: resolvedTextValue }),
   );
@@ -98,7 +104,7 @@ export function ListBoxItem({
   return (
     <ListBoxItemContext.Provider value={itemContext}>
       <li
-        {...rest}
+        {...domRest}
         id={id}
         role='option'
         aria-selected={isSelected}
@@ -107,13 +113,14 @@ export function ListBoxItem({
         hidden={isHidden || undefined}
         data-list-box-item-id={id}
         data-variant={variant}
-        data-size={size}
+        data-size={size != null ? size : undefined}
         data-selected={isSelected || undefined}
+        data-active={hasDataActive ? true : undefined}
         data-disabled={isDisabled || undefined}
         tabIndex={highlightedId === id && !isDisabled && !isHidden ? 0 : -1}
         style={
           {
-            '--list-box-item-size': size,
+            ...(size != null ? { '--list-box-item-size': size } : null),
             ...style,
           } as CSSProperties
         }

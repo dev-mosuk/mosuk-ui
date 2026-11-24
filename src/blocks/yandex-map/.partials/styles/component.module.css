@@ -1,0 +1,120 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --yandex-map-control-size: calc(var(--spacing) * 8);
+    --yandex-map-control-background: color-mix(
+      in oklab,
+      var(--color-white) 50%,
+      transparent
+    );
+    --yandex-map-control-background-hover: color-mix(
+      in oklab,
+      var(--color-white) 70%,
+      transparent
+    );
+    --yandex-map-control-color: var(--color-black);
+  }
+
+  :global([data-theme='dark']) {
+    --yandex-map-control-background: color-mix(
+      in oklab,
+      var(--color-zinc-900) 50%,
+      transparent
+    );
+    --yandex-map-control-background-hover: color-mix(
+      in oklab,
+      var(--color-zinc-900) 70%,
+      transparent
+    );
+    --yandex-map-control-color: var(--color-white);
+  }
+}
+
+/* YandexMap */
+@layer mosuk-ui {
+  .yandexMap {
+    overflow: hidden;
+
+    width: 100%;
+    height: calc(var(--spacing) * 100);
+  }
+
+  .controls {
+    position: absolute;
+    top: calc(var(--spacing) * 2);
+    right: calc(var(--spacing) * 2);
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 1);
+
+    &[data-position='left'],
+    &[data-position='top left'],
+    &[data-position='bottom left'] {
+      right: auto;
+      left: calc(var(--spacing) * 2);
+    }
+
+    &[data-position='top'],
+    &[data-position='top left'],
+    &[data-position='top right'] {
+      top: calc(var(--spacing) * 2);
+      bottom: auto;
+    }
+
+    &[data-position='bottom'],
+    &[data-position='bottom left'],
+    &[data-position='bottom right'] {
+      top: auto;
+      bottom: calc(var(--spacing) * 2);
+    }
+  }
+
+  .zoomPlus,
+  .zoomMinus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: var(--yandex-map-control-size);
+    height: var(--yandex-map-control-size);
+    min-width: var(--yandex-map-control-size);
+    min-height: var(--yandex-map-control-size);
+
+    padding: 0;
+
+    color: var(--yandex-map-control-color);
+
+    background-color: var(--yandex-map-control-background);
+    backdrop-filter: blur(12px);
+
+    border: none;
+    border-radius: calc(infinity * 1px);
+
+    cursor: pointer;
+    transition:
+      background-color 200ms ease-in-out,
+      opacity 200ms ease-in-out;
+
+    & :where(svg) {
+      width: calc(var(--spacing) * 0.425 * 8);
+      height: calc(var(--spacing) * 0.425 * 8);
+      min-width: calc(var(--spacing) * 0.425 * 8);
+      min-height: calc(var(--spacing) * 0.425 * 8);
+
+      color: inherit;
+    }
+
+    &:hover:not(:disabled):not([data-disabled]) {
+      background-color: var(--yandex-map-control-background-hover);
+    }
+
+    &:disabled,
+    &[data-disabled] {
+      opacity: 0.5;
+
+      cursor: not-allowed;
+    }
+  }
+}

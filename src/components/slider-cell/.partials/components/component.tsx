@@ -1,27 +1,40 @@
 import { CellSliderProps } from '@/components/slider-cell/.partials/components/component.interface';
+import {
+  SLIDER_CELL_DEFAULT_ORIENTATION,
+  SLIDER_CELL_DEFAULT_SIZE,
+  SLIDER_CELL_DEFAULT_VARIANT,
+} from '@/components/slider-cell/.partials/constants/component.constants';
 import styles from '@/components/slider-cell/.partials/styles/component.module.css';
 import { Slider } from '@base-ui/react/slider';
 import classNames from 'classnames';
-import React from 'react';
+import React, { type CSSProperties } from 'react';
 
 export function CellSlider({
-  variant = 'default',
-  orientation = 'horizontal',
+  size = SLIDER_CELL_DEFAULT_SIZE,
+  variant = SLIDER_CELL_DEFAULT_VARIANT,
   isDisabled,
   className,
+  style,
   ...rest
 }: CellSliderProps) {
   return (
     <Slider.Root
       {...rest}
-      orientation={orientation}
+      orientation={SLIDER_CELL_DEFAULT_ORIENTATION}
       disabled={isDisabled}
       data-variant={variant}
+      data-size={size}
+      style={
+        {
+          '--cell-slider-size': size,
+          ...style,
+        } as CSSProperties
+      }
       className={classNames(
         'mosuk-cell-slider',
         '@container/cell-slider',
         'group/cell-slider',
-        styles.root,
+        styles.cellSlider,
         className,
       )}
     />

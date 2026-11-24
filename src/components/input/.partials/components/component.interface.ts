@@ -1,6 +1,7 @@
 import type {
+  InputAnimation,
+  InputPress,
   InputVariant,
-  InputWidth,
 } from '@/components/input/.partials/enums/component.enums';
 import type {
   ComponentPropsWithoutRef,
@@ -12,13 +13,16 @@ import type {
 type InputOwnProps = {
   as?: ElementType;
   ref?: Ref<any>;
-  variant?: InputVariant | `${InputVariant}`;
   size?: number;
-  width?: InputWidth | `${InputWidth}`;
+  variant?: InputVariant | `${InputVariant}`;
+  animation?: InputAnimation | `${InputAnimation}`;
+  press?: InputPress | `${InputPress}` | false;
   isDisabled?: boolean;
   isReadOnly?: boolean;
   isRequired?: boolean;
-  isInvalid?: boolean;
+  isDanger?: boolean;
+  isActive?: boolean;
+  isFocused?: boolean;
   style?: CSSProperties;
   /** @deprecated Use `isDisabled` */
   disabled?: never;
@@ -42,5 +46,4 @@ export type InputProps<C extends ElementType = 'input'> = Omit<
     | 'required'
     | 'aria-invalid'
     | 'style'
-    | 'width'
   >;

@@ -1,42 +1,37 @@
 @layer mosuk-ui {
   .inputGroup {
-    --input-group-fade: white;
-
     position: relative;
 
     display: block;
 
     width: 100%;
 
-    &[data-width='auto'] {
-      width: fit-content;
+    &:has(
+      :global(
+        .mosuk-input[data-variant='ghost'],
+        .mosuk-textarea[data-variant='ghost']
+      )
+    ) {
+      .prefix,
+      .postfix {
+        border-radius: 0;
+      }
     }
 
-    &[data-width='full'] {
-      width: 100%;
-    }
+    &:has(:global(.mosuk-textarea)) {
+      .prefix,
+      .postfix {
+        align-items: center;
 
-    &:has(:global(.mosuk-input[data-variant='primary'])) {
-      --input-group-fade: white;
+        height: calc(var(--spacing) * var(--input-size) - 2px);
+      }
     }
-
-    &:has(:global(.mosuk-input[data-variant='secondary'])) {
-      --input-group-fade: var(--color-gray-100);
-    }
-
-    &:has(:global(.mosuk-input[data-variant='danger'])) {
-      --input-group-fade: var(--color-red-100);
-    }
-
-    &:has(:global(.mosuk-input[data-variant='outline'])),
-    &:has(:global(.mosuk-input[data-variant='ghost'])) {
-      --input-group-fade: transparent;
-    }
-
   }
 
   .prefix,
   .postfix {
+    overflow: hidden;
+
     position: absolute;
     top: 1px;
     z-index: 1;
@@ -46,25 +41,32 @@
     justify-content: center;
     gap: calc(var(--spacing) * 0.25 * var(--input-size));
 
+    width: fit-content;
+    max-width: 50%;
     height: calc(100% - 2px);
 
-    color: var(--color-gray-500);
-    font-size: calc(var(--spacing) * 0.425 * var(--input-size));
-    line-height: 1;
+    padding-inline: calc(var(--spacing) * 0.425 * var(--input-size));
+
+    color: var(--color-zinc-500);
+    font-size: var(--text-sm);
+    line-height: var(--leading-none);
     white-space: nowrap;
+    text-overflow: ellipsis;
 
     cursor: text;
+    pointer-events: none;
     user-select: none;
 
     :where(svg) {
-      width: calc(var(--spacing) * 0.425 * var(--input-size));
-      height: calc(var(--spacing) * 0.425 * var(--input-size));
-      min-width: calc(var(--spacing) * 0.425 * var(--input-size));
-      min-height: calc(var(--spacing) * 0.425 * var(--input-size));
+      width: 1em;
+      height: 1em;
+      min-width: 1em;
+      min-height: 1em;
     }
 
     :where(button, a) {
       cursor: pointer;
+      pointer-events: auto;
       user-select: auto;
     }
   }
@@ -72,8 +74,7 @@
   .prefix {
     left: 1px;
 
-    padding-inline-start: calc(var(--spacing) * 0.425 * var(--input-size));
-    padding-inline-end: calc(var(--spacing) * 0.425 * var(--input-size));
+    justify-content: flex-start;
 
     border-start-start-radius: var(--radius-xl);
     border-end-start-radius: var(--radius-xl);
@@ -82,27 +83,22 @@
   .postfix {
     right: 1px;
 
-    padding-inline-start: calc(var(--spacing) * 0.425 * var(--input-size));
-    padding-inline-end: calc(var(--spacing) * 0.425 * var(--input-size));
+    justify-content: flex-end;
 
     border-start-end-radius: var(--radius-xl);
     border-end-end-radius: var(--radius-xl);
+  }
+}
 
-    &::before {
-      position: absolute;
-      top: 0;
-      right: 100%;
-      bottom: 0;
+/* Dark */
+@layer mosuk-ui {
+  :global([data-theme='dark']) {
+    .inputGroup {
 
-      width: calc(var(--spacing) * 3);
-
-      content: '';
-
-      background: linear-gradient(to left,
-          var(--input-group-fade),
-          transparent);
-
-      pointer-events: none;
+      .prefix,
+      .postfix {
+        color: var(--color-zinc-400);
+      }
     }
   }
 }

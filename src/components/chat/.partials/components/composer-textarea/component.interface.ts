@@ -1,12 +1,9 @@
-import type { TextareaHTMLAttributes } from 'react';
+import type { Textarea } from '@/components/textarea';
 
-export interface ChatComposerTextareaProps extends Omit<
-  TextareaHTMLAttributes<HTMLTextAreaElement>,
-  'value' | 'defaultValue' | 'onChange' | 'disabled' | 'readOnly' | 'required'
-> {
+export type ChatComposerTextareaProps = Omit<
+  Textarea.Props,
+  'value' | 'defaultValue' | 'onChange' | 'isAutoSize'
+> & {
   minRows?: number;
   maxRows?: number;
-  isDisabled?: boolean;
-  isReadOnly?: boolean;
-  isRequired?: boolean;
-}
+};

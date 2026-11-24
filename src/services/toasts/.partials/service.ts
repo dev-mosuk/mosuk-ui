@@ -1,6 +1,34 @@
 import { ToastType } from '@/services/toasts/.partials/service.enums';
 import type { ToastOptions } from '@/services/toasts/.partials/service.interface';
-import type { ReactNode } from 'react';
+import { isValidElement, type ReactNode } from 'react';
+
+type ToastOptionsWithoutSubject = Omit<ToastOptions, 'subject'>;
+
+function isToastOptions(
+  value: ReactNode | ToastOptions,
+): value is ToastOptions {
+  return (
+    value !== null &&
+    typeof value === 'object' &&
+    !isValidElement(value) &&
+    !Array.isArray(value)
+  );
+}
+
+function resolveOptions(
+  subjectOrOptions: ReactNode | ToastOptions,
+  options?: ToastOptionsWithoutSubject,
+): ToastOptions {
+  if (options !== undefined) {
+    return { ...options, subject: subjectOrOptions as ReactNode };
+  }
+
+  if (isToastOptions(subjectOrOptions)) {
+    return subjectOrOptions;
+  }
+
+  return { subject: subjectOrOptions };
+}
 
 class ToastsService {
   private static instance: ToastsService;
@@ -22,8 +50,8 @@ class ToastsService {
 
   private action(
     type: ToastType,
-    content: ReactNode,
-    options?: ToastOptions,
+    subjectOrOptions: ReactNode | ToastOptions,
+    options?: ToastOptionsWithoutSubject,
   ): string | undefined {
     if (!this.managerRef) {
       console.error('toastsService must be used within <ToastsProvider>');
@@ -31,35 +59,53 @@ class ToastsService {
       return;
     }
 
+    const resolved = resolveOptions(subjectOrOptions, options);
+
     return this.managerRef.add({
       type,
-      title: content as any,
-      description: options?.description,
+      title: resolved.subject as any,
+      description: resolved.comment,
       data: {
-        indicator: options?.indicator,
-        actionProps: options?.actionProps,
+        icon: resolved.icon,
+        action: resolved.action,
+        variant: resolved.variant,
       },
     });
   }
 
-  default(content: ReactNode, options?: ToastOptions): string | undefined {
-    return this.action(ToastType.DEFAULT, content, options);
+  default(
+    subjectOrOptions: ReactNode | ToastOptions,
+    options?: ToastOptionsWithoutSubject,
+  ): string | undefined {
+    return this.action(ToastType.DEFAULT, subjectOrOptions, options);
   }
 
-  accent(content: ReactNode, options?: ToastOptions): string | undefined {
-    return this.action(ToastType.ACCENT, content, options);
+  accent(
+    subjectOrOptions: ReactNode | ToastOptions,
+    options?: ToastOptionsWithoutSubject,
+  ): string | undefined {
+    return this.action(ToastType.ACCENT, subjectOrOptions, options);
   }
 
-  success(content: ReactNode, options?: ToastOptions): string | undefined {
-    return this.action(ToastType.SUCCESS, content, options);
+  success(
+    subjectOrOptions: ReactNode | ToastOptions,
+    options?: ToastOptionsWithoutSubject,
+  ): string | undefined {
+    return this.action(ToastType.SUCCESS, subjectOrOptions, options);
   }
 
-  warning(content: ReactNode, options?: ToastOptions): string | undefined {
-    return this.action(ToastType.WARNING, content, options);
+  warning(
+    subjectOrOptions: ReactNode | ToastOptions,
+    options?: ToastOptionsWithoutSubject,
+  ): string | undefined {
+    return this.action(ToastType.WARNING, subjectOrOptions, options);
   }
 
-  danger(content: ReactNode, options?: ToastOptions): string | undefined {
-    return this.action(ToastType.DANGER, content, options);
+  danger(
+    subjectOrOptions: ReactNode | ToastOptions,
+    options?: ToastOptionsWithoutSubject,
+  ): string | undefined {
+    return this.action(ToastType.DANGER, subjectOrOptions, options);
   }
 
   custom(content: ReactNode): string | undefined {

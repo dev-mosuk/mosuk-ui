@@ -1,15 +1,15 @@
-import type { ProgressBarColor } from '@/components/progress-bar/.partials/enums/component.enums';
+import type { ProgressBarVariant } from '@/components/progress-bar/.partials/enums/component.enums';
 import type { CSSProperties, HTMLAttributes } from 'react';
 
 type ProgressBarOwnProps = {
   size?: number;
-  color?: ProgressBarColor | `${ProgressBarColor}`;
-  isLoading?: boolean;
+  variant?: ProgressBarVariant | `${ProgressBarVariant}`;
   value?: number;
   min?: number;
   max?: number;
+  isLoading?: boolean;
   style?: CSSProperties;
 };
 
 export type ProgressBarProps = ProgressBarOwnProps &
-  Omit<HTMLAttributes<HTMLDataElement>, 'color' | 'value' | 'style'>;
+  Omit<HTMLAttributes<HTMLDataElement>, 'value' | 'style'>;

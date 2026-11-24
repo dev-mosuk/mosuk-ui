@@ -1,9 +1,9 @@
-import { ToastActionVariant, ToastType } from '@/services/toasts/.partials/service.enums';
+import { ToastType, ToastVariant } from '@/services/toasts/.partials/service.enums';
 import type {
-  ToastActionProps,
+  ToastAction,
   ToastData,
   ToastEntry,
-  ToastIndicator,
+  ToastIcon,
   ToastOptions,
   ToastsApi,
   ToastsServiceProps,
@@ -12,10 +12,10 @@ import { toastsService } from '@/services/toasts/.partials/service';
 
 export {
   toastsService,
-  type ToastActionProps,
+  type ToastAction,
   type ToastData,
   type ToastEntry,
-  type ToastIndicator,
+  type ToastIcon,
   type ToastOptions,
   type ToastsApi,
   type ToastsServiceProps,
@@ -26,6 +26,6 @@ export namespace ToastsService {
 
   export const ENUMS = {
     Type: ToastType,
-    ActionVariant: ToastActionVariant,
+    Variant: ToastVariant,
   };
 }

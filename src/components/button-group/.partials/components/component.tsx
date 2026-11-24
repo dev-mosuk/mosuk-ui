@@ -1,8 +1,9 @@
 import type { ButtonGroupProps } from '@/components/button-group/.partials/components/component.interface';
 import { ButtonGroupSeparator } from '@/components/button-group/.partials/components/separator/component';
 import {
+  BUTTON_GROUP_DEFAULT_IS_DETACHED,
   BUTTON_GROUP_DEFAULT_ORIENTATION,
-  BUTTON_GROUP_DEFAULT_WIDTH,
+  BUTTON_GROUP_DEFAULT_SIZE,
 } from '@/components/button-group/.partials/constants/component.constants';
 import styles from '@/components/button-group/.partials/styles/component.module.css';
 import classNames from 'classnames';
@@ -21,15 +22,16 @@ type InheritProps = {
 
 export function ButtonGroup({
   variant,
-  size,
-  width = BUTTON_GROUP_DEFAULT_WIDTH,
+  size = BUTTON_GROUP_DEFAULT_SIZE,
   isDisabled,
-  isDetached = false,
+  isDetached = BUTTON_GROUP_DEFAULT_IS_DETACHED,
   orientation = BUTTON_GROUP_DEFAULT_ORIENTATION,
   className,
   children,
   ...rest
 }: ButtonGroupProps) {
+  const childSize = Math.max(1, size - 1);
+
   const wrappedChildren = Children.map(children, (child) => {
     if (!isValidElement(child) || child.type === ButtonGroupSeparator) {
       return child;
@@ -38,9 +40,9 @@ export function ButtonGroup({
     const props = child.props as InheritProps;
 
     return cloneElement(child as ReactElement<InheritProps>, {
-      size: props.size ?? size,
-      variant: props.variant ?? variant,
-      isDisabled: props.isDisabled ?? isDisabled,
+      size: childSize,
+      ...(props.variant == null ? { variant } : null),
+      ...(props.isDisabled == null ? { isDisabled } : null),
     });
   });
 
@@ -50,13 +52,12 @@ export function ButtonGroup({
       role='group'
       data-orientation={orientation}
       data-variant={variant || undefined}
-      data-width={width}
       data-detached={isDetached || undefined}
       className={classNames(
         'mosuk-button-group',
         '@container/button-group',
         'group/button-group',
-        styles.root,
+        styles.buttonGroup,
         className,
       )}
     >

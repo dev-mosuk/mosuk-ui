@@ -6,13 +6,23 @@ import { DrawerOpen } from '@/components/drawer/.partials/components/open/compon
 import { DrawerOpenProps } from '@/components/drawer/.partials/components/open/component.interface';
 import { DrawerViewportBackdrop } from '@/components/drawer/.partials/components/viewport-backdrop/component';
 import { DrawerViewportBackdropProps } from '@/components/drawer/.partials/components/viewport-backdrop/component.interface';
+import { DrawerViewportPopupBody } from '@/components/drawer/.partials/components/viewport-popup-body/component';
+import { DrawerViewportPopupBodyProps } from '@/components/drawer/.partials/components/viewport-popup-body/component.interface';
+import { DrawerViewportPopupFooter } from '@/components/drawer/.partials/components/viewport-popup-footer/component';
+import { DrawerViewportPopupFooterProps } from '@/components/drawer/.partials/components/viewport-popup-footer/component.interface';
 import { DrawerViewportPopupHandle } from '@/components/drawer/.partials/components/viewport-popup-handle/component';
 import { DrawerViewportPopupHandleProps } from '@/components/drawer/.partials/components/viewport-popup-handle/component.interface';
+import { DrawerViewportPopupHeader } from '@/components/drawer/.partials/components/viewport-popup-header/component';
+import { DrawerViewportPopupHeaderProps } from '@/components/drawer/.partials/components/viewport-popup-header/component.interface';
 import { DrawerViewportPopup } from '@/components/drawer/.partials/components/viewport-popup/component';
 import { DrawerViewportPopupProps } from '@/components/drawer/.partials/components/viewport-popup/component.interface';
 import { DrawerViewport } from '@/components/drawer/.partials/components/viewport/component';
 import { DrawerViewportProps } from '@/components/drawer/.partials/components/viewport/component.interface';
-import { DrawerDirection } from '@/components/drawer/.partials/enums/component.enums';
+import {
+  DrawerDirection,
+  DrawerVariant,
+} from '@/components/drawer/.partials/enums/component.enums';
+import type { ElementType } from 'react';
 
 export const Drawer = Object.assign(Component, {
   Open: DrawerOpen,
@@ -21,10 +31,14 @@ export const Drawer = Object.assign(Component, {
     Backdrop: DrawerViewportBackdrop,
     Popup: Object.assign(DrawerViewportPopup, {
       Handle: DrawerViewportPopupHandle,
+      Header: DrawerViewportPopupHeader,
+      Body: DrawerViewportPopupBody,
+      Footer: DrawerViewportPopupFooter,
     }),
   }),
   ENUMS: {
     Direction: DrawerDirection,
+    Variant: DrawerVariant,
   },
 });
 
@@ -50,7 +64,23 @@ export namespace Drawer {
       export type Props = DrawerViewportPopupProps;
 
       export namespace Handle {
-        export type Props = DrawerViewportPopupHandleProps;
+        export type Props<C extends ElementType = 'div'> =
+          DrawerViewportPopupHandleProps<C>;
+      }
+
+      export namespace Header {
+        export type Props<C extends ElementType = 'div'> =
+          DrawerViewportPopupHeaderProps<C>;
+      }
+
+      export namespace Body {
+        export type Props<C extends ElementType = 'div'> =
+          DrawerViewportPopupBodyProps<C>;
+      }
+
+      export namespace Footer {
+        export type Props<C extends ElementType = 'div'> =
+          DrawerViewportPopupFooterProps<C>;
       }
     }
   }

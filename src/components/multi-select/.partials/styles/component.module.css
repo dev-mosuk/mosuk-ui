@@ -1,0 +1,60 @@
+/* MultiSelect */
+@layer mosuk-ui {
+  .open {
+    display: block;
+
+    width: 100%;
+
+    cursor: pointer;
+    outline: none;
+
+    &:focus,
+    &:focus-visible {
+      outline: none;
+    }
+
+    .group {
+      width: 100%;
+
+      outline: none;
+
+      &:focus,
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    .input {
+      width: 100%;
+    }
+  }
+
+  .chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(var(--spacing) * 1);
+
+    width: 100%;
+    margin-block-start: calc(var(--spacing) * 2);
+
+    &[data-disabled] {
+      opacity: 0.5;
+
+      pointer-events: none;
+    }
+
+    .chip {
+      flex-shrink: 0;
+
+      max-width: 100%;
+    }
+  }
+
+  .popover {
+    .content {
+      width: var(--anchor-width);
+      min-width: var(--anchor-width);
+    }
+  }
+}

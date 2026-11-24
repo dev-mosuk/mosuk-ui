@@ -4,26 +4,33 @@ import { Tooltip as Component } from '@/components/tooltip/.partials/components/
 import { TooltipProps } from '@/components/tooltip/.partials/components/component.interface';
 import { TooltipContent } from '@/components/tooltip/.partials/components/content/component';
 import { TooltipContentProps } from '@/components/tooltip/.partials/components/content/component.interface';
-import { FC } from 'react';
+import { TooltipOpen } from '@/components/tooltip/.partials/components/open/component';
+import { TooltipOpenProps } from '@/components/tooltip/.partials/components/open/component.interface';
+import { TooltipVariant } from '@/components/tooltip/.partials/enums/component.enums';
+import type { ElementType } from 'react';
 
-export type TooltipComponent = FC<TooltipProps> & {
-  Content: typeof TooltipContent;
-  Arrow: typeof TooltipArrow;
-};
-
-export const Tooltip: TooltipComponent = Object.assign(Component, {
-  Content: TooltipContent,
-  Arrow: TooltipArrow,
+export const Tooltip = Object.assign(Component, {
+  Open: TooltipOpen,
+  Content: Object.assign(TooltipContent, {
+    Arrow: TooltipArrow,
+  }),
+  ENUMS: {
+    Variant: TooltipVariant,
+  },
 });
 
 export namespace Tooltip {
   export type Props = TooltipProps;
 
-  export namespace Content {
-    export type Props = TooltipContentProps;
+  export namespace Open {
+    export type Props<C extends ElementType = 'button'> = TooltipOpenProps<C>;
   }
 
-  export namespace Arrow {
-    export type Props = TooltipArrowProps;
+  export namespace Content {
+    export type Props<C extends ElementType = 'div'> = TooltipContentProps<C>;
+
+    export namespace Arrow {
+      export type Props<C extends ElementType = 'div'> = TooltipArrowProps<C>;
+    }
   }
 }

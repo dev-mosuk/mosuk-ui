@@ -1,7 +1,19 @@
 export enum AvatarVariant {
-  Secondary = 'secondary',
   Primary = 'primary',
-  Soft = 'soft',
-  Success = 'success',
-  Warning = 'warning',
+  Secondary = 'secondary',
+  Tertiary = 'tertiary',
+  Outline = 'outline',
+  Ghost = 'ghost',
+}
+
+export enum AvatarAnimation {
+  None = 'none',
+  Shimmer = 'shimmer',
+}
+
+export enum AvatarPress {
+  None = 'none',
+  Scale = 'scale',
+  Highlight = 'highlight',
+  Ripple = 'ripple',
 }

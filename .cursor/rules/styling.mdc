@@ -19,12 +19,60 @@ alwaysApply: false
 
 Все стили компонентов — внутри `@layer mosuk-ui`.
 
+## Логические группы `@layer` в module
+
+Внутри `{feature}/.partials/styles/component.module.css` каждый блок `@layer mosuk-ui` — **одна логическая группа**, не один класс. Дробим по **типу**, не по part.
+
+| Группа | Комментарий | Содержимое |
+| ------ | ----------- | ---------- |
+| Tokens | `/* Tokens */` | `:root` / `[data-theme]` custom properties feature |
+| Component | `/* {Feature} */` (например `/* Popover */`) | все host и parts feature (`.trigger`, `.content`, `.arrow`, …) |
+| Variant | `/* Variant */` | `&[data-variant=…]` (light + dark) |
+| Animation | `/* Animation */` | отдельная motion-группа, когда есть |
+| Push | `/* Push */` | drawer-like push, когда есть |
+
+```css
+/* Tokens */
+@layer mosuk-ui { /* --feature-* */ }
+
+/* Popover */
+@layer mosuk-ui {
+  .trigger { /* … */ }
+  .popover { /* … */ }
+  .content { /* … */ }
+}
+
+/* Variant */
+@layer mosuk-ui { /* &[data-variant] */ }
+```
+
+Запрещено: отдельный `@layer mosuk-ui` на каждый `.trigger` / `.content` / `.arrow` — это одна группа Component.
+
+Эталоны групп: `src/components/button/.partials/styles/component.module.css`, `src/components/drawer/.partials/styles/component.module.css`, `src/components/popover/.partials/styles/component.module.css`.
+
+## Variant hierarchy (light / dark)
+
+Иерархия **заметности** одинакова в light и dark: `primary` заметнее `secondary`.  
+Не зеркалить номер токена («светлее в light → темнее в dark»).
+
+| | Light (на белом) | Dark (на zinc-950) |
+| --- | --- | --- |
+| primary (заметнее) | плотнее / сильнее контраст, напр. `zinc-100` | светлее поверхность, напр. `zinc-800` |
+| secondary (слабее) | слабее, напр. `zinc-50` | темнее / ближе к фону, напр. `zinc-900` |
+
+**Антипаттерн:** light `100` + `50` → dark `900` + `800` (primary становится слабее secondary).  
+**Корректно:** light `100` + `50` → dark `800` + `900`.
+
+То же для border / fade (`separator`, `input-group`), не только background.
+
+Эталоны: `src/components/input/.partials/styles/component.module.css`, `src/components/segment/.partials/styles/component.module.css`.
+
 ## z-index
 
 | Диапазон | Назначение |
 | -------- | ---------- |
 | 0–99 | контент, карточки, формы |
-| 100–199 | dropdown, popover, tooltip |
+| 100–199 | popover, tooltip |
 | 200+ | dialog, drawer, modal |
 
 ## CSS module — шаблон
@@ -99,11 +147,11 @@ className={classNames(
 
 Порядок: **mosuk-{feature}** → **@container/{feature}** → **group/{feature}** → **styles.\*** → **rest.className** последним.
 
-Маркеры `group/{feature}` и `@container/{feature}` — на **визуальном DOM-корне** feature (не на каждый sub-part, не на headless Root). Для Base UI portal-оверлеев (drawer/dialog/dropdown) host = **Portal**.
+Маркеры `group/{feature}` и `@container/{feature}` — на **визуальном DOM-корне** feature (не на каждый sub-part, не на headless Root). Для Base UI portal-оверлеев (drawer/dialog/popover) host = **Portal**.
 
 ## Skeleton и стили
 
-Feature skeleton в `src/components/` нет. Стили shimmer — `src/components/skeleton/`. Стили карты — `src/components/yandex-maps/.partials/styles/skeleton.module.css`.
+Feature skeleton в `src/components/` нет. Стили shimmer — `src/components/skeleton/`.
 
 ## Глобальные стили
 
@@ -113,10 +161,21 @@ Feature skeleton в `src/components/` нет. Стили shimmer — `src/compon
 
 ## Typography
 
-- `font-size` — только `var(--text-*)` (`--text-4xs` … `--text-4xl` из `src/index.css`)
-- `line-height` — `var(--leading-*)` (`--leading-normal`, `--leading-relaxed`, …) или безразмерный коэффициент (`1`, `1.45`)
-- **Запрещено:** `font-size` / `line-height` через `calc(var(--spacing) * N)`  
-  Исключение: относительный scale размера контрола (`calc(var(--spacing) * 0.375 * var(--button-size))` и аналоги в `[size]/`)
+- `font-size` — только `var(--text-*)` (`--text-4xs` … `--text-4xl` из `src/styles/theme/tailwindcss/style.css`)
+- `line-height` — только `var(--leading-*)` (named Tailwind scale из того же theme)
+- **Запрещено:** сырой unitless (`1`, `1.45`, …); `font-size` / `line-height` через `calc(var(--spacing) * N)`  
+  Исключение: относительный scale размера контрола (`calc(var(--spacing) * 0.375 * var(--button-size))` и аналоги в `[size]/`); `line-height: 1em` только для glyph/flip-анимации (эталон — `counter`)
+
+| Token | Значение | Роль |
+| --- | --- | --- |
+| `--leading-none` | `1` | Display (`h1`) / single-line UI |
+| `--leading-tight` | `1.25` | Крупные заголовки (`h2`–`h3`), compact UI |
+| `--leading-snug` | `1.375` | Средние заголовки (`h4`–`h5`) |
+| `--leading-normal` | `1.5` | Мелкий heading (`h6`) / default UI |
+| `--leading-relaxed` | `1.625` | Body / help / captions (`p1`–`p6`) |
+| `--leading-loose` | `2` | Резерв (разреженный текст) |
+
+Правило: чем крупнее кегль — тем плотнее leading. Эталон scale — `src/components/typography/`.
 
 ## Radius
 
@@ -127,6 +186,7 @@ Feature skeleton в `src/components/` нет. Стили shimmer — `src/compon
 ## Запрещено
 
 - Стили вне `@layer mosuk-ui` для component modules
+- Отдельный `@layer mosuk-ui` на каждый part одного Component (`.trigger` / `.content` / …) — см. «Логические группы»
 - Hardcoded z-index вне согласованных диапазонов README
 - `!important` без крайней необходимости
 - Плоские state-классы модуля (`*With*`, `*Expanded`) вместо nested `&[data-*]`

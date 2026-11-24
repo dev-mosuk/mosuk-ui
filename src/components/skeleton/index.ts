@@ -1,8 +1,18 @@
-import { Skeleton as BaseSkeleton } from '@/components/skeleton/component';
-import type { SkeletonProps } from '@/components/skeleton/component.interface';
+import { Skeleton as Component } from '@/components/skeleton/.partials/components/component';
+import type { SkeletonProps as ComponentProps } from '@/components/skeleton/.partials/components/component.interface';
+import {
+  SkeletonAnimation,
+  SkeletonVariant,
+} from '@/components/skeleton/.partials/enums/component.enums';
+import type { ElementType } from 'react';
 
-export const Skeleton = BaseSkeleton;
+export const Skeleton = Object.assign(Component, {
+  ENUMS: {
+    Animation: SkeletonAnimation,
+    Variant: SkeletonVariant,
+  },
+});
 
 export namespace Skeleton {
-  export type Props = SkeletonProps;
+  export type Props<C extends ElementType = 'div'> = ComponentProps<C>;
 }

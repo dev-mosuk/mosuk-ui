@@ -1,3 +1,15 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --scroll-shadow-color: var(--color-white);
+  }
+
+  :global([data-theme='dark']) {
+    --scroll-shadow-color: var(--color-zinc-900);
+  }
+}
+
+/* ScrollShadow */
 @layer mosuk-ui {
   @property --scroll-shadow-start-fade {
     syntax: '<length>';
@@ -14,19 +26,36 @@
   .scrollShadow {
     --scroll-shadow-size: 40px;
     --scroll-shadow-offset: 0px;
-    --scroll-shadow-scrollbar-size: 10px;
+    --scroll-shadow-scrollbar-size: calc(var(--spacing) * var(--scroll-shadow-scrollbar, 0));
 
     position: relative;
+
+    background-color: var(--scroll-shadow-color);
+
+    &[data-scrollbar='0'] {
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 0;
+      }
+    }
+
+    &:not([data-scrollbar='0']) {
+      &::-webkit-scrollbar {
+        width: var(--scroll-shadow-scrollbar-size);
+        height: var(--scroll-shadow-scrollbar-size);
+      }
+    }
 
     &[data-orientation='vertical'] {
       overflow-y: auto;
 
-      &:where(
-        [data-top-scroll='true'],
+      &:where([data-top-scroll='true'],
         [data-bottom-scroll='true'],
         [data-top-bottom-scroll='true'],
-        [data-scroll-shadow-mode='auto']
-      ) {
+        [data-scroll-shadow-mode='auto']) {
         mask-image:
           linear-gradient(var(--scroll-linear-gradient)), linear-gradient(#000, #000);
         mask-position:
@@ -49,11 +78,13 @@
       }
 
       &[data-top-scroll='true'] {
-        --scroll-linear-gradient: 0deg, #000 calc(100% - var(--scroll-shadow-size)), transparent;
+        --scroll-linear-gradient: 0deg, #000 calc(100% - var(--scroll-shadow-size)),
+          transparent;
       }
 
       &[data-bottom-scroll='true'] {
-        --scroll-linear-gradient: 180deg, #000 calc(100% - var(--scroll-shadow-size)), transparent;
+        --scroll-linear-gradient: 180deg, #000 calc(100% - var(--scroll-shadow-size)),
+          transparent;
       }
 
       &[data-top-bottom-scroll='true'] {
@@ -70,12 +101,10 @@
     &[data-orientation='horizontal'] {
       overflow-x: auto;
 
-      &:where(
-        [data-left-scroll='true'],
+      &:where([data-left-scroll='true'],
         [data-right-scroll='true'],
         [data-left-right-scroll='true'],
-        [data-scroll-shadow-mode='auto']
-      ) {
+        [data-scroll-shadow-mode='auto']) {
         mask-image:
           linear-gradient(var(--scroll-linear-gradient)), linear-gradient(#000, #000);
         mask-position:
@@ -98,18 +127,22 @@
       }
 
       &[data-left-scroll='true'] {
-        --scroll-linear-gradient: 270deg, #000 calc(100% - var(--scroll-shadow-size)), transparent;
+        --scroll-linear-gradient: 270deg, #000 calc(100% - var(--scroll-shadow-size)),
+          transparent;
 
         &:dir(rtl) {
-          --scroll-linear-gradient: 90deg, #000 calc(100% - var(--scroll-shadow-size)), transparent;
+          --scroll-linear-gradient: 90deg, #000 calc(100% - var(--scroll-shadow-size)),
+            transparent;
         }
       }
 
       &[data-right-scroll='true'] {
-        --scroll-linear-gradient: 90deg, #000 calc(100% - var(--scroll-shadow-size)), transparent;
+        --scroll-linear-gradient: 90deg, #000 calc(100% - var(--scroll-shadow-size)),
+          transparent;
 
         &:dir(rtl) {
-          --scroll-linear-gradient: 270deg, #000 calc(100% - var(--scroll-shadow-size)), transparent;
+          --scroll-linear-gradient: 270deg, #000 calc(100% - var(--scroll-shadow-size)),
+            transparent;
         }
       }
 
@@ -125,16 +158,6 @@
       }
     }
 
-    &[data-scrollbar='hidden'] {
-      scrollbar-width: none;
-
-      --scroll-shadow-scrollbar-size: 0px;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-    }
-
     &[data-scroll-shadow-mode='auto'][data-overflow='false'] {
       mask-image: none;
       -webkit-mask-image: none;
@@ -142,7 +165,43 @@
       animation: none;
     }
   }
+}
 
+/* Variant */
+@layer mosuk-ui {
+  .scrollShadow {
+    &[data-variant='primary'] {
+      --scroll-shadow-color: var(--color-white);
+    }
+
+    &[data-variant='secondary'] {
+      --scroll-shadow-color: var(--color-zinc-50);
+    }
+
+    &[data-variant='tertiary'] {
+      --scroll-shadow-color: var(--color-zinc-100);
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .scrollShadow {
+      &[data-variant='primary'] {
+        --scroll-shadow-color: var(--color-zinc-950);
+      }
+
+      &[data-variant='secondary'] {
+        --scroll-shadow-color: var(--color-zinc-900);
+      }
+
+      &[data-variant='tertiary'] {
+        --scroll-shadow-color: var(--color-zinc-800);
+      }
+    }
+  }
+}
+
+/* Animation */
+@layer mosuk-ui {
   @keyframes scroll-shadow-start-fade {
     from {
       --scroll-shadow-start-fade: 0px;
@@ -170,13 +229,10 @@
         scroll-shadow-end-fade linear both;
       animation-range:
         var(--scroll-shadow-offset) calc(var(--scroll-shadow-offset) + var(--scroll-shadow-size)),
-        calc(100% - var(--scroll-shadow-size) - var(--scroll-shadow-offset))
-          calc(100% - var(--scroll-shadow-offset));
+        calc(100% - var(--scroll-shadow-size) - var(--scroll-shadow-offset)) calc(100% - var(--scroll-shadow-offset));
     }
 
-    .scrollShadow[data-orientation='vertical'][data-scroll-shadow-mode='auto']:not(
-        [data-overflow='false']
-      ) {
+    .scrollShadow[data-orientation='vertical'][data-scroll-shadow-mode='auto']:not([data-overflow='false']) {
       --scroll-linear-gradient:
         180deg,
         transparent 0,
@@ -187,9 +243,7 @@
       animation-timeline: scroll(self block), scroll(self block);
     }
 
-    .scrollShadow[data-orientation='horizontal'][data-scroll-shadow-mode='auto']:not(
-        [data-overflow='false']
-      ) {
+    .scrollShadow[data-orientation='horizontal'][data-scroll-shadow-mode='auto']:not([data-overflow='false']) {
       --scroll-linear-gradient:
         90deg,
         transparent 0,

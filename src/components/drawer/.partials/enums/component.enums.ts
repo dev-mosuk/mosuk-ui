@@ -5,3 +5,9 @@ export enum DrawerDirection {
   Bottom = 'bottom',
   Center = 'center',
 }
+
+export enum DrawerVariant {
+  Primary = 'primary',
+  Secondary = 'secondary',
+  Tertiary = 'tertiary',
+}

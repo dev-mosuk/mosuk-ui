@@ -1,0 +1,8 @@
+@import 'swiper/css' layer(base);
+@import 'swiper/css/free-mode' layer(base);
+@import 'swiper/css/grid' layer(base);
+@import 'swiper/css/autoplay' layer(base);
+@import 'swiper/css/keyboard' layer(base);
+@import 'swiper/css/mousewheel' layer(base);
+@import 'swiper/css/navigation' layer(base);
+@import 'swiper/css/pagination' layer(base);

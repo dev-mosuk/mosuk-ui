@@ -30,6 +30,7 @@ import { CalendarYearPickerTriggerIndicator } from '@/components/calendar/.parti
 import type { CalendarYearPickerTriggerIndicatorProps } from '@/components/calendar/.partials/components/year-picker-trigger-indicator/component.interface';
 import { CalendarYearPickerTrigger } from '@/components/calendar/.partials/components/year-picker-trigger/component';
 import type { CalendarYearPickerTriggerProps } from '@/components/calendar/.partials/components/year-picker-trigger/component.interface';
+import { CalendarVariant } from '@/components/calendar/.partials/enums/component.enums';
 import type { DateValue } from '@internationalized/date';
 import type { CalendarSelectionMode } from 'react-aria-components/Calendar';
 
@@ -49,6 +50,9 @@ export const Calendar = Object.assign(Component, {
   YearPickerGrid: CalendarYearPickerGrid,
   YearPickerGridBody: CalendarYearPickerGridBody,
   YearPickerCell: CalendarYearPickerCell,
+  ENUMS: {
+    Variant: CalendarVariant,
+  },
 });
 
 export namespace Calendar {

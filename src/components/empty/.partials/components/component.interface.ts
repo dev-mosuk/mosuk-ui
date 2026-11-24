@@ -1,6 +1,4 @@
-import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import type { CardProps } from '@/components/card/.partials/components/component.interface';
+import type { ElementType } from 'react';
 
-export type EmptyProps<C extends ElementType = 'section'> = {
-  as?: C;
-  ref?: Ref<any>;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;
+export type EmptyProps<C extends ElementType = 'section'> = CardProps<C>;

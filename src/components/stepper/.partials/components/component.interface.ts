@@ -6,9 +6,9 @@ export interface StepperProps extends Omit<
   HTMLAttributes<HTMLDivElement>,
   'children'
 > {
-  variant?: StepperVariant | `${StepperVariant}`;
   size?: number;
   stroke?: number;
+  variant?: StepperVariant | `${StepperVariant}`;
   orientation?: StepperOrientation;
   step?: number;
   defaultStep?: number;

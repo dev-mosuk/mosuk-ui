@@ -19,6 +19,7 @@ Rule: `.cursor/rules/hooks.mdc`
 - [ ] Без JSX (кроме rare render hooks — избегать)
 - [ ] Без axios/SWR — это concern приложения-потребителя
 - [ ] Side effects — в provider; hook читает context/state
+- [ ] Boolean fields в options/return — `is*` / `has*` / `can*` (components rule § Props naming)
 ```
 
 ## Context hook template

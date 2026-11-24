@@ -5,6 +5,7 @@ import React from 'react';
 import { CalendarGrid as CalendarGridPrimitive } from 'react-aria-components/Calendar';
 
 import type { CalendarGridProps } from '@/components/calendar/.partials/components/grid/component.interface';
+import { CALENDAR_DEFAULT_WEEKDAY_STYLE } from '@/components/calendar/.partials/constants/component.constants';
 import { useCalendarDayView } from '@/components/calendar/.partials/hooks/hook';
 import { CalendarDayViewContext } from '@/components/calendar/.partials/providers/context/context';
 import styles from '@/components/calendar/.partials/styles/component.module.css';
@@ -12,7 +13,7 @@ import styles from '@/components/calendar/.partials/styles/component.module.css'
 export function CalendarGrid({
   children,
   className,
-  weekdayStyle = 'short',
+  weekdayStyle = CALENDAR_DEFAULT_WEEKDAY_STYLE,
   ...rest
 }: CalendarGridProps) {
   const dayView = useCalendarDayView();

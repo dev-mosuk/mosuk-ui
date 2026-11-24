@@ -1,41 +1,74 @@
 import {
-  ToastActionVariant,
   ToastType,
+  ToastVariant,
 } from '@/services/toasts/.partials/service.enums';
-import { ComponentType, ReactNode, SVGProps } from 'react';
+import { ReactNode } from 'react';
 
-export interface ToastActionProps {
+export type ToastActionVariant =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'outline'
+  | 'ghost';
+
+export interface ToastAction {
   children?: ReactNode;
   className?: string;
   onPress?: () => void;
-  variant?: ToastActionVariant | `${ToastActionVariant}`;
+  variant?: ToastActionVariant;
 }
 
-export type ToastIndicator = ComponentType<SVGProps<SVGSVGElement>>;
+export type ToastIcon = ReactNode;
 
 export interface ToastOptions {
-  description?: ReactNode;
-  indicator?: ToastIndicator;
-  actionProps?: ToastActionProps;
+  subject?: ReactNode;
+  comment?: ReactNode;
+  icon?: ToastIcon;
+  action?: ToastAction;
+  variant?: ToastVariant | `${ToastVariant}`;
 }
 
 export interface ToastData {
-  indicator?: ToastIndicator;
-  actionProps?: ToastActionProps;
+  icon?: ToastIcon;
+  action?: ToastAction;
+  variant?: ToastVariant | `${ToastVariant}`;
   customContent?: ReactNode;
 }
 
 export interface ToastEntry {
   type: ToastType;
-  content: ReactNode;
+  subject?: ReactNode;
+  comment?: ReactNode;
 }
 
+type ToastOptionsWithoutSubject = Omit<ToastOptions, 'subject'>;
+
 export interface ToastsApi {
-  default(content: ReactNode, options?: ToastOptions): string | undefined;
-  accent(content: ReactNode, options?: ToastOptions): string | undefined;
-  success(content: ReactNode, options?: ToastOptions): string | undefined;
-  warning(content: ReactNode, options?: ToastOptions): string | undefined;
-  danger(content: ReactNode, options?: ToastOptions): string | undefined;
+  default(options: ToastOptions): string | undefined;
+  default(
+    subject: ReactNode,
+    options?: ToastOptionsWithoutSubject,
+  ): string | undefined;
+  accent(options: ToastOptions): string | undefined;
+  accent(
+    subject: ReactNode,
+    options?: ToastOptionsWithoutSubject,
+  ): string | undefined;
+  success(options: ToastOptions): string | undefined;
+  success(
+    subject: ReactNode,
+    options?: ToastOptionsWithoutSubject,
+  ): string | undefined;
+  warning(options: ToastOptions): string | undefined;
+  warning(
+    subject: ReactNode,
+    options?: ToastOptionsWithoutSubject,
+  ): string | undefined;
+  danger(options: ToastOptions): string | undefined;
+  danger(
+    subject: ReactNode,
+    options?: ToastOptionsWithoutSubject,
+  ): string | undefined;
   custom(content: ReactNode): string | undefined;
   close(id?: string): void;
 }

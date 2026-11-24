@@ -1,0 +1,46 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --radial-chart-track: var(--color-zinc-100);
+  }
+
+  :global([data-theme='dark']) {
+    --radial-chart-track: var(--color-zinc-800);
+  }
+}
+
+/* RadialChart */
+@layer mosuk-ui {
+  .radialChart {
+    width: 100%;
+    height: 100%;
+
+    outline: none;
+
+    :global(svg),
+    :global(.recharts-surface),
+    :global(.recharts-sector),
+    :global(path),
+    :global(.recharts-layer) {
+      outline: none;
+    }
+
+    :global(.recharts-responsive-container) {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    :global(.recharts-radial-bar-background-sector) {
+      fill: var(--radial-chart-track);
+    }
+
+    :global(.recharts-tooltip-cursor) {
+      display: none;
+    }
+
+    :global(.recharts-tooltip-wrapper) {
+      z-index: 150;
+      outline: none;
+    }
+  }
+}

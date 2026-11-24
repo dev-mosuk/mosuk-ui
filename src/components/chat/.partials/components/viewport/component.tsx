@@ -1,6 +1,10 @@
 'use client';
 
 import { ChatViewportProps } from '@/components/chat/.partials/components/viewport/component.interface';
+import {
+  CHAT_VIEWPORT_DEFAULT_HAS_MORE,
+  CHAT_VIEWPORT_DEFAULT_IS_LOADING,
+} from '@/components/chat/.partials/constants/component.constants';
 import styles from '@/components/chat/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { useCallback, useEffect, useLayoutEffect, useRef } from 'react';
@@ -10,8 +14,8 @@ const TOP_THRESHOLD = 64;
 
 export function ChatViewport({
   onLoadMore,
-  hasMore = false,
-  isLoading = false,
+  hasMore = CHAT_VIEWPORT_DEFAULT_HAS_MORE,
+  isLoading = CHAT_VIEWPORT_DEFAULT_IS_LOADING,
   children,
   onScroll,
   className,

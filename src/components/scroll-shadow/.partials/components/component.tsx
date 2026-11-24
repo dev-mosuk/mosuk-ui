@@ -1,6 +1,15 @@
 'use client';
 
 import { ScrollShadowProps } from '@/components/scroll-shadow/.partials/components/component.interface';
+import {
+  SCROLL_SHADOW_DEFAULT_IS_ENABLED,
+  SCROLL_SHADOW_DEFAULT_OFFSET,
+  SCROLL_SHADOW_DEFAULT_ORIENTATION,
+  SCROLL_SHADOW_DEFAULT_SCROLLBAR,
+  SCROLL_SHADOW_DEFAULT_SIZE,
+  SCROLL_SHADOW_DEFAULT_VARIANT,
+  SCROLL_SHADOW_DEFAULT_VISIBILITY,
+} from '@/components/scroll-shadow/.partials/constants/component.constants';
 import { useScrollShadow } from '@/components/scroll-shadow/.partials/hooks/hook';
 import styles from '@/components/scroll-shadow/.partials/styles/component.module.css';
 import classNames from 'classnames';
@@ -20,13 +29,13 @@ function assignRef<T>(ref: Ref<T> | undefined, value: T | null) {
 
 export function ScrollShadow({
   ref,
-  orientation = 'vertical',
-  size = 40,
-  offset = 0,
-  isScrollBarHidden = false,
-  isEnabled = true,
-  visibility = 'auto',
-  variant = 'fade',
+  orientation = SCROLL_SHADOW_DEFAULT_ORIENTATION,
+  size = SCROLL_SHADOW_DEFAULT_SIZE,
+  offset = SCROLL_SHADOW_DEFAULT_OFFSET,
+  scrollbar = SCROLL_SHADOW_DEFAULT_SCROLLBAR,
+  isEnabled = SCROLL_SHADOW_DEFAULT_IS_ENABLED,
+  visibility = SCROLL_SHADOW_DEFAULT_VISIBILITY,
+  variant = SCROLL_SHADOW_DEFAULT_VARIANT,
   onVisibilityChange,
   style,
   ...rest
@@ -58,12 +67,13 @@ export function ScrollShadow({
       data-scroll-shadow-mode={
         visibility === 'auto' && isEnabled ? 'auto' : 'manual'
       }
-      data-scrollbar={isScrollBarHidden ? 'hidden' : undefined}
+      data-scrollbar={scrollbar}
       data-variant={variant}
       style={
         {
           '--scroll-shadow-size': `${size}px`,
           '--scroll-shadow-offset': `${offset}px`,
+          '--scroll-shadow-scrollbar': scrollbar,
           ...style,
         } as CSSProperties
       }

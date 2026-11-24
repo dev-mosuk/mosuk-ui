@@ -9,6 +9,7 @@ import React from 'react';
 
 export function Drawer({
   isOpen,
+  defaultOpen,
   direction = DRAWER_DEFAULT_DIRECTION,
   keepMounted,
   container,
@@ -24,6 +25,7 @@ export function Drawer({
       <BaseUiDrawer.Root
         {...rest}
         open={isOpen}
+        defaultOpen={defaultOpen}
         swipeDirection={DRAWER_DIRECTION_TO_SWIPE[direction]}
       >
         {children}

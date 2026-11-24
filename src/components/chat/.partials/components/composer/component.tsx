@@ -1,6 +1,10 @@
 'use client';
 
 import { ChatComposerProps } from '@/components/chat/.partials/components/composer/component.interface';
+import {
+  CHAT_COMPOSER_DEFAULT_IS_DISABLED,
+  CHAT_COMPOSER_DEFAULT_VALUE,
+} from '@/components/chat/.partials/constants/component.constants';
 import { ChatProvider } from '@/components/chat/.partials/providers/provider';
 import styles from '@/components/chat/.partials/styles/component.module.css';
 import classNames from 'classnames';
@@ -8,10 +12,10 @@ import React, { useCallback, useState } from 'react';
 
 export function ChatComposer({
   value: controlledValue,
-  defaultValue = '',
+  defaultValue = CHAT_COMPOSER_DEFAULT_VALUE,
   onValueChange,
   onSubmit,
-  isDisabled = false,
+  isDisabled = CHAT_COMPOSER_DEFAULT_IS_DISABLED,
   children,
   ...rest
 }: ChatComposerProps) {

@@ -1,18 +1,24 @@
 'use client';
 
 import { ChatComposerTextareaProps } from '@/components/chat/.partials/components/composer-textarea/component.interface';
+import {
+  CHAT_COMPOSER_TEXTAREA_DEFAULT_MAX_ROWS,
+  CHAT_COMPOSER_TEXTAREA_DEFAULT_MIN_ROWS,
+} from '@/components/chat/.partials/constants/component.constants';
 import { useChat } from '@/components/chat/.partials/hooks/hook';
 import styles from '@/components/chat/.partials/styles/component.module.css';
+import { Textarea } from '@/components/textarea';
 import classNames from 'classnames';
-import React, { useId, type ElementType, type KeyboardEvent } from 'react';
-import TextareaAutosizePrimitive from 'react-textarea-autosize';
+import React, { type KeyboardEvent } from 'react';
 
 export function ChatComposerTextarea({
-  minRows = 1,
-  maxRows = 2,
+  minRows = CHAT_COMPOSER_TEXTAREA_DEFAULT_MIN_ROWS,
+  maxRows = CHAT_COMPOSER_TEXTAREA_DEFAULT_MAX_ROWS,
   isDisabled,
   isReadOnly,
   isRequired,
+  className,
+  onKeyDown,
   ...rest
 }: ChatComposerTextareaProps) {
   const {
@@ -22,11 +28,9 @@ export function ChatComposerTextarea({
     isDisabled: contextDisabled,
     canSubmit,
   } = useChat();
-  const id = rest?.id ?? useId();
-  const Component = TextareaAutosizePrimitive as ElementType;
 
   const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
-    rest?.onKeyDown?.(event);
+    onKeyDown?.(event);
 
     if (event.defaultPrevented) {
       return;
@@ -42,23 +46,24 @@ export function ChatComposerTextarea({
   };
 
   return (
-    <Component
+    <Textarea
       {...rest}
-      id={id}
-      value={value}
-      disabled={isDisabled ?? contextDisabled}
-      readOnly={isReadOnly}
-      required={isRequired}
+      isAutoSize
+      size={0}
       minRows={minRows}
       maxRows={maxRows}
-      onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      value={value}
+      isDisabled={isDisabled ?? contextDisabled}
+      isReadOnly={isReadOnly}
+      isRequired={isRequired}
+      onChange={(event) => {
         setValue(event.target.value);
       }}
       onKeyDown={handleKeyDown}
       className={classNames(
         'mosuk-chat-composer-textarea',
         styles.textarea,
-        rest?.className,
+        className,
       )}
     />
   );

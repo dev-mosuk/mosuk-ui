@@ -1,0 +1,24 @@
+@layer mosuk-ui {
+  .inputOtp {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: calc(var(--spacing) * 2);
+
+    .input {
+      width: calc(var(--spacing) * var(--input-size));
+
+      padding-inline: calc(var(--spacing) * 0.25 * var(--input-size));
+
+      text-align: center;
+
+      user-select: none;
+
+      &::selection {
+        color: inherit;
+        background-color: transparent;
+      }
+    }
+  }
+}

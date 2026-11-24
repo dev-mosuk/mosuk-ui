@@ -1,4 +1,3 @@
-import type { ListBoxItemVariant } from '@/components/list-box/.partials/enums/component.enums';
 import type { HTMLAttributes, ReactNode } from 'react';
 
 export interface ListBoxItemProps extends Omit<
@@ -8,7 +7,7 @@ export interface ListBoxItemProps extends Omit<
   id: string;
   textValue?: string;
   size?: number;
-  variant?: ListBoxItemVariant | `${ListBoxItemVariant}`;
   isDisabled?: boolean;
+  isActive?: boolean;
   children?: ReactNode;
 }

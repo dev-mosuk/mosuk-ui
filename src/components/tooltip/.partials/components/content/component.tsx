@@ -1,24 +1,32 @@
 'use client';
 
 import { TooltipContentProps } from '@/components/tooltip/.partials/components/content/component.interface';
+import {
+  TOOLTIP_CONTENT_DEFAULT_SIDE_OFFSET,
+  TOOLTIP_DEFAULT_VARIANT,
+} from '@/components/tooltip/.partials/constants/component.constants';
 import styles from '@/components/tooltip/.partials/styles/component.module.css';
-import { Tooltip } from '@base-ui/react/tooltip';
+import { Tooltip as BaseUITooltip } from '@base-ui/react/tooltip';
 import classNames from 'classnames';
-import React from 'react';
+import React, { type ElementType } from 'react';
 
-export function TooltipContent({
-  sideOffset = 8,
+export function TooltipContent<C extends ElementType = 'div'>({
+  as,
+  ref,
+  variant = TOOLTIP_DEFAULT_VARIANT,
+  sideOffset = TOOLTIP_CONTENT_DEFAULT_SIDE_OFFSET,
   container,
   keepMounted,
   className,
   style,
-  render,
   children,
   ...positioner
-}: TooltipContentProps) {
+}: TooltipContentProps<C>) {
+  const Component = (as ?? 'div') as ElementType;
+
   return (
-    <Tooltip.Portal container={container} keepMounted={keepMounted}>
-      <Tooltip.Positioner
+    <BaseUITooltip.Portal container={container} keepMounted={keepMounted}>
+      <BaseUITooltip.Positioner
         {...positioner}
         sideOffset={sideOffset}
         className={classNames(
@@ -28,18 +36,19 @@ export function TooltipContent({
           styles.positioner,
         )}
       >
-        <Tooltip.Popup
+        <BaseUITooltip.Popup
+          data-variant={variant}
           className={classNames(
             'mosuk-tooltip-content',
             styles.content,
             className,
           )}
           style={style}
-          render={render}
+          render={<Component ref={ref} />}
         >
           {children}
-        </Tooltip.Popup>
-      </Tooltip.Positioner>
-    </Tooltip.Portal>
+        </BaseUITooltip.Popup>
+      </BaseUITooltip.Positioner>
+    </BaseUITooltip.Portal>
   );
 }

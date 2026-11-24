@@ -3,3 +3,8 @@ export enum CheckboxVariant {
   Secondary = 'secondary',
   Outline = 'outline',
 }
+
+export enum CheckboxAnimation {
+  Opacity = 'opacity',
+  Scale = 'scale',
+}

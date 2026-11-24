@@ -1,7 +1,6 @@
-export enum ProgressBarColor {
-  Default = 'default',
+export enum ProgressBarVariant {
   Primary = 'primary',
-  Success = 'success',
-  Warning = 'warning',
-  Danger = 'danger',
+  Secondary = 'secondary',
+  Tertiary = 'tertiary',
+  Outline = 'outline',
 }

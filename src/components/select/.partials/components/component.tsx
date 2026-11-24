@@ -1,76 +1,181 @@
 'use client';
 
-import { SelectProps } from '@/components/select/.partials/components/component.interface';
-import { SelectProvider } from '@/components/select/.partials/providers/provider';
-import { createSelectClearDetails } from '@/components/select/.partials/utilities/util';
-import { Select as SelectPrimitive } from '@base-ui/react/select';
-import React, { useCallback, useRef, useState } from 'react';
+import type { SelectProps } from '@/components/select/.partials/components/component.interface';
+import {
+  SELECT_DEFAULT_IS_MULTIPLE,
+  SELECT_DEFAULT_MODE,
+  SELECT_DEFAULT_OPEN,
+  SELECT_DEFAULT_QUERY,
+  SELECT_DEFAULT_SELECTED,
+} from '@/components/select/.partials/constants/component.constants';
+import { SelectMode } from '@/components/select/.partials/enums/component.enums';
+import { SelectContext } from '@/components/select/.partials/providers/context/context';
+import { Popover } from '@/components/popover';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 
-export function Select<Value, Multiple extends boolean | undefined = false>({
+export function Select({
+  mode = SELECT_DEFAULT_MODE,
+  keepMounted,
+  container,
   placeholder,
-  value,
-  defaultValue,
-  onValueChange,
-  multiple,
-  isOpen,
+  selected: selectedProp,
+  defaultSelected = SELECT_DEFAULT_SELECTED,
+  query: queryProp,
+  defaultQuery = SELECT_DEFAULT_QUERY,
+  defaultOpen = SELECT_DEFAULT_OPEN,
+  isOpen: isOpenProp,
   isDisabled,
-  isReadOnly,
-  isRequired,
-  ...rest
-}: SelectProps<Value, Multiple>) {
-  const multipleEnabled = multiple === true;
-  const isControlled = value !== undefined;
-  const clearMounted = useRef(false);
-  const [uncontrolledValue, setUncontrolledValue] = useState<
-    SelectProps<Value, Multiple>['value']
-  >(defaultValue ?? (multipleEnabled ? ([] as never) : null));
-  const currentValue = isControlled ? value : uncontrolledValue;
-  const isEmpty = multipleEnabled
-    ? !Array.isArray(currentValue) || currentValue.length === 0
-    : currentValue == null;
+  isMultiple = SELECT_DEFAULT_IS_MULTIPLE,
+  onOpenChange,
+  onSelectChange,
+  onQueryChange,
+  children,
+}: SelectProps) {
+  const resolvedMode =
+    mode === SelectMode.Search ? SelectMode.Search : SelectMode.Select;
+  const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
+  const [uncontrolledSelected, setUncontrolledSelected] =
+    useState(defaultSelected);
+  const [uncontrolledQuery, setUncontrolledQuery] = useState(defaultQuery);
+  const [labels, setLabels] = useState<Record<string, string>>({});
+  const isOpenControlled = isOpenProp !== undefined;
+  const isSelectedControlled = selectedProp !== undefined;
+  const isQueryControlled = queryProp !== undefined;
+  const isOpen = isOpenControlled ? Boolean(isOpenProp) : uncontrolledOpen;
+  const selected = isSelectedControlled
+    ? (selectedProp ?? [])
+    : uncontrolledSelected;
+  const query = isQueryControlled ? (queryProp ?? '') : uncontrolledQuery;
+  const ignoreTriggerCloseRef = useRef(false);
 
-  const commitValue = useCallback(
-    (
-      next: SelectProps<Value, Multiple>['value'],
-      details: SelectPrimitive.Root.ChangeEventDetails,
-    ) => {
-      if (!isControlled) {
-        setUncontrolledValue(next);
+  const commitQuery = useCallback(
+    (next: string) => {
+      if (!isQueryControlled) {
+        setUncontrolledQuery(next);
       }
 
-      onValueChange?.(next as never, details);
+      onQueryChange?.(next);
     },
-    [isControlled, onValueChange],
+    [isQueryControlled, onQueryChange],
+  );
+
+  const handleOpenChange = useCallback(
+    (next: boolean) => {
+      if (!isOpenControlled) {
+        setUncontrolledOpen(next);
+      }
+
+      onOpenChange?.(next);
+
+      if (!next && resolvedMode === SelectMode.Search) {
+        commitQuery('');
+      }
+    },
+    [commitQuery, isOpenControlled, onOpenChange, resolvedMode],
+  );
+
+  const close = useCallback(() => {
+    handleOpenChange(false);
+  }, [handleOpenChange]);
+
+  const commitSelected = useCallback(
+    (next: string[]) => {
+      if (!isSelectedControlled) {
+        setUncontrolledSelected(next);
+      }
+
+      onSelectChange?.(next);
+
+      if (!isMultiple) {
+        handleOpenChange(false);
+      }
+    },
+    [handleOpenChange, isMultiple, isSelectedControlled, onSelectChange],
   );
 
   const clear = useCallback(() => {
-    commitValue(
-      multipleEnabled ? ([] as never) : null,
-      createSelectClearDetails(),
-    );
-  }, [commitValue, multipleEnabled]);
+    commitSelected([]);
+  }, [commitSelected]);
+
+  const noteFieldPress = useCallback(() => {
+    ignoreTriggerCloseRef.current = true;
+  }, []);
+
+  const rememberItem = useCallback(
+    (item: { id: string; textValue: string }) => {
+      setLabels((current) => {
+        if (current[item.id] === item.textValue) {
+          return current;
+        }
+
+        return {
+          ...current,
+          [item.id]: item.textValue,
+        };
+      });
+    },
+    [],
+  );
+
+  const contextValue = useMemo(
+    () => ({
+      isOpen,
+      onOpenChange: handleOpenChange,
+      close,
+      isDisabled,
+      noteFieldPress,
+      mode: resolvedMode,
+      isMultiple,
+      selected,
+      onSelectChange: commitSelected,
+      placeholder,
+      query,
+      onQueryChange: commitQuery,
+      labels,
+      rememberItem,
+      clear,
+    }),
+    [
+      isOpen,
+      handleOpenChange,
+      close,
+      isDisabled,
+      noteFieldPress,
+      resolvedMode,
+      isMultiple,
+      selected,
+      commitSelected,
+      placeholder,
+      query,
+      commitQuery,
+      labels,
+      rememberItem,
+      clear,
+    ],
+  );
 
   return (
-    <SelectProvider
-      placeholder={placeholder}
-      isEmpty={isEmpty}
-      clear={clear}
-      clearMounted={clearMounted}
-    >
-      <SelectPrimitive.Root
-        {...rest}
-        multiple={multiple}
-        open={isOpen}
-        disabled={isDisabled}
-        readOnly={isReadOnly}
-        required={isRequired}
-        value={currentValue}
-        onValueChange={(next, details) => {
-          commitValue(next, details);
+    <SelectContext.Provider value={contextValue}>
+      <Popover
+        isOpen={isOpen}
+        keepMounted={keepMounted}
+        container={container}
+        onOpenChange={(next) => {
+          if (isDisabled) {
+            return;
+          }
+
+          if (!next && ignoreTriggerCloseRef.current) {
+            ignoreTriggerCloseRef.current = false;
+
+            return;
+          }
+
+          handleOpenChange(next);
         }}
       >
-        {rest?.children}
-      </SelectPrimitive.Root>
-    </SelectProvider>
+        {children}
+      </Popover>
+    </SelectContext.Provider>
   );
 }

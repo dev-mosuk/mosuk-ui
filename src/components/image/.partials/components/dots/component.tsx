@@ -1,6 +1,7 @@
 'use client';
 
 import { ImageDotsProps } from '@/components/image/.partials/components/dots/component.interface';
+import { IMAGE_DOTS_DEFAULT_EXITING } from '@/components/image/.partials/constants/component.constants';
 import {
   isNearViewport,
   watchDots,
@@ -209,7 +210,11 @@ function createGrid(width: number, height: number) {
   };
 }
 
-export function ImageDots({ exiting = false, style, ...rest }: ImageDotsProps) {
+export function ImageDots({
+  exiting = IMAGE_DOTS_DEFAULT_EXITING,
+  style,
+  ...rest
+}: ImageDotsProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const exitingRef = useRef(exiting);
   const readyRef = useRef(false);
@@ -414,10 +419,10 @@ export function ImageDots({ exiting = false, style, ...rest }: ImageDotsProps) {
       {...rest}
       ref={canvasRef}
       aria-hidden
+      data-ready={ready || undefined}
       className={classNames(
         'mosuk-image-dots',
         styles.canvas,
-        ready && styles.ready,
         rest?.className,
       )}
       style={{

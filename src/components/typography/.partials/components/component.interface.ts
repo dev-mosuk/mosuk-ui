@@ -1,22 +1,27 @@
 import type {
-  TypographyAlign,
+  TypographyAnimation,
   TypographyColor,
-  TypographyLineHeight,
-  TypographySize,
+  TypographyPress,
   TypographyType,
-  TypographyWeight,
 } from '@/components/typography/.partials/enums/component.enums';
-import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import type {
+  ComponentPropsWithoutRef,
+  ElementType,
+  PointerEventHandler,
+  Ref,
+} from 'react';
 
 export type TypographyProps<C extends ElementType = 'p'> = {
   as?: C;
   ref?: Ref<any>;
   type?: TypographyType | `${TypographyType}`;
-  align?: TypographyAlign | `${TypographyAlign}`;
-  size?: TypographySize | `${TypographySize}`;
   color?: TypographyColor | `${TypographyColor}`;
-  weight?: TypographyWeight | `${TypographyWeight}`;
-  lineHeight?: TypographyLineHeight | `${TypographyLineHeight}`;
-  muted?: boolean;
-  truncate?: boolean;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref' | 'type' | 'color' | 'size'>;
+  animation?: TypographyAnimation | `${TypographyAnimation}`;
+  press?: TypographyPress | `${TypographyPress}` | false;
+  isMuted?: boolean;
+  isTruncate?: boolean;
+  onPointerDown?: PointerEventHandler<any>;
+} & Omit<
+  ComponentPropsWithoutRef<C>,
+  'as' | 'ref' | 'type' | 'color' | 'onPointerDown'
+>;

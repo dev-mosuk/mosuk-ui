@@ -1,15 +1,16 @@
-import type { ProgressCircleColor } from '@/components/progress-circle/.partials/enums/component.enums';
+import type { ProgressCircleVariant } from '@/components/progress-circle/.partials/enums/component.enums';
 import type { CSSProperties, HTMLAttributes } from 'react';
 
 type ProgressCircleOwnProps = {
   size?: number;
-  color?: ProgressCircleColor | `${ProgressCircleColor}`;
-  isLoading?: boolean;
+  stroke?: number;
+  variant?: ProgressCircleVariant | `${ProgressCircleVariant}`;
   value?: number;
   min?: number;
   max?: number;
+  isLoading?: boolean;
   style?: CSSProperties;
 };
 
 export type ProgressCircleProps = ProgressCircleOwnProps &
-  Omit<HTMLAttributes<HTMLDataElement>, 'color' | 'value' | 'style'>;
+  Omit<HTMLAttributes<HTMLDataElement>, 'value' | 'style'>;

@@ -1,177 +1,271 @@
+/* Tokens */
 @layer mosuk-ui {
+  :global(:root) {
+    --slider-size: 5;
+    --slider-track: var(--color-zinc-200);
+    --slider-outline: none;
+    --slider-shadow: none;
+    --slider-color: var(--color-black);
+  }
 
-      .root {
-          position: relative;
+  :global([data-theme='dark']) {
+    --slider-size: 5;
+    --slider-track: var(--color-zinc-700);
+    --slider-outline: none;
+    --slider-shadow: none;
+    --slider-color: var(--color-white);
+  }
+}
 
-          display: grid;
-          grid-template-areas:
-              'label value'
-              'track track';
-          grid-template-columns: 1fr auto;
-          align-items: center;
-          gap: var(--spacing);
+/* Slider */
+@layer mosuk-ui {
+  .slider {
+    position: relative;
 
-          width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing);
 
-          &[data-disabled] {
-              opacity: 50%;
+    width: 100%;
 
-              pointer-events: none;
-          }
+    &[data-disabled] {
+      opacity: 0.5;
 
-          &[data-orientation='vertical'] {
-              height: 100%;
+      pointer-events: none;
+    }
 
-              grid-template-areas:
-                  'value'
-                  'track'
-                  'label';
-              grid-template-columns: 1fr;
-              grid-template-rows: auto 1fr auto;
-              justify-items: center;
-          }
-      }
+    /* Thumb is abs-positioned vs control/root — avoid % sizes that resolve to root. */
+    &[data-orientation='vertical'] {
+      align-items: center;
 
-      .label {
-          grid-area: label;
-
-          width: fit-content;
-
-          color: var(--color-black);
-          font-size: var(--text-sm);
-          font-weight: 500;
-
-          :global(.mosuk-slider[data-orientation='vertical']) & {
-              text-align: center;
-          }
-      }
+      height: 100%;
 
       .value {
-          grid-area: value;
-
-          color: var(--color-black);
-          font-size: var(--text-sm);
-          font-weight: 500;
-          font-variant-numeric: tabular-nums;
-
-          :global(.mosuk-slider[data-orientation='vertical']) & {
-              text-align: center;
-          }
+        text-align: center;
       }
 
       .control {
-          grid-area: track;
+        justify-content: center;
 
-          display: flex;
-          align-items: center;
-
-          width: 100%;
-          height: calc(var(--spacing) * 5);
-
-          touch-action: none;
-
-          :global(.mosuk-slider[data-orientation='vertical']) & {
-              width: calc(var(--spacing) * 5);
-              height: 100%;
-
-              justify-content: center;
-          }
-      }
-
-      .track {
-          overflow: hidden;
-
-          position: relative;
-
-          width: 100%;
-          height: 100%;
-
-          background-color: var(--color-gray-200);
-
-          border-radius: var(--radius-xl);
-
-          :global(.mosuk-slider[data-orientation='vertical']) & {
-              width: 100%;
-              height: 100%;
-          }
+        width: calc(var(--spacing) * var(--slider-size));
+        height: 100%;
       }
 
       .indicator {
-          height: 100%;
+        width: 100%;
+      }
 
-          background-color: var(--color-primary-500);
+      .step {
+        top: auto;
+        left: 50%;
 
-          pointer-events: none;
-
-          :global(.mosuk-slider[data-orientation='vertical']) & {
-              width: 100%;
-          }
+        translate: -50% 50%;
       }
 
       .thumb {
-          z-index: 0;
+        width: calc(var(--spacing) * var(--slider-size));
+        height: calc(var(--spacing) * var(--slider-size) * 1.4);
 
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          width: calc(1.5rem + 0.25rem);
-          height: 100%;
-
-          background-color: var(--color-primary-500);
-
-          border: none;
-          border-radius: var(--radius-xl);
-          outline: none;
-
-          box-shadow: none;
-
-          cursor: grab;
-          touch-action: none;
-
-          &::after {
-              content: '';
-
-              width: 1.5rem;
-              height: 1rem;
-
-              background-color: var(--color-white);
-
-              border-radius: var(--radius-lg);
-
-              box-shadow: var(--shadow-sm);
-          }
-
-          &:active,
-          &[data-dragging] {
-              cursor: grabbing;
-
-              &::after {
-                  transform: scale(0.9);
-              }
-          }
-
-          &:focus,
-          &:focus-visible,
-          &:focus-within {
-              outline: none;
-          }
-
-          :global(.mosuk-slider[data-orientation='vertical']) & {
-              width: 100%;
-              height: calc(1.5rem + 0.25rem);
-
-              &::after {
-                  width: 1rem;
-                  height: 1.5rem;
-              }
-          }
-      }
-
-      .skeleton {
-          width: 100%;
-          height: calc(var(--spacing) * 5);
-
-          border-radius: var(--radius-xl);
+        &::after {
+          width: calc(var(--spacing) * var(--slider-size) * 0.8);
+          height: calc(var(--spacing) * var(--slider-size) * 1.2);
+        }
       }
     }
+  }
+
+  .value {
+    color: var(--slider-color);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .control {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: calc(var(--spacing) * var(--slider-size));
+
+    touch-action: none;
+  }
+
+  .track {
+    overflow: hidden;
+
+    position: relative;
+
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--slider-track);
+
+    /* No layout border — 1px border inset the indicator vs track fill (step at thumb). */
+    border: none;
+    border-radius: calc(infinity * 1px);
+    outline: var(--slider-outline);
+
+    box-shadow: var(--slider-shadow);
+  }
+
+  .indicator {
+    height: 100%;
+
+    background-color: var(--color-primary-500);
+
+    pointer-events: none;
+  }
+
+  .steps {
+    pointer-events: none;
+
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .step {
+    position: absolute;
+    top: 50%;
+
+    width: 3px;
+    height: 3px;
+
+    background-color: color-mix(
+      in oklab,
+      var(--color-zinc-500) 25%,
+      transparent
+    );
+
+    border-radius: calc(infinity * 1px);
+
+    translate: -50% -50%;
+
+    &[data-filled] {
+      background-color: color-mix(in oklab, white 25%, transparent);
+    }
+  }
+
+  .thumb {
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Shell 1.4× / knob 1.2× & 1.0× / 0.8× → equal ~0.1 pad on all sides (HeroUI). */
+    width: calc(var(--spacing) * var(--slider-size) * 1.4);
+    height: calc(var(--spacing) * var(--slider-size));
+
+    background-color: var(--color-primary-500);
+
+    border: none;
+    border-radius: calc(infinity * 1px);
+    outline: none;
+
+    box-shadow: none;
+
+    cursor: grab;
+    touch-action: none;
+
+    &::after {
+      content: '';
+
+      width: calc(var(--spacing) * var(--slider-size) * 1.2);
+      height: calc(var(--spacing) * var(--slider-size) * 0.8);
+
+      background-color: var(--color-white);
+
+      border-radius: var(--radius-lg);
+
+      box-shadow: var(--shadow-sm);
+
+      transform-origin: center;
+      transition: all 200ms ease-out;
+    }
+
+    &:active,
+    &[data-dragging] {
+      cursor: grabbing;
+
+      &::after {
+        transform: scale(0.9);
+      }
+    }
+
+    &:focus,
+    &:focus-visible,
+    &:focus-within {
+      outline: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .thumb::after {
+      transition: none;
+    }
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .slider {
+    &[data-variant='primary'] {
+      --slider-track: var(--color-zinc-200);
+      --slider-outline: none;
+      --slider-shadow: none;
+    }
+
+    &[data-variant='secondary'] {
+      --slider-track: var(--color-zinc-100);
+      --slider-outline: none;
+      --slider-shadow: none;
+    }
+
+    &[data-variant='tertiary'] {
+      --slider-track: var(--color-zinc-50);
+      --slider-outline: none;
+      --slider-shadow: none;
+    }
+
+    &[data-variant='outline'] {
+      --slider-track: transparent;
+      --slider-outline: none;
+      --slider-shadow: inset 0 0 0 1px var(--color-zinc-200);
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .slider {
+      &[data-variant='primary'] {
+        --slider-track: var(--color-zinc-700);
+        --slider-outline: none;
+        --slider-shadow: none;
+      }
+
+      &[data-variant='secondary'] {
+        --slider-track: var(--color-zinc-800);
+        --slider-outline: none;
+        --slider-shadow: none;
+      }
+
+      &[data-variant='tertiary'] {
+        --slider-track: var(--color-zinc-900);
+        --slider-outline: none;
+        --slider-shadow: none;
+      }
+
+      &[data-variant='outline'] {
+        --slider-track: transparent;
+        --slider-outline: none;
+        --slider-shadow: inset 0 0 0 1px var(--color-zinc-700);
+      }
+    }
+  }
+}

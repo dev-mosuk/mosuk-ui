@@ -1,11 +1,15 @@
 import {
-  TypographyAlign,
+  TypographyAnimation,
+  TypographyColor,
+  TypographyPress,
   TypographyType,
 } from '@/components/typography/.partials/enums/component.enums';
 import type { ElementType } from 'react';
 
-export const TYPOGRAPHY_DEFAULT_TYPE = TypographyType.Text;
-export const TYPOGRAPHY_DEFAULT_ALIGN = TypographyAlign.Start;
+export const TYPOGRAPHY_DEFAULT_TYPE = TypographyType.P2;
+export const TYPOGRAPHY_DEFAULT_COLOR = TypographyColor.Secondary;
+export const TYPOGRAPHY_DEFAULT_ANIMATION = TypographyAnimation.None;
+export const TYPOGRAPHY_DEFAULT_PRESS = TypographyPress.None;
 
 export const TYPOGRAPHY_DEFAULT_ELEMENT_BY_TYPE: Record<
   TypographyType,
@@ -17,10 +21,10 @@ export const TYPOGRAPHY_DEFAULT_ELEMENT_BY_TYPE: Record<
   [TypographyType.H4]: 'h4',
   [TypographyType.H5]: 'h5',
   [TypographyType.H6]: 'h6',
-  [TypographyType.Lead]: 'p',
-  [TypographyType.Text]: 'p',
-  [TypographyType.Detail]: 'p',
-  [TypographyType.Meta]: 'p',
-  [TypographyType.Caption]: 'small',
-  [TypographyType.Fine]: 'small',
+  [TypographyType.P1]: 'p',
+  [TypographyType.P2]: 'p',
+  [TypographyType.P3]: 'p',
+  [TypographyType.P4]: 'p',
+  [TypographyType.P5]: 'small',
+  [TypographyType.P6]: 'small',
 };

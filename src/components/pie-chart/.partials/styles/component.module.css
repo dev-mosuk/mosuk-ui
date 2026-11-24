@@ -1,0 +1,64 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --pie-chart-label: var(--color-zinc-500);
+    --pie-chart-label-line: color-mix(in oklab, var(--color-zinc-400) 30%, transparent);
+    --pie-chart-center: var(--color-zinc-900);
+  }
+
+  :global([data-theme='dark']) {
+    --pie-chart-label: var(--color-zinc-400);
+    --pie-chart-label-line: color-mix(in oklab, var(--color-zinc-500) 30%, transparent);
+    --pie-chart-center: var(--color-white);
+  }
+}
+
+/* PieChart */
+@layer mosuk-ui {
+  .pieChart {
+    width: 100%;
+    height: 100%;
+
+    outline: none;
+
+    :global(svg),
+    :global(.recharts-surface),
+    :global(.recharts-sector),
+    :global(path),
+    :global(.recharts-layer) {
+      outline: none;
+    }
+
+    :global(.recharts-responsive-container) {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    :global(.recharts-pie-sector path) {
+      stroke: none;
+    }
+
+    :global(.recharts-pie-label-text) {
+      fill: var(--pie-chart-label);
+
+      font-size: var(--text-2xs);
+    }
+
+    :global(.recharts-pie-label-line) {
+      stroke: var(--pie-chart-label-line);
+    }
+
+    :global(.recharts-label) {
+      fill: var(--pie-chart-center);
+    }
+
+    :global(.recharts-tooltip-cursor) {
+      display: none;
+    }
+
+    :global(.recharts-tooltip-wrapper) {
+      z-index: 150;
+      outline: none;
+    }
+  }
+}

@@ -1,7 +1,8 @@
 import type {
+  ButtonAnimation,
+  ButtonFormat,
   ButtonPress,
   ButtonVariant,
-  ButtonWidth,
 } from '@/components/button/.partials/enums/component.enums';
 import type { PropsOf } from '@/components/button/.partials/utilities/props-of';
 import type { CSSProperties, PointerEventHandler, ReactNode, Ref } from 'react';
@@ -9,14 +10,16 @@ import type { CSSProperties, PointerEventHandler, ReactNode, Ref } from 'react';
 type ButtonOwnProps<C> = {
   as?: C;
   ref?: Ref<any>;
-  variant?: ButtonVariant | `${ButtonVariant}`;
   size?: number;
-  width?: ButtonWidth | `${ButtonWidth}`;
+  format?: ButtonFormat | `${ButtonFormat}`;
+  variant?: ButtonVariant | `${ButtonVariant}`;
+  animation?: ButtonAnimation | `${ButtonAnimation}`;
   press?: ButtonPress | `${ButtonPress}` | false;
   type?: 'button' | 'submit' | 'reset';
+  isDisabled?: boolean;
   isPending?: boolean;
   isLoading?: boolean;
-  isDisabled?: boolean;
+  isActive?: boolean;
   style?: CSSProperties;
   className?: string;
   onPointerDown?: PointerEventHandler<any>;
@@ -28,7 +31,6 @@ export type ButtonProps<C = 'button'> = ButtonOwnProps<C> &
     PropsOf<C>,
     | 'as'
     | 'ref'
-    | 'width'
     | 'className'
     | 'style'
     | 'disabled'

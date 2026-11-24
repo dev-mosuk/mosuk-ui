@@ -1,6 +1,6 @@
-import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import type { ReactElement, SVGAttributes } from 'react';
 
-export type EmptyIconProps<C extends ElementType = 'div'> = {
-  as?: C;
-  ref?: Ref<any>;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;
+export type EmptyIconProps = {
+  className?: string;
+  children: ReactElement<SVGAttributes<SVGSVGElement>>;
+} & Omit<SVGAttributes<SVGSVGElement>, 'children' | 'className'>;

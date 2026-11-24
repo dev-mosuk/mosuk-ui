@@ -21,7 +21,6 @@ import React, {
 type InheritProps = {
   size?: InputGroupProps['size'];
   variant?: InputGroupProps['variant'];
-  width?: InputGroupProps['width'];
   isDisabled?: boolean;
   style?: CSSProperties;
 };
@@ -35,7 +34,6 @@ function isInputGroupSlot(
 export function InputGroup({
   variant,
   size,
-  width,
   isDisabled,
   className,
   children,
@@ -74,7 +72,6 @@ export function InputGroup({
     return cloneElement(child as ReactElement<InheritProps>, {
       size: props.size ?? size,
       variant: props.variant ?? variant,
-      width: props.width ?? width,
       isDisabled: props.isDisabled ?? isDisabled,
       style: {
         ...props.style,
@@ -90,7 +87,6 @@ export function InputGroup({
         {...rest}
         role='group'
         data-variant={variant || undefined}
-        data-width={width || undefined}
         style={
           {
             '--input-size': resolvedSize,

@@ -13,7 +13,7 @@ UI библиотека компонентов с использованием C
 ## 2. z-index
 
 1. **0–99** — обычные компоненты (контент, карточки, формы)
-2. **100–199** — dropdown, popover, tooltip и другие всплывающие элементы
+2. **100–199** — popover, tooltip и другие всплывающие элементы
 3. **200+** — dialog, drawer, модальные окна
 
 ## 3. Примеры использования
@@ -30,8 +30,9 @@ UI библиотека компонентов с использованием C
 
 ```
 src/
-├── components/         # плоский список features: button/, drawer/, yandex-maps/, …
-├── providers/          # toasts, yandex-maps, yandex-metrika, tbank, …
+├── blocks/             # page blocks: breadcrumbs/, yandex-map/, …
+├── components/         # плоский список features: button/, drawer/, …
+├── providers/          # toasts, yandex-map, yandex-metrika, tbank, …
 ├── hooks/
 └── services/
 ```

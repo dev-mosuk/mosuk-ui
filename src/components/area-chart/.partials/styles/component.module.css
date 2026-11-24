@@ -1,0 +1,70 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --area-chart-tick: var(--color-zinc-500);
+    --area-chart-grid: color-mix(in oklab, var(--color-zinc-400) 15%, transparent);
+    --area-chart-cursor: var(--color-zinc-400);
+    --area-chart-dot-stroke: var(--color-white);
+  }
+
+  :global([data-theme='dark']) {
+    --area-chart-tick: var(--color-zinc-400);
+    --area-chart-grid: color-mix(in oklab, var(--color-zinc-500) 20%, transparent);
+    --area-chart-cursor: var(--color-zinc-500);
+    --area-chart-dot-stroke: var(--color-zinc-950);
+  }
+}
+
+/* AreaChart */
+@layer mosuk-ui {
+  .areaChart {
+    width: 100%;
+    height: 100%;
+
+    outline: none;
+
+    :global(svg),
+    :global(.recharts-surface),
+    :global(.recharts-sector),
+    :global(path),
+    :global(.recharts-layer) {
+      outline: none;
+    }
+
+    :global(.recharts-responsive-container) {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    :global(.recharts-cartesian-axis-tick-value) {
+      fill: var(--area-chart-tick);
+
+      font-size: var(--text-2xs);
+    }
+
+    :global(.recharts-cartesian-axis-line),
+    :global(.recharts-cartesian-axis-tick-line) {
+      stroke: transparent;
+    }
+
+    :global(.recharts-cartesian-grid line) {
+      stroke: var(--area-chart-grid);
+    }
+
+    :global(.recharts-tooltip-cursor) {
+      stroke: var(--area-chart-cursor);
+      stroke-dasharray: 4 4;
+      fill: none;
+    }
+
+    :global(.recharts-active-dot circle) {
+      stroke: var(--area-chart-dot-stroke);
+      stroke-width: 2;
+    }
+
+    :global(.recharts-tooltip-wrapper) {
+      z-index: 150;
+      outline: none;
+    }
+  }
+}

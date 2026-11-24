@@ -1,8 +1,23 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --stepper-primary-color: var(--color-primary-500);
+    --stepper-secondary-color: var(--color-zinc-200);
+    --stepper-step-bg: var(--color-white);
+    --stepper-step-color: var(--color-black);
+  }
+
+  :global([data-theme='dark']) {
+    --stepper-primary-color: var(--color-primary-500);
+    --stepper-secondary-color: var(--color-zinc-700);
+    --stepper-step-bg: var(--color-zinc-900);
+    --stepper-step-color: var(--color-white);
+  }
+}
+
+/* Stepper */
 @layer mosuk-ui {
   .stepper {
-    --stepper-primary-color: var(--color-primary-500);
-    --stepper-secondary-color: var(--color-gray-200);
-
     --stepper-duration-line: 450ms;
     --stepper-duration-step: 500ms;
     --stepper-duration-delay: 300ms;
@@ -56,12 +71,14 @@
       .step {
         background-color: transparent;
         background-image:
-          linear-gradient(var(--color-white), var(--color-white)),
-          linear-gradient(to right in oklab,
+          linear-gradient(var(--stepper-step-bg), var(--stepper-step-bg)),
+          linear-gradient(
+            to right in oklab,
             var(--stepper-primary-color) 0%,
             var(--stepper-primary-color) 38.333%,
             var(--stepper-secondary-color) 50%,
-            var(--stepper-secondary-color) 100%);
+            var(--stepper-secondary-color) 100%
+          );
         background-repeat: no-repeat;
         background-position: 0 0, var(--stepper-shift) 0;
         background-size: 100% 100%, 300% 100%;
@@ -70,11 +87,23 @@
       }
 
       &[data-variant='fill'] .step::before {
-        background-image: radial-gradient(ellipse 80% 80% at 72% 50%,
-            transparent 0,
-            transparent 28%,
-            color-mix(in oklab, var(--stepper-primary-color) 12%, var(--stepper-secondary-color)) 62%,
-            color-mix(in oklab, var(--stepper-primary-color) 28%, var(--stepper-secondary-color)) 100%);
+        background-image: radial-gradient(
+          ellipse 80% 80% at 72% 50%,
+          transparent 0,
+          transparent 28%,
+          color-mix(
+            in oklab,
+            var(--stepper-primary-color) 12%,
+            var(--stepper-secondary-color)
+          )
+            62%,
+          color-mix(
+            in oklab,
+            var(--stepper-primary-color) 28%,
+            var(--stepper-secondary-color)
+          )
+            100%
+        );
       }
     }
 
@@ -101,12 +130,14 @@
       .step {
         background-color: transparent;
         background-image:
-          linear-gradient(var(--color-white), var(--color-white)),
-          linear-gradient(to bottom in oklab,
+          linear-gradient(var(--stepper-step-bg), var(--stepper-step-bg)),
+          linear-gradient(
+            to bottom in oklab,
             var(--stepper-primary-color) 0%,
             var(--stepper-primary-color) 38.333%,
             var(--stepper-secondary-color) 50%,
-            var(--stepper-secondary-color) 100%);
+            var(--stepper-secondary-color) 100%
+          );
         background-repeat: no-repeat;
         background-position: 0 0, 0 var(--stepper-shift);
         background-size: 100% 100%, 100% 300%;
@@ -115,48 +146,23 @@
       }
 
       &[data-variant='fill'] .step::before {
-        background-image: radial-gradient(ellipse 80% 80% at 50% 72%,
-            transparent 0,
-            transparent 28%,
-            color-mix(in oklab, var(--stepper-primary-color) 12%, var(--stepper-secondary-color)) 62%,
-            color-mix(in oklab, var(--stepper-primary-color) 28%, var(--stepper-secondary-color)) 100%);
-      }
-    }
-
-    &[data-variant='fill'] {
-      --stepper-secondary-color: var(--color-gray-100);
-
-      .step {
-        background-color: var(--stepper-secondary-color);
-        background-image: none;
-
-        &::before {
-          content: '';
-
-          position: absolute;
-          inset: 0;
-          z-index: 0;
-
-          border-radius: inherit;
-
-          opacity: 0;
-          pointer-events: none;
-
-          transition: opacity var(--stepper-duration-step) var(--stepper-ease);
-        }
-
-        &[data-status='active']::before {
-          opacity: 1;
-
-          transition:
-            opacity var(--stepper-duration-step) var(--stepper-ease) var(--stepper-duration-delay);
-        }
-
-        &[data-status='complete'] {
-          color: var(--color-white);
-
-          background-color: var(--stepper-primary-color);
-        }
+        background-image: radial-gradient(
+          ellipse 80% 80% at 50% 72%,
+          transparent 0,
+          transparent 28%,
+          color-mix(
+            in oklab,
+            var(--stepper-primary-color) 12%,
+            var(--stepper-secondary-color)
+          )
+            62%,
+          color-mix(
+            in oklab,
+            var(--stepper-primary-color) 28%,
+            var(--stepper-secondary-color)
+          )
+            100%
+        );
       }
     }
 
@@ -186,9 +192,9 @@
       margin: 0;
       padding: 0;
 
-      color: var(--color-black);
+      color: var(--stepper-step-color);
       font: inherit;
-      line-height: 1;
+      line-height: var(--leading-none);
 
       background-color: transparent;
 
@@ -201,7 +207,8 @@
 
       cursor: default;
 
-      transition: --stepper-shift var(--stepper-duration-step) var(--stepper-ease),
+      transition:
+        --stepper-shift var(--stepper-duration-step) var(--stepper-ease),
         background-color var(--stepper-duration-step) var(--stepper-ease),
         border-color var(--stepper-duration-step) var(--stepper-ease),
         color var(--stepper-duration-step) var(--stepper-ease),
@@ -213,10 +220,12 @@
         --stepper-shift: 50%;
 
         transition:
-          --stepper-shift var(--stepper-duration-step) var(--stepper-ease) var(--stepper-duration-delay),
+          --stepper-shift var(--stepper-duration-step) var(--stepper-ease)
+            var(--stepper-duration-delay),
           background-color var(--stepper-duration-step) var(--stepper-ease),
           border-color var(--stepper-duration-step) var(--stepper-ease),
-          color var(--stepper-duration-step) var(--stepper-ease) var(--stepper-duration-delay),
+          color var(--stepper-duration-step) var(--stepper-ease)
+            var(--stepper-duration-delay),
           opacity 200ms ease;
       }
 
@@ -247,7 +256,7 @@
         outline-offset: 2px;
       }
 
-      &>* {
+      & > * {
         position: relative;
         z-index: 1;
       }
@@ -287,7 +296,6 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-
       .step,
       .step::before,
       .step[data-status='active'],
@@ -305,5 +313,63 @@
     syntax: '<percentage>';
     inherits: true;
     initial-value: 100%;
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .stepper {
+    &[data-variant='outline'] {
+      --stepper-secondary-color: var(--color-zinc-200);
+    }
+
+    &[data-variant='fill'] {
+      --stepper-secondary-color: var(--color-zinc-100);
+
+      .step {
+        background-color: var(--stepper-secondary-color);
+        background-image: none;
+
+        &::before {
+          content: '';
+
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+
+          border-radius: inherit;
+
+          opacity: 0;
+          pointer-events: none;
+
+          transition: opacity var(--stepper-duration-step) var(--stepper-ease);
+        }
+
+        &[data-status='active']::before {
+          opacity: 1;
+
+          transition: opacity var(--stepper-duration-step) var(--stepper-ease)
+            var(--stepper-duration-delay);
+        }
+
+        &[data-status='complete'] {
+          color: var(--color-white);
+
+          background-color: var(--stepper-primary-color);
+        }
+      }
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .stepper {
+      &[data-variant='outline'] {
+        --stepper-secondary-color: var(--color-zinc-700);
+      }
+
+      &[data-variant='fill'] {
+        --stepper-secondary-color: var(--color-zinc-800);
+      }
+    }
   }
 }

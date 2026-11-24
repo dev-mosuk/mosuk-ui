@@ -1,0 +1,269 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --segment-bg: var(--color-zinc-100);
+    --segment-border: transparent;
+    --segment-padding: calc(var(--spacing) * 0.5);
+    --segment-radius: calc(infinity * 1px);
+    --segment-color: var(--color-black);
+    --segment-active-color: var(--color-black);
+    --segment-indicator-bg: var(--color-white);
+    --segment-indicator-shadow:
+      0 1px 3px 0 color-mix(in oklab, var(--color-zinc-300) 50%, transparent),
+      0 1px 2px -1px color-mix(in oklab, var(--color-zinc-300) 50%, transparent);
+    --segment-indicator-radius: calc(infinity * 1px);
+  }
+
+  :global([data-theme='dark']) {
+    --segment-bg: var(--color-zinc-800);
+    --segment-border: transparent;
+    --segment-color: var(--color-zinc-100);
+    --segment-active-color: var(--color-white);
+    --segment-indicator-bg: var(--color-zinc-900);
+    --segment-indicator-shadow: 0 0 #0000;
+  }
+}
+
+/* Segment */
+@layer mosuk-ui {
+  .segment {
+    scrollbar-width: none;
+
+    position: relative;
+    z-index: 0;
+
+    display: flex;
+    flex-direction: row;
+    gap: calc(var(--spacing) * 1);
+    align-items: center;
+
+    box-sizing: border-box;
+
+    padding: var(--segment-padding);
+
+    background-color: var(--segment-bg);
+
+    border: 1px solid var(--segment-border);
+    border-radius: var(--segment-radius);
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &:disabled {
+      opacity: 50%;
+
+      pointer-events: none;
+    }
+
+    .button {
+      position: relative;
+      z-index: 1;
+
+      flex-shrink: 0;
+
+      color: var(--segment-color);
+
+      -webkit-tap-highlight-color: transparent;
+
+      &:is(:hover, :active),
+      &[data-variant='ghost']:is(:hover, :active) {
+        background-color: transparent;
+      }
+
+      &[data-active] {
+        color: var(--segment-active-color);
+
+        background-color: transparent;
+
+        & :where(svg) {
+          color: var(--segment-active-color);
+        }
+      }
+
+      &:disabled,
+      &[data-disabled],
+      &[aria-disabled='true'] {
+        opacity: 50%;
+
+        pointer-events: none;
+      }
+
+      & :where(svg) {
+        color: currentColor;
+      }
+    }
+
+    .indicator {
+      --indicator-inset: calc(
+        (var(--active-tab-height, 0px) - (var(--spacing) * var(--button-size))) /
+          2
+      );
+      --button-bg: var(--segment-indicator-bg);
+      --button-bg-hover: var(--segment-indicator-bg);
+      --button-radius: var(--segment-indicator-radius);
+      --button-border: transparent;
+      --button-border-hover: transparent;
+
+      position: absolute;
+      top: calc(var(--active-tab-top, 0px) + var(--indicator-inset, 0px));
+      left: calc(var(--active-tab-left, 0px) + var(--indicator-inset, 0px));
+      z-index: 0;
+
+      width: calc(
+        var(--active-tab-width, 0px) - (var(--indicator-inset, 0px) * 2)
+      );
+      min-width: 0;
+
+      margin: 0;
+
+      background-color: var(--segment-indicator-bg);
+
+      box-shadow: var(--segment-indicator-shadow);
+
+      opacity: 1;
+
+      pointer-events: none;
+      cursor: default;
+
+      transition:
+        top 200ms ease-in-out,
+        left 200ms ease-in-out,
+        width 200ms ease-in-out,
+        opacity 200ms ease-in-out;
+
+      &:hover,
+      &[data-active] {
+        background-color: var(--segment-indicator-bg);
+      }
+
+      &.inactive {
+        opacity: 0;
+      }
+    }
+
+    &[data-orientation='horizontal'] {
+      overflow-x: auto;
+      overflow-y: hidden;
+
+      flex-direction: row;
+      align-items: center;
+
+      width: fit-content;
+      max-width: 100%;
+      height: fit-content;
+
+      .button {
+        width: fit-content;
+        min-width: fit-content;
+        height: auto;
+
+        scroll-margin-inline: calc(var(--spacing) * 48);
+      }
+    }
+
+    &[data-orientation='vertical'] {
+      --segment-padding: calc(var(--spacing) * 1);
+      --segment-radius: var(--radius-2xl);
+      --segment-indicator-radius: calc(var(--radius-2xl) - var(--segment-padding));
+
+      overflow-x: hidden;
+      overflow-y: auto;
+
+      flex-direction: column;
+      align-items: stretch;
+
+      width: fit-content;
+      height: fit-content;
+
+      .button {
+        width: 100%;
+
+        scroll-margin-block: calc(var(--spacing) * 48);
+      }
+    }
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .segment {
+    &[data-variant='primary'] {
+      --segment-bg: var(--color-zinc-100);
+      --segment-border: transparent;
+      --segment-color: var(--color-black);
+      --segment-active-color: var(--color-black);
+      --segment-indicator-bg: var(--color-white);
+      --segment-indicator-shadow:
+        0 1px 3px 0 color-mix(in oklab, var(--color-zinc-300) 50%, transparent),
+        0 1px 2px -1px color-mix(in oklab, var(--color-zinc-300) 50%, transparent);
+    }
+
+    &[data-variant='secondary'] {
+      --segment-bg: var(--color-zinc-50);
+      --segment-border: transparent;
+      --segment-color: var(--color-black);
+      --segment-active-color: var(--color-black);
+      --segment-indicator-bg: var(--color-white);
+      --segment-indicator-shadow:
+        0 1px 3px 0 color-mix(in oklab, var(--color-zinc-300) 50%, transparent),
+        0 1px 2px -1px color-mix(in oklab, var(--color-zinc-300) 50%, transparent);
+    }
+
+    &[data-variant='outline'] {
+      --segment-bg: transparent;
+      --segment-border: var(--color-zinc-200);
+      --segment-color: var(--color-black);
+      --segment-active-color: var(--color-black);
+      --segment-indicator-bg: var(--color-zinc-100);
+      --segment-indicator-shadow: 0 0 #0000;
+    }
+
+    &[data-variant='ghost'] {
+      --segment-bg: transparent;
+      --segment-border: transparent;
+      --segment-color: var(--color-black);
+      --segment-active-color: var(--color-black);
+      --segment-indicator-bg: var(--color-zinc-100);
+      --segment-indicator-shadow: 0 0 #0000;
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .segment {
+      &[data-variant='primary'] {
+        --segment-bg: var(--color-zinc-800);
+        --segment-color: var(--color-zinc-100);
+        --segment-active-color: var(--color-white);
+        --segment-indicator-bg: var(--color-zinc-950);
+        --segment-indicator-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='secondary'] {
+        --segment-bg: var(--color-zinc-900);
+        --segment-color: var(--color-zinc-100);
+        --segment-active-color: var(--color-white);
+        --segment-indicator-bg: var(--color-zinc-950);
+        --segment-indicator-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='outline'] {
+        --segment-bg: transparent;
+        --segment-border: var(--color-zinc-700);
+        --segment-color: var(--color-zinc-100);
+        --segment-active-color: var(--color-white);
+        --segment-indicator-bg: var(--color-zinc-900);
+        --segment-indicator-shadow: 0 1px 2px 0 color-mix(in oklab, var(--color-black) 40%, transparent);
+      }
+
+      &[data-variant='ghost'] {
+        --segment-bg: transparent;
+        --segment-border: transparent;
+        --segment-color: var(--color-zinc-100);
+        --segment-active-color: var(--color-white);
+        --segment-indicator-bg: var(--color-zinc-900);
+        --segment-indicator-shadow: 0 1px 2px 0 color-mix(in oklab, var(--color-black) 40%, transparent);
+      }
+    }
+  }
+}

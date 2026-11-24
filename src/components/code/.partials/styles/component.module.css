@@ -1,0 +1,49 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --code-bg: #fbfbfb;
+    --code-line-number: #a1a1aa;
+  }
+
+  :global([data-theme='dark']) {
+    --code-bg: #0e0e10;
+    --code-line-number: #5c5c66;
+  }
+}
+
+/* Code */
+@layer mosuk-ui {
+  .code {
+    &::-webkit-scrollbar {
+      width: var(--spacing);
+      height: var(--spacing);
+    }
+
+    margin: 0;
+    padding: calc(var(--spacing) * 3);
+    padding-left: calc(var(--spacing) * 2);
+
+    font-size: var(--text-xs);
+    font-weight: 300;
+
+    background: var(--code-bg);
+
+    code[class*='language-'] {
+      background: transparent !important;
+    }
+
+    :global(.linenumber) {
+      min-width: 2.25rem !important;
+      padding-right: 1rem !important;
+
+      color: var(--code-line-number) !important;
+
+      font-family: system-ui, sans-serif !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      text-align: right !important;
+
+      user-select: none !important;
+    }
+  }
+}

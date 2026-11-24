@@ -1,0 +1,146 @@
+/* Tokens — copied from Popover surface */
+@layer mosuk-ui {
+  :global(:root) {
+    --context-menu-bg: var(--color-white);
+    --context-menu-color: var(--color-black);
+
+    --context-menu-border: var(--color-zinc-100);
+    --context-menu-radius: var(--radius-xl);
+    --context-menu-shadow: 0 25px 50px -12px
+      color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+
+    --context-menu-separator: var(--color-zinc-100);
+  }
+
+  :global([data-theme='dark']) {
+    --context-menu-bg: var(--color-zinc-950);
+    --context-menu-color: var(--color-white);
+
+    --context-menu-border: var(--color-zinc-900);
+    --context-menu-radius: var(--radius-xl);
+    --context-menu-shadow: 0 0 #0000;
+
+    --context-menu-separator: var(--color-zinc-800);
+  }
+}
+
+/* ContextMenu */
+@layer mosuk-ui {
+  .trigger {
+    cursor: context-menu;
+  }
+
+  .overview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing) * 0.5);
+
+    width: fit-content;
+    min-width: calc(var(--spacing) * 40);
+    height: fit-content;
+
+    padding: calc(var(--spacing) * 1);
+
+    color: var(--context-menu-color);
+
+    background-color: var(--context-menu-bg);
+
+    border: 1px solid transparent;
+    border-color: var(--context-menu-border);
+    border-radius: var(--context-menu-radius);
+
+    box-shadow: var(--context-menu-shadow);
+
+    outline: none;
+
+    transform-origin: var(--transform-origin);
+
+    transition: all 200ms ease-in-out;
+
+    &:focus,
+    &:focus-visible {
+      outline: none;
+    }
+
+    &[data-starting-style],
+    &[data-ending-style] {
+      opacity: 0;
+
+      transform: scale(0.9);
+    }
+  }
+
+  .separator {
+    height: 1px;
+    margin: calc(var(--spacing) * 1) 0;
+
+    background-color: var(--context-menu-separator);
+
+    border: none;
+  }
+}
+
+/* Variant — copied from Popover */
+@layer mosuk-ui {
+  .content {
+    &[data-variant='primary'] {
+      --context-menu-bg: var(--color-white);
+      --context-menu-color: var(--color-black);
+      --context-menu-border: var(--color-zinc-100);
+      --context-menu-shadow: 0 25px 50px -12px
+        color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+      --context-menu-separator: var(--color-zinc-100);
+    }
+
+    &[data-variant='secondary'] {
+      --context-menu-bg: var(--color-gray-50);
+      --context-menu-color: var(--color-black);
+      --context-menu-border: var(--color-zinc-100);
+      --context-menu-shadow: 0 0 #0000;
+      --context-menu-separator: var(--color-zinc-200);
+    }
+
+    &[data-variant='tertiary'] {
+      --context-menu-bg: var(--color-gray-100);
+      --context-menu-color: var(--color-black);
+      --context-menu-border: var(--color-zinc-200);
+      --context-menu-shadow: 0 0 #0000;
+      --context-menu-separator: var(--color-zinc-300);
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .content {
+      &[data-variant='primary'] {
+        --context-menu-bg: var(--color-zinc-950);
+        --context-menu-color: var(--color-white);
+        --context-menu-border: var(--color-zinc-900);
+        --context-menu-shadow: 0 0 #0000;
+        --context-menu-separator: var(--color-zinc-800);
+      }
+
+      &[data-variant='secondary'] {
+        --context-menu-bg: var(--color-zinc-900);
+        --context-menu-color: var(--color-white);
+        --context-menu-border: var(--color-zinc-800);
+        --context-menu-shadow: 0 0 #0000;
+        --context-menu-separator: var(--color-zinc-700);
+      }
+
+      &[data-variant='tertiary'] {
+        --context-menu-bg: var(--color-zinc-800);
+        --context-menu-color: var(--color-white);
+        --context-menu-border: var(--color-zinc-700);
+        --context-menu-shadow: 0 0 #0000;
+        --context-menu-separator: var(--color-zinc-600);
+      }
+    }
+  }
+}

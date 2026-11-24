@@ -1,9 +1,13 @@
+import type { CellSliderVariant } from '@/components/slider-cell/.partials/enums/component.enums';
 import { Slider } from '@base-ui/react/slider';
+import type { CSSProperties } from 'react';
 
-export type CellSliderVariant = 'default' | 'secondary';
-
-export type CellSliderProps = Omit<Slider.Root.Props, 'disabled'> & {
-  /** Visual style of the cell track. @default 'default' */
-  variant?: CellSliderVariant;
+type CellSliderOwnProps = {
+  size?: number;
+  variant?: CellSliderVariant | `${CellSliderVariant}`;
   isDisabled?: boolean;
+  style?: CSSProperties;
 };
+
+export type CellSliderProps = CellSliderOwnProps &
+  Omit<Slider.Root.Props, 'disabled' | 'orientation' | 'style' | 'size'>;

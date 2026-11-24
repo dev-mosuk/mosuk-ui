@@ -3,7 +3,14 @@
 import { ImageProps } from '@/components/image/.partials/components/component.interface';
 import { ImageDots } from '@/components/image/.partials/components/dots/component';
 import { ImageDotsProps } from '@/components/image/.partials/components/dots/component.interface';
-import { ImageContext } from '@/components/image/.partials/providers/context/context';
+import {
+  IMAGE_DEFAULT_ANIMATION,
+  IMAGE_DEFAULT_IS_LOADING,
+  IMAGE_DEFAULT_PRESS,
+  IMAGE_DEFAULT_VARIANT,
+} from '@/components/image/.partials/constants/component.constants';
+import { ImagePress } from '@/components/image/.partials/enums/component.enums';
+import { useImage } from '@/components/image/.partials/hooks/hook';
 import { ImageProvider } from '@/components/image/.partials/providers/provider';
 import styles from '@/components/image/.partials/styles/component.module.css';
 import classNames from 'classnames';
@@ -12,12 +19,14 @@ import React, {
   ElementType,
   cloneElement,
   isValidElement,
-  useContext,
+  type CSSProperties,
 } from 'react';
 
 export function Image<C extends ElementType = 'div'>(props: ImageProps<C>) {
   return (
-    <ImageProvider isLoading={props.isLoading ?? false}>
+    <ImageProvider
+      isLoading={props.isLoading ?? IMAGE_DEFAULT_IS_LOADING}
+    >
       <ImageFrame<C> {...props} />
     </ImageProvider>
   );
@@ -27,18 +36,22 @@ function ImageFrame<C extends ElementType = 'div'>({
   as,
   ref,
   isLoading: _isLoading,
+  size,
+  variant = IMAGE_DEFAULT_VARIANT,
+  animation = IMAGE_DEFAULT_ANIMATION,
+  press = IMAGE_DEFAULT_PRESS,
+  style,
+  className,
+  children,
+  onPointerDown,
   ...rest
 }: ImageProps<C>) {
-  const context = useContext(ImageContext);
+  const { shown, visibleDots, node } = useImage();
   const Component = (as || 'div') as ElementType;
+  const pressMode = press === false ? ImagePress.None : press;
+  const needsRippleCoords = pressMode === ImagePress.Ripple;
 
-  if (!context) {
-    throw new Error('Image must be used inside ImageProvider');
-  }
-
-  const { shown, visibleDots, node } = context;
-
-  const children = Children.map(rest.children, (child) => {
+  const resolvedChildren = Children.map(children, (child) => {
     if (!isValidElement(child) || child.type !== ImageDots) {
       return child;
     }
@@ -71,15 +84,41 @@ function ImageFrame<C extends ElementType = 'div'>({
           ref.current = value;
         }
       }}
+      data-variant={variant}
+      data-size={size}
+      data-animation={animation}
+      data-press={pressMode}
+      style={
+        {
+          ...(size != null ? { '--image-size': size } : undefined),
+          ...style,
+        } as CSSProperties
+      }
+      onPointerDown={(event: React.PointerEvent<HTMLElement>) => {
+        if (needsRippleCoords) {
+          const rect = event.currentTarget.getBoundingClientRect();
+
+          event.currentTarget.style.setProperty(
+            '--press-x',
+            `${event.clientX - rect.left}px`,
+          );
+          event.currentTarget.style.setProperty(
+            '--press-y',
+            `${event.clientY - rect.top}px`,
+          );
+        }
+
+        onPointerDown?.(event as never);
+      }}
       className={classNames(
         'mosuk-image',
         '@container/image',
         'group/image',
         styles.image,
-        rest?.className,
+        className,
       )}
     >
-      {children}
+      {resolvedChildren}
     </Component>
   );
 }

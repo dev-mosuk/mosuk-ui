@@ -1,7 +1,30 @@
 import { CloseProps } from '@/components/toast/.partials/components/close/component.interface';
 import { Toast as BaseUiToast } from '@base-ui/react/toast';
-import React from 'react';
+import classNames from 'classnames';
+import React, { type ElementType } from 'react';
 
-export function Close({ ...rest }: CloseProps) {
-  return <BaseUiToast.Close {...rest}>{rest?.children}</BaseUiToast.Close>;
+export function Close<C extends ElementType = 'button'>({
+  as,
+  ref,
+  isDisabled,
+  className,
+  children,
+  ...rest
+}: CloseProps<C>) {
+  // 0. Подготовка
+  const Component = (as ?? 'button') as ElementType;
+  const nativeButton = as == null || as === 'button' || typeof as !== 'string';
+
+  // 1. Рендер
+  return (
+    <BaseUiToast.Close
+      {...rest}
+      disabled={isDisabled}
+      nativeButton={nativeButton}
+      className={classNames('mosuk-toast-close', className)}
+      render={<Component ref={ref} />}
+    >
+      {children}
+    </BaseUiToast.Close>
+  );
 }

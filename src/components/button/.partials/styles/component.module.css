@@ -1,4 +1,39 @@
 @layer mosuk-ui {
+  :global(:root) {
+    --button-bg: transparent;
+    --button-color: var(--color-black);
+
+    --button-border: transparent;
+    --button-radius: calc(infinity * 1px);
+    --button-outline: none;
+
+    --button-shadow: none;
+
+    --button-bg-hover: transparent;
+    --button-color-hover: var(--color-black);
+
+    --button-border-hover: transparent;
+  }
+
+  :global([data-theme='dark']) {
+    --button-bg: transparent;
+    --button-color: var(--color-white);
+
+    --button-border: transparent;
+    --button-radius: calc(infinity * 1px);
+    --button-outline: none;
+
+    --button-shadow: none;
+
+    --button-bg-hover: transparent;
+    --button-color-hover: var(--color-white);
+
+    --button-border-hover: transparent;
+  }
+}
+
+/* Button */
+@layer mosuk-ui {
   .button {
     overflow: hidden;
 
@@ -16,18 +51,21 @@
 
     padding-inline: calc(var(--spacing) * 0.425 * var(--button-size));
 
-    color: var(--color-white);
-    font-size: calc(var(--spacing) * 0.375 * var(--button-size));
+    color: var(--button-color);
+    font-size: calc(var(--spacing) * 0.425 * var(--button-size));
     font-weight: 400;
     text-wrap: nowrap;
     text-overflow: ellipsis;
     text-decoration: none;
 
-    background-color: var(--color-primary-500);
+    background-color: var(--button-bg);
 
     border: 1px solid transparent;
-    border-radius: calc(infinity * 1px);
-    outline: none;
+    border-color: var(--button-border);
+    border-radius: var(--button-radius);
+    outline: var(--button-outline);
+
+    box-shadow: var(--button-shadow);
 
     cursor: pointer;
     user-select: none;
@@ -40,15 +78,35 @@
       min-width: calc(var(--spacing) * 0.425 * var(--button-size));
       min-height: calc(var(--spacing) * 0.425 * var(--button-size));
 
+      color: inherit;
+
       transition: all 200ms ease-in-out;
     }
 
-    &[data-width='full'] {
-      width: 100%;
-      min-width: 100%;
+    &:hover,
+    &[data-active] {
+      color: var(--button-color-hover);
+
+      background-color: var(--button-bg-hover);
+
+      border-color: var(--button-border-hover);
     }
 
-    &[data-width='square'] {
+    &:disabled:not([data-loading]),
+    &[aria-disabled='true']:not([data-loading]),
+    &[data-pending]:not([data-loading]) {
+      opacity: 0.5;
+
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    &[data-loading] {
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    &[data-format='icon'] {
       aspect-ratio: 1 / 1;
 
       width: calc(var(--spacing) * var(--button-size));
@@ -58,93 +116,169 @@
 
       padding-inline: 0;
     }
+  }
+}
 
+/* Variant */
+@layer mosuk-ui {
+  .button {
     &[data-variant='primary'] {
-      color: var(--color-white);
+      --button-bg: var(--color-primary-500);
+      --button-color: var(--color-white);
 
-      background-color: var(--color-primary-500);
+      --button-border: transparent;
+      --button-radius: calc(infinity * 1px);
+      --button-outline: none;
+      --button-shadow: none;
 
-      border-color: transparent;
-
-      &:hover {
-        background-color: var(--color-primary-600);
-      }
+      --button-bg-hover: var(--color-primary-600);
+      --button-color-hover: var(--color-white);
+      --button-border-hover: transparent;
     }
 
     &[data-variant='secondary'] {
-      color: var(--color-black);
+      --button-bg: var(--color-zinc-100);
+      --button-color: var(--color-black);
 
-      background-color: var(--color-gray-100);
+      --button-border: transparent;
+      --button-radius: calc(infinity * 1px);
+      --button-outline: none;
+      --button-shadow: none;
 
-      border-color: transparent;
+      --button-bg-hover: var(--color-zinc-200);
+      --button-color-hover: var(--color-black);
+      --button-border-hover: transparent;
+    }
 
-      &:hover {
-        background-color: var(--color-gray-200);
-      }
+    &[data-variant='tertiary'] {
+      --button-bg: var(--color-zinc-50);
+      --button-color: var(--color-black);
+
+      --button-border: transparent;
+      --button-radius: calc(infinity * 1px);
+      --button-outline: none;
+      --button-shadow: none;
+
+      --button-bg-hover: var(--color-zinc-100);
+      --button-color-hover: var(--color-black);
+      --button-border-hover: transparent;
     }
 
     &[data-variant='outline'] {
-      color: var(--color-black);
+      --button-bg: transparent;
+      --button-color: var(--color-black);
 
-      background-color: transparent;
+      --button-border: var(--color-zinc-200);
+      --button-radius: calc(infinity * 1px);
+      --button-outline: none;
+      --button-shadow: none;
 
-      border-color: var(--color-gray-200);
-
-      &:hover {
-        background-color: var(--color-gray-50);
-      }
+      --button-bg-hover: transparent;
+      --button-color-hover: var(--color-primary-500);
+      --button-border-hover: var(--color-primary-200);
     }
 
     &[data-variant='ghost'] {
-      color: var(--color-black);
+      --button-bg: transparent;
+      --button-color: var(--color-black);
 
-      background-color: transparent;
+      --button-border: transparent;
+      --button-radius: calc(infinity * 1px);
+      --button-outline: none;
+      --button-shadow: none;
 
-      border-color: transparent;
+      --button-bg-hover: var(--color-zinc-100);
+      --button-color-hover: var(--color-black);
+      --button-border-hover: transparent;
+    }
+  }
+}
 
-      &:hover {
-        background-color: var(--color-gray-100);
+/* Dark */
+@layer mosuk-ui {
+  :global([data-theme='dark']) {
+    .button {
+      &[data-variant='primary'] {
+        --button-bg: var(--color-primary-500);
+        --button-color: var(--color-white);
+
+        --button-border: transparent;
+        --button-radius: calc(infinity * 1px);
+        --button-outline: none;
+        --button-shadow: none;
+
+        --button-bg-hover: var(--color-primary-400);
+        --button-color-hover: var(--color-white);
+        --button-border-hover: transparent;
+      }
+
+      &[data-variant='secondary'] {
+        --button-bg: var(--color-zinc-800);
+        --button-color: var(--color-white);
+
+        --button-border: transparent;
+        --button-radius: calc(infinity * 1px);
+        --button-outline: none;
+        --button-shadow: none;
+
+        --button-bg-hover: var(--color-zinc-700);
+        --button-color-hover: var(--color-white);
+        --button-border-hover: transparent;
+      }
+
+      &[data-variant='tertiary'] {
+        --button-bg: var(--color-zinc-900);
+        --button-color: var(--color-white);
+
+        --button-border: transparent;
+        --button-radius: calc(infinity * 1px);
+        --button-outline: none;
+        --button-shadow: none;
+
+        --button-bg-hover: var(--color-zinc-800);
+        --button-color-hover: var(--color-white);
+        --button-border-hover: transparent;
+      }
+
+      &[data-variant='outline'] {
+        --button-bg: transparent;
+        --button-color: var(--color-white);
+
+        --button-border: var(--color-zinc-800);
+        --button-radius: calc(infinity * 1px);
+        --button-outline: none;
+        --button-shadow: none;
+
+        --button-bg-hover: transparent;
+        --button-color-hover: var(--color-primary-400);
+        --button-border-hover: var(--color-primary-800);
+      }
+
+      &[data-variant='ghost'] {
+        --button-bg: transparent;
+        --button-color: var(--color-white);
+
+        --button-border: transparent;
+        --button-radius: calc(infinity * 1px);
+        --button-outline: none;
+        --button-shadow: none;
+
+        --button-bg-hover: var(--color-zinc-900);
+        --button-color-hover: var(--color-white);
+        --button-border-hover: transparent;
       }
     }
+  }
+}
 
-    &[data-variant='danger'] {
-      color: var(--color-white);
-
-      background-color: var(--color-red-500);
-
-      border-color: transparent;
-
-      &:hover {
-        background-color: var(--color-red-600);
-      }
-    }
-
-    &[data-variant='link'] {
-      height: auto;
-      min-height: 0;
-
-      padding-inline: 0;
-
-      color: var(--color-primary-500);
-
-      background-color: transparent;
-
-      border-color: transparent;
-      border-radius: 0;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
-    &[data-press='scale']:active:not(:disabled):not([data-pending]):not([data-loading]),
-    &[data-press='scale-highlight']:active:not(:disabled):not([data-pending]):not([data-loading]),
-    &[data-press='scale-ripple']:active:not(:disabled):not([data-pending]):not([data-loading]) {
+/* Press */
+@layer mosuk-ui {
+  .button {
+    &[data-press='scale']:active:not(:disabled):not([data-pending]):not([data-loading]) {
       transform: scale(0.97);
     }
 
-    &[data-press='highlight']::before,
-    &[data-press='scale-highlight']::before {
+    &[data-press='highlight']::before {
       position: absolute;
       inset: 0;
       z-index: 0;
@@ -162,18 +296,15 @@
       transition: opacity 150ms ease;
     }
 
-    &[data-press='highlight']:hover:not(:disabled):not([data-pending]):not([data-loading])::before,
-    &[data-press='scale-highlight']:hover:not(:disabled):not([data-pending]):not([data-loading])::before {
+    &[data-press='highlight']:hover:not(:disabled):not([data-pending]):not([data-loading])::before {
       opacity: 0.1;
     }
 
-    &[data-press='highlight']:active:not(:disabled):not([data-pending]):not([data-loading])::before,
-    &[data-press='scale-highlight']:active:not(:disabled):not([data-pending]):not([data-loading])::before {
+    &[data-press='highlight']:active:not(:disabled):not([data-pending]):not([data-loading])::before {
       opacity: 0.18;
     }
 
-    &[data-press='ripple']:not([data-loading])::after,
-    &[data-press='scale-ripple']:not([data-loading])::after {
+    &[data-press='ripple']:not([data-loading]):not([data-animation='shimmer'])::after {
       position: absolute;
       top: var(--press-y, 50%);
       left: var(--press-x, 50%);
@@ -198,14 +329,20 @@
         opacity 225ms ease-out;
     }
 
-    &[data-press='ripple']:active:not(:disabled):not([data-pending]):not([data-loading])::after,
-    &[data-press='scale-ripple']:active:not(:disabled):not([data-pending]):not([data-loading])::after {
+    &[data-press='ripple']:active:not(:disabled):not([data-pending]):not([data-loading]):not([data-animation='shimmer'])::after {
       opacity: 0.1;
 
       transform: translate(-50%, -50%) scale(1);
     }
+  }
+}
 
-    &[data-loading]::after {
+/* Animation */
+@layer mosuk-ui {
+  .button {
+
+    &[data-loading]::after,
+    &[data-animation='shimmer']:not([data-loading])::after {
       position: absolute;
       inset: 0;
       z-index: 1;
@@ -215,7 +352,7 @@
       background: linear-gradient(90deg,
           transparent 0%,
           transparent 20%,
-          var(--color-gray-50),
+          color-mix(in oklab, white 35%, transparent),
           transparent 80%,
           transparent 100%);
 
@@ -225,40 +362,23 @@
 
       animation: button-shimmer 1.5s infinite;
     }
-
-    &:disabled:not([data-loading]),
-    &[aria-disabled='true']:not([data-loading]),
-    &[data-pending]:not([data-loading]) {
-      opacity: 0.5;
-
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-
-    &[data-loading] {
-      cursor: not-allowed;
-      pointer-events: none;
-    }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .button {
       transition: none;
 
-      &[data-press='scale']:active,
-      &[data-press='scale-highlight']:active,
-      &[data-press='scale-ripple']:active {
+      &[data-press='scale']:active {
         transform: none;
       }
 
       &[data-press='highlight']::before,
-      &[data-press='scale-highlight']::before,
-      &[data-press='ripple']::after,
-      &[data-press='scale-ripple']::after {
+      &[data-press='ripple']::after {
         transition: none;
       }
 
-      &[data-loading]::after {
+      &[data-loading]::after,
+      &[data-animation='shimmer']:not([data-loading])::after {
         animation: none;
 
         opacity: 0.35;

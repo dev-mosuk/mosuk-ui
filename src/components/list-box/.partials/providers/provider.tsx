@@ -6,8 +6,9 @@ import React, { useMemo } from 'react';
 
 export function ListBoxProvider({
   children,
-  selectionMode,
-  value,
+  mode,
+  variant,
+  selected,
   highlightedId,
   registerItem,
   unregisterItem,
@@ -21,8 +22,9 @@ export function ListBoxProvider({
 }: ListBoxProviderProps) {
   const contextValue = useMemo(
     () => ({
-      selectionMode,
-      value,
+      mode,
+      variant,
+      selected,
       highlightedId,
       registerItem,
       unregisterItem,
@@ -35,8 +37,9 @@ export function ListBoxProvider({
       onItemRegister,
     }),
     [
-      selectionMode,
-      value,
+      mode,
+      variant,
+      selected,
       highlightedId,
       registerItem,
       unregisterItem,

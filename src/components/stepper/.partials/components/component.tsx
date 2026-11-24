@@ -6,7 +6,9 @@ import { StepperStep } from '@/components/stepper/.partials/components/step/comp
 import {
   STEPPER_CHAIN_EASE,
   STEPPER_CHAIN_LANDING,
+  STEPPER_DEFAULT_ORIENTATION,
   STEPPER_DEFAULT_SIZE,
+  STEPPER_DEFAULT_STEP,
   STEPPER_DEFAULT_STROKE,
   STEPPER_DEFAULT_VARIANT,
   STEPPER_EASE,
@@ -62,12 +64,20 @@ function hopTiming(distance: number, hopIndex: number) {
   };
 }
 
-function resolveStatus(index: number, step: number): StepperStepStatus {
+function resolveStatus(
+  index: number,
+  step: number,
+  stepCount: number,
+): StepperStepStatus {
   if (index < step) {
     return 'complete';
   }
 
   if (index === step) {
+    if (stepCount > 0 && step >= stepCount - 1) {
+      return 'complete';
+    }
+
     return 'active';
   }
 
@@ -75,12 +85,12 @@ function resolveStatus(index: number, step: number): StepperStepStatus {
 }
 
 export function Stepper({
-  variant = STEPPER_DEFAULT_VARIANT,
-  orientation = 'horizontal',
   size = STEPPER_DEFAULT_SIZE,
   stroke = STEPPER_DEFAULT_STROKE,
+  variant = STEPPER_DEFAULT_VARIANT,
+  orientation = STEPPER_DEFAULT_ORIENTATION,
   step: controlledStep,
-  defaultStep = 0,
+  defaultStep = STEPPER_DEFAULT_STEP,
   onStepChange,
   children,
   className,
@@ -195,7 +205,7 @@ export function Stepper({
       <StepperStepProvider
         key={child.key ?? position}
         index={index}
-        status={resolveStatus(index, playedStep)}
+        status={resolveStatus(index, playedStep, stepCount)}
       >
         {cloneElement(child as ReactElement<{ stroke?: number }>, {
           stroke: props.stroke ?? stroke,

@@ -1,45 +1,41 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --progress-bar-size: 2;
+    --progress-bar-track: var(--color-zinc-200);
+    --progress-bar-border: transparent;
+    --progress-bar-outline: none;
+    --progress-bar-shadow: none;
+  }
+
+  :global([data-theme='dark']) {
+    --progress-bar-track: var(--color-zinc-700);
+    --progress-bar-border: transparent;
+    --progress-bar-outline: none;
+    --progress-bar-shadow: none;
+  }
+}
+
+/* ProgressBar */
 @layer mosuk-ui {
   .progressBar {
     overflow: hidden;
+
+    box-sizing: border-box;
 
     display: block;
 
     width: 100%;
     height: calc(var(--spacing) * var(--progress-bar-size));
 
-    background-color: var(--color-gray-200);
+    background-color: var(--progress-bar-track);
 
+    border: 1px solid transparent;
+    border-color: var(--progress-bar-border);
     border-radius: calc(infinity * 1px);
+    outline: var(--progress-bar-outline);
 
-    &[data-color='default'] {
-      .indicator {
-        background-color: var(--color-gray-400);
-      }
-    }
-
-    &[data-color='primary'] {
-      .indicator {
-        background-color: var(--color-primary-500);
-      }
-    }
-
-    &[data-color='success'] {
-      .indicator {
-        background-color: var(--color-green-500);
-      }
-    }
-
-    &[data-color='warning'] {
-      .indicator {
-        background-color: var(--color-orange-500);
-      }
-    }
-
-    &[data-color='danger'] {
-      .indicator {
-        background-color: var(--color-red-500);
-      }
-    }
+    box-shadow: var(--progress-bar-shadow);
 
     &[data-loading] {
       .indicator {
@@ -63,7 +59,75 @@
       transition: width 500ms ease;
     }
   }
+}
 
+/* Variant */
+@layer mosuk-ui {
+  .progressBar {
+    &[data-variant='primary'] {
+      --progress-bar-track: var(--color-zinc-200);
+      --progress-bar-border: transparent;
+      --progress-bar-outline: none;
+      --progress-bar-shadow: none;
+    }
+
+    &[data-variant='secondary'] {
+      --progress-bar-track: var(--color-zinc-100);
+      --progress-bar-border: transparent;
+      --progress-bar-outline: none;
+      --progress-bar-shadow: none;
+    }
+
+    &[data-variant='tertiary'] {
+      --progress-bar-track: var(--color-zinc-50);
+      --progress-bar-border: transparent;
+      --progress-bar-outline: none;
+      --progress-bar-shadow: none;
+    }
+
+    &[data-variant='outline'] {
+      --progress-bar-track: transparent;
+      --progress-bar-border: var(--color-zinc-200);
+      --progress-bar-outline: none;
+      --progress-bar-shadow: none;
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .progressBar {
+      &[data-variant='primary'] {
+        --progress-bar-track: var(--color-zinc-700);
+        --progress-bar-border: transparent;
+        --progress-bar-outline: none;
+        --progress-bar-shadow: none;
+      }
+
+      &[data-variant='secondary'] {
+        --progress-bar-track: var(--color-zinc-800);
+        --progress-bar-border: transparent;
+        --progress-bar-outline: none;
+        --progress-bar-shadow: none;
+      }
+
+      &[data-variant='tertiary'] {
+        --progress-bar-track: var(--color-zinc-900);
+        --progress-bar-border: transparent;
+        --progress-bar-outline: none;
+        --progress-bar-shadow: none;
+      }
+
+      &[data-variant='outline'] {
+        --progress-bar-track: transparent;
+        --progress-bar-border: var(--color-zinc-700);
+        --progress-bar-outline: none;
+        --progress-bar-shadow: none;
+      }
+    }
+  }
+}
+
+/* Animation */
+@layer mosuk-ui {
   @keyframes mosuk-progress-bar-indeterminate {
     from {
       transform: translateX(-60%);

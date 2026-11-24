@@ -16,7 +16,7 @@ Rule: `.cursor/rules/integrations.mdc`
 - [ ] SDK script/context → providers/{hyphenated-feature}/ (index.ts + .partials/)
 - [ ] Нет src/integrations/ — только обычные слои
 - [ ] Provider: 4-file pattern в .partials/ (см. providers skill)
-- [ ] Component: как otp/drawer; @layer mosuk-ui
+- [ ] Component: как input-otp/drawer; @layer mosuk-ui
 - [ ] Export: index.ts + namespace; package subpath в src/package.json
 ```
 
@@ -24,8 +24,8 @@ Rule: `.cursor/rules/integrations.mdc`
 
 | Что | Пример |
 | --- | ------ |
-| Yandex Maps UI | `src/components/yandex-maps/` |
-| Yandex Maps SDK | `src/providers/yandex-maps/` |
+| Yandex Maps UI | `src/blocks/yandex-map/` |
+| Yandex Maps SDK | `src/providers/yandex-map/` |
 | Yandex Metrika SDK | `src/providers/yandex-metrika/` |
 | T-Bank Terminal UI | `src/components/tbank-terminal/` |
 | T-Bank SDK | `src/providers/tbank/` |
@@ -34,6 +34,6 @@ Rule: `.cursor/rules/integrations.mdc`
 
 | Pattern | Path |
 | ------- | ---- |
-| UI + compound | `src/components/yandex-maps/` |
+| UI + compound | `src/blocks/yandex-map/` |
 | Provider only | `src/providers/yandex-metrika/` |
 | UI + provider pair | `src/components/tbank-terminal/` + `src/providers/tbank/` |

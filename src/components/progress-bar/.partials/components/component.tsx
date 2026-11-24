@@ -1,9 +1,10 @@
 import { ProgressBarProps } from '@/components/progress-bar/.partials/components/component.interface';
 import {
-  PROGRESS_BAR_DEFAULT_COLOR,
+  PROGRESS_BAR_DEFAULT_IS_LOADING,
   PROGRESS_BAR_DEFAULT_MAX,
   PROGRESS_BAR_DEFAULT_MIN,
   PROGRESS_BAR_DEFAULT_SIZE,
+  PROGRESS_BAR_DEFAULT_VARIANT,
 } from '@/components/progress-bar/.partials/constants/component.constants';
 import styles from '@/components/progress-bar/.partials/styles/component.module.css';
 import classNames from 'classnames';
@@ -20,11 +21,11 @@ function progressBarPercent(value: number, min: number, max: number) {
 
 export function ProgressBar({
   size = PROGRESS_BAR_DEFAULT_SIZE,
-  color = PROGRESS_BAR_DEFAULT_COLOR,
-  isLoading = false,
+  variant = PROGRESS_BAR_DEFAULT_VARIANT,
   value = PROGRESS_BAR_DEFAULT_MIN,
   min = PROGRESS_BAR_DEFAULT_MIN,
   max = PROGRESS_BAR_DEFAULT_MAX,
+  isLoading = PROGRESS_BAR_DEFAULT_IS_LOADING,
   className,
   style,
   children,
@@ -41,7 +42,7 @@ export function ProgressBar({
       aria-valuemax={max}
       aria-valuenow={isLoading ? undefined : value}
       data-size={size}
-      data-color={color}
+      data-variant={variant}
       data-min={min}
       data-max={max}
       data-value={isLoading ? undefined : value}

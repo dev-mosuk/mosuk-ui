@@ -1,3 +1,32 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --toggle-bg: transparent;
+    --toggle-border: transparent;
+    --toggle-padding: 0px;
+    --toggle-radius: calc(infinity * 1px);
+    --toggle-color: var(--color-black);
+    --toggle-active-color: var(--color-primary-500);
+    --toggle-indicator-bg: var(--color-primary-100);
+    --toggle-indicator-border: transparent;
+    --toggle-indicator-shadow: 0 0 #0000;
+    --toggle-indicator-radius: calc(infinity * 1px);
+  }
+
+  :global([data-theme='dark']) {
+    --toggle-bg: transparent;
+    --toggle-border: transparent;
+    --toggle-color: var(--color-zinc-100);
+    --toggle-active-color: var(--color-primary-400);
+    --toggle-indicator-bg: color-mix(in oklab,
+        var(--color-primary-500) 35%,
+        var(--color-zinc-800));
+    --toggle-indicator-border: transparent;
+    --toggle-indicator-shadow: 0 0 #0000;
+  }
+}
+
+/* Toggle */
 @layer mosuk-ui {
   .toggle {
     position: relative;
@@ -5,8 +34,17 @@
 
     display: flex;
     flex-direction: row;
-    align-items: center;
     gap: calc(var(--spacing) * 1);
+    align-items: center;
+
+    box-sizing: border-box;
+
+    padding: var(--toggle-padding);
+
+    background-color: var(--toggle-bg);
+
+    border: 1px solid var(--toggle-border);
+    border-radius: var(--toggle-radius);
 
     &::-webkit-scrollbar {
       display: none;
@@ -24,6 +62,12 @@
 
       flex-shrink: 0;
 
+      color: var(--toggle-color);
+
+      --button-radius: var(--toggle-radius);
+
+      border-radius: var(--toggle-radius);
+
       -webkit-tap-highlight-color: transparent;
 
       &:is(:hover, :active),
@@ -32,36 +76,56 @@
       }
 
       &[data-active] {
-        color: var(--color-primary-500);
+        color: var(--toggle-active-color);
 
         background-color: transparent;
 
         & :where(svg) {
-          color: var(--color-primary-500);
+          color: var(--toggle-active-color);
         }
+      }
+
+      &:disabled,
+      &[data-disabled],
+      &[aria-disabled='true'] {
+        opacity: 50%;
+
+        pointer-events: none;
+      }
+
+      & :where(svg) {
+        color: currentColor;
       }
     }
 
     .indicator {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: var(--active-tab-top, 0);
+      left: var(--active-tab-left, 0);
       z-index: -1;
+
+      box-sizing: border-box;
 
       width: var(--active-tab-width);
       height: var(--active-tab-height);
 
-      background-color: var(--color-primary-100);
+      background-color: var(--toggle-indicator-bg);
 
-      border-radius: calc(infinity * 1px);
+      border: 1px solid var(--toggle-indicator-border);
+      border-radius: var(--toggle-indicator-radius);
+
+      box-shadow: var(--toggle-indicator-shadow);
 
       opacity: 1;
 
-      translate: var(--active-tab-left) var(--active-tab-top);
-
       pointer-events: none;
 
-      transition: all 200ms ease-in-out;
+      transition:
+        top 200ms ease-in-out,
+        left 200ms ease-in-out,
+        width 200ms ease-in-out,
+        height 200ms ease-in-out,
+        opacity 200ms ease-in-out;
 
       &.inactive {
         opacity: 0;
@@ -75,35 +139,116 @@
       flex-direction: row;
       align-items: center;
 
-      width: 100%;
-      height: var(--active-tab-height);
+      width: fit-content;
+      max-width: 100%;
+      height: fit-content;
 
       .button {
         width: fit-content;
         min-width: fit-content;
-        height: 100%;
-        max-height: 100%;
+        height: auto;
 
         scroll-margin-inline: calc(var(--spacing) * 48);
       }
     }
 
     &[data-orientation='vertical'] {
+      --toggle-radius: var(--radius-2xl);
+      --toggle-indicator-radius: calc(var(--radius-2xl) - var(--toggle-padding));
+
       overflow-x: hidden;
       overflow-y: auto;
 
       flex-direction: column;
       align-items: stretch;
 
+      width: fit-content;
       height: auto;
       min-height: calc(var(--spacing) * 8);
 
       .button {
+        --button-radius: var(--toggle-radius);
+
         width: 100%;
-        min-height: fit-content;
-        height: fit-content;
 
         scroll-margin-block: calc(var(--spacing) * 48);
+      }
+    }
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .toggle {
+    &[data-variant='primary'] {
+      --toggle-bg: transparent;
+      --toggle-border: transparent;
+      --toggle-color: var(--color-black);
+      --toggle-active-color: var(--color-primary-500);
+      --toggle-indicator-bg: var(--color-primary-100);
+      --toggle-indicator-border: transparent;
+      --toggle-indicator-shadow: 0 0 #0000;
+    }
+
+    &[data-variant='secondary'] {
+      --toggle-bg: transparent;
+      --toggle-border: transparent;
+      --toggle-color: var(--color-black);
+      --toggle-active-color: var(--color-black);
+      --toggle-indicator-bg: var(--color-zinc-100);
+      --toggle-indicator-border: transparent;
+      --toggle-indicator-shadow: 0 0 #0000;
+    }
+
+    &[data-variant='tertiary'] {
+      --toggle-bg: transparent;
+      --toggle-border: transparent;
+      --toggle-color: var(--color-black);
+      --toggle-active-color: var(--color-black);
+      --toggle-indicator-bg: var(--color-zinc-50);
+      --toggle-indicator-border: transparent;
+      --toggle-indicator-shadow: 0 0 #0000;
+    }
+
+    &[data-variant='outline'] {
+      --toggle-bg: transparent;
+      --toggle-border: transparent;
+      --toggle-color: var(--color-black);
+      --toggle-active-color: var(--color-black);
+      --toggle-indicator-bg: transparent;
+      --toggle-indicator-border: var(--color-zinc-200);
+      --toggle-indicator-shadow: 0 0 #0000;
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .toggle {
+      &[data-variant='primary'] {
+        --toggle-color: var(--color-white);
+        --toggle-active-color: var(--color-primary-400);
+        --toggle-indicator-bg: var(--color-primary-900);
+        --toggle-indicator-border: transparent;
+      }
+
+      &[data-variant='secondary'] {
+        --toggle-color: var(--color-white);
+        --toggle-active-color: var(--color-white);
+        --toggle-indicator-bg: var(--color-zinc-800);
+        --toggle-indicator-border: transparent;
+      }
+
+      &[data-variant='tertiary'] {
+        --toggle-color: var(--color-white);
+        --toggle-active-color: var(--color-white);
+        --toggle-indicator-bg: var(--color-zinc-900);
+        --toggle-indicator-border: transparent;
+      }
+
+      &[data-variant='outline'] {
+        --toggle-color: var(--color-white);
+        --toggle-active-color: var(--color-white);
+        --toggle-indicator-bg: transparent;
+        --toggle-indicator-border: var(--color-zinc-700);
       }
     }
   }

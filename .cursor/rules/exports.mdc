@@ -16,43 +16,43 @@ alwaysApply: false
 └── .partials/…
 ```
 
-Потребитель: `mosuk-ui/components/otp` (без `/component`).
+Потребитель: `mosuk-ui/components/input-otp` или `mosuk-ui/blocks/breadcrumbs` (без `/component`).
 
 ## Compound component
 
 ```ts
-import { OTP as Component } from './.partials/components/component';
-import { OTPProps } from './.partials/components/component.interface';
-import { OTPInput } from './.partials/components/input/component';
+import { InputOtp as Component } from './.partials/components/component';
+import { InputOtpProps } from './.partials/components/component.interface';
+import { InputOtpInput } from './.partials/components/input/component';
 
-export const OTP = Object.assign(Component, {
-  Input: OTPInput,
+export const InputOtp = Object.assign(Component, {
+  Input: InputOtpInput,
 });
 ```
 
 - Root — default callable component
 - Sub-parts — свойства на том же объекте
-- Deep compound: вложенный `Object.assign` (`Dropdown.Overview.Popup`). Файлы при этом плоские: `.partials/components/overview-popup/` — эталон `src/components/dropdown/index.ts`
+- Deep compound: вложенный `Object.assign` (`Popover.Overview.Popup`). Файлы при этом плоские: `.partials/components/overview-popup/` — эталон `src/components/popover/index.ts`
 
 ## Namespace types
 
 ```ts
-export namespace OTP {
-  export type Props = OTPProps;
+export namespace InputOtp {
+  export type Props = InputOtpProps;
 
   export namespace Input {
-    export type Props = OTPInputProps;
+    export type Props = InputOtpInputProps;
   }
 }
 ```
 
 - Зеркалит структуру compound
-- Потребитель: `OTP.Props`, `OTP.Input.Props`
+- Потребитель: `InputOtp.Props`, `InputOtp.Input.Props`
 - Импорт типов props **не** из `.partials/` — только через namespace или re-export в index
 
 ## Skeleton
 
-Feature `{Name}Skeleton` не экспортируем. Единственный product skeleton — compound на Yandex Maps (`YandexMap.Skeleton`, `YandexMap.Default.Scheme.LayerSkeleton`). Shimmer-примитив — `mosuk-ui/components/skeleton`.
+Feature `{Name}Skeleton` не экспортируем. Shimmer-примитив — `mosuk-ui/components/skeleton`.
 
 ## Provider export
 

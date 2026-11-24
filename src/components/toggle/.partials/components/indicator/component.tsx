@@ -25,28 +25,12 @@ function readLayout(
 ): IndicatorLayout {
   const listRect = list.getBoundingClientRect();
   const tabRect = tab.getBoundingClientRect();
-  const listWidth = list.offsetWidth || listRect.width;
-  const listHeight = list.offsetHeight || listRect.height;
-  const scaleX = listWidth > 0 ? listRect.width / listWidth : 1;
-  const scaleY = listHeight > 0 ? listRect.height / listHeight : 1;
-
-  let left = tab.offsetLeft;
-  let top = tab.offsetTop;
-
-  if (Math.abs(scaleX) > Number.EPSILON && Math.abs(scaleY) > Number.EPSILON) {
-    left =
-      (tabRect.left - listRect.left) / scaleX +
-      list.scrollLeft -
-      list.clientLeft;
-    top =
-      (tabRect.top - listRect.top) / scaleY + list.scrollTop - list.clientTop;
-  }
 
   return {
-    left,
-    top,
-    width: tab.offsetWidth,
-    height: tab.offsetHeight,
+    left: tabRect.left - listRect.left - list.clientLeft + list.scrollLeft,
+    top: tabRect.top - listRect.top - list.clientTop + list.scrollTop,
+    width: tabRect.width,
+    height: tabRect.height,
   };
 }
 

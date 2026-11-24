@@ -2,12 +2,12 @@ import { ProgressBar as Component } from '@/components/progress-bar/.partials/co
 import { ProgressBarProps } from '@/components/progress-bar/.partials/components/component.interface';
 import { ProgressBarIndicator } from '@/components/progress-bar/.partials/components/indicator/component';
 import { ProgressBarIndicatorProps } from '@/components/progress-bar/.partials/components/indicator/component.interface';
-import { ProgressBarColor } from '@/components/progress-bar/.partials/enums/component.enums';
+import { ProgressBarVariant } from '@/components/progress-bar/.partials/enums/component.enums';
 
 export const ProgressBar = Object.assign(Component, {
   Indicator: ProgressBarIndicator,
   ENUMS: {
-    Color: ProgressBarColor,
+    Variant: ProgressBarVariant,
   },
 });
 
