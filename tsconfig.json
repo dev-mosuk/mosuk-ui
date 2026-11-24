@@ -17,6 +17,6 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src/**/*", "tsconfig.ts", "tsconfig.build.ts"],
+  "include": ["src/**/*", "helpers/**/*"],
   "exclude": ["node_modules", "dist"]
 }

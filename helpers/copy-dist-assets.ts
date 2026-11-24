@@ -33,6 +33,17 @@ type JsExport = {
 type CssExport = { style: string; default: string };
 type PackageExport = JsExport | CssExport;
 
+const PUBLISH_PACKAGE_FIELDS = [
+  'name',
+  'version',
+  'author',
+  'license',
+  'type',
+  'dependencies',
+  'peerDependencies',
+  'peerDependenciesMeta',
+] as const;
+
 export async function updateExports(root = process.cwd()) {
   const distDir = path.join(root, 'dist');
   const pkgDistPath = path.join(distDir, 'package.json');
@@ -110,17 +121,43 @@ export async function copyDistCss(root = process.cwd()) {
   await copyCssModules(srcDir, distDir);
 }
 
-export async function copyDistAssets(root = process.cwd()) {
-  await copyDistCss(root);
-
-  const srcDir = path.join(root, 'src');
+export async function writeDistPackage(root = process.cwd()) {
   const distDir = path.join(root, 'dist');
+  const rootPkgPath = path.join(root, 'package.json');
+  const rootPkg = JSON.parse(await fs.readFile(rootPkgPath, 'utf-8')) as Record<
+    string,
+    unknown
+  >;
 
-  await copy(
-    path.join(srcDir, 'package.json'),
+  const distPkg: Record<string, unknown> = {};
+  for (const field of PUBLISH_PACKAGE_FIELDS) {
+    if (rootPkg[field] !== undefined) {
+      distPkg[field] = rootPkg[field];
+    }
+  }
+
+  await fs.mkdir(distDir, { recursive: true });
+  await fs.writeFile(
     path.join(distDir, 'package.json'),
+    JSON.stringify(distPkg, null, 2) + '\n',
+    'utf-8',
   );
-  await copy(path.join(srcDir, 'LICENSE'), path.join(distDir, 'LICENSE'));
+}
+
+export async function copyDistMetadata(root = process.cwd()) {
+  const distDir = path.join(root, 'dist');
+  const licenseSrc = path.join(root, 'LICENSE');
+  const typesSrc = path.join(root, 'src', 'types');
+
+  await writeDistPackage(root);
+
+  if (await exists(licenseSrc)) {
+    await copy(licenseSrc, path.join(distDir, 'LICENSE'));
+  }
+
+  if (await exists(typesSrc)) {
+    await copy(typesSrc, path.join(distDir, 'types'));
+  }
 }
 
 export async function assertNoAliasImports(root = process.cwd()) {
@@ -153,10 +190,4 @@ export async function assertNoAliasImports(root = process.cwd()) {
         .join('\n')}`,
     );
   }
-}
-
-export async function buildDistAssets(root = process.cwd()) {
-  await copyDistAssets(root);
-  await updateExports(root);
-  await assertNoAliasImports(root);
 }

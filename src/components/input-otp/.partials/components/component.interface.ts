@@ -1,5 +1,5 @@
 import type { Input } from '@/components/input';
-import type { OTPFieldPreview } from '@base-ui/react/otp-field';
+import type { OTPField } from '@base-ui/react/otp-field';
 
 type InputOtpOwnProps = {
   size?: Input.Props['size'];
@@ -10,7 +10,4 @@ type InputOtpOwnProps = {
 };
 
 export type InputOtpProps = InputOtpOwnProps &
-  Omit<
-    OTPFieldPreview.Root.Props,
-    'disabled' | 'readOnly' | 'required' | 'size'
-  >;
+  Omit<OTPField.Root.Props, 'disabled' | 'readOnly' | 'required' | 'size'>;

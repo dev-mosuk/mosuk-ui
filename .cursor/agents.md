@@ -7,9 +7,9 @@
 
 ## Стек
 
-React 19 · TypeScript · CSS Layers · @base-ui/react · classnames · lucide-react · mosuk-icons
+React 19 · TypeScript · CSS Layers · @base-ui/react · classnames · lucide-react
 
-Peer: Next.js, framer-motion · Dev: Tailwind v4 (`@import "tailwindcss"` в `index.css`)
+Peer: react, react-dom, recharts (optional), tailwindcss · Dev: Tailwind v4 (`@import "tailwindcss"` в `index.css`)
 
 ---
 

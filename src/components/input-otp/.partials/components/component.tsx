@@ -5,7 +5,7 @@ import {
   INPUT_OTP_DEFAULT_VARIANT,
 } from '@/components/input-otp/.partials/constants/component.constants';
 import styles from '@/components/input-otp/.partials/styles/component.module.css';
-import { OTPFieldPreview as OTPField } from '@base-ui/react/otp-field';
+import { OTPField } from '@base-ui/react/otp-field';
 import classNames from 'classnames';
 import React, {
   Children,

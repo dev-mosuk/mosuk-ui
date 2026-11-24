@@ -80,18 +80,18 @@ export namespace ToastsService {
 
 ## package.json exports (build)
 
-`tsconfig.build.ts` генерирует `exports` в `dist/package.json` по наличию `index.js`:
+`helpers/build-dist.ts` собирает `dist/package.json` из корневого `package.json` (name/version/deps/peers) и генерирует `exports` по наличию `index.js`:
 
 - Каждая папка с `index.ts` → отдельный subpath export
 - `./index.css` — если есть в dist
-- **Новый feature** — добавить `index.ts`, build подхватит автоматически
+- **Новый feature** — добавить `index.ts`, `npm run build` подхватит автоматически
 
 ### Потребление в Next.js (CRM, npm link)
 
 - **Публиковать и линковать `dist/`**, не `src/`: `npm run link:dist` → в CRM `npm link mosuk-ui`
 - `src/` с `@/` импортами — только для разработки библиотеки; Next.js потребителя резолвит `@/` в **свой** `src/`
-- Watch при link: `npm run build:watch` в `.mosuk-ui/`
-- `src/package.json` exports → `index.ts` (генерирует `tsconfig.ts`); `dist/package.json` exports → `index.js` (после `tsc-alias`)
+- Watch при link: `npm run build:watch`
+- Deps/peers — только корневой `package.json`; `dist/package.json` + exports — артефакт build
 
 ## Правила
 

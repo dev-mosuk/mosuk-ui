@@ -1,7 +1,7 @@
 import { Input } from '@/components/input';
 import type { InputOtpInputProps } from '@/components/input-otp/.partials/components/input/component.interface';
 import styles from '@/components/input-otp/.partials/styles/component.module.css';
-import { OTPFieldPreview as OTPField } from '@base-ui/react/otp-field';
+import { OTPField } from '@base-ui/react/otp-field';
 import classNames from 'classnames';
 import React from 'react';
 

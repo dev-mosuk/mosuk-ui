@@ -49,7 +49,7 @@ src/
 npm run build
 ```
 
-Цепочка: `tsc` → `tsc-alias` (переписывает `@/` в относительные пути) → генерация `dist/package.json` и exports.
+Цепочка: `tsc` → копирование CSS в `dist/` → `tsc-alias` (переписывает `@/` в относительные пути) → `dist/package.json` из корневого `package.json` + генерация exports.
 
 **Watch при параллельной работе с CRM** — в отдельном терминале, пока в CRM крутится `next dev`:
 
@@ -111,14 +111,12 @@ Can't resolve '@/components/button/component/component'
 Import map: aliased to relative './src/components/...' inside of [project]/
 ```
 
-`src/package.json` и exports на `.ts` — для генерации exports (`npm run watch`) и разработки **внутри** mosuk-ui, **не** для потребителей Next.js.
-
 | Линковка | Результат |
 | -------- | --------- |
 | `dist/` (`npm run link:dist`) | OK — в `.js` относительные импорты |
-| `src/` (`cd src && npm link`) | Ошибка резолва `@/` в Next.js CRM |
+| `src/` | Ошибка резолва `@/` у потребителя |
 
-**Не линковать `src/`.**
+**Не линковать `src/`.** Источник deps/peers — корневой `package.json`; `dist/package.json` собирается при `npm run build`.
 
 ### 5.4. Импорты
 
@@ -137,10 +135,10 @@ Import map: aliased to relative './src/components/...' inside of [project]/
 
 | Script | Назначение |
 | ------ | ---------- |
-| `npm run build` | Сборка `dist/`: tsc + tsc-alias + генерация exports |
+| `npm run build` | Сборка `dist/`: tsc + CSS + tsc-alias + package.json/exports |
 | `npm run build:watch` | Watch-сборка для разработки вместе с CRM |
 | `npm run link:dist` | `build` + `npm link` из `dist/` |
-| `npm run watch` | Генерация exports в `src/` (не для CRM link) |
+| `npm run watch:assets` | Watch только CSS → `dist/` |
 | `npm run lint` | ESLint по `src/` |
 | `npm run migrate:imports -- --dry-run` | Превью миграции relative → `@/` |
 | `npm run migrate:imports -- --apply` | Применить миграцию импортов |

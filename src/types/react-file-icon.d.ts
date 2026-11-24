@@ -1,8 +1,3 @@
-declare module '*.css' {
-  const styles: { [className: string]: string };
-  export default styles;
-}
-
 declare module 'react-file-icon' {
   import type { ComponentType, CSSProperties } from 'react';
 

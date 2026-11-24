@@ -17,7 +17,7 @@ Rule: `.cursor/rules/integrations.mdc`
 - [ ] Нет src/integrations/ — только обычные слои
 - [ ] Provider: 4-file pattern в .partials/ (см. providers skill)
 - [ ] Component: как input-otp/drawer; @layer mosuk-ui
-- [ ] Export: index.ts + namespace; package subpath в src/package.json
+- [ ] Export: index.ts + namespace; `npm run build` добавит subpath в dist/package.json
 ```
 
 ## Куда класть
