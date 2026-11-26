@@ -13,7 +13,4 @@ export function BarChartXAxis({
   return <XAxis hide={isHidden} {...rest} />;
 }
 
-BarChartXAxis.displayName = XAxis.displayName ?? 'XAxis';
-BarChartXAxis.defaultProps = {
-  ...XAxis.defaultProps,
-};
+BarChartXAxis.displayName = 'XAxis';

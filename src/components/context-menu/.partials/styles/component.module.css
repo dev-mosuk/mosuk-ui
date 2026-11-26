@@ -7,7 +7,7 @@
     --context-menu-border: var(--color-zinc-100);
     --context-menu-radius: var(--radius-xl);
     --context-menu-shadow: 0 25px 50px -12px
-      color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+      color-mix(in oklab, var(--color-black) 15%, transparent);
 
     --context-menu-separator: var(--color-zinc-100);
   }
@@ -95,7 +95,7 @@
       --context-menu-color: var(--color-black);
       --context-menu-border: var(--color-zinc-100);
       --context-menu-shadow: 0 25px 50px -12px
-        color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+        color-mix(in oklab, var(--color-black) 15%, transparent);
       --context-menu-separator: var(--color-zinc-100);
     }
 

@@ -3,12 +3,12 @@
     --card-bg: var(--color-white);
     --card-color: var(--color-black);
 
-    --card-border: var(--color-zinc-100);
+    --card-border: transparent;
     --card-radius: min(var(--radius-2xl), 25%);
 
     --card-shadow:
-      0 4px 6px -1px color-mix(in oklab, var(--color-zinc-200) 50%, transparent),
-      0 2px 4px -2px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+      0 4px 6px -1px color-mix(in oklab, var(--color-black) 10%, transparent),
+      0 2px 4px -2px color-mix(in oklab, var(--color-black) 10%, transparent);
 
     --card-press: var(--color-white);
 
@@ -19,7 +19,7 @@
     --card-bg: var(--color-zinc-900);
     --card-color: var(--color-white);
 
-    --card-border: var(--color-zinc-800);
+    --card-border: transparent;
     --card-radius: min(var(--radius-2xl), 25%);
 
     --card-shadow: 0 0 #0000;
@@ -82,23 +82,23 @@
     &[data-variant='primary'] {
       --card-bg: var(--color-white);
       --card-color: var(--color-black);
-      --card-border: var(--color-zinc-100);
+      --card-border: transparent;
       --card-shadow:
-        0 4px 6px -1px color-mix(in oklab, var(--color-zinc-200) 50%, transparent),
-        0 2px 4px -2px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+        0 4px 6px -1px color-mix(in oklab, var(--color-black) 10%, transparent),
+        0 2px 4px -2px color-mix(in oklab, var(--color-black) 10%, transparent);
     }
 
     &[data-variant='secondary'] {
       --card-bg: var(--color-zinc-50);
       --card-color: var(--color-black);
-      --card-border: var(--color-zinc-100);
+      --card-border: transparent;
       --card-shadow: 0 0 #0000;
     }
 
     &[data-variant='tertiary'] {
       --card-bg: var(--color-zinc-100);
       --card-color: var(--color-black);
-      --card-border: color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+      --card-border: transparent;
       --card-shadow: 0 0 #0000;
     }
 
@@ -122,21 +122,21 @@
       &[data-variant='primary'] {
         --card-bg: var(--color-zinc-900);
         --card-color: var(--color-white);
-        --card-border: var(--color-zinc-800);
+        --card-border: transparent;
         --card-shadow: 0 0 #0000;
       }
 
       &[data-variant='secondary'] {
         --card-bg: var(--color-zinc-800);
         --card-color: var(--color-white);
-        --card-border: var(--color-zinc-700);
+        --card-border: transparent;
         --card-shadow: 0 0 #0000;
       }
 
       &[data-variant='tertiary'] {
         --card-bg: var(--color-zinc-700);
         --card-color: var(--color-white);
-        --card-border: var(--color-zinc-600);
+        --card-border: transparent;
         --card-shadow: 0 0 #0000;
       }
 
@@ -207,7 +207,7 @@
 @layer mosuk-ui {
   .card {
     &[data-press='scale']:active:not(:disabled):not([data-disabled]) {
-      transform: scale(0.97);
+      transform: scale(calc(1 - var(--action-press-scale-inset) / var(--press-inline-size, 100px)));
     }
 
     &[data-press='highlight']::before {

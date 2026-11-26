@@ -2,23 +2,29 @@
 @layer mosuk-ui {
   :global(:root) {
     --image-bg: var(--color-white);
-    --image-border: var(--color-zinc-100);
-    --image-shadow:
-      0 4px 6px -1px color-mix(in oklab, var(--color-zinc-200) 50%, transparent),
-      0 2px 4px -2px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
-    --image-radius: min(var(--radius-2xl), 25%);
+
+    --image-border: transparent;
+    --image-radius: 0;
+
+    --image-shadow: 0 0 #0000;
+
     --image-dots-color: var(--color-primary-500);
     --image-icon-color: var(--color-zinc-500);
+
     --image-press: var(--color-white);
   }
 
   :global([data-theme='dark']) {
     --image-bg: var(--color-zinc-900);
-    --image-border: var(--color-zinc-800);
+
+    --image-border: transparent;
+    --image-radius: 0;
+
     --image-shadow: 0 0 #0000;
-    --image-radius: min(var(--radius-2xl), 25%);
+
     --image-dots-color: var(--color-primary-500);
     --image-icon-color: var(--color-zinc-400);
+
     --image-press: var(--color-white);
   }
 }
@@ -35,9 +41,13 @@
     width: 100%;
     height: 100%;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     background-color: var(--image-bg);
 
-    border: 1px solid transparent;
+    border: 0;
     border-color: var(--image-border);
     border-radius: var(--image-radius);
 
@@ -62,6 +72,9 @@
     .view {
       position: absolute;
       inset: 0;
+
+      width: 100%;
+      height: 100%;
 
       opacity: 0;
 
@@ -105,11 +118,9 @@
 
       color: var(--image-dots-color);
 
-      background-image: radial-gradient(
-        circle,
-        currentColor var(--dot-size, 0.25px),
-        transparent calc(var(--dot-size, 0.25px) + 0.5px)
-      );
+      background-image: radial-gradient(circle,
+          currentColor var(--dot-size, 0.25px),
+          transparent calc(var(--dot-size, 0.25px) + 0.5px));
       background-position: center;
       background-repeat: repeat;
       background-size:
@@ -125,6 +136,15 @@
         clip-path: none;
       }
     }
+
+    &:disabled,
+    &[aria-disabled='true'],
+    &[data-disabled] {
+      opacity: 0.5;
+
+      cursor: not-allowed;
+      pointer-events: none;
+    }
   }
 }
 
@@ -133,34 +153,37 @@
   .image {
     &[data-variant='primary'] {
       --image-bg: var(--color-white);
-      --image-border: var(--color-zinc-100);
-      --image-shadow:
-        0 4px 6px -1px color-mix(in oklab, var(--color-zinc-200) 50%, transparent),
-        0 2px 4px -2px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+      --image-border: transparent;
+      --image-shadow: 0 0 #0000;
+      --image-radius: 0;
     }
 
     &[data-variant='secondary'] {
       --image-bg: var(--color-zinc-50);
-      --image-border: var(--color-zinc-100);
+      --image-border: transparent;
       --image-shadow: 0 0 #0000;
+      --image-radius: 0;
     }
 
     &[data-variant='tertiary'] {
       --image-bg: var(--color-zinc-100);
-      --image-border: color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+      --image-border: transparent;
       --image-shadow: 0 0 #0000;
+      --image-radius: 0;
     }
 
     &[data-variant='outline'] {
       --image-bg: transparent;
-      --image-border: var(--color-zinc-200);
+      --image-border: transparent;
       --image-shadow: 0 0 #0000;
+      --image-radius: 0;
     }
 
     &[data-variant='transparent'] {
       --image-bg: transparent;
       --image-border: transparent;
       --image-shadow: 0 0 #0000;
+      --image-radius: 0;
     }
   }
 
@@ -168,32 +191,37 @@
     .image {
       &[data-variant='primary'] {
         --image-bg: var(--color-zinc-900);
-        --image-border: var(--color-zinc-800);
+        --image-border: transparent;
         --image-shadow: 0 0 #0000;
+        --image-radius: 0;
       }
 
       &[data-variant='secondary'] {
         --image-bg: var(--color-zinc-800);
-        --image-border: var(--color-zinc-700);
+        --image-border: transparent;
         --image-shadow: 0 0 #0000;
+        --image-radius: 0;
       }
 
       &[data-variant='tertiary'] {
         --image-bg: var(--color-zinc-700);
-        --image-border: var(--color-zinc-600);
+        --image-border: transparent;
         --image-shadow: 0 0 #0000;
+        --image-radius: 0;
       }
 
       &[data-variant='outline'] {
         --image-bg: transparent;
-        --image-border: var(--color-zinc-700);
+        --image-border: transparent;
         --image-shadow: 0 0 #0000;
+        --image-radius: 0;
       }
 
       &[data-variant='transparent'] {
         --image-bg: transparent;
         --image-border: transparent;
         --image-shadow: 0 0 #0000;
+        --image-radius: 0;
       }
     }
   }
@@ -209,14 +237,12 @@
 
       content: '';
 
-      background: linear-gradient(
-        90deg,
-        transparent 0%,
-        transparent 20%,
-        color-mix(in oklab, var(--image-press) 35%, transparent),
-        transparent 80%,
-        transparent 100%
-      );
+      background: linear-gradient(90deg,
+          transparent 0%,
+          transparent 20%,
+          color-mix(in oklab, var(--image-press) 35%, transparent),
+          transparent 80%,
+          transparent 100%);
 
       transform: translateX(-100%) skewX(-20deg);
 
@@ -266,8 +292,13 @@
 /* Press */
 @layer mosuk-ui {
   .image {
-    &[data-press='scale']:active {
-      transform: scale(0.97);
+    &[data-press='scale']:active:not(:disabled):not([data-disabled]) {
+      transform: scale(
+        calc(
+          1 - var(--action-press-scale-inset) /
+            var(--press-inline-size, 100px)
+        )
+      );
     }
 
     &[data-press='highlight']::before {
@@ -287,11 +318,11 @@
       transition: opacity 150ms ease;
     }
 
-    &[data-press='highlight']:hover::before {
+    &[data-press='highlight']:hover:not(:disabled):not([data-disabled])::before {
       opacity: 0.1;
     }
 
-    &[data-press='highlight']:active::before {
+    &[data-press='highlight']:active:not(:disabled):not([data-disabled])::before {
       opacity: 0.18;
     }
 
@@ -320,7 +351,7 @@
         opacity 225ms ease-out;
     }
 
-    &[data-press='ripple']:active:not([data-animation='shimmer'])::after {
+    &[data-press='ripple']:active:not(:disabled):not([data-disabled]):not([data-animation='shimmer'])::after {
       opacity: 0.1;
 
       transform: translate(-50%, -50%) scale(1);
@@ -329,7 +360,7 @@
 
   @media (prefers-reduced-motion: reduce) {
     .image {
-      &[data-press='scale']:active {
+      &[data-press='scale']:active:not(:disabled):not([data-disabled]) {
         transform: none;
       }
 

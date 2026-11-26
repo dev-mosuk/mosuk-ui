@@ -9,10 +9,9 @@ import type {
 export type SwiperNavigationDotProps<C extends ElementType = 'button'> = {
   as?: C;
   ref?: Ref<any>;
-  index: number;
   isActive?: boolean;
-  className?: string;
   style?: CSSProperties;
+  className?: string;
   children?: ReactNode;
 } & Omit<
   ComponentPropsWithoutRef<C>,

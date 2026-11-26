@@ -50,7 +50,7 @@ export namespace Drawer {
   }
 
   export namespace Close {
-    export type Props = DrawerCloseProps;
+    export type Props<C extends ElementType = 'button'> = DrawerCloseProps<C>;
   }
 
   export namespace Viewport {

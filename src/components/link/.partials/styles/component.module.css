@@ -1,0 +1,141 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --link-color: var(--color-primary-500);
+    --link-gap: calc(var(--spacing) * 1);
+  }
+
+  :global([data-theme='dark']) {
+    --link-color: var(--color-primary-400);
+  }
+}
+
+/* Link */
+@layer mosuk-ui {
+  .link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--link-gap);
+
+    color: var(--link-color);
+    text-decoration-line: none;
+    text-underline-offset: 0.15em;
+
+    cursor: pointer;
+
+    transition: color 200ms ease-in-out;
+
+    &[data-underline='none'] {
+      text-decoration-line: none;
+    }
+
+    &[data-underline='hover'] {
+      text-decoration-line: none;
+
+      &:hover {
+        text-decoration-line: underline;
+      }
+    }
+
+    &[data-underline='always'] {
+      text-decoration-line: underline;
+    }
+
+    &[data-disabled] {
+      opacity: 0.5;
+
+      cursor: default;
+      pointer-events: none;
+    }
+  }
+
+  .icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+
+    width: 1em;
+    height: 1em;
+
+    color: currentColor;
+
+    :global(svg) {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .link {
+    &[data-variant='primary'] {
+      --link-color: var(--color-primary-500);
+    }
+
+    &[data-variant='secondary'] {
+      --link-color: var(--color-black);
+    }
+
+    &[data-variant='tertiary'] {
+      --link-color: var(--color-zinc-500);
+    }
+
+    &[data-variant='red'] {
+      --link-color: var(--color-red-500);
+    }
+
+    &[data-variant='green'] {
+      --link-color: var(--color-green-500);
+    }
+
+    &[data-variant='blue'] {
+      --link-color: var(--color-blue-500);
+    }
+
+    &[data-variant='orange'] {
+      --link-color: var(--color-orange-600);
+    }
+
+    &[data-variant='yellow'] {
+      --link-color: var(--color-yellow-600);
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .link {
+      &[data-variant='primary'] {
+        --link-color: var(--color-primary-400);
+      }
+
+      &[data-variant='secondary'] {
+        --link-color: var(--color-white);
+      }
+
+      &[data-variant='tertiary'] {
+        --link-color: var(--color-zinc-400);
+      }
+
+      &[data-variant='red'] {
+        --link-color: var(--color-red-400);
+      }
+
+      &[data-variant='green'] {
+        --link-color: var(--color-green-400);
+      }
+
+      &[data-variant='blue'] {
+        --link-color: var(--color-blue-400);
+      }
+
+      &[data-variant='orange'] {
+        --link-color: var(--color-orange-500);
+      }
+
+      &[data-variant='yellow'] {
+        --link-color: var(--color-yellow-500);
+      }
+    }
+  }
+}

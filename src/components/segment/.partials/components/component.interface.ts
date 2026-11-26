@@ -1,9 +1,15 @@
 import type { SegmentVariant } from '@/components/segment/.partials/enums/component.enums';
-import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import type { PropsOf } from '@/types/props-of';
+import type {
+  CSSProperties,
+  MouseEventHandler,
+  ReactNode,
+  Ref,
+} from 'react';
 
 export type SegmentOrientation = 'horizontal' | 'vertical';
 
-export type SegmentProps<C extends ElementType = 'div'> = {
+export type SegmentProps<C = 'div'> = {
   as?: C;
   ref?: Ref<any>;
   size?: number;
@@ -14,8 +20,12 @@ export type SegmentProps<C extends ElementType = 'div'> = {
   value?: any | null;
   defaultValue?: any | null;
   onChange?: (value: any) => void;
+  className?: string;
+  style?: CSSProperties;
+  onClickCapture?: MouseEventHandler<any>;
+  children?: ReactNode;
 } & Omit<
-  ComponentPropsWithoutRef<C>,
+  PropsOf<C>,
   | 'as'
   | 'ref'
   | 'value'
@@ -26,4 +36,8 @@ export type SegmentProps<C extends ElementType = 'div'> = {
   | 'variant'
   | 'activateOnFocus'
   | 'loopFocus'
+  | 'className'
+  | 'style'
+  | 'onClickCapture'
+  | 'children'
 >;

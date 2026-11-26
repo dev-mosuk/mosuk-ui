@@ -5,7 +5,6 @@ import {
   BUTTON_DEFAULT_FORMAT,
   BUTTON_DEFAULT_IS_ACTIVE,
   BUTTON_DEFAULT_IS_LOADING,
-  BUTTON_DEFAULT_IS_PENDING,
   BUTTON_DEFAULT_PRESS,
   BUTTON_DEFAULT_SIZE,
   BUTTON_DEFAULT_TYPE,
@@ -25,7 +24,6 @@ export function Button<C = 'button'>({
   press = BUTTON_DEFAULT_PRESS,
   type = BUTTON_DEFAULT_TYPE,
   isDisabled,
-  isPending = BUTTON_DEFAULT_IS_PENDING,
   isLoading = BUTTON_DEFAULT_IS_LOADING,
   isActive = BUTTON_DEFAULT_IS_ACTIVE,
   className,
@@ -40,7 +38,8 @@ export function Button<C = 'button'>({
   const Component = (as ?? BUTTON_DEFAULT_AS) as ElementType;
   const pressMode = press === false ? ButtonPress.None : press;
   const needsRippleCoords = pressMode === ButtonPress.Ripple;
-  const locked = Boolean(isDisabled || isPending || isLoading);
+  const needsInlineSize = pressMode === ButtonPress.Scale;
+  const locked = Boolean(isDisabled || isLoading);
   const isNativeButton = (as ?? BUTTON_DEFAULT_AS) === BUTTON_DEFAULT_AS;
   const hasDataActive =
     isActive || (dataActiveAttr !== undefined && dataActiveAttr !== false);
@@ -54,7 +53,7 @@ export function Button<C = 'button'>({
       data-variant={variant}
       data-size={size}
       data-format={format}
-      data-pending={isPending || undefined}
+      data-disabled={isDisabled || undefined}
       data-loading={isLoading || undefined}
       data-active={hasDataActive ? true : undefined}
       data-press={pressMode}
@@ -66,16 +65,26 @@ export function Button<C = 'button'>({
         } as CSSProperties
       }
       onPointerDown={(event: React.PointerEvent<HTMLElement>) => {
-        if (needsRippleCoords) {
+        if ((needsRippleCoords || needsInlineSize) && !locked) {
           const rect = event.currentTarget.getBoundingClientRect();
-          event.currentTarget.style.setProperty(
-            '--press-x',
-            `${event.clientX - rect.left}px`,
-          );
-          event.currentTarget.style.setProperty(
-            '--press-y',
-            `${event.clientY - rect.top}px`,
-          );
+
+          if (needsInlineSize) {
+            event.currentTarget.style.setProperty(
+              '--press-inline-size',
+              `${rect.width}px`,
+            );
+          }
+
+          if (needsRippleCoords) {
+            event.currentTarget.style.setProperty(
+              '--press-x',
+              `${event.clientX - rect.left}px`,
+            );
+            event.currentTarget.style.setProperty(
+              '--press-y',
+              `${event.clientY - rect.top}px`,
+            );
+          }
         }
 
         onPointerDown?.(event as never);

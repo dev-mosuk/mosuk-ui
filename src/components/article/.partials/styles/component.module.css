@@ -1,0 +1,32 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --article-gap: calc(var(--spacing) * 2);
+  }
+}
+
+/* Article */
+@layer mosuk-ui {
+  .article {
+    display: flex;
+    gap: var(--article-gap);
+
+    width: 100%;
+
+    &[data-orientation='horizontal'] {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    &[data-orientation='vertical'] {
+      flex-direction: column;
+    }
+
+    &[data-disabled] {
+      opacity: 0.5;
+
+      pointer-events: none;
+    }
+  }
+}

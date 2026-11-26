@@ -21,7 +21,7 @@ export function ToastsProvider({ children }: ToastsProviderProps) {
   const toast = useMemo<ToastsApi>(
     () => ({
       default: toastsService.default.bind(toastsService) as ToastsApi['default'],
-      accent: toastsService.accent.bind(toastsService) as ToastsApi['accent'],
+      primary: toastsService.primary.bind(toastsService) as ToastsApi['primary'],
       success: toastsService.success.bind(toastsService) as ToastsApi['success'],
       warning: toastsService.warning.bind(toastsService) as ToastsApi['warning'],
       danger: toastsService.danger.bind(toastsService) as ToastsApi['danger'],

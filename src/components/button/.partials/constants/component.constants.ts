@@ -12,6 +12,5 @@ export const BUTTON_DEFAULT_PRESS = ButtonPress.None;
 export const BUTTON_DEFAULT_ANIMATION = ButtonAnimation.None;
 export const BUTTON_DEFAULT_TYPE = 'button' as const;
 export const BUTTON_DEFAULT_AS = 'button' as const;
-export const BUTTON_DEFAULT_IS_PENDING = false;
 export const BUTTON_DEFAULT_IS_LOADING = false;
 export const BUTTON_DEFAULT_IS_ACTIVE = false;

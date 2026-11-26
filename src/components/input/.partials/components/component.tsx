@@ -52,6 +52,7 @@ export function Input<C extends ElementType = 'input'>({
 
   const pressMode = press === false ? InputPress.None : press;
   const needsRippleCoords = pressMode === InputPress.Ripple;
+  const needsInlineSize = pressMode === InputPress.Scale;
   const hasDataActive =
     isActive || (dataActiveAttr !== undefined && dataActiveAttr !== false);
   const hasDataFocus =
@@ -94,16 +95,26 @@ export function Input<C extends ElementType = 'input'>({
           setIsIosZoomLocked(true);
         }
 
-        if (needsRippleCoords) {
+        if (needsRippleCoords || needsInlineSize) {
           const rect = event.currentTarget.getBoundingClientRect();
-          event.currentTarget.style.setProperty(
-            '--press-x',
-            `${event.clientX - rect.left}px`,
-          );
-          event.currentTarget.style.setProperty(
-            '--press-y',
-            `${event.clientY - rect.top}px`,
-          );
+
+          if (needsInlineSize) {
+            event.currentTarget.style.setProperty(
+              '--press-inline-size',
+              `${rect.width}px`,
+            );
+          }
+
+          if (needsRippleCoords) {
+            event.currentTarget.style.setProperty(
+              '--press-x',
+              `${event.clientX - rect.left}px`,
+            );
+            event.currentTarget.style.setProperty(
+              '--press-y',
+              `${event.clientY - rect.top}px`,
+            );
+          }
         }
 
         onPointerDown?.(event as never);

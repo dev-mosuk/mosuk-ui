@@ -46,6 +46,7 @@ export function Textarea<C extends ElementType = 'textarea'>({
 
   const pressMode = press === false ? TextareaPress.None : press;
   const needsRippleCoords = pressMode === TextareaPress.Ripple;
+  const needsInlineSize = pressMode === TextareaPress.Scale;
 
   const iosZoomLockRef = useRef(false);
   const [isIosZoomLocked, setIsIosZoomLocked] = useState(false);
@@ -84,16 +85,26 @@ export function Textarea<C extends ElementType = 'textarea'>({
           setIsIosZoomLocked(true);
         }
 
-        if (needsRippleCoords) {
+        if (needsRippleCoords || needsInlineSize) {
           const rect = event.currentTarget.getBoundingClientRect();
-          event.currentTarget.style.setProperty(
-            '--press-x',
-            `${event.clientX - rect.left}px`,
-          );
-          event.currentTarget.style.setProperty(
-            '--press-y',
-            `${event.clientY - rect.top}px`,
-          );
+
+          if (needsInlineSize) {
+            event.currentTarget.style.setProperty(
+              '--press-inline-size',
+              `${rect.width}px`,
+            );
+          }
+
+          if (needsRippleCoords) {
+            event.currentTarget.style.setProperty(
+              '--press-x',
+              `${event.clientX - rect.left}px`,
+            );
+            event.currentTarget.style.setProperty(
+              '--press-y',
+              `${event.clientY - rect.top}px`,
+            );
+          }
         }
 
         onPointerDown?.(event as never);

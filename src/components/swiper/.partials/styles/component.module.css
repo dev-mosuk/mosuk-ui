@@ -1,6 +1,7 @@
 @layer mosuk-ui {
   :global(:root) {
     --swiper-pagination-bottom: calc(var(--spacing) * 2);
+    --swiper-pagination-right: calc(var(--spacing) * 2);
 
     --swiper-pagination-bullet-width: calc(var(--spacing) * 1);
     --swiper-pagination-bullet-height: calc(var(--spacing) * 1);
@@ -42,64 +43,8 @@
 @layer mosuk-ui {
   :global(.mosuk-swiper[data-overflow='visible']) {
     overflow: visible;
-  }
 
-  .next,
-  .prev {
-    position: absolute;
-    top: 50%;
-    z-index: 2;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: var(--swiper-nav-size);
-    height: var(--swiper-nav-size);
-    min-width: var(--swiper-nav-size);
-    min-height: var(--swiper-nav-size);
-
-    padding: 0;
-
-    color: var(--swiper-nav-color);
-
-    background-color: var(--swiper-nav-background);
-    backdrop-filter: blur(12px);
-
-    border: none;
-    border-radius: calc(infinity * 1px);
-
-    cursor: pointer;
-    transform: translateY(-50%);
-    transition: background-color 200ms ease-in-out, opacity 200ms ease-in-out;
-
-    & :where(svg) {
-      width: calc(var(--spacing) * 0.425 * 8);
-      height: calc(var(--spacing) * 0.425 * 8);
-      min-width: calc(var(--spacing) * 0.425 * 8);
-      min-height: calc(var(--spacing) * 0.425 * 8);
-
-      color: inherit;
-    }
-
-    &:hover:not(:disabled):not([data-disabled]) {
-      background-color: var(--swiper-nav-background-hover);
-    }
-
-    &:disabled,
-    &[data-disabled] {
-      opacity: 0.5;
-
-      cursor: not-allowed;
-    }
-  }
-
-  .prev {
-    left: calc(var(--spacing) * 2);
-  }
-
-  .next {
-    right: calc(var(--spacing) * 2);
+    position: relative;
   }
 
   .hover {
@@ -118,55 +63,6 @@
       .zone {
         width: 100%;
         height: 100%;
-      }
-    }
-  }
-
-  .navigation {
-    position: absolute;
-    bottom: var(--swiper-pagination-bottom);
-    left: 50%;
-    z-index: 2;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: calc(var(--spacing) * 0.75);
-
-    width: fit-content;
-    height: fit-content;
-
-    padding: calc(var(--spacing) * 1) calc(var(--spacing) * 2);
-
-    background-color: var(--swiper-pagination-background);
-    backdrop-filter: blur(12px);
-
-    border-radius: calc(infinity * 1px);
-
-    transform: translateX(-50%);
-
-    .dot {
-      flex-shrink: 0;
-
-      width: var(--swiper-pagination-bullet-width);
-      height: var(--swiper-pagination-bullet-height);
-
-      padding: 0;
-
-      background: var(--swiper-pagination-bullet-color);
-
-      border: none;
-      border-radius: calc(infinity * 1px);
-
-      cursor: pointer;
-
-      transform: scale(1);
-      transition: all 200ms ease-in-out;
-
-      &[data-active] {
-        width: calc(var(--spacing) * 3);
-
-        background: var(--swiper-pagination-bullet-color-active);
       }
     }
   }

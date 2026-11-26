@@ -1,10 +1,11 @@
 import { TypographyProps } from '@/components/typography/.partials/components/component.interface';
 import {
+  TYPOGRAPHY_DEFAULT_ALIGN,
   TYPOGRAPHY_DEFAULT_ANIMATION,
-  TYPOGRAPHY_DEFAULT_COLOR,
   TYPOGRAPHY_DEFAULT_ELEMENT_BY_TYPE,
   TYPOGRAPHY_DEFAULT_PRESS,
   TYPOGRAPHY_DEFAULT_TYPE,
+  TYPOGRAPHY_DEFAULT_VARIANT,
 } from '@/components/typography/.partials/constants/component.constants';
 import {
   TypographyPress,
@@ -32,7 +33,10 @@ const typeClassName: Record<TypographyType, string> = {
 export function Typography<C extends ElementType = 'p'>({
   as,
   type = TYPOGRAPHY_DEFAULT_TYPE,
-  color = TYPOGRAPHY_DEFAULT_COLOR,
+  align = TYPOGRAPHY_DEFAULT_ALIGN,
+  weight,
+  lineHeight,
+  variant = TYPOGRAPHY_DEFAULT_VARIANT,
   animation = TYPOGRAPHY_DEFAULT_ANIMATION,
   press = TYPOGRAPHY_DEFAULT_PRESS,
   isMuted,
@@ -45,25 +49,39 @@ export function Typography<C extends ElementType = 'p'>({
     TYPOGRAPHY_DEFAULT_ELEMENT_BY_TYPE[resolvedType]) as ElementType;
   const pressMode = press === false ? TypographyPress.None : press;
   const needsRippleCoords = pressMode === TypographyPress.Ripple;
+  const needsInlineSize = pressMode === TypographyPress.Scale;
 
   return (
     <Component
       {...rest}
-      data-color={color}
+      data-variant={variant}
+      data-align={align}
+      data-weight={weight}
+      data-leading={lineHeight}
       data-animation={animation}
       data-press={pressMode}
       data-muted={isMuted || undefined}
       onPointerDown={(event: React.PointerEvent<HTMLElement>) => {
-        if (needsRippleCoords) {
+        if (needsRippleCoords || needsInlineSize) {
           const rect = event.currentTarget.getBoundingClientRect();
-          event.currentTarget.style.setProperty(
-            '--press-x',
-            `${event.clientX - rect.left}px`,
-          );
-          event.currentTarget.style.setProperty(
-            '--press-y',
-            `${event.clientY - rect.top}px`,
-          );
+
+          if (needsInlineSize) {
+            event.currentTarget.style.setProperty(
+              '--press-inline-size',
+              `${rect.width}px`,
+            );
+          }
+
+          if (needsRippleCoords) {
+            event.currentTarget.style.setProperty(
+              '--press-x',
+              `${event.clientX - rect.left}px`,
+            );
+            event.currentTarget.style.setProperty(
+              '--press-y',
+              `${event.clientY - rect.top}px`,
+            );
+          }
         }
 
         onPointerDown?.(event as never);

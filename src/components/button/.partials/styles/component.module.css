@@ -92,23 +92,15 @@
       border-color: var(--button-border-hover);
     }
 
-    &:disabled:not([data-loading]),
-    &[aria-disabled='true']:not([data-loading]),
-    &[data-pending]:not([data-loading]) {
+    &[data-loading],
+    &[data-disabled] {
       opacity: 0.5;
 
       cursor: not-allowed;
       pointer-events: none;
     }
 
-    &[data-loading] {
-      cursor: not-allowed;
-      pointer-events: none;
-    }
-
     &[data-format='icon'] {
-      aspect-ratio: 1 / 1;
-
       width: calc(var(--spacing) * var(--button-size));
       height: calc(var(--spacing) * var(--button-size));
       min-width: calc(var(--spacing) * var(--button-size));
@@ -274,8 +266,8 @@
 /* Press */
 @layer mosuk-ui {
   .button {
-    &[data-press='scale']:active:not(:disabled):not([data-pending]):not([data-loading]) {
-      transform: scale(0.97);
+    &[data-press='scale']:active:not([data-disabled]):not([data-loading]) {
+      transform: scale(calc(1 - var(--action-press-scale-inset) / var(--press-inline-size, 100px)));
     }
 
     &[data-press='highlight']::before {
@@ -296,15 +288,15 @@
       transition: opacity 150ms ease;
     }
 
-    &[data-press='highlight']:hover:not(:disabled):not([data-pending]):not([data-loading])::before {
+    &[data-press='highlight']:hover:not([data-disabled]):not([data-loading])::before {
       opacity: 0.1;
     }
 
-    &[data-press='highlight']:active:not(:disabled):not([data-pending]):not([data-loading])::before {
+    &[data-press='highlight']:active:not([data-disabled]):not([data-loading])::before {
       opacity: 0.18;
     }
 
-    &[data-press='ripple']:not([data-loading]):not([data-animation='shimmer'])::after {
+    &[data-press='ripple']:not([data-disabled]):not([data-loading]):not([data-animation='shimmer'])::after {
       position: absolute;
       top: var(--press-y, 50%);
       left: var(--press-x, 50%);
@@ -329,7 +321,7 @@
         opacity 225ms ease-out;
     }
 
-    &[data-press='ripple']:active:not(:disabled):not([data-pending]):not([data-loading]):not([data-animation='shimmer'])::after {
+    &[data-press='ripple']:active:not([data-disabled]):not([data-loading]):not([data-animation='shimmer'])::after {
       opacity: 0.1;
 
       transform: translate(-50%, -50%) scale(1);
@@ -342,7 +334,7 @@
   .button {
 
     &[data-loading]::after,
-    &[data-animation='shimmer']:not([data-loading])::after {
+    &[data-animation='shimmer']::after {
       position: absolute;
       inset: 0;
       z-index: 1;
@@ -378,7 +370,7 @@
       }
 
       &[data-loading]::after,
-      &[data-animation='shimmer']:not([data-loading])::after {
+      &[data-animation='shimmer']::after {
         animation: none;
 
         opacity: 0.35;

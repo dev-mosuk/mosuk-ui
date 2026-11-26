@@ -11,7 +11,7 @@ export function EmptyComment<C extends ElementType = 'p'>({
     <Typography
       {...rest}
       type={rest.type ?? Typography.ENUMS.Type.P3}
-      color={rest.color ?? Typography.ENUMS.Color.Tertiary}
+      variant={rest.variant ?? Typography.ENUMS.Variant.Tertiary}
       className={classNames(
         'mosuk-empty-comment',
         styles.comment,

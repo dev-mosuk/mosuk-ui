@@ -49,8 +49,8 @@ export interface ToastsApi {
     subject: ReactNode,
     options?: ToastOptionsWithoutSubject,
   ): string | undefined;
-  accent(options: ToastOptions): string | undefined;
-  accent(
+  primary(options: ToastOptions): string | undefined;
+  primary(
     subject: ReactNode,
     options?: ToastOptionsWithoutSubject,
   ): string | undefined;

@@ -55,7 +55,7 @@
 
       :global(.mosuk-button) {
         width: auto;
-        min-width: auto;
+        min-width: calc(var(--spacing) * var(--button-size));
         align-self: stretch;
       }
     }
@@ -74,7 +74,7 @@
         border-radius: 0;
       }
 
-      :global(.mosuk-button[data-press='scale']):active:not(:disabled):not([data-pending]):not([data-loading]) {
+      :global(.mosuk-button[data-press='scale']):active:not([data-disabled]):not([data-loading]) {
         transform: none;
       }
 

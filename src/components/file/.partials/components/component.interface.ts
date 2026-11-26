@@ -3,7 +3,7 @@ import type {
   FilePress,
   FileVariant,
 } from '@/components/file/.partials/enums/component.enums';
-import type { PropsOf } from '@/components/file/.partials/utilities/props-of';
+import type { PropsOf } from '@/types/props-of';
 import type { CSSProperties, PointerEventHandler, ReactNode, Ref } from 'react';
 
 type FileOwnProps<C> = {

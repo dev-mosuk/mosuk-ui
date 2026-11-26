@@ -5,6 +5,7 @@ import { ImageDots } from '@/components/image/.partials/components/dots/componen
 import { ImageDotsProps } from '@/components/image/.partials/components/dots/component.interface';
 import {
   IMAGE_DEFAULT_ANIMATION,
+  IMAGE_DEFAULT_IS_DISABLED,
   IMAGE_DEFAULT_IS_LOADING,
   IMAGE_DEFAULT_PRESS,
   IMAGE_DEFAULT_VARIANT,
@@ -35,6 +36,7 @@ export function Image<C extends ElementType = 'div'>(props: ImageProps<C>) {
 function ImageFrame<C extends ElementType = 'div'>({
   as,
   ref,
+  isDisabled = IMAGE_DEFAULT_IS_DISABLED,
   isLoading: _isLoading,
   size,
   variant = IMAGE_DEFAULT_VARIANT,
@@ -50,6 +52,9 @@ function ImageFrame<C extends ElementType = 'div'>({
   const Component = (as || 'div') as ElementType;
   const pressMode = press === false ? ImagePress.None : press;
   const needsRippleCoords = pressMode === ImagePress.Ripple;
+  const needsInlineSize = pressMode === ImagePress.Scale;
+  const locked = Boolean(isDisabled);
+  const isNativeButton = (as || 'div') === 'button';
 
   const resolvedChildren = Children.map(children, (child) => {
     if (!isValidElement(child) || child.type !== ImageDots) {
@@ -84,10 +89,13 @@ function ImageFrame<C extends ElementType = 'div'>({
           ref.current = value;
         }
       }}
+      disabled={isNativeButton ? locked : undefined}
+      aria-disabled={!isNativeButton && locked ? true : undefined}
       data-variant={variant}
       data-size={size}
       data-animation={animation}
       data-press={pressMode}
+      data-disabled={locked || undefined}
       style={
         {
           ...(size != null ? { '--image-size': size } : undefined),
@@ -95,17 +103,26 @@ function ImageFrame<C extends ElementType = 'div'>({
         } as CSSProperties
       }
       onPointerDown={(event: React.PointerEvent<HTMLElement>) => {
-        if (needsRippleCoords) {
+        if ((needsRippleCoords || needsInlineSize) && !locked) {
           const rect = event.currentTarget.getBoundingClientRect();
 
-          event.currentTarget.style.setProperty(
-            '--press-x',
-            `${event.clientX - rect.left}px`,
-          );
-          event.currentTarget.style.setProperty(
-            '--press-y',
-            `${event.clientY - rect.top}px`,
-          );
+          if (needsInlineSize) {
+            event.currentTarget.style.setProperty(
+              '--press-inline-size',
+              `${rect.width}px`,
+            );
+          }
+
+          if (needsRippleCoords) {
+            event.currentTarget.style.setProperty(
+              '--press-x',
+              `${event.clientX - rect.left}px`,
+            );
+            event.currentTarget.style.setProperty(
+              '--press-y',
+              `${event.clientY - rect.top}px`,
+            );
+          }
         }
 
         onPointerDown?.(event as never);

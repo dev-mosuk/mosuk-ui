@@ -3,8 +3,8 @@
     --file-bg: var(--color-zinc-50);
     --file-color: var(--color-black);
 
-    --file-border: var(--color-zinc-100);
-    --file-radius: var(--radius-xl);
+    --file-border: transparent;
+    --file-radius: 0;
     --file-outline: none;
     --file-shadow: 0 0 #0000;
 
@@ -15,8 +15,8 @@
     --file-bg: var(--color-zinc-800);
     --file-color: var(--color-white);
 
-    --file-border: var(--color-zinc-700);
-    --file-radius: var(--radius-xl);
+    --file-border: transparent;
+    --file-radius: 0;
     --file-outline: none;
     --file-shadow: 0 0 #0000;
 
@@ -52,7 +52,7 @@
 
     background-color: var(--file-bg);
 
-    border: 1px solid transparent;
+    border: 0;
     border-color: var(--file-border);
     border-radius: var(--file-radius);
     outline: var(--file-outline);
@@ -131,31 +131,33 @@
     &[data-variant='primary'] {
       --file-bg: var(--color-white);
       --file-color: var(--color-black);
-      --file-border: var(--color-zinc-100);
-      --file-shadow:
-        0 4px 6px -1px color-mix(in oklab, var(--color-zinc-200) 50%, transparent),
-        0 2px 4px -2px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+      --file-border: transparent;
+      --file-shadow: 0 0 #0000;
+      --file-radius: 0;
     }
 
     &[data-variant='secondary'] {
       --file-bg: var(--color-zinc-50);
       --file-color: var(--color-black);
-      --file-border: var(--color-zinc-100);
+      --file-border: transparent;
       --file-shadow: 0 0 #0000;
+      --file-radius: 0;
     }
 
     &[data-variant='tertiary'] {
       --file-bg: var(--color-zinc-100);
       --file-color: var(--color-black);
-      --file-border: color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+      --file-border: transparent;
       --file-shadow: 0 0 #0000;
+      --file-radius: 0;
     }
 
     &[data-variant='outline'] {
       --file-bg: transparent;
       --file-color: var(--color-black);
-      --file-border: var(--color-zinc-200);
+      --file-border: transparent;
       --file-shadow: 0 0 #0000;
+      --file-radius: 0;
     }
 
     &[data-variant='ghost'] {
@@ -163,6 +165,7 @@
       --file-color: var(--color-black);
       --file-border: transparent;
       --file-shadow: 0 0 #0000;
+      --file-radius: 0;
     }
   }
 
@@ -171,29 +174,33 @@
       &[data-variant='primary'] {
         --file-bg: var(--color-zinc-900);
         --file-color: var(--color-white);
-        --file-border: var(--color-zinc-800);
+        --file-border: transparent;
         --file-shadow: 0 0 #0000;
+        --file-radius: 0;
       }
 
       &[data-variant='secondary'] {
         --file-bg: var(--color-zinc-800);
         --file-color: var(--color-white);
-        --file-border: var(--color-zinc-700);
+        --file-border: transparent;
         --file-shadow: 0 0 #0000;
+        --file-radius: 0;
       }
 
       &[data-variant='tertiary'] {
         --file-bg: var(--color-zinc-700);
         --file-color: var(--color-white);
-        --file-border: var(--color-zinc-600);
+        --file-border: transparent;
         --file-shadow: 0 0 #0000;
+        --file-radius: 0;
       }
 
       &[data-variant='outline'] {
         --file-bg: transparent;
         --file-color: var(--color-white);
-        --file-border: var(--color-zinc-700);
+        --file-border: transparent;
         --file-shadow: 0 0 #0000;
+        --file-radius: 0;
       }
 
       &[data-variant='ghost'] {
@@ -201,6 +208,7 @@
         --file-color: var(--color-white);
         --file-border: transparent;
         --file-shadow: 0 0 #0000;
+        --file-radius: 0;
       }
     }
   }
@@ -256,7 +264,12 @@
 @layer mosuk-ui {
   .file {
     &[data-press='scale']:active:not(:disabled):not([data-disabled]) {
-      transform: scale(0.97);
+      transform: scale(
+        calc(
+          1 - var(--action-press-scale-inset) /
+            var(--press-inline-size, 100px)
+        )
+      );
     }
 
     &[data-press='highlight']::before {

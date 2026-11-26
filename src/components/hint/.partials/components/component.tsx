@@ -22,6 +22,7 @@ export function Hint<C extends ElementType = 'p'>({
   const Component = (as || 'p') as ElementType;
   const pressMode = press === false ? HintPress.None : press;
   const needsRippleCoords = pressMode === HintPress.Ripple;
+  const needsInlineSize = pressMode === HintPress.Scale;
 
   return (
     <Component
@@ -31,17 +32,26 @@ export function Hint<C extends ElementType = 'p'>({
       data-animation={animation}
       data-press={pressMode}
       onPointerDown={(event: React.PointerEvent<HTMLElement>) => {
-        if (needsRippleCoords) {
+        if (needsRippleCoords || needsInlineSize) {
           const rect = event.currentTarget.getBoundingClientRect();
 
-          event.currentTarget.style.setProperty(
-            '--press-x',
-            `${event.clientX - rect.left}px`,
-          );
-          event.currentTarget.style.setProperty(
-            '--press-y',
-            `${event.clientY - rect.top}px`,
-          );
+          if (needsInlineSize) {
+            event.currentTarget.style.setProperty(
+              '--press-inline-size',
+              `${rect.width}px`,
+            );
+          }
+
+          if (needsRippleCoords) {
+            event.currentTarget.style.setProperty(
+              '--press-x',
+              `${event.clientX - rect.left}px`,
+            );
+            event.currentTarget.style.setProperty(
+              '--press-y',
+              `${event.clientY - rect.top}px`,
+            );
+          }
         }
 
         onPointerDown?.(event as never);

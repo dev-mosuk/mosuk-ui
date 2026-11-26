@@ -13,7 +13,7 @@ export const ToastTypeConstant = {
   [ToastType.DEFAULT]: {
     icon: <Info strokeWidth={1.25} />,
   },
-  [ToastType.ACCENT]: {
+  [ToastType.PRIMARY]: {
     icon: <Info strokeWidth={1.25} />,
   },
   [ToastType.SUCCESS]: {

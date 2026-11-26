@@ -6,7 +6,7 @@
 
     --popover-border: var(--color-zinc-100);
     --popover-radius: var(--radius-xl);
-    --popover-shadow: 0 25px 50px -12px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+    --popover-shadow: 0 25px 50px -12px color-mix(in oklab, var(--color-black) 15%, transparent);
   }
 
   :global([data-theme='dark']) {
@@ -68,7 +68,7 @@
       --popover-bg: var(--color-white);
       --popover-color: var(--color-black);
       --popover-border: var(--color-zinc-100);
-      --popover-shadow: 0 25px 50px -12px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+      --popover-shadow: 0 25px 50px -12px color-mix(in oklab, var(--color-black) 15%, transparent);
     }
 
     &[data-variant='secondary'] {

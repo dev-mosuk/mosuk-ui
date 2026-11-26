@@ -17,8 +17,4 @@ export function ComposedChartYAxis({
   return <YAxis width={width} hide={isHidden} {...rest} />;
 }
 
-ComposedChartYAxis.displayName = YAxis.displayName ?? 'YAxis';
-ComposedChartYAxis.defaultProps = {
-  ...YAxis.defaultProps,
-  width: COMPOSED_CHART_Y_AXIS_DEFAULT_WIDTH,
-};
+ComposedChartYAxis.displayName = 'YAxis';

@@ -1,0 +1,315 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --hero-sheet-progress: 0;
+    --hero-sheet-overlap: calc(var(--spacing) * 4);
+    --hero-sheet-stage-offset: calc(var(--spacing) * 30);
+  }
+
+  :global(:root) {
+    --hero-sheet-bg: var(--color-white);
+    --hero-sheet-hero-bg: var(--color-zinc-100);
+    --hero-sheet-shadow-color: color-mix(in oklab,
+        var(--color-black) 15%,
+        transparent);
+  }
+
+  :global([data-theme='dark']) {
+    --hero-sheet-bg: var(--color-zinc-950);
+    --hero-sheet-hero-bg: var(--color-zinc-950);
+    --hero-sheet-shadow-color: transparent;
+  }
+}
+
+/* HeroSheet */
+@layer mosuk-ui {
+  .heroSheet {
+    position: relative;
+
+    width: 100%;
+
+    --hero-sheet-shadow: 0 -25px 50px -12px color-mix(in oklab,
+        var(--hero-sheet-shadow-color) calc(var(--hero-sheet-progress, 0) * 100%),
+        transparent);
+
+    &[data-direction='left'],
+    &[data-direction='right'] {
+      display: flex;
+      overflow-x: auto;
+      overflow-y: hidden;
+      overscroll-behavior-x: contain;
+
+      height: 100svh;
+
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    &[data-direction='top'] {
+      --hero-sheet-shadow: 0 25px 50px -12px color-mix(in oklab,
+          var(--hero-sheet-shadow-color) calc(var(--hero-sheet-progress, 0) * 100%),
+          transparent);
+    }
+
+    &[data-direction='left'] {
+      --hero-sheet-shadow: 25px 0 50px -12px color-mix(in oklab,
+          var(--hero-sheet-shadow-color) calc(var(--hero-sheet-progress, 0) * 100%),
+          transparent);
+    }
+
+    &[data-direction='right'] {
+      --hero-sheet-shadow: -25px 0 50px -12px color-mix(in oklab,
+          var(--hero-sheet-shadow-color) calc(var(--hero-sheet-progress, 0) * 100%),
+          transparent);
+    }
+
+    .hero {
+      position: sticky;
+      z-index: 0;
+
+      overflow: hidden;
+
+      background-color: var(--hero-sheet-hero-bg);
+
+      /* containing block for .backdrop */
+      isolation: isolate;
+    }
+
+    &[data-direction='bottom'] .hero,
+    &[data-direction='top'] .hero {
+      top: 0;
+
+      width: 100%;
+    }
+
+    &[data-direction='top'] .hero {
+      top: auto;
+      bottom: 0;
+    }
+
+    &[data-direction='left'] .hero,
+    &[data-direction='right'] .hero {
+      left: 0;
+
+      flex: 0 0 auto;
+
+      width: calc(100dvw - var(--hero-sheet-stage-offset));
+      min-width: calc(100dvh * 3 / 4);
+      height: 100%;
+    }
+
+    &[data-direction='left'] .hero {
+      left: auto;
+      right: 0;
+    }
+
+    .backdrop {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      width: 100%;
+      height: 100%;
+
+      pointer-events: none;
+
+      background-color: rgba(0,
+          0,
+          0,
+          calc(var(--hero-sheet-progress, 0) * 0.1));
+      backdrop-filter: blur(calc(var(--hero-sheet-progress, 0) * 2px));
+
+      transition-duration: 200ms;
+      transition-property: background-color, backdrop-filter;
+      transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    /* sync DOM flag on root — do not wait for React re-render */
+    &[data-swiping] {
+      overflow-anchor: none;
+    }
+
+    &[data-swiping] .backdrop {
+      transition: none;
+      backdrop-filter: none;
+    }
+
+    &[data-swiping] .handle {
+      transition: none;
+    }
+
+    &[data-swiping] .content {
+      box-shadow: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+
+      background-color: var(--hero-sheet-bg);
+
+      padding: calc(var(--spacing) * 4);
+
+      box-shadow: var(--hero-sheet-shadow);
+    }
+
+    &[data-direction='bottom'] .content {
+      margin-top: calc(var(--hero-sheet-overlap) * -1);
+
+      border-top-left-radius: var(--radius-2xl);
+      border-top-right-radius: var(--radius-2xl);
+    }
+
+    &[data-direction='top'] .content {
+      margin-bottom: calc(var(--hero-sheet-overlap) * -1);
+
+      border-bottom-left-radius: var(--radius-2xl);
+      border-bottom-right-radius: var(--radius-2xl);
+    }
+
+    &[data-direction='left'] .content,
+    &[data-direction='right'] .content {
+      flex: 1 0 auto;
+
+      width: 100dvw;
+      min-height: 100%;
+    }
+
+    &[data-direction='right'] .content {
+      margin-left: calc(var(--hero-sheet-overlap) * -1);
+
+      border-top-left-radius: var(--radius-2xl);
+      border-bottom-left-radius: var(--radius-2xl);
+    }
+
+    &[data-direction='left'] .content {
+      order: -1;
+      margin-right: calc(var(--hero-sheet-overlap) * -1);
+
+      border-top-right-radius: var(--radius-2xl);
+      border-bottom-right-radius: var(--radius-2xl);
+    }
+
+    .handle {
+      position: absolute;
+      z-index: 10;
+
+      touch-action: none;
+      user-select: none;
+      cursor: grab;
+
+      background-color: color-mix(in oklab,
+          var(--color-zinc-400) 50%,
+          transparent);
+
+      border-radius: calc(infinity * 1px);
+
+      backdrop-filter: blur(4px);
+
+      transition-property: background-color, backdrop-filter;
+      transition-duration: 200ms;
+
+      &:not(:hover) {
+        transition-duration: 600ms;
+      }
+
+      &:active {
+        cursor: grabbing;
+      }
+
+      /* invisible larger hit target — not painted (avoids blur blob) */
+      &::before {
+        content: '';
+
+        position: absolute;
+        inset: calc(var(--spacing) * -3);
+
+        border-radius: inherit;
+      }
+    }
+
+    &[data-direction='bottom'] .handle {
+      top: calc(var(--spacing) * 2);
+      right: 0;
+      bottom: auto;
+      left: 0;
+
+      width: calc(var(--spacing) * 24);
+      height: calc(var(--spacing) * 0.75);
+
+      margin-inline: auto;
+    }
+
+    &[data-direction='top'] .handle {
+      top: auto;
+      right: 0;
+      bottom: calc(var(--spacing) * 2);
+      left: 0;
+
+      width: calc(var(--spacing) * 24);
+      height: calc(var(--spacing) * 0.75);
+
+      margin-inline: auto;
+    }
+
+    &[data-direction='left'] .handle {
+      top: 0;
+      right: calc(var(--spacing) * 2);
+      bottom: 0;
+      left: auto;
+
+      width: calc(var(--spacing) * 0.75);
+      height: calc(var(--spacing) * 24);
+
+      margin-block: auto;
+    }
+
+    &[data-direction='right'] .handle {
+      top: 0;
+      right: auto;
+      bottom: 0;
+      left: calc(var(--spacing) * 2);
+
+      width: calc(var(--spacing) * 0.75);
+      height: calc(var(--spacing) * 24);
+
+      margin-block: auto;
+    }
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .content {
+    &[data-variant='primary'] {
+      --hero-sheet-bg: var(--color-white);
+    }
+
+    &[data-variant='secondary'] {
+      --hero-sheet-bg: var(--color-gray-50);
+    }
+
+    &[data-variant='tertiary'] {
+      --hero-sheet-bg: var(--color-gray-100);
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .content {
+      &[data-variant='primary'] {
+        --hero-sheet-bg: var(--color-zinc-950);
+      }
+
+      &[data-variant='secondary'] {
+        --hero-sheet-bg: var(--color-zinc-900);
+      }
+
+      &[data-variant='tertiary'] {
+        --hero-sheet-bg: var(--color-zinc-800);
+      }
+    }
+  }
+}

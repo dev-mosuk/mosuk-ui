@@ -18,6 +18,7 @@ export type ImageProps<C extends ElementType = 'div'> = {
   variant?: ImageVariant | `${ImageVariant}`;
   animation?: ImageAnimation | `${ImageAnimation}`;
   press?: ImagePress | `${ImagePress}` | false;
+  isDisabled?: boolean;
   isLoading?: boolean;
   style?: CSSProperties;
   onPointerDown?: PointerEventHandler<any>;

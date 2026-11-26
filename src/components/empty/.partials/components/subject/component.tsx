@@ -11,7 +11,7 @@ export function EmptySubject<C extends ElementType = 'p'>({
     <Typography
       {...rest}
       type={rest.type ?? Typography.ENUMS.Type.H5}
-      color={rest.color ?? Typography.ENUMS.Color.Primary}
+      variant={rest.variant ?? Typography.ENUMS.Variant.Primary}
       className={classNames(
         'mosuk-empty-subject',
         styles.subject,

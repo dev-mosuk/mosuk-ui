@@ -13,7 +13,4 @@ export function AreaChartXAxis({
   return <XAxis hide={isHidden} {...rest} />;
 }
 
-AreaChartXAxis.displayName = XAxis.displayName ?? 'XAxis';
-AreaChartXAxis.defaultProps = {
-  ...XAxis.defaultProps,
-};
+AreaChartXAxis.displayName = 'XAxis';

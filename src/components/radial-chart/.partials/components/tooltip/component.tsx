@@ -12,7 +12,4 @@ export function RadialChartTooltip({
   return <Tooltip content={content} {...rest} />;
 }
 
-RadialChartTooltip.displayName = Tooltip.displayName ?? 'Tooltip';
-RadialChartTooltip.defaultProps = {
-  ...Tooltip.defaultProps,
-};
+RadialChartTooltip.displayName = 'Tooltip';

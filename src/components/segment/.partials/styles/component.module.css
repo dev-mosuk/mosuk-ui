@@ -9,8 +9,8 @@
     --segment-active-color: var(--color-black);
     --segment-indicator-bg: var(--color-white);
     --segment-indicator-shadow:
-      0 1px 3px 0 color-mix(in oklab, var(--color-zinc-300) 50%, transparent),
-      0 1px 2px -1px color-mix(in oklab, var(--color-zinc-300) 50%, transparent);
+      0 1px 3px 0 color-mix(in oklab, var(--color-black) 10%, transparent),
+      0 1px 2px -1px color-mix(in oklab, var(--color-black) 10%, transparent);
     --segment-indicator-radius: calc(infinity * 1px);
   }
 
@@ -195,8 +195,8 @@
       --segment-active-color: var(--color-black);
       --segment-indicator-bg: var(--color-white);
       --segment-indicator-shadow:
-        0 1px 3px 0 color-mix(in oklab, var(--color-zinc-300) 50%, transparent),
-        0 1px 2px -1px color-mix(in oklab, var(--color-zinc-300) 50%, transparent);
+        0 1px 3px 0 color-mix(in oklab, var(--color-black) 10%, transparent),
+        0 1px 2px -1px color-mix(in oklab, var(--color-black) 10%, transparent);
     }
 
     &[data-variant='secondary'] {
@@ -206,8 +206,8 @@
       --segment-active-color: var(--color-black);
       --segment-indicator-bg: var(--color-white);
       --segment-indicator-shadow:
-        0 1px 3px 0 color-mix(in oklab, var(--color-zinc-300) 50%, transparent),
-        0 1px 2px -1px color-mix(in oklab, var(--color-zinc-300) 50%, transparent);
+        0 1px 3px 0 color-mix(in oklab, var(--color-black) 10%, transparent),
+        0 1px 2px -1px color-mix(in oklab, var(--color-black) 10%, transparent);
     }
 
     &[data-variant='outline'] {

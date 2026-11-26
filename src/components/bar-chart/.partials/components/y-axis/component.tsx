@@ -17,8 +17,4 @@ export function BarChartYAxis({
   return <YAxis width={width} hide={isHidden} {...rest} />;
 }
 
-BarChartYAxis.displayName = YAxis.displayName ?? 'YAxis';
-BarChartYAxis.defaultProps = {
-  ...YAxis.defaultProps,
-  width: BAR_CHART_Y_AXIS_DEFAULT_WIDTH,
-};
+BarChartYAxis.displayName = 'YAxis';

@@ -1,4 +1,4 @@
-import type { PropsOf } from '@/components/avatar/.partials/utilities/props-of';
+import type { PropsOf } from '@/types/props-of';
 import type { CSSProperties, ReactNode, Ref, SyntheticEvent } from 'react';
 
 type AvatarViewOwnProps<C> = {

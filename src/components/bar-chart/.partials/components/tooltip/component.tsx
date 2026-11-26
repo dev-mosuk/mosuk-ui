@@ -13,7 +13,4 @@ export function BarChartTooltip({
   return <Tooltip cursor={cursor} content={content} {...rest} />;
 }
 
-BarChartTooltip.displayName = Tooltip.displayName ?? 'Tooltip';
-BarChartTooltip.defaultProps = {
-  ...Tooltip.defaultProps,
-};
+BarChartTooltip.displayName = 'Tooltip';

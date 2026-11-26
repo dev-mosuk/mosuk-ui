@@ -12,7 +12,4 @@ export function AreaChartTooltip({
   return <Tooltip content={content} {...rest} />;
 }
 
-AreaChartTooltip.displayName = Tooltip.displayName ?? 'Tooltip';
-AreaChartTooltip.defaultProps = {
-  ...Tooltip.defaultProps,
-};
+AreaChartTooltip.displayName = 'Tooltip';

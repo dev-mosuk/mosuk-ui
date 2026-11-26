@@ -12,7 +12,4 @@ export function ComposedChartTooltip({
   return <Tooltip content={content} {...rest} />;
 }
 
-ComposedChartTooltip.displayName = Tooltip.displayName ?? 'Tooltip';
-ComposedChartTooltip.defaultProps = {
-  ...Tooltip.defaultProps,
-};
+ComposedChartTooltip.displayName = 'Tooltip';

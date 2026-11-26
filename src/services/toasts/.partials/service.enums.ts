@@ -1,6 +1,6 @@
 export enum ToastType {
   DEFAULT = 'default',
-  ACCENT = 'accent',
+  PRIMARY = 'primary',
   SUCCESS = 'success',
   WARNING = 'warning',
   DANGER = 'danger',

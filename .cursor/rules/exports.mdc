@@ -84,13 +84,13 @@ export namespace ToastsService {
 
 - Каждая папка с `index.ts` → отдельный subpath export
 - `./index.css` — если есть в dist
-- **Новый feature** — добавить `index.ts`, `npm run build` подхватит автоматически
+- **Новый feature** — добавить `index.ts`; subpath появится при следующем build (агент **не** гоняет `npm run build` после каждой правки)
 
 ### Потребление в Next.js (CRM, npm link)
 
 - **Публиковать и линковать `dist/`**, не `src/`: `npm run link:dist` → в CRM `npm link mosuk-ui`
 - `src/` с `@/` импортами — только для разработки библиотеки; Next.js потребителя резолвит `@/` в **свой** `src/`
-- Watch при link: `npm run build:watch`
+- Watch при link: `npm run build:watch` (запускает пользователь; агент не перезапускает build на каждый diff)
 - Deps/peers — только корневой `package.json`; `dist/package.json` + exports — артефакт build
 
 ## Правила

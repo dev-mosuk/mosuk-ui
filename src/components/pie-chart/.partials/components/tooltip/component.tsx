@@ -12,7 +12,4 @@ export function PieChartTooltip({
   return <Tooltip content={content} {...rest} />;
 }
 
-PieChartTooltip.displayName = Tooltip.displayName ?? 'Tooltip';
-PieChartTooltip.defaultProps = {
-  ...Tooltip.defaultProps,
-};
+PieChartTooltip.displayName = 'Tooltip';

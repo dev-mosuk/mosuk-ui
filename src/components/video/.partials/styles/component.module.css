@@ -4,8 +4,8 @@
     --video-bg: var(--color-white);
     --video-border: var(--color-zinc-100);
     --video-shadow:
-      0 4px 6px -1px color-mix(in oklab, var(--color-zinc-200) 50%, transparent),
-      0 2px 4px -2px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+      0 4px 6px -1px color-mix(in oklab, var(--color-black) 10%, transparent),
+      0 2px 4px -2px color-mix(in oklab, var(--color-black) 10%, transparent);
     --video-radius: min(var(--radius-2xl), 25%);
   }
 

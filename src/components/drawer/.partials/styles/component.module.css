@@ -6,8 +6,8 @@
     --drawer-color: var(--color-black);
     --drawer-border: var(--color-zinc-100);
     --drawer-shadow:
-      0 4px 6px -1px color-mix(in oklab, var(--color-zinc-200) 50%, transparent),
-      0 2px 4px -2px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+      0 4px 6px -1px color-mix(in oklab, var(--color-black) 10%, transparent),
+      0 2px 4px -2px color-mix(in oklab, var(--color-black) 10%, transparent);
   }
 
   :global([data-theme='dark']) {
@@ -103,6 +103,8 @@
 
         transition-duration: 200ms;
 
+        cursor: grab;
+
         &:not(:hover) {
           transition-duration: 600ms;
         }
@@ -127,7 +129,6 @@
         min-height: 0;
 
         padding: calc(var(--spacing) * 4);
-        padding-block: calc(var(--spacing) * 2);
 
         color: inherit;
 
@@ -224,7 +225,7 @@
           margin-inline: auto;
         }
 
-        @media (min-width: 468px) {
+        @media (min-width: 640px) {
           max-width: var(--container-sm);
         }
       }
@@ -259,7 +260,7 @@
           margin-inline: auto;
         }
 
-        @media (min-width: 468px) {
+        @media (min-width: 640px) {
           max-width: var(--container-sm);
         }
       }
@@ -359,8 +360,8 @@
       --drawer-color: var(--color-black);
       --drawer-border: var(--color-zinc-100);
       --drawer-shadow:
-        0 4px 6px -1px color-mix(in oklab, var(--color-zinc-200) 50%, transparent),
-        0 2px 4px -2px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+        0 4px 6px -1px color-mix(in oklab, var(--color-black) 10%, transparent),
+        0 2px 4px -2px color-mix(in oklab, var(--color-black) 10%, transparent);
     }
 
     &[data-variant='secondary'] {

@@ -1,4 +1,4 @@
-import type { PropsOf } from '@/components/stepper/.partials/utilities/props-of';
+import type { PropsOf } from '@/types/props-of';
 import type { CSSProperties, MouseEventHandler, ReactNode, Ref } from 'react';
 
 type StepperStepOwnProps<C> = {

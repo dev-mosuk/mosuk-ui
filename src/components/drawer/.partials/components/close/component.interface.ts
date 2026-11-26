@@ -1,3 +1,19 @@
-import { Drawer as BaseUiDrawer } from '@base-ui/react';
+import type {
+  ComponentPropsWithoutRef,
+  CSSProperties,
+  ElementType,
+  ReactNode,
+  Ref,
+} from 'react';
 
-export interface DrawerCloseProps extends BaseUiDrawer.Close.Props {}
+export type DrawerCloseProps<C extends ElementType = 'button'> = {
+  as?: C;
+  ref?: Ref<any>;
+  isDisabled?: boolean;
+  className?: string;
+  style?: CSSProperties;
+  children?: ReactNode;
+} & Omit<
+  ComponentPropsWithoutRef<C>,
+  'as' | 'ref' | 'disabled' | 'className' | 'style' | 'children'
+>;

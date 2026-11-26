@@ -126,7 +126,12 @@
 @layer mosuk-ui {
   .hint {
     &[data-press='scale']:active {
-      transform: scale(0.97);
+      transform: scale(
+        calc(
+          1 - var(--action-press-scale-inset) /
+            var(--press-inline-size, 100px)
+        )
+      );
     }
 
     &[data-press='highlight']::before {

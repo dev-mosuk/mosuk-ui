@@ -1,0 +1,67 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --button-actions-gap: calc(var(--spacing) * 2);
+  }
+}
+
+/* ButtonActions */
+@layer mosuk-ui {
+  .buttonActions {
+    display: flex;
+    align-items: center;
+    gap: var(--button-actions-gap);
+
+    width: 100%;
+
+    &[data-orientation='horizontal'] {
+      flex-direction: row;
+
+      &[data-align='start'] {
+        justify-content: flex-start;
+      }
+
+      &[data-align='center'] {
+        justify-content: center;
+      }
+
+      &[data-align='end'] {
+        justify-content: flex-end;
+      }
+
+      &[data-align='justify'] {
+        justify-content: space-between;
+      }
+    }
+
+    &[data-orientation='vertical'] {
+      flex-direction: column;
+
+      &[data-align='start'] {
+        justify-content: flex-start;
+        align-items: flex-start;
+      }
+
+      &[data-align='center'] {
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      &[data-align='end'] {
+        justify-content: flex-start;
+        align-items: flex-end;
+      }
+
+      &[data-align='justify'] {
+        justify-content: space-between;
+        align-items: stretch;
+      }
+    }
+
+    &[data-disabled] {
+      opacity: 0.5;
+
+      pointer-events: none;
+    }
+  }
+}

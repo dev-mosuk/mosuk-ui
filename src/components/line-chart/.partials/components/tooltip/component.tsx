@@ -12,7 +12,4 @@ export function LineChartTooltip({
   return <Tooltip content={content} {...rest} />;
 }
 
-LineChartTooltip.displayName = Tooltip.displayName ?? 'Tooltip';
-LineChartTooltip.defaultProps = {
-  ...Tooltip.defaultProps,
-};
+LineChartTooltip.displayName = 'Tooltip';

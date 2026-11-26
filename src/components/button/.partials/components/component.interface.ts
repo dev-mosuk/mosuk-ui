@@ -4,7 +4,7 @@ import type {
   ButtonPress,
   ButtonVariant,
 } from '@/components/button/.partials/enums/component.enums';
-import type { PropsOf } from '@/components/button/.partials/utilities/props-of';
+import type { PropsOf } from '@/types/props-of';
 import type { CSSProperties, PointerEventHandler, ReactNode, Ref } from 'react';
 
 type ButtonOwnProps<C> = {
@@ -17,7 +17,6 @@ type ButtonOwnProps<C> = {
   press?: ButtonPress | `${ButtonPress}` | false;
   type?: 'button' | 'submit' | 'reset';
   isDisabled?: boolean;
-  isPending?: boolean;
   isLoading?: boolean;
   isActive?: boolean;
   style?: CSSProperties;

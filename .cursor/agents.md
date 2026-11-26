@@ -9,7 +9,7 @@
 
 React 19 · TypeScript · CSS Layers · @base-ui/react · classnames · lucide-react
 
-Peer: react, react-dom, recharts (optional), tailwindcss · Dev: Tailwind v4 (`@import "tailwindcss"` в `index.css`)
+Peer: react, react-dom, recharts (optional), tailwindcss `^4` · Dev: Tailwind v4 (`@import "tailwindcss"` в `index.css`)
 
 ---
 
@@ -105,6 +105,7 @@ src/
 4. **Импорты `@/`** везде в `src/`, включая `.partials/`. Публичный API соседнего feature — через его `index.ts`.
 5. **Не over-engineer** — без лишних абстракций и преждевременных generic.
 6. **Playgrounds** — `playgrounds/**` не создавать и не обновлять, пока пользователь явно не попросил.
+7. **Build** — не запускать `npm run build` / `link:dist` после каждой правки. Только по явному запросу пользователя или перед publish. Для CRM-link — `npm run build:watch` (пользователь сам).
 
 ---
 

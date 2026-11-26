@@ -7,7 +7,7 @@
     --tooltip-border: var(--color-zinc-100);
     --tooltip-radius: var(--radius-xl);
     --tooltip-shadow: 0 25px 50px -12px
-      color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+      color-mix(in oklab, var(--color-black) 15%, transparent);
 
     --chart-tooltip-muted: var(--color-zinc-500);
     --chart-tooltip-indicator: var(--color-chart-1);
@@ -53,7 +53,7 @@
       --tooltip-color: var(--color-black);
       --tooltip-border: var(--color-zinc-100);
       --tooltip-shadow: 0 25px 50px -12px
-        color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+        color-mix(in oklab, var(--color-black) 15%, transparent);
     }
 
     &[data-variant='secondary'] {

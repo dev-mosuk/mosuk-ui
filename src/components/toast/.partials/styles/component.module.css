@@ -147,7 +147,7 @@
       }
     }
 
-    &[data-type='accent'] {
+    &[data-type='primary'] {
       .icon {
         color: var(--color-primary-500);
       }
@@ -205,7 +205,7 @@
         }
       }
 
-      &[data-type='accent'] {
+      &[data-type='primary'] {
         .icon {
           color: var(--color-primary-400);
         }
@@ -272,7 +272,7 @@
       --toast-bg: var(--color-white);
       --toast-color: var(--color-black);
       --toast-border: var(--color-zinc-100);
-      --toast-shadow: 0 0 50px -12px color-mix(in oklab, var(--color-zinc-200) 50%, transparent);
+      --toast-shadow: 0 0 50px -12px color-mix(in oklab, var(--color-black) 10%, transparent);
     }
 
     &[data-variant='secondary'] {

@@ -17,8 +17,4 @@ export function LineChartYAxis({
   return <YAxis width={width} hide={isHidden} {...rest} />;
 }
 
-LineChartYAxis.displayName = YAxis.displayName ?? 'YAxis';
-LineChartYAxis.defaultProps = {
-  ...YAxis.defaultProps,
-  width: LINE_CHART_Y_AXIS_DEFAULT_WIDTH,
-};
+LineChartYAxis.displayName = 'YAxis';

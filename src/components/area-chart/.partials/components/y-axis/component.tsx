@@ -17,8 +17,4 @@ export function AreaChartYAxis({
   return <YAxis width={width} hide={isHidden} {...rest} />;
 }
 
-AreaChartYAxis.displayName = YAxis.displayName ?? 'YAxis';
-AreaChartYAxis.defaultProps = {
-  ...YAxis.defaultProps,
-  width: AREA_CHART_Y_AXIS_DEFAULT_WIDTH,
-};
+AreaChartYAxis.displayName = 'YAxis';

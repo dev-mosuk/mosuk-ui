@@ -80,11 +80,11 @@ class ToastsService {
     return this.action(ToastType.DEFAULT, subjectOrOptions, options);
   }
 
-  accent(
+  primary(
     subjectOrOptions: ReactNode | ToastOptions,
     options?: ToastOptionsWithoutSubject,
   ): string | undefined {
-    return this.action(ToastType.ACCENT, subjectOrOptions, options);
+    return this.action(ToastType.PRIMARY, subjectOrOptions, options);
   }
 
   success(

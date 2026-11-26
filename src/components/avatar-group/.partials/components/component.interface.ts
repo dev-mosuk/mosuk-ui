@@ -1,6 +1,6 @@
 import type { Avatar } from '@/components/avatar';
 import type { AvatarGroupOverlap } from '@/components/avatar-group/.partials/enums/component.enums';
-import type { PropsOf } from '@/components/avatar-group/.partials/utilities/props-of';
+import type { PropsOf } from '@/types/props-of';
 import type { ReactNode, Ref } from 'react';
 
 type AvatarGroupOwnProps<C> = {

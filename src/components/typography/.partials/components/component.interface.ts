@@ -1,8 +1,11 @@
 import type {
+  TypographyAlign,
   TypographyAnimation,
-  TypographyColor,
+  TypographyLineHeight,
   TypographyPress,
   TypographyType,
+  TypographyVariant,
+  TypographyWeight,
 } from '@/components/typography/.partials/enums/component.enums';
 import type {
   ComponentPropsWithoutRef,
@@ -15,7 +18,10 @@ export type TypographyProps<C extends ElementType = 'p'> = {
   as?: C;
   ref?: Ref<any>;
   type?: TypographyType | `${TypographyType}`;
-  color?: TypographyColor | `${TypographyColor}`;
+  align?: TypographyAlign | `${TypographyAlign}`;
+  weight?: TypographyWeight | `${TypographyWeight}`;
+  lineHeight?: TypographyLineHeight | `${TypographyLineHeight}`;
+  variant?: TypographyVariant | `${TypographyVariant}`;
   animation?: TypographyAnimation | `${TypographyAnimation}`;
   press?: TypographyPress | `${TypographyPress}` | false;
   isMuted?: boolean;
@@ -23,5 +29,5 @@ export type TypographyProps<C extends ElementType = 'p'> = {
   onPointerDown?: PointerEventHandler<any>;
 } & Omit<
   ComponentPropsWithoutRef<C>,
-  'as' | 'ref' | 'type' | 'color' | 'onPointerDown'
+  'as' | 'ref' | 'type' | 'color' | 'align' | 'onPointerDown'
 >;

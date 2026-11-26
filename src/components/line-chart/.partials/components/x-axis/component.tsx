@@ -13,7 +13,4 @@ export function LineChartXAxis({
   return <XAxis hide={isHidden} {...rest} />;
 }
 
-LineChartXAxis.displayName = XAxis.displayName ?? 'XAxis';
-LineChartXAxis.defaultProps = {
-  ...XAxis.defaultProps,
-};
+LineChartXAxis.displayName = 'XAxis';

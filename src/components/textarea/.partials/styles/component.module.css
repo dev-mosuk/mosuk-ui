@@ -383,7 +383,12 @@
 @layer mosuk-ui {
   .textarea {
     &[data-press='scale']:active:not(:disabled):not(:read-only) {
-      transform: scale(0.97);
+      transform: scale(
+        calc(
+          1 - var(--action-press-scale-inset) /
+            var(--press-inline-size, 100px)
+        )
+      );
     }
 
     &[data-press='highlight']::before {

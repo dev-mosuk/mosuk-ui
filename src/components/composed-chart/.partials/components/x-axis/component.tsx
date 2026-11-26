@@ -13,7 +13,4 @@ export function ComposedChartXAxis({
   return <XAxis hide={isHidden} {...rest} />;
 }
 
-ComposedChartXAxis.displayName = XAxis.displayName ?? 'XAxis';
-ComposedChartXAxis.defaultProps = {
-  ...XAxis.defaultProps,
-};
+ComposedChartXAxis.displayName = 'XAxis';

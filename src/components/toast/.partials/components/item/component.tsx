@@ -15,19 +15,19 @@ import React from 'react';
 const ToastType = ToastsService.ENUMS.Type;
 const useBaseUiToastManager = BaseUiToast.useToastManager;
 
-function mapTypeToColor(type: string) {
+function mapTypeToVariant(type: string) {
   switch (type) {
-    case ToastType.ACCENT:
-      return Typography.ENUMS.Color.Primary;
+    case ToastType.PRIMARY:
+      return Typography.ENUMS.Variant.Primary;
     case ToastType.SUCCESS:
-      return Typography.ENUMS.Color.Green;
+      return Typography.ENUMS.Variant.Green;
     case ToastType.WARNING:
-      return Typography.ENUMS.Color.Orange;
+      return Typography.ENUMS.Variant.Orange;
     case ToastType.DANGER:
-      return Typography.ENUMS.Color.Red;
+      return Typography.ENUMS.Variant.Red;
     case ToastType.DEFAULT:
     default:
-      return Typography.ENUMS.Color.Secondary;
+      return Typography.ENUMS.Variant.Secondary;
   }
 }
 
@@ -51,7 +51,7 @@ export function Item({ toast }: ToastItemProps) {
         {toast.title ? (
           <Typography
             type={Typography.ENUMS.Type.P3}
-            color={mapTypeToColor(type)}
+            variant={mapTypeToVariant(type)}
           >
             {toast.title}
           </Typography>
@@ -60,7 +60,7 @@ export function Item({ toast }: ToastItemProps) {
         {toast.description ? (
           <Typography
             type={Typography.ENUMS.Type.P4}
-            color={Typography.ENUMS.Color.Tertiary}
+            variant={Typography.ENUMS.Variant.Tertiary}
           >
             {toast.description}
           </Typography>

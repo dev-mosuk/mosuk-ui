@@ -1,4 +1,4 @@
-import type { PropsOf } from '@/components/image/.partials/utilities/props-of';
+import type { PropsOf } from '@/types/props-of';
 import type { CSSProperties, ReactNode, Ref } from 'react';
 
 type ImageFallbackOwnProps<C> = {

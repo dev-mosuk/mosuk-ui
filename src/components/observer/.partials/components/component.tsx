@@ -12,6 +12,7 @@ export function Observer<C extends ElementType = 'aside'>({
   return (
     <Component
       {...rest}
+      aria-hidden='true'
       className={classNames(
         'mosuk-observer',
         '@container/observer',

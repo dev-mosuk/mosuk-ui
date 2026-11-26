@@ -16,7 +16,7 @@ Rule: `.cursor/rules/exports.mdc`
 - [ ] Object.assign(Component, { Sub: SubComponent })
 - [ ] export namespace {Name} { export type Props; export namespace Sub { … } }
 - [ ] Feature `{Name}Skeleton` не экспортируем
-- [ ] build: index.ts → dist export (tsconfig.build.ts walk)
+- [ ] index.ts подхватится в dist exports при следующем build (не запускать build в этом скилле)
 ```
 
 ## Template (InputOtp)

@@ -31,6 +31,7 @@ export function File<C = 'div'>({
   const Component = (as ?? 'div') as ElementType;
   const pressMode = press === false ? FilePress.None : press;
   const needsRippleCoords = pressMode === FilePress.Ripple;
+  const needsInlineSize = pressMode === FilePress.Scale;
   const locked = Boolean(isDisabled);
   const isNativeButton = (as ?? 'div') === 'button';
 
@@ -53,16 +54,26 @@ export function File<C = 'div'>({
           } as CSSProperties
         }
         onPointerDown={(event: React.PointerEvent<HTMLElement>) => {
-          if (needsRippleCoords && !locked) {
+          if ((needsRippleCoords || needsInlineSize) && !locked) {
             const rect = event.currentTarget.getBoundingClientRect();
-            event.currentTarget.style.setProperty(
-              '--press-x',
-              `${event.clientX - rect.left}px`,
-            );
-            event.currentTarget.style.setProperty(
-              '--press-y',
-              `${event.clientY - rect.top}px`,
-            );
+
+            if (needsInlineSize) {
+              event.currentTarget.style.setProperty(
+                '--press-inline-size',
+                `${rect.width}px`,
+              );
+            }
+
+            if (needsRippleCoords) {
+              event.currentTarget.style.setProperty(
+                '--press-x',
+                `${event.clientX - rect.left}px`,
+              );
+              event.currentTarget.style.setProperty(
+                '--press-y',
+                `${event.clientY - rect.top}px`,
+              );
+            }
           }
 
           onPointerDown?.(event as never);

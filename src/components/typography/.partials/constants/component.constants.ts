@@ -1,13 +1,15 @@
 import {
+  TypographyAlign,
   TypographyAnimation,
-  TypographyColor,
   TypographyPress,
   TypographyType,
+  TypographyVariant,
 } from '@/components/typography/.partials/enums/component.enums';
 import type { ElementType } from 'react';
 
 export const TYPOGRAPHY_DEFAULT_TYPE = TypographyType.P2;
-export const TYPOGRAPHY_DEFAULT_COLOR = TypographyColor.Secondary;
+export const TYPOGRAPHY_DEFAULT_VARIANT = TypographyVariant.Secondary;
+export const TYPOGRAPHY_DEFAULT_ALIGN = TypographyAlign.Start;
 export const TYPOGRAPHY_DEFAULT_ANIMATION = TypographyAnimation.None;
 export const TYPOGRAPHY_DEFAULT_PRESS = TypographyPress.None;
 

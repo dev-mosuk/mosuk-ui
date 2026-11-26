@@ -3,7 +3,7 @@ import type {
   AvatarPress,
   AvatarVariant,
 } from '@/components/avatar/.partials/enums/component.enums';
-import type { PropsOf } from '@/components/avatar/.partials/utilities/props-of';
+import type { PropsOf } from '@/types/props-of';
 import type { CSSProperties, PointerEventHandler, ReactNode, Ref } from 'react';
 
 type AvatarOwnProps<C> = {

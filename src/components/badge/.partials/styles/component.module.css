@@ -1,0 +1,231 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --badge-dot-bg: transparent;
+    --badge-dot-color: var(--color-black);
+
+    --badge-dot-border: transparent;
+    --badge-dot-radius: calc(infinity * 1px);
+
+    --badge-dot-ring: var(--color-white);
+  }
+
+  :global([data-theme='dark']) {
+    --badge-dot-bg: transparent;
+    --badge-dot-color: var(--color-white);
+
+    --badge-dot-border: transparent;
+    --badge-dot-radius: calc(infinity * 1px);
+
+    --badge-dot-ring: var(--color-zinc-950);
+  }
+}
+
+/* Badge */
+@layer mosuk-ui {
+  .badge {
+    position: relative;
+
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+
+  .dot {
+    --badge-dot-length: calc(var(--spacing) * var(--badge-dot-size));
+
+    position: absolute;
+    z-index: 1;
+
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+
+    width: var(--badge-dot-length);
+    height: var(--badge-dot-length);
+    min-width: var(--badge-dot-length);
+    min-height: var(--badge-dot-length);
+
+    color: var(--badge-dot-color);
+    font-size: calc(var(--badge-dot-length) * 0.5);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    line-height: var(--leading-none);
+    text-align: center;
+    white-space: nowrap;
+
+    background-color: var(--badge-dot-bg);
+
+    border: 1px solid transparent;
+    border-color: var(--badge-dot-border);
+    border-radius: var(--badge-dot-radius);
+
+    box-shadow: 0 0 0 2px var(--badge-dot-ring);
+
+    user-select: none;
+
+    transition: transform 150ms ease;
+
+    &:has(> :is(svg, img)):not(:has(> :not(svg, img))) {
+      :global(svg),
+      :global(img) {
+        width: calc(var(--badge-dot-length) * 0.55);
+        height: calc(var(--badge-dot-length) * 0.55);
+        flex-shrink: 0;
+      }
+    }
+
+    &:not(:empty):not(:has(> :is(svg, img)):not(:has(> :not(svg, img)))) {
+      width: auto;
+      padding-inline: calc(var(--badge-dot-length) * 0.25);
+
+      :global(svg),
+      :global(img) {
+        width: calc(var(--badge-dot-length) * 0.4);
+        height: calc(var(--badge-dot-length) * 0.4);
+        flex-shrink: 0;
+      }
+    }
+
+    &[data-placement='top-right'] {
+      top: 0;
+      right: 0;
+
+      transform: translate(25%, -25%);
+    }
+
+    &[data-placement='top-left'] {
+      top: 0;
+      left: 0;
+
+      transform: translate(-25%, -25%);
+    }
+
+    &[data-placement='bottom-right'] {
+      right: 0;
+      bottom: 0;
+
+      transform: translate(25%, 25%);
+    }
+
+    &[data-placement='bottom-left'] {
+      bottom: 0;
+      left: 0;
+
+      transform: translate(-25%, 25%);
+    }
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .dot {
+    &[data-variant='primary'] {
+      --badge-dot-bg: var(--color-primary-500);
+      --badge-dot-color: var(--color-white);
+
+      --badge-dot-border: var(--color-primary-500);
+    }
+
+    &[data-variant='secondary'] {
+      --badge-dot-bg: var(--color-zinc-100);
+      --badge-dot-color: var(--color-black);
+
+      --badge-dot-border: var(--color-zinc-100);
+    }
+
+    &[data-variant='outline'] {
+      --badge-dot-bg: transparent;
+      --badge-dot-color: var(--color-black);
+
+      --badge-dot-border: var(--color-zinc-200);
+    }
+
+    &[data-variant='ghost'] {
+      --badge-dot-bg: transparent;
+      --badge-dot-color: var(--color-black);
+
+      --badge-dot-border: transparent;
+    }
+  }
+}
+
+/* Dark */
+@layer mosuk-ui {
+  :global([data-theme='dark']) {
+    .dot {
+      &[data-variant='primary'] {
+        --badge-dot-bg: var(--color-primary-500);
+        --badge-dot-color: var(--color-white);
+
+        --badge-dot-border: var(--color-primary-500);
+      }
+
+      &[data-variant='secondary'] {
+        --badge-dot-bg: var(--color-zinc-800);
+        --badge-dot-color: var(--color-white);
+
+        --badge-dot-border: var(--color-zinc-800);
+      }
+
+      &[data-variant='outline'] {
+        --badge-dot-bg: transparent;
+        --badge-dot-color: var(--color-white);
+
+        --badge-dot-border: var(--color-zinc-800);
+      }
+
+      &[data-variant='ghost'] {
+        --badge-dot-bg: transparent;
+        --badge-dot-color: var(--color-white);
+
+        --badge-dot-border: transparent;
+      }
+    }
+  }
+}
+
+/* Press */
+@layer mosuk-ui {
+  .dot {
+    &[data-press='scale'][data-placement='top-right']:active {
+      transform: translate(25%, -25%)
+        scale(
+          calc(
+            1 - var(--action-press-scale-inset) /
+              var(--press-inline-size, 100px)
+          )
+        );
+    }
+
+    &[data-press='scale'][data-placement='top-left']:active {
+      transform: translate(-25%, -25%)
+        scale(
+          calc(
+            1 - var(--action-press-scale-inset) /
+              var(--press-inline-size, 100px)
+          )
+        );
+    }
+
+    &[data-press='scale'][data-placement='bottom-right']:active {
+      transform: translate(25%, 25%)
+        scale(
+          calc(
+            1 - var(--action-press-scale-inset) /
+              var(--press-inline-size, 100px)
+          )
+        );
+    }
+
+    &[data-press='scale'][data-placement='bottom-left']:active {
+      transform: translate(-25%, 25%)
+        scale(
+          calc(
+            1 - var(--action-press-scale-inset) /
+              var(--press-inline-size, 100px)
+          )
+        );
+    }
+  }
+}

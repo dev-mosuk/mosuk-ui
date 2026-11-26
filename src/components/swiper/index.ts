@@ -12,7 +12,10 @@ import { SwiperPrev } from '@/components/swiper/.partials/components/prev/compon
 import { SwiperPrevProps } from '@/components/swiper/.partials/components/prev/component.interface';
 import { SwiperSlide } from '@/components/swiper/.partials/components/slide/component';
 import { SwiperSlideProps } from '@/components/swiper/.partials/components/slide/component.interface';
-import { SwiperOverflow } from '@/components/swiper/.partials/enums/component.enums';
+import {
+  SwiperOrientation,
+  SwiperOverflow,
+} from '@/components/swiper/.partials/enums/component.enums';
 import type { ElementType } from 'react';
 
 export { useSwiper, useSwiperSlide } from 'swiper/react';
@@ -20,6 +23,7 @@ export { useSwiper, useSwiperSlide } from 'swiper/react';
 export const Swiper = Object.assign(Component, {
   ENUMS: {
     Overflow: SwiperOverflow,
+    Orientation: SwiperOrientation,
   },
   Slide: SwiperSlide,
   Hover: SwiperHover,

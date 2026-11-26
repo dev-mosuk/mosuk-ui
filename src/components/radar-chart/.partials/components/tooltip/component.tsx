@@ -12,7 +12,4 @@ export function RadarChartTooltip({
   return <Tooltip content={content} {...rest} />;
 }
 
-RadarChartTooltip.displayName = Tooltip.displayName ?? 'Tooltip';
-RadarChartTooltip.defaultProps = {
-  ...Tooltip.defaultProps,
-};
+RadarChartTooltip.displayName = 'Tooltip';

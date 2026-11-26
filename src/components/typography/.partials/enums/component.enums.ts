@@ -13,7 +13,7 @@ export enum TypographyType {
   P6 = 'p6',
 }
 
-export enum TypographyColor {
+export enum TypographyVariant {
   Primary = 'primary',
   Secondary = 'secondary',
   Tertiary = 'tertiary',
@@ -22,6 +22,30 @@ export enum TypographyColor {
   Blue = 'blue',
   Orange = 'orange',
   Yellow = 'yellow',
+}
+
+export enum TypographyAlign {
+  Start = 'start',
+  Center = 'center',
+  End = 'end',
+  Justify = 'justify',
+}
+
+export enum TypographyWeight {
+  Light = 'light',
+  Normal = 'normal',
+  Medium = 'medium',
+  Semibold = 'semibold',
+  Bold = 'bold',
+}
+
+export enum TypographyLineHeight {
+  None = 'none',
+  Tight = 'tight',
+  Snug = 'snug',
+  Normal = 'normal',
+  Relaxed = 'relaxed',
+  Loose = 'loose',
 }
 
 export enum TypographyAnimation {
