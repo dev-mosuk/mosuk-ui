@@ -4,11 +4,7 @@ import type { ImageFallbackProps } from '@/components/image/.partials/components
 import { useImage } from '@/components/image/.partials/hooks/hook';
 import styles from '@/components/image/.partials/styles/component.module.css';
 import classNames from 'classnames';
-import React, {
-  type ElementType,
-  useEffect,
-  useState,
-} from 'react';
+import React, { type ElementType, useEffect, useState } from 'react';
 
 export function ImageFallback<C = 'span'>({
   as,

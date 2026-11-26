@@ -1,11 +1,8 @@
 'use client';
 
-import { ImageDotsProps } from '@/components/image/.partials/components/dots/component.interface';
-import { IMAGE_DOTS_DEFAULT_EXITING } from '@/components/image/.partials/constants/component.constants';
-import {
-  isNearViewport,
-  watchDots,
-} from '@/components/image/.partials/services/scheduler';
+import { ImageLoaderProps } from '@/components/image/.partials/components/loader/component.interface';
+import { IMAGE_LOADER_DEFAULT_EXITING } from '@/components/image/.partials/constants/component.constants';
+import { watchDots } from '@/components/image/.partials/services/scheduler';
 import styles from '@/components/image/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { useLayoutEffect, useRef, useState } from 'react';
@@ -206,15 +203,15 @@ function createGrid(width: number, height: number) {
   return {
     dots,
     dotSize,
-    gap,
   };
 }
 
-export function ImageDots({
-  exiting = IMAGE_DOTS_DEFAULT_EXITING,
+export function ImageLoader({
+  exiting = IMAGE_LOADER_DEFAULT_EXITING,
   style,
+  className,
   ...rest
-}: ImageDotsProps) {
+}: ImageLoaderProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const exitingRef = useRef(exiting);
   const readyRef = useRef(false);
@@ -262,19 +259,18 @@ export function ImageDots({
 
       dots = grid.dots;
       dotSize = grid.dotSize;
-      canvas.style.setProperty('--dot-size', `${grid.dotSize}px`);
-      canvas.style.setProperty('--dot-gap', `${grid.gap}px`);
     };
 
-    const render = (time: number) => {
+    const render = (time: number, flat: boolean) => {
       context.clearRect(0, 0, width, height);
 
       if (width <= 0 || height <= 0 || dots.length === 0) {
         return;
       }
 
-      const spot = spotlight(reduced ? 0 : time);
-      const tail = reduced
+      const useFlat = flat || reduced;
+      const spot = spotlight(useFlat ? 0 : time);
+      const tail = useFlat
         ? { ...spot, strength: 0 }
         : spotlight(time - TAIL_MS);
       const exitingNow = exitingRef.current;
@@ -304,15 +300,9 @@ export function ImageDots({
           continue;
         }
 
-        const intensity = field(
-          dot.x,
-          dot.y,
-          reduced ? 0 : time,
-          width,
-          height,
-          spot,
-          tail,
-        );
+        const intensity = useFlat
+          ? 0
+          : field(dot.x, dot.y, time, width, height, spot, tail);
 
         context.globalAlpha = (0.42 + intensity * 0.58) * life;
         context.beginPath();
@@ -332,13 +322,7 @@ export function ImageDots({
     let stopWatch = () => {};
 
     const markReady = () => {
-      if (
-        readyRef.current ||
-        width <= 0 ||
-        height <= 0 ||
-        dots.length === 0 ||
-        !isNearViewport(canvas)
-      ) {
+      if (readyRef.current || width <= 0 || height <= 0 || dots.length === 0) {
         return;
       }
 
@@ -346,61 +330,52 @@ export function ImageDots({
       setReady(true);
     };
 
-    const paint = (time: number) => {
-      resize();
-
-      if (width <= 0 || height <= 0 || dots.length === 0) {
+    const clearReady = () => {
+      if (!readyRef.current) {
         return;
       }
 
-      render(time);
+      readyRef.current = false;
+      setReady(false);
+    };
+
+    const paintStatic = () => {
+      resize();
+
+      if (width <= 0 || height <= 0 || dots.length === 0) {
+        clearReady();
+
+        return;
+      }
+
+      render(0, true);
       markReady();
     };
 
     const start = () => {
       stopWatch();
       reduced = motion.matches;
+      paintStatic();
 
-      const draw = (time: number) => {
-        if (reduced) {
-          paint(0);
-          stopWatch();
-
-          return;
-        }
-
-        if (!readyRef.current) {
-          paint(time);
-
-          return;
-        }
-
-        render(time);
-      };
-
-      if (isNearViewport(canvas)) {
-        draw(reduced ? 0 : performance.now());
-      }
-
-      if (reduced && readyRef.current) {
+      if (reduced) {
         return;
       }
+
+      const draw = (time: number) => {
+        if (!readyRef.current) {
+          paintStatic();
+
+          return;
+        }
+
+        render(time, false);
+      };
 
       stopWatch = watchDots(canvas, draw);
     };
 
     const resizeObserver = new ResizeObserver(() => {
-      if (!isNearViewport(canvas)) {
-        return;
-      }
-
-      if (reduced || !readyRef.current) {
-        paint(reduced ? 0 : performance.now());
-
-        return;
-      }
-
-      resize();
+      paintStatic();
     });
 
     resizeObserver.observe(canvas);
@@ -420,11 +395,7 @@ export function ImageDots({
       ref={canvasRef}
       aria-hidden
       data-ready={ready || undefined}
-      className={classNames(
-        'mosuk-image-dots',
-        styles.canvas,
-        rest?.className,
-      )}
+      className={classNames('mosuk-image-loader', styles.canvas, className)}
       style={{
         ...style,
         transition: '0ms',

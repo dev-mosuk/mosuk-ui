@@ -12,7 +12,7 @@ export function ChatMessageAvatar({
   fallback,
   ...rest
 }: ChatMessageAvatarProps) {
-  const label = fallback?.trim().slice(0, 2);
+  const label = fallback?.trim().slice(0, 2) || alt?.slice(0, 2) || '?';
 
   return (
     <Image
@@ -23,10 +23,10 @@ export function ChatMessageAvatar({
         rest?.className,
       )}
     >
-      <Image.Dots />
+      <Image.Loader />
       <Image.View src={src ?? null} alt={alt ?? ''} className={styles.image} />
       <Image.Fallback aria-hidden={!alt} className={styles.fallback}>
-        {label || alt?.slice(0, 2) || '?'}
+        {label}
       </Image.Fallback>
     </Image>
   );

@@ -14,22 +14,22 @@ import React, {
   useState,
 } from 'react';
 
-type ImagePhase = 'dots' | 'arm' | 'fade' | 'done';
+type ImagePhase = 'loading' | 'fade' | 'done';
 
-const FADE_MS = 1125;
+const LOADER_EXIT_MS = 1050;
 
 export function ImageProvider({
   isLoading = IMAGE_DEFAULT_IS_LOADING,
   children,
 }: ImageProviderProps) {
-  const [phase, setPhase] = useState<ImagePhase>('dots');
+  const [phase, setPhase] = useState<ImagePhase>('loading');
   const [instant, setInstant] = useState(false);
   const [status, setStatus] = useState<ImageLoadStatus>('idle');
   const node = useRef<HTMLElement | null>(null);
 
   const cover = useCallback(() => {
     setInstant(false);
-    setPhase('dots');
+    setPhase('loading');
   }, []);
 
   const reveal = useCallback(() => {
@@ -37,44 +37,8 @@ export function ImageProvider({
 
     if (element && !isNearViewport(element)) {
       setInstant(true);
-      setPhase((current) => (current === 'dots' ? 'done' : current));
+      setPhase('done');
 
-      return;
-    }
-
-    setInstant(false);
-    setPhase((current) => (current === 'dots' ? 'arm' : current));
-  }, []);
-
-  const finish = useCallback(() => {
-    setPhase((current) => (current === 'fade' ? 'done' : current));
-  }, []);
-
-  useLayoutEffect(() => {
-    if (!isLoading) {
-      return;
-    }
-
-    setInstant(false);
-    setPhase('dots');
-  }, [isLoading]);
-
-  useEffect(() => {
-    if (phase !== 'arm') {
-      return;
-    }
-
-    const frame = requestAnimationFrame(() => {
-      setPhase((current) => (current === 'arm' ? 'fade' : current));
-    });
-
-    return () => {
-      cancelAnimationFrame(frame);
-    };
-  }, [phase]);
-
-  useLayoutEffect(() => {
-    if (phase !== 'fade') {
       return;
     }
 
@@ -83,8 +47,22 @@ export function ImageProvider({
     if (motion.matches) {
       setInstant(true);
       setPhase('done');
+
+      return;
     }
-  }, [phase]);
+
+    setInstant(false);
+    setPhase((current) => (current === 'loading' ? 'fade' : current));
+  }, []);
+
+  useLayoutEffect(() => {
+    if (!isLoading) {
+      return;
+    }
+
+    setInstant(false);
+    setPhase('loading');
+  }, [isLoading]);
 
   useEffect(() => {
     if (phase !== 'fade') {
@@ -93,7 +71,7 @@ export function ImageProvider({
 
     const timeout = window.setTimeout(() => {
       setPhase((current) => (current === 'fade' ? 'done' : current));
-    }, FADE_MS);
+    }, LOADER_EXIT_MS);
 
     return () => {
       window.clearTimeout(timeout);
@@ -105,15 +83,14 @@ export function ImageProvider({
       shown: phase === 'fade' || (phase === 'done' && !instant),
       instant,
       isLoading,
-      visibleDots: phase !== 'done',
+      visibleLoader: phase === 'loading' || phase === 'fade' || isLoading,
       status,
       setStatus,
       node,
       cover,
       reveal,
-      finish,
     }),
-    [cover, finish, instant, isLoading, phase, reveal, status],
+    [cover, instant, isLoading, phase, reveal, status],
   );
 
   return (

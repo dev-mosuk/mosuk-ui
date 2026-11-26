@@ -22,7 +22,4 @@ export type ImageProps<C extends ElementType = 'div'> = {
   isLoading?: boolean;
   style?: CSSProperties;
   onPointerDown?: PointerEventHandler<any>;
-} & Omit<
-  ComponentPropsWithoutRef<C>,
-  'as' | 'ref' | 'style' | 'onPointerDown'
->;
+} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref' | 'style' | 'onPointerDown'>;

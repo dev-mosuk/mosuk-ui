@@ -6,155 +6,74 @@ import { useImage } from '@/components/image/.partials/hooks/hook';
 import styles from '@/components/image/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, {
-  SyntheticEvent,
+  type ElementType,
+  type SyntheticEvent,
   useLayoutEffect,
-  useRef,
-  useState,
 } from 'react';
 
-export function ImageView({
+export function ImageView<C = 'img'>({
+  as,
+  ref,
   src,
   onLoad,
   onError,
   loading = IMAGE_VIEW_DEFAULT_LOADING,
   fetchPriority,
+  className,
+  style,
   ...rest
-}: ImageViewProps) {
-  const { shown, instant, cover, reveal, isLoading, status, setStatus } =
-    useImage();
-  const imageRef = useRef<HTMLImageElement>(null);
+}: ImageViewProps<C>) {
+  const { shown, instant, cover, reveal, isLoading, setStatus } = useImage();
+  const Component = (as ?? 'img') as ElementType;
   const source = src ? src : null;
-  const [visibleSource, setVisibleSource] = useState(source);
-  const [failedSource, setFailedSource] = useState<string | null>(null);
-  const failed = Boolean(visibleSource) && failedSource === visibleSource;
 
   useLayoutEffect(() => {
-    if (!source) {
-      setStatus('idle');
-
+    if (isLoading) {
       return;
     }
 
-    setStatus('loading');
+    if (!source) {
+      setStatus('idle');
+      reveal();
 
-    const image = imageRef.current;
-
-    if (image && image.complete && image.naturalWidth > 0) {
-      setStatus('loaded');
-    }
-  }, [setStatus, source]);
-
-  useLayoutEffect(() => {
-    if (!cover || isLoading || visibleSource === source) {
       return;
     }
 
     cover();
+    setStatus('loading');
+  }, [cover, isLoading, reveal, setStatus, source]);
 
-    const frame = requestAnimationFrame(() => {
-      setVisibleSource(source);
-    });
-
-    return () => {
-      cancelAnimationFrame(frame);
-    };
-  }, [cover, isLoading, source, visibleSource]);
-
-  useLayoutEffect(() => {
-    if (!reveal || isLoading || visibleSource !== source) {
-      return;
-    }
-
-    if (!visibleSource || failed) {
-      if (failed) {
-        setStatus('error');
-      }
-
-      reveal();
-
-      return;
-    }
-
-    const image = imageRef.current;
-
-    if (!image) {
-      return;
-    }
-
-    const show = () => {
-      if (image.naturalWidth > 0) {
-        setStatus('loaded');
-        reveal();
-
-        return;
-      }
-
-      setFailedSource(visibleSource);
-      setStatus('error');
-      reveal();
-    };
-
-    const deferred =
-      image.loading === 'lazy' &&
-      image.naturalWidth === 0 &&
-      image.currentSrc === '';
-
-    if (image.complete && !deferred) {
-      show();
-
-      return;
-    }
-
-    const handleSettle = () => {
-      show();
-    };
-
-    image.addEventListener('load', handleSettle);
-    image.addEventListener('error', handleSettle);
-
-    return () => {
-      image.removeEventListener('load', handleSettle);
-      image.removeEventListener('error', handleSettle);
-    };
-  }, [failed, isLoading, reveal, setStatus, source, visibleSource]);
-
-  if (isLoading) {
+  if (isLoading || !source) {
     return null;
   }
 
-  const handleLoad = (event: SyntheticEvent<HTMLImageElement>) => {
+  const handleLoad = (event: SyntheticEvent<HTMLElement>) => {
     setStatus('loaded');
-    onLoad?.(event);
+    reveal();
+    onLoad?.(event as never);
   };
 
-  const handleError = (event: SyntheticEvent<HTMLImageElement>) => {
+  const handleError = (event: SyntheticEvent<HTMLElement>) => {
     setStatus('error');
-    onError?.(event);
+    reveal();
+    onError?.(event as never);
   };
-
-  if (!source || status === 'error' || failed) {
-    return null;
-  }
-
-  if (!visibleSource) {
-    return null;
-  }
 
   return (
-    <img
+    <Component
       {...rest}
-      ref={imageRef}
-      src={visibleSource}
-      alt={rest?.alt ?? ''}
+      ref={ref}
+      src={source}
+      alt={(rest as { alt?: string }).alt ?? ''}
       loading={loading}
       fetchPriority={fetchPriority ?? (loading === 'eager' ? 'high' : 'low')}
       onLoad={handleLoad}
       onError={handleError}
-      data-shown={shown && !instant ? true : undefined}
+      data-shown={shown ? true : undefined}
       data-instant={instant || undefined}
-      className={classNames('mosuk-image-view', styles.view, rest?.className)}
+      className={classNames('mosuk-image-view', styles.view, className)}
       style={{
-        ...rest?.style,
+        ...style,
         transition: '0ms',
       }}
     />

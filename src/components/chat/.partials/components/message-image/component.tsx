@@ -1,3 +1,5 @@
+'use client';
+
 import { ChatMessageImageProps } from '@/components/chat/.partials/components/message-image/component.interface';
 import styles from '@/components/chat/.partials/styles/component.module.css';
 import { Image } from '@/components/image';
@@ -17,7 +19,7 @@ export function ChatMessageImage({ src, alt, ...rest }: ChatMessageImageProps) {
       )}
     >
       <Image className={styles.frame}>
-        <Image.Dots />
+        <Image.Loader />
         <Image.View src={src} alt={alt || 'Image'} className={styles.media} />
         <Image.Fallback>
           <Images aria-hidden strokeWidth={1.25} />

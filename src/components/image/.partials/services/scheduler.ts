@@ -65,7 +65,7 @@ function ensure() {
 
       kick();
     },
-    { rootMargin: `${MARGIN}px 0px` },
+    { rootMargin: `${MARGIN}px` },
   );
 
   document.addEventListener('visibilitychange', () => {
@@ -91,9 +91,9 @@ export function isNearViewport(element: HTMLElement) {
 
   return (
     rect.bottom >= -MARGIN &&
-    rect.right >= 0 &&
+    rect.right >= -MARGIN &&
     rect.top <= window.innerHeight + MARGIN &&
-    rect.left <= window.innerWidth
+    rect.left <= window.innerWidth + MARGIN
   );
 }
 

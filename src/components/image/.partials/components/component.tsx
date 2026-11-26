@@ -1,8 +1,10 @@
 'use client';
 
 import { ImageProps } from '@/components/image/.partials/components/component.interface';
-import { ImageDots } from '@/components/image/.partials/components/dots/component';
-import { ImageDotsProps } from '@/components/image/.partials/components/dots/component.interface';
+import { ImageFallback } from '@/components/image/.partials/components/fallback/component';
+import { ImageLoader } from '@/components/image/.partials/components/loader/component';
+import { ImageLoaderProps } from '@/components/image/.partials/components/loader/component.interface';
+import { ImageView } from '@/components/image/.partials/components/view/component';
 import {
   IMAGE_DEFAULT_ANIMATION,
   IMAGE_DEFAULT_IS_DISABLED,
@@ -18,6 +20,8 @@ import classNames from 'classnames';
 import React, {
   Children,
   ElementType,
+  ReactElement,
+  ReactNode,
   cloneElement,
   isValidElement,
   type CSSProperties,
@@ -25,9 +29,7 @@ import React, {
 
 export function Image<C extends ElementType = 'div'>(props: ImageProps<C>) {
   return (
-    <ImageProvider
-      isLoading={props.isLoading ?? IMAGE_DEFAULT_IS_LOADING}
-    >
+    <ImageProvider isLoading={props.isLoading ?? IMAGE_DEFAULT_IS_LOADING}>
       <ImageFrame<C> {...props} />
     </ImageProvider>
   );
@@ -48,7 +50,7 @@ function ImageFrame<C extends ElementType = 'div'>({
   onPointerDown,
   ...rest
 }: ImageProps<C>) {
-  const { shown, visibleDots, node } = useImage();
+  const { shown, visibleLoader, status, node } = useImage();
   const Component = (as || 'div') as ElementType;
   const pressMode = press === false ? ImagePress.None : press;
   const needsRippleCoords = pressMode === ImagePress.Ripple;
@@ -56,22 +58,51 @@ function ImageFrame<C extends ElementType = 'div'>({
   const locked = Boolean(isDisabled);
   const isNativeButton = (as || 'div') === 'button';
 
-  const resolvedChildren = Children.map(children, (child) => {
-    if (!isValidElement(child) || child.type !== ImageDots) {
-      return child;
+  let loader: ReactElement<ImageLoaderProps> | null = null;
+  let view: ReactNode = null;
+  let fallback: ReactNode = null;
+  const restChildren: ReactNode[] = [];
+
+  Children.forEach(children, (child) => {
+    if (!isValidElement(child)) {
+      restChildren.push(child);
+
+      return;
     }
 
-    if (!visibleDots) {
-      return null;
+    if (child.type === ImageLoader) {
+      loader = child as ReactElement<ImageLoaderProps>;
+
+      return;
     }
 
-    const props = child.props as ImageDotsProps;
+    if (child.type === ImageView) {
+      view = child;
 
-    return cloneElement(child, {
-      className: classNames(styles.dots, props.className),
-      exiting: shown,
-    });
+      return;
+    }
+
+    if (child.type === ImageFallback) {
+      fallback = child;
+
+      return;
+    }
+
+    restChildren.push(child);
   });
+
+  const showFallback = fallback !== null && status !== 'loaded';
+
+  const resolvedLoader =
+    loader && visibleLoader
+      ? cloneElement(loader as ReactElement<ImageLoaderProps>, {
+          className: classNames(
+            styles.loader,
+            (loader as ReactElement<ImageLoaderProps>).props.className,
+          ),
+          exiting: shown,
+        })
+      : null;
 
   return (
     <Component
@@ -135,7 +166,10 @@ function ImageFrame<C extends ElementType = 'div'>({
         className,
       )}
     >
-      {resolvedChildren}
+      {view}
+      {showFallback ? fallback : null}
+      {resolvedLoader}
+      {restChildren}
     </Component>
   );
 }

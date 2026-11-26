@@ -6,11 +6,10 @@ export type ImageContextProps = {
   shown: boolean;
   instant: boolean;
   isLoading: boolean;
-  visibleDots: boolean;
+  visibleLoader: boolean;
   status: ImageLoadStatus;
   setStatus: (status: ImageLoadStatus) => void;
   node: RefObject<HTMLElement | null>;
   cover: () => void;
   reveal: () => void;
-  finish: () => void;
 };

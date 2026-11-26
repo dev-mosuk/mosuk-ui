@@ -1,9 +1,9 @@
 import { Image as Component } from '@/components/image/.partials/components/component';
 import { ImageProps as ComponentProps } from '@/components/image/.partials/components/component.interface';
-import { ImageDots } from '@/components/image/.partials/components/dots/component';
-import { ImageDotsProps } from '@/components/image/.partials/components/dots/component.interface';
 import { ImageFallback } from '@/components/image/.partials/components/fallback/component';
 import { ImageFallbackProps } from '@/components/image/.partials/components/fallback/component.interface';
+import { ImageLoader } from '@/components/image/.partials/components/loader/component';
+import { ImageLoaderProps } from '@/components/image/.partials/components/loader/component.interface';
 import { ImageView } from '@/components/image/.partials/components/view/component';
 import { ImageViewProps } from '@/components/image/.partials/components/view/component.interface';
 import {
@@ -13,7 +13,7 @@ import {
 } from '@/components/image/.partials/enums/component.enums';
 
 export const Image = Object.assign(Component, {
-  Dots: ImageDots,
+  Loader: ImageLoader,
   View: ImageView,
   Fallback: ImageFallback,
   ENUMS: {
@@ -26,12 +26,12 @@ export const Image = Object.assign(Component, {
 export namespace Image {
   export type Props = ComponentProps;
 
-  export namespace Dots {
-    export type Props = ImageDotsProps;
+  export namespace Loader {
+    export type Props = ImageLoaderProps;
   }
 
   export namespace View {
-    export type Props = ImageViewProps;
+    export type Props<C = 'img'> = ImageViewProps<C>;
   }
 
   export namespace Fallback {
