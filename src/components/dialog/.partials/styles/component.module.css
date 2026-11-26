@@ -6,8 +6,8 @@
     --dialog-color: var(--color-black);
     --dialog-border: var(--color-zinc-100);
     --dialog-shadow:
-      0 4px 6px -1px color-mix(in oklab, var(--color-black) 10%, transparent),
-      0 2px 4px -2px color-mix(in oklab, var(--color-black) 10%, transparent);
+      0 0 6px -1px color-mix(in oklab, var(--color-black) 2%, transparent),
+      0 0 4px -2px color-mix(in oklab, var(--color-black) 2%, transparent);
   }
 
   :global([data-theme='dark']) {
@@ -142,8 +142,8 @@
       --dialog-color: var(--color-black);
       --dialog-border: var(--color-zinc-100);
       --dialog-shadow:
-        0 4px 6px -1px color-mix(in oklab, var(--color-black) 10%, transparent),
-        0 2px 4px -2px color-mix(in oklab, var(--color-black) 10%, transparent);
+        0 0 6px -1px color-mix(in oklab, var(--color-black) 2%, transparent),
+        0 0 4px -2px color-mix(in oklab, var(--color-black) 2%, transparent);
     }
 
     &[data-variant='secondary'] {

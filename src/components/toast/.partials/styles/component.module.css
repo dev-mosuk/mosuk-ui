@@ -272,7 +272,7 @@
       --toast-bg: var(--color-white);
       --toast-color: var(--color-black);
       --toast-border: var(--color-zinc-100);
-      --toast-shadow: 0 0 50px -12px color-mix(in oklab, var(--color-black) 10%, transparent);
+      --toast-shadow: 0 0 50px -12px color-mix(in oklab, var(--color-black) 2%, transparent);
     }
 
     &[data-variant='secondary'] {

@@ -192,6 +192,16 @@
     --color-chart-5: var(--color-primary-900);
 }
 
+@theme static {
+    --shadow-2xs: 0 0 1px rgb(0 0 0 / 0.01);
+    --shadow-xs: 0 0 2px 0 rgb(0 0 0 / 0.01);
+    --shadow-sm: 0 0 3px 0 rgb(0 0 0 / 0.02), 0 0 2px -1px rgb(0 0 0 / 0.02);
+    --shadow-md: 0 0 6px -1px rgb(0 0 0 / 0.02), 0 0 4px -2px rgb(0 0 0 / 0.02);
+    --shadow-lg: 0 0 15px -3px rgb(0 0 0 / 0.02), 0 0 6px -4px rgb(0 0 0 / 0.02);
+    --shadow-xl: 0 0 25px -5px rgb(0 0 0 / 0.02), 0 0 10px -6px rgb(0 0 0 / 0.02);
+    --shadow-2xl: 0 0 50px -12px rgb(0 0 0 / 0.03);
+}
+
 @layer theme {
   html[data-theme='dark'] {
     --color-chart-1: var(--color-primary-300);

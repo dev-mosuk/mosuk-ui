@@ -12,8 +12,8 @@
     --tabs-header-active-color: var(--color-black);
     --tabs-header-indicator-bg: var(--color-white);
     --tabs-header-indicator-shadow:
-      0 1px 3px 0 color-mix(in oklab, var(--color-black) 10%, transparent),
-      0 1px 2px -1px color-mix(in oklab, var(--color-black) 10%, transparent);
+      0 0 3px 0 color-mix(in oklab, var(--color-black) 2%, transparent),
+      0 0 2px -1px color-mix(in oklab, var(--color-black) 2%, transparent);
     --tabs-header-indicator-radius: calc(infinity * 1px);
   }
 
@@ -313,8 +313,8 @@
       --tabs-header-active-color: var(--color-black);
       --tabs-header-indicator-bg: var(--color-white);
       --tabs-header-indicator-shadow:
-        0 1px 3px 0 color-mix(in oklab, var(--color-black) 10%, transparent),
-        0 1px 2px -1px color-mix(in oklab, var(--color-black) 10%, transparent);
+        0 0 3px 0 color-mix(in oklab, var(--color-black) 2%, transparent),
+        0 0 2px -1px color-mix(in oklab, var(--color-black) 2%, transparent);
     }
 
     &[data-variant='secondary'] {
@@ -324,8 +324,8 @@
       --tabs-header-active-color: var(--color-black);
       --tabs-header-indicator-bg: var(--color-white);
       --tabs-header-indicator-shadow:
-        0 1px 3px 0 color-mix(in oklab, var(--color-black) 10%, transparent),
-        0 1px 2px -1px color-mix(in oklab, var(--color-black) 10%, transparent);
+        0 0 3px 0 color-mix(in oklab, var(--color-black) 2%, transparent),
+        0 0 2px -1px color-mix(in oklab, var(--color-black) 2%, transparent);
     }
 
     &[data-variant='tertiary'] {
@@ -362,7 +362,7 @@
         --tabs-header-color: var(--color-zinc-100);
         --tabs-header-active-color: var(--color-white);
         --tabs-header-indicator-bg: var(--color-zinc-900);
-        --tabs-header-indicator-shadow: 0 1px 2px 0 color-mix(in oklab, var(--color-black) 40%, transparent);
+        --tabs-header-indicator-shadow: 0 0 2px 0 color-mix(in oklab, var(--color-black) 3%, transparent);
       }
 
       .content {

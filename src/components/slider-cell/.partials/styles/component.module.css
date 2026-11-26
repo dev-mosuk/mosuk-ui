@@ -6,9 +6,9 @@
     --cell-slider-fill: var(--color-zinc-100);
     --cell-slider-border: transparent;
     --cell-slider-shadow:
-      0 2px 4px 0 color-mix(in oklab, var(--color-black) 8%, transparent),
-      0 1px 2px 0 color-mix(in oklab, var(--color-black) 10%, transparent),
-      0 0 1px 0 color-mix(in oklab, var(--color-black) 10%, transparent);
+      0 0 4px 0 color-mix(in oklab, var(--color-black) 2%, transparent),
+      0 0 2px 0 color-mix(in oklab, var(--color-black) 2%, transparent),
+      0 0 1px 0 color-mix(in oklab, var(--color-black) 2%, transparent);
     --cell-slider-label: var(--color-black);
     --cell-slider-value: var(--color-zinc-500);
     --cell-slider-thumb: var(--color-black);
@@ -165,9 +165,9 @@
       --cell-slider-fill: var(--color-zinc-100);
       --cell-slider-border: transparent;
       --cell-slider-shadow:
-        0 2px 4px 0 color-mix(in oklab, var(--color-black) 8%, transparent),
-        0 1px 2px 0 color-mix(in oklab, var(--color-black) 10%, transparent),
-        0 0 1px 0 color-mix(in oklab, var(--color-black) 10%, transparent);
+        0 0 4px 0 color-mix(in oklab, var(--color-black) 2%, transparent),
+        0 0 2px 0 color-mix(in oklab, var(--color-black) 2%, transparent),
+        0 0 1px 0 color-mix(in oklab, var(--color-black) 2%, transparent);
       --cell-slider-label: var(--color-black);
       --cell-slider-value: var(--color-zinc-500);
       --cell-slider-thumb: var(--color-black);

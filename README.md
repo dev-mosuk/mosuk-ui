@@ -1,148 +1,28 @@
-# mosuk UI
+# mosuk-ui
 
-UI библиотека компонентов с использованием CSS Layers для управления каскадом стилей.
+- [ui.mosuk.ru](https://ui.mosuk.ru/) — документация и примеры
+- [dev.mosuk.ru](https://dev.mosuk.ru/) — наш сайт, занимаемся разработкой web-приложений
 
-## 1. Основные слои
+## Философия
+
+Пакет для Next.js и Tailwind CSS 4. Корневого JS-входа нет: `import` из `mosuk-ui` не собирает контролы. Каждый путь свой — `mosuk-ui/components/button`, `mosuk-ui/hooks/…`, `mosuk-ui/providers/…`, `mosuk-ui/services/…`. В бандл попадает только то, что импортировали. Маска, телефон и поиск — отдельные входы, не флаги одного Input.
+
+Внешность задаётся через `className`. Размер и вид — утилиты `size-*` и `variant-*`.
+
+Слои объявлены в `src/index.css`: `properties`, `theme`, `base`, `mosuk-ui`, `components`, `utilities`. Слой `mosuk-ui` идёт сразу после `base`, поэтому дефолт компонента выше базовых стилей. `components` и `utilities` стоят позже: утилиты Tailwind перекрывают кит. Проп `as` меняет тег, классы остаются.
+
+## Подключение
+
+```bash
+npm i mosuk-ui
+```
+
+В `src/index.css` пакет уже импортирует Tailwind. Повторный `@import "tailwindcss"` в проекте не нужен:
 
 ```css
-@layer theme, base, mosuk-ui, components, utilities;
+@import "mosuk-ui";
 ```
 
-Все стили компонентов — внутри `@layer mosuk-ui`.
+В `layout.tsx` этот CSS — первый импорт: кто первый объявил слой `mosuk-ui`, тот фиксирует порядок слоёв.
 
-## 2. z-index
-
-1. **0–99** — обычные компоненты (контент, карточки, формы)
-2. **100–199** — popover, tooltip и другие всплывающие элементы
-3. **200+** — dialog, drawer, модальные окна
-
-## 3. Примеры использования
-
-```css
-@layer mosuk-ui {
-  .root {
-    /* стили */
-  }
-}
-```
-
-## 4. Файловая структура
-
-```
-src/
-├── blocks/             # page blocks: breadcrumbs/, yandex-map/, …
-├── components/         # плоский список features: button/, drawer/, …
-├── providers/          # toasts, yandex-map, yandex-metrika, tbank, …
-├── hooks/
-└── services/
-```
-
-## 5. Разработка и подключение в CRM
-
-Архитектура, naming и конвенции кода — в [.cursor/agents.md](./.cursor/agents.md).
-
-### 5.1. Локальная разработка библиотеки
-
-**Одноразовая сборка:**
-
-```bash
-npm run build
-```
-
-Цепочка: `tsc` → копирование CSS в `dist/` → `tsc-alias` (переписывает `@/` в относительные пути) → `dist/package.json` из корневого `package.json` + генерация exports.
-
-**Watch при параллельной работе с CRM** — в отдельном терминале, пока в CRM крутится `next dev`:
-
-```bash
-npm run build:watch
-```
-
-Сначала выполняется полный `build`, затем параллельно `tsc -w` и `tsc-alias -w`. Изменения в `src/` попадают в `dist/` — CRM подхватывает их через link без переустановки пакета.
-
-**Линт и миграция импортов:**
-
-```bash
-npm run lint
-npm run migrate:imports -- --dry-run   # просмотр
-npm run migrate:imports -- --apply     # замена ./../ на @/
-```
-
-### 5.2. Линковка в CRM
-
-**Первичное подключение:**
-
-```bash
-# 1. В .mosuk-ui/
-npm run link:dist          # build + npm link из dist/
-
-# 2. В корне CRM
-npm link mosuk-ui          # node_modules/mosuk-ui → .mosuk-ui/dist
-```
-
-`dist/package.json` → exports на `index.js` с **относительными** импортами (после `tsc-alias`).
-
-**Настройка CRM (Next.js):** в `next.config` добавьте `transpilePackages: ['mosuk-ui']`, чтобы Next.js транспилировал linked-пакет.
-
-**Повседневный цикл:**
-
-| Терминал | Команда |
-| -------- | ------- |
-| CRM | `next dev` |
-| mosuk-ui | `npm run build:watch` |
-
-После правок в `src/` достаточно сохранить файл — watch обновит `dist/`, CRM пересоберёт страницу.
-
-**Отвязка:**
-
-```bash
-# В CRM
-npm unlink mosuk-ui && npm install
-
-# В .mosuk-ui/dist (при необходимости)
-npm unlink
-```
-
-### 5.3. Почему `dist/`, а не `src/`
-
-В `src/` импорты используют alias `@/` → `src/` (см. `tsconfig.json`). **`tsc` не переписывает их** — это делает `tsc-alias` при сборке в `dist/`. Next.js в CRM резолвит `@/` как `./src/*` **своего** проекта, поэтому линковка **исходников** (`src/`) ломает бандлер:
-
-```
-Can't resolve '@/components/button/component/component'
-Import map: aliased to relative './src/components/...' inside of [project]/
-```
-
-| Линковка | Результат |
-| -------- | --------- |
-| `dist/` (`npm run link:dist`) | OK — в `.js` относительные импорты |
-| `src/` | Ошибка резолва `@/` у потребителя |
-
-**Не линковать `src/`.** Источник deps/peers — корневой `package.json`; `dist/package.json` собирается при `npm run build`.
-
-### 5.4. Импорты
-
-**В `src/` — только `@/`:**
-
-- Alias: `"@/*": ["src/*"]` в `tsconfig.json`
-- Относительные `./…` и `../…` **запрещены** ESLint (`@typescript-eslint/no-restricted-imports`)
-- Полный путь до файла, включая `.partials/` и `(group)/` сегменты
-- Named export везде; точечные `index.ts` на feature, без barrel всего `src/`
-
-**В `dist/` — относительные пути:** после `npm run build` `tsc-alias` заменяет `@/` на относительные пути в emit. Потребитель (CRM, npm) получает обычные `.js` с `./` и `../`.
-
-**ESLint: `export namespace` в `index.ts`:** в `**/index.ts` правило `@typescript-eslint/no-namespace` **отключено** — публичный API compound-компонентов через `export namespace Feature { export type Props = … }` (см. `.cursor/rules/exports.mdc`).
-
-### 5.5. Полезные npm scripts
-
-| Script | Назначение |
-| ------ | ---------- |
-| `npm run build` | Сборка `dist/`: tsc + CSS + tsc-alias + package.json/exports |
-| `npm run build:watch` | Watch-сборка для разработки вместе с CRM |
-| `npm run link:dist` | `build` + `npm link` из `dist/` |
-| `npm run watch:assets` | Watch только CSS → `dist/` |
-| `npm run lint` | ESLint по `src/` |
-| `npm run migrate:imports -- --dry-run` | Превью миграции relative → `@/` |
-| `npm run migrate:imports -- --apply` | Применить миграцию импортов |
-
-### 5.6. Опубликованный пакет (без link)
-
-Публиковать и ставить из npm — артефакт `dist/` (`npm run build` перед publish). В CRM: `"mosuk-ui": "^1.0.x"` без `npm link`.
+Primary по желанию: `--color-primary-50` … `--color-primary-900` в `:root` сразу после импорта. Полная шкала — в [быстром старте](https://ui.mosuk.ru/overview/quick-start).

@@ -10,7 +10,7 @@
     --hero-sheet-bg: var(--color-white);
     --hero-sheet-hero-bg: var(--color-zinc-100);
     --hero-sheet-shadow-color: color-mix(in oklab,
-        var(--color-black) 15%,
+        var(--color-black) 3%,
         transparent);
   }
 

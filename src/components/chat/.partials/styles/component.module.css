@@ -4,7 +4,7 @@
     --chat-surface: var(--color-white);
     --chat-surface-border: var(--color-zinc-100);
     --chat-surface-shadow: 0 0 50px -12px
-      color-mix(in oklab, var(--color-black) 10%, transparent);
+      color-mix(in oklab, var(--color-black) 2%, transparent);
 
     --chat-color: var(--color-black);
     --chat-muted: var(--color-zinc-500);
