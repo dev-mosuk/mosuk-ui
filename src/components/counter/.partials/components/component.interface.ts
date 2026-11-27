@@ -1,10 +1,17 @@
 import type { CounterAnimation } from '@/components/counter/.partials/enums/component.enums';
-import type { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import type { CSSProperties, Ref } from 'react';
 
-export type CounterProps<C extends ElementType = 'span'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type CounterProps<C = 'span'> = {
   as?: C;
   ref?: Ref<any>;
   value: number;
   animation?: CounterAnimation | `${CounterAnimation}`;
   children?: never;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref' | 'children' | 'value'>;
+  className?: string;
+  style?: CSSProperties;
+} & Omit<
+  PropsOf<C>,
+  'as' | 'ref' | 'children' | 'value' | 'className' | 'style'
+>;

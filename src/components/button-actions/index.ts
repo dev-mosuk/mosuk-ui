@@ -1,4 +1,3 @@
-import type {ElementType} from 'react';
 import { ButtonActions as Component } from '@/components/button-actions/.partials/components/component';
 import type { ButtonActionsProps as ComponentProps } from '@/components/button-actions/.partials/components/component.interface';
 import {
@@ -14,5 +13,5 @@ export const ButtonActions = Object.assign(Component, {
 });
 
 export namespace ButtonActions {
-  export type Props<C extends ElementType = 'nav'> = ComponentProps<C>;
+  export type Props<C = 'nav'> = ComponentProps<C>;
 }

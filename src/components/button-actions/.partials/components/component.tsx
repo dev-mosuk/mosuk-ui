@@ -7,9 +7,9 @@ import {
 } from '@/components/button-actions/.partials/constants/component.constants';
 import styles from '@/components/button-actions/.partials/styles/component.module.css';
 import classNames from 'classnames';
-import React, {type ElementType} from 'react';
+import React, { type ElementType } from 'react';
 
-export function ButtonActions<C extends ElementType = 'nav'>({
+export function ButtonActions<C = 'nav'>({
   as,
   orientation = BUTTON_ACTIONS_DEFAULT_ORIENTATION,
   align = BUTTON_ACTIONS_DEFAULT_ALIGN,

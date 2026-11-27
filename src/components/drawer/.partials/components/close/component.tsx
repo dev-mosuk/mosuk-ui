@@ -3,7 +3,7 @@ import { Drawer as BaseUiDrawer } from '@base-ui/react';
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function DrawerClose<C extends ElementType = 'button'>({
+export function DrawerClose<C = 'button'>({
   as,
   ref,
   isDisabled,

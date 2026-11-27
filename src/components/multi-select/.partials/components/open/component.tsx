@@ -1,9 +1,9 @@
 'use client';
 
+import { InputGroup } from '@/components/input-group';
 import type { MultiSelectOpenProps } from '@/components/multi-select/.partials/components/open/component.interface';
 import { useMultiSelect } from '@/components/multi-select/.partials/hooks/hook';
 import styles from '@/components/multi-select/.partials/styles/component.module.css';
-import { InputGroup } from '@/components/input-group';
 import { Popover } from '@/components/popover';
 import classNames from 'classnames';
 import React from 'react';
@@ -38,14 +38,14 @@ export function MultiSelectOpen({
         className,
       )}
       onPointerDownCapture={(event) => {
-        onPointerDownCapture?.(event);
+        onPointerDownCapture?.(event as React.PointerEvent<HTMLDivElement>);
 
         if (isTypeableTarget(event.target)) {
           noteFieldPress();
         }
       }}
       onFocusCapture={(event) => {
-        onFocusCapture?.(event);
+        onFocusCapture?.(event as React.FocusEvent<HTMLDivElement>);
 
         if (isDisabled || isOpen || event.defaultPrevented) {
           return;

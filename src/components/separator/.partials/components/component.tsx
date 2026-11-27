@@ -7,7 +7,7 @@ import styles from '@/components/separator/.partials/styles/component.module.css
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function Separator<C extends ElementType = 'hr'>({
+export function Separator<C = 'hr'>({
   as,
   orientation = SEPARATOR_DEFAULT_ORIENTATION,
   variant = SEPARATOR_DEFAULT_VARIANT,

@@ -7,7 +7,7 @@ import { ContextMenu as BaseUIContextMenu } from '@base-ui/react/context-menu';
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function ContextMenuOverviewPopup<C extends ElementType = 'div'>({
+export function ContextMenuOverviewPopup<C = 'div'>({
   as,
   ref,
   variant = CONTEXT_MENU_DEFAULT_VARIANT,

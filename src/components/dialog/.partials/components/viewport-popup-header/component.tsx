@@ -3,7 +3,7 @@ import styles from '@/components/dialog/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function DialogViewportPopupHeader<C extends ElementType = 'div'>({
+export function DialogViewportPopupHeader<C = 'div'>({
   as,
   ...rest
 }: DialogViewportPopupHeaderProps<C>) {

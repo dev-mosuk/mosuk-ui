@@ -1,11 +1,24 @@
-import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import { CSSProperties, MouseEventHandler, ReactNode, Ref } from 'react';
 
-export type TabsHeaderProps<C extends ElementType = 'div'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type TabsHeaderProps<C = 'div'> = {
   as?: C;
   ref?: Ref<any>;
   activateOnFocus?: boolean;
   loopFocus?: boolean;
+  className?: string;
+  style?: CSSProperties;
+  onClickCapture?: MouseEventHandler<any>;
+  children?: ReactNode;
 } & Omit<
-  ComponentPropsWithoutRef<C>,
-  'as' | 'ref' | 'activateOnFocus' | 'loopFocus'
+  PropsOf<C>,
+  | 'as'
+  | 'ref'
+  | 'activateOnFocus'
+  | 'loopFocus'
+  | 'className'
+  | 'style'
+  | 'onClickCapture'
+  | 'children'
 >;

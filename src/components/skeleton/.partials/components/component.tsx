@@ -7,7 +7,7 @@ import styles from '@/components/skeleton/.partials/styles/component.module.css'
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function Skeleton<C extends ElementType = 'div'>({
+export function Skeleton<C = 'div'>({
   as,
   animation = SKELETON_DEFAULT_ANIMATION,
   variant = SKELETON_DEFAULT_VARIANT,
@@ -20,11 +20,7 @@ export function Skeleton<C extends ElementType = 'div'>({
       {...rest}
       data-animation={animation}
       data-variant={variant}
-      className={classNames(
-        'mosuk-skeleton',
-        styles.skeleton,
-        rest?.className,
-      )}
+      className={classNames('mosuk-skeleton', styles.skeleton, rest?.className)}
     >
       {rest?.children}
     </Component>

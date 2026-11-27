@@ -6,7 +6,7 @@ import { Tooltip as BaseUITooltip } from '@base-ui/react/tooltip';
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function TooltipArrow<C extends ElementType = 'div'>({
+export function TooltipArrow<C = 'div'>({
   as,
   ref,
   className,
@@ -18,11 +18,7 @@ export function TooltipArrow<C extends ElementType = 'div'>({
   return (
     <BaseUITooltip.Arrow
       {...rest}
-      className={classNames(
-        'mosuk-tooltip-arrow',
-        styles.arrow,
-        className,
-      )}
+      className={classNames('mosuk-tooltip-arrow', styles.arrow, className)}
       render={<Component ref={ref} />}
     >
       {children}

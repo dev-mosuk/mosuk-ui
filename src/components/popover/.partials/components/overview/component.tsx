@@ -9,7 +9,7 @@ import { Popover as BaseUIPopover } from '@base-ui/react/popover';
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function PopoverOverview<C extends ElementType = 'div'>({
+export function PopoverOverview<C = 'div'>({
   as,
   ref,
   className,
@@ -25,11 +25,7 @@ export function PopoverOverview<C extends ElementType = 'div'>({
     <BaseUIPopover.Portal
       keepMounted={keepMounted}
       container={container}
-      className={classNames(
-        'mosuk-popover',
-        'group/popover',
-        styles.portal,
-      )}
+      className={classNames('mosuk-popover', 'group/popover', styles.portal)}
     >
       <BaseUIPopover.Positioner
         {...rest}

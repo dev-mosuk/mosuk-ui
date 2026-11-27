@@ -3,18 +3,16 @@ import type {
   HintColor,
   HintPress,
 } from '@/components/hint/.partials/enums/component.enums';
-import type {
-  ComponentPropsWithoutRef,
-  ElementType,
-  PointerEventHandler,
-  Ref,
-} from 'react';
+import type { PointerEventHandler, Ref } from 'react';
 
-export type HintProps<C extends ElementType = 'p'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type HintProps<C = 'p'> = {
   as?: C;
   ref?: Ref<any>;
   color?: HintColor | `${HintColor}`;
   animation?: HintAnimation | `${HintAnimation}`;
   press?: HintPress | `${HintPress}` | false;
   onPointerDown?: PointerEventHandler<any>;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref' | 'color' | 'onPointerDown'>;
+  className?: string;
+} & Omit<PropsOf<C>, 'as' | 'ref' | 'color' | 'onPointerDown' | 'className'>;

@@ -5,7 +5,7 @@ import { Popover as BaseUIPopover } from '@base-ui/react/popover';
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function PopoverOverviewPopup<C extends ElementType = 'div'>({
+export function PopoverOverviewPopup<C = 'div'>({
   as,
   ref,
   variant = POPOVER_DEFAULT_VARIANT,
@@ -19,11 +19,7 @@ export function PopoverOverviewPopup<C extends ElementType = 'div'>({
     <BaseUIPopover.Popup
       {...rest}
       data-variant={variant}
-      className={classNames(
-        'mosuk-popover-content',
-        styles.content,
-        className,
-      )}
+      className={classNames('mosuk-popover-content', styles.content, className)}
       render={<Component ref={ref} />}
     >
       {children}

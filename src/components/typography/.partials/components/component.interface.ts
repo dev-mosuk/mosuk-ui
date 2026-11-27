@@ -7,14 +7,11 @@ import type {
   TypographyVariant,
   TypographyWeight,
 } from '@/components/typography/.partials/enums/component.enums';
-import type {
-  ComponentPropsWithoutRef,
-  ElementType,
-  PointerEventHandler,
-  Ref,
-} from 'react';
+import type { CSSProperties, PointerEventHandler, ReactNode, Ref } from 'react';
 
-export type TypographyProps<C extends ElementType = 'p'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type TypographyProps<C = 'p'> = {
   as?: C;
   ref?: Ref<any>;
   type?: TypographyType | `${TypographyType}`;
@@ -26,8 +23,19 @@ export type TypographyProps<C extends ElementType = 'p'> = {
   press?: TypographyPress | `${TypographyPress}` | false;
   isMuted?: boolean;
   isTruncate?: boolean;
+  style?: CSSProperties;
+  className?: string;
   onPointerDown?: PointerEventHandler<any>;
+  children?: ReactNode;
 } & Omit<
-  ComponentPropsWithoutRef<C>,
-  'as' | 'ref' | 'type' | 'color' | 'align' | 'onPointerDown'
+  PropsOf<C>,
+  | 'as'
+  | 'ref'
+  | 'type'
+  | 'color'
+  | 'align'
+  | 'style'
+  | 'className'
+  | 'onPointerDown'
+  | 'children'
 >;

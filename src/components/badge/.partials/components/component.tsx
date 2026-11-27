@@ -2,9 +2,9 @@ import type { BadgeProps } from '@/components/badge/.partials/components/compone
 import { BADGE_DEFAULT_AS } from '@/components/badge/.partials/constants/component.constants';
 import styles from '@/components/badge/.partials/styles/component.module.css';
 import classNames from 'classnames';
-import React, {type ElementType} from 'react';
+import React, { type ElementType } from 'react';
 
-export function Badge<C extends ElementType = 'span'>({
+export function Badge<C = 'span'>({
   as,
   ref,
   style,

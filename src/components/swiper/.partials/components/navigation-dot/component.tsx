@@ -6,7 +6,7 @@ import styles from '@/components/swiper/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function SwiperNavigationDot<C extends ElementType = 'button'>({
+export function SwiperNavigationDot<C = 'button'>({
   as,
   ref,
   isActive = SWIPER_NAVIGATION_DOT_DEFAULT_IS_ACTIVE,

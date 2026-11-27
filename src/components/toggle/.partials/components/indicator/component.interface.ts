@@ -1,6 +1,10 @@
-import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import { CSSProperties, Ref } from 'react';
 
-export type ToggleIndicatorProps<C extends ElementType = 'span'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type ToggleIndicatorProps<C = 'span'> = {
   as?: C;
   ref?: Ref<any>;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;
+  className?: string;
+  style?: CSSProperties;
+} & Omit<PropsOf<C>, 'as' | 'ref' | 'className' | 'style'>;

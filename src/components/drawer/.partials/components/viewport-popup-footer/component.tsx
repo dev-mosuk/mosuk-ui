@@ -3,7 +3,7 @@ import styles from '@/components/drawer/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function DrawerViewportPopupFooter<C extends ElementType = 'div'>({
+export function DrawerViewportPopupFooter<C = 'div'>({
   as,
   ...rest
 }: DrawerViewportPopupFooterProps<C>) {

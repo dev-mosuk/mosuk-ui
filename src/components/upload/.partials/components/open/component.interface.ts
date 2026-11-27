@@ -1,6 +1,11 @@
-import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import { ReactNode, Ref } from 'react';
 
-export type UploadOpenProps<C extends ElementType = 'label'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type UploadOpenProps<C = 'label'> = {
   as?: C;
   ref?: Ref<any>;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;
+  htmlFor?: string;
+  className?: string;
+  children?: ReactNode;
+} & Omit<PropsOf<C>, 'as' | 'ref' | 'htmlFor' | 'className' | 'children'>;

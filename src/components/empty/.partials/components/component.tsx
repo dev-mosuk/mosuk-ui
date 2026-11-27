@@ -1,3 +1,4 @@
+import { Card } from '@/components/card';
 import type { EmptyProps } from '@/components/empty/.partials/components/component.interface';
 import {
   EMPTY_DEFAULT_ANIMATION,
@@ -5,13 +6,10 @@ import {
   EMPTY_DEFAULT_VARIANT,
 } from '@/components/empty/.partials/constants/component.constants';
 import styles from '@/components/empty/.partials/styles/component.module.css';
-import { Card } from '@/components/card';
 import classNames from 'classnames';
-import React, { type ElementType } from 'react';
+import React from 'react';
 
-export function Empty<C extends ElementType = 'section'>({
-  ...rest
-}: EmptyProps<C>) {
+export function Empty<C = 'section'>({ ...rest }: EmptyProps<C>) {
   return (
     <Card
       {...rest}

@@ -3,16 +3,11 @@ import type {
   CardPress,
   CardVariant,
 } from '@/components/card/.partials/enums/component.enums';
-import type {
-  ComponentPropsWithoutRef,
-  CSSProperties,
-  ElementType,
-  PointerEventHandler,
-  ReactNode,
-  Ref,
-} from 'react';
+import type { CSSProperties, PointerEventHandler, ReactNode, Ref } from 'react';
 
-type CardOwnProps<C extends ElementType> = {
+import type { PropsOf } from '@/types/props-of';
+
+type CardOwnProps<C> = {
   as?: C;
   ref?: Ref<any>;
   variant?: CardVariant | `${CardVariant}`;
@@ -25,9 +20,9 @@ type CardOwnProps<C extends ElementType> = {
   children?: ReactNode;
 };
 
-export type CardProps<C extends ElementType = 'div'> = CardOwnProps<C> &
+export type CardProps<C = 'div'> = CardOwnProps<C> &
   Omit<
-    ComponentPropsWithoutRef<C>,
+    PropsOf<C>,
     | 'as'
     | 'ref'
     | 'color'

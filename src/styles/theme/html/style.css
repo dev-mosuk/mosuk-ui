@@ -1,4 +1,7 @@
 @layer theme {
+    html {
+        overflow-x: clip;
+    }
 
     /* ! Background and Color */
     /* Light Theme */

@@ -1,19 +1,18 @@
-import { EmptyButton } from '@/components/empty/.partials/components/button/component';
-import type { EmptyButtonProps } from '@/components/empty/.partials/components/button/component.interface';
-import { Empty as BaseEmpty } from '@/components/empty/.partials/components/component';
-import type { EmptyProps } from '@/components/empty/.partials/components/component.interface';
-import { EmptyComment } from '@/components/empty/.partials/components/comment/component';
-import type { EmptyCommentProps } from '@/components/empty/.partials/components/comment/component.interface';
-import { EmptyIcon } from '@/components/empty/.partials/components/icon/component';
-import type { EmptyIconProps } from '@/components/empty/.partials/components/icon/component.interface';
-import { EmptySubject } from '@/components/empty/.partials/components/subject/component';
-import type { EmptySubjectProps } from '@/components/empty/.partials/components/subject/component.interface';
 import {
   CardAnimation,
   CardPress,
   CardVariant,
 } from '@/components/card/.partials/enums/component.enums';
-import type { ElementType } from 'react';
+import { EmptyButton } from '@/components/empty/.partials/components/button/component';
+import type { EmptyButtonProps } from '@/components/empty/.partials/components/button/component.interface';
+import { EmptyComment } from '@/components/empty/.partials/components/comment/component';
+import type { EmptyCommentProps } from '@/components/empty/.partials/components/comment/component.interface';
+import { Empty as BaseEmpty } from '@/components/empty/.partials/components/component';
+import type { EmptyProps } from '@/components/empty/.partials/components/component.interface';
+import { EmptyIcon } from '@/components/empty/.partials/components/icon/component';
+import type { EmptyIconProps } from '@/components/empty/.partials/components/icon/component.interface';
+import { EmptySubject } from '@/components/empty/.partials/components/subject/component';
+import type { EmptySubjectProps } from '@/components/empty/.partials/components/subject/component.interface';
 
 export const Empty = Object.assign(BaseEmpty, {
   Icon: EmptyIcon,
@@ -28,18 +27,18 @@ export const Empty = Object.assign(BaseEmpty, {
 });
 
 export namespace Empty {
-  export type Props<C extends ElementType = 'section'> = EmptyProps<C>;
+  export type Props<C = 'section'> = EmptyProps<C>;
 
   export namespace Icon {
     export type Props = EmptyIconProps;
   }
 
   export namespace Subject {
-    export type Props<C extends ElementType = 'p'> = EmptySubjectProps<C>;
+    export type Props<C = 'p'> = EmptySubjectProps<C>;
   }
 
   export namespace Comment {
-    export type Props<C extends ElementType = 'p'> = EmptyCommentProps<C>;
+    export type Props<C = 'p'> = EmptyCommentProps<C>;
   }
 
   export namespace Button {

@@ -9,7 +9,7 @@ import styles from '@/components/card/.partials/styles/style.module.css';
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function Card<C extends ElementType = 'div'>({
+export function Card<C = 'div'>({
   as,
   variant = CARD_DEFAULT_VARIANT,
   animation = CARD_DEFAULT_ANIMATION,
@@ -62,12 +62,7 @@ export function Card<C extends ElementType = 'div'>({
 
         onPointerDown?.(event as never);
       }}
-      className={classNames(
-        'mosuk-card',
-        'group/card',
-        styles.card,
-        className,
-      )}
+      className={classNames('mosuk-card', 'group/card', styles.card, className)}
     >
       {rest?.children}
     </Component>

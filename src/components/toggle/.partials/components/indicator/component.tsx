@@ -19,10 +19,7 @@ type IndicatorLayout = {
   height: number;
 };
 
-function readLayout(
-  list: HTMLElement,
-  tab: HTMLElement,
-): IndicatorLayout {
+function readLayout(list: HTMLElement, tab: HTMLElement): IndicatorLayout {
   const listRect = list.getBoundingClientRect();
   const tabRect = tab.getBoundingClientRect();
 
@@ -34,7 +31,7 @@ function readLayout(
   };
 }
 
-export function ToggleIndicator<C extends ElementType = 'span'>({
+export function ToggleIndicator<C = 'span'>({
   as,
   className,
   style,
@@ -124,7 +121,7 @@ export function ToggleIndicator<C extends ElementType = 'span'>({
     <Component
       {...rest}
       ref={setRefs}
-      role="presentation"
+      role='presentation'
       data-active={active ? '' : undefined}
       style={indicatorStyle}
       className={classNames(

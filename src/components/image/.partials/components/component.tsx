@@ -27,7 +27,7 @@ import React, {
   type CSSProperties,
 } from 'react';
 
-export function Image<C extends ElementType = 'div'>(props: ImageProps<C>) {
+export function Image<C = 'div'>(props: ImageProps<C>) {
   return (
     <ImageProvider isLoading={props.isLoading ?? IMAGE_DEFAULT_IS_LOADING}>
       <ImageFrame<C> {...props} />
@@ -35,7 +35,7 @@ export function Image<C extends ElementType = 'div'>(props: ImageProps<C>) {
   );
 }
 
-function ImageFrame<C extends ElementType = 'div'>({
+function ImageFrame<C = 'div'>({
   as,
   ref,
   isDisabled = IMAGE_DEFAULT_IS_DISABLED,

@@ -5,7 +5,6 @@ import {
   CardPress,
   CardVariant,
 } from '@/components/card/.partials/enums/component.enums';
-import type { ElementType } from 'react';
 
 export const Card = Object.assign(Component, {
   ENUMS: {
@@ -16,5 +15,5 @@ export const Card = Object.assign(Component, {
 });
 
 export namespace Card {
-  export type Props<C extends ElementType = 'div'> = CardProps<C>;
+  export type Props<C = 'div'> = CardProps<C>;
 }

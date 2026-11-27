@@ -6,7 +6,7 @@ import styles from '@/components/hero-sheet/.partials/styles/component.module.cs
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 
-export function HeroSheetHero<C extends ElementType = 'div'>({
+export function HeroSheetHero<C = 'div'>({
   as,
   ...rest
 }: HeroSheetHeroProps<C>) {

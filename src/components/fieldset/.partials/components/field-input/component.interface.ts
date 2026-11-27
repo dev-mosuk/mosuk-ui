@@ -1,6 +1,15 @@
-import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import { Ref } from 'react';
 
-export type FieldsetFieldInputProps<C extends ElementType = 'input'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type FieldsetFieldInputProps<C = 'input'> = {
   as?: C;
   ref?: Ref<any>;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;
+  id?: string;
+  name?: string;
+  placeholder?: string;
+  className?: string;
+} & Omit<
+  PropsOf<C>,
+  'as' | 'ref' | 'id' | 'name' | 'placeholder' | 'className'
+>;

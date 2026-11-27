@@ -1,19 +1,15 @@
 import type { ContextMenuVariant } from '@/components/context-menu/.partials/enums/component.enums';
 import { ContextMenu as BaseUIContextMenu } from '@base-ui/react/context-menu';
-import type {
-  ComponentPropsWithoutRef,
-  CSSProperties,
-  ElementType,
-  ReactNode,
-  Ref,
-} from 'react';
+import type { CSSProperties, ReactNode, Ref } from 'react';
+
+import type { PropsOf } from '@/types/props-of';
 
 type ContextMenuOverviewPopupBaseUIProps = Omit<
   BaseUIContextMenu.Popup.Props,
   'render' | 'color' | 'className' | 'style' | 'children' | 'ref'
 >;
 
-export type ContextMenuOverviewPopupProps<C extends ElementType = 'div'> = {
+export type ContextMenuOverviewPopupProps<C = 'div'> = {
   as?: C;
   ref?: Ref<any>;
   variant?: ContextMenuVariant | `${ContextMenuVariant}`;
@@ -22,7 +18,7 @@ export type ContextMenuOverviewPopupProps<C extends ElementType = 'div'> = {
   children?: ReactNode;
 } & ContextMenuOverviewPopupBaseUIProps &
   Omit<
-    ComponentPropsWithoutRef<C>,
+    PropsOf<C>,
     | 'as'
     | 'ref'
     | 'color'

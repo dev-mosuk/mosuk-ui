@@ -1,16 +1,13 @@
-import {
-  ComponentPropsWithoutRef,
-  ElementType,
-  InputHTMLAttributes,
-  Ref,
-} from 'react';
+import { InputHTMLAttributes, ReactNode, Ref } from 'react';
+
+import type { PropsOf } from '@/types/props-of';
 
 type UploadFileProps = Pick<
   InputHTMLAttributes<HTMLInputElement>,
   'accept' | 'capture' | 'multiple' | 'form' | 'id' | 'name'
 >;
 
-type UploadOwnProps<C extends ElementType> = {
+type UploadOwnProps<C> = {
   as?: C;
   ref?: Ref<any>;
   accept?: UploadFileProps['accept'];
@@ -23,11 +20,18 @@ type UploadOwnProps<C extends ElementType> = {
   isReadOnly?: boolean;
   isRequired?: boolean;
   onChange?: (files: File[]) => void;
+  className?: string;
+  children?: ReactNode;
 };
 
-export type UploadProps<C extends ElementType = 'fieldset'> =
-  UploadOwnProps<C> &
-    Omit<
-      ComponentPropsWithoutRef<C>,
-      'as' | 'ref' | 'disabled' | 'onChange' | keyof UploadFileProps
-    >;
+export type UploadProps<C = 'fieldset'> = UploadOwnProps<C> &
+  Omit<
+    PropsOf<C>,
+    | 'as'
+    | 'ref'
+    | 'disabled'
+    | 'onChange'
+    | keyof UploadFileProps
+    | 'className'
+    | 'children'
+  >;

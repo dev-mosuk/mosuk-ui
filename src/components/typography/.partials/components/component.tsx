@@ -30,7 +30,7 @@ const typeClassName: Record<TypographyType, string> = {
   [TypographyType.P6]: styles.p6,
 };
 
-export function Typography<C extends ElementType = 'p'>({
+export function Typography<C = 'p'>({
   as,
   type = TYPOGRAPHY_DEFAULT_TYPE,
   align = TYPOGRAPHY_DEFAULT_ALIGN,

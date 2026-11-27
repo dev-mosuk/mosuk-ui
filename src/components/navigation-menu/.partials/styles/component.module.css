@@ -1,0 +1,217 @@
+/* Tokens */
+@layer mosuk-ui {
+  :global(:root) {
+    --navigation-menu-bg: var(--color-white);
+    --navigation-menu-color: var(--color-black);
+
+    --navigation-menu-border: var(--color-zinc-100);
+    --navigation-menu-radius: var(--radius-xl);
+    --navigation-menu-shadow: 0 0 50px -12px color-mix(in oklab, var(--color-black) 3%, transparent);
+  }
+
+  :global([data-theme='dark']) {
+    --navigation-menu-bg: var(--color-zinc-950);
+    --navigation-menu-color: var(--color-white);
+
+    --navigation-menu-border: var(--color-zinc-900);
+    --navigation-menu-radius: var(--radius-xl);
+    --navigation-menu-shadow: 0 0 #0000;
+  }
+}
+
+/* NavigationMenu */
+@layer mosuk-ui {
+  .portal {
+    container: navigation-menu;
+  }
+
+  .list {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--spacing) * 1);
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    &[data-orientation='vertical'] {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+  .open {
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--spacing) * 1);
+
+    cursor: pointer;
+  }
+
+  .icon {
+    display: flex;
+
+    transition: transform 200ms ease-in-out;
+
+    &[data-popup-open] {
+      transform: rotate(180deg);
+    }
+  }
+
+  .content {
+    width: max-content;
+    height: 100%;
+  }
+
+  .overview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50;
+
+    width: var(--positioner-width);
+    height: var(--positioner-height);
+    max-width: var(--available-width);
+  }
+
+  .popup {
+    width: var(--popup-width);
+    height: var(--popup-height);
+
+    padding: calc(var(--spacing) * 1);
+
+    color: var(--navigation-menu-color);
+
+    background-color: var(--navigation-menu-bg);
+
+    border: 1px solid transparent;
+    border-color: var(--navigation-menu-border);
+    border-radius: var(--navigation-menu-radius);
+
+    box-shadow: var(--navigation-menu-shadow);
+
+    transform-origin: var(--transform-origin);
+
+    transition: all 200ms ease-in-out;
+
+    &[data-starting-style],
+    &[data-ending-style] {
+      opacity: 0;
+
+      transform: scale(0.9);
+    }
+  }
+
+  .viewport {
+    overflow: hidden;
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  .arrow {
+    overflow: clip;
+    position: relative;
+    display: block;
+
+    width: calc(var(--spacing) * 3);
+    height: calc(var(--spacing) * 1.5);
+
+    &[data-side='top'] {
+      bottom: calc(var(--spacing) * -1.5);
+
+      rotate: 180deg;
+    }
+
+    &[data-side='bottom'] {
+      top: calc(var(--spacing) * -1.5);
+    }
+
+    &[data-side='left'] {
+      right: calc(var(--spacing) * -2.25);
+
+      rotate: 90deg;
+    }
+
+    &[data-side='right'] {
+      left: calc(var(--spacing) * -2.25);
+
+      rotate: -90deg;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      display: block;
+
+      width: calc(var(--spacing) * 1.5 * 1.414);
+      height: calc(var(--spacing) * 1.5 * 1.414);
+
+      background-color: var(--navigation-menu-bg);
+
+      border: 1px solid var(--navigation-menu-border);
+
+      transform: translate(-50%, 50%) rotate(45deg);
+    }
+  }
+
+  .backdrop {
+    position: fixed;
+    inset: 0;
+  }
+}
+
+/* Variant */
+@layer mosuk-ui {
+  .popup {
+    &[data-variant='primary'] {
+      --navigation-menu-bg: var(--color-white);
+      --navigation-menu-color: var(--color-black);
+      --navigation-menu-border: var(--color-zinc-100);
+      --navigation-menu-shadow: 0 0 50px -12px color-mix(in oklab, var(--color-black) 3%, transparent);
+    }
+
+    &[data-variant='secondary'] {
+      --navigation-menu-bg: var(--color-gray-50);
+      --navigation-menu-color: var(--color-black);
+      --navigation-menu-border: var(--color-zinc-100);
+      --navigation-menu-shadow: 0 0 #0000;
+    }
+
+    &[data-variant='tertiary'] {
+      --navigation-menu-bg: var(--color-gray-100);
+      --navigation-menu-color: var(--color-black);
+      --navigation-menu-border: var(--color-zinc-200);
+      --navigation-menu-shadow: 0 0 #0000;
+    }
+  }
+
+  :global([data-theme='dark']) {
+    .popup {
+      &[data-variant='primary'] {
+        --navigation-menu-bg: var(--color-zinc-950);
+        --navigation-menu-color: var(--color-white);
+        --navigation-menu-border: var(--color-zinc-900);
+        --navigation-menu-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='secondary'] {
+        --navigation-menu-bg: var(--color-zinc-900);
+        --navigation-menu-color: var(--color-white);
+        --navigation-menu-border: var(--color-zinc-800);
+        --navigation-menu-shadow: 0 0 #0000;
+      }
+
+      &[data-variant='tertiary'] {
+        --navigation-menu-bg: var(--color-zinc-800);
+        --navigation-menu-color: var(--color-white);
+        --navigation-menu-border: var(--color-zinc-700);
+        --navigation-menu-shadow: 0 0 #0000;
+      }
+    }
+  }
+}

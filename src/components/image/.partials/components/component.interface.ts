@@ -3,15 +3,11 @@ import type {
   ImagePress,
   ImageVariant,
 } from '@/components/image/.partials/enums/component.enums';
-import type {
-  ComponentPropsWithoutRef,
-  CSSProperties,
-  ElementType,
-  PointerEventHandler,
-  Ref,
-} from 'react';
+import type { CSSProperties, PointerEventHandler, ReactNode, Ref } from 'react';
 
-export type ImageProps<C extends ElementType = 'div'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type ImageProps<C = 'div'> = {
   as?: C;
   ref?: Ref<any>;
   size?: number;
@@ -22,4 +18,9 @@ export type ImageProps<C extends ElementType = 'div'> = {
   isLoading?: boolean;
   style?: CSSProperties;
   onPointerDown?: PointerEventHandler<any>;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref' | 'style' | 'onPointerDown'>;
+  className?: string;
+  children?: ReactNode;
+} & Omit<
+  PropsOf<C>,
+  'as' | 'ref' | 'style' | 'onPointerDown' | 'className' | 'children'
+>;

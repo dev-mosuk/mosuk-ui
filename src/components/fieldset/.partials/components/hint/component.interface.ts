@@ -1,9 +1,12 @@
 import type { FieldsetHintType } from '@/components/fieldset/.partials/components/hint/component.enums';
-import type { ComponentPropsWithoutRef, ElementType, ReactNode, Ref } from 'react';
+import type { ReactNode, Ref } from 'react';
 
-export type FieldsetHintProps<C extends ElementType = 'p'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type FieldsetHintProps<C = 'p'> = {
   as?: C;
   ref?: Ref<any>;
   type?: FieldsetHintType | `${FieldsetHintType}`;
   children?: ReactNode;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref' | 'children'>;
+  className?: string;
+} & Omit<PropsOf<C>, 'as' | 'ref' | 'children' | 'className'>;

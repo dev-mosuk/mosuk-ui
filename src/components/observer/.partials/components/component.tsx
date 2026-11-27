@@ -3,10 +3,7 @@ import styles from '@/components/observer/.partials/styles/component.module.css'
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function Observer<C extends ElementType = 'aside'>({
-  as,
-  ...rest
-}: ObserverProps<C>) {
+export function Observer<C = 'aside'>({ as, ...rest }: ObserverProps<C>) {
   const Component = (as || 'aside') as ElementType;
 
   return (

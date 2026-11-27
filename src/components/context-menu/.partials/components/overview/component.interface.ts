@@ -1,18 +1,14 @@
 import { ContextMenu as BaseUIContextMenu } from '@base-ui/react/context-menu';
-import type {
-  ComponentPropsWithoutRef,
-  CSSProperties,
-  ElementType,
-  ReactNode,
-  Ref,
-} from 'react';
+import type { CSSProperties, ReactNode, Ref } from 'react';
+
+import type { PropsOf } from '@/types/props-of';
 
 type ContextMenuOverviewBaseUIProps = Omit<
   BaseUIContextMenu.Positioner.Props,
   'render' | 'className' | 'style' | 'children' | 'ref'
 >;
 
-export type ContextMenuOverviewProps<C extends ElementType = 'div'> = {
+export type ContextMenuOverviewProps<C = 'div'> = {
   as?: C;
   ref?: Ref<any>;
   className?: string;
@@ -20,7 +16,7 @@ export type ContextMenuOverviewProps<C extends ElementType = 'div'> = {
   children?: ReactNode;
 } & ContextMenuOverviewBaseUIProps &
   Omit<
-    ComponentPropsWithoutRef<C>,
+    PropsOf<C>,
     | 'as'
     | 'ref'
     | 'color'

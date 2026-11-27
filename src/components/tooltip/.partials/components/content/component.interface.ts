@@ -1,12 +1,8 @@
 import type { TooltipVariant } from '@/components/tooltip/.partials/enums/component.enums';
 import { Tooltip as BaseUITooltip } from '@base-ui/react/tooltip';
-import type {
-  ComponentPropsWithoutRef,
-  CSSProperties,
-  ElementType,
-  ReactNode,
-  Ref,
-} from 'react';
+import type { CSSProperties, ReactNode, Ref } from 'react';
+
+import type { PropsOf } from '@/types/props-of';
 
 type TooltipContentPositionerProps = Omit<
   BaseUITooltip.Positioner.Props,
@@ -18,7 +14,7 @@ type TooltipContentPortalProps = Pick<
   'container' | 'keepMounted'
 >;
 
-export type TooltipContentProps<C extends ElementType = 'div'> = {
+export type TooltipContentProps<C = 'div'> = {
   as?: C;
   ref?: Ref<any>;
   variant?: TooltipVariant | `${TooltipVariant}`;
@@ -28,7 +24,7 @@ export type TooltipContentProps<C extends ElementType = 'div'> = {
 } & TooltipContentPortalProps &
   TooltipContentPositionerProps &
   Omit<
-    ComponentPropsWithoutRef<C>,
+    PropsOf<C>,
     | 'as'
     | 'ref'
     | 'color'

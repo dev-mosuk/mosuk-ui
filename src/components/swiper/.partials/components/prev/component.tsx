@@ -12,7 +12,7 @@ import React, {
 } from 'react';
 import { useSwiper } from 'swiper/react';
 
-export function SwiperPrev<C extends ElementType = 'button'>({
+export function SwiperPrev<C = 'button'>({
   as,
   ref,
   isDisabled,

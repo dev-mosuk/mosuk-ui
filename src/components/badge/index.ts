@@ -7,7 +7,6 @@ import {
   BadgePress,
   BadgeVariant,
 } from '@/components/badge/.partials/enums/component.enums';
-import type { ElementType } from 'react';
 
 export const Badge = Object.assign(Component, {
   Dot: BadgeDot,
@@ -19,9 +18,9 @@ export const Badge = Object.assign(Component, {
 });
 
 export namespace Badge {
-  export type Props<C extends ElementType = 'span'> = BadgeProps<C>;
+  export type Props<C = 'span'> = BadgeProps<C>;
 
   export namespace Dot {
-    export type Props<C extends ElementType = 'span'> = BadgeDotProps<C>;
+    export type Props<C = 'span'> = BadgeDotProps<C>;
   }
 }

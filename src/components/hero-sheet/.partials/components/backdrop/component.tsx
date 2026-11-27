@@ -4,7 +4,7 @@ import styles from '@/components/hero-sheet/.partials/styles/component.module.cs
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 
-export function HeroSheetBackdrop<C extends ElementType = 'div'>({
+export function HeroSheetBackdrop<C = 'div'>({
   as,
   ...rest
 }: HeroSheetBackdropProps<C>) {

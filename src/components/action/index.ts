@@ -4,7 +4,6 @@ import {
   ActionAnimation,
   ActionPress,
 } from '@/components/action/.partials/enums/component.enums';
-import type { ElementType } from 'react';
 
 export const Action = Object.assign(Component, {
   ENUMS: {
@@ -14,5 +13,5 @@ export const Action = Object.assign(Component, {
 });
 
 export namespace Action {
-  export type Props<C extends ElementType = 'div'> = ActionProps<C>;
+  export type Props<C = 'div'> = ActionProps<C>;
 }

@@ -1,6 +1,10 @@
-import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import { ReactNode, Ref } from 'react';
 
-export type SectionProps<C extends ElementType = 'section'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type SectionProps<C = 'section'> = {
   as?: C;
   ref?: Ref<any>;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;
+  className?: string;
+  children?: ReactNode;
+} & Omit<PropsOf<C>, 'as' | 'ref' | 'className' | 'children'>;

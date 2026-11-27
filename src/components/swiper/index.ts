@@ -2,10 +2,10 @@ import { Swiper as Component } from '@/components/swiper/.partials/components/co
 import { SwiperProps as ComponentProps } from '@/components/swiper/.partials/components/component.interface';
 import { SwiperHover } from '@/components/swiper/.partials/components/hover/component';
 import { SwiperHoverProps } from '@/components/swiper/.partials/components/hover/component.interface';
-import { SwiperNavigation } from '@/components/swiper/.partials/components/navigation/component';
-import { SwiperNavigationProps } from '@/components/swiper/.partials/components/navigation/component.interface';
 import { SwiperNavigationDot } from '@/components/swiper/.partials/components/navigation-dot/component';
 import { SwiperNavigationDotProps } from '@/components/swiper/.partials/components/navigation-dot/component.interface';
+import { SwiperNavigation } from '@/components/swiper/.partials/components/navigation/component';
+import { SwiperNavigationProps } from '@/components/swiper/.partials/components/navigation/component.interface';
 import { SwiperNext } from '@/components/swiper/.partials/components/next/component';
 import { SwiperNextProps } from '@/components/swiper/.partials/components/next/component.interface';
 import { SwiperPrev } from '@/components/swiper/.partials/components/prev/component';
@@ -16,7 +16,6 @@ import {
   SwiperOrientation,
   SwiperOverflow,
 } from '@/components/swiper/.partials/enums/component.enums';
-import type { ElementType } from 'react';
 
 export { useSwiper, useSwiperSlide } from 'swiper/react';
 
@@ -49,16 +48,15 @@ export namespace Swiper {
     export type Props = SwiperNavigationProps;
 
     export namespace Dot {
-      export type Props<C extends ElementType = 'button'> =
-        SwiperNavigationDotProps<C>;
+      export type Props<C = 'button'> = SwiperNavigationDotProps<C>;
     }
   }
 
   export namespace Next {
-    export type Props<C extends ElementType = 'button'> = SwiperNextProps<C>;
+    export type Props<C = 'button'> = SwiperNextProps<C>;
   }
 
   export namespace Prev {
-    export type Props<C extends ElementType = 'button'> = SwiperPrevProps<C>;
+    export type Props<C = 'button'> = SwiperPrevProps<C>;
   }
 }

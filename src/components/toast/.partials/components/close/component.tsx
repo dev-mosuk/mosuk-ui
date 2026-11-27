@@ -3,7 +3,7 @@ import { Toast as BaseUiToast } from '@base-ui/react/toast';
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function Close<C extends ElementType = 'button'>({
+export function Close<C = 'button'>({
   as,
   ref,
   isDisabled,

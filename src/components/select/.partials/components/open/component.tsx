@@ -1,10 +1,10 @@
 'use client';
 
+import { InputGroup } from '@/components/input-group';
+import { Popover } from '@/components/popover';
 import type { SelectOpenProps } from '@/components/select/.partials/components/open/component.interface';
 import { useSelect } from '@/components/select/.partials/hooks/hook';
 import styles from '@/components/select/.partials/styles/component.module.css';
-import { InputGroup } from '@/components/input-group';
-import { Popover } from '@/components/popover';
 import classNames from 'classnames';
 import React from 'react';
 
@@ -38,14 +38,14 @@ export function SelectOpen({
         className,
       )}
       onPointerDownCapture={(event) => {
-        onPointerDownCapture?.(event);
+        onPointerDownCapture?.(event as React.PointerEvent<HTMLDivElement>);
 
         if (isTypeableTarget(event.target)) {
           noteFieldPress();
         }
       }}
       onFocusCapture={(event) => {
-        onFocusCapture?.(event);
+        onFocusCapture?.(event as React.FocusEvent<HTMLDivElement>);
 
         if (isDisabled || isOpen || event.defaultPrevented) {
           return;

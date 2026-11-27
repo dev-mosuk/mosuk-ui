@@ -22,7 +22,6 @@ import {
   DrawerDirection,
   DrawerVariant,
 } from '@/components/drawer/.partials/enums/component.enums';
-import type { ElementType } from 'react';
 
 export const Drawer = Object.assign(Component, {
   Open: DrawerOpen,
@@ -50,7 +49,7 @@ export namespace Drawer {
   }
 
   export namespace Close {
-    export type Props<C extends ElementType = 'button'> = DrawerCloseProps<C>;
+    export type Props<C = 'button'> = DrawerCloseProps<C>;
   }
 
   export namespace Viewport {
@@ -64,23 +63,19 @@ export namespace Drawer {
       export type Props = DrawerViewportPopupProps;
 
       export namespace Handle {
-        export type Props<C extends ElementType = 'div'> =
-          DrawerViewportPopupHandleProps<C>;
+        export type Props<C = 'div'> = DrawerViewportPopupHandleProps<C>;
       }
 
       export namespace Header {
-        export type Props<C extends ElementType = 'div'> =
-          DrawerViewportPopupHeaderProps<C>;
+        export type Props<C = 'div'> = DrawerViewportPopupHeaderProps<C>;
       }
 
       export namespace Body {
-        export type Props<C extends ElementType = 'div'> =
-          DrawerViewportPopupBodyProps<C>;
+        export type Props<C = 'div'> = DrawerViewportPopupBodyProps<C>;
       }
 
       export namespace Footer {
-        export type Props<C extends ElementType = 'div'> =
-          DrawerViewportPopupFooterProps<C>;
+        export type Props<C = 'div'> = DrawerViewportPopupFooterProps<C>;
       }
     }
   }

@@ -9,7 +9,6 @@ import {
   TypographyVariant,
   TypographyWeight,
 } from '@/components/typography/.partials/enums/component.enums';
-import type { ElementType } from 'react';
 
 export const Typography = Object.assign(Component, {
   ENUMS: {
@@ -24,5 +23,5 @@ export const Typography = Object.assign(Component, {
 });
 
 export namespace Typography {
-  export type Props<C extends ElementType = 'p'> = TypographyProps<C>;
+  export type Props<C = 'p'> = TypographyProps<C>;
 }

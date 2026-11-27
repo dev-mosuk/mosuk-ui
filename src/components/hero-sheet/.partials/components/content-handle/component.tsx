@@ -11,7 +11,7 @@ import styles from '@/components/hero-sheet/.partials/styles/component.module.cs
 import classNames from 'classnames';
 import React, { ElementType, useCallback, useRef } from 'react';
 
-export function HeroSheetContentHandle<C extends ElementType = 'div'>({
+export function HeroSheetContentHandle<C = 'div'>({
   as,
   ...rest
 }: HeroSheetContentHandleProps<C>) {

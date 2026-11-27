@@ -11,11 +11,11 @@ import styles from '@/components/tabs/.partials/styles/component.module.css';
 import { Tabs as BaseUiTabs } from '@base-ui/react/tabs';
 import classNames from 'classnames';
 import React, {
-  ElementType,
   createElement,
   useCallback,
   useEffect,
   useState,
+  type ElementType,
 } from 'react';
 
 function TabsValueSync() {
@@ -28,7 +28,7 @@ function TabsValueSync() {
   return null;
 }
 
-export function Tabs<C extends ElementType = 'div'>({
+export function Tabs<C = 'div'>({
   as,
   size,
   variant = TABS_DEFAULT_VARIANT,
@@ -60,7 +60,7 @@ export function Tabs<C extends ElementType = 'div'>({
     [isControlled, onChange],
   );
 
-  const rootRender = as ? createElement(as) : undefined;
+  const rootRender = as ? createElement(as as ElementType) : undefined;
 
   return (
     <TabsProvider

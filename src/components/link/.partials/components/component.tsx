@@ -7,9 +7,9 @@ import {
 } from '@/components/link/.partials/constants/component.constants';
 import styles from '@/components/link/.partials/styles/component.module.css';
 import classNames from 'classnames';
-import React, {type ElementType} from 'react';
+import React, { type ElementType } from 'react';
 
-export function Link<C extends ElementType = 'a'>({
+export function Link<C = 'a'>({
   as,
   ref,
   variant = LINK_DEFAULT_VARIANT,
@@ -32,12 +32,7 @@ export function Link<C extends ElementType = 'a'>({
       aria-disabled={isDisabled || undefined}
       {...(isDisabled ? { tabIndex: -1 } : null)}
       style={style}
-      className={classNames(
-        'mosuk-link',
-        'group/link',
-        styles.link,
-        className,
-      )}
+      className={classNames('mosuk-link', 'group/link', styles.link, className)}
     >
       {children}
     </Component>

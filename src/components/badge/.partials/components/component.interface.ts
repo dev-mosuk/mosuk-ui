@@ -1,18 +1,11 @@
-import type {
-  ComponentPropsWithoutRef,
-  CSSProperties,
-  ElementType,
-  ReactNode,
-  Ref,
-} from 'react';
+import type { CSSProperties, ReactNode, Ref } from 'react';
 
-export type BadgeProps<C extends ElementType = 'span'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type BadgeProps<C = 'span'> = {
   as?: C;
   ref?: Ref<any>;
   style?: CSSProperties;
   className?: string;
   children?: ReactNode;
-} & Omit<
-  ComponentPropsWithoutRef<C>,
-  'as' | 'ref' | 'style' | 'className' | 'children'
->;
+} & Omit<PropsOf<C>, 'as' | 'ref' | 'style' | 'className' | 'children'>;

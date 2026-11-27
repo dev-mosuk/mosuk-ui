@@ -4,15 +4,18 @@ import type {
   TextareaVariant,
 } from '@/components/textarea/.partials/enums/component.enums';
 import type {
-  ComponentPropsWithoutRef,
   CSSProperties,
-  ElementType,
+  FocusEventHandler,
+  PointerEventHandler,
+  ReactNode,
   Ref,
 } from 'react';
 import type { TextareaAutosizeProps } from 'react-textarea-autosize';
 
-type TextareaOwnProps = {
-  as?: ElementType;
+import type { PropsOf } from '@/types/props-of';
+
+type TextareaOwnProps<C> = {
+  as?: C;
   ref?: Ref<any>;
   size?: number;
   variant?: TextareaVariant | `${TextareaVariant}`;
@@ -32,15 +35,18 @@ type TextareaOwnProps = {
   readOnly?: never;
   /** @deprecated Use `isRequired` */
   required?: never;
+  onPointerDown?: PointerEventHandler<any>;
+  onFocus?: FocusEventHandler<any>;
+  onBlur?: FocusEventHandler<any>;
+  id?: string;
+  name?: string;
+  className?: string;
+  children?: ReactNode;
 };
 
-export type TextareaProps<C extends ElementType = 'textarea'> = Omit<
-  TextareaOwnProps,
-  'as' | 'minRows' | 'maxRows'
-> & {
-  as?: C;
-} & Omit<
-    ComponentPropsWithoutRef<C>,
+export type TextareaProps<C = 'textarea'> = TextareaOwnProps<C> &
+  Omit<
+    PropsOf<C>,
     | 'as'
     | 'ref'
     | 'disabled'
@@ -48,5 +54,13 @@ export type TextareaProps<C extends ElementType = 'textarea'> = Omit<
     | 'required'
     | 'aria-invalid'
     | 'style'
-  > &
-  Pick<TextareaAutosizeProps, 'minRows' | 'maxRows'>;
+    | 'minRows'
+    | 'maxRows'
+    | 'onPointerDown'
+    | 'onFocus'
+    | 'onBlur'
+    | 'id'
+    | 'name'
+    | 'className'
+    | 'children'
+  >;

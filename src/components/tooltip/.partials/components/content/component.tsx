@@ -10,7 +10,7 @@ import { Tooltip as BaseUITooltip } from '@base-ui/react/tooltip';
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function TooltipContent<C extends ElementType = 'div'>({
+export function TooltipContent<C = 'div'>({
   as,
   ref,
   variant = TOOLTIP_DEFAULT_VARIANT,

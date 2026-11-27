@@ -2,11 +2,9 @@ import type { EmptySubjectProps } from '@/components/empty/.partials/components/
 import styles from '@/components/empty/.partials/styles/component.module.css';
 import { Typography } from '@/components/typography';
 import classNames from 'classnames';
-import React, { type ElementType } from 'react';
+import React from 'react';
 
-export function EmptySubject<C extends ElementType = 'p'>({
-  ...rest
-}: EmptySubjectProps<C>) {
+export function EmptySubject<C = 'p'>({ ...rest }: EmptySubjectProps<C>) {
   return (
     <Typography
       {...rest}

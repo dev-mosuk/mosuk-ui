@@ -1,6 +1,24 @@
-import type { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import type { PointerEventHandler, ReactNode, Ref } from 'react';
 
-export type HeroSheetContentHandleProps<C extends ElementType = 'div'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type HeroSheetContentHandleProps<C = 'div'> = {
   as?: C;
   ref?: Ref<any>;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;
+  onPointerDown?: PointerEventHandler<any>;
+  onPointerMove?: PointerEventHandler<any>;
+  onPointerUp?: PointerEventHandler<any>;
+  onPointerCancel?: PointerEventHandler<any>;
+  className?: string;
+  children?: ReactNode;
+} & Omit<
+  PropsOf<C>,
+  | 'as'
+  | 'ref'
+  | 'onPointerDown'
+  | 'onPointerMove'
+  | 'onPointerUp'
+  | 'onPointerCancel'
+  | 'className'
+  | 'children'
+>;

@@ -18,7 +18,7 @@ import React, {
   useState,
 } from 'react';
 
-export function Input<C extends ElementType = 'input'>({
+export function Input<C = 'input'>({
   as,
   size = INPUT_DEFAULT_SIZE,
   variant = INPUT_DEFAULT_VARIANT,

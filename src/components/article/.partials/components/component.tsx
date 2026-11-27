@@ -6,9 +6,9 @@ import {
 } from '@/components/article/.partials/constants/component.constants';
 import styles from '@/components/article/.partials/styles/component.module.css';
 import classNames from 'classnames';
-import React, {type ElementType} from 'react';
+import React, { type ElementType } from 'react';
 
-export function Article<C extends ElementType = 'article'>({
+export function Article<C = 'article'>({
   as,
   orientation = ARTICLE_DEFAULT_ORIENTATION,
   isDisabled = ARTICLE_DEFAULT_IS_DISABLED,

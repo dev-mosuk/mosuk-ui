@@ -5,7 +5,6 @@ import {
   HintColor,
   HintPress,
 } from '@/components/hint/.partials/enums/component.enums';
-import type { ElementType } from 'react';
 
 export const Hint = Object.assign(Component, {
   ENUMS: {
@@ -16,5 +15,5 @@ export const Hint = Object.assign(Component, {
 });
 
 export namespace Hint {
-  export type Props<C extends ElementType = 'p'> = HintProps<C>;
+  export type Props<C = 'p'> = HintProps<C>;
 }

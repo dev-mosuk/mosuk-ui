@@ -7,7 +7,7 @@ import { Tooltip as BaseUITooltip } from '@base-ui/react/tooltip';
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function TooltipOpen<C extends ElementType = 'button'>({
+export function TooltipOpen<C = 'button'>({
   as,
   ref,
   isDisabled,

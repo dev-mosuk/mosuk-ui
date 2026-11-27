@@ -5,7 +5,7 @@ import { Input } from '@/components/input';
 import classNames from 'classnames';
 import React, { ElementType, useEffect, useId } from 'react';
 
-export function FieldsetFieldInput<C extends ElementType = 'input'>({
+export function FieldsetFieldInput<C = 'input'>({
   as,
   ...rest
 }: FieldsetFieldInputProps<C>) {

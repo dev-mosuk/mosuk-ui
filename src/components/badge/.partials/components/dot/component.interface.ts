@@ -3,16 +3,11 @@ import type {
   BadgePress,
   BadgeVariant,
 } from '@/components/badge/.partials/enums/component.enums';
-import type {
-  ComponentPropsWithoutRef,
-  CSSProperties,
-  ElementType,
-  PointerEventHandler,
-  ReactNode,
-  Ref,
-} from 'react';
+import type { CSSProperties, PointerEventHandler, ReactNode, Ref } from 'react';
 
-export type BadgeDotProps<C extends ElementType = 'span'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type BadgeDotProps<C = 'span'> = {
   as?: C;
   ref?: Ref<any>;
   size?: number;
@@ -24,6 +19,6 @@ export type BadgeDotProps<C extends ElementType = 'span'> = {
   onPointerDown?: PointerEventHandler<any>;
   children?: ReactNode;
 } & Omit<
-  ComponentPropsWithoutRef<C>,
+  PropsOf<C>,
   'as' | 'ref' | 'style' | 'className' | 'onPointerDown' | 'children'
 >;

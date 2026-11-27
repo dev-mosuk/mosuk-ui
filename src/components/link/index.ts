@@ -1,4 +1,3 @@
-import type {ElementType} from 'react';
 import { Link as Component } from '@/components/link/.partials/components/component';
 import type { LinkProps } from '@/components/link/.partials/components/component.interface';
 import { LinkIcon } from '@/components/link/.partials/components/icon/component';
@@ -17,9 +16,9 @@ export const Link = Object.assign(Component, {
 });
 
 export namespace Link {
-  export type Props<C extends ElementType = 'a'> = LinkProps<C>;
+  export type Props<C = 'a'> = LinkProps<C>;
 
   export namespace Icon {
-    export type Props<C extends ElementType = 'span'> = LinkIconProps<C>;
+    export type Props<C = 'span'> = LinkIconProps<C>;
   }
 }

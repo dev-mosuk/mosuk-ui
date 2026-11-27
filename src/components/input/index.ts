@@ -5,7 +5,6 @@ import {
   InputPress,
   InputVariant,
 } from '@/components/input/.partials/enums/component.enums';
-import type { ElementType } from 'react';
 
 export const Input = Object.assign(Component, {
   ENUMS: {
@@ -16,5 +15,5 @@ export const Input = Object.assign(Component, {
 });
 
 export namespace Input {
-  export type Props<C extends ElementType = 'input'> = InputProps<C>;
+  export type Props<C = 'input'> = InputProps<C>;
 }

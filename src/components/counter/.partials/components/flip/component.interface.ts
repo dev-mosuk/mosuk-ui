@@ -1,7 +1,10 @@
-import type { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import type { PropsOf } from '@/types/props-of';
+import type { CSSProperties, Ref } from 'react';
 
-export type CounterFlipProps = {
-  as?: ElementType;
+export type CounterFlipProps<C = 'span'> = {
+  as?: C;
   ref?: Ref<any>;
   children?: never;
-} & Omit<ComponentPropsWithoutRef<'span'>, 'as' | 'ref' | 'children'>;
+  className?: string;
+  style?: CSSProperties;
+} & Omit<PropsOf<C>, 'as' | 'ref' | 'children' | 'className' | 'style'>;

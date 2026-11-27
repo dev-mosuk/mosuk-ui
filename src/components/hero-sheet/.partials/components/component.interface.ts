@@ -2,10 +2,12 @@ import type {
   HeroSheetDirection,
   HeroSheetVariant,
 } from '@/components/hero-sheet/.partials/enums/component.enums';
-import type { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import type { ReactNode, Ref } from 'react';
 
-type HeroSheetOwnProps = {
-  as?: ElementType;
+import type { PropsOf } from '@/types/props-of';
+
+type HeroSheetOwnProps<C> = {
+  as?: C;
   ref?: Ref<any>;
   progress?: number;
   direction?: HeroSheetDirection | `${HeroSheetDirection}`;
@@ -16,7 +18,9 @@ type HeroSheetOwnProps = {
   isDisabled?: boolean;
   onOpenChange?: (isOpen: boolean) => void;
   onProgressChange?: (progress: number) => void;
+  children?: ReactNode;
+  className?: string;
 };
 
-export type HeroSheetProps<C extends ElementType = 'div'> = HeroSheetOwnProps &
-  Omit<ComponentPropsWithoutRef<C>, keyof HeroSheetOwnProps>;
+export type HeroSheetProps<C = 'div'> = HeroSheetOwnProps<C> &
+  Omit<PropsOf<C>, keyof HeroSheetOwnProps<C>>;

@@ -12,7 +12,6 @@ import {
   HeroSheetDirection,
   HeroSheetVariant,
 } from '@/components/hero-sheet/.partials/enums/component.enums';
-import type { ElementType } from 'react';
 
 export const HeroSheet = Object.assign(Component, {
   Hero: HeroSheetHero,
@@ -27,23 +26,21 @@ export const HeroSheet = Object.assign(Component, {
 });
 
 export namespace HeroSheet {
-  export type Props = ComponentProps;
+  export type Props<C = 'div'> = ComponentProps<C>;
 
   export namespace Hero {
-    export type Props<C extends ElementType = 'div'> = HeroSheetHeroProps<C>;
+    export type Props<C = 'div'> = HeroSheetHeroProps<C>;
   }
 
   export namespace Backdrop {
-    export type Props<C extends ElementType = 'div'> =
-      HeroSheetBackdropProps<C>;
+    export type Props<C = 'div'> = HeroSheetBackdropProps<C>;
   }
 
   export namespace Content {
-    export type Props<C extends ElementType = 'div'> = HeroSheetContentProps<C>;
+    export type Props<C = 'div'> = HeroSheetContentProps<C>;
 
     export namespace Handle {
-      export type Props<C extends ElementType = 'div'> =
-        HeroSheetContentHandleProps<C>;
+      export type Props<C = 'div'> = HeroSheetContentHandleProps<C>;
     }
   }
 }

@@ -2,9 +2,11 @@ import type {
   TabsOrientation,
   TabsVariant,
 } from '@/components/tabs/.partials/enums/component.enums';
-import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import { CSSProperties, ReactNode, Ref } from 'react';
 
-export type TabsProps<C extends ElementType = 'div'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type TabsProps<C = 'div'> = {
   as?: C;
   ref?: Ref<any>;
   size?: number;
@@ -15,8 +17,11 @@ export type TabsProps<C extends ElementType = 'div'> = {
   value?: any | null;
   defaultValue?: any | null;
   onChange?: (value: any) => void;
+  className?: string;
+  style?: CSSProperties;
+  children?: ReactNode;
 } & Omit<
-  ComponentPropsWithoutRef<C>,
+  PropsOf<C>,
   | 'as'
   | 'ref'
   | 'value'
@@ -27,4 +32,7 @@ export type TabsProps<C extends ElementType = 'div'> = {
   | 'variant'
   | 'activateOnFocus'
   | 'loopFocus'
+  | 'className'
+  | 'style'
+  | 'children'
 >;

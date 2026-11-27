@@ -9,9 +9,9 @@ import {
 import { BadgePress } from '@/components/badge/.partials/enums/component.enums';
 import styles from '@/components/badge/.partials/styles/component.module.css';
 import classNames from 'classnames';
-import React, {type CSSProperties, type ElementType} from 'react';
+import React, { type CSSProperties, type ElementType } from 'react';
 
-export function BadgeDot<C extends ElementType = 'span'>({
+export function BadgeDot<C = 'span'>({
   as,
   ref,
   size = BADGE_DOT_DEFAULT_SIZE,

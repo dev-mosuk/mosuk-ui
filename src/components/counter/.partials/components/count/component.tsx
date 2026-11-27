@@ -6,13 +6,13 @@ import styles from '@/components/counter/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { type ElementType, useCallback, useRef } from 'react';
 
-export function CounterCount({
+export function CounterCount<C = 'span'>({
   as,
   ref: externalRef,
   className,
   style,
   ...rest
-}: CounterCountProps) {
+}: CounterCountProps<C>) {
   const Component = (as || 'span') as ElementType;
   const ref = useRef<HTMLElement | null>(null);
 
@@ -29,9 +29,8 @@ export function CounterCount({
       if (typeof externalRef === 'function') {
         externalRef(node);
       } else {
-        (
-          externalRef as React.MutableRefObject<HTMLElement | null>
-        ).current = node;
+        (externalRef as React.MutableRefObject<HTMLElement | null>).current =
+          node;
       }
     },
     [externalRef],

@@ -21,25 +21,30 @@ const FIELDSET_HINT_ICON = {
   [FieldsetHintType.Error]: CircleAlert,
 } as const;
 
-export function FieldsetHint({
+export function FieldsetHint<C = 'p'>({
   as,
   type,
   children,
   className,
   ...rest
-}: FieldsetHintProps) {
+}: FieldsetHintProps<C>) {
   const hintType = type ?? FieldsetHintType.Info;
   const Icon = FIELDSET_HINT_ICON[hintType];
 
   return (
     <Hint
-      {...rest}
-      as={as}
-      color={FIELDSET_HINT_COLOR[hintType]}
-      className={classNames('mosuk-fieldset-hint', styles.hint, className)}
-    >
-      <Icon aria-hidden strokeWidth={2} />
-      {children}
-    </Hint>
+      {...({
+        ...rest,
+        as,
+        color: FIELDSET_HINT_COLOR[hintType],
+        className: classNames('mosuk-fieldset-hint', styles.hint, className),
+        children: (
+          <>
+            <Icon aria-hidden strokeWidth={2} />
+            {children}
+          </>
+        ),
+      } as unknown as Hint.Props<C>)}
+    />
   );
 }

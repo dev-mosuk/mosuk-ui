@@ -5,7 +5,6 @@ import {
   TextareaPress,
   TextareaVariant,
 } from '@/components/textarea/.partials/enums/component.enums';
-import type { ElementType } from 'react';
 
 export const Textarea = Object.assign(Component, {
   ENUMS: {
@@ -16,5 +15,5 @@ export const Textarea = Object.assign(Component, {
 });
 
 export namespace Textarea {
-  export type Props<C extends ElementType = 'textarea'> = TextareaProps<C>;
+  export type Props<C = 'textarea'> = TextareaProps<C>;
 }

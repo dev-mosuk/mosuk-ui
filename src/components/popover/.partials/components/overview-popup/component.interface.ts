@@ -1,19 +1,15 @@
 import type { PopoverVariant } from '@/components/popover/.partials/enums/component.enums';
 import { Popover as BaseUIPopover } from '@base-ui/react/popover';
-import type {
-  ComponentPropsWithoutRef,
-  CSSProperties,
-  ElementType,
-  ReactNode,
-  Ref,
-} from 'react';
+import type { CSSProperties, ReactNode, Ref } from 'react';
+
+import type { PropsOf } from '@/types/props-of';
 
 type PopoverOverviewPopupBaseUIProps = Omit<
   BaseUIPopover.Popup.Props,
   'render' | 'color' | 'className' | 'style' | 'children' | 'ref'
 >;
 
-export type PopoverOverviewPopupProps<C extends ElementType = 'div'> = {
+export type PopoverOverviewPopupProps<C = 'div'> = {
   as?: C;
   ref?: Ref<any>;
   variant?: PopoverVariant | `${PopoverVariant}`;
@@ -22,7 +18,7 @@ export type PopoverOverviewPopupProps<C extends ElementType = 'div'> = {
   children?: ReactNode;
 } & PopoverOverviewPopupBaseUIProps &
   Omit<
-    ComponentPropsWithoutRef<C>,
+    PropsOf<C>,
     | 'as'
     | 'ref'
     | 'color'

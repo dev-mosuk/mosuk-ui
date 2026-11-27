@@ -9,7 +9,7 @@ import styles from '@/components/hint/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function Hint<C extends ElementType = 'p'>({
+export function Hint<C = 'p'>({
   as,
   ref,
   color = HINT_DEFAULT_COLOR,
@@ -56,12 +56,7 @@ export function Hint<C extends ElementType = 'p'>({
 
         onPointerDown?.(event as never);
       }}
-      className={classNames(
-        'mosuk-hint',
-        'group/hint',
-        styles.hint,
-        className,
-      )}
+      className={classNames('mosuk-hint', 'group/hint', styles.hint, className)}
     />
   );
 }

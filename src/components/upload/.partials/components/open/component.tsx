@@ -6,10 +6,7 @@ import styles from '@/components/upload/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { ElementType, useContext } from 'react';
 
-export function UploadOpen<C extends ElementType = 'label'>({
-  as,
-  ...rest
-}: UploadOpenProps<C>) {
+export function UploadOpen<C = 'label'>({ as, ...rest }: UploadOpenProps<C>) {
   const Component = (as || 'label') as ElementType;
 
   const context = useContext(UploadContext);
@@ -25,11 +22,7 @@ export function UploadOpen<C extends ElementType = 'label'>({
     <Component
       {...rest}
       htmlFor={labelFor}
-      className={classNames(
-        'mosuk-upload-open',
-        styles.open,
-        rest?.className,
-      )}
+      className={classNames('mosuk-upload-open', styles.open, rest?.className)}
     >
       {rest?.children}
     </Component>

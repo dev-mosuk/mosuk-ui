@@ -2,16 +2,11 @@ import type {
   ActionAnimation,
   ActionPress,
 } from '@/components/action/.partials/enums/component.enums';
-import type {
-  ComponentPropsWithoutRef,
-  CSSProperties,
-  ElementType,
-  PointerEventHandler,
-  ReactNode,
-  Ref,
-} from 'react';
+import type { CSSProperties, PointerEventHandler, ReactNode, Ref } from 'react';
 
-type ActionOwnProps<C extends ElementType> = {
+import type { PropsOf } from '@/types/props-of';
+
+type ActionOwnProps<C> = {
   as?: C;
   ref?: Ref<any>;
   animation?: ActionAnimation | `${ActionAnimation}`;
@@ -23,13 +18,8 @@ type ActionOwnProps<C extends ElementType> = {
   children?: ReactNode;
 };
 
-export type ActionProps<C extends ElementType = 'div'> = ActionOwnProps<C> &
+export type ActionProps<C = 'div'> = ActionOwnProps<C> &
   Omit<
-    ComponentPropsWithoutRef<C>,
-    | 'as'
-    | 'ref'
-    | 'className'
-    | 'style'
-    | 'onPointerDown'
-    | 'children'
+    PropsOf<C>,
+    'as' | 'ref' | 'className' | 'style' | 'onPointerDown' | 'children'
   >;

@@ -8,12 +8,12 @@ import React, { type ElementType, useMemo } from 'react';
 
 const DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] as const;
 
-export function CounterFlip({
+export function CounterFlip<C = 'span'>({
   as,
   ref,
   className,
   ...rest
-}: CounterFlipProps) {
+}: CounterFlipProps<C>) {
   const Component = (as || 'span') as ElementType;
   const { value, formatValue } = useCounter();
 

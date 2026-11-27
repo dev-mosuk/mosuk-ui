@@ -7,7 +7,6 @@ import { TooltipContentProps } from '@/components/tooltip/.partials/components/c
 import { TooltipOpen } from '@/components/tooltip/.partials/components/open/component';
 import { TooltipOpenProps } from '@/components/tooltip/.partials/components/open/component.interface';
 import { TooltipVariant } from '@/components/tooltip/.partials/enums/component.enums';
-import type { ElementType } from 'react';
 
 export const Tooltip = Object.assign(Component, {
   Open: TooltipOpen,
@@ -23,14 +22,14 @@ export namespace Tooltip {
   export type Props = TooltipProps;
 
   export namespace Open {
-    export type Props<C extends ElementType = 'button'> = TooltipOpenProps<C>;
+    export type Props<C = 'button'> = TooltipOpenProps<C>;
   }
 
   export namespace Content {
-    export type Props<C extends ElementType = 'div'> = TooltipContentProps<C>;
+    export type Props<C = 'div'> = TooltipContentProps<C>;
 
     export namespace Arrow {
-      export type Props<C extends ElementType = 'div'> = TooltipArrowProps<C>;
+      export type Props<C = 'div'> = TooltipArrowProps<C>;
     }
   }
 }

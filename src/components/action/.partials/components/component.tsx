@@ -9,7 +9,7 @@ import styles from '@/components/action/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function Action<C extends ElementType = 'div'>({
+export function Action<C = 'div'>({
   as,
   ref,
   animation = ACTION_DEFAULT_ANIMATION,

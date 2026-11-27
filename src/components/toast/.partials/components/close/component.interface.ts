@@ -1,12 +1,8 @@
-import type {
-  ComponentPropsWithoutRef,
-  CSSProperties,
-  ElementType,
-  ReactNode,
-  Ref,
-} from 'react';
+import type { CSSProperties, ReactNode, Ref } from 'react';
 
-export type CloseProps<C extends ElementType = 'button'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type CloseProps<C = 'button'> = {
   as?: C;
   ref?: Ref<any>;
   isDisabled?: boolean;
@@ -14,6 +10,6 @@ export type CloseProps<C extends ElementType = 'button'> = {
   style?: CSSProperties;
   children?: ReactNode;
 } & Omit<
-  ComponentPropsWithoutRef<C>,
+  PropsOf<C>,
   'as' | 'ref' | 'disabled' | 'className' | 'style' | 'children'
 >;

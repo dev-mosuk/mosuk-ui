@@ -1,6 +1,10 @@
-import type { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import type { ReactNode, Ref } from 'react';
 
-export type DialogViewportPopupBodyProps<C extends ElementType = 'div'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type DialogViewportPopupBodyProps<C = 'div'> = {
   as?: C;
   ref?: Ref<any>;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;
+  className?: string;
+  children?: ReactNode;
+} & Omit<PropsOf<C>, 'as' | 'ref' | 'className' | 'children'>;

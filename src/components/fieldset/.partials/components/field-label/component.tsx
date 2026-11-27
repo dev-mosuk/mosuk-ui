@@ -4,7 +4,7 @@ import styles from '@/components/fieldset/.partials/styles/component.module.css'
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 
-export function FieldsetFieldLabel<C extends ElementType = 'label'>({
+export function FieldsetFieldLabel<C = 'label'>({
   as,
   ...rest
 }: FieldsetFieldLabelProps<C>) {

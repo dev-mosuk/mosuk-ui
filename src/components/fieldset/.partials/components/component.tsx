@@ -4,7 +4,7 @@ import styles from '@/components/fieldset/.partials/styles/component.module.css'
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 
-export function Fieldset<C extends ElementType = 'fieldset'>({
+export function Fieldset<C = 'fieldset'>({
   as,
   isDisabled,
   ...rest

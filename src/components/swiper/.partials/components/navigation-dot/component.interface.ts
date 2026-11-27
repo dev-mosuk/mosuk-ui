@@ -1,19 +1,16 @@
-import type {
-  ComponentPropsWithoutRef,
-  CSSProperties,
-  ElementType,
-  ReactNode,
-  Ref,
-} from 'react';
+import type { CSSProperties, ReactNode, Ref } from 'react';
 
-export type SwiperNavigationDotProps<C extends ElementType = 'button'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type SwiperNavigationDotProps<C = 'button'> = {
   as?: C;
   ref?: Ref<any>;
   isActive?: boolean;
   style?: CSSProperties;
   className?: string;
   children?: ReactNode;
+  type?: string;
 } & Omit<
-  ComponentPropsWithoutRef<C>,
-  'as' | 'ref' | 'className' | 'style' | 'children'
+  PropsOf<C>,
+  'as' | 'ref' | 'className' | 'style' | 'children' | 'type'
 >;

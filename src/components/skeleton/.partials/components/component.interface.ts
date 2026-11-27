@@ -2,11 +2,15 @@ import type {
   SkeletonAnimation,
   SkeletonVariant,
 } from '@/components/skeleton/.partials/enums/component.enums';
-import type { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import type { ReactNode, Ref } from 'react';
 
-export type SkeletonProps<C extends ElementType = 'div'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type SkeletonProps<C = 'div'> = {
   as?: C;
   ref?: Ref<any>;
   animation?: SkeletonAnimation | `${SkeletonAnimation}`;
   variant?: SkeletonVariant | `${SkeletonVariant}`;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref' | 'color'>;
+  className?: string;
+  children?: ReactNode;
+} & Omit<PropsOf<C>, 'as' | 'ref' | 'color' | 'className' | 'children'>;

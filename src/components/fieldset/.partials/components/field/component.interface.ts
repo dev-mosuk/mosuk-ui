@@ -1,6 +1,10 @@
-import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import { ReactNode, Ref } from 'react';
 
-export type FieldsetFieldProps<C extends ElementType = 'div'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type FieldsetFieldProps<C = 'div'> = {
   as?: C;
   ref?: Ref<any>;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref'>;
+  className?: string;
+  children?: ReactNode;
+} & Omit<PropsOf<C>, 'as' | 'ref' | 'className' | 'children'>;

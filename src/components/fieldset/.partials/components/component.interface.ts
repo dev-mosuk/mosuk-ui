@@ -1,9 +1,13 @@
 import { FieldsetContextProps } from '@/components/fieldset/.partials/providers/context/context.interface';
-import { ComponentPropsWithoutRef, ElementType, Ref } from 'react';
+import { ReactNode, Ref } from 'react';
 
-export type FieldsetProps<C extends ElementType = 'fieldset'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type FieldsetProps<C = 'fieldset'> = {
   as?: C;
   ref?: Ref<any>;
   isDisabled?: boolean;
-} & Omit<ComponentPropsWithoutRef<C>, 'as' | 'ref' | 'disabled'> &
+  className?: string;
+  children?: ReactNode;
+} & Omit<PropsOf<C>, 'as' | 'ref' | 'disabled' | 'className' | 'children'> &
   Partial<FieldsetContextProps>;

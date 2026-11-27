@@ -2,11 +2,9 @@ import type { EmptyCommentProps } from '@/components/empty/.partials/components/
 import styles from '@/components/empty/.partials/styles/component.module.css';
 import { Typography } from '@/components/typography';
 import classNames from 'classnames';
-import React, { type ElementType } from 'react';
+import React from 'react';
 
-export function EmptyComment<C extends ElementType = 'p'>({
-  ...rest
-}: EmptyCommentProps<C>) {
+export function EmptyComment<C = 'p'>({ ...rest }: EmptyCommentProps<C>) {
   return (
     <Typography
       {...rest}

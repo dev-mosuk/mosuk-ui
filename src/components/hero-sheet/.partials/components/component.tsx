@@ -14,7 +14,7 @@ import styles from '@/components/hero-sheet/.partials/styles/component.module.cs
 import classNames from 'classnames';
 import React, { ElementType } from 'react';
 
-function HeroSheetRootHost<C extends ElementType = 'div'>({
+function HeroSheetRootHost<C = 'div'>({
   as,
   children,
   ...rest
@@ -53,7 +53,7 @@ function HeroSheetRootHost<C extends ElementType = 'div'>({
   );
 }
 
-export function HeroSheet({
+export function HeroSheet<C = 'div'>({
   direction = HERO_SHEET_DEFAULT_DIRECTION,
   variant = HERO_SHEET_DEFAULT_VARIANT,
   openThreshold = HERO_SHEET_DEFAULT_OPEN_THRESHOLD,
@@ -65,7 +65,7 @@ export function HeroSheet({
   onProgressChange,
   children,
   ...rest
-}: HeroSheetProps) {
+}: HeroSheetProps<C>) {
   return (
     <HeroSheetProvider
       direction={direction}
@@ -78,7 +78,9 @@ export function HeroSheet({
       onOpenChange={onOpenChange}
       onProgressChange={onProgressChange}
     >
-      <HeroSheetRootHost {...rest}>{children}</HeroSheetRootHost>
+      <HeroSheetRootHost {...(rest as HeroSheetProps<C>)}>
+        {children}
+      </HeroSheetRootHost>
     </HeroSheetProvider>
   );
 }

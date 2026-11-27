@@ -1,18 +1,14 @@
 import { Tooltip as BaseUITooltip } from '@base-ui/react/tooltip';
-import type {
-  ComponentPropsWithoutRef,
-  CSSProperties,
-  ElementType,
-  ReactNode,
-  Ref,
-} from 'react';
+import type { CSSProperties, ReactNode, Ref } from 'react';
+
+import type { PropsOf } from '@/types/props-of';
 
 type TooltipOpenBaseUIProps = Pick<
   BaseUITooltip.Trigger.Props,
   'delay' | 'closeDelay' | 'handle' | 'payload' | 'id'
 >;
 
-export type TooltipOpenProps<C extends ElementType = 'button'> = {
+export type TooltipOpenProps<C = 'button'> = {
   as?: C;
   ref?: Ref<any>;
   isDisabled?: boolean;
@@ -21,6 +17,6 @@ export type TooltipOpenProps<C extends ElementType = 'button'> = {
   children?: ReactNode;
 } & TooltipOpenBaseUIProps &
   Omit<
-    ComponentPropsWithoutRef<C>,
+    PropsOf<C>,
     'as' | 'ref' | 'disabled' | 'color' | 'className' | 'style' | 'children'
   >;

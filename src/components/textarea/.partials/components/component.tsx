@@ -18,7 +18,7 @@ import React, {
 } from 'react';
 import TextareaAutosizePrimitive from 'react-textarea-autosize';
 
-export function Textarea<C extends ElementType = 'textarea'>({
+export function Textarea<C = 'textarea'>({
   as,
   size = TEXTAREA_DEFAULT_SIZE,
   variant = TEXTAREA_DEFAULT_VARIANT,

@@ -4,7 +4,7 @@ import { Drawer as BaseUiDrawer } from '@base-ui/react';
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function DrawerViewportPopupBody<C extends ElementType = 'div'>({
+export function DrawerViewportPopupBody<C = 'div'>({
   as,
   ref,
   className,

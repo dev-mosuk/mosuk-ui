@@ -9,11 +9,11 @@ import { scrollToggleOptionIntoView } from '@/components/toggle/.partials/utilit
 import { Tabs } from '@base-ui/react/tabs';
 import classNames from 'classnames';
 import React, {
-  ElementType,
   createElement,
   useCallback,
   useEffect,
   useRef,
+  type ElementType,
 } from 'react';
 
 function scrollActiveIntoView(
@@ -36,7 +36,7 @@ function scrollActiveIntoView(
   scrollToggleOptionIntoView(list, active, orientation, behavior);
 }
 
-export function Toggle<C extends ElementType = 'div'>({
+export function Toggle<C = 'div'>({
   as,
   size,
   variant = TOGGLE_DEFAULT_VARIANT,
@@ -143,7 +143,7 @@ export function Toggle<C extends ElementType = 'div'>({
     });
   }, [value, orientation]);
 
-  const listRender = as ? createElement(as) : undefined;
+  const listRender = as ? createElement(as as ElementType) : undefined;
 
   const rootDefaultValue =
     value !== undefined ? undefined : (defaultValue ?? null);

@@ -1,19 +1,24 @@
-import type {
-  ComponentPropsWithoutRef,
-  CSSProperties,
-  ElementType,
-  ReactNode,
-  Ref,
-} from 'react';
+import type { CSSProperties, MouseEventHandler, ReactNode, Ref } from 'react';
 
-export type SwiperPrevProps<C extends ElementType = 'button'> = {
+import type { PropsOf } from '@/types/props-of';
+
+export type SwiperPrevProps<C = 'button'> = {
   as?: C;
   ref?: Ref<any>;
   isDisabled?: boolean;
   className?: string;
   style?: CSSProperties;
   children?: ReactNode;
+  onClick?: MouseEventHandler<any>;
+  type?: string;
 } & Omit<
-  ComponentPropsWithoutRef<C>,
-  'as' | 'ref' | 'disabled' | 'className' | 'style' | 'children'
+  PropsOf<C>,
+  | 'as'
+  | 'ref'
+  | 'disabled'
+  | 'className'
+  | 'style'
+  | 'children'
+  | 'onClick'
+  | 'type'
 >;

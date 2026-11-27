@@ -17,7 +17,6 @@ import { DialogViewportPopupProps } from '@/components/dialog/.partials/componen
 import { DialogViewport } from '@/components/dialog/.partials/components/viewport/component';
 import { DialogViewportProps } from '@/components/dialog/.partials/components/viewport/component.interface';
 import { DialogVariant } from '@/components/dialog/.partials/enums/component.enums';
-import type { ElementType } from 'react';
 
 export const Dialog = Object.assign(Component, {
   Open: DialogOpen,
@@ -57,18 +56,15 @@ export namespace Dialog {
       export type Props = DialogViewportPopupProps;
 
       export namespace Header {
-        export type Props<C extends ElementType = 'div'> =
-          DialogViewportPopupHeaderProps<C>;
+        export type Props<C = 'div'> = DialogViewportPopupHeaderProps<C>;
       }
 
       export namespace Body {
-        export type Props<C extends ElementType = 'div'> =
-          DialogViewportPopupBodyProps<C>;
+        export type Props<C = 'div'> = DialogViewportPopupBodyProps<C>;
       }
 
       export namespace Footer {
-        export type Props<C extends ElementType = 'div'> =
-          DialogViewportPopupFooterProps<C>;
+        export type Props<C = 'div'> = DialogViewportPopupFooterProps<C>;
       }
     }
   }

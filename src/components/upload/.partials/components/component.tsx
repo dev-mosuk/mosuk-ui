@@ -7,7 +7,7 @@ import styles from '@/components/upload/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { ChangeEvent, ElementType, useId } from 'react';
 
-export function Upload<C extends ElementType = 'fieldset'>({
+export function Upload<C = 'fieldset'>({
   as,
   accept,
   capture,

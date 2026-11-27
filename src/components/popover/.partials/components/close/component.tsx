@@ -3,7 +3,7 @@ import { Popover as BaseUIPopover } from '@base-ui/react/popover';
 import classNames from 'classnames';
 import React, { type ElementType } from 'react';
 
-export function PopoverClose<C extends ElementType = 'button'>({
+export function PopoverClose<C = 'button'>({
   as,
   ref,
   isDisabled,

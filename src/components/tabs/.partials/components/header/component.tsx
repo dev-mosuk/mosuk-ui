@@ -7,11 +7,11 @@ import { scrollTabsOptionIntoView } from '@/components/tabs/.partials/utilities/
 import { Tabs as BaseUiTabs } from '@base-ui/react/tabs';
 import classNames from 'classnames';
 import React, {
-  ElementType,
   createElement,
   useCallback,
   useEffect,
   useRef,
+  type ElementType,
 } from 'react';
 
 function scrollActiveIntoView(
@@ -34,7 +34,7 @@ function scrollActiveIntoView(
   scrollTabsOptionIntoView(list, active, orientation, behavior);
 }
 
-export function TabsHeader<C extends ElementType = 'div'>({
+export function TabsHeader<C = 'div'>({
   as,
   activateOnFocus,
   loopFocus,
@@ -134,7 +134,7 @@ export function TabsHeader<C extends ElementType = 'div'>({
     });
   }, [value, orientation]);
 
-  const listRender = as ? createElement(as) : undefined;
+  const listRender = as ? createElement(as as ElementType) : undefined;
 
   return (
     <BaseUiTabs.List
@@ -148,11 +148,7 @@ export function TabsHeader<C extends ElementType = 'div'>({
       data-variant={variant}
       data-orientation={orientation}
       style={style}
-      className={classNames(
-        'mosuk-tabs-header',
-        styles.header,
-        className,
-      )}
+      className={classNames('mosuk-tabs-header', styles.header, className)}
     >
       {children}
     </BaseUiTabs.List>

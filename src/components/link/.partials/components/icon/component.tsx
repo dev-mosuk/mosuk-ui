@@ -3,9 +3,9 @@ import { LINK_ICON_DEFAULT_AS } from '@/components/link/.partials/constants/comp
 import styles from '@/components/link/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import { SquareArrowOutUpRight } from 'lucide-react';
-import React, {type ElementType} from 'react';
+import React, { type ElementType } from 'react';
 
-export function LinkIcon<C extends ElementType = 'span'>({
+export function LinkIcon<C = 'span'>({
   as,
   ref,
   style,
