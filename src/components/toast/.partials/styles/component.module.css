@@ -1,7 +1,7 @@
 /* Tokens */
 @layer mosuk-ui {
   :global(:root) {
-    --toast-bg: var(--color-gray-50);
+    --toast-bg: var(--color-white);
     --toast-color: var(--color-black);
 
     --toast-border: var(--color-zinc-100);

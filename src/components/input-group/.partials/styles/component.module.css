@@ -28,6 +28,15 @@
         height: calc(var(--spacing) * var(--input-size) - 2px);
       }
     }
+
+    :global(.mosuk-input),
+    :global(.mosuk-textarea) {
+      transition:
+        all 200ms ease-in-out,
+        padding 0s,
+        padding-inline-start 0s,
+        padding-inline-end 0s;
+    }
   }
 
   .prefix,

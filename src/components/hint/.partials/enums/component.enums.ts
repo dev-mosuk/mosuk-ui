@@ -1,4 +1,4 @@
-export enum HintColor {
+export enum HintVariant {
   Primary = 'primary',
   Secondary = 'secondary',
   Tertiary = 'tertiary',

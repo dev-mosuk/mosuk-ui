@@ -2,13 +2,13 @@ import { Hint as Component } from '@/components/hint/.partials/components/compon
 import type { HintProps } from '@/components/hint/.partials/components/component.interface';
 import {
   HintAnimation,
-  HintColor,
   HintPress,
+  HintVariant,
 } from '@/components/hint/.partials/enums/component.enums';
 
 export const Hint = Object.assign(Component, {
   ENUMS: {
-    Color: HintColor,
+    Variant: HintVariant,
     Animation: HintAnimation,
     Press: HintPress,
   },

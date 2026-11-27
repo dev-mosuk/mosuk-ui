@@ -1,8 +1,9 @@
 import type {
   HintAnimation,
-  HintColor,
   HintPress,
+  HintVariant,
 } from '@/components/hint/.partials/enums/component.enums';
+import type { TypographyType } from '@/components/typography/.partials/enums/component.enums';
 import type { PointerEventHandler, Ref } from 'react';
 
 import type { PropsOf } from '@/types/props-of';
@@ -10,9 +11,13 @@ import type { PropsOf } from '@/types/props-of';
 export type HintProps<C = 'p'> = {
   as?: C;
   ref?: Ref<any>;
-  color?: HintColor | `${HintColor}`;
+  type?: TypographyType | `${TypographyType}`;
+  variant?: HintVariant | `${HintVariant}`;
   animation?: HintAnimation | `${HintAnimation}`;
   press?: HintPress | `${HintPress}` | false;
   onPointerDown?: PointerEventHandler<any>;
   className?: string;
-} & Omit<PropsOf<C>, 'as' | 'ref' | 'color' | 'onPointerDown' | 'className'>;
+} & Omit<
+  PropsOf<C>,
+  'as' | 'ref' | 'type' | 'color' | 'onPointerDown' | 'className'
+>;

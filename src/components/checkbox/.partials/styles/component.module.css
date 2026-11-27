@@ -119,9 +119,7 @@
       --checkbox-shadow: transparent;
       --checkbox-shadow-hover: transparent;
 
-      &:hover:not([data-disabled]):not(:disabled):not([data-checked]):not(
-          [data-indeterminate]
-        ) {
+      &:hover:not([data-disabled]):not(:disabled):not([data-checked]):not([data-indeterminate]) {
         --checkbox-border: var(--color-primary-200);
       }
 
@@ -176,9 +174,7 @@
         --checkbox-shadow: transparent;
         --checkbox-shadow-hover: transparent;
 
-        &:hover:not([data-disabled]):not(:disabled):not([data-checked]):not(
-            [data-indeterminate]
-          ) {
+        &:hover:not([data-disabled]):not(:disabled):not([data-checked]):not([data-indeterminate]) {
           --checkbox-border: var(--color-primary-400);
         }
 
@@ -213,9 +209,16 @@
 
     transform-origin: center;
 
+    opacity: 0;
+
     transition:
       opacity 200ms ease-in-out,
       transform 200ms ease-in-out;
+
+    &[data-checked],
+    &[data-indeterminate] {
+      opacity: 1;
+    }
 
     & :where(svg) {
       width: 100%;
@@ -227,20 +230,8 @@
     }
   }
 
-  .checkbox[data-animation='opacity'] {
-    .indicator {
-      opacity: 0;
-    }
-
-    &[data-checked] .indicator,
-    &[data-indeterminate] .indicator {
-      opacity: 1;
-    }
-  }
-
   .checkbox[data-animation='scale'] {
     .indicator {
-      opacity: 1;
       transform: scale(0);
     }
 
