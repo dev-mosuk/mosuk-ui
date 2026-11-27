@@ -40,6 +40,8 @@
 /* Calendar */
 @layer mosuk-ui {
   .calendar {
+    container: calendar / inline-size;
+
     position: relative;
 
     display: flex;

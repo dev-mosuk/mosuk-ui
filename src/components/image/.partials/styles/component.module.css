@@ -32,6 +32,8 @@
 /* Image */
 @layer mosuk-ui {
   .image {
+    container: image / inline-size;
+
     overflow: hidden;
 
     position: relative;
@@ -56,9 +58,10 @@
     transition: all 200ms ease-in-out;
 
     &[data-size] {
+      aspect-ratio: 1;
+
       width: calc(var(--spacing) * var(--image-size));
       height: calc(var(--spacing) * var(--image-size));
-      aspect-ratio: 1;
     }
 
     .view {
@@ -227,14 +230,12 @@
 
       content: '';
 
-      background: linear-gradient(
-        90deg,
-        transparent 0%,
-        transparent 20%,
-        color-mix(in oklab, var(--image-press) 35%, transparent),
-        transparent 80%,
-        transparent 100%
-      );
+      background: linear-gradient(90deg,
+          transparent 0%,
+          transparent 20%,
+          color-mix(in oklab, var(--image-press) 35%, transparent),
+          transparent 80%,
+          transparent 100%);
 
       transform: translateX(-100%) skewX(-20deg);
 
@@ -285,12 +286,7 @@
 @layer mosuk-ui {
   .image {
     &[data-press='scale']:active:not(:disabled):not([data-disabled]) {
-      transform: scale(
-        calc(
-          1 - var(--action-press-scale-inset) /
-            var(--press-inline-size, 100px)
-        )
-      );
+      transform: scale(calc(1 - var(--action-press-scale-inset) / var(--press-inline-size, 100px)));
     }
 
     &[data-press='highlight']::before {
@@ -343,9 +339,7 @@
         opacity 225ms ease-out;
     }
 
-    &[data-press='ripple']:active:not(:disabled):not([data-disabled]):not(
-        [data-animation='shimmer']
-      )::after {
+    &[data-press='ripple']:active:not(:disabled):not([data-disabled]):not([data-animation='shimmer'])::after {
       opacity: 0.1;
 
       transform: translate(-50%, -50%) scale(1);

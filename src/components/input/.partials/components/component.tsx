@@ -134,7 +134,6 @@ export function Input<C extends ElementType = 'input'>({
       }}
       className={classNames(
         'mosuk-input',
-        '@container/input',
         'group/input',
         styles.input,
         domRest?.className,

@@ -8,6 +8,7 @@ import {
   SWIPER_DEFAULT_RESET_INACTIVE_TIMEOUT,
 } from '@/components/swiper/.partials/constants/component.constants';
 import { useSwiperResetInactive } from '@/components/swiper/.partials/hooks/hook';
+import styles from '@/components/swiper/.partials/styles/component.module.css';
 import classNames from 'classnames';
 import React, { useCallback, useState } from 'react';
 import type { Swiper as SwiperClass } from 'swiper';
@@ -45,7 +46,12 @@ export function Swiper({
       modules={modules ?? [...SWIPER_DEFAULT_MODULES]}
       onSwiper={handleSwiper}
       data-overflow={overflow}
-      className={classNames('mosuk-swiper', '@container/swiper', className)}
+      className={classNames(
+        'mosuk-swiper',
+        'group/swiper',
+        styles.swiper,
+        className,
+      )}
     >
       {children}
     </BaseSwiper>

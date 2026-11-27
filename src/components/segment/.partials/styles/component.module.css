@@ -27,6 +27,8 @@
 /* Segment */
 @layer mosuk-ui {
   .segment {
+    container: segment / inline-size;
+
     scrollbar-width: none;
 
     position: relative;

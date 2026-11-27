@@ -14,6 +14,8 @@
 /* ProgressCircle */
 @layer mosuk-ui {
   .progressCircle {
+    container: progress-circle;
+
     display: inline-grid;
     place-items: center;
 

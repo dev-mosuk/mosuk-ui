@@ -24,6 +24,8 @@
 /* HeroSheet */
 @layer mosuk-ui {
   .heroSheet {
+    container: hero-sheet / inline-size;
+
     position: relative;
 
     width: 100%;

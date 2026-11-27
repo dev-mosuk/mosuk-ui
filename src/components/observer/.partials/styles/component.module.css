@@ -1,5 +1,7 @@
 @layer mosuk-ui {
   .observer {
+    container: observer;
+
     position: absolute;
     left: 0;
     right: 0;

@@ -27,8 +27,8 @@ export function PopoverOverview<C extends ElementType = 'div'>({
       container={container}
       className={classNames(
         'mosuk-popover',
-        '@container/popover',
         'group/popover',
+        styles.portal,
       )}
     >
       <BaseUIPopover.Positioner

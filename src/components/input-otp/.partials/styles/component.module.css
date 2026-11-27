@@ -1,5 +1,7 @@
 @layer mosuk-ui {
   .inputOtp {
+    container: input-otp;
+
     display: flex;
     flex-direction: row;
     align-items: center;

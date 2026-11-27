@@ -9,7 +9,6 @@ export function Chat({ className, children, ...rest }: ChatProps) {
       {...rest}
       className={classNames(
         'mosuk-chat',
-        '@container/chat',
         'group/chat',
         styles.chat,
         className,

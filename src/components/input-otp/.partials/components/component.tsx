@@ -60,7 +60,6 @@ export function InputOtp({
       required={isRequired}
       className={classNames(
         'mosuk-input-otp',
-        '@container/input-otp',
         'group/input-otp',
         styles.inputOtp,
         className,

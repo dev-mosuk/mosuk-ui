@@ -97,7 +97,6 @@ export function Breadcrumbs({
       data-dragging={isDragging || undefined}
       className={classNames(
         'mosuk-breadcrumbs',
-        '@container/breadcrumbs',
         'group/breadcrumbs',
         styles.root,
         className,

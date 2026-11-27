@@ -58,7 +58,6 @@ export function Checkbox({
       onCheckedChange={(checked) => onChange?.(checked)}
       className={classNames(
         'mosuk-checkbox',
-        '@container/checkbox',
         'group/checkbox',
         styles.checkbox,
         className,

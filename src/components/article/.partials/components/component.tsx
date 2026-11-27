@@ -24,7 +24,6 @@ export function Article<C extends ElementType = 'article'>({
       aria-disabled={isDisabled || undefined}
       className={classNames(
         'mosuk-article',
-        '@container/article',
         'group/article',
         styles.article,
         rest?.className,

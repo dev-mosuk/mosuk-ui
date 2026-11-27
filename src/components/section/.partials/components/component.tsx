@@ -16,7 +16,6 @@ export function Section<C extends ElementType = 'section'>({
       ref={ref}
       className={classNames(
         'mosuk-section',
-        '@container/section',
         'group/section',
         styles.section,
         rest?.className,

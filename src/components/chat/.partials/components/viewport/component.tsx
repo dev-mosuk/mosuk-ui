@@ -141,7 +141,6 @@ export function ChatViewport({
       onScroll={handleScroll}
       className={classNames(
         'mosuk-chat-viewport',
-        '@container/chat-viewport',
         'group/chat-viewport',
         styles.viewport,
         className,

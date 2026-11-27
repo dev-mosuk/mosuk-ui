@@ -26,6 +26,10 @@
 
 /* ContextMenu */
 @layer mosuk-ui {
+  .portal {
+    container: context-menu;
+  }
+
   .trigger {
     cursor: context-menu;
   }
@@ -34,7 +38,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 50;
   }
 
   .content {

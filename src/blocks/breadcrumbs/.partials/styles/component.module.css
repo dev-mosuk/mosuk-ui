@@ -1,5 +1,7 @@
 @layer mosuk-ui {
   .root {
+    container: breadcrumbs / inline-size;
+
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scrollbar-width: none;

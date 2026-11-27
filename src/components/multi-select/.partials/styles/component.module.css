@@ -1,6 +1,8 @@
 /* MultiSelect */
 @layer mosuk-ui {
   .open {
+    container: multi-select / inline-size;
+
     display: block;
 
     width: 100%;

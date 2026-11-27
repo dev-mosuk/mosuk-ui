@@ -55,7 +55,6 @@ export function ButtonGroup({
       data-detached={isDetached || undefined}
       className={classNames(
         'mosuk-button-group',
-        '@container/button-group',
         'group/button-group',
         styles.buttonGroup,
         className,

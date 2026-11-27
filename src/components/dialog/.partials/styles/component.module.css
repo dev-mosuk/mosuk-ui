@@ -19,10 +19,14 @@
 }
 
 @layer mosuk-ui {
+  .portal {
+    container: dialog;
+  }
+
   .viewport {
     position: fixed;
     inset: 0;
-    z-index: 200;
+    z-index: 100;
 
     display: flex;
     align-items: center;

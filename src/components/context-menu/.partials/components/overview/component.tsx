@@ -25,8 +25,8 @@ export function ContextMenuOverview<C extends ElementType = 'div'>({
       container={container}
       className={classNames(
         'mosuk-context-menu',
-        '@container/context-menu',
         'group/context-menu',
+        styles.portal,
       )}
     >
       <BaseUIContextMenu.Positioner

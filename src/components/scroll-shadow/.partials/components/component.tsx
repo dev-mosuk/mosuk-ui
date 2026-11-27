@@ -79,7 +79,6 @@ export function ScrollShadow({
       }
       className={classNames(
         'mosuk-scroll-shadow',
-        '@container/scroll-shadow',
         'group/scroll-shadow',
         styles.scrollShadow,
         rest?.className,

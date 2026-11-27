@@ -21,7 +21,6 @@ export function Badge<C extends ElementType = 'span'>({
       style={style}
       className={classNames(
         'mosuk-badge',
-        '@container/badge',
         'group/badge',
         styles.badge,
         className,

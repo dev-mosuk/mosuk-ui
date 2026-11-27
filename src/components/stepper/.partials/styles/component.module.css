@@ -18,6 +18,8 @@
 /* Stepper */
 @layer mosuk-ui {
   .stepper {
+    container: stepper / inline-size;
+
     --stepper-duration-line: 450ms;
     --stepper-duration-step: 500ms;
     --stepper-duration-delay: 300ms;

@@ -9,7 +9,6 @@ export function Specifications({ className, ...rest }: SpecificationsProps) {
       {...rest}
       className={classNames(
         'mosuk-specifications',
-        '@container/specifications',
         'group/specifications',
         styles.specifications,
         className,

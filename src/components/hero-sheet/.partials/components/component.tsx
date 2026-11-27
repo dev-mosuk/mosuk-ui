@@ -43,7 +43,6 @@ function HeroSheetRootHost<C extends ElementType = 'div'>({
       data-swiping={isSwiping ? '' : undefined}
       className={classNames(
         'mosuk-hero-sheet',
-        '@container/hero-sheet',
         'group/hero-sheet',
         styles.heroSheet,
         rest?.className,

@@ -53,7 +53,6 @@ export function Switch({
       onCheckedChange={(checked) => onChange?.(checked)}
       className={classNames(
         'mosuk-switch',
-        '@container/switch',
         'group/switch',
         styles.switch,
         className,

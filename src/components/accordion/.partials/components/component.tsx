@@ -16,7 +16,6 @@ export function Accordion({
       disabled={isDisabled}
       className={classNames(
         'mosuk-accordion',
-        '@container/accordion',
         'group/accordion',
         styles.accordion,
         className,

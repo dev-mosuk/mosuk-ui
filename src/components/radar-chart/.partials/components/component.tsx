@@ -17,7 +17,6 @@ export function RadarChart({
       {...rest}
       className={classNames(
         'mosuk-radar-chart',
-        '@container/radar-chart',
         'group/radar-chart',
         styles.radarChart,
         className,

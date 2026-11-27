@@ -97,7 +97,6 @@ export function InputGroup({
         }
         className={classNames(
           'mosuk-input-group',
-          '@container/input-group',
           'group/input-group',
           styles.inputGroup,
           className,

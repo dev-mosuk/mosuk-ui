@@ -34,7 +34,6 @@ export function Link<C extends ElementType = 'a'>({
       style={style}
       className={classNames(
         'mosuk-link',
-        '@container/link',
         'group/link',
         styles.link,
         className,

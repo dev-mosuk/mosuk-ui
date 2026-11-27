@@ -33,7 +33,6 @@ export function SelectOpen({
       isDisabled={isDisabled}
       className={classNames(
         'mosuk-select',
-        '@container/select',
         'group/select',
         styles.select,
         className,

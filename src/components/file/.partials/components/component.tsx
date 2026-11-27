@@ -80,7 +80,6 @@ export function File<C = 'div'>({
         }}
         className={classNames(
           'mosuk-file',
-          '@container/file',
           'group/file',
           styles.file,
           className,

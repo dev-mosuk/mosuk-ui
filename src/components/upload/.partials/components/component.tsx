@@ -41,7 +41,6 @@ export function Upload<C extends ElementType = 'fieldset'>({
         disabled={isDisabled}
         className={classNames(
           'mosuk-upload',
-          '@container/upload',
           'group/upload',
           styles.fieldset,
           rest?.className,

@@ -168,7 +168,6 @@ export function Segment<C extends ElementType = 'div'>({
             style={style}
             className={classNames(
               'mosuk-segment',
-              '@container/segment',
               'group/segment',
               styles.segment,
               className,

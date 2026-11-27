@@ -8,6 +8,8 @@
 /* Article */
 @layer mosuk-ui {
   .article {
+    container: article / inline-size;
+
     display: flex;
     gap: var(--article-gap);
 

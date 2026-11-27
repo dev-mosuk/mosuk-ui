@@ -1,6 +1,8 @@
 @layer mosuk-ui {
 
       .fieldset {
+          container: fieldset / inline-size;
+
           display: flex;
           flex-direction: column;
           gap: calc(var(--spacing) * 2);

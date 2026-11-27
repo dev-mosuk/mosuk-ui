@@ -16,7 +16,6 @@ export function PieChart({
       {...rest}
       className={classNames(
         'mosuk-pie-chart',
-        '@container/pie-chart',
         'group/pie-chart',
         styles.pieChart,
         className,

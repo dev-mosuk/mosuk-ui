@@ -33,7 +33,6 @@ export function ChartTooltip({
         data-variant={variant}
         className={classNames(
           'mosuk-chart-tooltip',
-          '@container/chart-tooltip',
           'group/chart-tooltip',
           styles.chartTooltip,
           className,

@@ -19,6 +19,8 @@
 /* ProgressBar */
 @layer mosuk-ui {
   .progressBar {
+    container: progress-bar / inline-size;
+
     overflow: hidden;
 
     box-sizing: border-box;

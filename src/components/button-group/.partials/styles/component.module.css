@@ -24,6 +24,8 @@
 /* ButtonGroup */
 @layer mosuk-ui {
   .buttonGroup {
+    container: button-group;
+
     display: inline-flex;
     align-items: stretch;
     justify-content: center;

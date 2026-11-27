@@ -64,7 +64,6 @@ export function Card<C extends ElementType = 'div'>({
       }}
       className={classNames(
         'mosuk-card',
-        '@container/card',
         'group/card',
         styles.card,
         className,

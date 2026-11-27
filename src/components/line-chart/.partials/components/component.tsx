@@ -23,7 +23,6 @@ export function LineChart({
       {...rest}
       className={classNames(
         'mosuk-line-chart',
-        '@container/line-chart',
         'group/line-chart',
         styles.lineChart,
         className,

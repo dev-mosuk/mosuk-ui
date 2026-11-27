@@ -9,7 +9,6 @@ export function Video({ className, children, ...rest }: VideoProps) {
       {...rest}
       className={classNames(
         'mosuk-video',
-        '@container/video',
         'group/video',
         styles.video,
         className,

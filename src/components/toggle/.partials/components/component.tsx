@@ -168,7 +168,6 @@ export function Toggle<C extends ElementType = 'div'>({
             style={style}
             className={classNames(
               'mosuk-toggle',
-              '@container/toggle',
               'group/toggle',
               styles.toggle,
               className,

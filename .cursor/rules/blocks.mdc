@@ -52,7 +52,7 @@ Sub-parts — **плоские** папки-соседи в `.partials/component
 - Публичные boolean/state — `is*` / `has*` / `can*` / `default*` / `on*Change` (components rule § Props naming); DOM/Base UI имена наружу не экспортировать
 - OwnProps order + defaults из `.partials/constants/` — components rule § Props order / § Props defaults
 - `{...rest}` на primitive, `rest?.children`
-- `classNames`: `mosuk-{feature}` → `@container/{feature}` → `group/{feature}` → `styles.*` → `rest?.className`
+- `classNames`: `mosuk-{feature}` → `group/{feature}` → `styles.*` → `rest?.className`. `container: {name}` — в CSS-модуле этого узла. `/ inline-size`, если ширина не от содержимого
 - CSS: `@layer mosuk-ui { .{feature} { … } }`
 - Host-класс модуля — `.{feature}` camelCase
 - Склейка классов — пакет `classnames`

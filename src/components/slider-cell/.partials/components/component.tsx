@@ -32,7 +32,6 @@ export function CellSlider({
       }
       className={classNames(
         'mosuk-cell-slider',
-        '@container/cell-slider',
         'group/cell-slider',
         styles.cellSlider,
         className,

@@ -27,6 +27,8 @@
 /* File */
 @layer mosuk-ui {
   .file {
+    container: file;
+
     --file-length: calc(var(--spacing) * var(--file-size));
 
     overflow: hidden;

@@ -22,7 +22,6 @@ export function ChartLegend({
         data-indicator={indicator}
         className={classNames(
           'mosuk-chart-legend',
-          '@container/chart-legend',
           'group/chart-legend',
           styles.chartLegend,
           className,

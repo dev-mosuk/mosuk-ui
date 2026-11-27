@@ -14,6 +14,8 @@
 /* Code */
 @layer mosuk-ui {
   .code {
+    container: code / inline-size;
+
     &::-webkit-scrollbar {
       width: var(--spacing);
       height: var(--spacing);

@@ -88,7 +88,6 @@ export function Typography<C extends ElementType = 'p'>({
       }}
       className={classNames(
         'mosuk-typography',
-        '@container/typography',
         'group/typography',
         styles.typography,
         typeClassName[resolvedType],

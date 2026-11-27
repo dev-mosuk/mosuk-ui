@@ -24,6 +24,8 @@
   }
 
   .scrollShadow {
+    container: scroll-shadow / inline-size;
+
     --scroll-shadow-size: 40px;
     --scroll-shadow-offset: 0px;
     --scroll-shadow-scrollbar-size: calc(var(--spacing) * var(--scroll-shadow-scrollbar, 0));

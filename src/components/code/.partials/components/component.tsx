@@ -47,7 +47,6 @@ export function Code({
       customStyle={{ ...style }}
       className={classNames(
         'mosuk-code',
-        '@container/code',
         'group/code',
         styles.code,
         className,

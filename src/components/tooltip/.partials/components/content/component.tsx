@@ -31,7 +31,6 @@ export function TooltipContent<C extends ElementType = 'div'>({
         sideOffset={sideOffset}
         className={classNames(
           'mosuk-tooltip-positioner',
-          '@container/tooltip',
           'group/tooltip',
           styles.positioner,
         )}

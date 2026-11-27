@@ -27,7 +27,6 @@ export function ButtonActions<C extends ElementType = 'nav'>({
       aria-disabled={isDisabled || undefined}
       className={classNames(
         'mosuk-button-actions',
-        '@container/button-actions',
         'group/button-actions',
         styles.buttonActions,
         rest?.className,

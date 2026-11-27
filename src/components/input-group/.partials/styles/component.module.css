@@ -1,5 +1,7 @@
 @layer mosuk-ui {
   .inputGroup {
+    container: input-group / inline-size;
+
     position: relative;
 
     display: block;

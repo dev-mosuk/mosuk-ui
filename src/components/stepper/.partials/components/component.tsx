@@ -242,7 +242,6 @@ export function Stepper({
         }
         className={classNames(
           'mosuk-stepper',
-          '@container/stepper',
           'group/stepper',
           styles.stepper,
           className,

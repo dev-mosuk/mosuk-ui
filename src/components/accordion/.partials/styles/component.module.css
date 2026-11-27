@@ -20,6 +20,8 @@
 /* Accordion */
 @layer mosuk-ui {
   .accordion {
+    container: accordion / inline-size;
+
     .item {
       .header {
         width: 100%;

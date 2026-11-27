@@ -78,7 +78,6 @@ export function Avatar<C = 'div'>({
         }}
         className={classNames(
           'mosuk-avatar',
-          '@container/avatar',
           'group/avatar',
           styles.avatar,
           className,

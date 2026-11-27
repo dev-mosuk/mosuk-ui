@@ -30,7 +30,6 @@ export function ChatMessage({
       data-side={side}
       className={classNames(
         'mosuk-chat-message',
-        '@container/chat-message',
         'group/chat-message',
         styles.message,
         rest?.className,

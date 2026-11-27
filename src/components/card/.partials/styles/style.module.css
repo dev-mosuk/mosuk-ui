@@ -33,6 +33,8 @@
 /* Card */
 @layer mosuk-ui {
   .card {
+    container: card / inline-size;
+
     overflow: hidden;
 
     position: relative;

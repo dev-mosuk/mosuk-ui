@@ -8,6 +8,8 @@
 /* ButtonActions */
 @layer mosuk-ui {
   .buttonActions {
+    container: button-actions / inline-size;
+
     display: flex;
     align-items: center;
     gap: var(--button-actions-gap);

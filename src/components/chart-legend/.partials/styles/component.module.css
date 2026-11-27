@@ -13,6 +13,8 @@
 /* ChartLegend */
 @layer mosuk-ui {
   .chartLegend {
+    container: chart-legend / inline-size;
+
     display: flex;
     flex-wrap: wrap;
     align-items: center;

@@ -1,5 +1,7 @@
 @layer mosuk-ui {
   .empty {
+    container: empty / inline-size;
+
     display: flex;
     flex-direction: column;
     align-items: center;

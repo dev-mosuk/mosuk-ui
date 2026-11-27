@@ -160,7 +160,6 @@ function ImageFrame<C extends ElementType = 'div'>({
       }}
       className={classNames(
         'mosuk-image',
-        '@container/image',
         'group/image',
         styles.image,
         className,

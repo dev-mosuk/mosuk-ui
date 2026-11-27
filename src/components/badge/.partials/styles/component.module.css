@@ -24,6 +24,8 @@
 /* Badge */
 @layer mosuk-ui {
   .badge {
+    container: badge;
+
     position: relative;
 
     display: inline-flex;

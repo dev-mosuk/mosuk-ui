@@ -82,7 +82,6 @@ export function ChatComposer({
         }}
         className={classNames(
           'mosuk-chat-composer',
-          '@container/chat-composer',
           'group/chat-composer',
           styles.composer,
           rest?.className,

@@ -33,6 +33,8 @@
 /* YandexMap */
 @layer mosuk-ui {
   .yandexMap {
+    container: yandex-map / inline-size;
+
     overflow: hidden;
 
     width: 100%;

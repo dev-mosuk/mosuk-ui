@@ -67,7 +67,6 @@ export function ProgressCircle({
         }
         className={classNames(
           'mosuk-progress-circle',
-          '@container/progress-circle',
           'group/progress-circle',
           styles.progressCircle,
           className,

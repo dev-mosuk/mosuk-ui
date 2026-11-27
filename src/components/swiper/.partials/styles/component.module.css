@@ -41,6 +41,10 @@
 
 /* Swiper */
 @layer mosuk-ui {
+  .swiper {
+    container: swiper / inline-size;
+  }
+
   :global(.mosuk-swiper[data-overflow='visible']) {
     overflow: visible;
 

@@ -22,6 +22,8 @@
 /* Checkbox */
 @layer mosuk-ui {
   .checkbox {
+    container: checkbox;
+
     appearance: none;
 
     display: flex;

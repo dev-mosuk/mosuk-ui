@@ -20,6 +20,8 @@
 /* Slider */
 @layer mosuk-ui {
   .slider {
+    container: slider / inline-size;
+
     position: relative;
 
     display: flex;

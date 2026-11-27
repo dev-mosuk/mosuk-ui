@@ -20,6 +20,8 @@
 /* Video */
 @layer mosuk-ui {
   .video {
+    container: video / inline-size;
+
     overflow: hidden;
 
     position: relative;

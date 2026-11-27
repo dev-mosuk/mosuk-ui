@@ -23,7 +23,6 @@ export function AreaChart({
       {...rest}
       className={classNames(
         'mosuk-area-chart',
-        '@container/area-chart',
         'group/area-chart',
         styles.areaChart,
         className,

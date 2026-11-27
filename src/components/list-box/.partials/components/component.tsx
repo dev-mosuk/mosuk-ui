@@ -258,7 +258,6 @@ function ListBoxList({
       }}
       className={classNames(
         'mosuk-list-box',
-        '@container/list-box',
         'group/list-box',
         styles.listBox,
         className,

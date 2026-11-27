@@ -24,6 +24,8 @@
 /* Toast */
 @layer mosuk-ui {
   .toast {
+    container: toast / inline-size;
+
     --offset-y: calc(var(--toast-offset-y) * -1 + (var(--toast-index) * var(--toast-gap) * -1) + var(--toast-swipe-movement-y));
 
     position: absolute;

@@ -33,7 +33,6 @@ export function MultiSelectOpen({
       isDisabled={isDisabled}
       className={classNames(
         'mosuk-multi-select',
-        '@container/multi-select',
         'group/multi-select',
         styles.open,
         className,

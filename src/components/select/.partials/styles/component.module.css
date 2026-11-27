@@ -1,6 +1,8 @@
 /* Select */
 @layer mosuk-ui {
   .select {
+    container: select / inline-size;
+
     display: block;
 
     width: 100%;

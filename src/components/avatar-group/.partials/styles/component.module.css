@@ -1,5 +1,7 @@
 @layer mosuk-ui {
   .avatarGroup {
+    container: avatar-group;
+
     --avatar-group-overlap: calc(var(--spacing) * 2);
     --avatar-group-seam: 2px;
 

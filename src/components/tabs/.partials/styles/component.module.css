@@ -30,6 +30,8 @@
 /* Tabs */
 @layer mosuk-ui {
   .tabs {
+    container: tabs / inline-size;
+
     display: flex;
     gap: calc(var(--spacing) * 2);
 

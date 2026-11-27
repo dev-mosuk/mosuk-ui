@@ -34,6 +34,8 @@
 /* Input */
 @layer mosuk-ui {
   .input {
+    container: input / inline-size;
+
     appearance: none;
     overflow: hidden;
 

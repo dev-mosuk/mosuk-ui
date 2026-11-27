@@ -19,6 +19,10 @@
 }
 
 @layer mosuk-ui {
+  .portal {
+    container: drawer;
+  }
+
   .viewport {
     position: fixed;
     inset: 0;

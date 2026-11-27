@@ -28,7 +28,9 @@
 /* ChartTooltip — surface from Tooltip tokens */
 @layer mosuk-ui {
   .chartTooltip {
-    z-index: 150;
+    container: chart-tooltip;
+
+    z-index: 50;
 
     display: flex;
     flex-direction: column;

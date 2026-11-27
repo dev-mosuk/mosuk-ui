@@ -64,7 +64,6 @@ export function Action<C extends ElementType = 'div'>({
       }}
       className={classNames(
         'mosuk-action',
-        '@container/action',
         'group/action',
         styles.action,
         className,

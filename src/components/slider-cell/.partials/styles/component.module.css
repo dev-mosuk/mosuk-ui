@@ -29,6 +29,8 @@
 /* CellSlider */
 @layer mosuk-ui {
   .cellSlider {
+    container: cell-slider / inline-size;
+
     position: relative;
 
     display: block;

@@ -18,6 +18,8 @@
 /* Switch */
 @layer mosuk-ui {
   .switch {
+    container: switch;
+
     appearance: none;
 
     position: relative;

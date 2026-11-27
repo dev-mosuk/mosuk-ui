@@ -14,6 +14,8 @@
 /* RadarChart */
 @layer mosuk-ui {
   .radarChart {
+    container: radar-chart / inline-size;
+
     width: 100%;
     height: 100%;
 
@@ -58,7 +60,7 @@
     }
 
     :global(.recharts-tooltip-wrapper) {
-      z-index: 150;
+      z-index: 50;
       outline: none;
     }
   }

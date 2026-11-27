@@ -68,8 +68,8 @@ Sub-parts — **плоские** папки-соседи в `.partials/component
 - `export function {Name}`
 - Props — тип part из `@base-ui/react`, если primitive есть (`Checkbox.Root.Props`). Interface-файл пустой, когда своих полей нет
 - `{...rest}` на primitive, `rest?.children`
-- `classNames`: `mosuk-{feature}` → `@container/{feature}` → `group/{feature}` → `styles.*` → `rest?.className`
-- `group` и `@container` на визуальном host. У portal-оверлея host = Portal, не headless Root
+- `classNames`: `mosuk-{feature}` → `group/{feature}` → `styles.*` → `rest?.className`
+- `group` на визуальном host. У portal-оверлея host = Portal, не headless Root. `container: {name}` — в CSS-модуле этого узла. `/ inline-size`, если ширина не от содержимого
 - CSS: `@layer mosuk-ui { .{feature} { … } }`. Размеры и цвета через `var(--spacing)`, `var(--color-*)`, `var(--text-*)`. Дерево host + nested `&[data-*]` / `.child` — styling rule (не `*With*` / плоские state-классы)
 - Host-класс модуля нового кода — `.{feature}` camelCase (`typography` → `.typography`). Legacy `.root` — только при правке feature, где он уже есть
 - Иконки — `lucide-react` / `mosuk-icons`. Склейка классов — пакет `classnames`
@@ -233,7 +233,7 @@ Overlays и часть actions строятся на `@base-ui/react`. Обор�
 
 ### component.tsx
 
-- `classNames('mosuk-{feature}', '@container/{feature}', 'group/{feature}', styles.{feature}, rest?.className)`
+- `classNames('mosuk-{feature}', 'group/{feature}', styles.{feature}, rest?.className)`
 - Props extends тип primitive или `HTMLAttributes`, где primitive нет
 - Sub-parts — плоские папки `.partials/components/{part}/`; глубокий compound — `{part}-{child}/`
 
@@ -257,7 +257,7 @@ Input-like controls оборачивают `@base-ui/react` primitives. Сохр
 
 ## display
 
-z-index 0–99.
+z-index 0–49.
 
 Раскладка — canonical tree.
 
@@ -272,8 +272,8 @@ Floating UI: drawer, dialog, tooltip, toast. Popover — `src/components/popover
 
 ### z-index
 
-- Popover/tooltip: **100–199**
-- Dialog/drawer/modal: **200+**
+- Popover, tooltip, context menu, chart tooltip: **50**
+- Drawer, dialog, toasts: **100**
 
 Раскладка — canonical tree: плоские hyphenated папки (`close/`, `overview/`, `overview-popup/`, `viewport-popup-handle/`). `index.ts` — вложенный `Object.assign`. Эталон папок — `src/components/popover/`.
 
@@ -284,7 +284,7 @@ Drawer/dialog/popover — на `@base-ui/react`. Focus trap, portal и aria ос
 - `@layer mosuk-ui`
 - `component.module.css` в `.partials/styles/`
 - Backdrop и popup — отдельные modules, если стили различаются
-- `group/{feature}` + `@container/{feature}` на **Portal** (визуальный host), не на headless Root
+- `group/{feature}` на **Portal** (визуальный host), не на headless Root. `container` — в модуле на `.portal`
 - `component.interface.ts` на каждом sub-part
 - Trigger / Close — отдельные compound parts
 
@@ -312,7 +312,7 @@ App shell primitives: header, sidebar, footer, tabbar.
 
 - Responsive behavior через CSS module + utilities
 - `@layer mosuk-ui`
-- z-index 0–99 для fixed layout chrome (ниже overlays)
+- z-index 0–49 для fixed layout chrome (ниже overlays)
 - Layout state (collapsed sidebar) — provider в `.partials/providers/` или внешний `providers/`
 
 ## collections
@@ -350,4 +350,4 @@ Form composition: fieldset, field groups, label+input+hint. Leaf controls — о
 
 ## containers
 
-Секции и grid. Раскладка — canonical tree. z-index 0–99.
+Секции и grid. Раскладка — canonical tree. z-index 0–49.

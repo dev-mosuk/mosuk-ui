@@ -23,7 +23,6 @@ export function ComposedChart({
       {...rest}
       className={classNames(
         'mosuk-composed-chart',
-        '@container/composed-chart',
         'group/composed-chart',
         styles.composedChart,
         className,

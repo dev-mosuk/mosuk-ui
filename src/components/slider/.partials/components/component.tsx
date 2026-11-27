@@ -51,8 +51,7 @@ export function Slider({
     toValues(value ?? defaultValue, min),
   );
 
-  const resolvedValues =
-    value !== undefined ? toValues(value, min) : values;
+  const resolvedValues = value !== undefined ? toValues(value, min) : values;
 
   return (
     <SliderProvider
@@ -88,7 +87,6 @@ export function Slider({
         }
         className={classNames(
           'mosuk-slider',
-          '@container/slider',
           'group/slider',
           styles.slider,
           className,

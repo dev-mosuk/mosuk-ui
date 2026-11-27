@@ -85,7 +85,6 @@ export function Tabs<C extends ElementType = 'div'>({
         style={style}
         className={classNames(
           'mosuk-tabs',
-          '@container/tabs',
           'group/tabs',
           styles.tabs,
           className,

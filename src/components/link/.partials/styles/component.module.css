@@ -13,6 +13,8 @@
 /* Link */
 @layer mosuk-ui {
   .link {
+    container: link;
+
     display: inline-flex;
     align-items: center;
     gap: var(--link-gap);

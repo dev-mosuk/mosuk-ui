@@ -32,6 +32,8 @@
 /* ListBox */
 @layer mosuk-ui {
   .listBox {
+    container: list-box / inline-size;
+
     display: flex;
     flex-direction: column;
     gap: calc(var(--spacing) * 2);

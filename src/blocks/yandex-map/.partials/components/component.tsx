@@ -7,7 +7,6 @@ import React, { useContext } from 'react';
 function mapClassName(className?: string) {
   return classNames(
     'mosuk-yandex-map',
-    '@container/yandex-map',
     'group/yandex-map',
     styles.yandexMap,
     className,

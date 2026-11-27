@@ -14,8 +14,8 @@ export function DrawerViewport({ ...rest }: DrawerViewportProps) {
       container={container}
       className={classNames(
         'mosuk-drawer',
-        '@container/drawer',
         'group/drawer',
+        styles.portal,
       )}
     >
       <BaseUiDrawer.Viewport

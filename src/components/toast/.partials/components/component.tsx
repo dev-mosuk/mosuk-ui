@@ -25,7 +25,6 @@ export function ToastRoot({
       toast={toast}
       className={classNames(
         'mosuk-toast',
-        '@container/toast',
         'group/toast',
         styles.toast,
         className,

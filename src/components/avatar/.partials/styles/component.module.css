@@ -27,6 +27,8 @@
 /* Avatar */
 @layer mosuk-ui {
   .avatar {
+    container: avatar;
+
     --avatar-length: calc(var(--spacing) * var(--avatar-size));
 
     overflow: hidden;

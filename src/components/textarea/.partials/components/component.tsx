@@ -124,7 +124,6 @@ export function Textarea<C extends ElementType = 'textarea'>({
       }}
       className={classNames(
         'mosuk-textarea',
-        '@container/textarea',
         'group/textarea',
         styles.textarea,
         rest?.className,

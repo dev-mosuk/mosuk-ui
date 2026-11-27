@@ -15,7 +15,6 @@ export function Observer<C extends ElementType = 'aside'>({
       aria-hidden='true'
       className={classNames(
         'mosuk-observer',
-        '@container/observer',
         'group/observer',
         styles.observer,
         rest?.className,

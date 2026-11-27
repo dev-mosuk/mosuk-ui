@@ -14,8 +14,8 @@ export function DialogViewport({ ...rest }: DialogViewportProps) {
       container={container}
       className={classNames(
         'mosuk-dialog',
-        '@container/dialog',
         'group/dialog',
+        styles.portal,
       )}
     >
       <BaseUIDialog.Viewport

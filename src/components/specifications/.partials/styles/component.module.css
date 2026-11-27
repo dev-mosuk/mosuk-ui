@@ -12,6 +12,8 @@
 /* Specifications */
 @layer mosuk-ui {
   .specifications {
+    container: specifications / inline-size;
+
     display: flex;
     flex-direction: column;
     gap: calc(var(--spacing) * 2);

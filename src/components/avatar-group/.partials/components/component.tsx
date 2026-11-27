@@ -89,7 +89,6 @@ export function AvatarGroup<C = 'nav'>({
       data-overlap={isGrid ? undefined : overlap}
       className={classNames(
         'mosuk-avatar-group',
-        '@container/avatar-group',
         'group/avatar-group',
         styles.avatarGroup,
         className,

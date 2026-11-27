@@ -29,7 +29,6 @@ export function RadialChart({
       {...rest}
       className={classNames(
         'mosuk-radial-chart',
-        '@container/radial-chart',
         'group/radial-chart',
         styles.radialChart,
         className,

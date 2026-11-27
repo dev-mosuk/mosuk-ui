@@ -71,9 +71,9 @@ alwaysApply: false
 
 | Диапазон | Назначение |
 | -------- | ---------- |
-| 0–99 | контент, карточки, формы |
-| 100–199 | popover, tooltip |
-| 200+ | dialog, drawer, modal |
+| 0–49 | контент, карточки, формы |
+| 50 | popover, tooltip, context menu, chart tooltip |
+| 100 | drawer, dialog, toasts |
 
 ## CSS module — шаблон
 
@@ -116,6 +116,8 @@ alwaysApply: false
 
 Пустая строка между группами. Внутри группы — без пустых строк.
 
+`container: {name}` — первая декларация правила. Если дальше есть стили — пустая строка, затем группы ниже. Тип `/ inline-size` только когда ширина не от содержимого: слот родителя, `width: 100%`, блочный stretch. У `fit-content` и `inline-flex` по контенту тип не пишем.
+
 1. **overflow** — `overflow*`, `overscroll*`, `scrollbar-*`
 2. **position** — `position`, `inset*`, `top`/`right`/`bottom`/`left`, `z-index`
 3. **layout** — `display`, flex/grid props, `gap`, `align-*`, `justify-*`, `place-*`
@@ -138,16 +140,17 @@ alwaysApply: false
 ```tsx
 className={classNames(
   'mosuk-typography',
-  '@container/typography',
   'group/typography',
   styles.typography,
   rest?.className,
 )}
 ```
 
-Порядок: **mosuk-{feature}** → **@container/{feature}** → **group/{feature}** → **styles.\*** → **rest.className** последним.
+Порядок: **mosuk-{feature}** → **group/{feature}** → **styles.\*** → **rest.className** последним.
 
-Маркеры `group/{feature}` и `@container/{feature}` — на **визуальном DOM-корне** feature (не на каждый sub-part, не на headless Root). Для Base UI portal-оверлеев (drawer/dialog/popover) host = **Portal**.
+`container: {name}` — первая декларация правила в CSS-модуле того же узла, затем пустая строка. `/ inline-size` — только если ширина не от содержимого. Имя — kebab (`typography`, `chat-composer`), не camelCase класса.
+
+Маркер `group/{feature}` — на **визуальном DOM-корне** feature (не на каждый sub-part, не на headless Root). Для Base UI portal-оверлеев (drawer/dialog/popover) host = **Portal**: класс `.portal` с `container` на нём.
 
 ## Skeleton и стили
 

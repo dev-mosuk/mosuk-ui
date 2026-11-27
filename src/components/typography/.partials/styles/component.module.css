@@ -22,6 +22,8 @@
 /* Typography */
 @layer mosuk-ui {
   .typography {
+    container: typography;
+
     position: relative;
 
     display: block;

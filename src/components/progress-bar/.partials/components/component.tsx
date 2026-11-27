@@ -58,7 +58,6 @@ export function ProgressBar({
       }
       className={classNames(
         'mosuk-progress-bar',
-        '@container/progress-bar',
         'group/progress-bar',
         styles.progressBar,
         className,

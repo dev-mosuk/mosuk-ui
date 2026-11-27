@@ -25,7 +25,6 @@ export function BarChart({
       {...rest}
       className={classNames(
         'mosuk-bar-chart',
-        '@container/bar-chart',
         'group/bar-chart',
         styles.barChart,
         className,

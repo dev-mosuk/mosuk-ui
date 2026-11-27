@@ -127,7 +127,6 @@ export function Calendar<
         className={calendarClassName(
           className,
           'mosuk-calendar',
-          '@container/calendar',
           'group/calendar',
           styles.calendar,
         )}

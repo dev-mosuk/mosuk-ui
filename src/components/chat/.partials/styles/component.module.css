@@ -47,6 +47,8 @@
 /* Chat */
 @layer mosuk-ui {
   .chat {
+    container: chat / inline-size;
+
     position: relative;
 
     display: flex;
@@ -58,6 +60,8 @@
     height: 100%;
 
     .viewport {
+      container: chat-viewport / inline-size;
+
       overflow-x: hidden;
       overflow-y: auto;
       scrollbar-width: none;
@@ -122,6 +126,8 @@
     }
 
     .message {
+      container: chat-message;
+
       display: flex;
       align-items: flex-end;
       gap: calc(var(--spacing) * 2);
@@ -346,6 +352,8 @@
     }
 
     .composer {
+      container: chat-composer / inline-size;
+
       overflow: hidden;
       scrollbar-width: none;
 

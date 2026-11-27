@@ -16,6 +16,8 @@
 /* Hint */
 @layer mosuk-ui {
   .hint {
+    container: hint;
+
     overflow: hidden;
 
     position: relative;

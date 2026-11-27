@@ -29,6 +29,8 @@
 /* Toggle */
 @layer mosuk-ui {
   .toggle {
+    container: toggle;
+
     position: relative;
     z-index: 0;
 

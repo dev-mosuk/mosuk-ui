@@ -21,7 +21,6 @@ export function Empty<C extends ElementType = 'section'>({
       press={rest.press ?? EMPTY_DEFAULT_PRESS}
       className={classNames(
         'mosuk-empty',
-        '@container/empty',
         'group/empty',
         styles.empty,
         rest?.className,
